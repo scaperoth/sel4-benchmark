@@ -10,7 +10,7 @@ The build used here uses syslinux to build a bootable USB stick.
 
 Assuming the flash drive is /dev/sdb and has a FAT partition at /dev/sdb1
 
-`
+```
 install-mbr /dev/sdb   
 syslinux --install /dev/sdb1   
 mount /dev/sdb1 /mnt/sel4  
@@ -25,7 +25,7 @@ LABEL seL4test
 EOF  
 cp <your path to your syslinux folder install>/mboot.c32 /mnt/sel4/  
 umount /mnt/sel4/  
-`
+```
 
 The output will be to the serial port. 
 
