@@ -14,8 +14,8 @@ Assuming the flash drive is /dev/sdb and has a FAT partition at /dev/sdb1
 install-mbr /dev/sdb   
 syslinux --install /dev/sdb1   
 mount /dev/sdb1 /mnt/sel4  
-cp images/sel4test-driver-image-ia32-pc99 /mnt/sel4/rootserver  
-cp images/kernel-ia32-pc99 /mnt/sel4/sel4kernel  
+cp seL4test/images/sel4test-driver-image-ia32-pc99 /mnt/sel4/rootserver  
+cp seL4test/images/kernel-ia32-pc99 /mnt/sel4/sel4kernel  
 cat > /mnt/sel4/syslinux.cfg <<EOF  
 SERIAL 0 115200  
 DEFAULT seL4test  
