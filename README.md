@@ -1,10 +1,10 @@
 ##seL4 MicroKernel Build Test and Benchmarking
-This repository will be used to test the seL4 microkernel. Source code can be found at the [seL4](seL4Home) website.
+This repository will be used to test the seL4 microkernel. Source code can be found at the [seL4 website](seL4Home).
 
 [seL4Home]: http://sel4.systems 
 
 ###Building a bootable USB
-For documentation on testing the kernel, please visit the [seL4](seL4Home) website.    
+>For more general documentation on the seL4 microkernel, please visit the [seL4 website](seL4Home).    
 
 The build used here uses syslinux to build a bootable USB stick. 
 
@@ -29,7 +29,7 @@ umount /mnt/sel4/
 
 The output will be to the serial port. 
 
-Note: be sure that your mboot.c32 file version is from the same version as the syslinux install on your machine.
+>Note: be sure that your mboot.c32 file version is from the same version as the syslinux install on your machine.
 
 Versions of syslinux can be found [here](syslinuxlibraries)
 
