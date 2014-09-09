@@ -37,7 +37,7 @@ Versions of syslinux can be found [here](syslinuxlibraries)
 
 ###Booting Using Quemu
 
-Once you install qemu using:
+Once you install [qemu](qemu) using:
 ```
 apt-get install qemu
 ```
@@ -49,3 +49,4 @@ you can run the provided test image (after unpacking the file) by executing
 ```
 qemu-system-i386 -serial stdio sel4.img
 ```
+[qemu]: http://en.wikibooks.org/wiki/QEMU/Installing_QEMU
