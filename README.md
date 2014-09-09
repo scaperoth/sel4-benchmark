@@ -31,7 +31,7 @@ The output will be to the serial port.
 
 >Note: be sure that your mboot.c32 file version is from the same version as the syslinux install on your machine.
 
-Versions of syslinux can be found [here](syslinuxlibraries)
+Versions of syslinux can be found [here](syslinuxlibraries) 
 
 [syslinuxlibraries]: https://www.kernel.org/pub/linux/utils/boot/syslinux/
 
