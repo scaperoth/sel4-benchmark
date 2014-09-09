@@ -1,9 +1,0 @@
- menuentry "Load seL4 VM"  --class os {
-   load_video
-   insmod gzio
-   insmod part_msdos
-   insmod ext2
-   set root='(hd0,msdos2)'
-   multiboot /boot/sel4kernel
-   module /boot/sel4rootserver
-}
