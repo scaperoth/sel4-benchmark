@@ -35,17 +35,9 @@ Versions of syslinux can be found [here](syslinuxlibraries)
 
 [syslinuxlibraries]: https://www.kernel.org/pub/linux/utils/boot/syslinux/
 
-###Booting Using Quemu
+###Booting Using Qemu
 
-Once you install [qemu](qemu) using:
-```
-apt-get install qemu
-```
-or 
-```
-yum install qemu
-```
-you can run the provided test image (after unpacking the file) by executing
+Once you install [Qemu](qemu) you can run the provided test image (after unpacking the file) by executing
 ```
 qemu-system-i386 -serial stdio sel4.img
 ```
