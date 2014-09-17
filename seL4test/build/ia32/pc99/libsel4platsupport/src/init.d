@@ -1,2 +1,2 @@
 src/init.o: \
- /home/mscapero/Desktop/seL4/seL4test/libs/libsel4platsupport/src/init.c
+ /home/mscapero/Desktop/sel4-benchmark/seL4test/libs/libsel4platsupport/src/init.c

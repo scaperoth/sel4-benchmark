@@ -114,7 +114,7 @@ switchToThread_fp:
 	je	.L19
 	movl	%edx, ia32KSCurrentPD
 #APP
-# 35 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 35 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %edx, %cr3
 # 0 "" 2
 #NO_APP
@@ -178,7 +178,7 @@ fastpath_restore:
 	leal	20(%eax), %ecx
 	movl	(%eax), %eax
 #APP
-# 233 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/fastpath/fastpath.c" 1
+# 233 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/fastpath/fastpath.c" 1
 	                movl %ecx, %esp 
                 popl %edi 
                 popl %ebp 
@@ -205,7 +205,7 @@ fastpath_restore:
 	leal	20(%eax), %ecx
 	movl	(%eax), %eax
 #APP
-# 210 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/fastpath/fastpath.c" 1
+# 210 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/fastpath/fastpath.c" 1
 	                movl %ecx, %esp 
                 popl %edi 
                 popl %ebp 
@@ -225,20 +225,20 @@ fastpath_restore:
 	jmp	.L28
 .L32:
 #APP
-# 41 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 41 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %cr0, %ecx
 # 0 "" 2
 #NO_APP
 	orl	$8, %ecx
 #APP
-# 47 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 47 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %ecx, %cr0
 # 0 "" 2
 #NO_APP
 	jmp	.L23
 .L31:
 #APP
-# 45 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 45 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 	clts
 # 0 "" 2
 #NO_APP
@@ -602,7 +602,7 @@ switchFpuOwner:
 	subl	$24, %esp
 	.cfi_def_cfa_offset 32
 #APP
-# 45 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 45 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 	clts
 # 0 "" 2
 #NO_APP
@@ -631,13 +631,13 @@ switchFpuOwner:
 .L86:
 	.cfi_restore_state
 #APP
-# 41 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 41 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %cr0, %eax
 # 0 "" 2
 #NO_APP
 	orl	$8, %eax
 #APP
-# 47 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 47 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %eax, %cr0
 # 0 "" 2
 #NO_APP
@@ -1542,15 +1542,15 @@ pci_scan_bars:
 	andl	$-16, %ecx
 	testb	$4, %al
 	jne	.L236
-	movl	glks+188, %edx
+	movl	glks+828, %edx
 	cmpl	$198, %edx
 	ja	.L222
-	leal	glks+176(,%edx,8), %eax
+	leal	glks+816(,%edx,8), %eax
 	addl	%ecx, %edi
 	addl	$1, %edx
 	movl	%ecx, 16(%eax)
 	movl	%edi, 20(%eax)
-	movl	%edx, glks+188
+	movl	%edx, glks+828
 	jmp	.L222
 .L236:
 	leal	20(%ebp), %eax
@@ -1565,15 +1565,15 @@ pci_scan_bars:
 	movl	28(%esp), %ecx
 	testl	%eax, %eax
 	jne	.L227
-	movl	glks+188, %eax
+	movl	glks+828, %eax
 	cmpl	$198, %eax
 	ja	.L227
-	leal	glks+176(,%eax,8), %edx
+	leal	glks+816(,%eax,8), %edx
 	addl	$1, %eax
 	movl	%ecx, 16(%edx)
 	addl	%edi, %ecx
 	movl	%ecx, 20(%edx)
-	movl	%eax, glks+188
+	movl	%eax, glks+828
 .L227:
 	addl	$1, %esi
 	jmp	.L222
@@ -1870,7 +1870,7 @@ restore_user_context:
 	jne	.L262
 	andl	$-513, 64(%eax)
 #APP
-# 37 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/c_traps.c" 1
+# 37 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/c_traps.c" 1
 	movl %eax, %esp
 popl %eax
 popl %ebx
@@ -1908,7 +1908,7 @@ sysexit
 	jmp	.L263
 .L262:
 #APP
-# 89 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/c_traps.c" 1
+# 89 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/c_traps.c" 1
 	movl %eax, %esp
 popl %eax
 popl %ebx
@@ -1929,20 +1929,20 @@ iret
 	jmp	.L264
 .L268:
 #APP
-# 41 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 41 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %cr0, %edx
 # 0 "" 2
 #NO_APP
 	orl	$8, %edx
 #APP
-# 47 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 47 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %edx, %cr0
 # 0 "" 2
 #NO_APP
 	jmp	.L261
 .L267:
 #APP
-# 45 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 45 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 	clts
 # 0 "" 2
 #NO_APP
@@ -2371,14 +2371,14 @@ init_node_cpu:
 	movl	%eax, (%esp)
 	call	write_cr4
 #APP
-# 41 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 41 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %cr0, %eax
 # 0 "" 2
 #NO_APP
 	andl	$-47, %eax
 	orl	$42, %eax
 #APP
-# 47 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 47 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %eax, %cr0
 # 0 "" 2
 #NO_APP
@@ -2407,15 +2407,15 @@ init_node_cpu:
 insert_dev_p_reg:
 .LFB304:
 	.cfi_startproc
-	movl	glks+188, %ecx
+	movl	glks+828, %ecx
 	cmpl	$198, %ecx
 	ja	.L306
 	movl	4(%esp), %eax
 	movl	8(%esp), %edx
-	movl	%eax, glks+192(,%ecx,8)
-	movl	%edx, glks+196(,%ecx,8)
+	movl	%eax, glks+832(,%ecx,8)
+	movl	%edx, glks+836(,%ecx,8)
 	addl	$1, %ecx
-	movl	%ecx, glks+188
+	movl	%ecx, glks+828
 .L306:
 	rep ret
 	.cfi_endproc
@@ -2461,88 +2461,32 @@ node_of_cpu:
 	subl	$12, %esp
 	.cfi_def_cfa_offset 16
 	movl	glks+24, %edx
-	movl	16(%esp), %eax
+	movl	16(%esp), %ecx
 	testl	%edx, %edx
 	je	.L314
-	cmpl	%eax, glks+28
-	je	.L332
-	cmpl	$1, %edx
-	jbe	.L314
-	cmpl	%eax, glks+32
-	je	.L319
-	cmpl	$2, %edx
-	jbe	.L314
-	cmpl	%eax, glks+36
-	je	.L320
-	cmpl	$3, %edx
-	jbe	.L314
-	cmpl	%eax, glks+40
-	je	.L321
-	cmpl	$4, %edx
-	jbe	.L314
-	cmpl	%eax, glks+44
-	je	.L322
-	cmpl	$5, %edx
-	jbe	.L314
-	cmpl	%eax, glks+48
-	je	.L323
-	cmpl	$6, %edx
-	jbe	.L314
-	cmpl	%eax, glks+52
-	je	.L324
-	cmpl	$7, %edx
-	jbe	.L314
-	cmpl	%eax, glks+56
-	je	.L325
-.L314:
-	call	halt
-	.p2align 4,,7
-	.p2align 3
-.L332:
 	xorl	%eax, %eax
+	cmpl	%ecx, glks+28
+	je	.L326
 	.p2align 4,,7
 	.p2align 3
-.L330:
+.L317:
+	addl	$1, %eax
+	cmpl	%edx, %eax
+	je	.L314
+	cmpl	%ecx, glks+28(,%eax,4)
+	jne	.L317
+.L321:
 	addl	$12, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 4
 	ret
-	.p2align 4,,7
-	.p2align 3
-.L319:
+.L326:
 	.cfi_restore_state
-	movl	$1, %eax
-	jmp	.L330
+	xorl	%eax, %eax
+	jmp	.L321
+.L314:
 	.p2align 4,,7
-	.p2align 3
-.L321:
-	movl	$3, %eax
-	jmp	.L330
-	.p2align 4,,7
-	.p2align 3
-.L320:
-	movl	$2, %eax
-	jmp	.L330
-	.p2align 4,,7
-	.p2align 3
-.L325:
-	movl	$7, %eax
-	jmp	.L330
-	.p2align 4,,7
-	.p2align 3
-.L324:
-	movl	$6, %eax
-	jmp	.L330
-	.p2align 4,,7
-	.p2align 3
-.L323:
-	movl	$5, %eax
-	jmp	.L330
-	.p2align 4,,7
-	.p2align 3
-.L322:
-	movl	$4, %eax
-	jmp	.L330
+	call	halt
 	.cfi_endproc
 .LFE306:
 	.size	node_of_cpu, .-node_of_cpu
@@ -2555,11 +2499,11 @@ elf32_checkFile:
 	movl	4(%esp), %edx
 	xorl	%eax, %eax
 	cmpl	$1179403647, (%edx)
-	je	.L336
+	je	.L330
 	rep ret
 	.p2align 4,,7
 	.p2align 3
-.L336:
+.L330:
 	xorl	%eax, %eax
 	cmpb	$1, 4(%edx)
 	sete	%al
@@ -2591,7 +2535,7 @@ elf32_getMemoryBounds:
 	movzwl	44(%edx), %ecx
 	addl	%edx, %ebx
 	testw	%cx, %cx
-	je	.L341
+	je	.L335
 	sall	$5, %ecx
 	movl	$-1, %edi
 	leal	20(%ebx), %edx
@@ -2599,21 +2543,21 @@ elf32_getMemoryBounds:
 	leal	20(%ebx,%ecx), %ebp
 	.p2align 4,,7
 	.p2align 3
-.L340:
+.L334:
 	movl	(%edx), %ecx
 	testl	%ecx, %ecx
-	je	.L339
+	je	.L333
 	movl	-12(%edx), %ebx
 	addl	%ebx, %ecx
 	cmpl	%ebx, %edi
 	cmova	%ebx, %edi
 	cmpl	%ecx, %esi
 	cmovb	%ecx, %esi
-.L339:
+.L333:
 	addl	$32, %edx
 	cmpl	%ebp, %edx
-	jne	.L340
-.L338:
+	jne	.L334
+.L332:
 	movl	%edi, (%eax)
 	movl	%esi, 4(%eax)
 	popl	%ebx
@@ -2630,11 +2574,11 @@ elf32_getMemoryBounds:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret	$4
-.L341:
+.L335:
 	.cfi_restore_state
 	movl	$-1, %edi
 	xorl	%esi, %esi
-	jmp	.L338
+	jmp	.L332
 	.cfi_endproc
 .LFE319:
 	.size	elf32_getMemoryBounds, .-elf32_getMemoryBounds
@@ -2663,10 +2607,10 @@ elf32_load:
 	movl	28(%eax), %esi
 	addl	%eax, %esi
 	cmpw	$0, 44(%eax)
-	je	.L346
+	je	.L340
 	.p2align 4,,7
 	.p2align 3
-.L375:
+.L369:
 	movl	16(%esi), %edx
 	movl	64(%esp), %ecx
 	movl	68(%esp), %ebx
@@ -2675,7 +2619,7 @@ elf32_load:
 	testl	%edx, %edx
 	movl	%ecx, 28(%esp)
 	movl	%ebx, 20(%esp)
-	je	.L356
+	je	.L350
 	leal	4(%ecx), %edi
 	cmpl	%edi, %ebx
 	leal	4(%ebx), %ebp
@@ -2691,23 +2635,23 @@ elf32_load:
 	movl	%edi, %eax
 	movl	%ebp, %ebx
 	testb	%bl, %al
-	je	.L351
+	je	.L345
 	movl	20(%esp), %ebx
 	movl	%ecx, %edi
 	orl	%ebx, %edi
 	andl	$3, %edi
-	jne	.L351
+	jne	.L345
 	movl	%edx, %ebp
 	xorl	%eax, %eax
 	shrl	$2, %ebp
 	leal	0(,%ebp,4), %edi
 	movl	%edx, 28(%esp)
-.L357:
+.L351:
 	movl	(%ecx,%eax,4), %edx
 	movl	%edx, (%ebx,%eax,4)
 	addl	$1, %eax
 	cmpl	%eax, %ebp
-	ja	.L357
+	ja	.L351
 	movl	28(%esp), %edx
 	movl	%ebx, %eax
 	addl	%edi, %ecx
@@ -2716,18 +2660,18 @@ elf32_load:
 	movl	%edx, %ebp
 	subl	%edi, %ebp
 	cmpl	%edi, %edx
-	je	.L356
+	je	.L350
 	movzbl	(%ecx), %ebx
 	cmpl	$1, %ebp
 	movb	%bl, (%eax)
-	je	.L356
+	je	.L350
 	movzbl	1(%ecx), %ebx
 	cmpl	$2, %ebp
 	movb	%bl, 1(%eax)
-	je	.L356
+	je	.L350
 	movzbl	2(%ecx), %ecx
 	movb	%cl, 2(%eax)
-.L356:
+.L350:
 	movl	20(%esp), %ebx
 	movl	20(%esi), %eax
 	addl	%edx, %ebx
@@ -2736,24 +2680,24 @@ elf32_load:
 	orl	%eax, %ecx
 	movl	%ebx, %edx
 	andl	$3, %ecx
-	jne	.L386
+	jne	.L380
 	testl	%eax, %eax
-	je	.L364
+	je	.L358
 	.p2align 4,,7
 	.p2align 3
-.L376:
+.L370:
 	movl	$0, (%edx)
 	addl	$4, %edx
 	subl	$4, %eax
-	jne	.L376
-.L364:
+	jne	.L370
+.L358:
 	movl	64(%esp), %eax
 	addl	$32, %esi
 	addl	$1, 24(%esp)
 	movzwl	44(%eax), %eax
 	cmpl	24(%esp), %eax
-	ja	.L375
-.L346:
+	ja	.L369
+.L340:
 	addl	$44, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -2770,18 +2714,18 @@ elf32_load:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret
-.L386:
+.L380:
 	.cfi_restore_state
 	testl	%eax, %eax
-	je	.L364
+	je	.L358
 	movl	%eax, 8(%esp)
 	movl	$0, 4(%esp)
 	movl	%ebx, (%esp)
 	call	memset
-	jmp	.L364
+	jmp	.L358
 	.p2align 4,,7
 	.p2align 3
-.L351:
+.L345:
 	movl	20(%esp), %ebx
 	leal	(%ecx,%edx), %edi
 	movl	%edx, %ebp
@@ -2791,15 +2735,15 @@ elf32_load:
 	movl	28(%esp), %eax
 	.p2align 4,,7
 	.p2align 3
-.L359:
+.L353:
 	movzbl	(%eax), %edx
 	addl	$1, %eax
 	movb	%dl, -1(%eax,%ecx)
 	cmpl	%edi, %eax
-	jne	.L359
+	jne	.L353
 	movl	%ebx, 20(%esp)
 	movl	%ebp, %edx
-	jmp	.L356
+	jmp	.L350
 	.cfi_endproc
 .LFE320:
 	.size	elf32_load, .-elf32_load
@@ -2825,10 +2769,10 @@ load_boot_module.isra.140:
 	cmpl	$1179403647, (%edx)
 	movl	%eax, 8(%esp)
 	movl	%ecx, 12(%esp)
-	je	.L388
-.L391:
+	je	.L382
+.L385:
 	xorl	%eax, %eax
-.L411:
+.L405:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -2847,15 +2791,15 @@ load_boot_module.isra.140:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L388:
+.L382:
 	.cfi_restore_state
 	cmpb	$1, 4(%edx)
-	jne	.L391
+	jne	.L385
 	movl	28(%edx), %ebx
 	movzwl	44(%edx), %ecx
 	addl	%edx, %ebx
 	testl	%ecx, %ecx
-	je	.L391
+	je	.L385
 	sall	$5, %ecx
 	xorl	%esi, %esi
 	leal	20(%ebx), %eax
@@ -2863,39 +2807,39 @@ load_boot_module.isra.140:
 	leal	20(%ebx,%ecx), %ebp
 	.p2align 4,,7
 	.p2align 3
-.L397:
+.L391:
 	movl	(%eax), %ecx
 	testl	%ecx, %ecx
-	je	.L392
+	je	.L386
 	movl	-12(%eax), %ebx
 	addl	%ebx, %ecx
 	cmpl	%ebx, %edi
 	cmova	%ebx, %edi
 	cmpl	%ecx, %esi
 	cmovb	%ecx, %esi
-.L392:
+.L386:
 	addl	$32, %eax
 	cmpl	%ebp, %eax
-	jne	.L397
-	testl	%esi, %esi
-	je	.L391
-	testl	$4095, %edi
 	jne	.L391
+	testl	%esi, %esi
+	je	.L385
+	testl	$4095, %edi
+	jne	.L385
 	subl	$1, %esi
 	andl	$-4096, %esi
 	leal	12288(%esi), %ecx
 	cmpl	$-536870912, %ecx
 	leal	4096(%esi), %eax
-	ja	.L391
+	ja	.L385
 	movl	24(%edx), %ecx
 	cmpl	%edi, %ecx
-	jb	.L391
+	jb	.L385
 	cmpl	%ecx, %eax
-	jbe	.L391
+	jbe	.L385
 	movl	12(%esp), %ebp
 	movl	8(%esp), %esi
 	movl	%ebp, %ebx
-	addl	$3, %esi
+	addl	$11, %esi
 	subl	%edi, %ebx
 	movl	%esi, %edi
 	sall	$4, %edi
@@ -2905,26 +2849,26 @@ load_boot_module.isra.140:
 	movl	%ebp, glks+12(%edi)
 	movl	%ebx, glks+16(%edi)
 	movl	%ecx, glks+24(%edi)
-	ja	.L391
+	ja	.L385
 	movl	%ebx, %eax
 	movl	%ebp, %ecx
 	subl	%ebp, %eax
-	je	.L395
+	je	.L389
 	.p2align 4,,7
 	.p2align 3
-.L406:
+.L400:
 	movl	$0, (%ecx)
 	addl	$4, %ecx
 	subl	$4, %eax
-	jne	.L406
-.L395:
+	jne	.L400
+.L389:
 	sall	$4, %esi
 	movl	glks+20(%esi), %eax
 	movl	%edx, (%esp)
 	movl	%eax, 4(%esp)
 	call	elf32_load
 	movl	%ebx, %eax
-	jmp	.L411
+	jmp	.L405
 	.cfi_endproc
 .LFE731:
 	.size	load_boot_module.isra.140, .-load_boot_module.isra.140
@@ -2978,25 +2922,25 @@ init_boot_pd:
 	xorl	%eax, %eax
 	.p2align 4,,7
 	.p2align 3
-.L419:
+.L413:
 	movl	%eax, %edx
 	sall	$22, %edx
 	orl	$387, %edx
 	movl	%edx, _boot_pd(,%eax,4)
 	addl	$1, %eax
 	cmpl	$896, %eax
-	jne	.L419
+	jne	.L413
 	xorw	%ax, %ax
 	.p2align 4,,7
 	.p2align 3
-.L421:
+.L415:
 	movl	%eax, %edx
 	sall	$22, %edx
 	orl	$387, %edx
 	movl	%edx, _boot_pd+3584(,%eax,4)
 	addl	$1, %eax
 	cmpl	$128, %eax
-	jne	.L421
+	jne	.L415
 	rep ret
 	.cfi_endproc
 .LFE326:
@@ -3031,7 +2975,7 @@ map_kernel_window:
 	movl	%edi, %ebx
 	.p2align 4,,7
 	.p2align 3
-.L424:
+.L418:
 	movl	%eax, %edx
 	addl	$4194304, %eax
 	andl	$-4194304, %edx
@@ -3039,7 +2983,7 @@ map_kernel_window:
 	orl	$387, %edx
 	movl	%edx, -4(%ecx)
 	cmpl	$532676608, %eax
-	jne	.L424
+	jne	.L418
 	movl	48(%esp), %ecx
 	subl	%edi, %ebp
 	leal	536870912(%esi), %eax
@@ -3051,10 +2995,10 @@ map_kernel_window:
 	leal	4(%esi), %eax
 	movl	$0, (%esi)
 	leal	4(%esi,%ebp,4), %ecx
-	je	.L438
+	je	.L432
 	.p2align 4,,7
 	.p2align 3
-.L428:
+.L422:
 	movl	%ebx, %edx
 	addl	$4, %eax
 	andl	$-4096, %edx
@@ -3062,30 +3006,30 @@ map_kernel_window:
 	orl	$259, %edx
 	movl	%edx, -4(%eax)
 	cmpl	%ecx, %eax
-	jne	.L428
+	jne	.L422
 	leal	1(%ebp), %ebx
 	cmpl	$1007, %ebx
-	ja	.L430
+	ja	.L424
 	.p2align 4,,7
 	.p2align 3
-.L426:
+.L420:
 	movl	$0, (%esi,%ebx,4)
 	addl	$1, %ebx
 	cmpl	$1007, %ebx
-	jbe	.L426
-.L430:
+	jbe	.L420
+.L424:
 	movl	$27, (%esp)
 	call	ia32_rdmsr_low
 	movl	%eax, %edx
 	xorl	%eax, %eax
 	andl	$-4096, %edx
-	je	.L431
+	je	.L425
 	leal	1(%ebx), %eax
 	orl	$283, %edx
 	cmpl	$1023, %eax
 	leal	0(,%ebx,4), %ecx
 	movl	%edx, (%esi,%ebx,4)
-	ja	.L433
+	ja	.L427
 	negl	%ebx
 	leal	4092(,%ebx,4), %edx
 	leal	4(%esi,%ecx), %eax
@@ -3093,10 +3037,10 @@ map_kernel_window:
 	movl	$0, 4(%esp)
 	movl	%eax, (%esp)
 	call	memset
-.L433:
+.L427:
 	call	invalidatePageStructureCache
 	movl	$1, %eax
-.L431:
+.L425:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -3113,10 +3057,10 @@ map_kernel_window:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret
-.L438:
+.L432:
 	.cfi_restore_state
 	movl	$1, %ebx
-	jmp	.L426
+	jmp	.L420
 	.cfi_endproc
 .LFE331:
 	.size	map_kernel_window, .-map_kernel_window
@@ -3151,10 +3095,10 @@ map_temp_boot_page:
 	movl	52(%esp), %eax
 	andl	$-4194304, %ebp
 	testl	%eax, %eax
-	je	.L441
+	je	.L435
 	.p2align 4,,7
 	.p2align 3
-.L443:
+.L437:
 	movl	%ebx, %edx
 	sall	$22, %edx
 	leal	(%edx,%ebp), %eax
@@ -3166,8 +3110,8 @@ map_temp_boot_page:
 	movl	%eax, _boot_pd(,%ecx,4)
 	call	invalidateTLBentry
 	cmpl	52(%esp), %ebx
-	jne	.L443
-.L441:
+	jne	.L437
+.L435:
 	call	invalidatePageStructureCache
 	movl	48(%esp), %eax
 	addl	$28, %esp
@@ -3200,23 +3144,23 @@ init_vm_state:
 	.cfi_def_cfa_offset 16
 	call	getCacheLineSize
 	testl	%eax, %eax
-	je	.L448
+	je	.L442
 	xorl	%edx, %edx
 	testb	$1, %al
-	jne	.L449
+	jne	.L443
 	.p2align 4,,7
 	.p2align 3
-.L450:
+.L444:
 	shrl	%eax
 	addl	$1, %edx
 	testb	$1, %al
-	je	.L450
-.L449:
+	je	.L444
+.L443:
 	cmpl	$1, %eax
-	je	.L460
-.L448:
+	je	.L454
+.L442:
 	movl	$0, ia32KScacheLineSizeBits
-.L459:
+.L453:
 	xorl	%eax, %eax
 	addl	$12, %esp
 	.cfi_remember_state
@@ -3224,11 +3168,11 @@ init_vm_state:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L460:
+.L454:
 	.cfi_restore_state
 	testl	%edx, %edx
 	movl	%edx, ia32KScacheLineSizeBits
-	je	.L459
+	je	.L453
 	movl	16(%esp), %eax
 	movl	$ia32KStss, %edx
 	movl	$0, ia32KStss
@@ -5150,82 +5094,82 @@ map_it_pt_cap:
 	cmpl	$14, %ebp
 	cmove	%edx, %eax
 	cmpl	$62, %eax
-	ja	.L466
-	jmp	*.L468(,%eax,4)
+	ja	.L460
+	jmp	*.L462(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L468:
-	.long	.L480
-	.long	.L475
+.L462:
 	.long	.L474
-	.long	.L475
+	.long	.L469
+	.long	.L468
+	.long	.L469
+	.long	.L468
+	.long	.L469
+	.long	.L468
 	.long	.L474
-	.long	.L475
 	.long	.L474
-	.long	.L480
-	.long	.L480
-	.long	.L475
-	.long	.L476
-	.long	.L480
-	.long	.L477
-	.long	.L466
-	.long	.L480
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L480
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L478
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L466
-	.long	.L480
+	.long	.L469
+	.long	.L470
+	.long	.L474
+	.long	.L471
+	.long	.L460
+	.long	.L474
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L474
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L472
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L460
+	.long	.L474
 	.section	.boot.text
 	.p2align 4,,7
 	.p2align 3
-.L475:
+.L469:
 	andl	$16777200, %ecx
 	sall	$8, %ecx
-.L467:
+.L461:
 	movl	%ebx, %eax
 	andl	$1023, %esi
 	andl	$16777200, %eax
@@ -5251,49 +5195,49 @@ map_it_pt_cap:
 	jmp	invalidatePageStructureCache
 	.p2align 4,,7
 	.p2align 3
-.L474:
+.L468:
 	.cfi_restore_state
 	andl	$-16, %ecx
-	jmp	.L467
+	jmp	.L461
 	.p2align 4,,7
 	.p2align 3
-.L480:
+.L474:
 	xorl	%ecx, %ecx
-	jmp	.L467
+	jmp	.L461
 	.p2align 4,,7
 	.p2align 3
-.L478:
+.L472:
 	andl	$16128, %ecx
 	shrl	$8, %ecx
 	cmpl	$32, %ecx
-	je	.L481
+	je	.L475
 	addl	$1, %ecx
 	movl	$-1, %eax
 	sall	%cl, %eax
-.L479:
+.L473:
 	andl	%edi, %eax
 	movl	%eax, %ecx
-	jmp	.L467
+	jmp	.L461
 	.p2align 4,,7
 	.p2align 3
-.L477:
+.L471:
 	andl	$-1024, %ecx
-	jmp	.L467
+	jmp	.L461
 	.p2align 4,,7
 	.p2align 3
-.L476:
+.L470:
 	andl	$2147483632, %ecx
 	addl	%ecx, %ecx
-	jmp	.L467
+	jmp	.L461
 	.p2align 4,,7
 	.p2align 3
-.L466:
+.L460:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L481:
+.L475:
 	movl	$-16, %eax
-	jmp	.L479
+	jmp	.L473
 	.cfi_endproc
 .LFE335:
 	.size	map_it_pt_cap, .-map_it_pt_cap
@@ -5329,82 +5273,82 @@ map_it_frame_cap:
 	cmpl	$14, %ebp
 	cmove	%esi, %eax
 	cmpl	$62, %eax
-	ja	.L486
-	jmp	*.L488(,%eax,4)
+	ja	.L480
+	jmp	*.L482(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L488:
-	.long	.L500
-	.long	.L495
+.L482:
 	.long	.L494
-	.long	.L495
+	.long	.L489
+	.long	.L488
+	.long	.L489
+	.long	.L488
+	.long	.L489
+	.long	.L488
 	.long	.L494
-	.long	.L495
 	.long	.L494
-	.long	.L500
-	.long	.L500
-	.long	.L495
-	.long	.L496
-	.long	.L500
-	.long	.L497
-	.long	.L486
-	.long	.L500
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L500
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L498
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L486
-	.long	.L500
+	.long	.L489
+	.long	.L490
+	.long	.L494
+	.long	.L491
+	.long	.L480
+	.long	.L494
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L494
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L492
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L480
+	.long	.L494
 	.section	.boot.text
 	.p2align 4,,7
 	.p2align 3
-.L495:
+.L489:
 	andl	$16777200, %ecx
 	sall	$8, %ecx
-.L487:
+.L481:
 	sall	$12, %edx
 	andl	$16777200, %ebx
 	movl	%edx, %eax
@@ -5436,49 +5380,49 @@ map_it_frame_cap:
 	jmp	invalidatePageStructureCache
 	.p2align 4,,7
 	.p2align 3
-.L494:
+.L488:
 	.cfi_restore_state
 	andl	$-16, %ecx
-	jmp	.L487
+	jmp	.L481
 	.p2align 4,,7
 	.p2align 3
-.L500:
+.L494:
 	xorl	%ecx, %ecx
-	jmp	.L487
+	jmp	.L481
 	.p2align 4,,7
 	.p2align 3
-.L498:
+.L492:
 	andl	$16128, %ecx
 	shrl	$8, %ecx
 	cmpl	$32, %ecx
-	je	.L501
+	je	.L495
 	addl	$1, %ecx
 	movl	$-1, %eax
 	sall	%cl, %eax
-.L499:
+.L493:
 	andl	%edi, %eax
 	movl	%eax, %ecx
-	jmp	.L487
+	jmp	.L481
 	.p2align 4,,7
 	.p2align 3
-.L497:
+.L491:
 	andl	$-1024, %ecx
-	jmp	.L487
+	jmp	.L481
 	.p2align 4,,7
 	.p2align 3
-.L496:
+.L490:
 	andl	$2147483632, %ecx
 	addl	%ecx, %ecx
-	jmp	.L487
+	jmp	.L481
 	.p2align 4,,7
 	.p2align 3
-.L486:
+.L480:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L501:
+.L495:
 	movl	$-16, %eax
-	jmp	.L499
+	jmp	.L493
 	.cfi_endproc
 .LFE336:
 	.size	map_it_frame_cap, .-map_it_frame_cap
@@ -5514,83 +5458,83 @@ write_it_asid_pool:
 	cmpl	$14, %ebp
 	cmove	%edi, %eax
 	cmpl	$62, %eax
-	ja	.L522
-	jmp	*.L508(,%eax,4)
+	ja	.L516
+	jmp	*.L502(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L508:
-	.long	.L536
-	.long	.L515
-	.long	.L514
-	.long	.L515
-	.long	.L514
-	.long	.L515
-	.long	.L514
-	.long	.L536
-	.long	.L536
-	.long	.L515
+.L502:
+	.long	.L530
+	.long	.L509
+	.long	.L508
+	.long	.L509
+	.long	.L508
+	.long	.L509
+	.long	.L508
+	.long	.L530
+	.long	.L530
+	.long	.L509
+	.long	.L510
+	.long	.L530
+	.long	.L511
 	.long	.L516
-	.long	.L536
-	.long	.L517
-	.long	.L522
-	.long	.L536
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L536
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L518
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L536
+	.long	.L530
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L530
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L512
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L530
 	.section	.boot.text
 	.p2align 4,,7
 	.p2align 3
-.L515:
+.L509:
 	movl	%ecx, %ebx
 	andl	$16777200, %ebx
 	sall	$8, %ebx
-.L507:
+.L501:
 	movl	%edx, %edi
 	movl	%edx, %eax
 	andl	$14, %edi
@@ -5599,82 +5543,82 @@ write_it_asid_pool:
 	cmpl	$14, %edi
 	cmove	%ecx, %eax
 	cmpl	$62, %eax
-	ja	.L522
-	jmp	*.L524(,%eax,4)
+	ja	.L516
+	jmp	*.L518(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L524:
-	.long	.L538
-	.long	.L531
-	.long	.L530
-	.long	.L531
-	.long	.L530
-	.long	.L531
-	.long	.L530
-	.long	.L538
-	.long	.L538
-	.long	.L531
+.L518:
 	.long	.L532
-	.long	.L538
-	.long	.L533
-	.long	.L522
-	.long	.L538
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L538
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L534
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L522
-	.long	.L538
+	.long	.L525
+	.long	.L524
+	.long	.L525
+	.long	.L524
+	.long	.L525
+	.long	.L524
+	.long	.L532
+	.long	.L532
+	.long	.L525
+	.long	.L526
+	.long	.L532
+	.long	.L527
+	.long	.L516
+	.long	.L532
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L532
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L528
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L516
+	.long	.L532
 	.section	.boot.text
 	.p2align 4,,7
 	.p2align 3
-.L531:
+.L525:
 	andl	$16777200, %edx
 	sall	$8, %edx
-.L523:
+.L517:
 	movl	%edx, 4(%ebx)
 	movl	%ebx, ia32KSASIDTable
 	addl	$12, %esp
@@ -5695,89 +5639,89 @@ write_it_asid_pool:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L514:
+.L508:
 	.cfi_restore_state
 	movl	%ecx, %ebx
 	andl	$-16, %ebx
-	jmp	.L507
+	jmp	.L501
+	.p2align 4,,7
+	.p2align 3
+.L524:
+	andl	$-16, %edx
+	jmp	.L517
 	.p2align 4,,7
 	.p2align 3
 .L530:
-	andl	$-16, %edx
-	jmp	.L523
-	.p2align 4,,7
-	.p2align 3
-.L536:
 	xorl	%ebx, %ebx
-	jmp	.L507
+	jmp	.L501
 	.p2align 4,,7
 	.p2align 3
-.L518:
+.L512:
 	andl	$16128, %ecx
 	shrl	$8, %ecx
 	cmpl	$32, %ecx
-	je	.L537
+	je	.L531
 	addl	$1, %ecx
 	movl	$-1, %eax
 	sall	%cl, %eax
 	andl	%eax, %ebx
-	jmp	.L507
+	jmp	.L501
 	.p2align 4,,7
 	.p2align 3
-.L517:
+.L511:
 	movl	%ecx, %ebx
 	andl	$-1024, %ebx
-	jmp	.L507
+	jmp	.L501
 	.p2align 4,,7
 	.p2align 3
-.L516:
+.L510:
 	andl	$2147483632, %ecx
 	leal	(%ecx,%ecx), %ebx
-	jmp	.L507
-	.p2align 4,,7
-	.p2align 3
-.L538:
-	xorl	%edx, %edx
-	jmp	.L523
+	jmp	.L501
 	.p2align 4,,7
 	.p2align 3
 .L532:
+	xorl	%edx, %edx
+	jmp	.L517
+	.p2align 4,,7
+	.p2align 3
+.L526:
 	andl	$2147483632, %edx
 	addl	%edx, %edx
-	jmp	.L523
+	jmp	.L517
 	.p2align 4,,7
 	.p2align 3
-.L533:
+.L527:
 	andl	$-1024, %edx
-	jmp	.L523
+	jmp	.L517
 	.p2align 4,,7
 	.p2align 3
-.L534:
+.L528:
 	andl	$16128, %edx
 	shrl	$8, %edx
 	cmpl	$32, %edx
-	je	.L539
+	je	.L533
 	leal	1(%edx), %ecx
 	movl	$-1, %edx
 	sall	%cl, %edx
 	andl	%esi, %edx
-	jmp	.L523
+	jmp	.L517
 	.p2align 4,,7
 	.p2align 3
-.L522:
+.L516:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L537:
+.L531:
 	movl	$-16, %eax
 	andl	%eax, %ebx
-	jmp	.L507
+	jmp	.L501
 	.p2align 4,,7
 	.p2align 3
-.L539:
+.L533:
 	movl	$-16, %edx
 	andl	%esi, %edx
-	jmp	.L523
+	jmp	.L517
 	.cfi_endproc
 .LFE337:
 	.size	write_it_asid_pool, .-write_it_asid_pool
@@ -5797,7 +5741,7 @@ init_pat_msr:
 	call	ia32_cpuid_edx
 	xorl	%edx, %edx
 	testl	$65536, %eax
-	je	.L542
+	je	.L536
 	movl	$631, (%esp)
 	call	ia32_rdmsr_low
 	movl	$631, (%esp)
@@ -5814,7 +5758,7 @@ init_pat_msr:
 	movl	%eax, 8(%esp)
 	call	ia32_wrmsr
 	movl	$1, %edx
-.L542:
+.L536:
 	addl	$24, %esp
 	.cfi_def_cfa_offset 8
 	movl	%edx, %eax
@@ -5854,30 +5798,30 @@ lookupIPCBuffer:
 	cmpl	$14, %esi
 	cmove	%ecx, %eax
 	cmpl	$1, %eax
-	jne	.L555
+	jne	.L549
 	movl	%edx, %eax
 	andl	$50331648, %eax
 	shrl	$24, %eax
 	cmpl	$3, %eax
-	je	.L550
+	je	.L544
 	cmpl	$2, %eax
-	jne	.L555
+	jne	.L549
 	movl	16(%esp), %eax
 	testl	%eax, %eax
-	jne	.L555
-.L550:
+	jne	.L549
+.L544:
 	movl	%edi, %eax
 	shrl	$31, %eax
 	testl	%eax, %eax
-	je	.L552
+	je	.L546
 	cmpl	$1, %eax
-	je	.L556
+	je	.L550
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L552:
+.L546:
 	movl	$4095, %eax
-.L553:
+.L547:
 	andl	$16777200, %edx
 	andl	%eax, %ebx
 	sall	$8, %edx
@@ -5895,7 +5839,7 @@ lookupIPCBuffer:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L555:
+.L549:
 	.cfi_restore_state
 	popl	%ebx
 	.cfi_remember_state
@@ -5911,10 +5855,10 @@ lookupIPCBuffer:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L556:
+.L550:
 	.cfi_restore_state
 	movl	$4194303, %eax
-	jmp	.L553
+	jmp	.L547
 	.cfi_endproc
 .LFE343:
 	.size	lookupIPCBuffer, .-lookupIPCBuffer
@@ -5944,20 +5888,20 @@ handleFaultReply:
 	movl	%eax, %esi
 	andl	$127, %esi
 	cmpl	$120, %esi
-	jbe	.L568
+	jbe	.L562
 	andl	$-128, %eax
 	movl	$120, %esi
 	orl	$120, %eax
-.L568:
+.L562:
 	shrl	$12, %eax
 	movl	%eax, 8(%esp)
 	movl	604(%edi), %eax
 	andl	$7, %eax
 	cmpl	$3, %eax
-	je	.L570
-	ja	.L571
+	je	.L564
+	ja	.L565
 	cmpl	$1, %eax
-	jb	.L569
+	jb	.L563
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -5977,75 +5921,75 @@ handleFaultReply:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L571:
+.L565:
 	.cfi_restore_state
 	cmpl	$4, %eax
-	jne	.L569
+	jne	.L563
 	movl	%ebx, 4(%esp)
 	movl	$0, (%esp)
 	call	lookupIPCBuffer
 	xorl	%ecx, %ecx
 	testl	%esi, %esi
-	je	.L581
+	je	.L575
 	movl	20(%ebx), %edx
 	cmpl	$1, %esi
 	movb	$1, %cl
 	movl	%edx, 44(%edi)
-	jbe	.L581
+	jbe	.L575
 	movl	24(%ebx), %edx
 	movb	$2, %cl
 	movl	%edx, 68(%edi)
-.L581:
+.L575:
 	testl	%eax, %eax
-	je	.L584
+	je	.L578
 	cmpl	%esi, %ecx
-	jae	.L584
+	jae	.L578
 	movl	exceptionMessage(,%ecx,4), %ebx
 	leal	1(%ecx), %edx
 	movl	(%eax,%edx,4), %ebp
 	cmpl	$16, %ebx
 	movl	%ebp, 12(%esp)
-	je	.L585
+	je	.L579
 	leal	-9(%ebx), %ebp
 	cmpl	$1, %ebp
-	ja	.L586
+	ja	.L580
 	movl	12(%esp), %ebp
 	andl	$-9, %ebp
 	cmpl	$51, %ebp
 	movl	$0, %ebp
 	cmove	12(%esp), %ebp
 	movl	%ebp, 12(%esp)
-.L586:
+.L580:
 	movl	12(%esp), %ebp
 	cmpl	%esi, %edx
 	movl	%ebp, (%edi,%ebx,4)
-	jae	.L584
+	jae	.L578
 	cmpl	$2, %edx
-	ja	.L584
+	ja	.L578
 	movl	exceptionMessage(,%edx,4), %ebx
 	addl	$2, %ecx
 	movl	(%eax,%ecx,4), %edx
 	cmpl	$16, %ebx
-	je	.L587
+	je	.L581
 	leal	-9(%ebx), %ebp
 	cmpl	$1, %ebp
-	ja	.L588
+	ja	.L582
 	movl	%edx, %ebp
 	andl	$-9, %ebp
 	cmpl	$51, %ebp
 	movl	$0, %ebp
 	cmovne	%ebp, %edx
-.L588:
+.L582:
 	cmpl	%esi, %ecx
 	movl	%edx, (%edi,%ebx,4)
-	jae	.L584
+	jae	.L578
 	cmpl	$2, %ecx
-	ja	.L584
+	ja	.L578
 	movl	12(%eax), %eax
 	andl	$4055, %eax
 	orl	$514, %eax
 	movl	%eax, 64(%edi)
-.L584:
+.L578:
 	movl	8(%esp), %edx
 	xorl	%eax, %eax
 	testl	%edx, %edx
@@ -6068,57 +6012,57 @@ handleFaultReply:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L570:
+.L564:
 	.cfi_restore_state
 	movl	%ebx, 4(%esp)
 	movl	$0, (%esp)
 	call	lookupIPCBuffer
 	xorl	%edx, %edx
 	testl	%esi, %esi
-	je	.L574
+	je	.L568
 	movl	20(%ebx), %edx
 	cmpl	$1, %esi
 	movl	%edx, (%edi)
 	movl	$1, %edx
-	jbe	.L574
+	jbe	.L568
 	movl	24(%ebx), %edx
 	movl	%edx, 4(%edi)
 	movl	$2, %edx
-.L574:
+.L568:
 	testl	%eax, %eax
-	jne	.L576
-	jmp	.L577
+	jne	.L570
+	jmp	.L571
 	.p2align 4,,7
 	.p2align 3
-.L578:
+.L572:
 	leal	-9(%ebx), %ebp
 	cmpl	$1, %ebp
-	ja	.L579
+	ja	.L573
 	movl	%ecx, %ebp
 	andl	$-9, %ebp
 	cmpl	$51, %ebp
 	movl	$0, %ebp
 	cmovne	%ebp, %ecx
-.L579:
+.L573:
 	cmpl	$9, %edx
 	movl	%ecx, (%edi,%ebx,4)
-	ja	.L577
-.L576:
+	ja	.L571
+.L570:
 	cmpl	%esi, %edx
-	jae	.L577
+	jae	.L571
 	movl	syscallMessage(,%edx,4), %ebx
 	addl	$1, %edx
 	movl	(%eax,%edx,4), %ecx
 	cmpl	$16, %ebx
-	jne	.L578
+	jne	.L572
 	andl	$4055, %ecx
 	orl	$514, %ecx
 	cmpl	$9, %edx
 	movl	%ecx, (%edi,%ebx,4)
-	jbe	.L576
+	jbe	.L570
 	.p2align 4,,7
 	.p2align 3
-.L577:
+.L571:
 	movl	56(%edi), %eax
 	movl	8(%esp), %ecx
 	movl	%eax, 44(%edi)
@@ -6143,21 +6087,21 @@ handleFaultReply:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L569:
+.L563:
 	.cfi_restore_state
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L587:
+.L581:
 	andl	$4055, %edx
 	orl	$514, %edx
-	jmp	.L588
+	jmp	.L582
 	.p2align 4,,7
 	.p2align 3
-.L585:
+.L579:
 	andl	$4055, 12(%esp)
 	orl	$514, 12(%esp)
-	jmp	.L586
+	jmp	.L580
 	.cfi_endproc
 .LFE258:
 	.size	handleFaultReply, .-handleFaultReply
@@ -6177,9 +6121,9 @@ handleVMFault:
 	movl	16(%esp), %edx
 	testl	%ebx, %ebx
 	movl	52(%edx), %edx
-	je	.L622
+	je	.L616
 	cmpl	$1, %ebx
-	jne	.L627
+	jne	.L621
 	sall	$27, %edx
 	orl	$524290, %edx
 	movl	%eax, current_fault+4
@@ -6194,12 +6138,12 @@ handleVMFault:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L627:
+.L621:
 	.cfi_restore_state
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L622:
+.L616:
 	sall	$27, %edx
 	orl	$2, %edx
 	movl	%eax, current_fault+4
@@ -6234,7 +6178,7 @@ isValidVTableRoot:
 	cmove	%eax, %edx
 	xorl	%eax, %eax
 	cmpl	$5, %edx
-	je	.L634
+	je	.L628
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -6242,7 +6186,7 @@ isValidVTableRoot:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L634:
+.L628:
 	.cfi_restore_state
 	xorl	%eax, %eax
 	andl	$65536, %ebx
@@ -6269,19 +6213,19 @@ checkValidIPCBuffer:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	cmpl	$1, %eax
-	je	.L638
+	je	.L632
 	movl	$3, current_syscall_error+24
 	movl	$3, %eax
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L638:
+.L632:
 	xorl	%eax, %eax
 	testl	$511, 4(%esp)
-	je	.L639
+	je	.L633
 	movl	$5, current_syscall_error+24
 	movb	$3, %al
-.L639:
+.L633:
 	rep ret
 	.cfi_endproc
 .LFE348:
@@ -6294,17 +6238,17 @@ maskVMRights:
 	.cfi_startproc
 	movl	4(%esp), %edx
 	cmpl	$2, %edx
-	je	.L651
+	je	.L645
 	cmpl	$3, %edx
 	movl	$1, %eax
-	je	.L652
-.L645:
+	je	.L646
+.L639:
 	rep ret
 	.p2align 4,,7
 	.p2align 3
-.L652:
+.L646:
 	testb	$2, 8(%esp)
-	je	.L645
+	je	.L639
 	movl	8(%esp), %eax
 	andl	$1, %eax
 	cmpl	$1, %eax
@@ -6313,7 +6257,7 @@ maskVMRights:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L651:
+.L645:
 	movl	8(%esp), %eax
 	andl	$2, %eax
 	shrl	%eax
@@ -6348,17 +6292,17 @@ setVMRoot:
 	cmpl	$14, %ebx
 	cmove	%ecx, %eax
 	cmpl	$5, %eax
-	je	.L669
-.L660:
+	je	.L663
+.L654:
 	movl	ia32KSkernelPD, %eax
 	addl	$536870912, %eax
 	movl	%eax, ia32KSCurrentPD
 #APP
-# 35 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 35 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %eax, %cr3
 # 0 "" 2
 #NO_APP
-.L653:
+.L647:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -6369,39 +6313,39 @@ setVMRoot:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L669:
+.L663:
 	.cfi_restore_state
 	testl	$65536, %esi
-	je	.L660
+	je	.L654
 	movzwl	%si, %eax
 	andl	$16777200, %edx
 	shrl	$10, %eax
 	movl	ia32KSASIDTable(,%eax,4), %eax
 	sall	$8, %edx
 	testl	%eax, %eax
-	je	.L661
+	je	.L655
 	andl	$1023, %esi
 	movl	(%eax,%esi,4), %eax
 	testl	%eax, %eax
-	je	.L661
+	je	.L655
 	cmpl	%eax, %edx
-	jne	.L660
+	jne	.L654
 	addl	$536870912, %edx
 	cmpl	%edx, ia32KSCurrentPD
-	je	.L653
+	je	.L647
 	movl	%edx, ia32KSCurrentPD
 #APP
-# 35 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 35 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %edx, %cr3
 # 0 "" 2
 #NO_APP
-	jmp	.L653
+	jmp	.L647
 	.p2align 4,,7
 	.p2align 3
-.L661:
+.L655:
 	movl	$0, current_lookup_fault
 	movl	$0, current_lookup_fault+4
-	jmp	.L660
+	jmp	.L654
 	.cfi_endproc
 .LFE352:
 	.size	setVMRoot, .-setVMRoot
@@ -6460,11 +6404,11 @@ deleteASIDPool:
 	movl	8(%esp), %edx
 	shrl	$10, %eax
 	cmpl	%edx, ia32KSASIDTable(,%eax,4)
-	je	.L674
+	je	.L668
 	rep ret
 	.p2align 4,,7
 	.p2align 3
-.L674:
+.L668:
 	movl	$0, ia32KSASIDTable(,%eax,4)
 	movl	ksCurThread, %eax
 	movl	%eax, 4(%esp)
@@ -6484,16 +6428,16 @@ deleteASID:
 	shrl	$10, %eax
 	movl	ia32KSASIDTable(,%eax,4), %eax
 	testl	%eax, %eax
-	je	.L675
+	je	.L669
 	andl	$1023, %edx
 	leal	(%eax,%edx,4), %eax
 	cmpl	%ecx, (%eax)
-	je	.L680
-.L675:
+	je	.L674
+.L669:
 	rep ret
 	.p2align 4,,7
 	.p2align 3
-.L680:
+.L674:
 	movl	$0, (%eax)
 	movl	ksCurThread, %eax
 	movl	%eax, 4(%esp)
@@ -6528,11 +6472,11 @@ unmapPageTable:
 	shrl	$10, %eax
 	movl	ia32KSASIDTable(,%eax,4), %eax
 	testl	%eax, %eax
-	je	.L684
+	je	.L678
 	andl	$1023, %edx
 	movl	(%eax,%edx,4), %ebx
 	testl	%ebx, %ebx
-	je	.L684
+	je	.L678
 	movl	ksCurThread, %edx
 	andl	$-1024, %edx
 	movl	16(%edx), %eax
@@ -6546,8 +6490,8 @@ unmapPageTable:
 	movzbl	%al, %ecx
 	cmove	%ecx, %edx
 	cmpl	$5, %edx
-	je	.L687
-.L688:
+	je	.L681
+.L682:
 	shrl	$22, %edi
 	movl	$0, (%ebx,%edi,4)
 	addl	$28, %esp
@@ -6568,7 +6512,7 @@ unmapPageTable:
 	jmp	invalidatePageStructureCache
 	.p2align 4,,7
 	.p2align 3
-.L684:
+.L678:
 	.cfi_restore_state
 	movl	$0, current_lookup_fault
 	movl	$0, current_lookup_fault+4
@@ -6590,31 +6534,31 @@ unmapPageTable:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L687:
+.L681:
 	.cfi_restore_state
 	testl	$65536, 12(%esp)
-	je	.L688
+	je	.L682
 	andl	$16777200, %eax
 	sall	$8, %eax
 	cmpl	%eax, %ebx
-	jne	.L688
+	jne	.L682
 	xorl	%ebp, %ebp
-	jmp	.L690
+	jmp	.L684
 	.p2align 4,,7
 	.p2align 3
-.L689:
+.L683:
 	addl	$1, %ebp
 	cmpl	$1024, %ebp
-	je	.L688
-.L690:
+	je	.L682
+.L684:
 	testb	$1, (%esi,%ebp,4)
-	je	.L689
+	je	.L683
 	movl	%ebp, %eax
 	sall	$12, %eax
 	addl	%edi, %eax
 	movl	%eax, (%esp)
 	call	invalidateTLBentry
-	jmp	.L689
+	jmp	.L683
 	.cfi_endproc
 .LFE355:
 	.size	unmapPageTable, .-unmapPageTable
@@ -6647,11 +6591,11 @@ unmapPage:
 	shrl	$10, %eax
 	movl	ia32KSASIDTable(,%eax,4), %eax
 	testl	%eax, %eax
-	je	.L708
+	je	.L702
 	andl	$1023, %edx
 	movl	(%eax,%edx,4), %ebx
 	testl	%ebx, %ebx
-	je	.L708
+	je	.L702
 	movl	ksCurThread, %edx
 	andl	$-1024, %edx
 	movl	16(%edx), %eax
@@ -6665,19 +6609,19 @@ unmapPage:
 	movzbl	%al, %ecx
 	cmove	%ecx, %edx
 	cmpl	$5, %edx
-	je	.L732
-.L711:
+	je	.L726
+.L705:
 	testl	%esi, %esi
-	je	.L713
+	je	.L707
 	cmpl	$1, %esi
-	jne	.L733
+	jne	.L727
 	movl	%ebp, %eax
 	shrl	$22, %eax
 	leal	(%ebx,%eax,4), %edx
 	movl	(%edx), %eax
 	testb	$-128, %al
-	jne	.L734
-.L705:
+	jne	.L728
+.L699:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -6696,19 +6640,19 @@ unmapPage:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L733:
+.L727:
 	.cfi_restore_state
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L713:
+.L707:
 	movl	%ebp, %eax
 	shrl	$22, %eax
 	movl	(%ebx,%eax,4), %eax
 	testb	$-128, %al
-	jne	.L715
+	jne	.L709
 	testb	$1, %al
-	je	.L715
+	je	.L709
 	movl	%ebp, %edx
 	andl	$-4096, %eax
 	shrl	$10, %edx
@@ -6716,14 +6660,14 @@ unmapPage:
 	leal	-536870912(%eax,%edx), %edx
 	movl	(%edx), %eax
 	testb	$1, %al
-	je	.L705
+	je	.L699
 	movl	8(%esp), %ecx
 	andl	$-4096, %eax
 	addl	$536870912, %ecx
 	cmpl	%ecx, %eax
-	jne	.L705
+	jne	.L699
 	movl	$0, (%edx)
-.L717:
+.L711:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -6742,7 +6686,7 @@ unmapPage:
 	jmp	invalidatePageStructureCache
 	.p2align 4,,7
 	.p2align 3
-.L708:
+.L702:
 	.cfi_restore_state
 	movl	$0, current_lookup_fault
 	movl	$0, current_lookup_fault+4
@@ -6764,20 +6708,20 @@ unmapPage:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L732:
+.L726:
 	.cfi_restore_state
 	testl	$65536, 12(%esp)
-	je	.L711
+	je	.L705
 	andl	$16777200, %eax
 	sall	$8, %eax
 	cmpl	%eax, %ebx
-	jne	.L711
+	jne	.L705
 	movl	%ebp, (%esp)
 	call	invalidateTLBentry
-	jmp	.L711
+	jmp	.L705
 	.p2align 4,,7
 	.p2align 3
-.L715:
+.L709:
 	movl	$89, current_lookup_fault
 	movl	$0, current_lookup_fault+4
 	addl	$28, %esp
@@ -6798,17 +6742,17 @@ unmapPage:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L734:
+.L728:
 	.cfi_restore_state
 	testb	$1, %al
-	je	.L705
+	je	.L699
 	movl	8(%esp), %ecx
 	andl	$-4194304, %eax
 	addl	$536870912, %ecx
 	cmpl	%ecx, %eax
-	jne	.L705
+	jne	.L699
 	movl	$128, (%edx)
-	jmp	.L717
+	jmp	.L711
 	.cfi_endproc
 .LFE356:
 	.size	unmapPage, .-unmapPage
@@ -6826,12 +6770,12 @@ copyGlobalMappings:
 	movl	8(%esp), %ebx
 	.p2align 4,,7
 	.p2align 3
-.L737:
+.L731:
 	movl	(%ecx,%eax,4), %edx
 	movl	%edx, (%ebx,%eax,4)
 	addl	$1, %eax
 	cmpl	$1024, %eax
-	jne	.L737
+	jne	.L731
 	popl	%ebx
 	.cfi_restore 3
 	.cfi_def_cfa_offset 4
@@ -6879,19 +6823,19 @@ handleUnimplementedDevice:
 	.cfi_def_cfa_offset 32
 	movl	ksCurThread, %ebx
 #APP
-# 45 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 45 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 	clts
 # 0 "" 2
 #NO_APP
 	movl	ia32KSfpuOwner, %eax
 	testl	%eax, %eax
-	je	.L742
+	je	.L736
 	addl	$80, %eax
 	movl	%eax, (%esp)
 	call	saveFpuState
-.L742:
+.L736:
 	testl	%ebx, %ebx
-	je	.L743
+	je	.L737
 	leal	80(%ebx), %eax
 	movl	%eax, (%esp)
 	call	loadFpuState
@@ -6906,16 +6850,16 @@ handleUnimplementedDevice:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L743:
+.L737:
 	.cfi_restore_state
 #APP
-# 41 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 41 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %cr0, %eax
 # 0 "" 2
 #NO_APP
 	orl	$8, %eax
 #APP
-# 47 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 47 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %eax, %cr0
 # 0 "" 2
 #NO_APP
@@ -6940,34 +6884,34 @@ Arch_fpuThreadDelete:
 	.cfi_def_cfa_offset 32
 	movl	ia32KSfpuOwner, %eax
 	cmpl	32(%esp), %eax
-	je	.L756
+	je	.L750
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 4
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L756:
+.L750:
 	.cfi_restore_state
 #APP
-# 45 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 45 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 	clts
 # 0 "" 2
 #NO_APP
 	testl	%eax, %eax
-	je	.L751
+	je	.L745
 	addl	$80, %eax
 	movl	%eax, (%esp)
 	call	saveFpuState
-.L751:
+.L745:
 #APP
-# 41 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 41 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %cr0, %eax
 # 0 "" 2
 #NO_APP
 	orl	$8, %eax
 #APP
-# 47 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 47 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %eax, %cr0
 # 0 "" 2
 #NO_APP
@@ -6992,14 +6936,14 @@ Arch_initFpu:
 	movl	%eax, (%esp)
 	call	write_cr4
 #APP
-# 41 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 41 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %cr0, %eax
 # 0 "" 2
 #NO_APP
 	andl	$-47, %eax
 	orl	$42, %eax
 #APP
-# 47 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 47 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %eax, %cr0
 # 0 "" 2
 #NO_APP
@@ -7074,22 +7018,22 @@ getCacheLineSizeBits:
 	movl	%eax, %edx
 	xorl	%eax, %eax
 	testl	%edx, %edx
-	je	.L764
+	je	.L758
 	xorl	%ecx, %ecx
 	testb	$1, %dl
-	jne	.L765
+	jne	.L759
 	.p2align 4,,7
 	.p2align 3
-.L766:
+.L760:
 	shrl	%edx
 	addl	$1, %ecx
 	testb	$1, %dl
-	je	.L766
-.L765:
+	je	.L760
+.L759:
 	xorl	%eax, %eax
 	cmpl	$1, %edx
 	cmove	%ecx, %eax
-.L764:
+.L758:
 	addl	$12, %esp
 	.cfi_def_cfa_offset 4
 	ret
@@ -7127,10 +7071,10 @@ flushCacheRange:
 	movl	$1, %edi
 	addl	%eax, %esi
 	cmpl	%esi, %ebx
-	jae	.L774
+	jae	.L768
 	.p2align 4,,7
 	.p2align 3
-.L776:
+.L770:
 	movl	%ebx, (%esp)
 	call	flushCacheLine
 	movl	ia32KScacheLineSizeBits, %ecx
@@ -7138,8 +7082,8 @@ flushCacheRange:
 	sall	%cl, %eax
 	addl	%eax, %ebx
 	cmpl	%esi, %ebx
-	jb	.L776
-.L774:
+	jb	.L770
+.L768:
 	addl	$16, %esp
 	.cfi_def_cfa_offset 16
 	popl	%ebx
@@ -7210,20 +7154,20 @@ sanitiseRegister:
 	movl	4(%esp), %edx
 	movl	8(%esp), %eax
 	cmpl	$16, %edx
-	je	.L784
+	je	.L778
 	subl	$9, %edx
 	cmpl	$1, %edx
-	ja	.L782
+	ja	.L776
 	movl	%eax, %edx
 	andl	$-9, %edx
 	cmpl	$51, %edx
 	movl	$0, %edx
 	cmovne	%edx, %eax
-.L782:
+.L776:
 	rep ret
 	.p2align 4,,7
 	.p2align 3
-.L784:
+.L778:
 	andl	$4055, %eax
 	orl	$514, %eax
 	ret
@@ -7274,30 +7218,30 @@ Arch_deriveCap:
 	cmpl	$14, 12(%esp)
 	cmove	%esi, %ecx
 	cmpl	$11, %ecx
-	ja	.L789
+	ja	.L783
 	movl	%edx, %ebp
 	movl	%ebx, %edi
-	jmp	*.L791(,%ecx,4)
+	jmp	*.L785(,%ecx,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L791:
+.L785:
+	.long	.L783
+	.long	.L784
+	.long	.L783
+	.long	.L786
+	.long	.L783
+	.long	.L787
+	.long	.L783
 	.long	.L789
-	.long	.L790
+	.long	.L783
 	.long	.L789
-	.long	.L792
+	.long	.L783
 	.long	.L789
-	.long	.L793
-	.long	.L789
-	.long	.L795
-	.long	.L789
-	.long	.L795
-	.long	.L789
-	.long	.L795
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L795:
+.L789:
 	movl	$0, (%eax)
 	movl	%edx, 4(%eax)
 	movl	%ebx, 8(%eax)
@@ -7319,17 +7263,17 @@ Arch_deriveCap:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L793:
+.L787:
 	.cfi_restore_state
 	xorl	%edx, %edx
 	andl	$65536, %ebx
-	jne	.L798
-.L802:
+	jne	.L792
+.L796:
 	movl	$3, current_syscall_error+24
 	xorl	%edi, %edi
 	xorl	%ebp, %ebp
 	movb	$3, %dl
-.L798:
+.L792:
 	movl	%edx, (%eax)
 	movl	%ebp, 4(%eax)
 	movl	%edi, 8(%eax)
@@ -7351,7 +7295,7 @@ Arch_deriveCap:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L790:
+.L784:
 	.cfi_restore_state
 	andl	$-1072693249, %ebx
 	andl	$67108863, %edx
@@ -7376,15 +7320,15 @@ Arch_deriveCap:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L792:
+.L786:
 	.cfi_restore_state
 	xorl	%edx, %edx
 	andl	$67108864, %ebx
-	je	.L802
-	jmp	.L798
+	je	.L796
+	jmp	.L792
 	.p2align 4,,7
 	.p2align 3
-.L789:
+.L783:
 	call	halt
 	.cfi_endproc
 .LFE380:
@@ -7415,17 +7359,17 @@ Arch_updateCapData:
 	cmpl	$14, %esi
 	cmove	%ebx, %ecx
 	cmpl	$11, %ecx
-	jne	.L817
+	jne	.L811
 	movl	24(%esp), %ecx
 	movzwl	24(%esp), %edx
 	shrl	$16, %ecx
 	cmpw	%dx, %cx
-	ja	.L810
+	ja	.L804
 	cmpw	%dx, %di
-	jb	.L810
+	jb	.L804
 	shrl	$16, %edi
 	cmpw	%di, %cx
-	jb	.L810
+	jb	.L804
 	sall	$16, %ecx
 	orl	%edx, %ecx
 	movl	$11, (%eax)
@@ -7443,7 +7387,7 @@ Arch_updateCapData:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L817:
+.L811:
 	.cfi_restore_state
 	movl	%edx, (%eax)
 	movl	%edi, 4(%eax)
@@ -7460,7 +7404,7 @@ Arch_updateCapData:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L810:
+.L804:
 	.cfi_restore_state
 	movl	$0, (%eax)
 	movl	$0, 4(%eax)
@@ -7503,7 +7447,7 @@ Arch_maskCapRights:
 	cmpl	$14, %edi
 	cmove	%esi, %ecx
 	cmpl	$1, %ecx
-	je	.L832
+	je	.L826
 	movl	%edx, (%eax)
 	movl	%ebx, 4(%eax)
 	popl	%ebx
@@ -7519,17 +7463,17 @@ Arch_maskCapRights:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L832:
+.L826:
 	.cfi_restore_state
 	movl	%edx, %ecx
 	andl	$50331648, %ecx
 	shrl	$24, %ecx
 	cmpl	$2, %ecx
-	je	.L833
+	je	.L827
 	cmpl	$3, %ecx
 	movl	$16777216, %esi
-	je	.L834
-.L824:
+	je	.L828
+.L818:
 	andl	$-50331649, %edx
 	orl	%esi, %edx
 	movl	%edx, (%eax)
@@ -7547,20 +7491,20 @@ Arch_maskCapRights:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L834:
+.L828:
 	.cfi_restore_state
 	testb	$2, 20(%esp)
-	je	.L824
+	je	.L818
 	movl	20(%esp), %ecx
 	andl	$1, %ecx
 	cmpl	$1, %ecx
 	sbbl	%esi, %esi
 	andl	$-16777216, %esi
 	addl	$50331648, %esi
-	jmp	.L824
+	jmp	.L818
 	.p2align 4,,7
 	.p2align 3
-.L833:
+.L827:
 	movl	20(%esp), %ecx
 	andl	$2, %ecx
 	shrl	%ecx
@@ -7568,7 +7512,7 @@ Arch_maskCapRights:
 	sbbl	%esi, %esi
 	andl	$-16777216, %esi
 	addl	$33554432, %esi
-	jmp	.L824
+	jmp	.L818
 	.cfi_endproc
 .LFE382:
 	.size	Arch_maskCapRights, .-Arch_maskCapRights
@@ -7600,33 +7544,33 @@ Arch_finaliseCap:
 	cmpl	$14, %esi
 	cmove	%ebx, %edx
 	cmpl	$11, %edx
-	ja	.L838
-	jmp	*.L840(,%edx,4)
+	ja	.L832
+	jmp	*.L834(,%edx,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L840:
+.L834:
+	.long	.L832
+	.long	.L833
+	.long	.L832
+	.long	.L835
+	.long	.L832
+	.long	.L836
+	.long	.L832
+	.long	.L837
+	.long	.L832
 	.long	.L838
-	.long	.L839
-	.long	.L838
-	.long	.L841
-	.long	.L838
-	.long	.L842
-	.long	.L838
-	.long	.L843
-	.long	.L838
-	.long	.L844
-	.long	.L838
-	.long	.L843
+	.long	.L832
+	.long	.L837
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L842:
+.L836:
 	movl	60(%esp), %esi
 	testl	%esi, %esi
-	je	.L843
+	je	.L837
 	testl	$65536, %edi
-	je	.L843
+	je	.L837
 	andl	$16777200, %ecx
 	movzwl	%di, %edi
 	sall	$8, %ecx
@@ -7637,7 +7581,7 @@ Arch_finaliseCap:
 	movl	28(%esp), %eax
 	.p2align 4,,7
 	.p2align 3
-.L843:
+.L837:
 	movl	$0, (%eax)
 	movl	$0, 4(%eax)
 	addl	$32, %esp
@@ -7655,27 +7599,27 @@ Arch_finaliseCap:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L844:
+.L838:
 	.cfi_restore_state
 	movl	60(%esp), %edx
 	testl	%edx, %edx
-	je	.L843
+	je	.L837
 	movzwl	%di, %edi
 	andl	$16777200, %ecx
 	shrl	$10, %edi
 	sall	$8, %ecx
 	cmpl	%ecx, ia32KSASIDTable(,%edi,4)
-	jne	.L843
+	jne	.L837
 	movl	ksCurThread, %edx
 	movl	%eax, 28(%esp)
 	movl	$0, ia32KSASIDTable(,%edi,4)
 	movl	%edx, (%esp)
 	call	setVMRoot
 	movl	28(%esp), %eax
-	jmp	.L843
+	jmp	.L837
 	.p2align 4,,7
 	.p2align 3
-.L839:
+.L833:
 	movl	%edi, %ebx
 	movl	%ecx, %edx
 	andl	$1072693248, %ebx
@@ -7683,7 +7627,7 @@ Arch_finaliseCap:
 	shrl	$20, %ebx
 	sall	$10, %edx
 	addl	%ebx, %edx
-	je	.L843
+	je	.L837
 	andl	$16777200, %ecx
 	sall	$8, %ecx
 	movl	%ecx, 12(%esp)
@@ -7696,15 +7640,15 @@ Arch_finaliseCap:
 	movl	%eax, 28(%esp)
 	call	unmapPage
 	movl	28(%esp), %eax
-	jmp	.L843
+	jmp	.L837
 	.p2align 4,,7
 	.p2align 3
-.L841:
+.L835:
 	movl	60(%esp), %ebx
 	testl	%ebx, %ebx
-	je	.L843
+	je	.L837
 	testl	$67108864, %edi
-	je	.L843
+	je	.L837
 	movl	%edi, %edx
 	andl	$16777200, %ecx
 	andl	$67107840, %edi
@@ -7717,10 +7661,10 @@ Arch_finaliseCap:
 	movl	%eax, 28(%esp)
 	call	unmapPageTable
 	movl	28(%esp), %eax
-	jmp	.L843
+	jmp	.L837
 	.p2align 4,,7
 	.p2align 3
-.L838:
+.L832:
 	call	halt
 	.cfi_endproc
 .LFE383:
@@ -7753,28 +7697,28 @@ Arch_recycleCap:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	cmpl	$11, %eax
-	ja	.L867
-	jmp	*.L869(,%eax,4)
+	ja	.L861
+	jmp	*.L863(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L869:
-	.long	.L867
+.L863:
+	.long	.L861
+	.long	.L862
+	.long	.L861
+	.long	.L864
+	.long	.L861
+	.long	.L865
+	.long	.L861
 	.long	.L868
+	.long	.L861
 	.long	.L867
-	.long	.L870
-	.long	.L867
-	.long	.L871
-	.long	.L867
-	.long	.L874
-	.long	.L867
-	.long	.L873
-	.long	.L867
-	.long	.L874
+	.long	.L861
+	.long	.L868
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L873:
+.L867:
 	movzwl	%si, %edx
 	shrl	$10, %edx
 	movl	ia32KSASIDTable(,%edx,4), %eax
@@ -7784,7 +7728,7 @@ Arch_recycleCap:
 	andl	$16777200, %eax
 	sall	$8, %eax
 	cmpl	%eax, %edi
-	jne	.L874
+	jne	.L868
 	movl	ksCurThread, %eax
 	movl	$0, ia32KSASIDTable(,%edx,4)
 	movl	%edx, -44(%ebp)
@@ -7795,30 +7739,30 @@ Arch_recycleCap:
 	movl	-44(%ebp), %edx
 	testb	$1, %al
 	movl	%eax, %edi
-	jne	.L914
-.L887:
+	jne	.L908
+.L881:
 	testl	$2, %edi
-	jne	.L915
-.L888:
+	jne	.L909
+.L882:
 	movl	-40(%ebp), %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	rep stosl
 	testb	$2, -40(%ebp)
-	je	.L889
+	je	.L883
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
-.L889:
+.L883:
 	testb	$1, -40(%ebp)
-	je	.L890
+	je	.L884
 	movb	$0, (%edi)
-.L890:
+.L884:
 	movl	-36(%ebp), %eax
 	movl	%eax, ia32KSASIDTable(,%edx,4)
 	.p2align 4,,7
 	.p2align 3
-.L874:
+.L868:
 	movl	8(%ebp), %eax
 	movl	%ebx, (%eax)
 	movl	%esi, 4(%eax)
@@ -7836,7 +7780,7 @@ Arch_recycleCap:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L868:
+.L862:
 	.cfi_restore_state
 	movl	%esi, %edx
 	movl	%ebx, %eax
@@ -7849,15 +7793,15 @@ Arch_recycleCap:
 	movl	%edi, %ecx
 	sall	%cl, %edx
 	testl	%edx, %edx
-	je	.L877
+	je	.L871
 	.p2align 4,,7
 	.p2align 3
-.L903:
+.L897:
 	movl	$0, (%eax)
 	addl	$4, %eax
 	subl	$4, %edx
-	jne	.L903
-.L877:
+	jne	.L897
+.L871:
 	movl	12(%ebp), %edi
 	leal	-32(%ebp), %eax
 	movl	%ebx, 4(%esp)
@@ -7866,10 +7810,10 @@ Arch_recycleCap:
 	movl	%edi, 12(%esp)
 	call	Arch_finaliseCap
 	subl	$4, %esp
-	jmp	.L885
+	jmp	.L879
 	.p2align 4,,7
 	.p2align 3
-.L870:
+.L864:
 	movl	%esi, %edx
 	movl	%ebx, %eax
 	call	cap_get_capSizeBits
@@ -7881,17 +7825,17 @@ Arch_recycleCap:
 	movl	%edi, %ecx
 	sall	%cl, %edx
 	testl	%edx, %edx
-	je	.L882
+	je	.L876
 	.p2align 4,,7
 	.p2align 3
-.L904:
+.L898:
 	movl	$0, (%eax)
 	addl	$4, %eax
 	subl	$4, %edx
-	jne	.L904
-.L882:
+	jne	.L898
+.L876:
 	testl	$67108864, %esi
-	je	.L881
+	je	.L875
 	movl	%ebx, %eax
 	andl	$16777200, %eax
 	sall	$8, %eax
@@ -7904,10 +7848,10 @@ Arch_recycleCap:
 	shrl	$10, %eax
 	movl	%eax, (%esp)
 	call	unmapPageTable
-	jmp	.L881
+	jmp	.L875
 	.p2align 4,,7
 	.p2align 3
-.L871:
+.L865:
 	movl	%ebx, %edx
 	movl	$896, %ecx
 	andl	$16777200, %edx
@@ -7915,7 +7859,7 @@ Arch_recycleCap:
 	sall	$8, %edx
 	movl	%edx, %edi
 	rep stosl
-.L881:
+.L875:
 	movl	12(%ebp), %edi
 	leal	-32(%ebp), %eax
 	movl	%ebx, 4(%esp)
@@ -7926,8 +7870,8 @@ Arch_recycleCap:
 	movl	12(%ebp), %edi
 	subl	$4, %esp
 	testl	%edi, %edi
-	je	.L874
-.L885:
+	je	.L868
+.L879:
 	movl	8(%ebp), %eax
 	movl	%ebx, %edx
 	movl	%esi, %ecx
@@ -7947,20 +7891,20 @@ Arch_recycleCap:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L867:
+.L861:
 	.cfi_restore_state
 	call	halt
-.L915:
+.L909:
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
 	subl	$2, -40(%ebp)
-	jmp	.L888
-.L914:
+	jmp	.L882
+.L908:
 	movb	$0, (%eax)
 	leal	1(%eax), %edi
 	movl	$4095, -40(%ebp)
-	jmp	.L887
+	jmp	.L881
 	.cfi_endproc
 .LFE385:
 	.size	Arch_recycleCap, .-Arch_recycleCap
@@ -7982,7 +7926,7 @@ Arch_hasRecycleRights:
 	cmpl	$14, %ebx
 	cmove	%ecx, %edx
 	cmpl	$1, %edx
-	jne	.L922
+	jne	.L916
 	andl	$50331648, %eax
 	cmpl	$50331648, %eax
 	sete	%al
@@ -7994,7 +7938,7 @@ Arch_hasRecycleRights:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L922:
+.L916:
 	.cfi_restore_state
 	movl	$1, %eax
 	popl	%ebx
@@ -8036,28 +7980,28 @@ Arch_sameRegionAs:
 	cmpl	$14, %ebp
 	cmove	%ebx, %eax
 	cmpl	$11, %eax
-	ja	.L954
-	jmp	*.L929(,%eax,4)
+	ja	.L948
+	jmp	*.L923(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L929:
-	.long	.L954
+.L923:
+	.long	.L948
+	.long	.L922
+	.long	.L948
+	.long	.L924
+	.long	.L948
+	.long	.L925
+	.long	.L948
+	.long	.L926
+	.long	.L948
+	.long	.L927
+	.long	.L948
 	.long	.L928
-	.long	.L954
-	.long	.L930
-	.long	.L954
-	.long	.L931
-	.long	.L954
-	.long	.L932
-	.long	.L954
-	.long	.L933
-	.long	.L954
-	.long	.L934
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L934:
+.L928:
 	movl	%ecx, %edx
 	movl	%ecx, %eax
 	andl	$14, %edx
@@ -8068,7 +8012,7 @@ Arch_sameRegionAs:
 	cmpl	$11, %eax
 	sete	%al
 	movzbl	%al, %eax
-.L927:
+.L921:
 	addl	$12, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -8087,7 +8031,7 @@ Arch_sameRegionAs:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L928:
+.L922:
 	.cfi_restore_state
 	movl	%ecx, %ebp
 	movl	%ecx, %ebx
@@ -8098,21 +8042,21 @@ Arch_sameRegionAs:
 	cmove	%eax, %ebx
 	xorl	%eax, %eax
 	cmpl	$1, %ebx
-	jne	.L927
+	jne	.L921
 	shrl	$31, %esi
 	testl	%esi, %esi
-	je	.L938
+	je	.L932
 	cmpl	$1, %esi
-	jne	.L970
+	jne	.L964
 	movl	$4194304, %eax
-.L939:
+.L933:
 	shrl	$31, %edi
 	testl	%edi, %edi
-	je	.L941
+	je	.L935
 	cmpl	$1, %edi
-	jne	.L970
+	jne	.L964
 	movl	$4194304, %ebx
-.L942:
+.L936:
 	andl	$16777200, %edx
 	andl	$16777200, %ecx
 	sall	$8, %edx
@@ -8120,16 +8064,16 @@ Arch_sameRegionAs:
 	leal	-1(%ecx,%ebx), %ebx
 	leal	-1(%edx,%eax), %eax
 	cmpl	%ebx, %eax
-	jb	.L954
+	jb	.L948
 	cmpl	%ecx, %edx
-	ja	.L954
+	ja	.L948
 	xorl	%eax, %eax
 	cmpl	%ecx, %ebx
 	setae	%al
-	jmp	.L927
+	jmp	.L921
 	.p2align 4,,7
 	.p2align 3
-.L930:
+.L924:
 	movl	%ecx, %esi
 	movl	%ecx, %ebx
 	andl	$14, %esi
@@ -8139,17 +8083,17 @@ Arch_sameRegionAs:
 	cmove	%eax, %ebx
 	xorl	%eax, %eax
 	cmpl	$3, %ebx
-	jne	.L927
-.L969:
+	jne	.L921
+.L963:
 	andl	$16777200, %edx
 	andl	$16777200, %ecx
 	xorl	%eax, %eax
 	cmpl	%edx, %ecx
 	sete	%al
-	jmp	.L927
+	jmp	.L921
 	.p2align 4,,7
 	.p2align 3
-.L931:
+.L925:
 	movl	%ecx, %esi
 	movl	%ecx, %ebx
 	andl	$14, %esi
@@ -8159,7 +8103,7 @@ Arch_sameRegionAs:
 	cmove	%eax, %ebx
 	xorl	%eax, %eax
 	cmpl	$5, %ebx
-	je	.L969
+	je	.L963
 	addl	$12, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -8178,7 +8122,7 @@ Arch_sameRegionAs:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L932:
+.L926:
 	.cfi_restore_state
 	movl	%ecx, %edx
 	movl	%ecx, %eax
@@ -8208,7 +8152,7 @@ Arch_sameRegionAs:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L933:
+.L927:
 	.cfi_restore_state
 	movl	%ecx, %esi
 	movl	%ecx, %ebx
@@ -8219,7 +8163,7 @@ Arch_sameRegionAs:
 	cmove	%eax, %ebx
 	xorl	%eax, %eax
 	cmpl	$9, %ebx
-	je	.L969
+	je	.L963
 	addl	$12, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -8238,22 +8182,22 @@ Arch_sameRegionAs:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L954:
+.L948:
 	.cfi_restore_state
 	xorl	%eax, %eax
-	jmp	.L927
+	jmp	.L921
 	.p2align 4,,7
 	.p2align 3
-.L970:
+.L964:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L938:
+.L932:
 	movl	$4096, %eax
-	jmp	.L939
-.L941:
+	jmp	.L933
+.L935:
 	movl	$4096, %ebx
-	jmp	.L942
+	jmp	.L936
 	.cfi_endproc
 .LFE387:
 	.size	Arch_sameRegionAs, .-Arch_sameRegionAs
@@ -8287,8 +8231,8 @@ Arch_sameObjectAs:
 	cmpl	$14, %esi
 	cmove	%ebx, %edx
 	cmpl	$1, %edx
-	je	.L983
-.L976:
+	je	.L977
+.L970:
 	movl	%ecx, 28(%esp)
 	movl	%ebp, 32(%esp)
 	movl	%eax, 20(%esp)
@@ -8309,7 +8253,7 @@ Arch_sameObjectAs:
 	jmp	Arch_sameRegionAs
 	.p2align 4,,7
 	.p2align 3
-.L983:
+.L977:
 	.cfi_restore_state
 	movl	%ecx, %esi
 	movl	%ecx, %edx
@@ -8319,14 +8263,14 @@ Arch_sameObjectAs:
 	cmpl	$14, %esi
 	cmove	%ebx, %edx
 	cmpl	$1, %edx
-	jne	.L976
+	jne	.L970
 	andl	$16777200, %eax
 	andl	$16777200, %ecx
 	movl	%eax, %edx
 	xorl	%eax, %eax
 	cmpl	%edx, %ecx
-	je	.L984
-.L980:
+	je	.L978
+.L974:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -8343,14 +8287,14 @@ Arch_sameObjectAs:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L984:
+.L978:
 	.cfi_restore_state
 	shrl	$31, %edi
 	xorl	%eax, %eax
 	shrl	$31, %ebp
 	cmpl	%ebp, %edi
 	sete	%al
-	jmp	.L980
+	jmp	.L974
 	.cfi_endproc
 .LFE388:
 	.size	Arch_sameObjectAs, .-Arch_sameObjectAs
@@ -8364,11 +8308,11 @@ Arch_getObjectSize:
 	.cfi_def_cfa_offset 16
 	movl	16(%esp), %eax
 	cmpl	$6, %eax
-	je	.L990
-	ja	.L988
+	je	.L984
+	ja	.L982
 	cmpl	$5, %eax
-	jne	.L986
-.L989:
+	jne	.L980
+.L983:
 	movl	$12, %eax
 	addl	$12, %esp
 	.cfi_remember_state
@@ -8376,15 +8320,15 @@ Arch_getObjectSize:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L988:
+.L982:
 	.cfi_restore_state
 	cmpl	$8, %eax
-	jbe	.L989
-.L986:
+	jbe	.L983
+.L980:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L990:
+.L984:
 	movl	$22, %eax
 	addl	$12, %esp
 	.cfi_def_cfa_offset 4
@@ -8413,40 +8357,40 @@ Arch_createObject:
 	movl	32(%esp), %esi
 	movl	40(%esp), %ebx
 	cmpl	$6, %eax
-	je	.L997
-	jbe	.L1054
+	je	.L991
+	jbe	.L1048
 	cmpl	$7, %eax
-	je	.L1000
+	je	.L994
 	cmpl	$8, %eax
 	.p2align 4,,5
-	jne	.L996
+	jne	.L990
 	testb	$1, %bl
 	movl	%ebx, %edi
 	movl	$4096, %edx
-	jne	.L1055
-.L1011:
+	jne	.L1049
+.L1005:
 	testl	$2, %edi
-	jne	.L1056
-.L1012:
+	jne	.L1050
+.L1006:
 	movl	%edx, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testb	$2, %dl
 	rep stosl
-	jne	.L1057
+	jne	.L1051
 	andl	$1, %edx
-	jne	.L1058
-.L1014:
+	jne	.L1052
+.L1008:
 	movl	ia32KSkernelPD, %ecx
 	movl	$896, %eax
 	.p2align 4,,7
 	.p2align 3
-.L1016:
+.L1010:
 	movl	(%ecx,%eax,4), %edx
 	movl	%edx, (%ebx,%eax,4)
 	addl	$1, %eax
 	cmpl	$1024, %eax
-	jne	.L1016
+	jne	.L1010
 	andl	$-4096, %ebx
 	movl	%esi, %eax
 	shrl	$8, %ebx
@@ -8468,25 +8412,25 @@ Arch_createObject:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L1000:
+.L994:
 	.cfi_restore_state
 	testb	$1, %bl
 	movl	%ebx, %edi
 	movl	$4096, %edx
-	jne	.L1059
-.L1007:
+	jne	.L1053
+.L1001:
 	testl	$2, %edi
-	jne	.L1060
-.L1008:
+	jne	.L1054
+.L1002:
 	movl	%edx, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testb	$2, %dl
 	rep stosl
-	jne	.L1061
+	jne	.L1055
 	andl	$1, %edx
-	jne	.L1062
-.L1010:
+	jne	.L1056
+.L1004:
 	andl	$-4096, %ebx
 	movl	%esi, %eax
 	shrl	$8, %ebx
@@ -8508,27 +8452,27 @@ Arch_createObject:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L1054:
+.L1048:
 	.cfi_restore_state
 	cmpl	$5, %eax
-	jne	.L996
+	jne	.L990
 	testb	$1, %bl
 	movl	%ebx, %edi
 	movl	$4096, %edx
-	jne	.L1063
-.L1002:
+	jne	.L1057
+.L996:
 	testl	$2, %edi
-	jne	.L1064
-.L1003:
+	jne	.L1058
+.L997:
 	movl	%edx, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testb	$2, %dl
 	rep stosl
-	jne	.L1065
+	jne	.L1059
 	andl	$1, %edx
-	jne	.L1066
-.L1005:
+	jne	.L1060
+.L999:
 	andl	$-4096, %ebx
 	movl	%esi, %eax
 	shrl	$8, %ebx
@@ -8550,12 +8494,12 @@ Arch_createObject:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L996:
+.L990:
 	.cfi_restore_state
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L997:
+.L991:
 	movl	%ebx, (%esp)
 	andl	$-4096, %ebx
 	shrl	$8, %ebx
@@ -8579,71 +8523,71 @@ Arch_createObject:
 	.cfi_restore 7
 	.cfi_def_cfa_offset 4
 	ret	$4
-.L1066:
+.L1060:
 	.cfi_restore_state
 	movb	$0, (%edi)
-	jmp	.L1005
-.L1065:
+	jmp	.L999
+.L1059:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	andl	$1, %edx
-	je	.L1005
-	jmp	.L1066
-.L1062:
+	je	.L999
+	jmp	.L1060
+.L1056:
 	movb	$0, (%edi)
-	jmp	.L1010
-.L1058:
+	jmp	.L1004
+.L1052:
 	movb	$0, (%edi)
 	.p2align 4,,5
-	jmp	.L1014
-.L1057:
-	xorl	%eax, %eax
-	addl	$2, %edi
-	movw	%ax, -2(%edi)
-	andl	$1, %edx
-	je	.L1014
-	jmp	.L1058
-.L1061:
-	xorl	%eax, %eax
-	addl	$2, %edi
-	movw	%ax, -2(%edi)
-	andl	$1, %edx
-	je	.L1010
-	jmp	.L1062
-.L1064:
-	xorl	%eax, %eax
-	addl	$2, %edi
-	movw	%ax, -2(%edi)
-	subl	$2, %edx
-	jmp	.L1003
-.L1055:
-	movb	$0, (%ebx)
-	leal	1(%ebx), %edi
-	movw	$4095, %dx
-	jmp	.L1011
-.L1059:
-	movb	$0, (%ebx)
-	leal	1(%ebx), %edi
-	movw	$4095, %dx
-	jmp	.L1007
-.L1060:
-	xorl	%eax, %eax
-	addl	$2, %edi
-	movw	%ax, -2(%edi)
-	subl	$2, %edx
 	jmp	.L1008
-.L1056:
+.L1051:
+	xorl	%eax, %eax
+	addl	$2, %edi
+	movw	%ax, -2(%edi)
+	andl	$1, %edx
+	je	.L1008
+	jmp	.L1052
+.L1055:
+	xorl	%eax, %eax
+	addl	$2, %edi
+	movw	%ax, -2(%edi)
+	andl	$1, %edx
+	je	.L1004
+	jmp	.L1056
+.L1058:
+	xorl	%eax, %eax
+	addl	$2, %edi
+	movw	%ax, -2(%edi)
+	subl	$2, %edx
+	jmp	.L997
+.L1049:
+	movb	$0, (%ebx)
+	leal	1(%ebx), %edi
+	movw	$4095, %dx
+	jmp	.L1005
+.L1053:
+	movb	$0, (%ebx)
+	leal	1(%ebx), %edi
+	movw	$4095, %dx
+	jmp	.L1001
+.L1054:
+	xorl	%eax, %eax
+	addl	$2, %edi
+	movw	%ax, -2(%edi)
+	subl	$2, %edx
+	jmp	.L1002
+.L1050:
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
 	subl	$2, %edx
-	jmp	.L1012
-.L1063:
+	jmp	.L1006
+.L1057:
 	movb	$0, (%ebx)
 	leal	1(%ebx), %edi
 	movw	$4095, %dx
-	jmp	.L1002
+	jmp	.L996
 	.cfi_endproc
 .LFE390:
 	.size	Arch_createObject, .-Arch_createObject
@@ -8657,34 +8601,34 @@ Arch_prepareThreadDelete:
 	.cfi_def_cfa_offset 32
 	movl	32(%esp), %eax
 	cmpl	ia32KSfpuOwner, %eax
-	je	.L1074
+	je	.L1068
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 4
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1074:
+.L1068:
 	.cfi_restore_state
 #APP
-# 45 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 45 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 	clts
 # 0 "" 2
 #NO_APP
 	testl	%eax, %eax
-	je	.L1069
+	je	.L1063
 	addl	$80, %eax
 	movl	%eax, (%esp)
 	call	saveFpuState
-.L1069:
+.L1063:
 #APP
-# 41 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 41 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %cr0, %eax
 # 0 "" 2
 #NO_APP
 	orl	$8, %eax
 #APP
-# 47 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 47 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %eax, %cr0
 # 0 "" 2
 #NO_APP
@@ -8715,19 +8659,19 @@ setMRs_fault:
 	movl	604(%eax), %edx
 	andl	$7, %edx
 	cmpl	$2, %edx
-	je	.L1077
-	jbe	.L1100
+	je	.L1071
+	jbe	.L1094
 	cmpl	$3, %edx
-	je	.L1080
+	je	.L1074
 	cmpl	$4, %edx
 	.p2align 4,,5
-	jne	.L1076
+	jne	.L1070
 	movl	44(%eax), %edx
 	testl	%ecx, %ecx
 	movl	%edx, 20(%ebx)
 	movl	68(%eax), %edx
 	movl	%edx, 24(%ebx)
-	je	.L1083
+	je	.L1077
 	movl	64(%eax), %edx
 	movl	%edx, 12(%ecx)
 	movl	608(%eax), %edx
@@ -8736,16 +8680,16 @@ setMRs_fault:
 	shrl	$3, %eax
 	movl	%eax, 20(%ecx)
 	movl	$5, %eax
-	jmp	.L1089
+	jmp	.L1083
 	.p2align 4,,7
 	.p2align 3
-.L1080:
+.L1074:
 	movl	(%eax), %edx
 	testl	%ecx, %ecx
 	movl	%edx, 20(%ebx)
 	movl	4(%eax), %edx
 	movl	%edx, 24(%ebx)
-	je	.L1083
+	je	.L1077
 	movl	8(%eax), %edx
 	movl	%edx, 12(%ecx)
 	movl	12(%eax), %edx
@@ -8777,16 +8721,16 @@ setMRs_fault:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1100:
+.L1094:
 	.cfi_restore_state
 	cmpl	$1, %edx
-	jne	.L1076
+	jne	.L1070
 	movl	44(%eax), %edx
 	testl	%ecx, %ecx
 	movl	%edx, 20(%ebx)
 	movl	608(%eax), %edx
 	movl	%edx, 24(%ebx)
-	je	.L1083
+	je	.L1077
 	movl	604(%eax), %edx
 	shrl	$31, %edx
 	movl	%edx, 12(%ecx)
@@ -8797,29 +8741,29 @@ setMRs_fault:
 	leal	1(%eax), %ebx
 	cmpl	$2, %eax
 	movl	%ebx, 16(%ecx)
-	je	.L1086
+	je	.L1080
 	cmpl	$3, %eax
-	je	.L1087
+	je	.L1081
 	cmpl	$1, %eax
-	jne	.L1099
+	jne	.L1093
 	andl	$252, %edx
 	movb	$5, %al
 	shrl	$2, %edx
 	movl	%edx, 20(%ecx)
-	jmp	.L1089
+	jmp	.L1083
 	.p2align 4,,7
 	.p2align 3
-.L1076:
+.L1070:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L1077:
+.L1071:
 	movl	44(%eax), %edx
 	testl	%ecx, %ecx
 	movl	%edx, 20(%ebx)
 	movl	608(%eax), %edx
 	movl	%edx, 24(%ebx)
-	je	.L1083
+	je	.L1077
 	movl	604(%eax), %edx
 	andl	$524288, %edx
 	shrl	$19, %edx
@@ -8827,9 +8771,9 @@ setMRs_fault:
 	movl	604(%eax), %eax
 	shrl	$27, %eax
 	movl	%eax, 16(%ecx)
-.L1099:
+.L1093:
 	movl	$4, %eax
-.L1089:
+.L1083:
 	addl	$4, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -8842,7 +8786,7 @@ setMRs_fault:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1083:
+.L1077:
 	.cfi_restore_state
 	addl	$4, %esp
 	.cfi_remember_state
@@ -8857,7 +8801,7 @@ setMRs_fault:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1087:
+.L1081:
 	.cfi_restore_state
 	movl	%edx, %eax
 	andl	$252, %edx
@@ -8868,10 +8812,10 @@ setMRs_fault:
 	movl	$7, %eax
 	movl	%esi, 24(%ecx)
 	movl	%edx, 28(%ecx)
-	jmp	.L1089
+	jmp	.L1083
 	.p2align 4,,7
 	.p2align 3
-.L1086:
+.L1080:
 	movl	%edx, %eax
 	andl	$16128, %edx
 	andl	$252, %eax
@@ -8880,7 +8824,7 @@ setMRs_fault:
 	movl	%eax, 20(%ecx)
 	movl	$6, %eax
 	movl	%edx, 24(%ecx)
-	jmp	.L1089
+	jmp	.L1083
 	.cfi_endproc
 .LFE394:
 	.size	setMRs_fault, .-setMRs_fault
@@ -8900,29 +8844,29 @@ setMRs_syscall_error:
 	.cfi_def_cfa_offset 16
 	movl	current_syscall_error+24, %eax
 	cmpl	$10, %eax
-	ja	.L1102
-	jmp	*.L1104(,%eax,4)
+	ja	.L1096
+	jmp	*.L1098(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L1104:
-	.long	.L1102
-	.long	.L1103
-	.long	.L1105
-	.long	.L1114
-	.long	.L1107
-	.long	.L1114
+.L1098:
+	.long	.L1096
+	.long	.L1097
+	.long	.L1099
 	.long	.L1108
-	.long	.L1114
-	.long	.L1114
-	.long	.L1114
-	.long	.L1109
+	.long	.L1101
+	.long	.L1108
+	.long	.L1102
+	.long	.L1108
+	.long	.L1108
+	.long	.L1108
+	.long	.L1103
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L1114:
+.L1108:
 	xorl	%eax, %eax
-.L1106:
+.L1100:
 	addl	$4, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -8935,7 +8879,7 @@ setMRs_syscall_error:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1107:
+.L1101:
 	.cfi_restore_state
 	movl	current_syscall_error+8, %eax
 	movl	16(%esp), %ecx
@@ -8955,7 +8899,7 @@ setMRs_syscall_error:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1109:
+.L1103:
 	.cfi_restore_state
 	movl	current_syscall_error+16, %eax
 	movl	16(%esp), %esi
@@ -8973,7 +8917,7 @@ setMRs_syscall_error:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1108:
+.L1102:
 	.cfi_restore_state
 	movl	current_syscall_error+20, %edx
 	xorl	%eax, %eax
@@ -8991,23 +8935,23 @@ setMRs_syscall_error:
 	movl	20(%esp), %esi
 	movl	$2, %eax
 	testl	%esi, %esi
-	je	.L1106
+	je	.L1100
 	cmpl	$2, %edx
-	je	.L1111
+	je	.L1105
 	cmpl	$3, %edx
-	je	.L1112
+	je	.L1106
 	cmpl	$1, %edx
 	.p2align 4,,2
-	jne	.L1106
+	jne	.L1100
 	movl	20(%esp), %eax
 	andl	$252, %ecx
 	shrl	$2, %ecx
 	movl	%ecx, 12(%eax)
 	movl	$3, %eax
-	jmp	.L1106
+	jmp	.L1100
 	.p2align 4,,7
 	.p2align 3
-.L1103:
+.L1097:
 	movl	16(%esp), %ebx
 	movl	current_syscall_error, %edx
 	movl	%edx, 20(%ebx)
@@ -9023,7 +8967,7 @@ setMRs_syscall_error:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1105:
+.L1099:
 	.cfi_restore_state
 	movl	current_syscall_error+4, %eax
 	movl	16(%esp), %ebx
@@ -9041,12 +8985,12 @@ setMRs_syscall_error:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1102:
+.L1096:
 	.cfi_restore_state
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L1112:
+.L1106:
 	movl	20(%esp), %esi
 	movl	%ecx, %eax
 	andl	$252, %ecx
@@ -9057,10 +9001,10 @@ setMRs_syscall_error:
 	movl	$5, %eax
 	movl	%ebx, 16(%esi)
 	movl	%ecx, 20(%esi)
-	jmp	.L1106
+	jmp	.L1100
 	.p2align 4,,7
 	.p2align 3
-.L1111:
+.L1105:
 	movl	20(%esp), %esi
 	movl	%ecx, %eax
 	andl	$16128, %ecx
@@ -9070,7 +9014,7 @@ setMRs_syscall_error:
 	movl	%eax, 12(%esi)
 	movl	$4, %eax
 	movl	%ecx, 16(%esi)
-	jmp	.L1106
+	jmp	.L1100
 	.cfi_endproc
 .LFE395:
 	.size	setMRs_syscall_error, .-setMRs_syscall_error
@@ -9109,14 +9053,14 @@ insert_region:
 	movl	8(%esp), %ecx
 	movl	12(%esp), %edx
 	cmpl	%ecx, %edx
-	je	.L1124
+	je	.L1118
 	movl	ndks_boot+4, %eax
 	cmpl	%eax, ndks_boot
 	movl	$0, %eax
-	je	.L1123
+	je	.L1117
 	movl	ndks_boot+12, %ebx
 	cmpl	%ebx, ndks_boot+8
-	je	.L1128
+	je	.L1122
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -9124,7 +9068,7 @@ insert_region:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1124:
+.L1118:
 	.cfi_restore_state
 	movl	$1, %eax
 	popl	%ebx
@@ -9134,10 +9078,10 @@ insert_region:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1128:
+.L1122:
 	.cfi_restore_state
 	movb	$1, %al
-.L1123:
+.L1117:
 	movl	%ecx, ndks_boot(,%eax,8)
 	movl	%edx, ndks_boot+4(,%eax,8)
 	movl	$1, %eax
@@ -9185,22 +9129,22 @@ alloc_region:
 	subl	%eax, %esi
 	sall	%cl, %edi
 	cmpl	%ebx, %esi
-	ja	.L1130
+	ja	.L1124
 	movl	%eax, %edx
 	subl	%edi, %edx
-.L1131:
+.L1125:
 	cmpl	%edx, %eax
-	jbe	.L1145
+	jbe	.L1139
 	cmpl	%edx, %ebp
-	jbe	.L1161
-.L1145:
+	jbe	.L1155
+.L1139:
 	movl	$0, 8(%esp)
 	xorl	%ebp, %ebp
 	xorl	%eax, %eax
 	movl	$0, 20(%esp)
 	xorl	%edx, %edx
 	movl	$0, 12(%esp)
-.L1132:
+.L1126:
 	movl	ndks_boot+8, %ebx
 	movl	ndks_boot+12, %esi
 	movl	%ebx, (%esp)
@@ -9217,42 +9161,42 @@ alloc_region:
 	movl	4(%esp), %ecx
 	subl	%esi, %ecx
 	cmpl	%ecx, 16(%esp)
-	jae	.L1134
+	jae	.L1128
 	leal	(%ebx,%edi), %esi
-.L1135:
+.L1129:
 	cmpl	%ebx, %esi
-	jbe	.L1149
+	jbe	.L1143
 	cmpl	%ebx, (%esp)
-	jbe	.L1162
-.L1149:
+	jbe	.L1156
+.L1143:
 	xorl	%ecx, %ecx
-.L1136:
+.L1130:
 	cmpl	%edx, %eax
-	je	.L1155
-.L1138:
+	je	.L1149
+.L1132:
 	movl	8(%esp), %eax
 	cmpl	%eax, 20(%esp)
 	movl	$0, ndks_boot(,%ecx,8)
 	movl	$0, ndks_boot+4(,%ecx,8)
-	je	.L1140
+	je	.L1134
 	movl	ndks_boot+4, %eax
 	cmpl	%eax, ndks_boot
-	je	.L1156
+	je	.L1150
 	movl	ndks_boot+12, %eax
 	cmpl	%eax, ndks_boot+8
-	je	.L1163
-.L1140:
+	je	.L1157
+.L1134:
 	cmpl	12(%esp), %ebp
 	movl	%edx, %eax
-	je	.L1139
+	je	.L1133
 	movl	ndks_boot+4, %eax
 	cmpl	%eax, ndks_boot
-	je	.L1158
+	je	.L1152
 	movl	ndks_boot+12, %edi
 	movl	%edx, %eax
 	cmpl	%edi, ndks_boot+8
-	je	.L1164
-.L1139:
+	je	.L1158
+.L1133:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -9271,46 +9215,46 @@ alloc_region:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1134:
+.L1128:
 	.cfi_restore_state
 	movl	%esi, %ebx
 	subl	%edi, %ebx
-	jmp	.L1135
+	jmp	.L1129
 	.p2align 4,,7
 	.p2align 3
-.L1130:
+.L1124:
 	leal	(%edx,%edi), %eax
-	jmp	.L1131
+	jmp	.L1125
 	.p2align 4,,7
 	.p2align 3
-.L1162:
+.L1156:
 	cmpl	%esi, 4(%esp)
-	jb	.L1149
+	jb	.L1143
 	movl	4(%esp), %ecx
 	movl	%ebx, %edi
 	subl	(%esp), %edi
 	subl	%esi, %ecx
 	cmpl	%ecx, %edi
-	jb	.L1150
+	jb	.L1144
 	movl	%edi, 24(%esp)
 	movl	(%esp), %edi
 	movl	%esi, (%esp)
 	movl	%edi, 16(%esp)
 	movl	4(%esp), %edi
 	movl	%ebx, 4(%esp)
-.L1137:
+.L1131:
 	cmpl	%eax, %edx
-	je	.L1152
+	je	.L1146
 	movl	12(%esp), %eax
 	subl	%ebp, %eax
 	cmpl	%ecx, %eax
-	ja	.L1152
+	ja	.L1146
 	movl	$0, %ecx
-	jne	.L1138
+	jne	.L1132
 	movl	8(%esp), %eax
 	subl	20(%esp), %eax
 	cmpl	24(%esp), %eax
-	jbe	.L1138
+	jbe	.L1132
 	movl	4(%esp), %eax
 	movl	%ebx, %edx
 	movb	$1, %cl
@@ -9320,27 +9264,27 @@ alloc_region:
 	movl	16(%esp), %eax
 	movl	%eax, 20(%esp)
 	movl	%esi, %eax
-	jmp	.L1136
+	jmp	.L1130
 	.p2align 4,,7
 	.p2align 3
-.L1161:
+.L1155:
 	cmpl	8(%esp), %eax
-	ja	.L1145
+	ja	.L1139
 	movl	8(%esp), %esi
 	movl	%edx, %ebx
 	subl	%ebp, %ebx
 	subl	%eax, %esi
 	cmpl	%ebx, %esi
-	ja	.L1146
+	ja	.L1140
 	movl	8(%esp), %esi
 	movl	%ebp, 20(%esp)
 	movl	%eax, %ebp
 	movl	%edx, 8(%esp)
 	movl	%esi, 12(%esp)
-	jmp	.L1132
+	jmp	.L1126
 	.p2align 4,,7
 	.p2align 3
-.L1152:
+.L1146:
 	movl	4(%esp), %eax
 	movl	%ebx, %edx
 	movl	$1, %ecx
@@ -9350,10 +9294,10 @@ alloc_region:
 	movl	16(%esp), %eax
 	movl	%eax, 20(%esp)
 	movl	%esi, %eax
-	jmp	.L1136
+	jmp	.L1130
 	.p2align 4,,7
 	.p2align 3
-.L1155:
+.L1149:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -9373,49 +9317,49 @@ alloc_region:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1146:
+.L1140:
 	.cfi_restore_state
 	movl	%eax, 20(%esp)
 	movl	%edx, 12(%esp)
-	jmp	.L1132
+	jmp	.L1126
 	.p2align 4,,7
 	.p2align 3
-.L1150:
+.L1144:
 	movl	%ecx, 24(%esp)
 	movl	%edi, %ecx
 	movl	%ebx, %edi
 	movl	%esi, 16(%esp)
-	jmp	.L1137
+	jmp	.L1131
 	.p2align 4,,7
 	.p2align 3
-.L1158:
+.L1152:
 	movl	$ndks_boot, %eax
-.L1142:
+.L1136:
 	movl	12(%esp), %edi
 	movl	%ebp, (%eax)
 	movl	%edi, 4(%eax)
 	movl	%edx, %eax
-	jmp	.L1139
+	jmp	.L1133
 	.p2align 4,,7
 	.p2align 3
-.L1156:
+.L1150:
 	movl	$ndks_boot, %eax
-.L1141:
+.L1135:
 	movl	20(%esp), %edi
 	movl	%edi, (%eax)
 	movl	8(%esp), %edi
 	movl	%edi, 4(%eax)
-	jmp	.L1140
+	jmp	.L1134
 	.p2align 4,,7
 	.p2align 3
-.L1164:
+.L1158:
 	movl	$ndks_boot+8, %eax
-	jmp	.L1142
+	jmp	.L1136
 	.p2align 4,,7
 	.p2align 3
-.L1163:
+.L1157:
 	movl	$ndks_boot+8, %eax
-	jmp	.L1141
+	jmp	.L1135
 	.cfi_endproc
 .LFE400:
 	.size	alloc_region, .-alloc_region
@@ -9456,7 +9400,7 @@ create_root_cnode:
 	call	alloc_region
 	testl	%eax, %eax
 	movl	%eax, %esi
-	je	.L1170
+	je	.L1164
 	movl	$1048576, 8(%esp)
 	movl	$0, 4(%esp)
 	movl	%eax, (%esp)
@@ -9484,7 +9428,7 @@ create_root_cnode:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L1170:
+.L1164:
 	.cfi_restore_state
 	movl	$0, (%ebx)
 	movl	%ebx, %eax
@@ -9517,27 +9461,27 @@ create_irq_cnode:
 	movl	%eax, %edx
 	xorl	%eax, %eax
 	testl	%edx, %edx
-	je	.L1172
+	je	.L1166
 	testb	$1, %dl
 	movl	%edx, %edi
 	movl	$4096, %ebx
-	jne	.L1192
-.L1173:
+	jne	.L1186
+.L1167:
 	testl	$2, %edi
-	jne	.L1193
-.L1174:
+	jne	.L1187
+.L1168:
 	movl	%ebx, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testb	$2, %bl
 	rep stosl
-	jne	.L1194
+	jne	.L1188
 	andl	$1, %ebx
-	jne	.L1195
-.L1176:
+	jne	.L1189
+.L1170:
 	movl	%edx, intStateIRQNode
 	movl	$1, %eax
-.L1172:
+.L1166:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -9548,34 +9492,34 @@ create_irq_cnode:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1195:
+.L1189:
 	.cfi_restore_state
 	movb	$0, (%edi)
-	jmp	.L1176
+	jmp	.L1170
 	.p2align 4,,7
 	.p2align 3
-.L1194:
+.L1188:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	andl	$1, %ebx
-	je	.L1176
-	jmp	.L1195
+	je	.L1170
+	jmp	.L1189
 	.p2align 4,,7
 	.p2align 3
-.L1193:
+.L1187:
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
 	subl	$2, %ebx
-	jmp	.L1174
+	jmp	.L1168
 	.p2align 4,,7
 	.p2align 3
-.L1192:
+.L1186:
 	movb	$0, (%edx)
 	leal	1(%edx), %edi
 	movw	$4095, %bx
-	jmp	.L1173
+	jmp	.L1167
 	.cfi_endproc
 .LFE403:
 	.size	create_irq_cnode, .-create_irq_cnode
@@ -9603,82 +9547,82 @@ create_domain_cap:
 	cmpl	$14, %ebx
 	cmove	%ecx, %edx
 	cmpl	$62, %edx
-	ja	.L1199
-	jmp	*.L1201(,%edx,4)
+	ja	.L1193
+	jmp	*.L1195(,%edx,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L1201:
-	.long	.L1213
-	.long	.L1208
+.L1195:
 	.long	.L1207
-	.long	.L1208
+	.long	.L1202
+	.long	.L1201
+	.long	.L1202
+	.long	.L1201
+	.long	.L1202
+	.long	.L1201
 	.long	.L1207
-	.long	.L1208
 	.long	.L1207
-	.long	.L1213
-	.long	.L1213
-	.long	.L1208
-	.long	.L1209
-	.long	.L1213
-	.long	.L1210
-	.long	.L1199
-	.long	.L1213
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1213
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1211
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1199
-	.long	.L1213
+	.long	.L1202
+	.long	.L1203
+	.long	.L1207
+	.long	.L1204
+	.long	.L1193
+	.long	.L1207
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1207
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1205
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1193
+	.long	.L1207
 	.section	.boot.text
 	.p2align 4,,7
 	.p2align 3
-.L1208:
+.L1202:
 	andl	$16777200, %eax
 	sall	$8, %eax
-.L1200:
+.L1194:
 	movl	$62, 176(%eax)
 	movl	$0, 180(%eax)
 	movl	$0, 184(%eax)
@@ -9695,48 +9639,48 @@ create_domain_cap:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1207:
+.L1201:
 	.cfi_restore_state
 	andl	$-16, %eax
-	jmp	.L1200
+	jmp	.L1194
 	.p2align 4,,7
 	.p2align 3
-.L1213:
+.L1207:
 	xorl	%eax, %eax
-	jmp	.L1200
+	jmp	.L1194
 	.p2align 4,,7
 	.p2align 3
-.L1211:
+.L1205:
 	andl	$16128, %eax
 	shrl	$8, %eax
 	cmpl	$32, %eax
-	je	.L1214
+	je	.L1208
 	leal	1(%eax), %ecx
 	movl	$-1, %eax
 	sall	%cl, %eax
 	andl	%esi, %eax
-	jmp	.L1200
+	jmp	.L1194
 	.p2align 4,,7
 	.p2align 3
-.L1210:
+.L1204:
 	andl	$-1024, %eax
-	jmp	.L1200
+	jmp	.L1194
 	.p2align 4,,7
 	.p2align 3
-.L1209:
+.L1203:
 	andl	$2147483632, %eax
 	addl	%eax, %eax
-	jmp	.L1200
+	jmp	.L1194
 	.p2align 4,,7
 	.p2align 3
-.L1199:
+.L1193:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L1214:
+.L1208:
 	movl	$-16, %eax
 	andl	%esi, %eax
-	jmp	.L1200
+	jmp	.L1194
 	.cfi_endproc
 .LFE404:
 	.size	create_domain_cap, .-create_domain_cap
@@ -9761,24 +9705,24 @@ create_ipcbuf_frame:
 	call	alloc_region.constprop.155
 	testl	%eax, %eax
 	movl	%eax, %edx
-	je	.L1236
+	je	.L1230
 	testb	$1, %al
 	movl	%eax, %edi
 	movl	$4096, %esi
-	jne	.L1237
-.L1219:
+	jne	.L1231
+.L1213:
 	testl	$2, %edi
-	jne	.L1238
-.L1220:
+	jne	.L1232
+.L1214:
 	movl	%esi, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testl	$2, %esi
 	rep stosl
-	jne	.L1239
+	jne	.L1233
 	andl	$1, %esi
-	jne	.L1240
-.L1222:
+	jne	.L1234
+.L1216:
 	movl	52(%esp), %esi
 	andl	$-4096, %edx
 	movl	44(%esp), %eax
@@ -9818,22 +9762,22 @@ create_ipcbuf_frame:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L1240:
+.L1234:
 	.cfi_restore_state
 	movb	$0, (%edi)
-	jmp	.L1222
+	jmp	.L1216
 	.p2align 4,,7
 	.p2align 3
-.L1239:
+.L1233:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	andl	$1, %esi
-	je	.L1222
-	jmp	.L1240
+	je	.L1216
+	jmp	.L1234
 	.p2align 4,,7
 	.p2align 3
-.L1236:
+.L1230:
 	movl	$0, (%ebx)
 	movl	%ebx, %eax
 	movl	$0, 4(%ebx)
@@ -9852,20 +9796,20 @@ create_ipcbuf_frame:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L1238:
+.L1232:
 	.cfi_restore_state
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
 	subl	$2, %esi
-	jmp	.L1220
+	jmp	.L1214
 	.p2align 4,,7
 	.p2align 3
-.L1237:
+.L1231:
 	movb	$0, (%eax)
 	leal	1(%eax), %edi
 	movw	$4095, %si
-	jmp	.L1219
+	jmp	.L1213
 	.cfi_endproc
 .LFE405:
 	.size	create_ipcbuf_frame, .-create_ipcbuf_frame
@@ -9912,82 +9856,82 @@ create_bi_frame_cap:
 	movzbl	%cl, %edi
 	cmove	%edi, %edx
 	cmpl	$62, %edx
-	ja	.L1260
-	jmp	*.L1246(,%edx,4)
+	ja	.L1254
+	jmp	*.L1240(,%edx,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L1246:
-	.long	.L1274
-	.long	.L1253
-	.long	.L1252
-	.long	.L1253
-	.long	.L1252
-	.long	.L1253
-	.long	.L1252
-	.long	.L1274
-	.long	.L1274
-	.long	.L1253
+.L1240:
+	.long	.L1268
+	.long	.L1247
+	.long	.L1246
+	.long	.L1247
+	.long	.L1246
+	.long	.L1247
+	.long	.L1246
+	.long	.L1268
+	.long	.L1268
+	.long	.L1247
+	.long	.L1248
+	.long	.L1268
+	.long	.L1249
 	.long	.L1254
-	.long	.L1274
-	.long	.L1255
-	.long	.L1260
-	.long	.L1274
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1274
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1256
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1274
+	.long	.L1268
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1268
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1250
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1268
 	.section	.boot.text
 	.p2align 4,,7
 	.p2align 3
-.L1253:
+.L1247:
 	andl	$16777200, %ecx
 	sall	$8, %ecx
-.L1245:
+.L1239:
 	movl	%ebx, %edx
 	sall	$12, %edx
 	movl	%edx, %edi
@@ -10010,82 +9954,82 @@ create_bi_frame_cap:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	cmpl	$62, %eax
-	ja	.L1260
-	jmp	*.L1262(,%eax,4)
+	ja	.L1254
+	jmp	*.L1256(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L1262:
-	.long	.L1276
-	.long	.L1269
-	.long	.L1268
-	.long	.L1269
-	.long	.L1268
-	.long	.L1269
-	.long	.L1268
-	.long	.L1276
-	.long	.L1276
-	.long	.L1269
+.L1256:
 	.long	.L1270
-	.long	.L1276
-	.long	.L1271
-	.long	.L1260
-	.long	.L1276
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1276
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1272
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1260
-	.long	.L1276
+	.long	.L1263
+	.long	.L1262
+	.long	.L1263
+	.long	.L1262
+	.long	.L1263
+	.long	.L1262
+	.long	.L1270
+	.long	.L1270
+	.long	.L1263
+	.long	.L1264
+	.long	.L1270
+	.long	.L1265
+	.long	.L1254
+	.long	.L1270
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1270
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1266
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1254
+	.long	.L1270
 	.section	.boot.text
 	.p2align 4,,7
 	.p2align 3
-.L1269:
+.L1263:
 	andl	$16777200, %esi
 	sall	$8, %esi
-.L1261:
+.L1255:
 	movl	%ebp, 144(%esi)
 	movl	%ebx, 148(%esi)
 	movl	$0, 152(%esi)
@@ -10108,88 +10052,88 @@ create_bi_frame_cap:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1252:
+.L1246:
 	.cfi_restore_state
 	andl	$-16, %ecx
-	jmp	.L1245
+	jmp	.L1239
+	.p2align 4,,7
+	.p2align 3
+.L1262:
+	andl	$-16, %esi
+	jmp	.L1255
 	.p2align 4,,7
 	.p2align 3
 .L1268:
-	andl	$-16, %esi
-	jmp	.L1261
-	.p2align 4,,7
-	.p2align 3
-.L1274:
 	xorl	%ecx, %ecx
-	jmp	.L1245
+	jmp	.L1239
 	.p2align 4,,7
 	.p2align 3
-.L1256:
+.L1250:
 	andl	$16128, %ecx
 	shrl	$8, %ecx
 	cmpl	$32, %ecx
-	je	.L1275
+	je	.L1269
 	addl	$1, %ecx
 	movl	$-1, %edx
 	sall	%cl, %edx
-.L1257:
+.L1251:
 	movl	8(%esp), %ecx
 	andl	%edx, %ecx
-	jmp	.L1245
+	jmp	.L1239
 	.p2align 4,,7
 	.p2align 3
-.L1255:
+.L1249:
 	andl	$-1024, %ecx
-	jmp	.L1245
+	jmp	.L1239
 	.p2align 4,,7
 	.p2align 3
-.L1254:
+.L1248:
 	andl	$2147483632, %ecx
 	addl	%ecx, %ecx
-	jmp	.L1245
-	.p2align 4,,7
-	.p2align 3
-.L1276:
-	xorl	%esi, %esi
-	jmp	.L1261
+	jmp	.L1239
 	.p2align 4,,7
 	.p2align 3
 .L1270:
+	xorl	%esi, %esi
+	jmp	.L1255
+	.p2align 4,,7
+	.p2align 3
+.L1264:
 	andl	$2147483632, %esi
 	addl	%esi, %esi
-	jmp	.L1261
+	jmp	.L1255
 	.p2align 4,,7
 	.p2align 3
-.L1271:
+.L1265:
 	andl	$-1024, %esi
-	jmp	.L1261
+	jmp	.L1255
 	.p2align 4,,7
 	.p2align 3
-.L1272:
+.L1266:
 	andl	$16128, %esi
 	shrl	$8, %esi
 	cmpl	$32, %esi
-	je	.L1277
+	je	.L1271
 	leal	1(%esi), %ecx
 	movl	$-1, %esi
 	sall	%cl, %esi
-.L1273:
+.L1267:
 	andl	12(%esp), %esi
-	jmp	.L1261
+	jmp	.L1255
 	.p2align 4,,7
 	.p2align 3
-.L1260:
+.L1254:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L1275:
+.L1269:
 	movl	$-16, %edx
-	jmp	.L1257
+	jmp	.L1251
 	.p2align 4,,7
 	.p2align 3
-.L1277:
+.L1271:
 	movl	$-16, %esi
-	jmp	.L1273
+	jmp	.L1267
 	.cfi_endproc
 .LFE406:
 	.size	create_bi_frame_cap, .-create_bi_frame_cap
@@ -10208,24 +10152,24 @@ allocate_bi_frame:
 	call	alloc_region.constprop.155
 	testl	%eax, %eax
 	movl	%eax, %edx
-	je	.L1280
+	je	.L1274
 	testb	$1, %al
 	movl	%eax, %edi
 	movl	$4096, %ebx
-	jne	.L1301
-.L1281:
+	jne	.L1295
+.L1275:
 	testl	$2, %edi
-	jne	.L1302
-.L1282:
+	jne	.L1296
+.L1276:
 	movl	%ebx, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testb	$2, %bl
 	rep stosl
-	jne	.L1303
+	jne	.L1297
 	andl	$1, %ebx
-	jne	.L1304
-.L1284:
+	jne	.L1298
+.L1278:
 	movl	12(%esp), %eax
 	movl	%edx, ndks_boot+16
 	movl	$12, ndks_boot+20
@@ -10239,7 +10183,7 @@ allocate_bi_frame:
 	movl	ksDomScheduleIdx, %eax
 	movl	ksDomSchedule(,%eax,8), %eax
 	movb	%al, 4080(%edx)
-.L1280:
+.L1274:
 	movl	%edx, %eax
 	popl	%ebx
 	.cfi_remember_state
@@ -10251,34 +10195,34 @@ allocate_bi_frame:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1304:
+.L1298:
 	.cfi_restore_state
 	movb	$0, (%edi)
-	jmp	.L1284
+	jmp	.L1278
 	.p2align 4,,7
 	.p2align 3
-.L1303:
+.L1297:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	andl	$1, %ebx
-	je	.L1284
-	jmp	.L1304
+	je	.L1278
+	jmp	.L1298
 	.p2align 4,,7
 	.p2align 3
-.L1302:
+.L1296:
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
 	subl	$2, %ebx
-	jmp	.L1282
+	jmp	.L1276
 	.p2align 4,,7
 	.p2align 3
-.L1301:
+.L1295:
 	movb	$0, (%eax)
 	leal	1(%eax), %edi
 	movw	$4095, %bx
-	jmp	.L1281
+	jmp	.L1275
 	.cfi_endproc
 .LFE407:
 	.size	allocate_bi_frame, .-allocate_bi_frame
@@ -10301,7 +10245,7 @@ provide_cap:
 	cmpl	ndks_boot+24, %ebx
 	movl	16(%esp), %eax
 	movl	20(%esp), %esi
-	jae	.L1323
+	jae	.L1317
 	movl	%eax, %edi
 	movl	%eax, %edx
 	andl	$14, %edi
@@ -10310,82 +10254,82 @@ provide_cap:
 	cmpl	$14, %edi
 	cmove	%ecx, %edx
 	cmpl	$62, %edx
-	ja	.L1309
-	jmp	*.L1311(,%edx,4)
+	ja	.L1303
+	jmp	*.L1305(,%edx,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L1311:
-	.long	.L1324
+.L1305:
 	.long	.L1318
-	.long	.L1317
+	.long	.L1312
+	.long	.L1311
+	.long	.L1312
+	.long	.L1311
+	.long	.L1312
+	.long	.L1311
 	.long	.L1318
-	.long	.L1317
 	.long	.L1318
-	.long	.L1317
-	.long	.L1324
-	.long	.L1324
+	.long	.L1312
+	.long	.L1313
 	.long	.L1318
-	.long	.L1319
-	.long	.L1324
-	.long	.L1320
-	.long	.L1309
-	.long	.L1324
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1324
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1321
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1309
-	.long	.L1324
+	.long	.L1314
+	.long	.L1303
+	.long	.L1318
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1318
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1315
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1303
+	.long	.L1318
 	.section	.boot.text
 	.p2align 4,,7
 	.p2align 3
-.L1318:
+.L1312:
 	andl	$16777200, %eax
 	sall	$8, %eax
-.L1310:
+.L1304:
 	sall	$4, %ebx
 	movl	28(%esp), %edx
 	addl	%eax, %ebx
@@ -10409,7 +10353,7 @@ provide_cap:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1323:
+.L1317:
 	.cfi_restore_state
 	popl	%ebx
 	.cfi_remember_state
@@ -10425,48 +10369,48 @@ provide_cap:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1317:
+.L1311:
 	.cfi_restore_state
 	andl	$-16, %eax
-	jmp	.L1310
+	jmp	.L1304
 	.p2align 4,,7
 	.p2align 3
-.L1324:
+.L1318:
 	xorl	%eax, %eax
-	jmp	.L1310
+	jmp	.L1304
 	.p2align 4,,7
 	.p2align 3
-.L1319:
+.L1313:
 	andl	$2147483632, %eax
 	addl	%eax, %eax
-	jmp	.L1310
+	jmp	.L1304
 	.p2align 4,,7
 	.p2align 3
-.L1321:
+.L1315:
 	andl	$16128, %eax
 	shrl	$8, %eax
 	cmpl	$32, %eax
-	je	.L1325
+	je	.L1319
 	leal	1(%eax), %ecx
 	movl	$-1, %eax
 	sall	%cl, %eax
 	andl	%esi, %eax
-	jmp	.L1310
+	jmp	.L1304
 	.p2align 4,,7
 	.p2align 3
-.L1320:
+.L1314:
 	andl	$-1024, %eax
-	jmp	.L1310
+	jmp	.L1304
 	.p2align 4,,7
 	.p2align 3
-.L1309:
+.L1303:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L1325:
+.L1319:
 	movl	$-16, %eax
 	andl	%esi, %eax
-	jmp	.L1310
+	jmp	.L1304
 	.cfi_endproc
 .LFE408:
 	.size	provide_cap, .-provide_cap
@@ -10500,25 +10444,25 @@ create_frames_of_region:
 	movl	88(%esp), %eax
 	cmpl	%eax, %esi
 	movl	%eax, 20(%esp)
-	jae	.L1350
+	jae	.L1344
 	movl	96(%esp), %eax
 	movl	%edx, %edi
 	movl	$536870912, 24(%esp)
 	subl	%eax, 24(%esp)
 	movl	%esi, 4(%esp)
-.L1348:
+.L1342:
 	movl	92(%esp), %eax
 	testl	%eax, %eax
-	jne	.L1355
+	jne	.L1349
 	movl	4(%esp), %ebx
 	xorl	%ebp, %ebp
 	andl	$-4096, %ebx
 	shrl	$8, %ebx
 	orl	$50331649, %ebx
-.L1330:
+.L1324:
 	cmpl	%edi, ndks_boot+24
 	movl	12(%esp), %esi
-	jbe	.L1331
+	jbe	.L1325
 	movl	16(%esp), %ecx
 	movl	%ecx, %eax
 	movzbl	%cl, %edx
@@ -10529,82 +10473,82 @@ create_frames_of_region:
 	cmpl	$14, 8(%esp)
 	cmove	%edx, %eax
 	cmpl	$62, %eax
-	ja	.L1334
-	jmp	*.L1336(,%eax,4)
+	ja	.L1328
+	jmp	*.L1330(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L1336:
-	.long	.L1351
-	.long	.L1343
-	.long	.L1342
-	.long	.L1343
-	.long	.L1342
-	.long	.L1343
-	.long	.L1342
-	.long	.L1351
-	.long	.L1351
-	.long	.L1343
-	.long	.L1344
-	.long	.L1351
+.L1330:
 	.long	.L1345
-	.long	.L1334
-	.long	.L1351
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1351
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1346
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1334
-	.long	.L1351
+	.long	.L1337
+	.long	.L1336
+	.long	.L1337
+	.long	.L1336
+	.long	.L1337
+	.long	.L1336
+	.long	.L1345
+	.long	.L1345
+	.long	.L1337
+	.long	.L1338
+	.long	.L1345
+	.long	.L1339
+	.long	.L1328
+	.long	.L1345
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1345
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1340
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1328
+	.long	.L1345
 	.section	.boot.text
 	.p2align 4,,7
 	.p2align 3
-.L1343:
+.L1337:
 	andl	$16777200, %ecx
 	sall	$8, %ecx
-.L1335:
+.L1329:
 	sall	$4, %edi
 	addl	%ecx, %edi
 	movl	$3, 12(%edi)
@@ -10617,10 +10561,10 @@ create_frames_of_region:
 	movl	20(%esp), %eax
 	cmpl	%eax, 4(%esp)
 	movl	%edi, ndks_boot+20
-	jb	.L1348
+	jb	.L1342
 	movl	28(%esp), %esi
 	movl	%edi, %edx
-.L1328:
+.L1322:
 	movl	64(%esp), %eax
 	movl	%esi, (%eax)
 	movl	%edx, 4(%eax)
@@ -10643,13 +10587,13 @@ create_frames_of_region:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L1342:
+.L1336:
 	.cfi_restore_state
 	andl	$-16, %ecx
-	jmp	.L1335
+	jmp	.L1329
 	.p2align 4,,7
 	.p2align 3
-.L1331:
+.L1325:
 	movl	64(%esp), %eax
 	movl	$0, (%eax)
 	movl	$0, 4(%eax)
@@ -10672,7 +10616,7 @@ create_frames_of_region:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L1355:
+.L1349:
 	.cfi_restore_state
 	movl	4(%esp), %esi
 	movl	24(%esp), %ebp
@@ -10700,49 +10644,49 @@ create_frames_of_region:
 	movl	%esi, -536870912(%eax,%edx,4)
 	call	invalidatePageStructureCache
 	movl	ndks_boot+20, %edi
-	jmp	.L1330
-	.p2align 4,,7
-	.p2align 3
-.L1351:
-	xorl	%ecx, %ecx
-	jmp	.L1335
+	jmp	.L1324
 	.p2align 4,,7
 	.p2align 3
 .L1345:
-	andl	$-1024, %ecx
-	jmp	.L1335
+	xorl	%ecx, %ecx
+	jmp	.L1329
 	.p2align 4,,7
 	.p2align 3
-.L1346:
+.L1339:
+	andl	$-1024, %ecx
+	jmp	.L1329
+	.p2align 4,,7
+	.p2align 3
+.L1340:
 	andl	$16128, %ecx
 	shrl	$8, %ecx
 	cmpl	$32, %ecx
-	je	.L1352
+	je	.L1346
 	addl	$1, %ecx
 	movl	$-1, %eax
 	sall	%cl, %eax
-.L1347:
+.L1341:
 	andl	%esi, %eax
 	movl	%eax, %ecx
-	jmp	.L1335
+	jmp	.L1329
 	.p2align 4,,7
 	.p2align 3
-.L1344:
+.L1338:
 	andl	$2147483632, %ecx
 	addl	%ecx, %ecx
-	jmp	.L1335
+	jmp	.L1329
 	.p2align 4,,7
 	.p2align 3
-.L1334:
+.L1328:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L1352:
+.L1346:
 	movl	$-16, %eax
-	jmp	.L1347
-.L1350:
+	jmp	.L1341
+.L1344:
 	movl	%edx, %esi
-	jmp	.L1328
+	jmp	.L1322
 	.cfi_endproc
 .LFE409:
 	.size	create_frames_of_region, .-create_frames_of_region
@@ -10765,24 +10709,24 @@ create_it_asid_pool:
 	call	alloc_region.constprop.155
 	testl	%eax, %eax
 	movl	%eax, %edx
-	je	.L1376
+	je	.L1370
 	testb	$1, %al
 	movl	%eax, %edi
 	movl	$4096, %esi
-	jne	.L1377
-.L1359:
+	jne	.L1371
+.L1353:
 	testl	$2, %edi
-	jne	.L1378
-.L1360:
+	jne	.L1372
+.L1354:
 	movl	%esi, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testl	$2, %esi
 	rep stosl
-	jne	.L1379
+	jne	.L1373
 	andl	$1, %esi
-	jne	.L1380
-.L1362:
+	jne	.L1374
+.L1356:
 	andl	$-4096, %edx
 	movl	20(%esp), %eax
 	movl	%edx, %esi
@@ -10817,22 +10761,22 @@ create_it_asid_pool:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L1380:
+.L1374:
 	.cfi_restore_state
 	movb	$0, (%edi)
-	jmp	.L1362
+	jmp	.L1356
 	.p2align 4,,7
 	.p2align 3
-.L1379:
+.L1373:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	andl	$1, %esi
-	je	.L1362
-	jmp	.L1380
+	je	.L1356
+	jmp	.L1374
 	.p2align 4,,7
 	.p2align 3
-.L1376:
+.L1370:
 	movl	$0, (%ebx)
 	movl	%ebx, %eax
 	movl	$0, 4(%ebx)
@@ -10849,20 +10793,20 @@ create_it_asid_pool:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L1378:
+.L1372:
 	.cfi_restore_state
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
 	subl	$2, %esi
-	jmp	.L1360
+	jmp	.L1354
 	.p2align 4,,7
 	.p2align 3
-.L1377:
+.L1371:
 	movb	$0, (%eax)
 	leal	1(%eax), %edi
 	movw	$4095, %si
-	jmp	.L1359
+	jmp	.L1353
 	.cfi_endproc
 .LFE410:
 	.size	create_it_asid_pool, .-create_it_asid_pool
@@ -10896,19 +10840,19 @@ create_untypeds:
 	movl	ndks_boot+20, %eax
 	movl	%eax, 28(%esp)
 	movl	%eax, %edx
-	je	.L1382
+	je	.L1376
 	movl	$31, %ebp
-	jmp	.L1386
+	jmp	.L1380
 	.p2align 4,,7
 	.p2align 3
-.L1383:
+.L1377:
 	movl	$1, %eax
 	movl	%esi, %ecx
 	sall	%cl, %eax
 	addl	%eax, %ebx
 	cmpl	%edi, %ebx
-	je	.L1382
-.L1386:
+	je	.L1376
+.L1380:
 	movl	%edi, %eax
 	movl	%ebp, %esi
 	subl	%ebx, %eax
@@ -10921,7 +10865,7 @@ create_untypeds:
 	movl	%edx, %eax
 	subl	28(%esp), %eax
 	cmpl	$166, %eax
-	ja	.L1383
+	ja	.L1377
 	movl	ndks_boot+16, %edx
 	leal	536870912(%ebx), %ecx
 	movl	%ecx, 56(%edx,%eax,4)
@@ -10940,15 +10884,15 @@ create_untypeds:
 	movl	%eax, 4(%esp)
 	call	provide_cap
 	testl	%eax, %eax
-	je	.L1389
+	je	.L1383
 	movl	$1, %eax
 	movl	%esi, %ecx
 	movl	ndks_boot+20, %edx
 	sall	%cl, %eax
 	addl	%eax, %ebx
 	cmpl	%edi, %ebx
-	jne	.L1386
-.L1382:
+	jne	.L1380
+.L1376:
 	movl	32(%esp), %eax
 	movl	ndks_boot+16, %ebp
 	movl	$ndks_boot, 52(%esp)
@@ -10963,25 +10907,25 @@ create_untypeds:
 	movl	56(%esp), %eax
 	addl	$1, %eax
 	movl	%eax, 60(%esp)
-.L1409:
+.L1403:
 	movl	52(%esp), %edi
 	movl	(%edi), %eax
 	movl	4(%edi), %esi
 	movl	$0, (%edi)
 	movl	$0, 4(%edi)
 	cmpl	%eax, %esi
-	jne	.L1406
-	jmp	.L1387
+	jne	.L1400
+	jmp	.L1381
 	.p2align 4,,7
 	.p2align 3
-.L1388:
+.L1382:
 	movl	$1, %edi
 	movl	%ebx, %ecx
 	sall	%cl, %edi
 	addl	%edi, %eax
 	cmpl	%esi, %eax
-	je	.L1387
-.L1406:
+	je	.L1381
+.L1400:
 	movl	%esi, %ebx
 	movl	$31, %ecx
 	subl	%eax, %ebx
@@ -10994,14 +10938,14 @@ create_untypeds:
 	movl	%edx, %ecx
 	subl	28(%esp), %ecx
 	cmpl	$166, %ecx
-	ja	.L1388
+	ja	.L1382
 	leal	536870912(%eax), %edi
 	movl	%edi, 56(%ebp,%ecx,4)
 	movl	36(%esp), %edi
 	cmpl	%edx, ndks_boot+24
 	movb	%bl, 724(%ebp,%ecx)
 	movl	%edi, 44(%esp)
-	jbe	.L1389
+	jbe	.L1383
 	movl	40(%esp), %edi
 	movl	%edi, %ecx
 	andl	$15, %ecx
@@ -11012,79 +10956,79 @@ create_untypeds:
 	cmovne	32(%esp), %edi
 	cmpl	$62, %edi
 	movl	%edi, 32(%esp)
-	ja	.L1392
-	jmp	*.L1394(,%edi,4)
+	ja	.L1386
+	jmp	*.L1388(,%edi,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L1394:
-	.long	.L1411
-	.long	.L1401
-	.long	.L1400
-	.long	.L1401
-	.long	.L1400
-	.long	.L1401
-	.long	.L1400
-	.long	.L1411
-	.long	.L1411
-	.long	.L1401
-	.long	.L1402
-	.long	.L1411
-	.long	.L1403
-	.long	.L1392
-	.long	.L1411
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1411
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1404
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1392
-	.long	.L1411
+.L1388:
+	.long	.L1405
+	.long	.L1395
+	.long	.L1394
+	.long	.L1395
+	.long	.L1394
+	.long	.L1395
+	.long	.L1394
+	.long	.L1405
+	.long	.L1405
+	.long	.L1395
+	.long	.L1396
+	.long	.L1405
+	.long	.L1397
+	.long	.L1386
+	.long	.L1405
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1405
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1398
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1386
+	.long	.L1405
 	.section	.boot.text
 	.p2align 4,,7
 	.p2align 3
-.L1389:
+.L1383:
 	addl	$76, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -11104,12 +11048,12 @@ create_untypeds:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1401:
+.L1395:
 	.cfi_restore_state
 	movl	40(%esp), %edi
 	andl	$16777200, %edi
 	sall	$8, %edi
-.L1393:
+.L1387:
 	movl	%eax, %ecx
 	sall	$4, %edx
 	andl	$-16, %ecx
@@ -11129,11 +11073,11 @@ create_untypeds:
 	addl	$1, %edx
 	cmpl	%esi, %eax
 	movl	%edx, ndks_boot+20
-	jne	.L1406
-.L1387:
+	jne	.L1400
+.L1381:
 	addl	$8, 52(%esp)
 	cmpl	$ndks_boot+16, 52(%esp)
-	jne	.L1409
+	jne	.L1403
 	movl	28(%esp), %eax
 	movl	%edx, 52(%ebp)
 	movl	%eax, 48(%ebp)
@@ -11156,47 +11100,47 @@ create_untypeds:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1400:
+.L1394:
 	.cfi_restore_state
 	movl	40(%esp), %edi
 	andl	$-16, %edi
-	jmp	.L1393
+	jmp	.L1387
 	.p2align 4,,7
 	.p2align 3
-.L1411:
+.L1405:
 	xorl	%edi, %edi
-	jmp	.L1393
+	jmp	.L1387
 	.p2align 4,,7
 	.p2align 3
-.L1404:
+.L1398:
 	cmpl	$32, 56(%esp)
-	je	.L1412
+	je	.L1406
 	movzbl	60(%esp), %ecx
 	movl	$-1, %edi
 	sall	%cl, %edi
-.L1405:
+.L1399:
 	andl	44(%esp), %edi
-	jmp	.L1393
+	jmp	.L1387
 	.p2align 4,,7
 	.p2align 3
-.L1403:
+.L1397:
 	movl	40(%esp), %edi
 	andl	$-1024, %edi
-	jmp	.L1393
+	jmp	.L1387
 	.p2align 4,,7
 	.p2align 3
-.L1402:
+.L1396:
 	movl	40(%esp), %edi
 	andl	$2147483632, %edi
 	addl	%edi, %edi
-	jmp	.L1393
+	jmp	.L1387
 	.p2align 4,,7
 	.p2align 3
-.L1392:
+.L1386:
 	call	halt
-.L1412:
+.L1406:
 	movl	$-16, %edi
-	jmp	.L1405
+	jmp	.L1399
 	.cfi_endproc
 .LFE417:
 	.size	create_untypeds, .-create_untypeds
@@ -11248,11 +11192,11 @@ resolveAddressBits:
 	cmpl	$14, %esi
 	cmove	%ebx, %edx
 	cmpl	$10, %edx
-	jne	.L1433
+	jne	.L1427
 	movl	44(%esp), %ebx
 	movl	%ebp, 4(%esp)
 	movl	%eax, 28(%esp)
-.L1429:
+.L1423:
 	movl	%ecx, %edx
 	movl	%ebx, %edi
 	andl	$8126464, %edx
@@ -11274,11 +11218,11 @@ resolveAddressBits:
 	subl	$1, %ecx
 	andl	%ecx, %edi
 	cmpl	(%esp), %edi
-	jne	.L1430
+	jne	.L1424
 	cmpl	%edx, %ebx
-	jb	.L1430
+	jb	.L1424
 	cmpl	%ebp, %ebx
-	jb	.L1434
+	jb	.L1428
 	movl	40(%esp), %edx
 	movl	%ebx, %edi
 	movl	$1, %eax
@@ -11295,12 +11239,12 @@ resolveAddressBits:
 	andl	$2147483632, %ecx
 	cmpl	%ebp, %ebx
 	leal	(%edx,%ecx,2), %edx
-	ja	.L1425
+	ja	.L1419
 	movl	28(%esp), %eax
 	movl	$0, (%eax)
 	movl	%edx, 4(%eax)
 	movl	$0, 8(%eax)
-.L1417:
+.L1411:
 	addl	$8, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -11317,40 +11261,40 @@ resolveAddressBits:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret	$4
-.L1433:
+.L1427:
 	.cfi_restore_state
 	movl	$0, current_lookup_fault
-.L1432:
+.L1426:
 	movl	44(%esp), %ebx
 	movl	$0, current_lookup_fault+4
 	movl	$2, (%eax)
 	movl	$0, 4(%eax)
 	movl	%ebx, 8(%eax)
-	jmp	.L1417
-.L1425:
+	jmp	.L1411
+.L1419:
 	movl	(%edx), %eax
 	movl	4(%edx), %ecx
 	movl	%eax, %ebx
 	andl	$14, %ebx
 	cmpl	$14, %ebx
 	movl	%eax, 4(%esp)
-	je	.L1426
+	je	.L1420
 	movl	%eax, %ebx
 	andl	$15, %ebx
-.L1427:
+.L1421:
 	cmpl	$10, %ebx
-	jne	.L1428
+	jne	.L1422
 	movl	%edi, %ebx
-	jmp	.L1429
-.L1434:
+	jmp	.L1423
+.L1428:
 	sall	$8, %ebp
 	movl	28(%esp), %eax
 	sall	$2, %ebx
 	orl	%ebx, %ebp
 	orl	$2, %ebp
 	movl	%ebp, current_lookup_fault
-	jmp	.L1432
-.L1430:
+	jmp	.L1426
+.L1424:
 	andl	$63, %ebx
 	movl	28(%esp), %eax
 	sall	$8, %ebx
@@ -11363,16 +11307,16 @@ resolveAddressBits:
 	movl	%ebx, current_lookup_fault+4
 	movl	44(%esp), %ebx
 	movl	%ebx, 8(%eax)
-	jmp	.L1417
-.L1426:
+	jmp	.L1411
+.L1420:
 	movzbl	4(%esp), %ebx
-	jmp	.L1427
-.L1428:
+	jmp	.L1421
+.L1422:
 	movl	28(%esp), %eax
 	movl	$0, (%eax)
 	movl	%edx, 4(%eax)
 	movl	%edi, 8(%eax)
-	jmp	.L1417
+	jmp	.L1411
 	.cfi_endproc
 .LFE426:
 	.size	resolveAddressBits, .-resolveAddressBits
@@ -11458,11 +11402,11 @@ lookupSlotForCNodeOp:
 	cmpl	$14, %esi
 	cmove	%ecx, %edx
 	cmpl	$10, %edx
-	jne	.L1446
+	jne	.L1440
 	movl	28(%ebp), %ecx
 	leal	-1(%ecx), %edx
 	cmpl	$31, %edx
-	ja	.L1447
+	ja	.L1441
 	movl	%ecx, 16(%esp)
 	movl	24(%ebp), %ecx
 	leal	-24(%ebp), %edx
@@ -11475,13 +11419,13 @@ lookupSlotForCNodeOp:
 	movl	-16(%ebp), %eax
 	subl	$4, %esp
 	testl	%edx, %edx
-	jne	.L1448
+	jne	.L1442
 	testl	%eax, %eax
-	jne	.L1449
+	jne	.L1443
 	movl	-20(%ebp), %eax
 	movl	$0, (%ebx)
 	movl	%eax, 4(%ebx)
-.L1437:
+.L1431:
 	leal	-12(%ebp), %esp
 	movl	%ebx, %eax
 	popl	%ebx
@@ -11495,7 +11439,7 @@ lookupSlotForCNodeOp:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret	$4
-.L1446:
+.L1440:
 	.cfi_restore_state
 	movl	12(%ebp), %eax
 	movl	$6, current_syscall_error+24
@@ -11504,8 +11448,8 @@ lookupSlotForCNodeOp:
 	movl	%eax, current_syscall_error+20
 	movl	$3, (%ebx)
 	movl	$0, 4(%ebx)
-	jmp	.L1437
-.L1449:
+	jmp	.L1431
+.L1443:
 	movl	12(%ebp), %edi
 	sall	$2, %eax
 	movzbl	%al, %eax
@@ -11516,21 +11460,21 @@ lookupSlotForCNodeOp:
 	movl	$0, current_lookup_fault+4
 	movl	$3, (%ebx)
 	movl	$0, 4(%ebx)
-	jmp	.L1437
-.L1448:
+	jmp	.L1431
+.L1442:
 	movl	12(%ebp), %eax
 	movl	$6, current_syscall_error+24
 	movl	$3, (%ebx)
 	movl	$0, 4(%ebx)
 	movl	%eax, current_syscall_error+20
-	jmp	.L1437
-.L1447:
+	jmp	.L1431
+.L1441:
 	movl	$4, current_syscall_error+24
 	movl	$1, current_syscall_error+8
 	movl	$32, current_syscall_error+12
 	movl	$3, (%ebx)
 	movl	$0, 4(%ebx)
-	jmp	.L1437
+	jmp	.L1431
 	.cfi_endproc
 .LFE422:
 	.size	lookupSlotForCNodeOp, .-lookupSlotForCNodeOp
@@ -11682,13 +11626,13 @@ lookupCap:
 	movl	-20(%ebp), %eax
 	subl	$4, %esp
 	testl	%edx, %edx
-	jne	.L1460
+	jne	.L1454
 	movl	(%eax), %edx
 	movl	4(%eax), %eax
 	movl	$0, (%ebx)
 	movl	%edx, 4(%ebx)
 	movl	%eax, 8(%ebx)
-.L1456:
+.L1450:
 	leal	-12(%ebp), %esp
 	movl	%ebx, %eax
 	popl	%ebx
@@ -11702,12 +11646,12 @@ lookupCap:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret	$4
-.L1460:
+.L1454:
 	.cfi_restore_state
 	movl	%edx, (%ebx)
 	movl	$0, 4(%ebx)
 	movl	$0, 8(%ebx)
-	jmp	.L1456
+	jmp	.L1450
 	.cfi_endproc
 .LFE419:
 	.size	lookupCap, .-lookupCap
@@ -11748,14 +11692,14 @@ lookupCapAndSlot:
 	movl	-20(%ebp), %eax
 	subl	$4, %esp
 	testl	%edx, %edx
-	jne	.L1465
+	jne	.L1459
 	movl	(%eax), %ecx
 	movl	4(%eax), %edx
 	movl	$0, (%ebx)
 	movl	%eax, 12(%ebx)
 	movl	%ecx, 4(%ebx)
 	movl	%edx, 8(%ebx)
-.L1461:
+.L1455:
 	leal	-12(%ebp), %esp
 	movl	%ebx, %eax
 	popl	%ebx
@@ -11769,13 +11713,13 @@ lookupCapAndSlot:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret	$4
-.L1465:
+.L1459:
 	.cfi_restore_state
 	movl	%edx, (%ebx)
 	movl	$0, 4(%ebx)
 	movl	$0, 8(%ebx)
 	movl	$0, 12(%ebx)
-	jmp	.L1461
+	jmp	.L1455
 	.cfi_endproc
 .LFE420:
 	.size	lookupCapAndSlot, .-lookupCapAndSlot
@@ -11805,19 +11749,19 @@ doFaultTransfer:
 	movl	604(%eax), %edx
 	andl	$7, %edx
 	cmpl	$2, %edx
-	je	.L1468
-	jbe	.L1491
+	je	.L1462
+	jbe	.L1485
 	cmpl	$3, %edx
-	je	.L1471
+	je	.L1465
 	cmpl	$4, %edx
 	.p2align 4,,5
-	jne	.L1467
+	jne	.L1461
 	movl	44(%eax), %edx
 	testl	%ecx, %ecx
 	movl	%edx, 20(%ebx)
 	movl	68(%eax), %edx
 	movl	%edx, 24(%ebx)
-	je	.L1474
+	je	.L1468
 	movl	64(%eax), %edx
 	movl	%edx, 12(%ecx)
 	movl	608(%eax), %edx
@@ -11826,16 +11770,16 @@ doFaultTransfer:
 	shrl	$3, %edx
 	movl	%edx, 20(%ecx)
 	movl	$5, %edx
-	jmp	.L1480
+	jmp	.L1474
 	.p2align 4,,7
 	.p2align 3
-.L1471:
+.L1465:
 	movl	(%eax), %edx
 	testl	%ecx, %ecx
 	movl	%edx, 20(%ebx)
 	movl	4(%eax), %edx
 	movl	%edx, 24(%ebx)
-	je	.L1474
+	je	.L1468
 	movl	8(%eax), %edx
 	movl	%edx, 12(%ecx)
 	movl	12(%eax), %edx
@@ -11855,18 +11799,18 @@ doFaultTransfer:
 	movl	608(%eax), %edx
 	movl	%edx, 44(%ecx)
 	movl	$11, %edx
-	jmp	.L1480
+	jmp	.L1474
 	.p2align 4,,7
 	.p2align 3
-.L1491:
+.L1485:
 	cmpl	$1, %edx
-	jne	.L1467
+	jne	.L1461
 	movl	44(%eax), %edx
 	testl	%ecx, %ecx
 	movl	%edx, 20(%ebx)
 	movl	608(%eax), %edx
 	movl	%edx, 24(%ebx)
-	je	.L1474
+	je	.L1468
 	movl	604(%eax), %edx
 	shrl	$31, %edx
 	movl	%edx, 12(%ecx)
@@ -11877,29 +11821,29 @@ doFaultTransfer:
 	leal	1(%edx), %edi
 	cmpl	$2, %edx
 	movl	%edi, 16(%ecx)
-	je	.L1477
+	je	.L1471
 	cmpl	$3, %edx
-	je	.L1478
+	je	.L1472
 	cmpl	$1, %edx
-	jne	.L1490
+	jne	.L1484
 	andl	$252, %esi
 	movb	$5, %dl
 	shrl	$2, %esi
 	movl	%esi, 20(%ecx)
-	jmp	.L1480
+	jmp	.L1474
 	.p2align 4,,7
 	.p2align 3
-.L1467:
+.L1461:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L1468:
+.L1462:
 	movl	44(%eax), %edx
 	testl	%ecx, %ecx
 	movl	%edx, 20(%ebx)
 	movl	608(%eax), %edx
 	movl	%edx, 24(%ebx)
-	je	.L1474
+	je	.L1468
 	movl	604(%eax), %edx
 	andl	$524288, %edx
 	shrl	$19, %edx
@@ -11907,9 +11851,9 @@ doFaultTransfer:
 	movl	604(%eax), %edx
 	shrl	$27, %edx
 	movl	%edx, 16(%ecx)
-.L1490:
+.L1484:
 	movl	$4, %edx
-.L1480:
+.L1474:
 	movl	604(%eax), %eax
 	andl	$7, %eax
 	sall	$12, %eax
@@ -11935,13 +11879,13 @@ doFaultTransfer:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1474:
+.L1468:
 	.cfi_restore_state
 	movl	$2, %edx
-	jmp	.L1480
+	jmp	.L1474
 	.p2align 4,,7
 	.p2align 3
-.L1478:
+.L1472:
 	movl	%esi, %edx
 	andl	$252, %esi
 	andl	$16128, %edx
@@ -11951,10 +11895,10 @@ doFaultTransfer:
 	movl	$7, %edx
 	movl	%ebp, 24(%ecx)
 	movl	%esi, 28(%ecx)
-	jmp	.L1480
+	jmp	.L1474
 	.p2align 4,,7
 	.p2align 3
-.L1477:
+.L1471:
 	movl	%esi, %edx
 	andl	$16128, %esi
 	andl	$252, %edx
@@ -11963,7 +11907,7 @@ doFaultTransfer:
 	movl	%edx, 20(%ecx)
 	movl	$6, %edx
 	movl	%esi, 24(%ecx)
-	jmp	.L1480
+	jmp	.L1474
 	.cfi_endproc
 .LFE439:
 	.size	doFaultTransfer, .-doFaultTransfer
@@ -12008,7 +11952,7 @@ switchToThread:
 	call	Arch_switchToThread
 	movl	600(%ebx), %edx
 	testb	$1, %dl
-	je	.L1494
+	je	.L1488
 	movl	620(%ebx), %eax
 	sall	$8, %eax
 	addl	624(%ebx), %eax
@@ -12018,21 +11962,21 @@ switchToThread:
 	movl	%ecx, 4(%esp)
 	movl	644(%ebx), %ecx
 	testl	%ecx, %ecx
-	je	.L1495
+	je	.L1489
 	movl	640(%ebx), %edi
 	movl	%edi, 640(%ecx)
 	movl	640(%ebx), %edi
-.L1496:
+.L1490:
 	testl	%edi, %edi
-	je	.L1498
+	je	.L1492
 	movl	%ecx, 644(%edi)
-.L1497:
+.L1491:
 	movl	%ebp, ksReadyQueues(,%eax,8)
 	movl	4(%esp), %eax
 	andl	$-2, %edx
 	movl	%eax, 4(%esi)
 	movl	%edx, 600(%ebx)
-.L1494:
+.L1488:
 	movl	%ebx, ksCurThread
 	addl	$8, %esp
 	.cfi_remember_state
@@ -12052,16 +11996,16 @@ switchToThread:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1495:
+.L1489:
 	.cfi_restore_state
 	movl	640(%ebx), %ebp
 	movl	%ebp, %edi
-	jmp	.L1496
+	jmp	.L1490
 	.p2align 4,,7
 	.p2align 3
-.L1498:
+.L1492:
 	movl	%ecx, 4(%esp)
-	jmp	.L1497
+	jmp	.L1491
 	.cfi_endproc
 .LFE445:
 	.size	switchToThread, .-switchToThread
@@ -12086,16 +12030,16 @@ rescheduleRequired:
 	movl	ksSchedulerAction, %eax
 	leal	-1(%eax), %edx
 	cmpl	$-3, %edx
-	jbe	.L1510
-.L1509:
+	jbe	.L1504
+.L1503:
 	movl	$-1, ksSchedulerAction
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1510:
+.L1504:
 	movl	600(%eax), %ecx
 	testb	$1, %cl
-	jne	.L1509
+	jne	.L1503
 	pushl	%edi
 	.cfi_def_cfa_offset 8
 	.cfi_offset 7, -8
@@ -12112,9 +12056,9 @@ rescheduleRequired:
 	movl	ksReadyQueues(,%edx,8), %edi
 	movl	4(%esi), %ebx
 	testl	%ebx, %ebx
-	je	.L1507
+	je	.L1501
 	movl	%eax, 644(%edi)
-.L1506:
+.L1500:
 	orl	$1, %ecx
 	movl	$0, 644(%eax)
 	movl	%edi, 640(%eax)
@@ -12135,10 +12079,10 @@ rescheduleRequired:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1507:
+.L1501:
 	.cfi_restore_state
 	movl	%eax, %ebx
-	jmp	.L1506
+	jmp	.L1500
 	.cfi_endproc
 .LFE455:
 	.size	rescheduleRequired, .-rescheduleRequired
@@ -12150,20 +12094,20 @@ scheduleTCB:
 	.cfi_startproc
 	movl	4(%esp), %eax
 	cmpl	ksCurThread, %eax
-	je	.L1514
-.L1511:
+	je	.L1508
+.L1505:
 	rep ret
 	.p2align 4,,7
 	.p2align 3
-.L1514:
+.L1508:
 	movl	ksSchedulerAction, %edx
 	testl	%edx, %edx
-	jne	.L1511
+	jne	.L1505
 	movl	592(%eax), %eax
 	andl	$15, %eax
 	subl	$1, %eax
 	cmpl	$1, %eax
-	jbe	.L1511
+	jbe	.L1505
 	jmp	rescheduleRequired
 	.cfi_endproc
 .LFE453:
@@ -12185,8 +12129,8 @@ decodeIA32PortInvocation:
 	movl	36(%esp), %eax
 	movl	52(%esp), %edx
 	testl	%eax, %eax
-	jne	.L1516
-.L1533:
+	jne	.L1510
+.L1527:
 	movl	$7, current_syscall_error+24
 	addl	$20, %esp
 	.cfi_remember_state
@@ -12201,29 +12145,29 @@ decodeIA32PortInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1516:
+.L1510:
 	.cfi_restore_state
 	movl	32(%esp), %ecx
 	movl	ksCurThread, %esi
 	subl	$36, %ecx
 	cmpl	$5, %ecx
 	movl	20(%esi), %ebx
-	ja	.L1518
-	jmp	*.L1520(,%ecx,4)
+	ja	.L1512
+	jmp	*.L1514(,%ecx,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L1520:
+.L1514:
+	.long	.L1513
+	.long	.L1515
+	.long	.L1516
+	.long	.L1517
+	.long	.L1518
 	.long	.L1519
-	.long	.L1521
-	.long	.L1522
-	.long	.L1523
-	.long	.L1524
-	.long	.L1525
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L1518:
+.L1512:
 	movl	$3, current_syscall_error+24
 	addl	$20, %esp
 	.cfi_remember_state
@@ -12238,24 +12182,24 @@ decodeIA32PortInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1524:
+.L1518:
 	.cfi_restore_state
 	movzwl	%bx, %eax
 	movzwl	%dx, %esi
 	leal	1(%eax), %ecx
 	cmpl	%ecx, %esi
-	jb	.L1518
+	jb	.L1512
 	shrl	$16, %edx
 	cmpl	%edx, %eax
-	jb	.L1518
+	jb	.L1512
 	shrl	$16, %ebx
 	movl	%ebx, 4(%esp)
 	movl	%eax, (%esp)
 	call	out16
-.L1536:
+.L1530:
 	movl	ksCurThread, %edx
 	xorl	%eax, %eax
-.L1537:
+.L1531:
 	movl	%eax, 16(%edx)
 	movl	592(%edx), %eax
 	andl	$-16, %eax
@@ -12276,85 +12220,85 @@ decodeIA32PortInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1525:
+.L1519:
 	.cfi_restore_state
 	cmpl	$1, %eax
-	jbe	.L1533
+	jbe	.L1527
 	movzwl	%bx, %ebx
 	movzwl	%dx, %ecx
 	leal	3(%ebx), %eax
 	cmpl	%eax, %ecx
-	jb	.L1518
+	jb	.L1512
 	shrl	$16, %edx
 	cmpl	%edx, %ebx
-	jb	.L1518
+	jb	.L1512
 	movl	24(%esi), %eax
 	movl	%ebx, (%esp)
 	movl	%eax, 4(%esp)
 	call	out32
-	jmp	.L1536
+	jmp	.L1530
 	.p2align 4,,7
 	.p2align 3
-.L1519:
+.L1513:
 	cmpw	%bx, %dx
 	movzwl	%bx, %eax
-	jb	.L1518
+	jb	.L1512
 	shrl	$16, %edx
 	cmpl	%edx, %eax
-	jb	.L1518
+	jb	.L1512
 	movl	%eax, (%esp)
 	call	in8
 	movzbl	%al, %eax
-.L1535:
+.L1529:
 	movl	ksCurThread, %edx
 	movl	%eax, 20(%edx)
 	movl	$1, %eax
 	movl	$0, 4(%edx)
-	jmp	.L1537
+	jmp	.L1531
 	.p2align 4,,7
 	.p2align 3
-.L1521:
+.L1515:
 	movzwl	%bx, %ebx
 	movzwl	%dx, %ecx
 	leal	1(%ebx), %eax
 	cmpl	%eax, %ecx
-	jb	.L1518
+	jb	.L1512
 	shrl	$16, %edx
 	cmpl	%edx, %ebx
-	jb	.L1518
+	jb	.L1512
 	movl	%ebx, (%esp)
 	call	in16
 	movzwl	%ax, %eax
-	jmp	.L1535
+	jmp	.L1529
 	.p2align 4,,7
 	.p2align 3
-.L1522:
+.L1516:
 	movzwl	%bx, %ebx
 	movzwl	%dx, %ecx
 	leal	3(%ebx), %eax
 	cmpl	%eax, %ecx
-	jb	.L1518
+	jb	.L1512
 	shrl	$16, %edx
 	cmpl	%edx, %ebx
-	jb	.L1518
+	jb	.L1512
 	movl	%ebx, (%esp)
 	call	in32
-	jmp	.L1535
+	jmp	.L1529
 	.p2align 4,,7
 	.p2align 3
-.L1523:
+.L1517:
 	cmpw	%bx, %dx
 	movzwl	%bx, %eax
-	jb	.L1518
+	jb	.L1512
 	shrl	$16, %edx
 	cmpl	%edx, %eax
-	jb	.L1518
+	jb	.L1512
 	shrl	$16, %ebx
 	movzbl	%bl, %ebx
 	movl	%ebx, 4(%esp)
 	movl	%eax, (%esp)
 	call	out8
-	jmp	.L1536
+	jmp	.L1530
 	.cfi_endproc
 .LFE379:
 	.size	decodeIA32PortInvocation, .-decodeIA32PortInvocation
@@ -12371,16 +12315,16 @@ activateThread:
 	movl	%ecx, %edx
 	andl	$15, %edx
 	cmpl	$2, %edx
-	je	.L1547
+	je	.L1541
 	cmpl	$7, %edx
-	je	.L1545
+	je	.L1539
 	cmpl	$1, %edx
-	je	.L1545
+	je	.L1539
 	.p2align 4,,5
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L1547:
+.L1541:
 	movl	44(%eax), %edx
 	andl	$-16, %ecx
 	orl	$1, %ecx
@@ -12388,7 +12332,7 @@ activateThread:
 	movl	%edx, 56(%eax)
 	movl	%eax, (%esp)
 	call	scheduleTCB
-.L1545:
+.L1539:
 	addl	$28, %esp
 	.cfi_def_cfa_offset 4
 	ret
@@ -12415,24 +12359,24 @@ create_idle_thread:
 	movl	%eax, %edx
 	xorl	%eax, %eax
 	testl	%edx, %edx
-	je	.L1558
+	je	.L1552
 	testb	$1, %dl
 	movl	%edx, %edi
 	movl	$1024, %ebx
-	jne	.L1578
-.L1559:
+	jne	.L1572
+.L1553:
 	testl	$2, %edi
-	jne	.L1579
-.L1560:
+	jne	.L1573
+.L1554:
 	movl	%ebx, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testb	$2, %bl
 	rep stosl
-	jne	.L1580
+	jne	.L1574
 	andl	$1, %ebx
-	jne	.L1581
-.L1562:
+	jne	.L1575
+.L1556:
 	leal	256(%edx), %eax
 	movl	$514, 320(%edx)
 	movl	$idle_thread, 312(%edx)
@@ -12450,7 +12394,7 @@ create_idle_thread:
 	movl	%eax, (%esp)
 	call	scheduleTCB
 	movl	$1, %eax
-.L1558:
+.L1552:
 	addl	$4, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -12463,34 +12407,34 @@ create_idle_thread:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1581:
+.L1575:
 	.cfi_restore_state
 	movb	$0, (%edi)
-	jmp	.L1562
+	jmp	.L1556
 	.p2align 4,,7
 	.p2align 3
-.L1580:
+.L1574:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	andl	$1, %ebx
-	je	.L1562
-	jmp	.L1581
+	je	.L1556
+	jmp	.L1575
 	.p2align 4,,7
 	.p2align 3
-.L1579:
+.L1573:
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
 	subl	$2, %ebx
-	jmp	.L1560
+	jmp	.L1554
 	.p2align 4,,7
 	.p2align 3
-.L1578:
+.L1572:
 	movb	$0, (%edx)
 	leal	1(%edx), %edi
 	movw	$1023, %bx
-	jmp	.L1559
+	jmp	.L1553
 	.cfi_endproc
 .LFE411:
 	.size	create_idle_thread, .-create_idle_thread
@@ -12520,7 +12464,7 @@ setDomain:
 	movl	600(%eax), %ecx
 	testb	$1, %cl
 	movl	%ecx, %ebx
-	je	.L1583
+	je	.L1577
 	movl	620(%eax), %edx
 	movl	640(%eax), %ebp
 	sall	$8, %edx
@@ -12532,14 +12476,14 @@ setDomain:
 	movl	%ebx, 4(%esp)
 	movl	644(%eax), %ebx
 	testl	%ebx, %ebx
-	je	.L1584
+	je	.L1578
 	movl	%ebp, 640(%ebx)
 	movl	640(%eax), %ebp
-.L1585:
+.L1579:
 	testl	%ebp, %ebp
-	je	.L1593
+	je	.L1587
 	movl	%ebx, 644(%ebp)
-.L1586:
+.L1580:
 	movl	(%esp), %ebx
 	andl	$-2, %ecx
 	movl	%ebx, ksReadyQueues(,%edx,8)
@@ -12547,33 +12491,33 @@ setDomain:
 	movl	%ecx, %ebx
 	movl	%edx, 4(%edi)
 	movl	%ecx, 600(%eax)
-.L1583:
+.L1577:
 	movl	592(%eax), %edx
 	movl	%esi, 620(%eax)
 	andl	$15, %edx
 	subl	$1, %edx
 	cmpl	$1, %edx
-	ja	.L1587
+	ja	.L1581
 	testb	$1, %bl
-	jne	.L1587
+	jne	.L1581
 	sall	$8, %esi
 	addl	624(%eax), %esi
 	leal	ksReadyQueues(,%esi,8), %ecx
 	movl	ksReadyQueues(,%esi,8), %edi
 	movl	4(%ecx), %edx
 	testl	%edx, %edx
-	je	.L1594
+	je	.L1588
 	movl	%eax, 644(%edi)
-.L1589:
+.L1583:
 	orl	$1, %ebx
 	movl	$0, 644(%eax)
 	movl	%edi, 640(%eax)
 	movl	%eax, ksReadyQueues(,%esi,8)
 	movl	%edx, 4(%ecx)
 	movl	%ebx, 600(%eax)
-.L1587:
+.L1581:
 	cmpl	ksCurThread, %eax
-	je	.L1598
+	je	.L1592
 	addl	$8, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -12592,7 +12536,7 @@ setDomain:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1598:
+.L1592:
 	.cfi_restore_state
 	addl	$8, %esp
 	.cfi_remember_state
@@ -12612,20 +12556,20 @@ setDomain:
 	jmp	rescheduleRequired
 	.p2align 4,,7
 	.p2align 3
-.L1584:
+.L1578:
 	.cfi_restore_state
 	movl	%ebp, (%esp)
-	jmp	.L1585
+	jmp	.L1579
 	.p2align 4,,7
 	.p2align 3
-.L1593:
+.L1587:
 	movl	%ebx, 4(%esp)
-	jmp	.L1586
+	jmp	.L1580
 	.p2align 4,,7
 	.p2align 3
-.L1594:
+.L1588:
 	movl	%eax, %edx
-	jmp	.L1589
+	jmp	.L1583
 	.cfi_endproc
 .LFE447:
 	.size	setDomain, .-setDomain
@@ -12654,7 +12598,7 @@ setPriority:
 	movl	600(%eax), %ecx
 	testb	$1, %cl
 	movl	%ecx, %ebx
-	je	.L1600
+	je	.L1594
 	movl	620(%eax), %edx
 	movl	640(%eax), %ebp
 	sall	$8, %edx
@@ -12666,14 +12610,14 @@ setPriority:
 	movl	%ebx, 4(%esp)
 	movl	644(%eax), %ebx
 	testl	%ebx, %ebx
-	je	.L1601
+	je	.L1595
 	movl	%ebp, 640(%ebx)
 	movl	640(%eax), %ebp
-.L1602:
+.L1596:
 	testl	%ebp, %ebp
-	je	.L1610
+	je	.L1604
 	movl	%ebx, 644(%ebp)
-.L1603:
+.L1597:
 	movl	(%esp), %ebx
 	andl	$-2, %ecx
 	movl	%ebx, ksReadyQueues(,%edx,8)
@@ -12681,15 +12625,15 @@ setPriority:
 	movl	%ecx, %ebx
 	movl	%edx, 4(%edi)
 	movl	%ecx, 600(%eax)
-.L1600:
+.L1594:
 	movl	592(%eax), %edx
 	movl	%esi, 624(%eax)
 	andl	$15, %edx
 	subl	$1, %edx
 	cmpl	$1, %edx
-	ja	.L1604
+	ja	.L1598
 	testb	$1, %bl
-	jne	.L1604
+	jne	.L1598
 	movl	620(%eax), %edx
 	sall	$8, %edx
 	addl	%edx, %esi
@@ -12697,18 +12641,18 @@ setPriority:
 	movl	ksReadyQueues(,%esi,8), %edi
 	movl	4(%ecx), %edx
 	testl	%edx, %edx
-	je	.L1611
+	je	.L1605
 	movl	%eax, 644(%edi)
-.L1606:
+.L1600:
 	orl	$1, %ebx
 	movl	$0, 644(%eax)
 	movl	%edi, 640(%eax)
 	movl	%eax, ksReadyQueues(,%esi,8)
 	movl	%edx, 4(%ecx)
 	movl	%ebx, 600(%eax)
-.L1604:
+.L1598:
 	cmpl	ksCurThread, %eax
-	je	.L1615
+	je	.L1609
 	addl	$8, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -12727,7 +12671,7 @@ setPriority:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1615:
+.L1609:
 	.cfi_restore_state
 	addl	$8, %esp
 	.cfi_remember_state
@@ -12747,20 +12691,20 @@ setPriority:
 	jmp	rescheduleRequired
 	.p2align 4,,7
 	.p2align 3
-.L1601:
+.L1595:
 	.cfi_restore_state
 	movl	%ebp, (%esp)
-	jmp	.L1602
+	jmp	.L1596
 	.p2align 4,,7
 	.p2align 3
-.L1610:
+.L1604:
 	movl	%ebx, 4(%esp)
-	jmp	.L1603
+	jmp	.L1597
 	.p2align 4,,7
 	.p2align 3
-.L1611:
+.L1605:
 	movl	%eax, %edx
-	jmp	.L1606
+	jmp	.L1600
 	.cfi_endproc
 .LFE448:
 	.size	setPriority, .-setPriority
@@ -12773,15 +12717,15 @@ handleDoubleFault:
 	movl	4(%esp), %eax
 	andl	$-16, 592(%eax)
 	cmpl	ksCurThread, %eax
-	je	.L1618
-.L1616:
+	je	.L1612
+.L1610:
 	rep ret
 	.p2align 4,,7
 	.p2align 3
-.L1618:
+.L1612:
 	movl	ksSchedulerAction, %eax
 	testl	%eax, %eax
-	jne	.L1616
+	jne	.L1610
 	jmp	rescheduleRequired
 	.cfi_endproc
 .LFE429:
@@ -12800,19 +12744,19 @@ setThreadState:
 	orl	%ecx, %eax
 	cmpl	ksCurThread, %edx
 	movl	%eax, 592(%edx)
-	je	.L1622
-.L1619:
+	je	.L1616
+.L1613:
 	rep ret
 	.p2align 4,,7
 	.p2align 3
-.L1622:
+.L1616:
 	movl	ksSchedulerAction, %edx
 	testl	%edx, %edx
-	jne	.L1619
+	jne	.L1613
 	andl	$15, %eax
 	subl	$1, %eax
 	cmpl	$1, %eax
-	jbe	.L1619
+	jbe	.L1613
 	jmp	rescheduleRequired
 	.cfi_endproc
 .LFE452:
@@ -12838,15 +12782,15 @@ configureIdleThread:
 	movl	$16, 40(%eax)
 	movl	$16, 72(%eax)
 	movl	%edx, 592(%eax)
-	je	.L1626
-.L1623:
+	je	.L1620
+.L1617:
 	rep ret
 	.p2align 4,,7
 	.p2align 3
-.L1626:
+.L1620:
 	movl	ksSchedulerAction, %eax
 	testl	%eax, %eax
-	jne	.L1623
+	jne	.L1617
 	jmp	rescheduleRequired
 	.cfi_endproc
 .LFE432:
@@ -12861,17 +12805,17 @@ preemptionPoint:
 	movl	ksWorkUnitsCompleted, %eax
 	addl	$1, %eax
 	cmpl	$99, %eax
-	ja	.L1628
+	ja	.L1622
 	movl	%eax, ksWorkUnitsCompleted
 	xorl	%eax, %eax
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1628:
+.L1622:
 	movl	$0, ksWorkUnitsCompleted
 	movl	-65008, %eax
 	testl	%eax, %eax
-	jne	.L1637
+	jne	.L1631
 	subl	$28, %esp
 	.cfi_def_cfa_offset 32
 	movl	$10, 4(%esp)
@@ -12880,7 +12824,7 @@ preemptionPoint:
 	movl	$32, (%esp)
 	call	in8
 	testb	%al, %al
-	je	.L1638
+	je	.L1632
 	movl	$4, %eax
 	addl	$28, %esp
 	.cfi_remember_state
@@ -12888,7 +12832,7 @@ preemptionPoint:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1638:
+.L1632:
 	.cfi_restore_state
 	xorl	%eax, %eax
 	addl	$28, %esp
@@ -12896,7 +12840,7 @@ preemptionPoint:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1637:
+.L1631:
 	movl	$4, %eax
 	ret
 	.cfi_endproc
@@ -12925,16 +12869,16 @@ receiveAsyncIPC:
 	movl	(%ebx), %eax
 	andl	$3, %eax
 	cmpl	$1, %eax
-	jbe	.L1641
+	jbe	.L1635
 	cmpl	$2, %eax
-	jne	.L1639
+	jne	.L1633
 	movl	12(%ebx), %edx
 	movl	8(%ebx), %eax
 	movl	$1, 16(%esi)
 	movl	%edx, 20(%esi)
 	movl	%eax, 4(%esi)
 	andl	$-4, (%ebx)
-.L1639:
+.L1633:
 	addl	$4, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
@@ -12950,7 +12894,7 @@ receiveAsyncIPC:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1641:
+.L1635:
 	.cfi_restore_state
 	movl	%ebx, %eax
 	orl	$6, %eax
@@ -12963,9 +12907,9 @@ receiveAsyncIPC:
 	movl	%eax, %edi
 	andl	$-16, %edi
 	andl	$-16, %edx
-	je	.L1644
+	je	.L1638
 	movl	%esi, 648(%edi)
-.L1643:
+.L1637:
 	movl	%edi, 652(%esi)
 	andl	$12, %eax
 	andl	$-16, %edx
@@ -12992,10 +12936,10 @@ receiveAsyncIPC:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1644:
+.L1638:
 	.cfi_restore_state
 	movl	%esi, %edx
-	jmp	.L1643
+	jmp	.L1637
 	.cfi_endproc
 .LFE460:
 	.size	receiveAsyncIPC, .-receiveAsyncIPC
@@ -13019,7 +12963,7 @@ aepCancelAll:
 	movl	%ecx, %eax
 	andl	$3, %eax
 	cmpl	$1, %eax
-	je	.L1663
+	je	.L1657
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -13033,7 +12977,7 @@ aepCancelAll:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1663:
+.L1657:
 	.cfi_restore_state
 	movl	4(%edx), %eax
 	andl	$12, %ecx
@@ -13042,31 +12986,31 @@ aepCancelAll:
 	andl	$15, %ebx
 	andl	$-16, %eax
 	movl	%ebx, 4(%edx)
-	jne	.L1660
-	jmp	.L1653
+	jne	.L1654
+	jmp	.L1647
 	.p2align 4,,7
 	.p2align 3
-.L1664:
+.L1658:
 	movl	%eax, 644(%edi)
-.L1652:
+.L1646:
 	orl	$1, %ecx
 	movl	$0, 644(%eax)
 	movl	%edi, 640(%eax)
 	movl	%eax, ksReadyQueues(,%edx,8)
 	movl	%ebx, 4(%esi)
 	movl	%ecx, 600(%eax)
-.L1651:
+.L1645:
 	movl	648(%eax), %eax
 	testl	%eax, %eax
-	je	.L1653
-.L1660:
+	je	.L1647
+.L1654:
 	movl	592(%eax), %edx
 	movl	600(%eax), %ecx
 	andl	$-16, %edx
 	orl	$2, %edx
 	testb	$1, %cl
 	movl	%edx, 592(%eax)
-	jne	.L1651
+	jne	.L1645
 	movl	620(%eax), %edx
 	sall	$8, %edx
 	addl	624(%eax), %edx
@@ -13074,17 +13018,17 @@ aepCancelAll:
 	movl	ksReadyQueues(,%edx,8), %edi
 	movl	4(%esi), %ebx
 	testl	%ebx, %ebx
-	jne	.L1664
+	jne	.L1658
 	movl	%eax, %ebx
-	jmp	.L1652
+	jmp	.L1646
 	.p2align 4,,7
 	.p2align 3
-.L1653:
+.L1647:
 	movl	ksSchedulerAction, %eax
 	leal	-1(%eax), %edx
 	cmpl	$-3, %edx
-	jbe	.L1665
-.L1650:
+	jbe	.L1659
+.L1644:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -13099,11 +13043,11 @@ aepCancelAll:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1665:
+.L1659:
 	.cfi_restore_state
 	movl	600(%eax), %ecx
 	testb	$1, %cl
-	jne	.L1650
+	jne	.L1644
 	movl	620(%eax), %edx
 	sall	$8, %edx
 	addl	624(%eax), %edx
@@ -13111,19 +13055,19 @@ aepCancelAll:
 	movl	ksReadyQueues(,%edx,8), %edi
 	movl	4(%esi), %ebx
 	testl	%ebx, %ebx
-	je	.L1657
+	je	.L1651
 	movl	%eax, 644(%edi)
-.L1655:
+.L1649:
 	orl	$1, %ecx
 	movl	$0, 644(%eax)
 	movl	%edi, 640(%eax)
 	movl	%eax, ksReadyQueues(,%edx,8)
 	movl	%ebx, 4(%esi)
 	movl	%ecx, 600(%eax)
-	jmp	.L1650
-.L1657:
+	jmp	.L1644
+.L1651:
 	movl	%eax, %ebx
-	jmp	.L1655
+	jmp	.L1649
 	.cfi_endproc
 .LFE461:
 	.size	aepCancelAll, .-aepCancelAll
@@ -13158,15 +13102,15 @@ asyncIPCCancel:
 	movl	652(%eax), %ecx
 	andl	$-16, %ebx
 	testl	%ecx, %ecx
-	je	.L1667
+	je	.L1661
 	movl	648(%eax), %ebp
 	movl	%ebp, 648(%ecx)
 	movl	648(%eax), %ebp
 	testl	%ebp, %ebp
-	je	.L1673
-.L1677:
+	je	.L1667
+.L1671:
 	movl	%ecx, 652(%ebp)
-.L1669:
+.L1663:
 	movl	%ebx, %ecx
 	andl	$15, %edi
 	andl	$-16, %ecx
@@ -13177,13 +13121,13 @@ asyncIPCCancel:
 	andl	$-16, %ecx
 	orl	%esi, %ecx
 	testl	%ebx, %ebx
-	je	.L1670
-.L1675:
+	je	.L1664
+.L1669:
 	movl	%ecx, (%edx)
 	andl	$-16, 592(%eax)
 	cmpl	ksCurThread, %eax
-	je	.L1676
-.L1666:
+	je	.L1670
+.L1660:
 	addl	$4, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -13202,16 +13146,16 @@ asyncIPCCancel:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1670:
+.L1664:
 	.cfi_restore_state
 	andl	$-4, %ecx
-	jmp	.L1675
+	jmp	.L1669
 	.p2align 4,,7
 	.p2align 3
-.L1676:
+.L1670:
 	movl	ksSchedulerAction, %eax
 	testl	%eax, %eax
-	jne	.L1666
+	jne	.L1660
 	addl	$4, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -13230,17 +13174,17 @@ asyncIPCCancel:
 	jmp	rescheduleRequired
 	.p2align 4,,7
 	.p2align 3
-.L1667:
+.L1661:
 	.cfi_restore_state
 	movl	648(%eax), %ebx
 	movl	%ebx, %ebp
 	testl	%ebp, %ebp
-	jne	.L1677
+	jne	.L1671
 	.p2align 4,,7
 	.p2align 3
-.L1673:
+.L1667:
 	movl	%ecx, (%esp)
-	jmp	.L1669
+	jmp	.L1663
 	.cfi_endproc
 .LFE462:
 	.size	asyncIPCCancel, .-asyncIPCCancel
@@ -13274,22 +13218,22 @@ invokeCNodeMove:
 	movl	%esi, 12(%ebx)
 	movl	$0, 8(%ecx)
 	movl	$0, 12(%ecx)
-	je	.L1679
+	je	.L1673
 	movl	12(%edi), %eax
 	movl	%ebx, %edx
 	andl	$-8, %edx
 	andl	$7, %eax
 	orl	%edx, %eax
 	movl	%eax, 12(%edi)
-.L1679:
+.L1673:
 	andl	$-8, %esi
-	je	.L1680
+	je	.L1674
 	movl	8(%esi), %eax
 	andl	$-8, %ebx
 	andl	$7, %eax
 	orl	%ebx, %eax
 	movl	%eax, 8(%esi)
-.L1680:
+.L1674:
 	popl	%ebx
 	.cfi_restore 3
 	.cfi_def_cfa_offset 12
@@ -13337,12 +13281,12 @@ invokeCNodeSaveCaller:
 	cmpl	$14, %edi
 	cmove	%esi, %edx
 	testl	%edx, %edx
-	je	.L1692
+	je	.L1686
 	cmpl	$8, %edx
-	jne	.L1706
+	jne	.L1700
 	testl	$1, %ebp
-	je	.L1708
-.L1692:
+	je	.L1702
+.L1686:
 	addl	$12, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -13362,12 +13306,12 @@ invokeCNodeSaveCaller:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1706:
+.L1700:
 	.cfi_restore_state
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L1708:
+.L1702:
 	movl	56(%eax), %esi
 	movl	32(%esp), %edi
 	movl	60(%eax), %edx
@@ -13381,26 +13325,26 @@ invokeCNodeSaveCaller:
 	movl	%edx, 12(%edi)
 	movl	$0, 8(%ebx)
 	movl	$0, 12(%ebx)
-	jne	.L1709
-.L1695:
+	jne	.L1703
+.L1689:
 	andl	$-8, %edx
-	je	.L1692
+	je	.L1686
 	movl	8(%edx), %eax
 	movl	32(%esp), %ecx
 	andl	$7, %eax
 	andl	$-8, %ecx
 	orl	%ecx, %eax
 	movl	%eax, 8(%edx)
-	jmp	.L1692
+	jmp	.L1686
 	.p2align 4,,7
 	.p2align 3
-.L1709:
+.L1703:
 	movl	12(%esi), %eax
 	andl	$-8, %ecx
 	andl	$7, %eax
 	orl	%ecx, %eax
 	movl	%eax, 12(%esi)
-	jmp	.L1695
+	jmp	.L1689
 	.cfi_endproc
 .LFE470:
 	.size	invokeCNodeSaveCaller, .-invokeCNodeSaveCaller
@@ -13446,13 +13390,13 @@ cteInsert:
 	cmpl	$4, %edx
 	movl	%edi, 12(%esp)
 	movl	(%eax), %edi
-	je	.L1717
-	jbe	.L1732
+	je	.L1711
+	jbe	.L1726
 	cmpl	$6, %edx
-	je	.L1717
+	je	.L1711
 	cmpl	$30, %edx
 	.p2align 4,,5
-	jne	.L1713
+	jne	.L1707
 	movl	%edi, %ecx
 	movl	%edi, %edx
 	andl	$14, %ecx
@@ -13469,7 +13413,7 @@ cteInsert:
 	leal	(%edx,%edx), %ecx
 	movl	%edx, %ebp
 	andl	$2, %ecx
-.L1719:
+.L1713:
 	movl	%eax, %edx
 	andl	$-8, %edx
 	movl	%edx, (%esp)
@@ -13488,8 +13432,8 @@ cteInsert:
 	movzbl	%cl, %ebp
 	cmovne	12(%esp), %ebp
 	cmpl	$2, %ebp
-	je	.L1733
-.L1724:
+	je	.L1727
+.L1718:
 	movl	%ebx, (%esi)
 	movl	(%esp), %edi
 	movl	4(%esp), %ebx
@@ -13502,12 +13446,12 @@ cteInsert:
 	orl	%esi, %ecx
 	andl	$-8, %edx
 	movl	%ecx, 12(%eax)
-	je	.L1710
+	je	.L1704
 	movl	8(%edx), %eax
 	andl	$7, %eax
 	orl	%esi, %eax
 	movl	%eax, 8(%edx)
-.L1710:
+.L1704:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -13526,7 +13470,7 @@ cteInsert:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1717:
+.L1711:
 	.cfi_restore_state
 	movl	4(%esp), %ecx
 	movl	20(%esp), %edx
@@ -13541,54 +13485,54 @@ cteInsert:
 	movl	%ecx, 8(%esp)
 	leal	(%ebp,%ebp), %ecx
 	andl	$2, %ecx
-	jmp	.L1719
+	jmp	.L1713
 	.p2align 4,,7
 	.p2align 3
-.L1733:
+.L1727:
 	movl	%ebx, %ecx
 	movzbl	%bl, %ebp
 	andl	$15, %ecx
 	cmpl	$14, 24(%esp)
 	cmove	%ebp, %ecx
 	cmpl	$2, %ecx
-	jne	.L1724
+	jne	.L1718
 	movl	%ebx, %ecx
 	andl	$-16, %edi
 	andl	$-16, %ecx
 	cmpl	%ecx, %edi
-	jne	.L1724
+	jne	.L1718
 	movl	4(%esp), %ebp
 	movl	20(%esp), %ecx
 	andl	$31, %ebp
 	andl	$31, %ecx
 	cmpl	%ecx, %ebp
-	jne	.L1724
+	jne	.L1718
 	leal	-4(%ebp), %ecx
 	movl	$32, %edi
 	sall	%cl, %edi
 	orl	%ebp, %edi
 	movl	%edi, 4(%eax)
-	jmp	.L1724
+	jmp	.L1718
 	.p2align 4,,7
 	.p2align 3
-.L1732:
+.L1726:
 	cmpl	$2, %edx
-	jne	.L1713
+	jne	.L1707
 	movl	%edi, %ecx
 	movl	$1, %ebp
 	andl	$14, %ecx
 	movl	%ecx, 8(%esp)
 	movl	$2, %ecx
-	jmp	.L1719
+	jmp	.L1713
 	.p2align 4,,7
 	.p2align 3
-.L1713:
+.L1707:
 	movl	%edi, %ecx
 	xorl	%ebp, %ebp
 	andl	$14, %ecx
 	movl	%ecx, 8(%esp)
 	xorl	%ecx, %ecx
-	jmp	.L1719
+	jmp	.L1713
 	.cfi_endproc
 .LFE472:
 	.size	cteInsert, .-cteInsert
@@ -13646,22 +13590,22 @@ cteMove:
 	movl	%esi, 12(%ebx)
 	movl	$0, 8(%ecx)
 	movl	$0, 12(%ecx)
-	je	.L1737
+	je	.L1731
 	movl	12(%edi), %eax
 	movl	%ebx, %edx
 	andl	$-8, %edx
 	andl	$7, %eax
 	orl	%edx, %eax
 	movl	%eax, 12(%edi)
-.L1737:
+.L1731:
 	andl	$-8, %esi
-	je	.L1736
+	je	.L1730
 	movl	8(%esi), %eax
 	andl	$-8, %ebx
 	andl	$7, %eax
 	orl	%ebx, %eax
 	movl	%eax, 8(%esi)
-.L1736:
+.L1730:
 	popl	%ebx
 	.cfi_restore 3
 	.cfi_def_cfa_offset 12
@@ -13696,7 +13640,7 @@ capSwapForDelete:
 	movl	20(%esp), %esi
 	movl	24(%esp), %edi
 	cmpl	%edi, %esi
-	je	.L1746
+	je	.L1740
 	movl	(%esi), %ecx
 	movl	4(%esi), %ebx
 	movl	4(%edi), %edx
@@ -13709,24 +13653,24 @@ capSwapForDelete:
 	movl	12(%esi), %ecx
 	movl	%ebx, %edx
 	andl	$-8, %edx
-	je	.L1748
+	je	.L1742
 	movl	12(%edx), %eax
 	movl	%edi, %ebp
 	andl	$-8, %ebp
 	andl	$7, %eax
 	orl	%ebp, %eax
 	movl	%eax, 12(%edx)
-.L1748:
+.L1742:
 	movl	%ecx, %edx
 	andl	$-8, %edx
-	je	.L1749
+	je	.L1743
 	movl	8(%edx), %eax
 	movl	%edi, %ebp
 	andl	$-8, %ebp
 	andl	$7, %eax
 	orl	%ebp, %eax
 	movl	%eax, 8(%edx)
-.L1749:
+.L1743:
 	movl	8(%edi), %edx
 	movl	12(%edi), %eax
 	movl	%edx, 8(%esi)
@@ -13734,22 +13678,22 @@ capSwapForDelete:
 	movl	%eax, 12(%esi)
 	movl	%ebx, 8(%edi)
 	movl	%ecx, 12(%edi)
-	je	.L1750
+	je	.L1744
 	movl	12(%edx), %ecx
 	movl	%esi, %ebx
 	andl	$-8, %ebx
 	andl	$7, %ecx
 	orl	%ebx, %ecx
 	movl	%ecx, 12(%edx)
-.L1750:
+.L1744:
 	andl	$-8, %eax
-	je	.L1746
+	je	.L1740
 	movl	8(%eax), %edx
 	andl	$-8, %esi
 	andl	$7, %edx
 	orl	%esi, %edx
 	movl	%edx, 8(%eax)
-.L1746:
+.L1740:
 	popl	%ebx
 	.cfi_restore 3
 	.cfi_def_cfa_offset 16
@@ -13798,24 +13742,24 @@ cteSwap:
 	movl	12(%ecx), %esi
 	movl	%edi, %edx
 	andl	$-8, %edx
-	je	.L1767
+	je	.L1761
 	movl	12(%edx), %eax
 	movl	%ebx, %ebp
 	andl	$-8, %ebp
 	andl	$7, %eax
 	orl	%ebp, %eax
 	movl	%eax, 12(%edx)
-.L1767:
+.L1761:
 	movl	%esi, %edx
 	andl	$-8, %edx
-	je	.L1768
+	je	.L1762
 	movl	8(%edx), %eax
 	movl	%ebx, %ebp
 	andl	$-8, %ebp
 	andl	$7, %eax
 	orl	%ebp, %eax
 	movl	%eax, 8(%edx)
-.L1768:
+.L1762:
 	movl	8(%ebx), %edx
 	movl	12(%ebx), %eax
 	movl	%edx, 8(%ecx)
@@ -13823,22 +13767,22 @@ cteSwap:
 	movl	%eax, 12(%ecx)
 	movl	%edi, 8(%ebx)
 	movl	%esi, 12(%ebx)
-	je	.L1769
+	je	.L1763
 	movl	12(%edx), %ebx
 	movl	%ecx, %esi
 	andl	$-8, %esi
 	andl	$7, %ebx
 	orl	%esi, %ebx
 	movl	%ebx, 12(%edx)
-.L1769:
+.L1763:
 	andl	$-8, %eax
-	je	.L1766
+	je	.L1760
 	movl	8(%eax), %edx
 	andl	$-8, %ecx
 	andl	$7, %edx
 	orl	%ecx, %edx
 	movl	%edx, 8(%eax)
-.L1766:
+.L1760:
 	popl	%ebx
 	.cfi_restore 3
 	.cfi_def_cfa_offset 16
@@ -13879,7 +13823,7 @@ invokeCNodeRotate:
 	movl	68(%esp), %ecx
 	movl	64(%esp), %eax
 	cmpl	%ecx, %edx
-	je	.L1803
+	je	.L1797
 	movl	8(%eax), %esi
 	movl	52(%esp), %edi
 	movl	56(%esp), %ebp
@@ -13893,16 +13837,16 @@ invokeCNodeRotate:
 	movl	%ebx, 12(%ecx)
 	movl	$0, 8(%eax)
 	movl	$0, 12(%eax)
-	jne	.L1804
-.L1787:
+	jne	.L1798
+.L1781:
 	andl	$-8, %ebx
-	je	.L1788
+	je	.L1782
 	movl	8(%ebx), %esi
 	andl	$-8, %ecx
 	andl	$7, %esi
 	orl	%ecx, %esi
 	movl	%esi, 8(%ebx)
-.L1788:
+.L1782:
 	movl	8(%edx), %ebx
 	movl	44(%esp), %edi
 	movl	48(%esp), %ebp
@@ -13916,16 +13860,16 @@ invokeCNodeRotate:
 	movl	%ecx, 12(%eax)
 	movl	$0, 8(%edx)
 	movl	$0, 12(%edx)
-	jne	.L1805
-.L1789:
+	jne	.L1799
+.L1783:
 	andl	$-8, %ecx
-	je	.L1786
+	je	.L1780
 	movl	8(%ecx), %edx
 	andl	$-8, %eax
 	andl	$7, %edx
 	orl	%eax, %edx
 	movl	%edx, 8(%ecx)
-.L1786:
+.L1780:
 	addl	$24, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -13945,7 +13889,7 @@ invokeCNodeRotate:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1805:
+.L1799:
 	.cfi_restore_state
 	movl	12(%ebx), %edx
 	movl	%eax, %esi
@@ -13953,20 +13897,20 @@ invokeCNodeRotate:
 	andl	$7, %edx
 	orl	%esi, %edx
 	movl	%edx, 12(%ebx)
-	jmp	.L1789
+	jmp	.L1783
 	.p2align 4,,7
 	.p2align 3
-.L1804:
+.L1798:
 	movl	12(%esi), %edi
 	movl	%ecx, %ebp
 	andl	$-8, %ebp
 	andl	$7, %edi
 	orl	%ebp, %edi
 	movl	%edi, 12(%esi)
-	jmp	.L1787
+	jmp	.L1781
 	.p2align 4,,7
 	.p2align 3
-.L1803:
+.L1797:
 	movl	52(%esp), %edi
 	movl	56(%esp), %ebp
 	movl	%eax, 20(%esp)
@@ -14025,12 +13969,12 @@ insertNewCap:
 	movl	%eax, 12(%esi)
 	andl	$-8, %esi
 	testl	%ecx, %ecx
-	je	.L1808
+	je	.L1802
 	movl	8(%ecx), %eax
 	andl	$7, %eax
 	orl	%esi, %eax
 	movl	%eax, 8(%ecx)
-.L1808:
+.L1802:
 	movl	12(%ebx), %eax
 	andl	$7, %eax
 	orl	%esi, %eax
@@ -14072,14 +14016,14 @@ setupReplyMaster:
 	cmpl	$14, %edi
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	jne	.L1810
+	jne	.L1804
 	andl	$-16, %esi
 	orl	$8, %esi
 	movl	%esi, 32(%ecx)
 	movl	$1, 36(%ecx)
 	movl	$0, 40(%ecx)
 	movl	$3, 44(%ecx)
-.L1810:
+.L1804:
 	popl	%ebx
 	.cfi_restore 3
 	.cfi_def_cfa_offset 12
@@ -14110,10 +14054,10 @@ ensureEmptySlot:
 	cmove	%eax, %edx
 	xorl	%eax, %eax
 	testl	%edx, %edx
-	je	.L1818
+	je	.L1812
 	movl	$8, current_syscall_error+24
 	movb	$3, %al
-.L1818:
+.L1812:
 	rep ret
 	.cfi_endproc
 .LFE489:
@@ -14138,7 +14082,7 @@ getReceiveSlots:
 	.cfi_offset 3, -20
 	movl	12(%ebp), %eax
 	testl	%eax, %eax
-	je	.L1829
+	je	.L1823
 	movl	500(%eax), %ecx
 	leal	-28(%ebp), %edi
 	movl	504(%eax), %ebx
@@ -14157,7 +14101,7 @@ getReceiveSlots:
 	movl	-24(%ebp), %eax
 	subl	$4, %esp
 	testl	%ecx, %ecx
-	jne	.L1829
+	jne	.L1823
 	movl	4(%eax), %edx
 	movl	(%eax), %ecx
 	leal	-40(%ebp), %eax
@@ -14172,7 +14116,7 @@ getReceiveSlots:
 	movl	-36(%ebp), %eax
 	subl	$4, %esp
 	testl	%edx, %edx
-	jne	.L1829
+	jne	.L1823
 	movl	(%eax), %ecx
 	movl	%ecx, %ebx
 	movl	%ecx, %edx
@@ -14182,7 +14126,7 @@ getReceiveSlots:
 	cmpl	$14, %ebx
 	cmove	%ecx, %edx
 	testl	%edx, %edx
-	jne	.L1829
+	jne	.L1823
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -14197,7 +14141,7 @@ getReceiveSlots:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1829:
+.L1823:
 	.cfi_restore_state
 	leal	-12(%ebp), %esp
 	xorl	%eax, %eax
@@ -14273,70 +14217,70 @@ replyFromKernel_error:
 	cmpl	$14, %esi
 	cmove	%ebx, %ecx
 	cmpl	$1, %ecx
-	jne	.L1851
+	jne	.L1845
 	movl	%eax, %ecx
 	xorl	%ebx, %ebx
 	andl	$50331648, %ecx
 	cmpl	$50331648, %ecx
-	je	.L1859
-.L1835:
+	je	.L1853
+.L1829:
 	movl	current_syscall_error+24, %ecx
 	movl	$0, 4(%edx)
 	cmpl	$10, %ecx
-	ja	.L1839
-	jmp	*.L1841(,%ecx,4)
+	ja	.L1833
+	jmp	*.L1835(,%ecx,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L1841:
+.L1835:
+	.long	.L1833
+	.long	.L1834
+	.long	.L1836
+	.long	.L1848
+	.long	.L1838
+	.long	.L1848
 	.long	.L1839
+	.long	.L1848
+	.long	.L1848
+	.long	.L1848
 	.long	.L1840
-	.long	.L1842
-	.long	.L1854
-	.long	.L1844
-	.long	.L1854
-	.long	.L1845
-	.long	.L1854
-	.long	.L1854
-	.long	.L1854
-	.long	.L1846
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L1859:
+.L1853:
 	movl	%ebp, %ecx
 	shrl	$31, %ecx
 	testl	%ecx, %ecx
-	je	.L1837
+	je	.L1831
 	cmpl	$1, %ecx
-	jne	.L1839
+	jne	.L1833
 	movl	$4194303, %ebx
-.L1838:
+.L1832:
 	andl	$16777200, %eax
 	andl	%ebx, %edi
 	sall	$8, %eax
 	leal	(%edi,%eax), %ebx
-	jmp	.L1835
+	jmp	.L1829
 	.p2align 4,,7
 	.p2align 3
-.L1837:
+.L1831:
 	movl	$4095, %ebx
-	jmp	.L1838
+	jmp	.L1832
 	.p2align 4,,7
 	.p2align 3
-.L1839:
+.L1833:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L1851:
+.L1845:
 	xorl	%ebx, %ebx
-	jmp	.L1835
+	jmp	.L1829
 	.p2align 4,,7
 	.p2align 3
-.L1854:
+.L1848:
 	movl	%ecx, %eax
 	xorl	%ecx, %ecx
-.L1843:
+.L1837:
 	sall	$12, %eax
 	orl	%ecx, %eax
 	movl	%eax, 16(%edx)
@@ -14358,7 +14302,7 @@ replyFromKernel_error:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1840:
+.L1834:
 	.cfi_restore_state
 	movl	current_syscall_error, %eax
 	movl	%eax, 20(%edx)
@@ -14384,7 +14328,7 @@ replyFromKernel_error:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1842:
+.L1836:
 	.cfi_restore_state
 	movl	current_syscall_error+4, %eax
 	movl	$1, %ecx
@@ -14411,7 +14355,7 @@ replyFromKernel_error:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1846:
+.L1840:
 	.cfi_restore_state
 	movl	current_syscall_error+16, %eax
 	xorl	%ecx, %ecx
@@ -14438,7 +14382,7 @@ replyFromKernel_error:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1845:
+.L1839:
 	.cfi_restore_state
 	movl	current_syscall_error+20, %ecx
 	xorl	%eax, %eax
@@ -14452,21 +14396,21 @@ replyFromKernel_error:
 	testl	%ebx, %ebx
 	leal	1(%eax), %esi
 	movl	%esi, 24(%edx)
-	je	.L1857
+	je	.L1851
 	cmpl	$2, %eax
-	je	.L1848
+	je	.L1842
 	cmpl	$3, %eax
-	je	.L1849
+	je	.L1843
 	cmpl	$1, %eax
 	.p2align 4,,2
-	je	.L1860
-.L1857:
+	je	.L1854
+.L1851:
 	movl	$2, %ecx
 	movl	$6, %eax
-	jmp	.L1843
+	jmp	.L1837
 	.p2align 4,,7
 	.p2align 3
-.L1844:
+.L1838:
 	movl	current_syscall_error+8, %eax
 	movl	$2, %ecx
 	movl	%eax, 20(%edx)
@@ -14494,7 +14438,7 @@ replyFromKernel_error:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1849:
+.L1843:
 	.cfi_restore_state
 	movl	%ecx, %eax
 	andl	$252, %ecx
@@ -14506,10 +14450,10 @@ replyFromKernel_error:
 	movl	%eax, 12(%ebx)
 	movl	%edi, 16(%ebx)
 	movl	current_syscall_error+24, %eax
-	jmp	.L1843
+	jmp	.L1837
 	.p2align 4,,7
 	.p2align 3
-.L1848:
+.L1842:
 	movl	%ecx, %eax
 	andl	$16128, %ecx
 	andl	$252, %eax
@@ -14519,16 +14463,16 @@ replyFromKernel_error:
 	movl	$4, %ecx
 	movl	%eax, 12(%ebx)
 	movl	current_syscall_error+24, %eax
-	jmp	.L1843
+	jmp	.L1837
 	.p2align 4,,7
 	.p2align 3
-.L1860:
+.L1854:
 	andl	$252, %ecx
 	shrl	$2, %ecx
 	movl	%ecx, 12(%ebx)
 	movl	$3, %ecx
 	movl	current_syscall_error+24, %eax
-	jmp	.L1843
+	jmp	.L1837
 	.cfi_endproc
 .LFE498:
 	.size	replyFromKernel_error, .-replyFromKernel_error
@@ -14563,7 +14507,7 @@ epCancelAll:
 	movl	16(%esp), %edx
 	movl	(%edx), %ecx
 	testb	$3, %cl
-	je	.L1862
+	je	.L1856
 	movl	4(%edx), %eax
 	andl	$12, %ecx
 	movl	%ecx, (%edx)
@@ -14571,31 +14515,31 @@ epCancelAll:
 	andl	$15, %ebx
 	andl	$-16, %eax
 	movl	%ebx, 4(%edx)
-	jne	.L1879
-	jmp	.L1870
+	jne	.L1873
+	jmp	.L1864
 	.p2align 4,,7
 	.p2align 3
-.L1883:
+.L1877:
 	movl	%eax, 644(%edi)
-.L1869:
+.L1863:
 	orl	$1, %ecx
 	movl	$0, 644(%eax)
 	movl	%edi, 640(%eax)
 	movl	%eax, ksReadyQueues(,%edx,8)
 	movl	%ebx, 4(%esi)
 	movl	%ecx, 600(%eax)
-.L1868:
+.L1862:
 	movl	648(%eax), %eax
 	testl	%eax, %eax
-	je	.L1870
-.L1879:
+	je	.L1864
+.L1873:
 	movl	592(%eax), %edx
 	movl	600(%eax), %ecx
 	andl	$-16, %edx
 	orl	$2, %edx
 	testb	$1, %cl
 	movl	%edx, 592(%eax)
-	jne	.L1868
+	jne	.L1862
 	movl	620(%eax), %edx
 	sall	$8, %edx
 	addl	624(%eax), %edx
@@ -14603,19 +14547,19 @@ epCancelAll:
 	movl	ksReadyQueues(,%edx,8), %edi
 	movl	4(%esi), %ebx
 	testl	%ebx, %ebx
-	jne	.L1883
+	jne	.L1877
 	movl	%eax, %ebx
-	jmp	.L1869
+	jmp	.L1863
 	.p2align 4,,7
 	.p2align 3
-.L1870:
+.L1864:
 	movl	ksSchedulerAction, %eax
 	leal	-1(%eax), %edx
 	cmpl	$-3, %edx
-	ja	.L1867
+	ja	.L1861
 	movl	600(%eax), %ecx
 	testb	$1, %cl
-	jne	.L1867
+	jne	.L1861
 	movl	620(%eax), %edx
 	sall	$8, %edx
 	addl	624(%eax), %edx
@@ -14623,18 +14567,18 @@ epCancelAll:
 	movl	ksReadyQueues(,%edx,8), %edi
 	movl	4(%esi), %ebx
 	testl	%ebx, %ebx
-	je	.L1874
+	je	.L1868
 	movl	%eax, 644(%edi)
-.L1872:
+.L1866:
 	orl	$1, %ecx
 	movl	$0, 644(%eax)
 	movl	%edi, 640(%eax)
 	movl	%eax, ksReadyQueues(,%edx,8)
 	movl	%ebx, 4(%esi)
 	movl	%ecx, 600(%eax)
-.L1867:
+.L1861:
 	movl	$-1, ksSchedulerAction
-.L1862:
+.L1856:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -14646,10 +14590,10 @@ epCancelAll:
 	.cfi_restore 7
 	.cfi_def_cfa_offset 4
 	ret
-.L1874:
+.L1868:
 	.cfi_restore_state
 	movl	%eax, %ebx
-	jmp	.L1872
+	jmp	.L1866
 	.cfi_endproc
 .LFE501:
 	.size	epCancelAll, .-epCancelAll
@@ -14673,8 +14617,8 @@ invokeIRQControl:
 	movl	32(%esp), %ebx
 	cmpl	$15, %ebx
 	movl	$1, intStateIRQTable(,%ebx,4)
-	jle	.L1889
-.L1885:
+	jle	.L1883
+.L1879:
 	movl	36(%esp), %eax
 	movzbl	%bl, %ebx
 	movl	%ebx, 4(%esp)
@@ -14699,16 +14643,16 @@ invokeIRQControl:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1889:
+.L1883:
 	.cfi_restore_state
 	cmpl	$7, %ebx
-	jle	.L1890
+	jle	.L1884
 	leal	-8(%ebx), %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	$161, %esi
 	movl	%eax, %edi
-.L1887:
+.L1881:
 	movl	%esi, (%esp)
 	call	in8
 	movl	%edi, %ecx
@@ -14718,15 +14662,15 @@ invokeIRQControl:
 	movzbl	%cl, %ecx
 	movl	%ecx, 4(%esp)
 	call	out8
-	jmp	.L1885
+	jmp	.L1879
 	.p2align 4,,7
 	.p2align 3
-.L1890:
+.L1884:
 	movl	$1, %edi
 	movl	%ebx, %ecx
 	sall	%cl, %edi
 	movl	$33, %esi
-	jmp	.L1887
+	jmp	.L1881
 	.cfi_endproc
 .LFE504:
 	.size	invokeIRQControl, .-invokeIRQControl
@@ -14753,10 +14697,10 @@ decodeIRQControlInvocation:
 	movl	16(%ebp), %ebx
 	movl	32(%ebp), %edi
 	movl	20(%ebp), %edx
-	je	.L1905
+	je	.L1899
 	movl	$3, current_syscall_error+24
 	movl	$3, %eax
-.L1903:
+.L1897:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -14771,12 +14715,12 @@ decodeIRQControlInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1905:
+.L1899:
 	.cfi_restore_state
 	cmpl	$2, %eax
-	jbe	.L1893
+	jbe	.L1887
 	testl	%edx, %edx
-	je	.L1893
+	je	.L1887
 	movl	ksCurThread, %eax
 	movl	12(%edi), %edi
 	movl	20(%eax), %esi
@@ -14784,15 +14728,15 @@ decodeIRQControlInvocation:
 	movl	(%edx), %eax
 	movl	4(%edx), %edx
 	cmpl	$31, %esi
-	jbe	.L1896
+	jbe	.L1890
 	movl	$4, current_syscall_error+24
 	movl	$3, %eax
 	movl	$0, current_syscall_error+8
 	movl	$31, current_syscall_error+12
-	jmp	.L1903
+	jmp	.L1897
 	.p2align 4,,7
 	.p2align 3
-.L1893:
+.L1887:
 	movl	$7, current_syscall_error+24
 	leal	-12(%ebp), %esp
 	movl	$3, %eax
@@ -14809,14 +14753,14 @@ decodeIRQControlInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1896:
+.L1890:
 	.cfi_restore_state
 	cmpl	$0, intStateIRQTable(,%esi,4)
-	je	.L1897
+	je	.L1891
 	movl	$9, current_syscall_error+24
 	movl	$3, %eax
-	jmp	.L1903
-.L1897:
+	jmp	.L1897
+.L1891:
 	movl	%eax, 8(%esp)
 	leal	-32(%ebp), %eax
 	movl	%edi, 20(%esp)
@@ -14829,7 +14773,7 @@ decodeIRQControlInvocation:
 	movl	-28(%ebp), %edi
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L1903
+	jne	.L1897
 	movl	(%edi), %edx
 	movl	%edx, %ecx
 	movl	%edx, %eax
@@ -14839,11 +14783,11 @@ decodeIRQControlInvocation:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	je	.L1900
+	je	.L1894
 	movl	$8, current_syscall_error+24
 	movl	$3, %eax
-	jmp	.L1903
-.L1900:
+	jmp	.L1897
+.L1894:
 	movl	ksCurThread, %edx
 	movl	592(%edx), %eax
 	andl	$-16, %eax
@@ -14884,7 +14828,7 @@ invokeIRQHandler_AckIRQ:
 	.cfi_def_cfa_offset 32
 	movl	32(%esp), %ecx
 	cmpl	$15, %ecx
-	jle	.L1911
+	jle	.L1905
 	addl	$20, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -14897,16 +14841,16 @@ invokeIRQHandler_AckIRQ:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1911:
+.L1905:
 	.cfi_restore_state
 	cmpl	$7, %ecx
-	jle	.L1912
+	jle	.L1906
 	subl	$8, %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	$161, %ebx
 	movl	%eax, %esi
-.L1909:
+.L1903:
 	movl	%ebx, (%esp)
 	call	in8
 	movl	%esi, %ecx
@@ -14928,12 +14872,12 @@ invokeIRQHandler_AckIRQ:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1912:
+.L1906:
 	.cfi_restore_state
 	movl	$1, %esi
 	movl	$33, %ebx
 	sall	%cl, %esi
-	jmp	.L1909
+	jmp	.L1903
 	.cfi_endproc
 .LFE506:
 	.size	invokeIRQHandler_AckIRQ, .-invokeIRQHandler_AckIRQ
@@ -14954,7 +14898,7 @@ deletedIRQHandler:
 	movl	32(%esp), %ecx
 	cmpl	$15, %ecx
 	movl	$0, intStateIRQTable(,%ecx,4)
-	jle	.L1918
+	jle	.L1912
 	addl	$20, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -14967,16 +14911,16 @@ deletedIRQHandler:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1918:
+.L1912:
 	.cfi_restore_state
 	cmpl	$7, %ecx
-	jle	.L1919
+	jle	.L1913
 	subl	$8, %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	$161, %ebx
 	movl	%eax, %esi
-.L1916:
+.L1910:
 	movl	%ebx, (%esp)
 	call	in8
 	movl	%ebx, (%esp)
@@ -14996,12 +14940,12 @@ deletedIRQHandler:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1919:
+.L1913:
 	.cfi_restore_state
 	movl	$1, %esi
 	movl	$33, %ebx
 	sall	%cl, %esi
-	jmp	.L1916
+	jmp	.L1910
 	.cfi_endproc
 .LFE510:
 	.size	deletedIRQHandler, .-deletedIRQHandler
@@ -15038,7 +14982,7 @@ setIRQState:
 	movl	32(%esp), %eax
 	cmpl	$15, %ecx
 	movl	%eax, intStateIRQTable(,%ecx,4)
-	jle	.L1928
+	jle	.L1922
 	addl	$20, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -15051,10 +14995,10 @@ setIRQState:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1928:
+.L1922:
 	.cfi_restore_state
 	cmpl	$7, %ecx
-	jle	.L1929
+	jle	.L1923
 	subl	$8, %ecx
 	movl	$1, %edx
 	sall	%cl, %edx
@@ -15062,12 +15006,12 @@ setIRQState:
 	testl	%eax, %eax
 	movl	%edx, %esi
 	movl	%ebx, (%esp)
-	je	.L1930
-.L1925:
+	je	.L1924
+.L1919:
 	call	in8
 	notl	%esi
 	andl	%esi, %eax
-.L1927:
+.L1921:
 	movzbl	%al, %eax
 	movl	%ebx, 32(%esp)
 	movl	%eax, 36(%esp)
@@ -15083,18 +15027,18 @@ setIRQState:
 	jmp	out8
 	.p2align 4,,7
 	.p2align 3
-.L1929:
+.L1923:
 	.cfi_restore_state
 	movl	$1, %esi
 	movl	$33, %ebx
 	sall	%cl, %esi
 	testl	%eax, %eax
 	movl	%ebx, (%esp)
-	jne	.L1925
-.L1930:
+	jne	.L1919
+.L1924:
 	call	in8
 	orl	%esi, %eax
-	jmp	.L1927
+	jmp	.L1921
 	.cfi_endproc
 .LFE513:
 	.size	setIRQState, .-setIRQState
@@ -15108,29 +15052,29 @@ getObjectSize:
 	.cfi_def_cfa_offset 16
 	movl	16(%esp), %edx
 	cmpl	$4, %edx
-	ja	.L1950
+	ja	.L1944
 	cmpl	$3, %edx
-	ja	.L1939
+	ja	.L1933
 	cmpl	$2, %edx
 	movl	$4, %eax
-	jae	.L1937
+	jae	.L1931
 	cmpl	$1, %edx
 	movb	$10, %al
-	jne	.L1938
-.L1937:
+	jne	.L1932
+.L1931:
 	addl	$12, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 4
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1939:
+.L1933:
 	.cfi_restore_state
 	movl	20(%esp), %eax
 	addl	$4, %eax
 	cmpl	$4, %edx
-	je	.L1937
-.L1938:
+	je	.L1931
+.L1932:
 	movl	20(%esp), %eax
 	addl	$12, %esp
 	.cfi_remember_state
@@ -15138,30 +15082,30 @@ getObjectSize:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1950:
+.L1944:
 	.cfi_restore_state
 	cmpl	$6, %edx
-	je	.L1942
+	je	.L1936
 	.p2align 4,,2
-	ja	.L1935
+	ja	.L1929
 	cmpl	$5, %edx
 	.p2align 4,,5
-	jne	.L1933
-.L1936:
+	jne	.L1927
+.L1930:
 	movl	$12, %eax
 	.p2align 4,,3
-	jmp	.L1937
+	jmp	.L1931
 	.p2align 4,,7
 	.p2align 3
-.L1942:
+.L1936:
 	movl	$22, %eax
-	jmp	.L1937
+	jmp	.L1931
 	.p2align 4,,7
 	.p2align 3
-.L1935:
+.L1929:
 	cmpl	$8, %edx
-	jbe	.L1936
-.L1933:
+	jbe	.L1930
+.L1927:
 	call	halt
 	.cfi_endproc
 .LFE514:
@@ -15188,16 +15132,16 @@ hasRecycleRights:
 	cmpl	$14, %ecx
 	cmove	%ebx, %eax
 	cmpl	$4, %eax
-	je	.L1955
-	jbe	.L1981
+	je	.L1949
+	jbe	.L1975
 	cmpl	$6, %eax
-	jne	.L1982
+	jne	.L1976
 	movl	%esi, %edx
 	xorl	%eax, %eax
 	andl	$1, %edx
 	andl	$2, %esi
 	cmovne	%edx, %eax
-.L1957:
+.L1951:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -15208,11 +15152,11 @@ hasRecycleRights:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1982:
+.L1976:
 	.cfi_restore_state
 	cmpl	$62, %eax
-	jne	.L1954
-.L1966:
+	jne	.L1948
+.L1960:
 	xorl	%eax, %eax
 	popl	%ebx
 	.cfi_remember_state
@@ -15224,47 +15168,47 @@ hasRecycleRights:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1981:
+.L1975:
 	.cfi_restore_state
 	testl	%eax, %eax
-	je	.L1966
-.L1954:
+	je	.L1960
+.L1948:
 	cmpl	$14, %ecx
 	.p2align 4,,3
-	je	.L1961
+	je	.L1955
 	movl	%edx, %eax
 	andl	$15, %eax
 	testb	$1, %dl
-	je	.L1979
-.L1964:
+	je	.L1973
+.L1958:
 	cmpl	$1, %eax
-	jne	.L1979
+	jne	.L1973
 	andl	$50331648, %edx
 	xorl	%eax, %eax
 	cmpl	$50331648, %edx
 	sete	%al
-	jmp	.L1957
+	jmp	.L1951
 	.p2align 4,,7
 	.p2align 3
-.L1955:
+.L1949:
 	xorl	%eax, %eax
 	testl	$2, %esi
-	je	.L1957
+	je	.L1951
 	testl	$1, %esi
-	je	.L1957
+	je	.L1951
 	xorl	%eax, %eax
 	andl	$4, %esi
 	setne	%al
-	jmp	.L1957
+	jmp	.L1951
 	.p2align 4,,7
 	.p2align 3
-.L1961:
+.L1955:
 	testb	$1, %dl
 	movzbl	%dl, %eax
-	jne	.L1964
+	jne	.L1958
 	.p2align 4,,7
 	.p2align 3
-.L1979:
+.L1973:
 	movl	$1, %eax
 	popl	%ebx
 	.cfi_restore 3
@@ -15308,87 +15252,87 @@ sameRegionAs:
 	cmpl	$14, %ebp
 	cmove	%ecx, %eax
 	cmpl	$62, %eax
-	ja	.L1986
-	jmp	*.L1988(,%eax,4)
+	ja	.L1980
+	jmp	*.L1982(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L1988:
+.L1982:
+	.long	.L1980
+	.long	.L1980
+	.long	.L1981
+	.long	.L1980
+	.long	.L1983
+	.long	.L1980
+	.long	.L1984
+	.long	.L1980
+	.long	.L1985
+	.long	.L1980
 	.long	.L1986
-	.long	.L1986
+	.long	.L1980
 	.long	.L1987
-	.long	.L1986
+	.long	.L1980
+	.long	.L1988
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
 	.long	.L1989
-	.long	.L1986
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
+	.long	.L1980
 	.long	.L1990
-	.long	.L1986
-	.long	.L1991
-	.long	.L1986
-	.long	.L1992
-	.long	.L1986
-	.long	.L1993
-	.long	.L1986
-	.long	.L1994
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1995
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1986
-	.long	.L1996
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L1996:
+.L1990:
 	movl	%ebx, %edx
 	xorl	%eax, %eax
 	andl	$14, %edx
 	cmpl	$14, %edx
-	je	.L2065
+	je	.L2059
 	.p2align 4,,7
 	.p2align 3
-.L2020:
+.L2014:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -15407,7 +15351,7 @@ sameRegionAs:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1987:
+.L1981:
 	.cfi_restore_state
 	andl	$-16, %edx
 	movl	%ebx, %eax
@@ -15423,79 +15367,79 @@ sameRegionAs:
 	cmpl	$14, 12(%esp)
 	cmove	%ecx, %edx
 	cmpl	$62, %edx
-	ja	.L1999
-	jmp	*.L2001(,%edx,4)
+	ja	.L1993
+	jmp	*.L1995(,%edx,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L2001:
-	.long	.L2007
-	.long	.L2002
+.L1995:
+	.long	.L2001
+	.long	.L1996
+	.long	.L1997
 	.long	.L2003
+	.long	.L1999
+	.long	.L2003
+	.long	.L1999
+	.long	.L2001
+	.long	.L2001
+	.long	.L2003
+	.long	.L2004
+	.long	.L2001
+	.long	.L2032
+	.long	.L1993
+	.long	.L2001
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L2001
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
 	.long	.L2009
-	.long	.L2005
-	.long	.L2009
-	.long	.L2005
-	.long	.L2007
-	.long	.L2007
-	.long	.L2009
-	.long	.L2010
-	.long	.L2007
-	.long	.L2038
-	.long	.L1999
-	.long	.L2007
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L2007
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L2015
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L1999
-	.long	.L2007
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L1993
+	.long	.L2001
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L1989:
+.L1983:
 	movl	%ebx, %esi
 	movl	%ebx, %ecx
 	andl	$14, %esi
@@ -15505,17 +15449,17 @@ sameRegionAs:
 	cmove	%eax, %ecx
 	xorl	%eax, %eax
 	cmpl	$4, %ecx
-	jne	.L2020
-.L2064:
+	jne	.L2014
+.L2058:
 	andl	$-16, %edx
 	andl	$-16, %ebx
 	xorl	%eax, %eax
 	cmpl	%ebx, %edx
 	sete	%al
-	jmp	.L2020
+	jmp	.L2014
 	.p2align 4,,7
 	.p2align 3
-.L1990:
+.L1984:
 	movl	%ebx, %esi
 	movl	%ebx, %ecx
 	andl	$14, %esi
@@ -15525,11 +15469,11 @@ sameRegionAs:
 	cmove	%eax, %ecx
 	xorl	%eax, %eax
 	cmpl	$6, %ecx
-	jne	.L2020
-	jmp	.L2064
+	jne	.L2014
+	jmp	.L2058
 	.p2align 4,,7
 	.p2align 3
-.L1991:
+.L1985:
 	movl	%ebx, %esi
 	movl	%ebx, %ecx
 	andl	$14, %esi
@@ -15539,11 +15483,11 @@ sameRegionAs:
 	cmove	%eax, %ecx
 	xorl	%eax, %eax
 	cmpl	$8, %ecx
-	jne	.L2020
-	jmp	.L2064
+	jne	.L2014
+	jmp	.L2058
 	.p2align 4,,7
 	.p2align 3
-.L1992:
+.L1986:
 	movl	%ebx, %ebp
 	movl	%ebx, %ecx
 	andl	$14, %ebp
@@ -15553,20 +15497,20 @@ sameRegionAs:
 	cmove	%eax, %ecx
 	xorl	%eax, %eax
 	cmpl	$10, %ecx
-	jne	.L2020
+	jne	.L2014
 	andl	$2147483632, %edx
 	andl	$2147483632, %ebx
 	cmpl	%edx, %ebx
-	jne	.L2020
+	jne	.L2014
 	andl	$260046848, %edi
 	andl	$260046848, %esi
 	xorl	%eax, %eax
 	cmpl	%edi, %esi
 	sete	%al
-	jmp	.L2020
+	jmp	.L2014
 	.p2align 4,,7
 	.p2align 3
-.L1993:
+.L1987:
 	movl	%ebx, %esi
 	movl	%ebx, %ecx
 	andl	$14, %esi
@@ -15576,11 +15520,11 @@ sameRegionAs:
 	cmove	%eax, %ecx
 	xorl	%eax, %eax
 	cmpl	$12, %ecx
-	jne	.L2020
-	jmp	.L2064
+	jne	.L2014
+	jmp	.L2058
 	.p2align 4,,7
 	.p2align 3
-.L1994:
+.L1988:
 	movl	%ebx, %edx
 	movl	%ebx, %eax
 	andl	$14, %edx
@@ -15610,29 +15554,29 @@ sameRegionAs:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L1995:
+.L1989:
 	.cfi_restore_state
 	movl	%ebx, %edx
 	xorl	%eax, %eax
 	andl	$14, %edx
 	cmpl	$14, %edx
-	jne	.L2020
+	jne	.L2014
 	cmpb	$30, %bl
-	jne	.L2020
+	jne	.L2014
 	movl	%esi, %eax
 	movl	%edi, %ecx
 	cmpb	%cl, %al
 	sete	%al
 	movzbl	%al, %eax
-	jmp	.L2020
+	jmp	.L2014
 	.p2align 4,,7
 	.p2align 3
-.L1986:
+.L1980:
 	xorl	%eax, %eax
 	testb	$1, %dl
-	je	.L2020
+	je	.L2014
 	testb	$1, %bl
-	je	.L2020
+	je	.L2014
 	movl	%ebx, 56(%esp)
 	movl	%esi, 60(%esp)
 	movl	%edi, 52(%esp)
@@ -15655,14 +15599,14 @@ sameRegionAs:
 	jmp	Arch_sameRegionAs
 	.p2align 4,,7
 	.p2align 3
-.L2007:
+.L2001:
 	.cfi_restore_state
 	movl	$1, %edx
-.L2012:
+.L2006:
 	cmpl	%ebp, %eax
-	jb	.L2041
+	jb	.L2035
 	testl	%eax, %eax
-	je	.L2041
+	je	.L2035
 	leal	-1(%eax,%edx), %edx
 	movl	%edi, %ecx
 	cmpl	%edx, %eax
@@ -15674,64 +15618,64 @@ sameRegionAs:
 	setbe	%al
 	movzbl	%al, %eax
 	andl	%ebx, %eax
-	jmp	.L2020
+	jmp	.L2014
 	.p2align 4,,7
 	.p2align 3
-.L2009:
+.L2003:
 	movl	$4096, %edx
-	jmp	.L2012
-.L2038:
+	jmp	.L2006
+.L2032:
 	movl	$1024, %edx
-	jmp	.L2012
-.L2010:
+	jmp	.L2006
+.L2004:
 	andl	$260046848, %esi
 	movl	$1, %edx
 	shrl	$23, %esi
 	leal	4(%esi), %ecx
 	sall	%cl, %edx
-	jmp	.L2012
-.L2005:
+	jmp	.L2006
+.L1999:
 	movl	$16, %edx
-	jmp	.L2012
-.L2003:
+	jmp	.L2006
+.L1997:
 	movl	$1, %edx
 	movl	%esi, %ecx
 	sall	%cl, %edx
-	jmp	.L2012
-.L2002:
+	jmp	.L2006
+.L1996:
 	shrl	$31, %esi
 	testl	%esi, %esi
-	je	.L2009
+	je	.L2003
 	cmpl	$1, %esi
-	jne	.L1999
+	jne	.L1993
 	movl	$4194304, %edx
-	jmp	.L2012
-.L2015:
+	jmp	.L2006
+.L2009:
 	andl	$16128, %ebx
 	movl	$1024, %edx
 	shrl	$8, %ebx
 	cmpl	$32, %ebx
-	je	.L2012
+	je	.L2006
 	andl	$31, %ebx
 	movw	$1, %dx
 	movl	%ebx, %ecx
 	addl	$4, %ecx
 	sall	%cl, %edx
-	jmp	.L2012
-.L1999:
+	jmp	.L2006
+.L1993:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L2041:
+.L2035:
 	xorl	%eax, %eax
-	jmp	.L2020
+	jmp	.L2014
 	.p2align 4,,7
 	.p2align 3
-.L2065:
+.L2059:
 	xorl	%eax, %eax
 	cmpb	$62, %bl
 	sete	%al
-	jmp	.L2020
+	jmp	.L2014
 	.cfi_endproc
 .LFE519:
 	.size	sameRegionAs, .-sameRegionAs
@@ -15756,7 +15700,7 @@ isMDBParentOf:
 	movl	32(%esp), %ebx
 	movl	36(%esp), %esi
 	testb	$2, 12(%ebx)
-	je	.L2067
+	je	.L2061
 	movl	(%esi), %eax
 	movl	4(%esi), %edx
 	movl	%eax, 8(%esp)
@@ -15767,7 +15711,7 @@ isMDBParentOf:
 	movl	%edx, 4(%esp)
 	call	sameRegionAs
 	testl	%eax, %eax
-	je	.L2067
+	je	.L2061
 	movl	(%ebx), %edx
 	movl	%edx, %ecx
 	movl	%edx, %eax
@@ -15777,23 +15721,23 @@ isMDBParentOf:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	cmpl	$4, %eax
-	je	.L2072
+	je	.L2066
 	cmpl	$6, %eax
-	jne	.L2091
-.L2072:
+	jne	.L2085
+.L2066:
 	movl	4(%ebx), %eax
 	movl	$1, %edi
 	shrl	$3, %eax
 	testl	%eax, %eax
-	je	.L2067
+	je	.L2061
 	movl	4(%esi), %edx
 	xorw	%di, %di
 	shrl	$3, %edx
 	cmpl	%edx, %eax
-	je	.L2092
+	je	.L2086
 	.p2align 4,,7
 	.p2align 3
-.L2067:
+.L2061:
 	addl	$16, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
@@ -15810,7 +15754,7 @@ isMDBParentOf:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2091:
+.L2085:
 	.cfi_restore_state
 	addl	$16, %esp
 	.cfi_remember_state
@@ -15829,12 +15773,12 @@ isMDBParentOf:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2092:
+.L2086:
 	.cfi_restore_state
 	movl	12(%esi), %edi
 	xorl	$1, %edi
 	andl	$1, %edi
-	jmp	.L2067
+	jmp	.L2061
 	.cfi_endproc
 .LFE487:
 	.size	isMDBParentOf, .-isMDBParentOf
@@ -15866,49 +15810,49 @@ deriveCap:
 	andl	$14, %ecx
 	movl	%edx, %edi
 	cmpl	$14, %ecx
-	je	.L2094
+	je	.L2088
 	testb	$1, %al
-	jne	.L2135
+	jne	.L2129
 	andl	$15, %eax
-.L2110:
+.L2104:
 	cmpl	$8, %eax
-	je	.L2112
+	je	.L2106
 	.p2align 4,,3
-	ja	.L2113
+	ja	.L2107
 	cmpl	$2, %eax
 	.p2align 4,,2
-	jne	.L2117
+	jne	.L2111
 	movl	52(%esp), %eax
 	xorl	%ebp, %ebp
 	movl	12(%eax), %eax
 	movl	%eax, 12(%esp)
 	andl	$-8, %eax
-	je	.L2111
+	je	.L2105
 	movl	%eax, 4(%esp)
 	movl	52(%esp), %eax
 	movl	%eax, (%esp)
 	call	isMDBParentOf
 	testl	%eax, %eax
-	je	.L2111
+	je	.L2105
 	movl	$9, current_syscall_error+24
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	movw	$3, %bp
-	jmp	.L2111
+	jmp	.L2105
 	.p2align 4,,7
 	.p2align 3
-.L2113:
+.L2107:
 	cmpl	$14, %eax
-	je	.L2112
+	je	.L2106
 	cmpl	$46, %eax
-	je	.L2112
-.L2117:
-	xorl	%ebp, %ebp
+	je	.L2106
 .L2111:
+	xorl	%ebp, %ebp
+.L2105:
 	movl	%ebp, (%ebx)
 	movl	%esi, 4(%ebx)
 	movl	%edi, 8(%ebx)
-.L2093:
+.L2087:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -15928,92 +15872,92 @@ deriveCap:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2112:
+.L2106:
 	.cfi_restore_state
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	xorl	%ebp, %ebp
-	jmp	.L2111
+	jmp	.L2105
 	.p2align 4,,7
 	.p2align 3
-.L2094:
+.L2088:
 	testb	$1, %al
-	jne	.L2136
+	jne	.L2130
 	movzbl	%al, %eax
-	jmp	.L2110
+	jmp	.L2104
 	.p2align 4,,7
 	.p2align 3
-.L2135:
+.L2129:
 	movl	%eax, %ecx
 	andl	$15, %ecx
-.L2099:
+.L2093:
 	cmpl	$11, %ecx
-	ja	.L2100
-	jmp	*.L2102(,%ecx,4)
+	ja	.L2094
+	jmp	*.L2096(,%ecx,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L2102:
+.L2096:
+	.long	.L2094
+	.long	.L2095
+	.long	.L2094
+	.long	.L2097
+	.long	.L2094
+	.long	.L2098
+	.long	.L2094
 	.long	.L2100
-	.long	.L2101
+	.long	.L2094
 	.long	.L2100
-	.long	.L2103
+	.long	.L2094
 	.long	.L2100
-	.long	.L2104
-	.long	.L2100
-	.long	.L2106
-	.long	.L2100
-	.long	.L2106
-	.long	.L2100
-	.long	.L2106
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L2106:
+.L2100:
 	movl	$0, (%ebx)
 	movl	%eax, 4(%ebx)
 	movl	%edx, 8(%ebx)
+	jmp	.L2087
+	.p2align 4,,7
+	.p2align 3
+.L2130:
+	movzbl	%al, %ecx
 	jmp	.L2093
 	.p2align 4,,7
 	.p2align 3
-.L2136:
-	movzbl	%al, %ecx
-	jmp	.L2099
-	.p2align 4,,7
-	.p2align 3
-.L2104:
+.L2098:
 	xorl	%eax, %eax
 	andl	$65536, %edx
-	jne	.L2109
-.L2134:
+	jne	.L2103
+.L2128:
 	movl	$3, current_syscall_error+24
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	movb	$3, %al
-.L2109:
+.L2103:
 	movl	%eax, (%ebx)
 	movl	%esi, 4(%ebx)
 	movl	%edi, 8(%ebx)
-	jmp	.L2093
+	jmp	.L2087
 	.p2align 4,,7
 	.p2align 3
-.L2103:
+.L2097:
 	xorl	%eax, %eax
 	andl	$67108864, %edx
-	je	.L2134
-	jmp	.L2109
+	je	.L2128
+	jmp	.L2103
 	.p2align 4,,7
 	.p2align 3
-.L2101:
+.L2095:
 	andl	$67108863, %eax
 	andl	$-1072693249, %edx
 	movl	$0, (%ebx)
 	movl	%eax, 4(%ebx)
 	movl	%edx, 8(%ebx)
-	jmp	.L2093
+	jmp	.L2087
 	.p2align 4,,7
 	.p2align 3
-.L2100:
+.L2094:
 	call	halt
 	.cfi_endproc
 .LFE515:
@@ -16040,9 +15984,9 @@ ensureNoChildren:
 	movl	12(%ebx), %eax
 	movl	%eax, %edi
 	andl	$-8, %edi
-	je	.L2138
+	je	.L2132
 	testb	$2, %al
-	je	.L2138
+	je	.L2132
 	movl	(%edi), %eax
 	movl	4(%edi), %edx
 	movl	%eax, 8(%esp)
@@ -16053,7 +15997,7 @@ ensureNoChildren:
 	movl	%edx, 4(%esp)
 	call	sameRegionAs
 	testl	%eax, %eax
-	je	.L2138
+	je	.L2132
 	movl	(%ebx), %edx
 	movl	%edx, %ecx
 	movl	%edx, %eax
@@ -16063,23 +16007,23 @@ ensureNoChildren:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	cmpl	$4, %eax
-	je	.L2143
+	je	.L2137
 	cmpl	$6, %eax
-	jne	.L2141
-.L2143:
+	jne	.L2135
+.L2137:
 	movl	4(%ebx), %eax
 	shrl	$3, %eax
 	testl	%eax, %eax
-	je	.L2141
+	je	.L2135
 	movl	4(%edi), %edx
 	shrl	$3, %edx
 	cmpl	%edx, %eax
-	je	.L2169
-.L2152:
+	je	.L2163
+.L2146:
 	xorl	%esi, %esi
 	.p2align 4,,7
 	.p2align 3
-.L2138:
+.L2132:
 	addl	$16, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
@@ -16096,16 +16040,16 @@ ensureNoChildren:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2169:
+.L2163:
 	.cfi_restore_state
 	movl	12(%edi), %eax
 	xorl	$1, %eax
 	andl	$1, %eax
 	testl	%eax, %eax
-	je	.L2152
+	je	.L2146
 	.p2align 4,,7
 	.p2align 3
-.L2141:
+.L2135:
 	movl	$3, %esi
 	movl	$9, current_syscall_error+24
 	addl	$16, %esp
@@ -16151,15 +16095,15 @@ sameObjectAs:
 	movl	%edx, %ebx
 	andl	$14, %ebx
 	cmpl	$14, %ebx
-	je	.L2171
+	je	.L2165
 	movl	%edx, %eax
 	andl	$15, %eax
 	cmpl	$2, %eax
-	je	.L2188
-.L2173:
+	je	.L2182
+.L2167:
 	cmpl	$14, %eax
-	je	.L2199
-.L2174:
+	je	.L2193
+.L2168:
 	movl	%edx, %eax
 	andl	$15, %eax
 	cmpl	$14, %ebx
@@ -16169,7 +16113,7 @@ sameObjectAs:
 	cmove	%eax, %ebp
 	andl	$1, %ebp
 	movl	%eax, 20(%esp)
-	je	.L2177
+	je	.L2171
 	movl	%ecx, %eax
 	movl	%ecx, %ebp
 	andl	$14, %eax
@@ -16181,8 +16125,8 @@ sameObjectAs:
 	movzbl	%cl, %ebp
 	cmove	%ebp, %eax
 	testb	$1, %al
-	jne	.L2200
-.L2177:
+	jne	.L2194
+.L2171:
 	movl	%edi, 76(%esp)
 	movl	%esi, 68(%esp)
 	movl	%ecx, 72(%esp)
@@ -16205,12 +16149,12 @@ sameObjectAs:
 	jmp	sameRegionAs
 	.p2align 4,,7
 	.p2align 3
-.L2171:
+.L2165:
 	.cfi_restore_state
 	movzbl	%dl, %eax
 	cmpl	$2, %eax
-	jne	.L2173
-.L2188:
+	jne	.L2167
+.L2182:
 	addl	$44, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -16230,31 +16174,31 @@ sameObjectAs:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2199:
+.L2193:
 	.cfi_restore_state
 	movl	%ecx, %eax
 	andl	$14, %eax
 	cmpl	$14, %eax
-	jne	.L2174
+	jne	.L2168
 	xorb	%al, %al
 	cmpb	$30, %cl
-	je	.L2172
-	jmp	.L2174
+	je	.L2166
+	jmp	.L2168
 	.p2align 4,,7
 	.p2align 3
-.L2200:
+.L2194:
 	movl	16(%esp), %eax
 	cmpl	$14, %ebx
 	cmove	20(%esp), %eax
 	cmpl	$1, %eax
-	je	.L2201
-.L2182:
+	je	.L2195
+.L2176:
 	movl	%ecx, 8(%esp)
 	movl	%edi, 12(%esp)
 	movl	%edx, (%esp)
 	movl	%esi, 4(%esp)
 	call	Arch_sameRegionAs
-.L2172:
+.L2166:
 	addl	$44, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -16273,24 +16217,24 @@ sameObjectAs:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2201:
+.L2195:
 	.cfi_restore_state
 	movl	28(%esp), %eax
 	cmpl	$14, 24(%esp)
 	cmove	%ebp, %eax
 	cmpl	$1, %eax
-	jne	.L2182
+	jne	.L2176
 	andl	$16777200, %edx
 	andl	$16777200, %ecx
 	xorb	%al, %al
 	cmpl	%edx, %ecx
-	jne	.L2172
+	jne	.L2166
 	shrl	$31, %esi
 	xorl	%eax, %eax
 	shrl	$31, %edi
 	cmpl	%edi, %esi
 	sete	%al
-	jmp	.L2172
+	jmp	.L2166
 	.cfi_endproc
 .LFE520:
 	.size	sameObjectAs, .-sameObjectAs
@@ -16312,7 +16256,7 @@ isFinalCapability:
 	movl	8(%ebx), %ecx
 	movl	12(%ebx), %esi
 	andl	$-8, %ecx
-	je	.L2203
+	je	.L2197
 	movl	(%ebx), %eax
 	movl	4(%ebx), %edx
 	movl	%eax, 8(%esp)
@@ -16325,8 +16269,8 @@ isFinalCapability:
 	movl	%eax, %edx
 	xorl	%eax, %eax
 	testl	%edx, %edx
-	je	.L2203
-.L2204:
+	je	.L2197
+.L2198:
 	addl	$20, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -16339,11 +16283,11 @@ isFinalCapability:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2203:
+.L2197:
 	.cfi_restore_state
 	andl	$-8, %esi
 	movl	$1, %eax
-	je	.L2204
+	je	.L2198
 	movl	(%esi), %eax
 	movl	4(%esi), %edx
 	movl	%eax, 8(%esp)
@@ -16399,37 +16343,37 @@ decodeIA32MMUInvocation:
 	movzbl	%bl, %eax
 	cmove	%eax, %edx
 	cmpl	$9, %edx
-	ja	.L2215
-	jmp	*.L2217(,%edx,4)
+	ja	.L2209
+	jmp	*.L2211(,%edx,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L2217:
+.L2211:
+	.long	.L2209
+	.long	.L2210
+	.long	.L2209
+	.long	.L2212
+	.long	.L2209
+	.long	.L2370
+	.long	.L2209
+	.long	.L2214
+	.long	.L2209
 	.long	.L2215
-	.long	.L2216
-	.long	.L2215
-	.long	.L2218
-	.long	.L2215
-	.long	.L2376
-	.long	.L2215
-	.long	.L2220
-	.long	.L2215
-	.long	.L2221
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L2218:
+.L2212:
 	cmpl	$27, 8(%ebp)
-	je	.L2382
+	je	.L2376
 	cmpl	$26, 8(%ebp)
 	.p2align 4,,3
-	je	.L2229
+	je	.L2223
 	.p2align 4,,7
 	.p2align 3
-.L2376:
+.L2370:
 	movl	$3, current_syscall_error+24
 	movl	$3, %eax
-.L2355:
+.L2349:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -16444,12 +16388,12 @@ decodeIA32MMUInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2221:
+.L2215:
 	.cfi_restore_state
 	cmpl	$35, 8(%ebp)
-	jne	.L2376
+	jne	.L2370
 	testl	%esi, %esi
-	je	.L2375
+	je	.L2369
 	movl	(%esi), %edx
 	movl	4(%esi), %edi
 	movl	%edx, %ecx
@@ -16460,36 +16404,36 @@ decodeIA32MMUInvocation:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	cmpl	$5, %eax
-	jne	.L2319
+	jne	.L2313
 	testw	%di, %di
-	jne	.L2319
+	jne	.L2313
 	movzwl	-60(%ebp), %edi
 	movl	%edi, %eax
 	shrl	$10, %eax
 	movl	ia32KSASIDTable(,%eax,4), %eax
 	testl	%eax, %eax
-	je	.L2383
+	je	.L2377
 	andl	$16777200, %ebx
 	sall	$8, %ebx
 	cmpl	%eax, %ebx
-	je	.L2384
-.L2322:
+	je	.L2378
+.L2316:
 	movl	$2, current_syscall_error+24
 	movl	$3, %eax
 	movl	$0, current_syscall_error+4
-	jmp	.L2355
+	jmp	.L2349
 	.p2align 4,,7
 	.p2align 3
-.L2216:
+.L2210:
 	cmpl	$30, 8(%ebp)
-	je	.L2244
-	jbe	.L2385
+	je	.L2238
+	jbe	.L2379
 	cmpl	$31, 8(%ebp)
 	.p2align 4,,3
-	je	.L2247
+	je	.L2241
 	cmpl	$33, 8(%ebp)
 	.p2align 4,,3
-	jne	.L2376
+	jne	.L2370
 	movl	ksCurThread, %edx
 	andl	$16777200, %ebx
 	sall	$8, %ebx
@@ -16504,19 +16448,19 @@ decodeIA32MMUInvocation:
 	movl	%ebx, 20(%eax)
 	movl	$1, 16(%eax)
 	xorl	%eax, %eax
-	jmp	.L2355
+	jmp	.L2349
 	.p2align 4,,7
 	.p2align 3
-.L2220:
+.L2214:
 	cmpl	$34, 8(%ebp)
-	jne	.L2376
+	jne	.L2370
 	cmpl	$1, 12(%ebp)
-	jbe	.L2375
+	jbe	.L2369
 	testl	%esi, %esi
-	je	.L2375
+	je	.L2369
 	testl	%edi, %edi
 	.p2align 4,,3
-	je	.L2375
+	je	.L2369
 	movl	ksCurThread, %eax
 	movl	4(%edi), %edx
 	movl	4(%esi), %ecx
@@ -16529,17 +16473,17 @@ decodeIA32MMUInvocation:
 	movl	%eax, -68(%ebp)
 	movl	(%edi), %eax
 	movl	%eax, -80(%ebp)
-	jmp	.L2305
+	jmp	.L2299
 	.p2align 4,,7
 	.p2align 3
-.L2307:
+.L2301:
 	addl	$1, %edx
 	cmpl	$64, %edx
-	je	.L2324
-.L2305:
+	je	.L2318
+.L2299:
 	movl	ia32KSASIDTable(,%edx,4), %edi
 	testl	%edi, %edi
-	jne	.L2307
+	jne	.L2301
 	movl	%ebx, %edi
 	movzbl	%bl, %eax
 	andl	$14, %edi
@@ -16549,16 +16493,16 @@ decodeIA32MMUInvocation:
 	cmpl	$14, -60(%ebp)
 	cmovne	%edi, %eax
 	cmpl	$2, %eax
-	jne	.L2319
+	jne	.L2313
 	movl	%ecx, %eax
 	andl	$31, %eax
 	cmpl	$12, %eax
-	jne	.L2319
+	jne	.L2313
 	movl	%esi, (%esp)
 	movl	%edx, -60(%ebp)
 	call	ensureNoChildren
 	testl	%eax, %eax
-	jne	.L2355
+	jne	.L2349
 	movl	-68(%ebp), %edi
 	leal	-56(%ebp), %eax
 	movl	-80(%ebp), %edx
@@ -16576,17 +16520,17 @@ decodeIA32MMUInvocation:
 	pushl	%eax
 	movl	-56(%ebp), %eax
 	testl	%eax, %eax
-	jne	.L2355
+	jne	.L2349
 	movl	(%edi), %eax
 	movl	-60(%ebp), %edx
 	movl	%eax, %ecx
 	andl	$14, %ecx
 	cmpl	$14, %ecx
-	je	.L2312
+	je	.L2306
 	andl	$15, %eax
-.L2313:
+.L2307:
 	testl	%eax, %eax
-	jne	.L2324
+	jne	.L2318
 	movl	%ebx, %edi
 	andl	$-4096, %ebx
 	andl	$-16, %edi
@@ -16619,20 +16563,20 @@ decodeIA32MMUInvocation:
 	movl	-60(%ebp), %eax
 	movl	%eax, ia32KSASIDTable(,%edi,4)
 	xorl	%eax, %eax
-	jmp	.L2355
+	jmp	.L2349
 	.p2align 4,,7
 	.p2align 3
-.L2215:
+.L2209:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L2385:
+.L2379:
 	cmpl	$29, 8(%ebp)
-	jne	.L2376
+	jne	.L2370
 	cmpl	$2, 12(%ebp)
-	jbe	.L2375
+	jbe	.L2369
 	testl	%esi, %esi
-	je	.L2375
+	je	.L2369
 	movl	ksCurThread, %eax
 	movl	%ebx, %edx
 	shrl	$26, %edx
@@ -16650,7 +16594,7 @@ decodeIA32MMUInvocation:
 	andl	$1072693248, %eax
 	shrl	$20, %eax
 	addl	%edx, %eax
-	jne	.L2322
+	jne	.L2316
 	movl	%ecx, %esi
 	movl	%ecx, %eax
 	andl	$14, %esi
@@ -16659,23 +16603,23 @@ decodeIA32MMUInvocation:
 	cmpl	$14, %esi
 	cmove	%edx, %eax
 	cmpl	$5, %eax
-	je	.L2386
+	je	.L2380
 	.p2align 4,,7
 	.p2align 3
-.L2319:
+.L2313:
 	movl	$2, current_syscall_error+24
 	movl	$3, %eax
 	movl	$1, current_syscall_error+4
-	jmp	.L2355
+	jmp	.L2349
 	.p2align 4,,7
 	.p2align 3
-.L2229:
+.L2223:
 	cmpl	$1, 12(%ebp)
-	jbe	.L2375
+	jbe	.L2369
 	testl	%esi, %esi
-	je	.L2375
+	je	.L2369
 	testl	$67108864, -60(%ebp)
-	jne	.L2322
+	jne	.L2316
 	movl	ksCurThread, %eax
 	movl	4(%esi), %edx
 	movl	20(%eax), %edi
@@ -16692,36 +16636,36 @@ decodeIA32MMUInvocation:
 	cmpl	$14, %esi
 	cmove	%ecx, %eax
 	cmpl	$5, %eax
-	jne	.L2319
+	jne	.L2313
 	testl	$65536, %edx
-	je	.L2319
+	je	.L2313
 	cmpl	$-536870913, -64(%ebp)
-	jbe	.L2237
-.L2263:
+	jbe	.L2231
+.L2257:
 	movl	$1, current_syscall_error+24
 	movl	$3, %eax
 	movl	$0, current_syscall_error
-	jmp	.L2355
+	jmp	.L2349
 	.p2align 4,,7
 	.p2align 3
-.L2375:
+.L2369:
 	movl	$7, current_syscall_error+24
 	movl	$3, %eax
-	jmp	.L2355
+	jmp	.L2349
 	.p2align 4,,7
 	.p2align 3
-.L2382:
+.L2376:
 	movl	20(%ebp), %eax
 	movl	%eax, (%esp)
 	call	isFinalCapability
 	testl	%eax, %eax
-	jne	.L2224
+	jne	.L2218
 	movl	$9, current_syscall_error+24
 	movb	$3, %al
-	jmp	.L2355
+	jmp	.L2349
 	.p2align 4,,7
 	.p2align 3
-.L2247:
+.L2241:
 	movl	-60(%ebp), %edx
 	movl	%ebx, %eax
 	shrl	$26, %eax
@@ -16729,7 +16673,7 @@ decodeIA32MMUInvocation:
 	andl	$1072693248, %edx
 	shrl	$20, %edx
 	addl	%edx, %eax
-	je	.L2300
+	je	.L2294
 	movl	-60(%ebp), %edi
 	andl	$16777200, %ebx
 	movl	%eax, 4(%esp)
@@ -16742,14 +16686,14 @@ decodeIA32MMUInvocation:
 	movl	%edx, 8(%esp)
 	movl	%eax, (%esp)
 	call	unmapPage
-.L2300:
+.L2294:
 	movl	20(%ebp), %eax
 	movl	20(%ebp), %edi
 	movl	4(%eax), %eax
 	andl	$67108863, (%edi)
 	andl	$-1073741824, %eax
 	movl	%eax, 4(%edi)
-.L2377:
+.L2371:
 	movl	ksCurThread, %edx
 	movl	592(%edx), %eax
 	andl	$-16, %eax
@@ -16758,15 +16702,15 @@ decodeIA32MMUInvocation:
 	movl	%edx, (%esp)
 	call	scheduleTCB
 	xorl	%eax, %eax
-	jmp	.L2355
+	jmp	.L2349
 	.p2align 4,,7
 	.p2align 3
-.L2244:
+.L2238:
 	cmpl	$1, 12(%ebp)
-	jbe	.L2375
+	jbe	.L2369
 	testl	%esi, %esi
 	.p2align 4,,3
-	je	.L2375
+	je	.L2369
 	movl	ksCurThread, %eax
 	movl	(%esi), %ecx
 	movl	20(%eax), %edi
@@ -16782,9 +16726,9 @@ decodeIA32MMUInvocation:
 	cmpl	$14, %esi
 	cmove	%edx, %eax
 	cmpl	$5, %eax
-	jne	.L2319
+	jne	.L2313
 	testl	$65536, %edi
-	je	.L2319
+	je	.L2313
 	movl	-60(%ebp), %edx
 	movl	%ebx, %eax
 	shrl	$26, %eax
@@ -16793,7 +16737,7 @@ decodeIA32MMUInvocation:
 	shrl	$20, %edx
 	movl	%edx, %esi
 	addl	%eax, %esi
-	je	.L2322
+	je	.L2316
 	movzwl	%di, %edi
 	leal	-32(%ebp), %eax
 	movl	%edi, %edx
@@ -16802,19 +16746,19 @@ decodeIA32MMUInvocation:
 	movl	-28(%ebp), %eax
 	cmpl	$0, -32(%ebp)
 	movl	-80(%ebp), %ecx
-	jne	.L2381
+	jne	.L2375
 	andl	$16777200, %ecx
 	movl	%ecx, %edx
 	sall	$8, %edx
 	cmpl	%eax, %edx
-	je	.L2387
-.L2288:
+	je	.L2381
+.L2282:
 	movl	$2, current_syscall_error+24
 	movl	$1, current_syscall_error+4
-.L2374:
+.L2368:
 	movl	$3, %eax
-	jmp	.L2355
-.L2224:
+	jmp	.L2349
+.L2218:
 	movl	ksCurThread, %edx
 	movl	592(%edx), %eax
 	andl	$-16, %eax
@@ -16823,16 +16767,16 @@ decodeIA32MMUInvocation:
 	movl	%edx, (%esp)
 	call	scheduleTCB
 	testl	$67108864, -60(%ebp)
-	jne	.L2226
-.L2227:
+	jne	.L2220
+.L2221:
 	movl	20(%ebp), %eax
 	andl	$-67108865, 4(%eax)
 	xorl	%eax, %eax
-	jmp	.L2355
-.L2324:
+	jmp	.L2349
+.L2318:
 	movl	$8, current_syscall_error+24
-	jmp	.L2374
-.L2226:
+	jmp	.L2368
+.L2220:
 	movl	-60(%ebp), %edi
 	movl	%ebx, %esi
 	andl	$16777200, %esi
@@ -16853,18 +16797,18 @@ decodeIA32MMUInvocation:
 	movl	%eax, %ecx
 	sall	%cl, %edx
 	testl	%edx, %edx
-	je	.L2227
+	je	.L2221
 	.p2align 4,,7
 	.p2align 3
-.L2228:
+.L2222:
 	movl	$0, (%esi)
 	addl	$4, %esi
 	subl	$4, %edx
-	jne	.L2228
-	jmp	.L2227
-.L2386:
+	jne	.L2222
+	jmp	.L2221
+.L2380:
 	testl	$65536, -64(%ebp)
-	je	.L2319
+	je	.L2313
 	movzwl	-64(%ebp), %eax
 	movl	%ecx, -72(%ebp)
 	movl	%eax, -88(%ebp)
@@ -16874,45 +16818,45 @@ decodeIA32MMUInvocation:
 	movl	-28(%ebp), %eax
 	cmpl	$0, -32(%ebp)
 	movl	-72(%ebp), %ecx
-	jne	.L2381
+	jne	.L2375
 	andl	$16777200, %ecx
 	movl	%ecx, -72(%ebp)
 	sall	$8, -72(%ebp)
 	cmpl	%eax, -72(%ebp)
-	jne	.L2288
+	jne	.L2282
 	movl	-60(%ebp), %eax
 	shrl	$31, %eax
 	testl	%eax, %eax
-	je	.L2261
+	je	.L2255
 	cmpl	$1, %eax
-	jne	.L2215
+	jne	.L2209
 	movl	$22, %ecx
-.L2262:
+.L2256:
 	movl	$1, %edx
 	sall	%cl, %edx
 	addl	%edi, %edx
 	cmpl	$-536870912, %edx
-	ja	.L2263
+	ja	.L2257
 	movl	%ebx, %edx
 	andl	$50331648, %edx
 	shrl	$24, %edx
 	cmpl	$2, %edx
-	je	.L2388
+	je	.L2382
 	cmpl	$3, %edx
 	movl	$1, %esi
-	je	.L2389
-.L2266:
+	je	.L2383
+.L2260:
 	testl	%eax, %eax
-	je	.L2268
+	je	.L2262
 	cmpl	$1, %eax
-	jne	.L2215
+	jne	.L2209
 	movl	$22, %ecx
-.L2269:
+.L2263:
 	movl	$1, %edx
 	sall	%cl, %edx
 	subl	$1, %edx
 	testl	%edi, %edx
-	jne	.L2295
+	jne	.L2289
 	movl	%ebx, %edx
 	andl	$67108863, %ebx
 	andl	$16777200, %edx
@@ -16934,18 +16878,18 @@ decodeIA32MMUInvocation:
 	shrl	$12, %edx
 	orl	%edx, %ebx
 	testl	%eax, %eax
-	je	.L2272
+	je	.L2266
 	subl	$1, %eax
-	jne	.L2215
+	jne	.L2209
 	movl	-72(%ebp), %eax
 	shrl	$22, %edi
 	leal	(%eax,%edi,4), %eax
 	movl	(%eax), %edx
 	testb	$-128, %dl
-	jne	.L2276
+	jne	.L2270
 	andb	$1, %dl
-	jne	.L2324
-.L2276:
+	jne	.L2318
+.L2270:
 	movl	-80(%ebp), %ecx
 	movl	-84(%ebp), %edx
 	movl	%esi, (%esp)
@@ -16954,21 +16898,21 @@ decodeIA32MMUInvocation:
 	movl	-68(%ebp), %edi
 	movl	%ebx, 4(%eax)
 	movl	%edi, (%eax)
-	jmp	.L2377
-.L2381:
+	jmp	.L2371
+.L2375:
 	movl	$6, current_syscall_error+24
 	movl	$0, current_syscall_error+20
-	jmp	.L2374
-.L2383:
+	jmp	.L2368
+.L2377:
 	movl	$6, current_syscall_error+24
 	movb	$3, %al
 	movl	$0, current_syscall_error+20
 	movl	$0, current_lookup_fault
 	movl	$0, current_lookup_fault+4
-	jmp	.L2355
-.L2387:
+	jmp	.L2349
+.L2381:
 	cmpl	%esi, %edi
-	jne	.L2288
+	jne	.L2282
 	movl	-60(%ebp), %esi
 	movl	%ebx, %eax
 	andl	$16777200, %ebx
@@ -16978,38 +16922,38 @@ decodeIA32MMUInvocation:
 	shrl	$31, %esi
 	cmpl	$2, %eax
 	leal	536870912(%ebx), %edi
-	je	.L2390
+	je	.L2384
 	cmpl	$3, %eax
 	movl	$1, %ebx
-	je	.L2391
-.L2291:
+	je	.L2385
+.L2285:
 	movl	-60(%ebp), %ecx
 	sall	$12, %ecx
 	testl	%esi, %esi
-	je	.L2293
+	je	.L2287
 	subl	$1, %esi
-	jne	.L2215
+	jne	.L2209
 	testl	$4190208, %ecx
-	je	.L2392
-.L2295:
+	je	.L2386
+.L2289:
 	movl	$5, current_syscall_error+24
 	movl	$3, %eax
-	jmp	.L2355
-.L2384:
+	jmp	.L2349
+.L2378:
 	xorl	%eax, %eax
-	jmp	.L2323
+	jmp	.L2317
 	.p2align 4,,7
 	.p2align 3
-.L2325:
+.L2319:
 	addl	$1, %eax
 	addl	$1, %edi
 	cmpl	$1024, %eax
-	je	.L2324
-.L2323:
+	je	.L2318
+.L2317:
 	testl	%edi, %edi
-	je	.L2325
+	je	.L2319
 	cmpl	$0, (%ebx,%eax,4)
-	jne	.L2325
+	jne	.L2319
 	movl	ksCurThread, %edx
 	movl	592(%edx), %eax
 	andl	$-16, %eax
@@ -17029,50 +16973,50 @@ decodeIA32MMUInvocation:
 	sall	$8, %eax
 	movl	%eax, (%ebx,%edi,4)
 	xorl	%eax, %eax
-	jmp	.L2355
-.L2392:
+	jmp	.L2349
+.L2386:
 	shrl	$22, %ecx
 	leal	(%edx,%ecx,4), %eax
 	movl	(%eax), %edx
 	testb	$-128, %dl
-	jne	.L2299
+	jne	.L2293
 	andb	$1, %dl
-	jne	.L2324
-.L2299:
+	jne	.L2318
+.L2293:
 	movl	-68(%ebp), %ecx
 	movl	%edi, %edx
 	movl	%ebx, (%esp)
 	call	makeUserPDE
-	jmp	.L2377
-.L2390:
+	jmp	.L2371
+.L2384:
 	movl	-64(%ebp), %eax
 	andl	$2, %eax
 	shrl	%eax
 	cmpl	$1, %eax
 	sbbl	%ebx, %ebx
 	addl	$2, %ebx
-	jmp	.L2291
-.L2293:
+	jmp	.L2285
+.L2287:
 	leal	-40(%ebp), %eax
 	call	lookupPTSlot
 	movl	-36(%ebp), %esi
 	cmpl	$0, -40(%ebp)
-	je	.L2297
-.L2378:
+	je	.L2291
+.L2372:
 	movl	$6, current_syscall_error+24
 	movl	$3, %eax
 	movl	$0, current_syscall_error+20
-	jmp	.L2355
-.L2391:
+	jmp	.L2349
+.L2385:
 	testb	$2, -64(%ebp)
-	je	.L2291
+	je	.L2285
 	movl	-64(%ebp), %eax
 	andl	$1, %eax
 	cmpl	$1, %eax
 	sbbl	%ebx, %ebx
 	addl	$3, %ebx
-	jmp	.L2291
-.L2297:
+	jmp	.L2285
+.L2291:
 	movl	-68(%ebp), %ecx
 	leal	-44(%ebp), %eax
 	movl	%edi, %edx
@@ -17080,15 +17024,15 @@ decodeIA32MMUInvocation:
 	call	makeUserPTE
 	movl	-44(%ebp), %eax
 	movl	%eax, (%esi)
-	jmp	.L2377
-.L2272:
+	jmp	.L2371
+.L2266:
 	movl	-72(%ebp), %edx
 	movl	%edi, %ecx
 	leal	-40(%ebp), %eax
 	call	lookupPTSlot
 	movl	-36(%ebp), %edi
 	cmpl	$0, -40(%ebp)
-	jne	.L2378
+	jne	.L2372
 	movl	-80(%ebp), %ecx
 	leal	-44(%ebp), %eax
 	movl	-84(%ebp), %edx
@@ -17100,47 +17044,47 @@ decodeIA32MMUInvocation:
 	movl	%esi, (%eax)
 	movl	-44(%ebp), %eax
 	movl	%eax, (%edi)
-	jmp	.L2377
-.L2268:
+	jmp	.L2371
+.L2262:
 	movl	$12, %ecx
-	jmp	.L2269
-.L2389:
+	jmp	.L2263
+.L2383:
 	testb	$2, -68(%ebp)
-	je	.L2266
+	je	.L2260
 	movl	-68(%ebp), %edx
 	andl	$1, %edx
 	cmpl	$1, %edx
 	sbbl	%esi, %esi
 	addl	$3, %esi
-	jmp	.L2266
-.L2388:
+	jmp	.L2260
+.L2382:
 	movl	-68(%ebp), %edx
 	andl	$2, %edx
 	shrl	%edx
 	cmpl	$1, %edx
 	sbbl	%esi, %esi
 	addl	$2, %esi
-	jmp	.L2266
-.L2261:
+	jmp	.L2260
+.L2255:
 	movl	$12, %ecx
-	jmp	.L2262
-.L2237:
+	jmp	.L2256
+.L2231:
 	movzwl	%dx, %esi
 	leal	-32(%ebp), %eax
 	movl	%esi, %edx
 	call	findPDForASID
 	movl	-28(%ebp), %eax
 	cmpl	$0, -32(%ebp)
-	jne	.L2381
+	jne	.L2375
 	andl	$16777200, %edi
 	sall	$8, %edi
 	cmpl	%eax, %edi
-	jne	.L2288
+	jne	.L2282
 	movl	-64(%ebp), %edx
 	shrl	$22, %edx
 	leal	(%edi,%edx,4), %eax
 	testb	$1, (%eax)
-	jne	.L2324
+	jne	.L2318
 	movl	-60(%ebp), %ecx
 	sall	$10, %esi
 	movl	20(%ebp), %edi
@@ -17174,11 +17118,11 @@ decodeIA32MMUInvocation:
 	call	scheduleTCB
 	call	invalidatePageStructureCache
 	xorl	%eax, %eax
-	jmp	.L2355
-.L2312:
+	jmp	.L2349
+.L2306:
 	movzbl	%al, %eax
 	.p2align 4,,3
-	jmp	.L2313
+	jmp	.L2307
 	.cfi_endproc
 .LFE364:
 	.size	decodeIA32MMUInvocation, .-decodeIA32MMUInvocation
@@ -17221,8 +17165,8 @@ Arch_decodeInvocation:
 	cmove	%edx, %ecx
 	subl	$1, %ecx
 	cmpl	$10, %ecx
-	jbe	.L2401
-.L2396:
+	jbe	.L2395
+.L2390:
 	movl	$2, current_syscall_error+24
 	movl	$3, %eax
 	movl	$0, current_syscall_error+4
@@ -17244,16 +17188,16 @@ Arch_decodeInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2401:
+.L2395:
 	.cfi_restore_state
 	movl	$1, %edx
 	sall	%cl, %edx
 	testb	$21, %dl
-	jne	.L2398
+	jne	.L2392
 	testl	$320, %edx
-	jne	.L2398
+	jne	.L2392
 	andb	$4, %dh
-	je	.L2396
+	je	.L2390
 	movl	%eax, 60(%esp)
 	movl	8(%esp), %eax
 	movl	%edi, 80(%esp)
@@ -17282,7 +17226,7 @@ Arch_decodeInvocation:
 	jmp	decodeIA32PortInvocation
 	.p2align 4,,7
 	.p2align 3
-.L2398:
+.L2392:
 	.cfi_restore_state
 	movl	%eax, 60(%esp)
 	movl	8(%esp), %eax
@@ -17343,14 +17287,14 @@ slotCapLongRunningDelete:
 	cmove	%edx, %eax
 	xorl	%edi, %edi
 	testl	%eax, %eax
-	je	.L2405
+	je	.L2399
 	movl	8(%esi), %eax
 	movl	12(%esi), %edx
 	andl	$-8, %eax
-	jne	.L2434
-.L2406:
+	jne	.L2428
+.L2400:
 	andl	$-8, %edx
-	je	.L2407
+	je	.L2401
 	movl	(%edx), %eax
 	movl	4(%edx), %edx
 	movl	%eax, 8(%esp)
@@ -17361,22 +17305,22 @@ slotCapLongRunningDelete:
 	movl	%edx, 4(%esp)
 	call	sameObjectAs
 	testl	%eax, %eax
-	jne	.L2431
-.L2407:
+	jne	.L2425
+.L2401:
 	movl	%ebx, %eax
 	movzbl	%bl, %ebx
 	andl	$15, %eax
 	cmpl	$14, %ebp
 	cmove	%ebx, %eax
 	cmpl	$12, %eax
-	je	.L2410
+	je	.L2404
 	cmpl	$46, %eax
-	je	.L2410
+	je	.L2404
 	cmpl	$10, %eax
-	je	.L2410
-.L2431:
+	je	.L2404
+.L2425:
 	xorl	%edi, %edi
-.L2405:
+.L2399:
 	addl	$44, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -17396,7 +17340,7 @@ slotCapLongRunningDelete:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2434:
+.L2428:
 	.cfi_restore_state
 	movl	4(%esi), %ecx
 	movl	%edx, 28(%esp)
@@ -17410,7 +17354,7 @@ slotCapLongRunningDelete:
 	call	sameObjectAs
 	movl	28(%esp), %edx
 	testl	%eax, %eax
-	je	.L2406
+	je	.L2400
 	addl	$44, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -17430,7 +17374,7 @@ slotCapLongRunningDelete:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2410:
+.L2404:
 	.cfi_restore_state
 	addl	$44, %esp
 	.cfi_def_cfa_offset 20
@@ -17480,8 +17424,8 @@ cteDeleteOne:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	jne	.L2467
-.L2435:
+	jne	.L2461
+.L2429:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -17496,12 +17440,12 @@ cteDeleteOne:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2467:
+.L2461:
 	.cfi_restore_state
 	movl	8(%ebx), %eax
 	movl	12(%ebx), %edx
 	andl	$-8, %eax
-	je	.L2468
+	je	.L2462
 	movl	(%ebx), %esi
 	movl	4(%ebx), %edi
 	movl	%edx, -44(%ebp)
@@ -17515,8 +17459,8 @@ cteDeleteOne:
 	xorl	%ecx, %ecx
 	movl	-44(%ebp), %edx
 	testl	%eax, %eax
-	je	.L2439
-.L2440:
+	je	.L2433
+.L2434:
 	leal	-36(%ebp), %eax
 	movl	%ecx, 12(%esp)
 	movl	%eax, (%esp)
@@ -17534,20 +17478,20 @@ cteDeleteOne:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	je	.L2435
+	je	.L2429
 	movl	12(%ebx), %esi
 	movl	8(%ebx), %ecx
 	movl	%esi, %eax
 	andl	$-8, %eax
 	andl	$-8, %ecx
-	je	.L2444
+	je	.L2438
 	movl	12(%ecx), %edx
 	andl	$7, %edx
 	orl	%eax, %edx
 	movl	%edx, 12(%ecx)
-.L2444:
+.L2438:
 	testl	%eax, %eax
-	je	.L2445
+	je	.L2439
 	movl	8(%eax), %edx
 	andl	$1, %esi
 	andl	$7, %edx
@@ -17560,7 +17504,7 @@ cteDeleteOne:
 	andl	$-2, %ecx
 	orl	%ecx, %edx
 	movl	%edx, 12(%eax)
-.L2445:
+.L2439:
 	movl	$0, (%ebx)
 	movl	$0, 4(%ebx)
 	movl	$0, 8(%ebx)
@@ -17579,14 +17523,14 @@ cteDeleteOne:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2468:
+.L2462:
 	.cfi_restore_state
 	movl	(%ebx), %esi
 	movl	4(%ebx), %edi
-.L2439:
+.L2433:
 	andl	$-8, %edx
 	movl	$1, %ecx
-	je	.L2440
+	je	.L2434
 	movl	(%edx), %eax
 	movl	4(%edx), %edx
 	movl	%esi, (%esp)
@@ -17597,7 +17541,7 @@ cteDeleteOne:
 	xorl	%ecx, %ecx
 	testl	%eax, %eax
 	sete	%cl
-	jmp	.L2440
+	jmp	.L2434
 	.cfi_endproc
 .LFE483:
 	.size	cteDeleteOne, .-cteDeleteOne
@@ -17626,11 +17570,11 @@ ipcCancel:
 	movl	%edx, %ecx
 	andl	$15, %ecx
 	cmpl	$5, %ecx
-	je	.L2471
-	ja	.L2472
+	je	.L2465
+	ja	.L2466
 	cmpl	$3, %ecx
-	jb	.L2469
-.L2474:
+	jb	.L2463
+.L2468:
 	andl	$-16, %edx
 	movl	(%edx), %esi
 	movl	4(%edx), %edi
@@ -17641,15 +17585,15 @@ ipcCancel:
 	movl	652(%eax), %ecx
 	andl	$-16, %ebx
 	testl	%ecx, %ecx
-	je	.L2480
+	je	.L2474
 	movl	648(%eax), %ebp
 	movl	%ebp, 648(%ecx)
 	movl	648(%eax), %ebp
-.L2481:
+.L2475:
 	testl	%ebp, %ebp
-	je	.L2486
+	je	.L2480
 	movl	%ecx, 652(%ebp)
-.L2482:
+.L2476:
 	movl	%ebx, %ecx
 	andl	$15, %edi
 	andl	$-16, %ecx
@@ -17660,8 +17604,8 @@ ipcCancel:
 	andl	$-16, %ecx
 	orl	%esi, %ecx
 	testl	%ebx, %ebx
-	je	.L2483
-.L2493:
+	je	.L2477
+.L2487:
 	movl	%ecx, (%edx)
 	andl	$-16, 592(%eax)
 	movl	%eax, 36(%esp)
@@ -17683,11 +17627,11 @@ ipcCancel:
 	jmp	scheduleTCB
 	.p2align 4,,7
 	.p2align 3
-.L2472:
+.L2466:
 	.cfi_restore_state
 	cmpl	$6, %ecx
-	je	.L2474
-.L2469:
+	je	.L2468
+.L2463:
 	addl	$16, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -17706,14 +17650,14 @@ ipcCancel:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2471:
+.L2465:
 	.cfi_restore_state
 	movl	$0, 604(%eax)
 	movl	$0, 608(%eax)
 	andl	$-1024, %eax
 	movl	44(%eax), %eax
 	andl	$-8, %eax
-	je	.L2469
+	je	.L2463
 	movl	%eax, 36(%esp)
 	addl	$16, %esp
 	.cfi_remember_state
@@ -17733,21 +17677,21 @@ ipcCancel:
 	jmp	cteDeleteOne
 	.p2align 4,,7
 	.p2align 3
-.L2483:
+.L2477:
 	.cfi_restore_state
 	andl	$-4, %ecx
-	jmp	.L2493
-	.p2align 4,,7
-	.p2align 3
-.L2486:
-	movl	%ecx, (%esp)
-	jmp	.L2482
+	jmp	.L2487
 	.p2align 4,,7
 	.p2align 3
 .L2480:
+	movl	%ecx, (%esp)
+	jmp	.L2476
+	.p2align 4,,7
+	.p2align 3
+.L2474:
 	movl	648(%eax), %ebx
 	movl	%ebx, %ebp
-	jmp	.L2481
+	jmp	.L2475
 	.cfi_endproc
 .LFE500:
 	.size	ipcCancel, .-ipcCancel
@@ -17776,11 +17720,11 @@ suspend:
 	call	ipcCancel
 	andl	$-16, 592(%ebx)
 	cmpl	ksCurThread, %ebx
-	je	.L2510
-.L2500:
+	je	.L2504
+.L2494:
 	movl	600(%ebx), %edx
 	testb	$1, %dl
-	je	.L2499
+	je	.L2493
 	movl	620(%ebx), %eax
 	sall	$8, %eax
 	addl	624(%ebx), %eax
@@ -17790,21 +17734,21 @@ suspend:
 	movl	%ecx, 12(%esp)
 	movl	644(%ebx), %ecx
 	testl	%ecx, %ecx
-	je	.L2502
+	je	.L2496
 	movl	640(%ebx), %edi
 	movl	%edi, 640(%ecx)
 	movl	640(%ebx), %edi
-.L2503:
+.L2497:
 	testl	%edi, %edi
-	je	.L2505
+	je	.L2499
 	movl	%ecx, 644(%edi)
-.L2504:
+.L2498:
 	movl	%ebp, ksReadyQueues(,%eax,8)
 	movl	12(%esp), %eax
 	andl	$-2, %edx
 	movl	%eax, 4(%esi)
 	movl	%edx, 600(%ebx)
-.L2499:
+.L2493:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -17823,24 +17767,24 @@ suspend:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2510:
+.L2504:
 	.cfi_restore_state
 	movl	ksSchedulerAction, %eax
 	testl	%eax, %eax
-	jne	.L2500
+	jne	.L2494
 	call	rescheduleRequired
-	jmp	.L2500
+	jmp	.L2494
 	.p2align 4,,7
 	.p2align 3
-.L2502:
+.L2496:
 	movl	640(%ebx), %ebp
 	movl	%ebp, %edi
-	jmp	.L2503
+	jmp	.L2497
 	.p2align 4,,7
 	.p2align 3
-.L2505:
+.L2499:
 	movl	%ecx, 12(%esp)
-	jmp	.L2504
+	jmp	.L2498
 	.cfi_endproc
 .LFE434:
 	.size	suspend, .-suspend
@@ -17928,14 +17872,14 @@ decodeIRQHandlerInvocation:
 	movl	48(%esp), %eax
 	movl	56(%esp), %ebx
 	cmpl	$23, %eax
-	je	.L2516
+	je	.L2510
 	cmpl	$24, %eax
-	je	.L2517
+	je	.L2511
 	cmpl	$22, %eax
-	je	.L2530
+	je	.L2524
 	movl	$3, current_syscall_error+24
 	movl	$3, %eax
-.L2519:
+.L2513:
 	addl	$32, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
@@ -17951,7 +17895,7 @@ decodeIRQHandlerInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2530:
+.L2524:
 	.cfi_restore_state
 	movl	ksCurThread, %edx
 	movl	592(%edx), %eax
@@ -17962,16 +17906,16 @@ decodeIRQHandlerInvocation:
 	call	scheduleTCB
 	xorl	%eax, %eax
 	cmpl	$15, 52(%esp)
-	jg	.L2519
+	jg	.L2513
 	cmpl	$7, 52(%esp)
-	jle	.L2531
+	jle	.L2525
 	movl	52(%esp), %eax
 	movl	$161, %ebx
 	leal	-8(%eax), %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	%eax, %esi
-.L2521:
+.L2515:
 	movl	%ebx, (%esp)
 	call	in8
 	movl	%esi, %edx
@@ -17982,10 +17926,10 @@ decodeIRQHandlerInvocation:
 	movl	%edx, 4(%esp)
 	call	out8
 	xorl	%eax, %eax
-	jmp	.L2519
+	jmp	.L2513
 	.p2align 4,,7
 	.p2align 3
-.L2517:
+.L2511:
 	movl	ksCurThread, %edx
 	movl	592(%edx), %eax
 	andl	$-16, %eax
@@ -18014,10 +17958,10 @@ decodeIRQHandlerInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2516:
+.L2510:
 	.cfi_restore_state
 	testl	%ebx, %ebx
-	je	.L2532
+	je	.L2526
 	movl	(%ebx), %eax
 	movl	4(%ebx), %edi
 	movl	%eax, %esi
@@ -18028,8 +17972,8 @@ decodeIRQHandlerInvocation:
 	cmpl	$14, %esi
 	cmove	%ecx, %edx
 	cmpl	$6, %edx
-	je	.L2533
-.L2525:
+	je	.L2527
+.L2519:
 	movl	$2, current_syscall_error+24
 	movl	$3, %eax
 	movl	$0, current_syscall_error+4
@@ -18048,24 +17992,24 @@ decodeIRQHandlerInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2532:
+.L2526:
 	.cfi_restore_state
 	movl	$7, current_syscall_error+24
 	movl	$3, %eax
-	jmp	.L2519
+	jmp	.L2513
 	.p2align 4,,7
 	.p2align 3
-.L2531:
+.L2525:
 	movzbl	52(%esp), %ecx
 	movl	$1, %esi
 	movl	$33, %ebx
 	sall	%cl, %esi
-	jmp	.L2521
+	jmp	.L2515
 	.p2align 4,,7
 	.p2align 3
-.L2533:
+.L2527:
 	testl	$2, %edi
-	je	.L2525
+	je	.L2519
 	movl	ksCurThread, %ecx
 	movl	%eax, 28(%esp)
 	movl	592(%ecx), %edx
@@ -18082,7 +18026,7 @@ decodeIRQHandlerInvocation:
 	movl	%eax, (%esp)
 	call	invokeIRQHandler_SetIRQHandler
 	xorl	%eax, %eax
-	jmp	.L2519
+	jmp	.L2513
 	.cfi_endproc
 .LFE505:
 	.size	decodeIRQHandlerInvocation, .-decodeIRQHandlerInvocation
@@ -18124,34 +18068,34 @@ finaliseCap:
 	movl	%edx, %ecx
 	andl	$14, %ecx
 	cmpl	$14, %ecx
-	je	.L2536
+	je	.L2530
 	movl	%edx, %eax
 	andl	$15, %eax
 	testb	$1, %dl
-	jne	.L2537
-.L2541:
+	jne	.L2531
+.L2535:
 	cmpl	$6, %eax
-	je	.L2543
-	ja	.L2544
+	je	.L2537
+	ja	.L2538
 	testl	%eax, %eax
 	.p2align 4,,6
-	je	.L2552
+	je	.L2546
 	cmpl	$4, %eax
 	.p2align 4,,6
-	jne	.L2542
+	jne	.L2536
 	movl	20(%ebp), %eax
 	testl	%eax, %eax
-	je	.L2552
+	je	.L2546
 	andl	$-16, %edx
 	movl	%edx, (%esp)
 	call	epCancelAll
 	.p2align 4,,7
 	.p2align 3
-.L2552:
+.L2546:
 	movl	$0, (%ebx)
 	movl	$0, 4(%ebx)
 	movl	$-1, 8(%ebx)
-.L2535:
+.L2529:
 	leal	-12(%ebp), %esp
 	movl	%ebx, %eax
 	popl	%ebx
@@ -18167,40 +18111,40 @@ finaliseCap:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2544:
+.L2538:
 	.cfi_restore_state
 	cmpl	$8, %eax
-	je	.L2552
+	je	.L2546
 	cmpl	$62, %eax
-	je	.L2552
-.L2542:
+	je	.L2546
+.L2536:
 	movl	24(%ebp), %eax
 	testl	%eax, %eax
-	jne	.L2586
+	jne	.L2580
 	movl	%edx, %eax
 	movzbl	%dl, %edi
 	andl	$15, %eax
 	cmpl	$14, %ecx
 	cmove	%edi, %eax
 	cmpl	$12, %eax
-	je	.L2553
-	jbe	.L2587
+	je	.L2547
+	jbe	.L2581
 	cmpl	$30, %eax
-	je	.L2556
+	je	.L2550
 	cmpl	$46, %eax
 	.p2align 4,,5
-	jne	.L2552
+	jne	.L2546
 	movl	%edx, (%ebx)
 	movl	%esi, 4(%ebx)
 	movl	$-1, 8(%ebx)
-	jmp	.L2535
+	jmp	.L2529
 	.p2align 4,,7
 	.p2align 3
-.L2536:
+.L2530:
 	testb	$1, %dl
 	movzbl	%dl, %eax
-	je	.L2541
-.L2537:
+	je	.L2535
+.L2531:
 	movl	20(%ebp), %edi
 	leal	-36(%ebp), %eax
 	movl	%esi, 8(%esp)
@@ -18229,24 +18173,24 @@ finaliseCap:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2543:
+.L2537:
 	.cfi_restore_state
 	movl	20(%ebp), %eax
 	testl	%eax, %eax
-	je	.L2552
+	je	.L2546
 	andl	$-16, %edx
 	movl	%edx, (%esp)
 	call	aepCancelAll
-	jmp	.L2552
+	jmp	.L2546
 	.p2align 4,,7
 	.p2align 3
-.L2587:
+.L2581:
 	cmpl	$10, %eax
-	jne	.L2552
+	jne	.L2546
 	movl	20(%ebp), %edi
 	testl	%edi, %edi
 	.p2align 4,,3
-	je	.L2552
+	je	.L2546
 	andl	$260046848, %esi
 	movl	$1, %edi
 	shrl	$23, %esi
@@ -18272,13 +18216,13 @@ finaliseCap:
 	andl	%edi, %esi
 	orl	%esi, %eax
 	movl	%eax, 4(%ebx)
-	jmp	.L2535
+	jmp	.L2529
 	.p2align 4,,7
 	.p2align 3
-.L2556:
+.L2550:
 	movl	20(%ebp), %eax
 	testl	%eax, %eax
-	je	.L2552
+	je	.L2546
 	movl	%esi, %eax
 	movzbl	%al, %esi
 	movl	%esi, %eax
@@ -18289,13 +18233,13 @@ finaliseCap:
 	movl	$0, (%ebx)
 	movl	$0, 4(%ebx)
 	movl	%esi, 8(%ebx)
-	jmp	.L2535
+	jmp	.L2529
 	.p2align 4,,7
 	.p2align 3
-.L2553:
+.L2547:
 	movl	20(%ebp), %ecx
 	testl	%ecx, %ecx
-	je	.L2552
+	je	.L2546
 	movl	%edx, %esi
 	andl	$-16, %esi
 	movl	%esi, (%esp)
@@ -18303,20 +18247,20 @@ finaliseCap:
 	call	suspend
 	movl	-44(%ebp), %edx
 	cmpl	ia32KSfpuOwner, %esi
-	je	.L2588
-.L2558:
+	je	.L2582
+.L2552:
 	andl	$-1024, %edx
 	orl	$5, %edx
 	movl	$8238, (%ebx)
 	movl	%edx, 4(%ebx)
 	movl	$-1, 8(%ebx)
-	jmp	.L2535
-.L2588:
+	jmp	.L2529
+.L2582:
 	xorl	%eax, %eax
 	call	switchFpuOwner
 	movl	-44(%ebp), %edx
-	jmp	.L2558
-.L2586:
+	jmp	.L2552
+.L2580:
 	call	halt
 	.cfi_endproc
 .LFE516:
@@ -18340,7 +18284,7 @@ cteDelete:
 	.cfi_offset 6, -16
 	.cfi_offset 3, -20
 	movl	8(%ebp), %edi
-.L2631:
+.L2625:
 	movl	(%edi), %eax
 	movl	%eax, %ebx
 	movl	%eax, %edx
@@ -18350,17 +18294,17 @@ cteDelete:
 	cmpl	$14, %ebx
 	cmove	%ecx, %edx
 	testl	%edx, %edx
-	je	.L2684
+	je	.L2678
 	movl	8(%edi), %eax
 	movl	12(%edi), %edx
 	andl	$-8, %eax
-	jne	.L2671
+	jne	.L2665
 	movl	(%edi), %ebx
 	movl	4(%edi), %esi
-.L2591:
+.L2585:
 	andl	$-8, %edx
 	movl	$1, %ecx
-	je	.L2592
+	je	.L2586
 	movl	(%edx), %eax
 	movl	4(%edx), %edx
 	movl	%ebx, (%esp)
@@ -18371,7 +18315,7 @@ cteDelete:
 	xorl	%ecx, %ecx
 	testl	%eax, %eax
 	sete	%cl
-.L2592:
+.L2586:
 	leal	-36(%ebp), %eax
 	movl	%ecx, 12(%esp)
 	movl	%ebx, 4(%esp)
@@ -18393,45 +18337,45 @@ cteDelete:
 	cmpl	$14, %edx
 	cmove	%ebx, %ecx
 	testl	%ecx, %ecx
-	je	.L2681
+	je	.L2675
 	cmpl	$46, %ecx
-	jne	.L2675
+	jne	.L2669
 	movl	%eax, %ebx
 	andl	$16128, %ebx
 	movl	%ebx, -48(%ebp)
 	shrl	$8, -48(%ebp)
 	movl	-48(%ebp), %esi
 	cmpl	$32, %esi
-	je	.L2598
+	je	.L2592
 	leal	1(%esi), %ecx
 	movl	$1, %esi
 	sall	%cl, %esi
 	leal	-1(%esi), %ecx
 	negl	%esi
 	andl	-44(%ebp), %ecx
-.L2628:
+.L2622:
 	testl	%ecx, %ecx
-	je	.L2681
+	je	.L2675
 	andl	-44(%ebp), %esi
 	cmpl	%esi, %edi
-	je	.L2685
-.L2600:
+	je	.L2679
+.L2594:
 	movl	-36(%ebp), %ebx
 	movl	-32(%ebp), %esi
 	movl	%ebx, (%edi)
 	movl	12(%ebp), %ebx
 	movl	%esi, 4(%edi)
 	testl	%ebx, %ebx
-	jne	.L2601
+	jne	.L2595
 	cmpl	$14, %edx
-	je	.L2686
-.L2601:
+	je	.L2680
+.L2595:
 	movl	(%edi), %ebx
 	movl	4(%edi), %edx
 	andl	$16128, %ebx
 	shrl	$8, %ebx
 	cmpl	$32, %ebx
-	je	.L2604
+	je	.L2598
 	leal	1(%ebx), %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
@@ -18439,10 +18383,10 @@ cteDelete:
 	subl	$1, %eax
 	negl	%esi
 	andl	%edx, %esi
-.L2629:
+.L2623:
 	movl	12(%ebp), %ecx
 	testl	%ecx, %ecx
-	je	.L2605
+	je	.L2599
 	andl	%edx, %eax
 	movl	%eax, -48(%ebp)
 	addl	$268435455, %eax
@@ -18452,7 +18396,7 @@ cteDelete:
 	movl	%eax, (%esp)
 	call	cteDelete
 	testl	%eax, %eax
-	jne	.L2677
+	jne	.L2671
 	movl	(%edi), %ecx
 	movl	%ecx, %eax
 	movzbl	%cl, %edx
@@ -18463,44 +18407,44 @@ cteDelete:
 	cmpl	$14, -44(%ebp)
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	je	.L2610
+	je	.L2604
 	cmpl	$46, %eax
-	jne	.L2675
+	jne	.L2669
 	movl	4(%edi), %eax
 	movl	%eax, -44(%ebp)
 	movl	%ecx, %eax
 	andl	$16128, %eax
 	shrl	$8, %eax
 	cmpl	$32, %eax
-	je	.L2687
+	je	.L2681
 	orl	$-1, %edx
 	leal	1(%eax), %ecx
 	sall	%cl, %edx
 	andl	-44(%ebp), %edx
 	cmpl	%edx, %esi
-	je	.L2688
+	je	.L2682
 	.p2align 4,,7
 	.p2align 3
-.L2610:
+.L2604:
 	movl	ksWorkUnitsCompleted, %eax
 	addl	$1, %eax
 	cmpl	$99, %eax
 	movl	%eax, ksWorkUnitsCompleted
-	jbe	.L2631
+	jbe	.L2625
 	movl	$0, ksWorkUnitsCompleted
 	movl	-65008, %eax
 	testl	%eax, %eax
-	jne	.L2632
+	jne	.L2626
 	movl	$10, 4(%esp)
 	movl	$32, (%esp)
 	call	out8
 	movl	$32, (%esp)
 	call	in8
 	testb	%al, %al
-	je	.L2631
-.L2632:
+	je	.L2625
+.L2626:
 	movl	$4, %eax
-.L2677:
+.L2671:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -18513,15 +18457,15 @@ cteDelete:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret
-.L2685:
+.L2679:
 	.cfi_restore_state
 	subl	$1, %ecx
-	jne	.L2600
+	jne	.L2594
 	.p2align 4,,7
 	.p2align 3
-.L2681:
+.L2675:
 	movl	(%edi), %eax
-.L2596:
+.L2590:
 	movl	%eax, %ecx
 	movzbl	%al, %edx
 	andl	$14, %ecx
@@ -18529,20 +18473,20 @@ cteDelete:
 	cmpl	$14, %ecx
 	cmovne	%eax, %edx
 	testl	%edx, %edx
-	je	.L2682
+	je	.L2676
 	movl	12(%edi), %ebx
 	movl	8(%edi), %ecx
 	movl	%ebx, %eax
 	andl	$-8, %eax
 	andl	$-8, %ecx
-	je	.L2623
+	je	.L2617
 	movl	12(%ecx), %edx
 	andl	$7, %edx
 	orl	%eax, %edx
 	movl	%edx, 12(%ecx)
-.L2623:
+.L2617:
 	testl	%eax, %eax
-	je	.L2624
+	je	.L2618
 	movl	8(%eax), %edx
 	andl	$1, %ebx
 	andl	$7, %edx
@@ -18555,24 +18499,24 @@ cteDelete:
 	andl	$-2, %ecx
 	orl	%ecx, %edx
 	movl	%edx, 12(%eax)
-.L2624:
+.L2618:
 	movl	-52(%ebp), %eax
 	movl	$0, (%edi)
 	movl	$0, 4(%edi)
 	movl	$0, 8(%edi)
 	cmpl	$-1, %eax
 	movl	$0, 12(%edi)
-	je	.L2682
+	je	.L2676
 	cmpl	$15, %eax
 	movl	$0, intStateIRQTable(,%eax,4)
-	jg	.L2682
+	jg	.L2676
 	cmpl	$7, %eax
-	jg	.L2626
+	jg	.L2620
 	movzbl	-52(%ebp), %ecx
 	movl	$1, %esi
 	movl	$33, %ebx
 	sall	%cl, %esi
-.L2627:
+.L2621:
 	movl	%ebx, (%esp)
 	call	in8
 	movl	%ebx, (%esp)
@@ -18582,12 +18526,12 @@ cteDelete:
 	call	out8
 	.p2align 4,,7
 	.p2align 3
-.L2682:
+.L2676:
 	xorl	%eax, %eax
-	jmp	.L2677
+	jmp	.L2671
 	.p2align 4,,7
 	.p2align 3
-.L2671:
+.L2665:
 	movl	(%edi), %ebx
 	movl	4(%edi), %esi
 	movl	%edx, -44(%ebp)
@@ -18601,18 +18545,18 @@ cteDelete:
 	xorl	%ecx, %ecx
 	movl	-44(%ebp), %edx
 	testl	%eax, %eax
-	jne	.L2592
-	jmp	.L2591
+	jne	.L2586
+	jmp	.L2585
 	.p2align 4,,7
 	.p2align 3
-.L2675:
+.L2669:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L2605:
+.L2599:
 	cmpl	%esi, %edi
 	.p2align 4,,6
-	je	.L2610
+	je	.L2604
 	movl	(%esi), %ecx
 	movl	4(%esi), %ebx
 	movl	(%edi), %eax
@@ -18624,55 +18568,55 @@ cteDelete:
 	movl	%ecx, (%esp)
 	movl	%ebx, 4(%esp)
 	call	cteSwap
-	jmp	.L2610
-	.p2align 4,,7
-	.p2align 3
-.L2604:
-	movl	%edx, %esi
-	movl	$15, %eax
-	andl	$-16, %esi
-	jmp	.L2629
-	.p2align 4,,7
-	.p2align 3
-.L2686:
-	cmpb	$46, %al
-	jne	.L2601
-	movl	-48(%ebp), %ecx
-	movl	$-16, %eax
-	cmpl	$32, %ecx
-	je	.L2602
-	addl	$1, %ecx
-	movb	$-1, %al
-	sall	%cl, %eax
-.L2602:
-	andl	-44(%ebp), %eax
-	cmpl	%eax, %edi
-	jne	.L2601
-	xorl	%eax, %eax
-	jmp	.L2677
+	jmp	.L2604
 	.p2align 4,,7
 	.p2align 3
 .L2598:
+	movl	%edx, %esi
+	movl	$15, %eax
+	andl	$-16, %esi
+	jmp	.L2623
+	.p2align 4,,7
+	.p2align 3
+.L2680:
+	cmpb	$46, %al
+	jne	.L2595
+	movl	-48(%ebp), %ecx
+	movl	$-16, %eax
+	cmpl	$32, %ecx
+	je	.L2596
+	addl	$1, %ecx
+	movb	$-1, %al
+	sall	%cl, %eax
+.L2596:
+	andl	-44(%ebp), %eax
+	cmpl	%eax, %edi
+	jne	.L2595
+	xorl	%eax, %eax
+	jmp	.L2671
+	.p2align 4,,7
+	.p2align 3
+.L2592:
 	movl	-44(%ebp), %ecx
 	movl	$-16, %esi
 	andl	$15, %ecx
-	jmp	.L2628
+	jmp	.L2622
 	.p2align 4,,7
 	.p2align 3
-.L2684:
+.L2678:
 	movl	$-1, -52(%ebp)
-	jmp	.L2596
-.L2626:
+	jmp	.L2590
+.L2620:
 	movl	-52(%ebp), %ecx
 	movl	$1, %eax
 	movl	$161, %ebx
 	subl	$8, %ecx
 	sall	%cl, %eax
 	movl	%eax, %esi
-	jmp	.L2627
-.L2688:
+	jmp	.L2621
+.L2682:
 	movl	%eax, %ecx
-.L2634:
+.L2628:
 	movl	$1, %esi
 	addl	$1, %ecx
 	movl	%esi, %edx
@@ -18681,37 +18625,37 @@ cteDelete:
 	subl	$1, %ecx
 	andl	-44(%ebp), %ecx
 	cmpl	%ecx, -48(%ebp)
-	jne	.L2610
+	jne	.L2604
 	cmpl	%eax, %ebx
-	jne	.L2610
+	jne	.L2604
 	movl	-48(%ebp), %eax
 	subl	$1, %eax
 	cmpl	$32, %ebx
-	je	.L2640
+	je	.L2634
 	leal	1(%ebx), %ecx
 	sall	%cl, %esi
 	movl	%esi, %ebx
 	movl	%esi, %ecx
 	negl	%ecx
 	subl	$1, %ebx
-.L2614:
+.L2608:
 	movl	-44(%ebp), %edx
 	andl	%ebx, %eax
 	andl	%ecx, %edx
 	orl	%edx, %eax
 	movl	%eax, 4(%edi)
-	jmp	.L2610
-.L2640:
+	jmp	.L2604
+.L2634:
 	movl	$15, %ebx
 	movl	$-16, %ecx
-	jmp	.L2614
-.L2687:
+	jmp	.L2608
+.L2681:
 	movl	-44(%ebp), %ecx
 	andl	$-16, %ecx
 	cmpl	%ecx, %esi
-	jne	.L2610
+	jne	.L2604
 	movl	$3, %ecx
-	jmp	.L2634
+	jmp	.L2628
 	.cfi_endproc
 .LFE477:
 	.size	cteDelete, .-cteDelete
@@ -18734,9 +18678,9 @@ finaliseSlot.constprop.158:
 	movl	%edx, %ebx
 	subl	$76, %esp
 	movl	%eax, -44(%ebp)
-.L2690:
+.L2684:
 	movl	(%ebx), %eax
-.L2719:
+.L2713:
 	movl	%eax, %ecx
 	movl	%eax, %edx
 	andl	$14, %ecx
@@ -18745,17 +18689,17 @@ finaliseSlot.constprop.158:
 	cmpl	$14, %ecx
 	cmove	%eax, %edx
 	testl	%edx, %edx
-	je	.L2748
+	je	.L2742
 	movl	8(%ebx), %eax
 	movl	12(%ebx), %edx
 	andl	$-8, %eax
-	jne	.L2743
+	jne	.L2737
 	movl	(%ebx), %esi
 	movl	4(%ebx), %edi
-.L2691:
+.L2685:
 	andl	$-8, %edx
 	movl	$1, %ecx
-	je	.L2692
+	je	.L2686
 	movl	(%edx), %eax
 	movl	4(%edx), %edx
 	movl	%esi, (%esp)
@@ -18766,7 +18710,7 @@ finaliseSlot.constprop.158:
 	xorl	%ecx, %ecx
 	testl	%eax, %eax
 	sete	%cl
-.L2692:
+.L2686:
 	leal	-36(%ebp), %eax
 	movl	%ecx, 12(%esp)
 	movl	%esi, 4(%esp)
@@ -18787,13 +18731,13 @@ finaliseSlot.constprop.158:
 	cmpl	$14, %edi
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	je	.L2696
+	je	.L2690
 	cmpl	$46, %eax
-	jne	.L2745
+	jne	.L2739
 	andl	$16128, %ecx
 	shrl	$8, %ecx
 	cmpl	$32, %ecx
-	je	.L2698
+	je	.L2692
 	addl	$1, %ecx
 	movb	$1, %al
 	sall	%cl, %eax
@@ -18801,12 +18745,12 @@ finaliseSlot.constprop.158:
 	negl	%eax
 	andl	%esi, %edx
 	testl	%edx, %edx
-	je	.L2696
-.L2751:
+	je	.L2690
+.L2745:
 	andl	%esi, %eax
 	cmpl	%eax, %ebx
-	je	.L2749
-.L2700:
+	je	.L2743
+.L2694:
 	movl	-36(%ebp), %eax
 	movl	-32(%ebp), %edx
 	movl	%eax, (%ebx)
@@ -18816,7 +18760,7 @@ finaliseSlot.constprop.158:
 	andl	$16128, %esi
 	shrl	$8, %esi
 	cmpl	$32, %esi
-	je	.L2702
+	je	.L2696
 	leal	1(%esi), %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
@@ -18824,7 +18768,7 @@ finaliseSlot.constprop.158:
 	subl	$1, %eax
 	negl	%edi
 	andl	%edx, %edi
-.L2717:
+.L2711:
 	andl	%edx, %eax
 	movl	%eax, -52(%ebp)
 	addl	$268435455, %eax
@@ -18834,7 +18778,7 @@ finaliseSlot.constprop.158:
 	movl	%eax, (%esp)
 	call	cteDelete
 	testl	%eax, %eax
-	jne	.L2703
+	jne	.L2697
 	movl	(%ebx), %edx
 	movl	%edx, %eax
 	movzbl	%dl, %ecx
@@ -18845,9 +18789,9 @@ finaliseSlot.constprop.158:
 	cmpl	$14, -48(%ebp)
 	cmove	%ecx, %eax
 	testl	%eax, %eax
-	je	.L2707
+	je	.L2701
 	cmpl	$46, %eax
-	jne	.L2745
+	jne	.L2739
 	movl	4(%ebx), %eax
 	movl	%eax, -56(%ebp)
 	movl	%edx, %eax
@@ -18855,7 +18799,7 @@ finaliseSlot.constprop.158:
 	movl	%eax, -48(%ebp)
 	shrl	$8, -48(%ebp)
 	cmpl	$32, -48(%ebp)
-	je	.L2750
+	je	.L2744
 	movl	-48(%ebp), %eax
 	movl	$-1, -60(%ebp)
 	leal	1(%eax), %ecx
@@ -18863,9 +18807,9 @@ finaliseSlot.constprop.158:
 	sall	%cl, -60(%ebp)
 	andl	%eax, -60(%ebp)
 	cmpl	-60(%ebp), %edi
-	jne	.L2707
+	jne	.L2701
 	movl	-48(%ebp), %ecx
-.L2722:
+.L2716:
 	movl	$1, %edi
 	addl	$1, %ecx
 	movl	%edi, %eax
@@ -18874,36 +18818,36 @@ finaliseSlot.constprop.158:
 	subl	$1, %ecx
 	andl	-56(%ebp), %ecx
 	cmpl	%ecx, -52(%ebp)
-	jne	.L2707
+	jne	.L2701
 	cmpl	-48(%ebp), %esi
-	jne	.L2707
+	jne	.L2701
 	movl	-52(%ebp), %eax
 	subl	$1, %eax
 	cmpl	$32, %esi
-	je	.L2725
+	je	.L2719
 	leal	1(%esi), %ecx
 	sall	%cl, %edi
 	movl	%edi, %ecx
 	subl	$1, %edi
 	negl	%ecx
-.L2711:
+.L2705:
 	andl	-56(%ebp), %ecx
 	andl	%edi, %eax
 	orl	%ecx, %eax
 	movl	%eax, 4(%ebx)
 	.p2align 4,,7
 	.p2align 3
-.L2707:
+.L2701:
 	movl	ksWorkUnitsCompleted, %eax
 	addl	$1, %eax
 	cmpl	$99, %eax
 	movl	%eax, ksWorkUnitsCompleted
-	ja	.L2718
+	ja	.L2712
 	movl	%edx, %eax
-	jmp	.L2719
+	jmp	.L2713
 	.p2align 4,,7
 	.p2align 3
-.L2743:
+.L2737:
 	movl	(%ebx), %esi
 	movl	4(%ebx), %edi
 	movl	%edx, -48(%ebp)
@@ -18917,21 +18861,21 @@ finaliseSlot.constprop.158:
 	xorl	%ecx, %ecx
 	movl	-48(%ebp), %edx
 	testl	%eax, %eax
-	jne	.L2692
-	jmp	.L2691
+	jne	.L2686
+	jmp	.L2685
 	.p2align 4,,7
 	.p2align 3
-.L2745:
+.L2739:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L2703:
+.L2697:
 	movl	-44(%ebp), %esi
 	movl	%eax, (%esi)
 	movl	%esi, %eax
 	movl	$0, 4(%esi)
 	movl	$-1, 8(%esi)
-.L2689:
+.L2683:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -18946,27 +18890,27 @@ finaliseSlot.constprop.158:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2702:
+.L2696:
 	.cfi_restore_state
 	movl	%edx, %edi
 	movl	$15, %eax
 	andl	$-16, %edi
-	jmp	.L2717
+	jmp	.L2711
 	.p2align 4,,7
 	.p2align 3
-.L2718:
+.L2712:
 	movl	$0, ksWorkUnitsCompleted
 	movl	-65008, %eax
 	testl	%eax, %eax
-	jne	.L2720
+	jne	.L2714
 	movl	$10, 4(%esp)
 	movl	$32, (%esp)
 	call	out8
 	movl	$32, (%esp)
 	call	in8
 	testb	%al, %al
-	je	.L2690
-.L2720:
+	je	.L2684
+.L2714:
 	movl	-44(%ebp), %eax
 	movl	$4, (%eax)
 	movl	$0, 4(%eax)
@@ -18985,45 +18929,45 @@ finaliseSlot.constprop.158:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2698:
+.L2692:
 	.cfi_restore_state
 	movl	%esi, %edx
 	movl	$-16, %eax
 	andl	$15, %edx
 	testl	%edx, %edx
-	jne	.L2751
+	jne	.L2745
 	.p2align 4,,7
 	.p2align 3
-.L2696:
+.L2690:
 	movl	-44(%ebp), %eax
 	movl	-48(%ebp), %edi
 	movl	$0, (%eax)
 	movl	$1, 4(%eax)
 	movl	%edi, 8(%eax)
-	jmp	.L2689
-.L2750:
+	jmp	.L2683
+.L2744:
 	movl	-56(%ebp), %ecx
 	andl	$-16, %ecx
 	cmpl	%ecx, %edi
-	jne	.L2707
+	jne	.L2701
 	movl	$3, %ecx
-	jmp	.L2722
+	jmp	.L2716
 	.p2align 4,,7
 	.p2align 3
-.L2748:
+.L2742:
 	movl	-44(%ebp), %eax
 	movl	$0, (%eax)
 	movl	$1, 4(%eax)
 	movl	$-1, 8(%eax)
-	jmp	.L2689
-.L2725:
+	jmp	.L2683
+.L2719:
 	movl	$15, %edi
 	movl	$-16, %ecx
-	jmp	.L2711
-.L2749:
+	jmp	.L2705
+.L2743:
 	subl	$1, %edx
-	jne	.L2700
-	jmp	.L2696
+	jne	.L2694
+	jmp	.L2690
 	.cfi_endproc
 .LFE753:
 	.size	finaliseSlot.constprop.158, .-finaliseSlot.constprop.158
@@ -19049,7 +18993,7 @@ cteDelete.constprop.160:
 	call	finaliseSlot.constprop.158
 	movl	20(%esp), %eax
 	testl	%eax, %eax
-	jne	.L2753
+	jne	.L2747
 	movl	(%ebx), %edx
 	movl	28(%esp), %ecx
 	movl	%edx, %esi
@@ -19060,20 +19004,20 @@ cteDelete.constprop.160:
 	cmpl	$14, %esi
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	je	.L2775
+	je	.L2769
 	movl	12(%ebx), %edi
 	movl	8(%ebx), %esi
 	movl	%edi, %eax
 	andl	$-8, %eax
 	andl	$-8, %esi
-	je	.L2757
+	je	.L2751
 	movl	12(%esi), %edx
 	andl	$7, %edx
 	orl	%eax, %edx
 	movl	%edx, 12(%esi)
-.L2757:
+.L2751:
 	testl	%eax, %eax
-	je	.L2758
+	je	.L2752
 	movl	8(%eax), %edx
 	andl	$1, %edi
 	andl	$7, %edx
@@ -19086,19 +19030,19 @@ cteDelete.constprop.160:
 	andl	$-2, %esi
 	orl	%esi, %edx
 	movl	%edx, 12(%eax)
-.L2758:
+.L2752:
 	cmpl	$-1, %ecx
 	movl	$0, (%ebx)
 	movl	$0, 4(%ebx)
 	movl	$0, 8(%ebx)
 	movl	$0, 12(%ebx)
-	je	.L2775
+	je	.L2769
 	cmpl	$15, %ecx
 	movl	$0, intStateIRQTable(,%ecx,4)
-	jle	.L2776
-.L2775:
+	jle	.L2770
+.L2769:
 	xorl	%eax, %eax
-.L2753:
+.L2747:
 	addl	$32, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
@@ -19114,14 +19058,14 @@ cteDelete.constprop.160:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2776:
+.L2770:
 	.cfi_restore_state
 	cmpl	$7, %ecx
-	jg	.L2761
+	jg	.L2755
 	movl	$1, %esi
 	movl	$33, %ebx
 	sall	%cl, %esi
-.L2762:
+.L2756:
 	movl	%ebx, (%esp)
 	call	in8
 	movl	%ebx, (%esp)
@@ -19129,16 +19073,16 @@ cteDelete.constprop.160:
 	movzbl	%al, %eax
 	movl	%eax, 4(%esp)
 	call	out8
-	jmp	.L2775
+	jmp	.L2769
 	.p2align 4,,7
 	.p2align 3
-.L2761:
+.L2755:
 	subl	$8, %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	$161, %ebx
 	movl	%eax, %esi
-	jmp	.L2762
+	jmp	.L2756
 	.cfi_endproc
 .LFE751:
 	.size	cteDelete.constprop.160, .-cteDelete.constprop.160
@@ -19165,7 +19109,7 @@ invokeCNodeDelete:
 	call	finaliseSlot.constprop.158
 	movl	20(%esp), %eax
 	testl	%eax, %eax
-	jne	.L2778
+	jne	.L2772
 	movl	(%ebx), %edx
 	movl	28(%esp), %ecx
 	movl	%edx, %esi
@@ -19176,20 +19120,20 @@ invokeCNodeDelete:
 	cmpl	$14, %esi
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	je	.L2800
+	je	.L2794
 	movl	12(%ebx), %edi
 	movl	8(%ebx), %esi
 	movl	%edi, %eax
 	andl	$-8, %eax
 	andl	$-8, %esi
-	je	.L2782
+	je	.L2776
 	movl	12(%esi), %edx
 	andl	$7, %edx
 	orl	%eax, %edx
 	movl	%edx, 12(%esi)
-.L2782:
+.L2776:
 	testl	%eax, %eax
-	je	.L2783
+	je	.L2777
 	movl	8(%eax), %edx
 	andl	$1, %edi
 	andl	$7, %edx
@@ -19202,19 +19146,19 @@ invokeCNodeDelete:
 	andl	$-2, %esi
 	orl	%esi, %edx
 	movl	%edx, 12(%eax)
-.L2783:
+.L2777:
 	cmpl	$-1, %ecx
 	movl	$0, (%ebx)
 	movl	$0, 4(%ebx)
 	movl	$0, 8(%ebx)
 	movl	$0, 12(%ebx)
-	je	.L2800
+	je	.L2794
 	cmpl	$15, %ecx
 	movl	$0, intStateIRQTable(,%ecx,4)
-	jle	.L2801
-.L2800:
+	jle	.L2795
+.L2794:
 	xorl	%eax, %eax
-.L2778:
+.L2772:
 	addl	$32, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
@@ -19230,14 +19174,14 @@ invokeCNodeDelete:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2801:
+.L2795:
 	.cfi_restore_state
 	cmpl	$7, %ecx
-	jg	.L2786
+	jg	.L2780
 	movl	$1, %esi
 	movl	$33, %ebx
 	sall	%cl, %esi
-.L2787:
+.L2781:
 	movl	%ebx, (%esp)
 	call	in8
 	movl	%ebx, (%esp)
@@ -19245,16 +19189,16 @@ invokeCNodeDelete:
 	movzbl	%al, %eax
 	movl	%eax, 4(%esp)
 	call	out8
-	jmp	.L2800
+	jmp	.L2794
 	.p2align 4,,7
 	.p2align 3
-.L2786:
+.L2780:
 	subl	$8, %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	$161, %ebx
 	movl	%eax, %esi
-	jmp	.L2787
+	jmp	.L2781
 	.cfi_endproc
 .LFE465:
 	.size	invokeCNodeDelete, .-invokeCNodeDelete
@@ -19281,13 +19225,13 @@ cteRevoke:
 	movl	64(%esp), %esi
 	.p2align 4,,7
 	.p2align 3
-.L2868:
+.L2862:
 	movl	12(%esi), %eax
 	movl	%eax, %ebx
 	andl	$-8, %ebx
-	je	.L2805
+	je	.L2799
 	testb	$2, %al
-	je	.L2805
+	je	.L2799
 	movl	(%ebx), %eax
 	movl	4(%ebx), %edx
 	movl	%eax, 8(%esp)
@@ -19298,7 +19242,7 @@ cteRevoke:
 	movl	%edx, 4(%esp)
 	call	sameRegionAs
 	testl	%eax, %eax
-	je	.L2805
+	je	.L2799
 	movl	(%esi), %edx
 	movl	%edx, %ecx
 	movl	%edx, %eax
@@ -19308,23 +19252,23 @@ cteRevoke:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	cmpl	$4, %eax
-	je	.L2822
+	je	.L2816
 	cmpl	$6, %eax
-	jne	.L2807
-.L2822:
+	jne	.L2801
+.L2816:
 	movl	4(%esi), %eax
 	shrl	$3, %eax
 	testl	%eax, %eax
-	je	.L2807
+	je	.L2801
 	movl	4(%ebx), %edx
 	shrl	$3, %edx
 	cmpl	%edx, %eax
-	je	.L2872
+	je	.L2866
 	.p2align 4,,7
 	.p2align 3
-.L2805:
+.L2799:
 	xorl	%eax, %eax
-.L2863:
+.L2857:
 	addl	$44, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -19343,22 +19287,22 @@ cteRevoke:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2872:
+.L2866:
 	.cfi_restore_state
 	movl	12(%ebx), %eax
 	xorl	$1, %eax
 	andl	$1, %eax
 	testl	%eax, %eax
-	je	.L2805
+	je	.L2799
 	.p2align 4,,7
 	.p2align 3
-.L2807:
+.L2801:
 	leal	20(%esp), %eax
 	movl	%ebx, %edx
 	call	finaliseSlot.constprop.158
 	movl	20(%esp), %eax
 	testl	%eax, %eax
-	jne	.L2863
+	jne	.L2857
 	movl	(%ebx), %edx
 	movl	28(%esp), %ecx
 	movl	%edx, %edi
@@ -19369,20 +19313,20 @@ cteRevoke:
 	cmpl	$14, %edi
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	je	.L2817
+	je	.L2811
 	movl	12(%ebx), %ebp
 	movl	8(%ebx), %edi
 	movl	%ebp, %eax
 	andl	$-8, %eax
 	andl	$-8, %edi
-	je	.L2812
+	je	.L2806
 	movl	12(%edi), %edx
 	andl	$7, %edx
 	orl	%eax, %edx
 	movl	%edx, 12(%edi)
-.L2812:
+.L2806:
 	testl	%eax, %eax
-	je	.L2813
+	je	.L2807
 	movl	8(%eax), %edx
 	andl	$1, %ebp
 	andl	$7, %edx
@@ -19395,38 +19339,38 @@ cteRevoke:
 	andl	$-2, %edx
 	orl	%edx, %ebp
 	movl	%ebp, 12(%eax)
-.L2813:
+.L2807:
 	cmpl	$-1, %ecx
 	movl	$0, (%ebx)
 	movl	$0, 4(%ebx)
 	movl	$0, 8(%ebx)
 	movl	$0, 12(%ebx)
-	je	.L2817
+	je	.L2811
 	cmpl	$15, %ecx
 	movl	$0, intStateIRQTable(,%ecx,4)
-	jle	.L2873
-.L2817:
+	jle	.L2867
+.L2811:
 	movl	ksWorkUnitsCompleted, %eax
 	addl	$1, %eax
 	cmpl	$99, %eax
-	ja	.L2874
+	ja	.L2868
 	movl	%eax, ksWorkUnitsCompleted
-	jmp	.L2868
+	jmp	.L2862
 	.p2align 4,,7
 	.p2align 3
-.L2874:
+.L2868:
 	movl	$0, ksWorkUnitsCompleted
 	movl	-65008, %eax
 	testl	%eax, %eax
-	jne	.L2828
+	jne	.L2822
 	movl	$10, 4(%esp)
 	movl	$32, (%esp)
 	call	out8
 	movl	$32, (%esp)
 	call	in8
 	testb	%al, %al
-	je	.L2868
-.L2828:
+	je	.L2862
+.L2822:
 	addl	$44, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -19446,15 +19390,15 @@ cteRevoke:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L2873:
+.L2867:
 	.cfi_restore_state
 	cmpl	$7, %ecx
-	jg	.L2815
+	jg	.L2809
 	movl	$1, %eax
 	movl	$33, %ebx
 	sall	%cl, %eax
 	movl	%eax, %edi
-.L2816:
+.L2810:
 	movl	%ebx, (%esp)
 	call	in8
 	movl	%ebx, (%esp)
@@ -19462,16 +19406,16 @@ cteRevoke:
 	movzbl	%al, %eax
 	movl	%eax, 4(%esp)
 	call	out8
-	jmp	.L2817
+	jmp	.L2811
 	.p2align 4,,7
 	.p2align 3
-.L2815:
+.L2809:
 	subl	$8, %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	$161, %ebx
 	movl	%eax, %edi
-	jmp	.L2816
+	jmp	.L2810
 	.cfi_endproc
 .LFE476:
 	.size	cteRevoke, .-cteRevoke
@@ -19503,23 +19447,23 @@ updateCapData:
 	movl	%edx, %ecx
 	andl	$14, %ecx
 	cmpl	$14, %ecx
-	je	.L2877
+	je	.L2871
 	movl	%edx, %ecx
 	andl	$15, %ecx
 	testb	$1, %dl
-	jne	.L2908
-.L2888:
+	jne	.L2902
+.L2882:
 	cmpl	$6, %ecx
-	je	.L2890
+	je	.L2884
 	cmpl	$10, %ecx
-	je	.L2891
+	je	.L2885
 	cmpl	$4, %ecx
 	.p2align 4,,2
-	je	.L2890
-.L2902:
+	je	.L2884
+.L2896:
 	movl	%edx, (%eax)
 	movl	%ebx, 4(%eax)
-.L2876:
+.L2870:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -19530,47 +19474,47 @@ updateCapData:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2908:
+.L2902:
 	.cfi_restore_state
 	movl	%edx, %ecx
 	andl	$15, %ecx
-.L2882:
+.L2876:
 	cmpl	$11, %ecx
-	jne	.L2902
+	jne	.L2896
 	movl	20(%esp), %ecx
 	movzwl	20(%esp), %edx
 	shrl	$16, %ecx
 	cmpw	%dx, %cx
-	ja	.L2887
+	ja	.L2881
 	cmpw	%dx, %bx
-	jb	.L2887
+	jb	.L2881
 	shrl	$16, %ebx
 	cmpw	%bx, %cx
-	jb	.L2887
+	jb	.L2881
 	sall	$16, %ecx
 	orl	%edx, %ecx
 	movl	$11, (%eax)
 	movl	%ecx, 4(%eax)
-	jmp	.L2876
+	jmp	.L2870
 	.p2align 4,,7
 	.p2align 3
-.L2890:
+.L2884:
 	movl	16(%esp), %ecx
 	testl	%ecx, %ecx
-	jne	.L2887
+	jne	.L2881
 	movl	%ebx, %ecx
 	shrl	$3, %ecx
 	testl	%ecx, %ecx
-	jne	.L2887
+	jne	.L2881
 	movl	20(%esp), %esi
 	movl	%edx, (%eax)
 	leal	0(,%esi,8), %edx
 	orl	%ebx, %edx
 	movl	%edx, 4(%eax)
-	jmp	.L2876
+	jmp	.L2870
 	.p2align 4,,7
 	.p2align 3
-.L2887:
+.L2881:
 	movl	$0, (%eax)
 	movl	$0, 4(%eax)
 	popl	%ebx
@@ -19583,16 +19527,16 @@ updateCapData:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2877:
+.L2871:
 	.cfi_restore_state
 	testb	$1, %dl
 	movzbl	%dl, %ecx
-	je	.L2888
+	je	.L2882
 	movzbl	%dl, %ecx
-	jmp	.L2882
+	jmp	.L2876
 	.p2align 4,,7
 	.p2align 3
-.L2891:
+.L2885:
 	movl	20(%esp), %ecx
 	movl	%ebx, %esi
 	andl	$260046848, %esi
@@ -19601,7 +19545,7 @@ updateCapData:
 	shrl	$3, %ecx
 	addl	%ecx, %esi
 	cmpl	$32, %esi
-	ja	.L2887
+	ja	.L2881
 	movl	20(%esp), %esi
 	andl	$-8388608, %ebx
 	movl	%edx, (%eax)
@@ -19615,7 +19559,7 @@ updateCapData:
 	sall	$18, %ecx
 	orl	%ecx, %ebx
 	movl	%ebx, 4(%eax)
-	jmp	.L2876
+	jmp	.L2870
 	.cfi_endproc
 .LFE521:
 	.size	updateCapData, .-updateCapData
@@ -19639,91 +19583,91 @@ maskCapRights:
 	movl	%edx, %ebx
 	andl	$14, %ebx
 	cmpl	$14, %ebx
-	je	.L2910
+	je	.L2904
 	movl	%edx, %ebx
 	andl	$15, %ebx
 	testb	$1, %dl
-	jne	.L2934
-.L2920:
+	jne	.L2928
+.L2914:
 	cmpl	$62, %ebx
-	ja	.L2921
-	jmp	*.L2923(,%ebx,4)
+	ja	.L2915
+	jmp	*.L2917(,%ebx,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L2923:
-	.long	.L2922
-	.long	.L2921
-	.long	.L2922
-	.long	.L2921
-	.long	.L2924
-	.long	.L2921
-	.long	.L2925
-	.long	.L2921
-	.long	.L2922
-	.long	.L2921
-	.long	.L2922
-	.long	.L2921
-	.long	.L2922
-	.long	.L2921
-	.long	.L2922
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2922
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2922
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2921
-	.long	.L2922
+.L2917:
+	.long	.L2916
+	.long	.L2915
+	.long	.L2916
+	.long	.L2915
+	.long	.L2918
+	.long	.L2915
+	.long	.L2919
+	.long	.L2915
+	.long	.L2916
+	.long	.L2915
+	.long	.L2916
+	.long	.L2915
+	.long	.L2916
+	.long	.L2915
+	.long	.L2916
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2916
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2916
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2915
+	.long	.L2916
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L2934:
+.L2928:
 	movl	%edx, %ebx
 	andl	$15, %ebx
 	cmpl	$1, %ebx
-	je	.L2935
-.L2922:
+	je	.L2929
+.L2916:
 	movl	%edx, (%eax)
 	movl	%ecx, 4(%eax)
 	addl	$4, %esp
@@ -19738,24 +19682,24 @@ maskCapRights:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2910:
+.L2904:
 	.cfi_restore_state
 	testb	$1, %dl
 	movzbl	%dl, %ebx
-	je	.L2920
+	je	.L2914
 	movzbl	%dl, %ebx
 	cmpl	$1, %ebx
-	jne	.L2922
-.L2935:
+	jne	.L2916
+.L2929:
 	movl	%edx, %ebx
 	andl	$50331648, %ebx
 	shrl	$24, %ebx
 	cmpl	$2, %ebx
-	je	.L2936
+	je	.L2930
 	cmpl	$3, %ebx
 	movl	$16777216, %esi
-	je	.L2937
-.L2918:
+	je	.L2931
+.L2912:
 	andl	$-50331649, %edx
 	orl	%esi, %edx
 	movl	%edx, (%eax)
@@ -19772,7 +19716,7 @@ maskCapRights:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2925:
+.L2919:
 	.cfi_restore_state
 	movl	%edx, (%eax)
 	movl	%ecx, %edx
@@ -19801,7 +19745,7 @@ maskCapRights:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2924:
+.L2918:
 	.cfi_restore_state
 	movl	%edx, (%eax)
 	movl	%ecx, %edx
@@ -19834,24 +19778,24 @@ maskCapRights:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2921:
+.L2915:
 	.cfi_restore_state
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L2937:
+.L2931:
 	testb	$2, 20(%esp)
-	je	.L2918
+	je	.L2912
 	movl	20(%esp), %ebx
 	andl	$1, %ebx
 	cmpl	$1, %ebx
 	sbbl	%esi, %esi
 	andl	$-16777216, %esi
 	addl	$50331648, %esi
-	jmp	.L2918
+	jmp	.L2912
 	.p2align 4,,7
 	.p2align 3
-.L2936:
+.L2930:
 	movl	20(%esp), %ebx
 	andl	$2, %ebx
 	shrl	%ebx
@@ -19859,7 +19803,7 @@ maskCapRights:
 	sbbl	%esi, %esi
 	andl	$-16777216, %esi
 	addl	$33554432, %esi
-	jmp	.L2918
+	jmp	.L2912
 	.cfi_endproc
 .LFE522:
 	.size	maskCapRights, .-maskCapRights
@@ -19885,31 +19829,31 @@ createObject:
 	movl	8(%ebp), %ebx
 	movl	16(%ebp), %edx
 	cmpl	$4, %eax
-	ja	.L2971
+	ja	.L2965
 	cmpl	$2, %eax
-	je	.L2942
-	jbe	.L2972
+	je	.L2936
+	jbe	.L2966
 	cmpl	$3, %eax
 	.p2align 4,,5
-	je	.L2945
+	je	.L2939
 	cmpl	$4, %eax
 	.p2align 4,,5
-	jne	.L2941
+	jne	.L2935
 	movl	20(%ebp), %eax
 	leal	4(%eax), %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	%edx, %ecx
 	testl	%eax, %eax
-	je	.L2952
+	je	.L2946
 	.p2align 4,,7
 	.p2align 3
-.L2964:
+.L2958:
 	movl	$0, (%ecx)
 	addl	$4, %ecx
 	subl	$4, %eax
-	jne	.L2964
-.L2952:
+	jne	.L2958
+.L2946:
 	movl	20(%ebp), %eax
 	andl	$-32, %edx
 	shrl	%edx
@@ -19933,32 +19877,32 @@ createObject:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2972:
+.L2966:
 	.cfi_restore_state
 	cmpl	$1, %eax
-	jne	.L2941
+	jne	.L2935
 	testb	$1, %dl
 	movl	%edx, %edi
 	movl	$1024, %esi
-	jne	.L2973
-.L2947:
+	jne	.L2967
+.L2941:
 	testl	$2, %edi
-	jne	.L2974
-.L2948:
+	jne	.L2968
+.L2942:
 	movl	%esi, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testl	$2, %esi
 	rep stosl
-	je	.L2949
+	je	.L2943
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
-.L2949:
+.L2943:
 	andl	$1, %esi
-	je	.L2950
+	je	.L2944
 	movb	$0, (%edi)
-.L2950:
+.L2944:
 	movl	$0, 256(%edx)
 	leal	256(%edx), %eax
 	movl	$ia32KSnullFpuState, %esi
@@ -20005,7 +19949,7 @@ createObject:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2971:
+.L2965:
 	.cfi_restore_state
 	movl	20(%ebp), %esi
 	movl	%eax, 4(%esp)
@@ -20029,7 +19973,7 @@ createObject:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2941:
+.L2935:
 	.cfi_restore_state
 	movl	20(%ebp), %eax
 	andl	$-16, %edx
@@ -20052,7 +19996,7 @@ createObject:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2945:
+.L2939:
 	.cfi_restore_state
 	movl	$0, (%edx)
 	movl	%ebx, %eax
@@ -20077,7 +20021,7 @@ createObject:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L2942:
+.L2936:
 	.cfi_restore_state
 	movl	$0, (%edx)
 	movl	%ebx, %eax
@@ -20100,18 +20044,18 @@ createObject:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret	$4
-.L2973:
+.L2967:
 	.cfi_restore_state
 	movb	$0, (%edx)
 	leal	1(%edx), %edi
 	movw	$1023, %si
-	jmp	.L2947
-.L2974:
+	jmp	.L2941
+.L2968:
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
 	subl	$2, %esi
-	jmp	.L2948
+	jmp	.L2942
 	.cfi_endproc
 .LFE523:
 	.size	createObject, .-createObject
@@ -20143,7 +20087,7 @@ createNewObjects:
 	call	getObjectSize
 	testl	%esi, %esi
 	movl	%eax, -36(%ebp)
-	je	.L2975
+	je	.L2969
 	movl	12(%ebp), %eax
 	xorl	%esi, %esi
 	movl	20(%ebp), %ebx
@@ -20159,42 +20103,42 @@ createNewObjects:
 	movl	%eax, -56(%ebp)
 	sall	$23, %eax
 	movl	%eax, -60(%ebp)
-.L2995:
+.L2989:
 	movzbl	-36(%ebp), %ecx
 	movl	%esi, %edx
 	sall	%cl, %edx
 	addl	28(%ebp), %edx
 	cmpl	$4, 8(%ebp)
 	movl	%edx, %eax
-	ja	.L3014
+	ja	.L3008
 	cmpl	$2, 8(%ebp)
-	je	.L2980
-	jbe	.L3015
+	je	.L2974
+	jbe	.L3009
 	cmpl	$3, 8(%ebp)
 	.p2align 4,,3
-	je	.L2983
+	je	.L2977
 	cmpl	$4, 8(%ebp)
 	.p2align 4,,3
-	jne	.L2979
+	jne	.L2973
 	movl	-52(%ebp), %edi
 	testl	%edi, %edi
 	movl	%edi, %ecx
-	je	.L2990
+	je	.L2984
 	.p2align 4,,7
 	.p2align 3
-.L3006:
+.L3000:
 	movl	$0, (%eax)
 	addl	$4, %eax
 	subl	$4, %ecx
-	jne	.L3006
-.L2990:
+	jne	.L3000
+.L2984:
 	movl	-60(%ebp), %ecx
 	andl	$-32, %edx
 	shrl	%edx
 	orl	$10, %edx
 	.p2align 4,,7
 	.p2align 3
-.L2978:
+.L2972:
 	movl	12(%ebp), %eax
 	movl	-44(%ebp), %edi
 	movl	12(%eax), %eax
@@ -20208,12 +20152,12 @@ createNewObjects:
 	movl	%ebx, %edx
 	andl	$-8, %edx
 	testl	%eax, %eax
-	je	.L2993
+	je	.L2987
 	movl	8(%eax), %ecx
 	andl	$7, %ecx
 	orl	%edx, %ecx
 	movl	%ecx, 8(%eax)
-.L2993:
+.L2987:
 	movl	12(%ebp), %eax
 	addl	$1, %esi
 	addl	$16, %ebx
@@ -20223,8 +20167,8 @@ createNewObjects:
 	orl	%edx, %eax
 	cmpl	-40(%ebp), %esi
 	movl	%eax, 12(%edi)
-	jne	.L2995
-.L2975:
+	jne	.L2989
+.L2969:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -20239,27 +20183,27 @@ createNewObjects:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3015:
+.L3009:
 	.cfi_restore_state
 	cmpl	$1, 8(%ebp)
-	jne	.L2979
+	jne	.L2973
 	testb	$1, %dl
 	movl	%edx, %edi
 	movl	$1024, -48(%ebp)
-	jne	.L3016
-.L2985:
+	jne	.L3010
+.L2979:
 	testl	$2, %edi
-	jne	.L3017
-.L2986:
+	jne	.L3011
+.L2980:
 	movl	-48(%ebp), %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	rep stosl
 	testb	$2, -48(%ebp)
-	jne	.L3018
+	jne	.L3012
 	testb	$1, -48(%ebp)
-	jne	.L3019
-.L2988:
+	jne	.L3013
+.L2982:
 	leal	256(%edx), %edi
 	movl	%edi, (%esp)
 	call	Arch_initContext
@@ -20270,10 +20214,10 @@ createNewObjects:
 	andl	$-16, %edi
 	movl	%edi, %edx
 	orl	$12, %edx
-	jmp	.L2978
+	jmp	.L2972
 	.p2align 4,,7
 	.p2align 3
-.L3014:
+.L3008:
 	movl	32(%ebp), %eax
 	movl	%edx, 8(%esp)
 	movl	%eax, 12(%esp)
@@ -20285,10 +20229,10 @@ createNewObjects:
 	movl	-32(%ebp), %edx
 	movl	-28(%ebp), %ecx
 	subl	$4, %esp
-	jmp	.L2978
+	jmp	.L2972
 	.p2align 4,,7
 	.p2align 3
-.L2980:
+.L2974:
 	movl	$0, (%edx)
 	movl	$7, %ecx
 	movl	$0, 4(%edx)
@@ -20296,17 +20240,17 @@ createNewObjects:
 	movl	$0, 12(%edx)
 	andl	$-16, %edx
 	orl	$4, %edx
-	jmp	.L2978
+	jmp	.L2972
 	.p2align 4,,7
 	.p2align 3
-.L2979:
+.L2973:
 	andl	$-16, %edx
 	movl	-56(%ebp), %ecx
 	orl	$2, %edx
-	jmp	.L2978
+	jmp	.L2972
 	.p2align 4,,7
 	.p2align 3
-.L2983:
+.L2977:
 	movl	$0, (%edx)
 	movl	$3, %ecx
 	movl	$0, 4(%edx)
@@ -20314,32 +20258,32 @@ createNewObjects:
 	movl	$0, 12(%edx)
 	andl	$-16, %edx
 	orl	$6, %edx
-	jmp	.L2978
+	jmp	.L2972
 	.p2align 4,,7
 	.p2align 3
-.L3019:
+.L3013:
 	movb	$0, (%edi)
-	jmp	.L2988
+	jmp	.L2982
 	.p2align 4,,7
 	.p2align 3
-.L3018:
+.L3012:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	testb	$1, -48(%ebp)
-	je	.L2988
-	jmp	.L3019
-.L3017:
+	je	.L2982
+	jmp	.L3013
+.L3011:
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
 	subl	$2, -48(%ebp)
-	jmp	.L2986
-.L3016:
+	jmp	.L2980
+.L3010:
 	movb	$0, (%edx)
 	leal	1(%edx), %edi
 	movl	$1023, -48(%ebp)
-	jmp	.L2985
+	jmp	.L2979
 	.cfi_endproc
 .LFE524:
 	.size	createNewObjects, .-createNewObjects
@@ -20361,7 +20305,7 @@ tcbSchedEnqueue:
 	movl	16(%esp), %eax
 	movl	600(%eax), %ecx
 	testb	$1, %cl
-	jne	.L3020
+	jne	.L3014
 	movl	620(%eax), %edx
 	sall	$8, %edx
 	addl	624(%eax), %edx
@@ -20369,16 +20313,16 @@ tcbSchedEnqueue:
 	movl	ksReadyQueues(,%edx,8), %edi
 	movl	4(%esi), %ebx
 	testl	%ebx, %ebx
-	je	.L3023
+	je	.L3017
 	movl	%eax, 644(%edi)
-.L3022:
+.L3016:
 	orl	$1, %ecx
 	movl	$0, 644(%eax)
 	movl	%edi, 640(%eax)
 	movl	%eax, ksReadyQueues(,%edx,8)
 	movl	%ebx, 4(%esi)
 	movl	%ecx, 600(%eax)
-.L3020:
+.L3014:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -20392,10 +20336,10 @@ tcbSchedEnqueue:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3023:
+.L3017:
 	.cfi_restore_state
 	movl	%eax, %ebx
-	jmp	.L3022
+	jmp	.L3016
 	.cfi_endproc
 .LFE530:
 	.size	tcbSchedEnqueue, .-tcbSchedEnqueue
@@ -20409,16 +20353,16 @@ timerTick:
 	movl	592(%eax), %edx
 	andl	$15, %edx
 	cmpl	$1, %edx
-	jne	.L3034
+	jne	.L3028
 	movl	628(%eax), %edx
 	cmpl	$1, %edx
-	jbe	.L3027
+	jbe	.L3021
 	subl	$1, %edx
 	movl	%edx, 628(%eax)
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3027:
+.L3021:
 	pushl	%edi
 	.cfi_def_cfa_offset 8
 	.cfi_offset 7, -8
@@ -20433,7 +20377,7 @@ timerTick:
 	movl	600(%eax), %ecx
 	movl	$1, 628(%eax)
 	testb	$1, %cl
-	jne	.L3028
+	jne	.L3022
 	movl	620(%eax), %edx
 	sall	$8, %edx
 	addl	624(%eax), %edx
@@ -20441,23 +20385,23 @@ timerTick:
 	leal	ksReadyQueues(,%edx,8), %esi
 	movl	4(%esi), %edi
 	testl	%ebx, %ebx
-	je	.L3031
+	je	.L3025
 	movl	%eax, 640(%edi)
-.L3029:
+.L3023:
 	orl	$1, %ecx
 	movl	%edi, 644(%eax)
 	movl	$0, 640(%eax)
 	movl	%ebx, ksReadyQueues(,%edx,8)
 	movl	%eax, 4(%esi)
 	movl	%ecx, 600(%eax)
-.L3028:
+.L3022:
 	movl	ksSchedulerAction, %eax
 	leal	-1(%eax), %edx
 	cmpl	$-3, %edx
-	ja	.L3030
+	ja	.L3024
 	movl	%eax, (%esp)
 	call	tcbSchedEnqueue
-.L3030:
+.L3024:
 	movl	$-1, ksSchedulerAction
 	addl	$4, %esp
 	.cfi_def_cfa_offset 16
@@ -20470,17 +20414,17 @@ timerTick:
 	popl	%edi
 	.cfi_restore 7
 	.cfi_def_cfa_offset 4
-.L3034:
+.L3028:
 	rep ret
 	.p2align 4,,7
 	.p2align 3
-.L3031:
+.L3025:
 	.cfi_def_cfa_offset 20
 	.cfi_offset 3, -16
 	.cfi_offset 6, -12
 	.cfi_offset 7, -8
 	movl	%eax, %ebx
-	jmp	.L3029
+	jmp	.L3023
 	.cfi_endproc
 .LFE454:
 	.size	timerTick, .-timerTick
@@ -20509,36 +20453,36 @@ possibleSwitchTo:
 	movl	624(%ecx), %edi
 	movl	620(%eax), %ecx
 	cmpl	ksCurDomain, %ecx
-	jne	.L3056
+	jne	.L3050
 	cmpl	%ebx, %edi
-	jae	.L3057
-.L3040:
+	jae	.L3051
+.L3034:
 	testl	%esi, %esi
-	je	.L3058
-.L3041:
+	je	.L3052
+.L3035:
 	movl	600(%eax), %edx
 	testb	$1, %dl
-	jne	.L3055
+	jne	.L3049
 	sall	$8, %ecx
 	addl	%ecx, %ebx
 	leal	ksReadyQueues(,%ebx,8), %edi
 	movl	ksReadyQueues(,%ebx,8), %ebp
 	movl	4(%edi), %ecx
 	testl	%ecx, %ecx
-	je	.L3047
+	je	.L3041
 	movl	%eax, 644(%ebp)
-.L3043:
+.L3037:
 	orl	$1, %edx
 	movl	$0, 644(%eax)
 	movl	%ebp, 640(%eax)
 	movl	%eax, ksReadyQueues(,%ebx,8)
 	movl	%ecx, 4(%edi)
 	movl	%edx, 600(%eax)
-.L3055:
+.L3049:
 	leal	-1(%esi), %eax
 	cmpl	$-3, %eax
-	jbe	.L3059
-.L3035:
+	jbe	.L3053
+.L3029:
 	addl	$4, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -20557,29 +20501,29 @@ possibleSwitchTo:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3057:
+.L3051:
 	.cfi_restore_state
 	testl	%edx, %edx
-	je	.L3041
+	je	.L3035
 	cmpl	%edi, %ebx
-	jne	.L3041
+	jne	.L3035
 	.p2align 4,,7
-	jmp	.L3040
+	jmp	.L3034
 	.p2align 4,,7
 	.p2align 3
-.L3056:
+.L3050:
 	movl	600(%eax), %edx
 	testb	$1, %dl
-	jne	.L3035
+	jne	.L3029
 	sall	$8, %ecx
 	addl	%ecx, %ebx
 	leal	ksReadyQueues(,%ebx,8), %esi
 	movl	ksReadyQueues(,%ebx,8), %edi
 	movl	4(%esi), %ecx
 	testl	%ecx, %ecx
-	je	.L3046
+	je	.L3040
 	movl	%eax, 644(%edi)
-.L3039:
+.L3033:
 	orl	$1, %edx
 	movl	$0, 644(%eax)
 	movl	%edi, 640(%eax)
@@ -20604,27 +20548,27 @@ possibleSwitchTo:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3059:
+.L3053:
 	.cfi_restore_state
 	movl	%esi, (%esp)
 	call	tcbSchedEnqueue
 	movl	$-1, ksSchedulerAction
-	jmp	.L3035
+	jmp	.L3029
 	.p2align 4,,7
 	.p2align 3
-.L3058:
+.L3052:
 	movl	%eax, ksSchedulerAction
-	jmp	.L3035
+	jmp	.L3029
 	.p2align 4,,7
 	.p2align 3
-.L3047:
+.L3041:
 	movl	%eax, %ecx
-	jmp	.L3043
+	jmp	.L3037
 	.p2align 4,,7
 	.p2align 3
-.L3046:
+.L3040:
 	movl	%eax, %ecx
-	jmp	.L3039
+	jmp	.L3033
 	.cfi_endproc
 .LFE449:
 	.size	possibleSwitchTo, .-possibleSwitchTo
@@ -20655,14 +20599,14 @@ sendAsyncIPC:
 	movl	%eax, %ecx
 	andl	$3, %ecx
 	cmpl	$1, %ecx
-	je	.L3062
-	jb	.L3063
+	je	.L3056
+	jb	.L3057
 	cmpl	$2, %ecx
-	jne	.L3060
+	jne	.L3054
 	orl	12(%edx), %edi
 	orl	%esi, 8(%edx)
 	movl	%edi, 12(%edx)
-.L3060:
+.L3054:
 	addl	$16, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -20681,7 +20625,7 @@ sendAsyncIPC:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3063:
+.L3057:
 	.cfi_restore_state
 	andl	$-4, %eax
 	orl	$2, %eax
@@ -20706,7 +20650,7 @@ sendAsyncIPC:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3062:
+.L3056:
 	.cfi_restore_state
 	movl	4(%edx), %ebx
 	movl	%eax, %ecx
@@ -20717,15 +20661,15 @@ sendAsyncIPC:
 	movl	652(%ebx), %ecx
 	movl	648(%ebx), %ebp
 	testl	%ecx, %ecx
-	je	.L3065
+	je	.L3059
 	movl	%ebp, 648(%ecx)
 	movl	648(%ebx), %ebp
 	movl	%ebx, 4(%esp)
-.L3066:
+.L3060:
 	testl	%ebp, %ebp
-	je	.L3070
+	je	.L3064
 	movl	%ecx, 652(%ebp)
-.L3067:
+.L3061:
 	movl	4(%esp), %ecx
 	andl	$15, %eax
 	movl	12(%esp), %ebp
@@ -20738,8 +20682,8 @@ sendAsyncIPC:
 	orl	%eax, %ecx
 	movl	4(%esp), %eax
 	testl	%eax, %eax
-	je	.L3068
-.L3072:
+	je	.L3062
+.L3066:
 	movl	%ecx, (%edx)
 	movl	592(%ebx), %eax
 	andl	$-16, %eax
@@ -20770,20 +20714,20 @@ sendAsyncIPC:
 	jmp	possibleSwitchTo
 	.p2align 4,,7
 	.p2align 3
-.L3068:
+.L3062:
 	.cfi_restore_state
 	andl	$-4, %ecx
-	jmp	.L3072
-	.p2align 4,,7
-	.p2align 3
-.L3070:
-	movl	%ecx, 8(%esp)
-	jmp	.L3067
-	.p2align 4,,7
-	.p2align 3
-.L3065:
-	movl	%ebp, 4(%esp)
 	jmp	.L3066
+	.p2align 4,,7
+	.p2align 3
+.L3064:
+	movl	%ecx, 8(%esp)
+	jmp	.L3061
+	.p2align 4,,7
+	.p2align 3
+.L3059:
+	movl	%ebp, 4(%esp)
+	jmp	.L3060
 	.cfi_endproc
 .LFE459:
 	.size	sendAsyncIPC, .-sendAsyncIPC
@@ -20810,32 +20754,32 @@ handleInterrupt:
 	movl	48(%esp), %ebx
 	movl	intStateIRQTable(,%ebx,4), %eax
 	cmpl	$1, %eax
-	je	.L3075
-	jb	.L3076
+	je	.L3069
+	jb	.L3070
 	cmpl	$2, %eax
-	je	.L3077
+	je	.L3071
 	cmpl	$3, %eax
 	.p2align 4,,5
-	je	.L3078
+	je	.L3072
 	.p2align 4,,5
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L3077:
+.L3071:
 	movl	ksCurThread, %eax
 	movl	592(%eax), %edx
 	andl	$15, %edx
 	cmpl	$1, %edx
-	jne	.L3078
+	jne	.L3072
 	movl	628(%eax), %edx
 	cmpl	$1, %edx
-	jbe	.L3086
+	jbe	.L3080
 	subl	$1, %edx
 	movl	%edx, 628(%eax)
-.L3078:
+.L3072:
 	cmpl	$15, %ebx
-	jle	.L3094
-.L3091:
+	jle	.L3088
+.L3085:
 	movl	$0, -65360
 	addl	$28, %esp
 	.cfi_remember_state
@@ -20855,7 +20799,7 @@ handleInterrupt:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3075:
+.L3069:
 	.cfi_restore_state
 	movl	%ebx, %edx
 	sall	$4, %edx
@@ -20871,9 +20815,9 @@ handleInterrupt:
 	cmpl	$14, %ebp
 	cmove	%ecx, %edx
 	cmpl	$6, %edx
-	jne	.L3076
+	jne	.L3070
 	testl	$2, %edi
-	je	.L3076
+	je	.L3070
 	movl	%ebx, %ecx
 	andl	$-16, %esi
 	sall	%cl, %eax
@@ -20884,17 +20828,17 @@ handleInterrupt:
 	call	sendAsyncIPC
 	.p2align 4,,7
 	.p2align 3
-.L3076:
+.L3070:
 	cmpl	$15, %ebx
-	jg	.L3091
+	jg	.L3085
 	cmpl	$7, %ebx
-	jg	.L3089
+	jg	.L3083
 	movl	%ebx, %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	$33, %esi
 	movl	%eax, %ebx
-.L3090:
+.L3084:
 	movl	%esi, (%esp)
 	call	in8
 	movl	%esi, (%esp)
@@ -20902,13 +20846,13 @@ handleInterrupt:
 	movzbl	%al, %eax
 	movl	%eax, 4(%esp)
 	call	out8
-.L3094:
+.L3088:
 	cmpl	$39, ia32KScurInterrupt
-	jle	.L3092
+	jle	.L3086
 	movl	$32, 4(%esp)
 	movl	$160, (%esp)
 	call	out8
-.L3092:
+.L3086:
 	movl	$32, 4(%esp)
 	movl	$32, (%esp)
 	call	out8
@@ -20930,21 +20874,21 @@ handleInterrupt:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3089:
+.L3083:
 	.cfi_restore_state
 	leal	-8(%ebx), %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	$161, %esi
 	movl	%eax, %ebx
-	jmp	.L3090
+	jmp	.L3084
 	.p2align 4,,7
 	.p2align 3
-.L3086:
+.L3080:
 	movl	600(%eax), %ecx
 	movl	$1, 628(%eax)
 	testb	$1, %cl
-	jne	.L3087
+	jne	.L3081
 	movl	620(%eax), %edx
 	sall	$8, %edx
 	addl	624(%eax), %edx
@@ -20952,21 +20896,21 @@ handleInterrupt:
 	leal	ksReadyQueues(,%edx,8), %edi
 	movl	4(%edi), %ebp
 	testl	%esi, %esi
-	je	.L3095
+	je	.L3089
 	movl	%eax, 640(%ebp)
-.L3088:
+.L3082:
 	orl	$1, %ecx
 	movl	%ebp, 644(%eax)
 	movl	$0, 640(%eax)
 	movl	%esi, ksReadyQueues(,%edx,8)
 	movl	%eax, 4(%edi)
 	movl	%ecx, 600(%eax)
-.L3087:
+.L3081:
 	call	rescheduleRequired
-	jmp	.L3078
-.L3095:
+	jmp	.L3072
+.L3089:
 	movl	%eax, %esi
-	jmp	.L3088
+	jmp	.L3082
 	.cfi_endproc
 .LFE511:
 	.size	handleInterrupt, .-handleInterrupt
@@ -20993,7 +20937,7 @@ doReplyTransfer.part.136:
 	movl	$0, 604(%ebx)
 	movl	$0, 608(%ebx)
 	testl	%eax, %eax
-	je	.L3109
+	je	.L3103
 	movl	592(%ebx), %eax
 	movl	%ebx, (%esp)
 	andl	$-16, %eax
@@ -21012,7 +20956,7 @@ doReplyTransfer.part.136:
 	.cfi_restore 6
 	.cfi_def_cfa_offset 4
 	jmp	possibleSwitchTo
-.L3109:
+.L3103:
 	.cfi_restore_state
 	andl	$-16, 592(%ebx)
 	movl	%ebx, (%esp)
@@ -21051,12 +20995,12 @@ restart:
 	movl	592(%ebx), %ecx
 	andl	$15, %ecx
 	cmpl	$6, %ecx
-	ja	.L3111
+	ja	.L3105
 	movl	$1, %eax
 	sall	%cl, %eax
 	testb	$121, %al
-	jne	.L3113
-.L3111:
+	jne	.L3107
+.L3105:
 	addl	$16, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
@@ -21072,7 +21016,7 @@ restart:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3113:
+.L3107:
 	.cfi_restore_state
 	movl	%ebx, (%esp)
 	call	ipcCancel
@@ -21087,7 +21031,7 @@ restart:
 	cmpl	$14, %edi
 	cmovne	%edx, %eax
 	testl	%eax, %eax
-	jne	.L3115
+	jne	.L3109
 	movl	%ebx, %eax
 	andl	$-16, %eax
 	orl	$8, %eax
@@ -21095,7 +21039,7 @@ restart:
 	movl	$1, 4(%esi)
 	movl	$0, 8(%esi)
 	movl	$3, 12(%esi)
-.L3115:
+.L3109:
 	movl	592(%ebx), %eax
 	andl	$-16, %eax
 	orl	$2, %eax
@@ -21104,7 +21048,7 @@ restart:
 	call	scheduleTCB
 	movl	600(%ebx), %edx
 	testb	$1, %dl
-	jne	.L3116
+	jne	.L3110
 	movl	620(%ebx), %eax
 	sall	$8, %eax
 	addl	624(%ebx), %eax
@@ -21112,16 +21056,16 @@ restart:
 	movl	ksReadyQueues(,%eax,8), %edi
 	movl	4(%esi), %ecx
 	testl	%ecx, %ecx
-	je	.L3120
+	je	.L3114
 	movl	%ebx, 644(%edi)
-.L3117:
+.L3111:
 	orl	$1, %edx
 	movl	$0, 644(%ebx)
 	movl	%edi, 640(%ebx)
 	movl	%ebx, ksReadyQueues(,%eax,8)
 	movl	%ecx, 4(%esi)
 	movl	%edx, 600(%ebx)
-.L3116:
+.L3110:
 	addl	$16, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
@@ -21139,10 +21083,10 @@ restart:
 	jmp	possibleSwitchTo
 	.p2align 4,,7
 	.p2align 3
-.L3120:
+.L3114:
 	.cfi_restore_state
 	movl	%ebx, %ecx
-	jmp	.L3117
+	jmp	.L3111
 	.cfi_endproc
 .LFE435:
 	.size	restart, .-restart
@@ -21171,16 +21115,16 @@ performInvocation_AsyncEndpoint:
 	movl	%eax, %ecx
 	andl	$3, %ecx
 	cmpl	$1, %ecx
-	je	.L3125
-	jb	.L3126
+	je	.L3119
+	jb	.L3120
 	cmpl	$2, %ecx
-	jne	.L3124
+	jne	.L3118
 	movl	36(%esp), %eax
 	movl	32(%esp), %edi
 	orl	12(%edx), %eax
 	orl	%edi, 8(%edx)
 	movl	%eax, 12(%edx)
-.L3124:
+.L3118:
 	addl	$8, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -21200,7 +21144,7 @@ performInvocation_AsyncEndpoint:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3126:
+.L3120:
 	.cfi_restore_state
 	andl	$-4, %eax
 	orl	$2, %eax
@@ -21228,7 +21172,7 @@ performInvocation_AsyncEndpoint:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3125:
+.L3119:
 	.cfi_restore_state
 	movl	4(%edx), %edi
 	movl	%eax, %esi
@@ -21239,15 +21183,15 @@ performInvocation_AsyncEndpoint:
 	movl	652(%ebx), %ecx
 	movl	648(%ebx), %esi
 	testl	%ecx, %ecx
-	je	.L3128
+	je	.L3122
 	movl	%esi, 648(%ecx)
 	movl	648(%ebx), %ebp
 	movl	%ebx, %esi
-.L3129:
+.L3123:
 	testl	%ebp, %ebp
-	je	.L3133
+	je	.L3127
 	movl	%ecx, 652(%ebp)
-.L3130:
+.L3124:
 	movl	%esi, %ecx
 	andl	$15, %edi
 	andl	$-16, %ecx
@@ -21258,8 +21202,8 @@ performInvocation_AsyncEndpoint:
 	andl	$-16, %ecx
 	orl	%eax, %ecx
 	testl	%esi, %esi
-	je	.L3131
-.L3135:
+	je	.L3125
+.L3129:
 	movl	%ecx, (%edx)
 	movl	592(%ebx), %eax
 	andl	$-16, %eax
@@ -21294,20 +21238,20 @@ performInvocation_AsyncEndpoint:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3131:
+.L3125:
 	.cfi_restore_state
 	andl	$-4, %ecx
-	jmp	.L3135
-	.p2align 4,,7
-	.p2align 3
-.L3133:
-	movl	%ecx, 4(%esp)
-	jmp	.L3130
-	.p2align 4,,7
-	.p2align 3
-.L3128:
-	movl	%esi, %ebp
 	jmp	.L3129
+	.p2align 4,,7
+	.p2align 3
+.L3127:
+	movl	%ecx, 4(%esp)
+	jmp	.L3124
+	.p2align 4,,7
+	.p2align 3
+.L3122:
+	movl	%esi, %ebp
+	jmp	.L3123
 	.cfi_endproc
 .LFE527:
 	.size	performInvocation_AsyncEndpoint, .-performInvocation_AsyncEndpoint
@@ -21337,15 +21281,15 @@ epCancelBadgedSends:
 	movl	%eax, %edx
 	andl	$3, %edx
 	cmpl	$1, %edx
-	je	.L3138
-	jb	.L3136
+	je	.L3132
+	jb	.L3130
 	cmpl	$2, %edx
-	je	.L3136
+	je	.L3130
 	.p2align 4,,8
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L3146:
+.L3140:
 	movl	48(%esp), %ebp
 	movl	12(%esp), %edi
 	movl	4(%ebp), %ecx
@@ -21360,20 +21304,20 @@ epCancelBadgedSends:
 	andl	$-16, %eax
 	orl	%edx, %eax
 	testl	%edi, %edi
-	je	.L3159
+	je	.L3153
 	andl	$-4, %eax
 	orl	$1, %eax
-.L3159:
+.L3153:
 	movl	%eax, 0(%ebp)
 	movl	ksSchedulerAction, %eax
 	leal	-1(%eax), %edx
 	cmpl	$-3, %edx
-	ja	.L3150
+	ja	.L3144
 	movl	%eax, (%esp)
 	call	tcbSchedEnqueue
-.L3150:
+.L3144:
 	movl	$-1, ksSchedulerAction
-.L3136:
+.L3130:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -21392,7 +21336,7 @@ epCancelBadgedSends:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3138:
+.L3132:
 	.cfi_restore_state
 	movl	4(%ebp), %ebx
 	movl	%eax, %edx
@@ -21405,21 +21349,21 @@ epCancelBadgedSends:
 	andl	$-16, %ebx
 	movl	%ecx, 4(%ebp)
 	movl	%ebx, 12(%esp)
-	je	.L3140
+	je	.L3134
 	movl	%ebp, 48(%esp)
-	jmp	.L3147
+	jmp	.L3141
 	.p2align 4,,7
 	.p2align 3
-.L3141:
+.L3135:
 	testl	%esi, %esi
-	je	.L3146
+	je	.L3140
 	movl	%esi, %ebx
-.L3147:
+.L3141:
 	movl	600(%ebx), %eax
 	movl	648(%ebx), %esi
 	shrl	$3, %eax
 	cmpl	%eax, %edi
-	jne	.L3141
+	jne	.L3135
 	movl	592(%ebx), %eax
 	andl	$-16, %eax
 	orl	$2, %eax
@@ -21429,7 +21373,7 @@ epCancelBadgedSends:
 	movl	600(%ebx), %eax
 	testb	$1, %al
 	movl	%eax, 4(%esp)
-	jne	.L3142
+	jne	.L3136
 	movl	620(%ebx), %eax
 	sall	$8, %eax
 	addl	624(%ebx), %eax
@@ -21437,9 +21381,9 @@ epCancelBadgedSends:
 	movl	ksReadyQueues(,%eax,8), %ebp
 	movl	4(%ecx), %edx
 	testl	%edx, %edx
-	je	.L3152
+	je	.L3146
 	movl	%ebx, 644(%ebp)
-.L3143:
+.L3137:
 	movl	$0, 644(%ebx)
 	movl	%ebp, 640(%ebx)
 	movl	%ebx, ksReadyQueues(,%eax,8)
@@ -21447,39 +21391,39 @@ epCancelBadgedSends:
 	movl	4(%esp), %edx
 	orl	$1, %edx
 	movl	%edx, 600(%ebx)
-.L3142:
+.L3136:
 	movl	652(%ebx), %eax
 	testl	%eax, %eax
-	je	.L3144
+	je	.L3138
 	movl	648(%ebx), %edx
 	movl	%edx, 648(%eax)
 	movl	648(%ebx), %edx
-.L3145:
+.L3139:
 	testl	%edx, %edx
-	je	.L3153
+	je	.L3147
 	movl	%eax, 652(%edx)
-	jmp	.L3141
+	jmp	.L3135
 	.p2align 4,,7
 	.p2align 3
-.L3153:
+.L3147:
 	movl	%eax, 8(%esp)
-	jmp	.L3141
+	jmp	.L3135
 	.p2align 4,,7
 	.p2align 3
-.L3144:
+.L3138:
 	movl	648(%ebx), %ecx
 	movl	%ecx, 12(%esp)
 	movl	%ecx, %edx
-	jmp	.L3145
+	jmp	.L3139
 	.p2align 4,,7
 	.p2align 3
-.L3152:
+.L3146:
 	movl	%ebx, %edx
-	jmp	.L3143
-.L3140:
+	jmp	.L3137
+.L3134:
 	movl	%ecx, 4(%ebp)
 	orl	%edx, %eax
-	jmp	.L3159
+	jmp	.L3153
 	.cfi_endproc
 .LFE502:
 	.size	epCancelBadgedSends, .-epCancelBadgedSends
@@ -21507,22 +21451,22 @@ recycleCap:
 	movl	%ebx, %eax
 	andl	$14, %eax
 	cmpl	$14, %eax
-	je	.L3161
+	je	.L3155
 	movl	%ebx, %eax
 	andl	$15, %eax
 	testb	$1, %bl
-	jne	.L3162
-.L3166:
+	jne	.L3156
+.L3160:
 	cmpl	$10, %eax
-	je	.L3167
-	jbe	.L3183
+	je	.L3161
+	jbe	.L3177
 	cmpl	$46, %eax
 	.p2align 4,,5
-	je	.L3172
-.L3167:
+	je	.L3166
+.L3161:
 	movl	%ebx, (%esi)
 	movl	%edi, 4(%esi)
-.L3160:
+.L3154:
 	leal	-12(%ebp), %esp
 	movl	%esi, %eax
 	popl	%ebx
@@ -21538,29 +21482,29 @@ recycleCap:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L3183:
+.L3177:
 	.cfi_restore_state
 	testl	%eax, %eax
-	je	.L3170
+	je	.L3164
 	cmpl	$4, %eax
-	jne	.L3167
+	jne	.L3161
 	movl	%edi, %eax
 	shrl	$3, %eax
 	testl	%eax, %eax
-	je	.L3167
+	je	.L3161
 	movl	%eax, 4(%esp)
 	movl	%ebx, %eax
 	andl	$-16, %eax
 	movl	%eax, (%esp)
 	call	epCancelBadgedSends
-	jmp	.L3167
+	jmp	.L3161
 	.p2align 4,,7
 	.p2align 3
-.L3161:
+.L3155:
 	testb	$1, %bl
 	movzbl	%bl, %eax
-	je	.L3166
-.L3162:
+	je	.L3160
+.L3156:
 	movl	12(%ebp), %eax
 	movl	%ebx, 8(%esp)
 	movl	%edi, 12(%esp)
@@ -21583,16 +21527,16 @@ recycleCap:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L3170:
+.L3164:
 	.cfi_restore_state
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L3172:
+.L3166:
 	andl	$16128, %ebx
 	shrl	$8, %ebx
 	cmpl	$32, %ebx
-	je	.L3184
+	je	.L3178
 	leal	1(%ebx), %ecx
 	movl	$-1, %eax
 	andl	$-32, %edi
@@ -21604,10 +21548,10 @@ recycleCap:
 	sall	$23, %ebx
 	movl	%edi, (%esi)
 	movl	%ebx, 4(%esi)
-	jmp	.L3160
+	jmp	.L3154
 	.p2align 4,,7
 	.p2align 3
-.L3184:
+.L3178:
 	andl	$-16, %edi
 	xorl	%eax, %eax
 	movl	%edi, %ebx
@@ -21623,7 +21567,7 @@ recycleCap:
 	movl	%eax, 620(%ebx)
 	orl	$12, %ebx
 	movl	%ebx, (%esi)
-	jmp	.L3160
+	jmp	.L3154
 	.cfi_endproc
 .LFE517:
 	.size	recycleCap, .-recycleCap
@@ -21650,8 +21594,8 @@ cteRecycle:
 	call	cteRevoke
 	testl	%eax, %eax
 	movl	%eax, %esi
-	je	.L3194
-.L3186:
+	je	.L3188
+.L3180:
 	leal	-12(%ebp), %esp
 	movl	%esi, %eax
 	popl	%ebx
@@ -21667,14 +21611,14 @@ cteRecycle:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3194:
+.L3188:
 	.cfi_restore_state
 	leal	-36(%ebp), %eax
 	movl	%ebx, %edx
 	call	finaliseSlot.constprop.158
 	movl	-36(%ebp), %eax
 	testl	%eax, %eax
-	jne	.L3190
+	jne	.L3184
 	movl	(%ebx), %edx
 	movl	%edx, %ecx
 	movl	%edx, %eax
@@ -21684,7 +21628,7 @@ cteRecycle:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	je	.L3186
+	je	.L3180
 	movl	%ebx, (%esp)
 	leal	-48(%ebp), %edi
 	call	isFinalCapability
@@ -21700,10 +21644,10 @@ cteRecycle:
 	movl	%eax, (%ebx)
 	movl	%edx, 4(%ebx)
 	subl	$4, %esp
-	jmp	.L3186
+	jmp	.L3180
 	.p2align 4,,7
 	.p2align 3
-.L3190:
+.L3184:
 	leal	-12(%ebp), %esp
 	movl	%eax, %esi
 	popl	%ebx
@@ -21750,11 +21694,11 @@ decodeCNodeInvocation:
 	movl	20(%ebp), %edx
 	cmpl	$8, %ecx
 	movl	%esi, -64(%ebp)
-	jbe	.L3196
-.L3247:
+	jbe	.L3190
+.L3241:
 	movl	$3, current_syscall_error+24
 	movl	$3, %eax
-.L3265:
+.L3259:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -21769,11 +21713,11 @@ decodeCNodeInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3196:
+.L3190:
 	.cfi_restore_state
 	cmpl	$1, %edi
-	ja	.L3198
-.L3228:
+	ja	.L3192
+.L3222:
 	movl	$7, current_syscall_error+24
 	leal	-12(%ebp), %esp
 	movl	$3, %eax
@@ -21790,7 +21734,7 @@ decodeCNodeInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3198:
+.L3192:
 	.cfi_restore_state
 	movl	ksCurThread, %ecx
 	movl	20(%ecx), %esi
@@ -21807,31 +21751,31 @@ decodeCNodeInvocation:
 	movl	-44(%ebp), %ecx
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L3265
+	jne	.L3259
 	leal	-14(%ebx), %eax
 	cmpl	$3, %eax
-	jbe	.L3278
+	jbe	.L3272
 	cmpl	$11, %ebx
-	je	.L3279
+	je	.L3273
 	cmpl	$12, %ebx
-	je	.L3280
+	je	.L3274
 	cmpl	$19, %ebx
 	.p2align 4,,2
-	je	.L3281
+	je	.L3275
 	cmpl	$13, %ebx
 	.p2align 4,,2
-	je	.L3282
+	je	.L3276
 	xorl	%eax, %eax
 	cmpl	$18, %ebx
-	jne	.L3265
+	jne	.L3259
 	cmpl	$7, %edi
-	jbe	.L3228
+	jbe	.L3222
 	movl	-64(%ebp), %esi
 	testl	%esi, %esi
-	je	.L3228
+	je	.L3222
 	movl	-72(%ebp), %ebx
 	testl	%ebx, %ebx
-	je	.L3228
+	je	.L3222
 	movl	-68(%ebp), %eax
 	movl	%ecx, -92(%ebp)
 	movl	12(%eax), %edx
@@ -21867,7 +21811,7 @@ decodeCNodeInvocation:
 	movl	-92(%ebp), %ecx
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L3265
+	jne	.L3259
 	movl	-68(%ebp), %eax
 	movl	%esi, 8(%esp)
 	movl	%edx, 16(%esp)
@@ -21883,52 +21827,52 @@ decodeCNodeInvocation:
 	testl	%eax, %eax
 	pushl	%ecx
 	movl	-64(%ebp), %ecx
-	jne	.L3265
+	jne	.L3259
 	cmpl	%ecx, %esi
-	je	.L3247
+	je	.L3241
 	cmpl	%esi, %ebx
-	je	.L3247
+	je	.L3241
 	cmpl	%ecx, %ebx
 	.p2align 4,,5
-	je	.L3233
+	je	.L3227
 	movl	(%ecx), %eax
 	movl	%eax, %edx
 	andl	$14, %edx
 	cmpl	$14, %edx
-	je	.L3234
+	je	.L3228
 	andl	$15, %eax
-.L3235:
+.L3229:
 	testl	%eax, %eax
-	jne	.L3277
-.L3233:
+	jne	.L3271
+.L3227:
 	movl	(%ebx), %eax
 	movl	%eax, %edx
 	andl	$14, %edx
 	cmpl	$14, %edx
-	je	.L3236
+	je	.L3230
 	andl	$15, %eax
-.L3237:
+.L3231:
 	testl	%eax, %eax
-	jne	.L3238
+	jne	.L3232
 	movl	-84(%ebp), %eax
 	movl	$6, current_syscall_error+24
 	movl	$1, current_syscall_error+20
-.L3274:
+.L3268:
 	sall	$2, %eax
 	movzbl	%al, %eax
 	orl	$1, %eax
 	movl	%eax, current_lookup_fault
 	movl	$3, %eax
 	movl	$0, current_lookup_fault+4
-	jmp	.L3265
+	jmp	.L3259
 	.p2align 4,,7
 	.p2align 3
-.L3278:
+.L3272:
 	cmpl	$3, %edi
-	jbe	.L3228
+	jbe	.L3222
 	movl	-64(%ebp), %eax
 	testl	%eax, %eax
-	je	.L3228
+	je	.L3222
 	movl	-68(%ebp), %eax
 	movl	12(%eax), %edx
 	movl	16(%eax), %eax
@@ -21948,7 +21892,7 @@ decodeCNodeInvocation:
 	cmpl	$14, %esi
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	jne	.L3277
+	jne	.L3271
 	movl	-72(%ebp), %eax
 	movl	-60(%ebp), %edx
 	movl	$1, 4(%esp)
@@ -21967,7 +21911,7 @@ decodeCNodeInvocation:
 	movl	-80(%ebp), %ecx
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L3265
+	jne	.L3259
 	movl	(%esi), %edx
 	movl	%edx, %eax
 	andl	$14, %eax
@@ -21979,16 +21923,16 @@ decodeCNodeInvocation:
 	cmpl	$14, -76(%ebp)
 	cmovne	-64(%ebp), %eax
 	testl	%eax, %eax
-	jne	.L3208
+	jne	.L3202
 	movl	$6, current_syscall_error+24
 	movl	-72(%ebp), %eax
 	movl	$1, current_syscall_error+20
-	jmp	.L3274
-.L3277:
+	jmp	.L3268
+.L3271:
 	movl	$8, current_syscall_error+24
 	movl	$3, %eax
-	jmp	.L3265
-.L3281:
+	jmp	.L3259
+.L3275:
 	movl	(%ecx), %edx
 	movl	%edx, %ebx
 	movl	%edx, %eax
@@ -21998,7 +21942,7 @@ decodeCNodeInvocation:
 	cmpl	$14, %ebx
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	jne	.L3277
+	jne	.L3271
 	movl	ksCurThread, %edx
 	movl	%ecx, -64(%ebp)
 	movl	592(%edx), %eax
@@ -22021,7 +21965,7 @@ decodeCNodeInvocation:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	jmp	invokeCNodeSaveCaller
-.L3282:
+.L3276:
 	.cfi_restore_state
 	movl	(%ecx), %eax
 	movl	4(%ecx), %edx
@@ -22031,12 +21975,12 @@ decodeCNodeInvocation:
 	call	hasRecycleRights
 	movl	-64(%ebp), %ecx
 	testl	%eax, %eax
-	jne	.L3227
-.L3275:
+	jne	.L3221
+.L3269:
 	movl	$3, current_syscall_error+24
 	movb	$3, %al
-	jmp	.L3265
-.L3279:
+	jmp	.L3259
+.L3273:
 	movl	ksCurThread, %edx
 	movl	%ecx, -64(%ebp)
 	movl	592(%edx), %eax
@@ -22059,7 +22003,7 @@ decodeCNodeInvocation:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	jmp	cteRevoke
-.L3280:
+.L3274:
 	.cfi_restore_state
 	movl	ksCurThread, %edx
 	movl	%ecx, -64(%ebp)
@@ -22083,18 +22027,18 @@ decodeCNodeInvocation:
 	.cfi_def_cfa 4, 4
 	movl	%ecx, %eax
 	jmp	cteDelete.constprop.160
-.L3208:
+.L3202:
 	.cfi_restore_state
 	cmpl	$16, %ebx
-	je	.L3210
+	je	.L3204
 	cmpl	$17, %ebx
-	je	.L3211
+	je	.L3205
 	cmpl	$15, %ebx
 	.p2align 4,,2
-	je	.L3212
+	je	.L3206
 	cmpl	$4, %edi
 	.p2align 4,,2
-	je	.L3228
+	je	.L3222
 	movl	-68(%ebp), %eax
 	leal	-56(%ebp), %edx
 	movl	4(%esi), %ebx
@@ -22114,26 +22058,26 @@ decodeCNodeInvocation:
 	movl	%esi, 4(%esp)
 	movl	%eax, 8(%esp)
 	movl	%ebx, (%esp)
-.L3276:
+.L3270:
 	call	deriveCap
 	movl	-32(%ebp), %edx
 	pushl	%eax
 	movl	-36(%ebp), %eax
 	testl	%eax, %eax
-	jne	.L3265
+	jne	.L3259
 	movl	-28(%ebp), %ebx
 	xorl	%edi, %edi
 	movl	-64(%ebp), %ecx
-.L3214:
+.L3208:
 	movl	%edx, %eax
 	andl	$14, %eax
 	cmpl	$14, %eax
-	je	.L3216
+	je	.L3210
 	movl	%edx, %eax
 	andl	$15, %eax
-.L3217:
+.L3211:
 	testl	%eax, %eax
-	je	.L3275
+	je	.L3269
 	movl	ksCurThread, %eax
 	movl	%edx, -64(%ebp)
 	movl	ksCurThread, %edx
@@ -22151,11 +22095,11 @@ decodeCNodeInvocation:
 	movl	%ebx, 4(%esp)
 	movl	%edx, (%esp)
 	movl	%ecx, 12(%esp)
-	je	.L3219
+	je	.L3213
 	call	cteMove
 	xorl	%eax, %eax
-	jmp	.L3265
-.L3227:
+	jmp	.L3259
+.L3221:
 	movl	ksCurThread, %edx
 	movl	%ecx, -64(%ebp)
 	movl	592(%edx), %eax
@@ -22178,10 +22122,10 @@ decodeCNodeInvocation:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	jmp	cteRecycle
-.L3212:
+.L3206:
 	.cfi_restore_state
 	cmpl	$5, %edi
-	jbe	.L3228
+	jbe	.L3222
 	movl	-68(%ebp), %edx
 	leal	-56(%ebp), %ebx
 	movl	%ecx, -64(%ebp)
@@ -22211,10 +22155,10 @@ decodeCNodeInvocation:
 	movl	%ecx, 12(%esp)
 	movl	%esi, 4(%esp)
 	movl	%eax, (%esp)
-	jmp	.L3276
-.L3211:
+	jmp	.L3270
+.L3205:
 	cmpl	$4, %edi
-	je	.L3228
+	je	.L3222
 	movl	(%esi), %edx
 	leal	-56(%ebp), %eax
 	movl	%ecx, -64(%ebp)
@@ -22232,41 +22176,41 @@ decodeCNodeInvocation:
 	movl	-64(%ebp), %ecx
 	pushl	%edi
 	movl	$1, %edi
-	jmp	.L3214
-.L3210:
+	jmp	.L3208
+.L3204:
 	movl	4(%esi), %ebx
 	movl	$1, %edi
-	jmp	.L3214
-.L3216:
+	jmp	.L3208
+.L3210:
 	movzbl	%dl, %eax
-	jmp	.L3217
-.L3219:
+	jmp	.L3211
+.L3213:
 	call	cteInsert
 	xorl	%eax, %eax
 	.p2align 4,,3
-	jmp	.L3265
-.L3234:
+	jmp	.L3259
+.L3228:
 	movzbl	%al, %eax
 	.p2align 4,,3
-	jmp	.L3235
-.L3238:
+	jmp	.L3229
+.L3232:
 	movl	(%esi), %eax
 	movl	%eax, %edx
 	andl	$14, %edx
 	cmpl	$14, %edx
-	je	.L3239
+	je	.L3233
 	andl	$15, %eax
-.L3240:
+.L3234:
 	testl	%eax, %eax
-	jne	.L3241
+	jne	.L3235
 	movl	$6, current_syscall_error+24
 	movl	-68(%ebp), %eax
 	movl	$0, current_syscall_error+20
-	jmp	.L3274
-.L3236:
+	jmp	.L3268
+.L3230:
 	movzbl	%al, %eax
-	jmp	.L3237
-.L3241:
+	jmp	.L3231
+.L3235:
 	movl	(%ebx), %eax
 	leal	-56(%ebp), %edi
 	movl	4(%ebx), %edx
@@ -22301,21 +22245,21 @@ decodeCNodeInvocation:
 	movl	%edx, %eax
 	andl	$14, %eax
 	cmpl	$14, %eax
-	je	.L3242
+	je	.L3236
 	movl	%edx, %eax
 	andl	$15, %eax
-.L3243:
+.L3237:
 	testl	%eax, %eax
-	je	.L3247
+	je	.L3241
 	movl	%edi, %eax
 	andl	$14, %eax
 	cmpl	$14, %eax
-	je	.L3245
+	je	.L3239
 	movl	%edi, %eax
 	andl	$15, %eax
-.L3246:
+.L3240:
 	testl	%eax, %eax
-	je	.L3247
+	je	.L3241
 	movl	ksCurThread, %edx
 	movl	%ecx, -76(%ebp)
 	movl	592(%edx), %eax
@@ -22336,18 +22280,18 @@ decodeCNodeInvocation:
 	movl	-68(%ebp), %eax
 	movl	%eax, 4(%esp)
 	call	invokeCNodeRotate
-	jmp	.L3265
-.L3239:
+	jmp	.L3259
+.L3233:
 	movzbl	%al, %eax
-	jmp	.L3240
-.L3245:
+	jmp	.L3234
+.L3239:
 	movl	%edi, %eax
 	movzbl	%al, %eax
 	.p2align 4,,3
-	jmp	.L3246
-.L3242:
+	jmp	.L3240
+.L3236:
 	movzbl	-64(%ebp), %eax
-	jmp	.L3243
+	jmp	.L3237
 	.cfi_endproc
 .LFE463:
 	.size	decodeCNodeInvocation, .-decodeCNodeInvocation
@@ -22374,8 +22318,8 @@ invokeCNodeRecycle:
 	call	cteRevoke
 	testl	%eax, %eax
 	movl	%eax, %esi
-	je	.L3292
-.L3284:
+	je	.L3286
+.L3278:
 	leal	-12(%ebp), %esp
 	movl	%esi, %eax
 	popl	%ebx
@@ -22391,14 +22335,14 @@ invokeCNodeRecycle:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3292:
+.L3286:
 	.cfi_restore_state
 	leal	-36(%ebp), %eax
 	movl	%ebx, %edx
 	call	finaliseSlot.constprop.158
 	movl	-36(%ebp), %eax
 	testl	%eax, %eax
-	jne	.L3288
+	jne	.L3282
 	movl	(%ebx), %edx
 	movl	%edx, %ecx
 	movl	%edx, %eax
@@ -22408,7 +22352,7 @@ invokeCNodeRecycle:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	je	.L3284
+	je	.L3278
 	movl	%ebx, (%esp)
 	leal	-48(%ebp), %edi
 	call	isFinalCapability
@@ -22424,10 +22368,10 @@ invokeCNodeRecycle:
 	movl	%eax, (%ebx)
 	movl	%edx, 4(%ebx)
 	subl	$4, %esp
-	jmp	.L3284
+	jmp	.L3278
 	.p2align 4,,7
 	.p2align 3
-.L3288:
+.L3282:
 	leal	-12(%ebp), %esp
 	movl	%eax, %esi
 	popl	%ebx
@@ -22444,143 +22388,6 @@ invokeCNodeRecycle:
 	.cfi_endproc
 .LFE466:
 	.size	invokeCNodeRecycle, .-invokeCNodeRecycle
-	.p2align 4,,15
-	.globl	switchIfRequiredTo
-	.type	switchIfRequiredTo, @function
-switchIfRequiredTo:
-.LFB451:
-	.cfi_startproc
-	pushl	%ebp
-	.cfi_def_cfa_offset 8
-	.cfi_offset 5, -8
-	pushl	%edi
-	.cfi_def_cfa_offset 12
-	.cfi_offset 7, -12
-	pushl	%esi
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	pushl	%ebx
-	.cfi_def_cfa_offset 20
-	.cfi_offset 3, -20
-	subl	$4, %esp
-	.cfi_def_cfa_offset 24
-	movl	ksCurThread, %ecx
-	movl	24(%esp), %eax
-	movl	ksCurDomain, %edx
-	movl	ksSchedulerAction, %esi
-	movl	624(%ecx), %edi
-	movl	620(%eax), %ecx
-	movl	624(%eax), %ebx
-	cmpl	%ecx, %edx
-	jne	.L3307
-	cmpl	%ebx, %edi
-	jae	.L3298
-	testl	%esi, %esi
-	je	.L3308
-.L3298:
-	movl	600(%eax), %edi
-	testl	$1, %edi
-	jne	.L3306
-	sall	$8, %edx
-	addl	%edx, %ebx
-	leal	ksReadyQueues(,%ebx,8), %ecx
-	movl	ksReadyQueues(,%ebx,8), %ebp
-	movl	4(%ecx), %edx
-	testl	%edx, %edx
-	je	.L3304
-	movl	%eax, 644(%ebp)
-.L3300:
-	orl	$1, %edi
-	movl	$0, 644(%eax)
-	movl	%ebp, 640(%eax)
-	movl	%eax, ksReadyQueues(,%ebx,8)
-	movl	%edx, 4(%ecx)
-	movl	%edi, 600(%eax)
-.L3306:
-	leal	-1(%esi), %eax
-	cmpl	$-3, %eax
-	jbe	.L3309
-.L3293:
-	addl	$4, %esp
-	.cfi_remember_state
-	.cfi_def_cfa_offset 20
-	popl	%ebx
-	.cfi_restore 3
-	.cfi_def_cfa_offset 16
-	popl	%esi
-	.cfi_restore 6
-	.cfi_def_cfa_offset 12
-	popl	%edi
-	.cfi_restore 7
-	.cfi_def_cfa_offset 8
-	popl	%ebp
-	.cfi_restore 5
-	.cfi_def_cfa_offset 4
-	ret
-	.p2align 4,,7
-	.p2align 3
-.L3307:
-	.cfi_restore_state
-	movl	600(%eax), %edx
-	testb	$1, %dl
-	jne	.L3293
-	sall	$8, %ecx
-	addl	%ecx, %ebx
-	leal	ksReadyQueues(,%ebx,8), %esi
-	movl	ksReadyQueues(,%ebx,8), %edi
-	movl	4(%esi), %ecx
-	testl	%ecx, %ecx
-	je	.L3303
-	movl	%eax, 644(%edi)
-.L3297:
-	orl	$1, %edx
-	movl	$0, 644(%eax)
-	movl	%edi, 640(%eax)
-	movl	%eax, ksReadyQueues(,%ebx,8)
-	movl	%ecx, 4(%esi)
-	movl	%edx, 600(%eax)
-	addl	$4, %esp
-	.cfi_remember_state
-	.cfi_def_cfa_offset 20
-	popl	%ebx
-	.cfi_restore 3
-	.cfi_def_cfa_offset 16
-	popl	%esi
-	.cfi_restore 6
-	.cfi_def_cfa_offset 12
-	popl	%edi
-	.cfi_restore 7
-	.cfi_def_cfa_offset 8
-	popl	%ebp
-	.cfi_restore 5
-	.cfi_def_cfa_offset 4
-	ret
-	.p2align 4,,7
-	.p2align 3
-.L3309:
-	.cfi_restore_state
-	movl	%esi, (%esp)
-	call	tcbSchedEnqueue
-	movl	$-1, ksSchedulerAction
-	jmp	.L3293
-	.p2align 4,,7
-	.p2align 3
-.L3308:
-	movl	%eax, ksSchedulerAction
-	jmp	.L3293
-	.p2align 4,,7
-	.p2align 3
-.L3304:
-	movl	%eax, %edx
-	jmp	.L3300
-	.p2align 4,,7
-	.p2align 3
-.L3303:
-	movl	%eax, %ecx
-	jmp	.L3297
-	.cfi_endproc
-.LFE451:
-	.size	switchIfRequiredTo, .-switchIfRequiredTo
 	.p2align 4,,15
 	.globl	attemptSwitchTo
 	.type	attemptSwitchTo, @function
@@ -22609,35 +22416,35 @@ attemptSwitchTo:
 	movl	620(%eax), %ecx
 	movl	624(%eax), %ebx
 	cmpl	%ecx, %edx
-	jne	.L3324
+	jne	.L3301
 	cmpl	%ebx, %edi
-	ja	.L3315
+	ja	.L3292
 	testl	%esi, %esi
-	je	.L3325
-.L3315:
+	je	.L3302
+.L3292:
 	movl	600(%eax), %ecx
 	testb	$1, %cl
-	jne	.L3323
+	jne	.L3300
 	sall	$8, %edx
 	addl	%edx, %ebx
 	leal	ksReadyQueues(,%ebx,8), %edi
 	movl	ksReadyQueues(,%ebx,8), %ebp
 	movl	4(%edi), %edx
 	testl	%edx, %edx
-	je	.L3321
+	je	.L3298
 	movl	%eax, 644(%ebp)
-.L3317:
+.L3294:
 	orl	$1, %ecx
 	movl	$0, 644(%eax)
 	movl	%ebp, 640(%eax)
 	movl	%eax, ksReadyQueues(,%ebx,8)
 	movl	%edx, 4(%edi)
 	movl	%ecx, 600(%eax)
-.L3323:
+.L3300:
 	leal	-1(%esi), %eax
 	cmpl	$-3, %eax
-	jbe	.L3326
-.L3310:
+	jbe	.L3303
+.L3287:
 	addl	$4, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -22656,20 +22463,20 @@ attemptSwitchTo:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3324:
+.L3301:
 	.cfi_restore_state
 	movl	600(%eax), %edx
 	testb	$1, %dl
-	jne	.L3310
+	jne	.L3287
 	sall	$8, %ecx
 	addl	%ecx, %ebx
 	leal	ksReadyQueues(,%ebx,8), %esi
 	movl	ksReadyQueues(,%ebx,8), %edi
 	movl	4(%esi), %ecx
 	testl	%ecx, %ecx
-	je	.L3320
+	je	.L3297
 	movl	%eax, 644(%edi)
-.L3314:
+.L3291:
 	orl	$1, %edx
 	movl	$0, 644(%eax)
 	movl	%edi, 640(%eax)
@@ -22694,30 +22501,167 @@ attemptSwitchTo:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3326:
+.L3303:
 	.cfi_restore_state
 	movl	%esi, (%esp)
 	call	tcbSchedEnqueue
 	movl	$-1, ksSchedulerAction
-	jmp	.L3310
+	jmp	.L3287
 	.p2align 4,,7
 	.p2align 3
-.L3325:
+.L3302:
 	movl	%eax, ksSchedulerAction
-	jmp	.L3310
+	jmp	.L3287
 	.p2align 4,,7
 	.p2align 3
-.L3321:
+.L3298:
 	movl	%eax, %edx
-	jmp	.L3317
+	jmp	.L3294
 	.p2align 4,,7
 	.p2align 3
-.L3320:
+.L3297:
 	movl	%eax, %ecx
-	jmp	.L3314
+	jmp	.L3291
 	.cfi_endproc
 .LFE450:
 	.size	attemptSwitchTo, .-attemptSwitchTo
+	.p2align 4,,15
+	.globl	switchIfRequiredTo
+	.type	switchIfRequiredTo, @function
+switchIfRequiredTo:
+.LFB451:
+	.cfi_startproc
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	pushl	%edi
+	.cfi_def_cfa_offset 12
+	.cfi_offset 7, -12
+	pushl	%esi
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	pushl	%ebx
+	.cfi_def_cfa_offset 20
+	.cfi_offset 3, -20
+	subl	$4, %esp
+	.cfi_def_cfa_offset 24
+	movl	ksCurThread, %ecx
+	movl	24(%esp), %eax
+	movl	ksCurDomain, %edx
+	movl	ksSchedulerAction, %esi
+	movl	624(%ecx), %edi
+	movl	620(%eax), %ecx
+	movl	624(%eax), %ebx
+	cmpl	%ecx, %edx
+	jne	.L3318
+	cmpl	%ebx, %edi
+	jae	.L3309
+	testl	%esi, %esi
+	je	.L3319
+.L3309:
+	movl	600(%eax), %edi
+	testl	$1, %edi
+	jne	.L3317
+	sall	$8, %edx
+	addl	%edx, %ebx
+	leal	ksReadyQueues(,%ebx,8), %ecx
+	movl	ksReadyQueues(,%ebx,8), %ebp
+	movl	4(%ecx), %edx
+	testl	%edx, %edx
+	je	.L3315
+	movl	%eax, 644(%ebp)
+.L3311:
+	orl	$1, %edi
+	movl	$0, 644(%eax)
+	movl	%ebp, 640(%eax)
+	movl	%eax, ksReadyQueues(,%ebx,8)
+	movl	%edx, 4(%ecx)
+	movl	%edi, 600(%eax)
+.L3317:
+	leal	-1(%esi), %eax
+	cmpl	$-3, %eax
+	jbe	.L3320
+.L3304:
+	addl	$4, %esp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 20
+	popl	%ebx
+	.cfi_restore 3
+	.cfi_def_cfa_offset 16
+	popl	%esi
+	.cfi_restore 6
+	.cfi_def_cfa_offset 12
+	popl	%edi
+	.cfi_restore 7
+	.cfi_def_cfa_offset 8
+	popl	%ebp
+	.cfi_restore 5
+	.cfi_def_cfa_offset 4
+	ret
+	.p2align 4,,7
+	.p2align 3
+.L3318:
+	.cfi_restore_state
+	movl	600(%eax), %edx
+	testb	$1, %dl
+	jne	.L3304
+	sall	$8, %ecx
+	addl	%ecx, %ebx
+	leal	ksReadyQueues(,%ebx,8), %esi
+	movl	ksReadyQueues(,%ebx,8), %edi
+	movl	4(%esi), %ecx
+	testl	%ecx, %ecx
+	je	.L3314
+	movl	%eax, 644(%edi)
+.L3308:
+	orl	$1, %edx
+	movl	$0, 644(%eax)
+	movl	%edi, 640(%eax)
+	movl	%eax, ksReadyQueues(,%ebx,8)
+	movl	%ecx, 4(%esi)
+	movl	%edx, 600(%eax)
+	addl	$4, %esp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 20
+	popl	%ebx
+	.cfi_restore 3
+	.cfi_def_cfa_offset 16
+	popl	%esi
+	.cfi_restore 6
+	.cfi_def_cfa_offset 12
+	popl	%edi
+	.cfi_restore 7
+	.cfi_def_cfa_offset 8
+	popl	%ebp
+	.cfi_restore 5
+	.cfi_def_cfa_offset 4
+	ret
+	.p2align 4,,7
+	.p2align 3
+.L3320:
+	.cfi_restore_state
+	movl	%esi, (%esp)
+	call	tcbSchedEnqueue
+	movl	$-1, ksSchedulerAction
+	jmp	.L3304
+	.p2align 4,,7
+	.p2align 3
+.L3319:
+	movl	%eax, ksSchedulerAction
+	jmp	.L3304
+	.p2align 4,,7
+	.p2align 3
+.L3315:
+	movl	%eax, %edx
+	jmp	.L3311
+	.p2align 4,,7
+	.p2align 3
+.L3314:
+	movl	%eax, %ecx
+	jmp	.L3308
+	.cfi_endproc
+.LFE451:
+	.size	switchIfRequiredTo, .-switchIfRequiredTo
 	.p2align 4,,15
 	.globl	tcbSchedAppend
 	.type	tcbSchedAppend, @function
@@ -22736,7 +22680,7 @@ tcbSchedAppend:
 	movl	16(%esp), %eax
 	movl	600(%eax), %ecx
 	testb	$1, %cl
-	jne	.L3327
+	jne	.L3321
 	movl	620(%eax), %edx
 	sall	$8, %edx
 	addl	624(%eax), %edx
@@ -22744,16 +22688,16 @@ tcbSchedAppend:
 	leal	ksReadyQueues(,%edx,8), %esi
 	movl	4(%esi), %edi
 	testl	%ebx, %ebx
-	je	.L3330
+	je	.L3324
 	movl	%eax, 640(%edi)
-.L3329:
+.L3323:
 	orl	$1, %ecx
 	movl	%edi, 644(%eax)
 	movl	$0, 640(%eax)
 	movl	%ebx, ksReadyQueues(,%edx,8)
 	movl	%eax, 4(%esi)
 	movl	%ecx, 600(%eax)
-.L3327:
+.L3321:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -22767,10 +22711,10 @@ tcbSchedAppend:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3330:
+.L3324:
 	.cfi_restore_state
 	movl	%eax, %ebx
-	jmp	.L3329
+	jmp	.L3323
 	.cfi_endproc
 .LFE531:
 	.size	tcbSchedAppend, .-tcbSchedAppend
@@ -22797,7 +22741,7 @@ tcbSchedDequeue:
 	movl	24(%esp), %eax
 	movl	600(%eax), %ecx
 	testb	$1, %cl
-	je	.L3332
+	je	.L3326
 	movl	620(%eax), %edx
 	sall	$8, %edx
 	addl	624(%eax), %edx
@@ -22807,21 +22751,21 @@ tcbSchedDequeue:
 	movl	%ebx, (%esp)
 	movl	644(%eax), %ebx
 	testl	%ebx, %ebx
-	je	.L3334
+	je	.L3328
 	movl	640(%eax), %edi
 	movl	%edi, 640(%ebx)
 	movl	640(%eax), %edi
-.L3335:
+.L3329:
 	testl	%edi, %edi
-	je	.L3337
+	je	.L3331
 	movl	%ebx, 644(%edi)
 	movl	(%esp), %edi
-.L3336:
+.L3330:
 	andl	$-2, %ecx
 	movl	%ebp, ksReadyQueues(,%edx,8)
 	movl	%edi, 4(%esi)
 	movl	%ecx, 600(%eax)
-.L3332:
+.L3326:
 	addl	$4, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -22840,17 +22784,17 @@ tcbSchedDequeue:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3334:
+.L3328:
 	.cfi_restore_state
 	movl	640(%eax), %ebp
 	movl	%ebp, %edi
-	jmp	.L3335
+	jmp	.L3329
 	.p2align 4,,7
 	.p2align 3
-.L3337:
+.L3331:
 	movl	%ebx, (%esp)
 	movl	%ebx, %edi
-	jmp	.L3336
+	jmp	.L3330
 	.cfi_endproc
 .LFE532:
 	.size	tcbSchedDequeue, .-tcbSchedDequeue
@@ -22868,18 +22812,18 @@ chooseThread:
 	.cfi_def_cfa_offset 12
 	movl	ksCurDomain, %ecx
 	sall	$8, %ecx
-	jmp	.L3346
+	jmp	.L3340
 	.p2align 4,,7
 	.p2align 3
-.L3343:
+.L3337:
 	subl	$1, %eax
 	cmpl	$-1, %eax
-	je	.L3348
-.L3346:
+	je	.L3342
+.L3340:
 	leal	(%eax,%ecx), %edx
 	movl	ksReadyQueues(,%edx,8), %ebx
 	testl	%ebx, %ebx
-	je	.L3343
+	je	.L3337
 	movl	%ebx, (%esp)
 	call	Arch_switchToThread
 	movl	%ebx, (%esp)
@@ -22894,7 +22838,7 @@ chooseThread:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3348:
+.L3342:
 	.cfi_restore_state
 	movl	ksIdleThread, %eax
 	movl	%eax, ksCurThread
@@ -22933,24 +22877,24 @@ create_initial_thread:
 	movl	%eax, %ebx
 	xorl	%eax, %eax
 	testl	%ebx, %ebx
-	je	.L3350
+	je	.L3344
 	testb	$1, %bl
 	movl	%ebx, %edi
 	movl	$1024, %edx
-	jne	.L3374
-.L3351:
+	jne	.L3368
+.L3345:
 	testl	$2, %edi
-	jne	.L3375
-.L3352:
+	jne	.L3369
+.L3346:
 	movl	%edx, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testb	$2, %dl
 	rep stosl
-	jne	.L3376
+	jne	.L3370
 	andl	$1, %edx
-	jne	.L3377
-.L3354:
+	jne	.L3371
+.L3348:
 	leal	256(%ebx), %ebp
 	movl	$ia32KSnullFpuState, %esi
 	movl	52(%esp), %edx
@@ -23032,14 +22976,14 @@ create_initial_thread:
 	movl	%ebp, %ebx
 	andl	$-16, %ebx
 	testl	%eax, %eax
-	jne	.L3358
+	jne	.L3352
 	movl	%ebx, %eax
 	orl	$8, %eax
 	movl	%eax, 32(%ecx)
 	movl	$1, 4(%esi)
 	movl	$0, 8(%esi)
 	movl	$3, 12(%esi)
-.L3358:
+.L3352:
 	movl	592(%ebp), %eax
 	orl	$12, %ebx
 	andl	$-16, %eax
@@ -23067,7 +23011,7 @@ create_initial_thread:
 	movl	$0, 24(%eax)
 	movl	$3, 28(%eax)
 	movl	$1, %eax
-.L3350:
+.L3344:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -23086,34 +23030,34 @@ create_initial_thread:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3377:
+.L3371:
 	.cfi_restore_state
 	movb	$0, (%edi)
-	jmp	.L3354
+	jmp	.L3348
 	.p2align 4,,7
 	.p2align 3
-.L3376:
+.L3370:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	andl	$1, %edx
-	je	.L3354
-	jmp	.L3377
+	je	.L3348
+	jmp	.L3371
 	.p2align 4,,7
 	.p2align 3
-.L3375:
+.L3369:
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
 	subl	$2, %edx
-	jmp	.L3352
+	jmp	.L3346
 	.p2align 4,,7
 	.p2align 3
-.L3374:
+.L3368:
 	movb	$0, (%ebx)
 	leal	1(%ebx), %edi
 	movw	$1023, %dx
-	jmp	.L3351
+	jmp	.L3345
 	.cfi_endproc
 .LFE412:
 	.size	create_initial_thread, .-create_initial_thread
@@ -23170,10 +23114,10 @@ init_node_state:
 	movl	%ecx, -88(%ebp)
 	call	init_vm_state
 	testl	%eax, %eax
-	jne	.L3379
-.L3426:
+	jne	.L3373
+.L3420:
 	xorl	%eax, %eax
-.L3513:
+.L3507:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -23188,7 +23132,7 @@ init_node_state:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3379:
+.L3373:
 	.cfi_restore_state
 	leal	-48(%ebp), %eax
 	movl	%eax, (%esp)
@@ -23213,62 +23157,62 @@ init_node_state:
 	call	alloc_region.constprop.155
 	testl	%eax, %eax
 	movl	%eax, %edx
-	je	.L3426
+	je	.L3420
 	testb	$1, %al
 	movl	%eax, %edi
 	movl	$4096, %ebx
-	jne	.L3521
-.L3382:
+	jne	.L3515
+.L3376:
 	testl	$2, %edi
-	jne	.L3522
-.L3383:
+	jne	.L3516
+.L3377:
 	movl	%ebx, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testb	$2, %bl
 	rep stosl
-	jne	.L3523
+	jne	.L3517
 	andl	$1, %ebx
-	jne	.L3524
-.L3385:
+	jne	.L3518
+.L3379:
 	movl	52(%ebp), %eax
 	xorl	%edi, %edi
 	movl	%edx, intStateIRQNode
 	movl	%esi, -92(%ebp)
 	testl	%eax, %eax
-	jne	.L3387
+	jne	.L3381
 	cmpl	$2, %edi
-	je	.L3388
+	je	.L3382
 	.p2align 4,,7
 	.p2align 3
-.L3525:
+.L3519:
 	cmpl	$30, %edi
-	je	.L3388
+	je	.L3382
 	cmpl	$15, %edi
 	movl	$0, intStateIRQTable(,%edi,4)
-	ja	.L3390
+	ja	.L3384
 	movl	%edi, %eax
 	call	pic_mask_irq.constprop.171
 	.p2align 4,,7
 	.p2align 3
-.L3390:
+.L3384:
 	addl	$1, %edi
 	cmpl	$31, %edi
-	je	.L3519
+	je	.L3513
 	cmpl	$2, %edi
-	jne	.L3525
-.L3388:
+	jne	.L3519
+.L3382:
 	cmpl	$15, %edi
 	movl	$3, intStateIRQTable(,%edi,4)
-	jg	.L3390
+	jg	.L3384
 	cmpl	$7, %edi
-	jle	.L3391
+	jle	.L3385
 	leal	-8(%edi), %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	$161, %esi
 	movl	%eax, %ebx
-.L3393:
+.L3387:
 	movl	%esi, (%esp)
 	notl	%ebx
 	call	in8
@@ -23278,38 +23222,38 @@ init_node_state:
 	movzbl	%dl, %edx
 	movl	%edx, 4(%esp)
 	call	out8
-	jmp	.L3390
+	jmp	.L3384
 	.p2align 4,,7
 	.p2align 3
-.L3439:
+.L3433:
 	cmpl	$15, %edi
 	movl	$3, intStateIRQTable(,%edi,4)
-	jle	.L3526
-.L3399:
+	jle	.L3520
+.L3393:
 	addl	$1, %edi
 	cmpl	$31, %edi
-	je	.L3519
-.L3387:
+	je	.L3513
+.L3381:
 	cmpl	$2, %edi
-	je	.L3439
+	je	.L3433
 	cmpl	$30, %edi
-	je	.L3439
+	je	.L3433
 	cmpl	$16, %edi
 	sbbl	%eax, %eax
 	andl	$3, %eax
 	movl	%eax, intStateIRQTable(,%edi,4)
-	jmp	.L3399
+	jmp	.L3393
 	.p2align 4,,7
 	.p2align 3
-.L3526:
+.L3520:
 	cmpl	$7, %edi
-	jle	.L3527
+	jle	.L3521
 	leal	-8(%edi), %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
 	movl	$161, %esi
 	movl	%eax, %ebx
-.L3401:
+.L3395:
 	movl	%esi, (%esp)
 	notl	%ebx
 	call	in8
@@ -23319,51 +23263,51 @@ init_node_state:
 	movzbl	%dl, %edx
 	movl	%edx, 4(%esp)
 	call	out8
-	jmp	.L3399
-	.p2align 4,,7
-	.p2align 3
-.L3527:
-	movl	$1, %eax
-	movl	%edi, %ecx
-	sall	%cl, %eax
-	movl	$33, %esi
-	movl	%eax, %ebx
-	jmp	.L3401
-	.p2align 4,,7
-	.p2align 3
-.L3391:
-	movl	$1, %eax
-	movl	%edi, %ecx
-	sall	%cl, %eax
-	movl	$33, %esi
-	movl	%eax, %ebx
 	jmp	.L3393
 	.p2align 4,,7
 	.p2align 3
-.L3524:
-	movb	$0, (%edi)
-	jmp	.L3385
+.L3521:
+	movl	$1, %eax
+	movl	%edi, %ecx
+	sall	%cl, %eax
+	movl	$33, %esi
+	movl	%eax, %ebx
+	jmp	.L3395
 	.p2align 4,,7
 	.p2align 3
-.L3523:
+.L3385:
+	movl	$1, %eax
+	movl	%edi, %ecx
+	sall	%cl, %eax
+	movl	$33, %esi
+	movl	%eax, %ebx
+	jmp	.L3387
+	.p2align 4,,7
+	.p2align 3
+.L3518:
+	movb	$0, (%edi)
+	jmp	.L3379
+	.p2align 4,,7
+	.p2align 3
+.L3517:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	andl	$1, %ebx
-	je	.L3385
-	jmp	.L3524
-.L3522:
+	je	.L3379
+	jmp	.L3518
+.L3516:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	subl	$2, %ebx
-	jmp	.L3383
-.L3521:
+	jmp	.L3377
+.L3515:
 	movb	$0, (%eax)
 	leal	1(%eax), %edi
 	movw	$4095, %bx
-	jmp	.L3382
-.L3519:
+	jmp	.L3376
+.L3513:
 	movl	-92(%ebp), %esi
 	movl	-56(%ebp), %eax
 	movl	-52(%ebp), %edx
@@ -23383,45 +23327,45 @@ init_node_state:
 	call	allocate_bi_frame
 	testl	%eax, %eax
 	movl	%eax, -108(%ebp)
-	je	.L3426
+	je	.L3420
 	call	alloc_region.constprop.155
 	testl	%eax, %eax
 	movl	%eax, %edx
-	je	.L3426
+	je	.L3420
 	testb	$1, %al
 	movl	%eax, %edi
 	movl	$4096, %ebx
-	jne	.L3528
-.L3405:
+	jne	.L3522
+.L3399:
 	testl	$2, %edi
-	jne	.L3529
-.L3406:
+	jne	.L3523
+.L3400:
 	movl	%ebx, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testb	$2, %bl
 	rep stosl
-	je	.L3407
+	je	.L3401
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
-.L3407:
+.L3401:
 	andl	$1, %ebx
-	je	.L3408
+	je	.L3402
 	movb	$0, (%edi)
-.L3408:
+.L3402:
 	movl	ia32KSkernelPD, %ecx
 	leal	3584(%edx), %eax
 	leal	4096(%edx), %ebx
 	subl	%edx, %ecx
 	.p2align 4,,7
 	.p2align 3
-.L3410:
+.L3404:
 	movl	(%ecx,%eax), %esi
 	addl	$4, %eax
 	movl	%esi, -4(%eax)
 	cmpl	%ebx, %eax
-	jne	.L3410
+	jne	.L3404
 	movl	-100(%ebp), %eax
 	andl	$-4096, %edx
 	movl	%edx, -92(%ebp)
@@ -23444,28 +23388,28 @@ init_node_state:
 	movl	$3, 60(%eax)
 	movl	ndks_boot+20, %eax
 	movl	%eax, -104(%ebp)
-	ja	.L3417
-	jmp	.L3532
+	ja	.L3411
+	jmp	.L3526
 	.p2align 4,,7
 	.p2align 3
-.L3412:
+.L3406:
 	testl	$2, %edi
-	jne	.L3530
-.L3413:
+	jne	.L3524
+.L3407:
 	movl	%esi, %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	testl	$2, %esi
 	rep stosl
-	je	.L3414
+	je	.L3408
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
-.L3414:
+.L3408:
 	andl	$1, %esi
-	je	.L3415
+	je	.L3409
 	movb	$0, (%edi)
-.L3415:
+.L3409:
 	andl	$-4096, %edx
 	movl	-92(%ebp), %eax
 	movl	%ebx, %edi
@@ -23487,35 +23431,35 @@ init_node_state:
 	movl	%edx, 4(%esp)
 	call	provide_cap
 	testl	%eax, %eax
-	je	.L3426
+	je	.L3420
 	addl	$4194304, %ebx
 	cmpl	%ebx, -96(%ebp)
-	jbe	.L3531
-.L3417:
+	jbe	.L3525
+.L3411:
 	call	alloc_region.constprop.155
 	testl	%eax, %eax
 	movl	%eax, %edx
-	je	.L3426
+	je	.L3420
 	testb	$1, %al
 	movl	%eax, %edi
 	movl	$4096, %esi
-	je	.L3412
+	je	.L3406
 	movb	$0, (%eax)
 	leal	1(%eax), %edi
 	movw	$4095, %si
-	jmp	.L3412
+	jmp	.L3406
 	.p2align 4,,7
 	.p2align 3
-.L3530:
+.L3524:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	subl	$2, %esi
-	jmp	.L3413
-.L3531:
+	jmp	.L3407
+.L3525:
 	movl	ndks_boot+20, %edx
 	movl	-104(%ebp), %esi
-.L3411:
+.L3405:
 	movl	ndks_boot+16, %eax
 	movl	-100(%ebp), %ebx
 	movl	-92(%ebp), %edi
@@ -23554,7 +23498,7 @@ init_node_state:
 	cmpl	$14, %ecx
 	cmove	%edx, %eax
 	testl	%eax, %eax
-	je	.L3426
+	je	.L3420
 	movl	-60(%ebp), %eax
 	movl	-52(%ebp), %edx
 	movl	$1, 28(%esp)
@@ -23575,7 +23519,7 @@ init_node_state:
 	movl	-28(%ebp), %edx
 	subl	$4, %esp
 	testl	%edx, %edx
-	je	.L3426
+	je	.L3420
 	movl	ndks_boot+16, %eax
 	movl	-36(%ebp), %edx
 	movl	-32(%ebp), %ecx
@@ -23600,7 +23544,7 @@ init_node_state:
 	cmpl	$14, -60(%ebp)
 	cmove	%ecx, %edx
 	testl	%edx, %edx
-	je	.L3426
+	je	.L3420
 	movl	-92(%ebp), %edx
 	movl	%eax, (%esp)
 	movl	$65537, 12(%esp)
@@ -23613,7 +23557,7 @@ init_node_state:
 	movl	$0, ia32KSfpuOwner
 	call	create_idle_thread
 	testl	%eax, %eax
-	je	.L3426
+	je	.L3420
 	movl	-64(%ebp), %eax
 	movl	-52(%ebp), %edx
 	movl	%ebx, 28(%esp)
@@ -23631,7 +23575,7 @@ init_node_state:
 	movl	%eax, (%esp)
 	call	create_initial_thread
 	testl	%eax, %eax
-	je	.L3426
+	je	.L3420
 	movl	-88(%ebp), %eax
 	movl	-52(%ebp), %edx
 	movl	%eax, 8(%esp)
@@ -23642,7 +23586,7 @@ init_node_state:
 	movl	%eax, (%esp)
 	call	create_untypeds
 	testl	%eax, %eax
-	je	.L3426
+	je	.L3420
 	movl	24(%ebp), %eax
 	xorl	%edi, %edi
 	movl	ndks_boot+16, %esi
@@ -23652,8 +23596,8 @@ init_node_state:
 	movl	%eax, -60(%ebp)
 	movl	24(%ebp), %eax
 	leal	4(%eax), %ecx
-	je	.L3423
-.L3512:
+	je	.L3417
+.L3506:
 	movl	(%ecx), %eax
 	xorl	%esi, %esi
 	leal	-536870912(%eax), %ebx
@@ -23661,18 +23605,18 @@ init_node_state:
 	movl	4(%ecx), %eax
 	testl	$4194303, %ebx
 	leal	-536870912(%eax), %edx
-	jne	.L3424
+	jne	.L3418
 	xorl	%eax, %eax
 	testl	$4194303, %edx
 	sete	%al
 	movl	%eax, %esi
-.L3424:
+.L3418:
 	cmpl	%edx, %ebx
-	jae	.L3436
+	jae	.L3430
 	movl	%esi, %eax
 	sall	$31, %eax
 	movl	%eax, -72(%ebp)
-.L3430:
+.L3424:
 	movl	%ebx, %eax
 	andl	$-4096, %eax
 	shrl	$8, %eax
@@ -23688,7 +23632,7 @@ init_node_state:
 	movl	%eax, (%esp)
 	call	provide_cap
 	testl	%eax, %eax
-	je	.L3426
+	je	.L3420
 	cmpl	$1, %esi
 	movl	$4194304, %edx
 	movl	-80(%ebp), %ecx
@@ -23697,9 +23641,9 @@ init_node_state:
 	movl	-76(%ebp), %edx
 	addl	%eax, %ebx
 	cmpl	%ebx, %edx
-	ja	.L3430
+	ja	.L3424
 	movl	ndks_boot+20, %ebx
-.L3425:
+.L3419:
 	cmpl	$1, %esi
 	movl	$12, %edx
 	movl	ndks_boot+16, %esi
@@ -23721,23 +23665,23 @@ init_node_state:
 	movl	24(%ebp), %eax
 	movl	(%eax), %edx
 	cmpl	%edx, %edi
-	jae	.L3423
+	jae	.L3417
 	movl	%ebx, -60(%ebp)
-	jmp	.L3512
+	jmp	.L3506
 	.p2align 4,,7
 	.p2align 3
-.L3529:
+.L3523:
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
 	subl	$2, %ebx
-	jmp	.L3406
-.L3528:
+	jmp	.L3400
+.L3522:
 	movb	$0, (%eax)
 	leal	1(%eax), %edi
 	movw	$4095, %bx
-	jmp	.L3405
-.L3423:
+	jmp	.L3399
+.L3417:
 	movl	-84(%ebp), %eax
 	movl	%edx, 892(%esi)
 	movl	-52(%ebp), %edx
@@ -23758,7 +23702,7 @@ init_node_state:
 	movl	-28(%ebp), %eax
 	subl	$4, %esp
 	testl	%eax, %eax
-	je	.L3426
+	je	.L3420
 	movl	ndks_boot+16, %ecx
 	movl	-36(%ebp), %eax
 	movl	-32(%ebp), %edx
@@ -23769,14 +23713,14 @@ init_node_state:
 	movl	%eax, 20(%ecx)
 	movl	$1, %eax
 	movl	%edx, 16(%ecx)
-	jmp	.L3513
-.L3532:
+	jmp	.L3507
+.L3526:
 	movl	%eax, %edx
 	movl	%eax, %esi
-	jmp	.L3411
-.L3436:
+	jmp	.L3405
+.L3430:
 	movl	-60(%ebp), %ebx
-	jmp	.L3425
+	jmp	.L3419
 	.cfi_endproc
 .LFE301:
 	.size	init_node_state, .-init_node_state
@@ -23802,68 +23746,36 @@ try_boot_node:
 	call	get_current_esp
 	addl	$536870912, %eax
 	cmpl	$_boot_stack_top, %eax
-	ja	.L3534
+	ja	.L3528
 	cmpl	$_boot_stack_bottom, %eax
-	ja	.L3565
-.L3534:
+	ja	.L3553
+.L3528:
 	shrl	$11, %eax
-.L3535:
-	movl	glks+24, %ebx
-	testl	%ebx, %ebx
-	je	.L3536
+.L3529:
+	movl	glks+24, %esi
+	testl	%esi, %esi
+	je	.L3530
+	xorl	%ebx, %ebx
 	cmpl	%eax, glks+28
-	je	.L3566
-	cmpl	$1, %ebx
-	jbe	.L3536
-	cmpl	%eax, glks+32
-	je	.L3547
-	cmpl	$2, %ebx
-	jbe	.L3536
-	cmpl	%eax, glks+36
-	je	.L3548
-	cmpl	$3, %ebx
-	jbe	.L3536
-	cmpl	%eax, glks+40
-	je	.L3549
-	cmpl	$4, %ebx
-	jbe	.L3536
-	cmpl	%eax, glks+44
-	je	.L3550
-	cmpl	$5, %ebx
-	jbe	.L3536
-	cmpl	%eax, glks+48
-	je	.L3551
-	cmpl	$6, %ebx
-	jbe	.L3536
-	cmpl	%eax, glks+52
-	je	.L3552
-	cmpl	$7, %ebx
-	jbe	.L3536
-	cmpl	%eax, glks+56
-	je	.L3553
-.L3536:
-	call	halt
+	je	.L3554
 	.p2align 4,,7
 	.p2align 3
-.L3565:
-	movl	glks+28, %eax
-	jmp	.L3535
-	.p2align 4,,7
-	.p2align 3
-.L3566:
-	xorl	%esi, %esi
-	.p2align 4,,7
-	.p2align 3
-.L3537:
-	movl	%esi, %eax
+.L3533:
+	addl	$1, %ebx
+	cmpl	%esi, %ebx
+	je	.L3530
+	cmpl	%eax, glks+28(,%ebx,4)
+	jne	.L3533
+.L3531:
+	movl	%ebx, %eax
 	movl	glks, %ecx
 	sall	$4, %eax
-	movl	glks+60(%eax), %edx
+	movl	glks+188(%eax), %edx
 	movl	%edx, 80(%esp)
-	movl	glks+64(%eax), %edx
+	movl	glks+192(%eax), %edx
 	movl	%edx, 84(%esp)
-	movl	glks+68(%eax), %edx
-	addl	$glks+48, %eax
+	movl	glks+196(%eax), %edx
+	addl	$glks+176, %eax
 	movl	24(%eax), %eax
 	movl	%edx, 88(%esp)
 	xorl	%edx, %edx
@@ -23871,31 +23783,31 @@ try_boot_node:
 	movl	glks+4, %eax
 	subl	%ecx, %eax
 	shrl	$12, %eax
-	divl	%ebx
-	cmpl	%edx, %esi
-	jb	.L3567
-	movl	%esi, %ebp
+	divl	%esi
+	cmpl	%edx, %ebx
+	jb	.L3555
+	movl	%ebx, %ebp
 	subl	%edx, %ebp
 	leal	1(%eax), %edi
 	imull	%eax, %ebp
 	imull	%edx, %edi
 	leal	0(%ebp,%edi), %edx
-.L3564:
+.L3552:
 	sall	$12, %edx
 	movl	$1048576, %edi
 	addl	%ecx, %edx
-	movl	%esi, %ebp
+	movl	%ebx, %ebp
 	sall	$12, %eax
 	addl	%edx, %eax
 	movl	%eax, 76(%esp)
 	xorl	%eax, %eax
-	cmpl	$1, %ebx
+	cmpl	$1, %esi
 	movl	%edx, 72(%esp)
 	movl	$ki_boot_end+536870912, %edx
 	cmovne	%eax, %edx
 	cmove	%edi, %eax
 	movl	%eax, 64(%esp)
-	leal	(%esi,%esi,2), %eax
+	leal	(%ebx,%ebx,2), %eax
 	sall	$12, %eax
 	sall	$12, %ebp
 	movl	%edx, 68(%esp)
@@ -23910,10 +23822,10 @@ try_boot_node:
 	call	map_kernel_window
 	xorl	%edx, %edx
 	testl	%eax, %eax
-	je	.L3557
+	je	.L3545
 	leal	536870912(%ebp), %eax
 #APP
-# 35 "/home/mscapero/Desktop/seL4/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 35 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 	movl %eax, %cr3
 # 0 "" 2
 #NO_APP
@@ -23924,11 +23836,11 @@ try_boot_node:
 	movl	%eax, 36(%esp)
 	movl	68(%esp), %eax
 	movl	%edx, 12(%esp)
-	movl	%ebx, 48(%esp)
-	movl	%esi, 44(%esp)
+	movl	%esi, 48(%esp)
+	movl	%ebx, 44(%esp)
 	movl	%eax, 40(%esp)
 	movl	80(%esp), %eax
-	movl	$glks+188, 16(%esp)
+	movl	$glks+828, 16(%esp)
 	movl	%eax, 20(%esp)
 	movl	84(%esp), %eax
 	movl	%eax, 24(%esp)
@@ -23945,8 +23857,8 @@ try_boot_node:
 	call	init_node_state
 	xorl	%edx, %edx
 	testl	%eax, %eax
-	jne	.L3568
-.L3557:
+	jne	.L3556
+.L3545:
 	addl	$108, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -23966,20 +23878,20 @@ try_boot_node:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3567:
+.L3555:
 	.cfi_restore_state
 	addl	$1, %eax
-	movl	%esi, %edx
+	movl	%ebx, %edx
 	imull	%eax, %edx
-	jmp	.L3564
+	jmp	.L3552
 	.p2align 4,,7
 	.p2align 3
-.L3568:
+.L3556:
 	xorl	%eax, %eax
-	testl	%esi, %esi
+	testl	%ebx, %ebx
 	setne	%al
 	movl	%eax, 4(%esp)
-	movl	glks+1784, %eax
+	movl	glks+2424, %eax
 	movl	%eax, (%esp)
 	call	init_node_cpu
 	xorl	%edx, %edx
@@ -24002,42 +23914,15 @@ try_boot_node:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret
-	.p2align 4,,7
-	.p2align 3
 .L3553:
 	.cfi_restore_state
-	movl	$7, %esi
-	jmp	.L3537
-	.p2align 4,,7
-	.p2align 3
-.L3552:
-	movl	$6, %esi
-	jmp	.L3537
-	.p2align 4,,7
-	.p2align 3
-.L3551:
-	movl	$5, %esi
-	jmp	.L3537
-	.p2align 4,,7
-	.p2align 3
-.L3550:
-	movl	$4, %esi
-	jmp	.L3537
-	.p2align 4,,7
-	.p2align 3
-.L3549:
-	movl	$3, %esi
-	jmp	.L3537
-	.p2align 4,,7
-	.p2align 3
-.L3548:
-	movl	$2, %esi
-	jmp	.L3537
-	.p2align 4,,7
-	.p2align 3
-.L3547:
-	movl	$1, %esi
-	jmp	.L3537
+	movl	glks+28, %eax
+	jmp	.L3529
+.L3554:
+	xorl	%ebx, %ebx
+	jmp	.L3531
+.L3530:
+	call	halt
 	.cfi_endproc
 .LFE310:
 	.size	try_boot_node, .-try_boot_node
@@ -24051,12 +23936,12 @@ boot_node:
 	.cfi_def_cfa_offset 16
 	call	try_boot_node
 	testl	%eax, %eax
-	je	.L3572
+	je	.L3560
 	addl	$12, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 4
 	ret
-.L3572:
+.L3560:
 	.cfi_restore_state
 	.p2align 4,,7
 	call	halt
@@ -24077,28 +23962,28 @@ schedule:
 	.cfi_def_cfa_offset 12
 	movl	ksSchedulerAction, %eax
 	cmpl	$-1, %eax
-	je	.L3596
+	je	.L3584
 	testl	%eax, %eax
-	je	.L3573
+	je	.L3561
 	movl	ksCurThread, %ecx
 	movl	%eax, %ebx
 	movl	592(%ecx), %edx
 	andl	$15, %edx
 	subl	$1, %edx
 	cmpl	$1, %edx
-	ja	.L3586
+	ja	.L3574
 	movl	%ecx, (%esp)
 	call	tcbSchedEnqueue
 	movl	ksSchedulerAction, %ebx
-.L3586:
+.L3574:
 	movl	%ebx, (%esp)
 	call	Arch_switchToThread
 	movl	%ebx, (%esp)
 	call	tcbSchedDequeue
 	movl	%ebx, ksCurThread
-.L3595:
+.L3583:
 	movl	$0, ksSchedulerAction
-.L3573:
+.L3561:
 	addl	$4, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 8
@@ -24108,50 +23993,50 @@ schedule:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3596:
+.L3584:
 	.cfi_restore_state
 	movl	ksCurThread, %edx
 	movl	592(%edx), %eax
 	andl	$15, %eax
 	subl	$1, %eax
 	cmpl	$1, %eax
-	jbe	.L3592
+	jbe	.L3580
 	movl	ksDomainTime, %eax
 	movl	ksCurDomain, %ecx
 	testl	%eax, %eax
-	jne	.L3578
-.L3597:
+	jne	.L3566
+.L3585:
 	movl	$0, ksDomScheduleIdx
 	xorl	%ecx, %ecx
 	movl	$0, ksWorkUnitsCompleted
 	movl	$0, ksCurDomain
 	movl	$1, ksDomainTime
-.L3578:
+.L3566:
 	sall	$8, %ecx
 	movl	$255, %eax
 	.p2align 4,,7
 	.p2align 3
-.L3584:
+.L3572:
 	leal	(%eax,%ecx), %edx
 	movl	ksReadyQueues(,%edx,8), %ebx
 	testl	%ebx, %ebx
-	jne	.L3586
+	jne	.L3574
 	subl	$1, %eax
 	cmpl	$-1, %eax
-	jne	.L3584
+	jne	.L3572
 	movl	ksIdleThread, %eax
 	movl	%eax, ksCurThread
-	jmp	.L3595
+	jmp	.L3583
 	.p2align 4,,7
 	.p2align 3
-.L3592:
+.L3580:
 	movl	%edx, (%esp)
 	call	tcbSchedEnqueue
 	movl	ksDomainTime, %eax
 	movl	ksCurDomain, %ecx
 	testl	%eax, %eax
-	je	.L3597
-	jmp	.L3578
+	je	.L3585
+	jmp	.L3566
 	.cfi_endproc
 .LFE443:
 	.size	schedule, .-schedule
@@ -24165,29 +24050,29 @@ handleInterruptEntry:
 	.cfi_def_cfa_offset 32
 	movl	ia32KScurInterrupt, %eax
 	cmpl	$-1, %eax
-	je	.L3599
+	je	.L3587
 	subl	$32, %eax
 	cmpl	$-1, %eax
-	je	.L3599
+	je	.L3587
 	movl	%eax, (%esp)
 	call	handleInterrupt
-.L3599:
+.L3587:
 	call	schedule
 	movl	ksCurThread, %eax
 	movl	592(%eax), %ecx
 	movl	%ecx, %edx
 	andl	$15, %edx
 	cmpl	$2, %edx
-	je	.L3601
+	je	.L3589
 	cmpl	$7, %edx
-	je	.L3602
+	je	.L3590
 	cmpl	$1, %edx
-	je	.L3602
+	je	.L3590
 	.p2align 4,,5
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L3601:
+.L3589:
 	movl	44(%eax), %edx
 	andl	$-16, %ecx
 	orl	$1, %ecx
@@ -24195,7 +24080,7 @@ handleInterruptEntry:
 	movl	%edx, 56(%eax)
 	movl	%eax, (%esp)
 	call	scheduleTCB
-.L3602:
+.L3590:
 	xorl	%eax, %eax
 	addl	$28, %esp
 	.cfi_def_cfa_offset 4
@@ -24217,9 +24102,9 @@ tcbEPAppend:
 	movl	12(%esp), %edx
 	movl	20(%esp), %ebx
 	testl	%ecx, %ecx
-	je	.L3619
+	je	.L3607
 	movl	%edx, 648(%ebx)
-.L3618:
+.L3606:
 	movl	%ebx, 652(%edx)
 	movl	$0, 648(%edx)
 	movl	%ecx, (%eax)
@@ -24231,10 +24116,10 @@ tcbEPAppend:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L3619:
+.L3607:
 	.cfi_restore_state
 	movl	%edx, %ecx
-	jmp	.L3618
+	jmp	.L3606
 	.cfi_endproc
 .LFE533:
 	.size	tcbEPAppend, .-tcbEPAppend
@@ -24259,13 +24144,13 @@ tcbEPDequeue:
 	movl	28(%esp), %esi
 	movl	652(%edx), %ecx
 	testl	%ecx, %ecx
-	je	.L3622
+	je	.L3610
 	movl	648(%edx), %edi
 	movl	%edi, 648(%ecx)
 	movl	648(%edx), %edx
 	testl	%edx, %edx
-	je	.L3625
-.L3627:
+	je	.L3613
+.L3615:
 	movl	%ecx, 652(%edx)
 	movl	%ebx, (%eax)
 	movl	%esi, 4(%eax)
@@ -24282,15 +24167,15 @@ tcbEPDequeue:
 	ret	$4
 	.p2align 4,,7
 	.p2align 3
-.L3622:
+.L3610:
 	.cfi_restore_state
 	movl	648(%edx), %ebx
 	movl	%ebx, %edx
 	testl	%edx, %edx
-	jne	.L3627
+	jne	.L3615
 	.p2align 4,,7
 	.p2align 3
-.L3625:
+.L3613:
 	movl	%ecx, %esi
 	movl	%ebx, (%eax)
 	movl	%esi, 4(%eax)
@@ -24351,8 +24236,8 @@ setupCallerCap:
 	orl	$5, %eax
 	cmpl	ksCurThread, %ebx
 	movl	%eax, 592(%ebx)
-	je	.L3635
-.L3631:
+	je	.L3623
+.L3619:
 	movl	28(%esp), %edx
 	movl	%ebx, %eax
 	andl	$-1024, %ebx
@@ -24375,13 +24260,13 @@ setupCallerCap:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3635:
+.L3623:
 	.cfi_restore_state
 	movl	ksSchedulerAction, %eax
 	testl	%eax, %eax
-	jne	.L3631
+	jne	.L3619
 	call	rescheduleRequired
-	jmp	.L3631
+	jmp	.L3619
 	.cfi_endproc
 .LFE537:
 	.size	setupCallerCap, .-setupCallerCap
@@ -24419,26 +24304,26 @@ lookupExtraCaps:
 	.cfi_offset 3, -20
 	movl	12(%ebp), %edx
 	testl	%edx, %edx
-	je	.L3648
+	je	.L3636
 	movl	16(%ebp), %eax
 	andl	$384, %eax
 	movl	%eax, -32(%ebp)
 	shrl	$7, -32(%ebp)
 	movl	-32(%ebp), %eax
 	testl	%eax, %eax
-	je	.L3644
+	je	.L3632
 	movl	8(%ebp), %esi
 	xorl	%ebx, %ebx
 	andl	$-1024, %esi
-	jmp	.L3643
+	jmp	.L3631
 	.p2align 4,,7
 	.p2align 3
-.L3641:
+.L3629:
 	movl	%edx, current_extra_caps(,%ebx,4)
 	addl	$1, %ebx
 	cmpl	-32(%ebp), %ebx
-	je	.L3649
-.L3643:
+	je	.L3637
+.L3631:
 	movl	12(%ebp), %eax
 	movl	4(%esi), %edx
 	movl	488(%eax,%ebx,4), %edi
@@ -24454,10 +24339,10 @@ lookupExtraCaps:
 	movl	-20(%ebp), %edx
 	subl	$4, %esp
 	testl	%eax, %eax
-	je	.L3641
+	je	.L3629
 	movl	$1, current_fault
 	movl	%edi, current_fault+4
-.L3639:
+.L3627:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -24472,12 +24357,12 @@ lookupExtraCaps:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3649:
+.L3637:
 	.cfi_restore_state
 	xorl	%eax, %eax
 	cmpl	$3, %ebx
-	je	.L3639
-.L3640:
+	je	.L3627
+.L3628:
 	movl	$0, current_extra_caps(,%ebx,4)
 	leal	-12(%ebp), %esp
 	xorl	%eax, %eax
@@ -24494,7 +24379,7 @@ lookupExtraCaps:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3648:
+.L3636:
 	.cfi_restore_state
 	movl	$0, current_extra_caps
 	leal	-12(%ebp), %esp
@@ -24510,10 +24395,10 @@ lookupExtraCaps:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret
-.L3644:
+.L3632:
 	.cfi_restore_state
 	xorl	%ebx, %ebx
-	jmp	.L3640
+	jmp	.L3628
 	.cfi_endproc
 .LFE539:
 	.size	lookupExtraCaps, .-lookupExtraCaps
@@ -24541,53 +24426,53 @@ doNormalTransfer:
 	movl	%edi, %ebx
 	andl	$127, %ebx
 	cmpl	$120, %ebx
-	jbe	.L3651
+	jbe	.L3639
 	andl	$-128, %edi
 	movl	$120, %ebx
 	orl	$120, %edi
-.L3651:
+.L3639:
 	movl	24(%ebp), %eax
 	testl	%eax, %eax
-	jne	.L3688
+	jne	.L3676
 	movl	current_extra_caps+4, %eax
 	xorl	%ecx, %ecx
 	movl	%eax, -56(%ebp)
 	movl	current_extra_caps+8, %eax
 	movl	%eax, -52(%ebp)
-.L3653:
+.L3641:
 	testl	%ebx, %ebx
-	je	.L3671
+	je	.L3659
 	movl	8(%ebp), %eax
 	cmpl	$1, %ebx
 	movl	28(%ebp), %esi
 	movl	20(%eax), %eax
 	movl	%eax, 20(%esi)
-	je	.L3672
+	je	.L3660
 	movl	8(%ebp), %eax
 	testl	%edx, %edx
 	sete	-88(%ebp)
 	movl	24(%eax), %eax
 	movl	%eax, 24(%esi)
-	je	.L3674
+	je	.L3662
 	movl	12(%ebp), %esi
 	testl	%esi, %esi
-	je	.L3674
+	je	.L3662
 	cmpl	$2, %ebx
-	jbe	.L3674
+	jbe	.L3662
 	movl	12(%ebp), %esi
 	movl	$2, %eax
 	movl	%ecx, -84(%ebp)
 	.p2align 4,,7
 	.p2align 3
-.L3656:
+.L3644:
 	addl	$1, %eax
 	movl	(%esi,%eax,4), %ecx
 	cmpl	%ebx, %eax
 	movl	%ecx, (%edx,%eax,4)
-	jne	.L3656
+	jne	.L3644
 	movl	-84(%ebp), %ecx
 	movl	%eax, %esi
-.L3655:
+.L3643:
 	movl	-56(%ebp), %eax
 	andl	$-3969, %edi
 	testl	%ecx, %ecx
@@ -24596,8 +24481,8 @@ doNormalTransfer:
 	movl	%eax, -44(%ebp)
 	movl	-52(%ebp), %eax
 	movl	%eax, -40(%ebp)
-	jne	.L3689
-.L3657:
+	jne	.L3677
+.L3645:
 	movl	28(%ebp), %eax
 	andl	$-128, %edi
 	orl	%esi, %edi
@@ -24619,26 +24504,26 @@ doNormalTransfer:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3674:
+.L3662:
 	.cfi_restore_state
 	movl	$2, %esi
-	jmp	.L3655
+	jmp	.L3643
 	.p2align 4,,7
 	.p2align 3
-.L3672:
+.L3660:
 	movl	$1, %esi
-.L3654:
+.L3642:
 	testl	%edx, %edx
 	sete	-88(%ebp)
-	jmp	.L3655
+	jmp	.L3643
 	.p2align 4,,7
 	.p2align 3
-.L3671:
+.L3659:
 	xorl	%esi, %esi
-	jmp	.L3654
+	jmp	.L3642
 	.p2align 4,,7
 	.p2align 3
-.L3688:
+.L3676:
 	movl	12(%ebp), %eax
 	movl	%edi, 8(%esp)
 	movl	%edx, -84(%ebp)
@@ -24654,10 +24539,10 @@ doNormalTransfer:
 	xorl	%ecx, %ecx
 	testl	%eax, %eax
 	cmove	current_extra_caps, %ecx
-	jmp	.L3653
-.L3689:
+	jmp	.L3641
+.L3677:
 	cmpb	$0, -88(%ebp)
-	jne	.L3657
+	jne	.L3645
 	movl	28(%ebp), %eax
 	movl	%edx, 4(%esp)
 	movl	%edx, -96(%ebp)
@@ -24668,29 +24553,29 @@ doNormalTransfer:
 	movl	%esi, -92(%ebp)
 	movl	%edx, %ebx
 	movl	%eax, -88(%ebp)
-.L3658:
+.L3646:
 	movl	-84(%ebp), %eax
 	movl	-48(%ebp,%eax,4), %esi
 	testl	%esi, %esi
-	je	.L3668
+	je	.L3656
 	movl	(%esi), %edx
 	movl	4(%esi), %eax
 	movl	%edx, %ecx
 	andl	$14, %ecx
 	cmpl	$14, %ecx
-	je	.L3659
+	je	.L3647
 	movl	%edx, %ecx
 	andl	$15, %ecx
-.L3660:
+.L3648:
 	cmpl	$4, %ecx
-	je	.L3690
-.L3661:
+	je	.L3678
+.L3649:
 	cmpl	$0, -88(%ebp)
-	je	.L3668
+	je	.L3656
 	cmpl	$0, 36(%ebp)
 	movl	%edx, 8(%esp)
 	movl	%eax, 12(%esp)
-	je	.L3664
+	je	.L3652
 	leal	-80(%ebp), %eax
 	movl	%eax, (%esp)
 	movl	$6, 4(%esp)
@@ -24700,23 +24585,23 @@ doNormalTransfer:
 	movl	-76(%ebp), %edx
 	movl	%eax, 8(%esp)
 	movl	%edx, 12(%esp)
-.L3664:
+.L3652:
 	leal	-36(%ebp), %eax
 	movl	%eax, (%esp)
 	movl	%esi, 4(%esp)
 	call	deriveCap
 	cmpl	$0, -36(%ebp)
 	pushl	%eax
-	jne	.L3668
+	jne	.L3656
 	movl	-32(%ebp), %edx
 	movl	%edx, %ecx
 	andl	$14, %ecx
 	cmpl	$14, %ecx
-	je	.L3666
+	je	.L3654
 	andl	$15, %edx
-.L3667:
+.L3655:
 	testl	%edx, %edx
-	je	.L3668
+	je	.L3656
 	movl	-88(%ebp), %eax
 	movl	-28(%ebp), %edx
 	movl	%esi, 8(%esp)
@@ -24726,11 +24611,11 @@ doNormalTransfer:
 	movl	%eax, (%esp)
 	call	cteInsert
 	movl	$0, -88(%ebp)
-.L3662:
+.L3650:
 	addl	$1, -84(%ebp)
 	cmpl	$3, -84(%ebp)
-	jne	.L3658
-.L3668:
+	jne	.L3646
+.L3656:
 	movl	%edi, %eax
 	movl	-84(%ebp), %edi
 	andl	$-385, %eax
@@ -24738,12 +24623,12 @@ doNormalTransfer:
 	sall	$7, %edi
 	andl	$384, %edi
 	orl	%eax, %edi
-	jmp	.L3657
-.L3690:
+	jmp	.L3645
+.L3678:
 	movl	%edx, %ecx
 	andl	$-16, %ecx
 	cmpl	%ecx, 16(%ebp)
-	jne	.L3661
+	jne	.L3649
 	movl	-84(%ebp), %esi
 	shrl	$3, %eax
 	movl	%edi, %edx
@@ -24758,13 +24643,13 @@ doNormalTransfer:
 	sall	$9, %edi
 	andl	$3584, %edi
 	orl	%edx, %edi
-	jmp	.L3662
-.L3666:
+	jmp	.L3650
+.L3654:
 	movzbl	%dl, %edx
-	jmp	.L3667
-.L3659:
+	jmp	.L3655
+.L3647:
 	movzbl	%dl, %ecx
-	jmp	.L3660
+	jmp	.L3648
 	.cfi_endproc
 .LFE438:
 	.size	doNormalTransfer, .-doNormalTransfer
@@ -24800,7 +24685,7 @@ doIPCTransfer:
 	movl	%ebx, 4(%esp)
 	call	lookupIPCBuffer
 	testb	$7, 604(%edi)
-	jne	.L3692
+	jne	.L3680
 	movl	%edi, 4(%esp)
 	movl	$0, (%esp)
 	movl	%eax, 44(%esp)
@@ -24833,7 +24718,7 @@ doIPCTransfer:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret
-.L3692:
+.L3680:
 	.cfi_restore_state
 	movl	%ebx, 88(%esp)
 	movl	%edi, 84(%esp)
@@ -24877,13 +24762,13 @@ performInvocation_Reply:
 	movl	ksCurThread, %esi
 	movl	48(%esp), %ebx
 	testb	$7, 604(%ebx)
-	jne	.L3697
+	jne	.L3685
 	movl	%ebx, 4(%esp)
 	movl	$1, (%esp)
 	call	lookupIPCBuffer
 	testb	$7, 604(%esi)
 	movl	%eax, %edi
-	jne	.L3698
+	jne	.L3686
 	movl	%esi, 4(%esp)
 	movl	$0, (%esp)
 	call	lookupIPCBuffer
@@ -24896,7 +24781,7 @@ performInvocation_Reply:
 	movl	%eax, 4(%esp)
 	movl	%esi, (%esp)
 	call	doNormalTransfer
-.L3699:
+.L3687:
 	movl	52(%esp), %eax
 	movl	%eax, (%esp)
 	call	cteDeleteOne
@@ -24909,7 +24794,7 @@ performInvocation_Reply:
 	movl	$1, %edx
 	movl	%ebx, %eax
 	call	possibleSwitchTo
-.L3700:
+.L3688:
 	addl	$32, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
@@ -24924,20 +24809,20 @@ performInvocation_Reply:
 	.cfi_restore 7
 	.cfi_def_cfa_offset 4
 	ret
-.L3697:
+.L3685:
 	.cfi_restore_state
 	movl	52(%esp), %ecx
 	movl	%ebx, %edx
 	movl	%esi, %eax
 	call	doReplyTransfer.part.136
-	jmp	.L3700
-.L3698:
+	jmp	.L3688
+.L3686:
 	movl	%eax, 12(%esp)
 	movl	%ebx, 8(%esp)
 	movl	%esi, 4(%esp)
 	movl	$0, (%esp)
 	call	doFaultTransfer
-	jmp	.L3699
+	jmp	.L3687
 	.cfi_endproc
 .LFE528:
 	.size	performInvocation_Reply, .-performInvocation_Reply
@@ -24965,13 +24850,13 @@ doReplyTransfer:
 	movl	64(%esp), %esi
 	movl	72(%esp), %edi
 	testb	$7, 604(%ebx)
-	jne	.L3703
+	jne	.L3691
 	movl	%ebx, 4(%esp)
 	movl	$1, (%esp)
 	call	lookupIPCBuffer
 	testb	$7, 604(%esi)
 	movl	%eax, %ebp
-	jne	.L3704
+	jne	.L3692
 	movl	%esi, 4(%esp)
 	movl	$0, (%esp)
 	call	lookupIPCBuffer
@@ -24984,7 +24869,7 @@ doReplyTransfer:
 	movl	%eax, 4(%esp)
 	movl	%esi, (%esp)
 	call	doNormalTransfer
-.L3705:
+.L3693:
 	movl	%edi, (%esp)
 	call	cteDeleteOne
 	movl	592(%ebx), %eax
@@ -25011,7 +24896,7 @@ doReplyTransfer:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	jmp	possibleSwitchTo
-.L3703:
+.L3691:
 	.cfi_restore_state
 	addl	$44, %esp
 	.cfi_remember_state
@@ -25032,14 +24917,14 @@ doReplyTransfer:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	jmp	doReplyTransfer.part.136
-.L3704:
+.L3692:
 	.cfi_restore_state
 	movl	%eax, 12(%esp)
 	movl	%ebx, 8(%esp)
 	movl	%esi, 4(%esp)
 	movl	$0, (%esp)
 	call	doFaultTransfer
-	jmp	.L3705
+	jmp	.L3693
 	.cfi_endproc
 .LFE437:
 	.size	doReplyTransfer, .-doReplyTransfer
@@ -25076,9 +24961,9 @@ sendIPC:
 	movl	%eax, %edx
 	andl	$3, %edx
 	cmpl	$1, %edx
-	jbe	.L3709
+	jbe	.L3697
 	cmpl	$2, %edx
-	jne	.L3707
+	jne	.L3695
 	movl	4(%ebx), %ecx
 	movl	%ecx, %esi
 	andl	$-16, %esi
@@ -25089,15 +24974,15 @@ sendIPC:
 	movl	%ecx, 56(%esp)
 	movl	648(%esi), %ecx
 	testl	%edx, %edx
-	je	.L3713
+	je	.L3701
 	movl	%ecx, 648(%edx)
 	movl	648(%esi), %ebp
 	movl	%esi, %ecx
-.L3714:
+.L3702:
 	testl	%ebp, %ebp
-	je	.L3723
+	je	.L3711
 	movl	%edx, 652(%ebp)
-.L3715:
+.L3703:
 	movl	60(%esp), %ebp
 	movl	%ecx, %edx
 	andl	$15, %eax
@@ -25110,15 +24995,15 @@ sendIPC:
 	orl	%eax, %edx
 	testl	%ecx, %ecx
 	movl	%edx, (%ebx)
-	je	.L3734
-.L3716:
+	je	.L3722
+.L3704:
 	movl	596(%esi), %ebp
 	movl	%esi, 4(%esp)
 	movl	$1, (%esp)
 	call	lookupIPCBuffer
 	andl	$1, %ebp
 	testb	$7, 604(%edi)
-	jne	.L3717
+	jne	.L3705
 	movl	%edi, 4(%esp)
 	movl	$0, (%esp)
 	movl	%eax, 56(%esp)
@@ -25135,7 +25020,7 @@ sendIPC:
 	movl	%ecx, 12(%esp)
 	movl	%edi, (%esp)
 	call	doNormalTransfer
-.L3718:
+.L3706:
 	movl	592(%esi), %eax
 	andl	$-16, %eax
 	orl	$1, %eax
@@ -25147,10 +25032,10 @@ sendIPC:
 	call	possibleSwitchTo
 	movl	52(%esp), %edx
 	testl	%edx, %edx
-	je	.L3735
+	je	.L3723
 	testl	%ebp, %ebp
-	je	.L3736
-.L3721:
+	je	.L3724
+.L3709:
 	andl	$-16, 592(%edi)
 	movl	%edi, 96(%esp)
 	addl	$76, %esp
@@ -25171,10 +25056,10 @@ sendIPC:
 	jmp	scheduleTCB
 	.p2align 4,,7
 	.p2align 3
-.L3709:
+.L3697:
 	.cfi_restore_state
 	testl	%ecx, %ecx
-	je	.L3707
+	je	.L3695
 	movl	%ebx, %eax
 	movl	48(%esp), %edx
 	andl	$-16, %eax
@@ -25202,9 +25087,9 @@ sendIPC:
 	movl	%ecx, %esi
 	andl	$-16, %esi
 	andl	$-16, %eax
-	je	.L3722
+	je	.L3710
 	movl	%edi, 648(%esi)
-.L3712:
+.L3700:
 	movl	%esi, 652(%edi)
 	andl	$-16, %eax
 	andl	$15, %edx
@@ -25218,7 +25103,7 @@ sendIPC:
 	movl	%edi, (%ebx)
 	.p2align 4,,7
 	.p2align 3
-.L3707:
+.L3695:
 	addl	$76, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -25237,16 +25122,16 @@ sendIPC:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3735:
+.L3723:
 	.cfi_restore_state
 	testb	$7, 604(%edi)
-	je	.L3707
+	je	.L3695
 	testl	%ebp, %ebp
-	jne	.L3721
-.L3736:
+	jne	.L3709
+.L3724:
 	movl	44(%esp), %eax
 	testl	%eax, %eax
-	je	.L3721
+	je	.L3709
 	movl	%esi, 100(%esp)
 	movl	%edi, 96(%esp)
 	addl	$76, %esp
@@ -25267,34 +25152,34 @@ sendIPC:
 	jmp	setupCallerCap
 	.p2align 4,,7
 	.p2align 3
-.L3713:
+.L3701:
 	.cfi_restore_state
 	movl	%ecx, %ebp
-	jmp	.L3714
-	.p2align 4,,7
-	.p2align 3
-.L3734:
-	andl	$-4, %edx
-	movl	%edx, (%ebx)
-	jmp	.L3716
-	.p2align 4,,7
-	.p2align 3
-.L3723:
-	movl	%edx, 56(%esp)
-	jmp	.L3715
+	jmp	.L3702
 	.p2align 4,,7
 	.p2align 3
 .L3722:
+	andl	$-4, %edx
+	movl	%edx, (%ebx)
+	jmp	.L3704
+	.p2align 4,,7
+	.p2align 3
+.L3711:
+	movl	%edx, 56(%esp)
+	jmp	.L3703
+	.p2align 4,,7
+	.p2align 3
+.L3710:
 	movl	%edi, %eax
-	jmp	.L3712
-.L3717:
+	jmp	.L3700
+.L3705:
 	movl	%eax, 12(%esp)
 	movl	48(%esp), %eax
 	movl	%esi, 8(%esp)
 	movl	%edi, 4(%esp)
 	movl	%eax, (%esp)
 	call	doFaultTransfer
-	jmp	.L3718
+	jmp	.L3706
 	.cfi_endproc
 .LFE496:
 	.size	sendIPC, .-sendIPC
@@ -25336,7 +25221,7 @@ sendFaultIPC:
 	movl	-32(%ebp), %edx
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L3751
+	jne	.L3739
 	movl	(%edx), %eax
 	movl	4(%edx), %edi
 	movl	%eax, %esi
@@ -25347,14 +25232,14 @@ sendFaultIPC:
 	cmpl	$14, %esi
 	cmove	%ecx, %edx
 	cmpl	$4, %edx
-	je	.L3752
-.L3742:
+	je	.L3740
+.L3730:
 	movl	$1, current_fault
 	movl	$1, %eax
 	movl	%ebx, current_fault+4
 	movl	$1, current_lookup_fault
 	movl	$0, current_lookup_fault+4
-.L3739:
+.L3727:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -25369,12 +25254,12 @@ sendFaultIPC:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3752:
+.L3740:
 	.cfi_restore_state
 	testl	$2, %edi
-	je	.L3742
+	je	.L3730
 	testl	$4, %edi
-	je	.L3742
+	je	.L3730
 	movl	current_fault, %edx
 	movl	8(%ebp), %esi
 	movl	current_fault, %ecx
@@ -25383,12 +25268,12 @@ sendFaultIPC:
 	cmpl	$1, %edx
 	movl	%ecx, 604(%esi)
 	movl	%ebx, 608(%esi)
-	jne	.L3743
+	jne	.L3731
 	movl	-48(%ebp), %ecx
 	movl	-44(%ebp), %ebx
 	movl	%ecx, 612(%esi)
 	movl	%ebx, 616(%esi)
-.L3743:
+.L3731:
 	andl	$-16, %eax
 	movl	%eax, 20(%esp)
 	movl	8(%ebp), %eax
@@ -25400,12 +25285,12 @@ sendFaultIPC:
 	movl	$1, (%esp)
 	call	sendIPC
 	xorl	%eax, %eax
-	jmp	.L3739
-.L3751:
+	jmp	.L3727
+.L3739:
 	movl	$1, current_fault
 	movl	$1, %eax
 	movl	%ebx, current_fault+4
-	jmp	.L3739
+	jmp	.L3727
 	.cfi_endproc
 .LFE428:
 	.size	sendFaultIPC, .-sendFaultIPC
@@ -25429,27 +25314,27 @@ handleUserLevelFault:
 	movl	%eax, current_fault+4
 	call	sendFaultIPC
 	testl	%eax, %eax
-	je	.L3754
+	je	.L3742
 	andl	$-16, 592(%ebx)
 	movl	%ebx, (%esp)
 	call	scheduleTCB
-.L3754:
+.L3742:
 	call	schedule
 	movl	ksCurThread, %eax
 	movl	592(%eax), %ecx
 	movl	%ecx, %edx
 	andl	$15, %edx
 	cmpl	$2, %edx
-	je	.L3756
+	je	.L3744
 	cmpl	$7, %edx
-	je	.L3757
+	je	.L3745
 	cmpl	$1, %edx
-	je	.L3757
+	je	.L3745
 	.p2align 4,,5
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L3756:
+.L3744:
 	movl	44(%eax), %edx
 	andl	$-16, %ecx
 	orl	$1, %ecx
@@ -25457,7 +25342,7 @@ handleUserLevelFault:
 	movl	%edx, 56(%eax)
 	movl	%eax, (%esp)
 	call	scheduleTCB
-.L3757:
+.L3745:
 	addl	$24, %esp
 	.cfi_def_cfa_offset 8
 	xorl	%eax, %eax
@@ -25487,37 +25372,37 @@ handleVMFaultEvent:
 	call	getFaultAddr
 	movl	52(%esi), %edx
 	testl	%ebx, %ebx
-	je	.L3771
+	je	.L3759
 	cmpl	$1, %ebx
-	jne	.L3788
+	jne	.L3776
 	sall	$27, %edx
 	orl	$524290, %edx
 	movl	%edx, current_fault
 	movl	%eax, current_fault+4
-.L3773:
+.L3761:
 	movl	ksCurThread, %ebx
 	movl	%ebx, (%esp)
 	call	sendFaultIPC
 	testl	%eax, %eax
-	jne	.L3790
-.L3774:
+	jne	.L3778
+.L3762:
 	call	schedule
 	movl	ksCurThread, %eax
 	movl	592(%eax), %ecx
 	movl	%ecx, %edx
 	andl	$15, %edx
 	cmpl	$2, %edx
-	je	.L3776
+	je	.L3764
 	cmpl	$7, %edx
-	je	.L3777
+	je	.L3765
 	cmpl	$1, %edx
-	je	.L3777
-.L3788:
+	je	.L3765
+.L3776:
 	.p2align 4,,5
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L3776:
+.L3764:
 	movl	44(%eax), %edx
 	andl	$-16, %ecx
 	orl	$1, %ecx
@@ -25525,7 +25410,7 @@ handleVMFaultEvent:
 	movl	%edx, 56(%eax)
 	movl	%eax, (%esp)
 	call	scheduleTCB
-.L3777:
+.L3765:
 	addl	$20, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -25539,20 +25424,20 @@ handleVMFaultEvent:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3771:
+.L3759:
 	.cfi_restore_state
 	sall	$27, %edx
 	orl	$2, %edx
 	movl	%edx, current_fault
 	movl	%eax, current_fault+4
-	jmp	.L3773
+	jmp	.L3761
 	.p2align 4,,7
 	.p2align 3
-.L3790:
+.L3778:
 	andl	$-16, 592(%ebx)
 	movl	%ebx, (%esp)
 	call	scheduleTCB
-	jmp	.L3774
+	jmp	.L3762
 	.cfi_endproc
 .LFE252:
 	.size	handleVMFaultEvent, .-handleVMFaultEvent
@@ -25625,7 +25510,7 @@ handleFault:
 	movl	-32(%ebp), %edx
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L3809
+	jne	.L3797
 	movl	(%edx), %eax
 	movl	4(%edx), %edi
 	movl	%eax, %edx
@@ -25637,13 +25522,13 @@ handleFault:
 	cmpl	$14, %edi
 	cmove	%ecx, %edx
 	cmpl	$4, %edx
-	je	.L3810
-.L3798:
+	je	.L3798
+.L3786:
 	movl	$1, current_fault
 	movl	%esi, current_fault+4
 	movl	$1, current_lookup_fault
 	movl	$0, current_lookup_fault+4
-.L3795:
+.L3783:
 	andl	$-16, 592(%ebx)
 	movl	%ebx, 8(%ebp)
 	leal	-12(%ebp), %esp
@@ -25660,12 +25545,12 @@ handleFault:
 	jmp	scheduleTCB
 	.p2align 4,,7
 	.p2align 3
-.L3810:
+.L3798:
 	.cfi_restore_state
 	testb	$2, -44(%ebp)
-	je	.L3798
+	je	.L3786
 	testb	$4, -44(%ebp)
-	je	.L3798
+	je	.L3786
 	movl	current_fault, %edx
 	movl	current_fault, %esi
 	movl	current_fault+4, %edi
@@ -25673,12 +25558,12 @@ handleFault:
 	cmpl	$1, %edx
 	movl	%esi, 604(%ebx)
 	movl	%edi, 608(%ebx)
-	jne	.L3799
+	jne	.L3787
 	movl	-56(%ebp), %esi
 	movl	-52(%ebp), %edi
 	movl	%esi, 612(%ebx)
 	movl	%edi, 616(%ebx)
-.L3799:
+.L3787:
 	andl	$-16, %eax
 	movl	%eax, 20(%esp)
 	movl	-44(%ebp), %eax
@@ -25701,11 +25586,11 @@ handleFault:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret
-.L3809:
+.L3797:
 	.cfi_restore_state
 	movl	$1, current_fault
 	movl	%esi, current_fault+4
-	jmp	.L3795
+	jmp	.L3783
 	.cfi_endproc
 .LFE427:
 	.size	handleFault, .-handleFault
@@ -25753,7 +25638,7 @@ handleUnknownSyscall:
 	movl	-32(%ebp), %edx
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L3837
+	jne	.L3825
 	movl	(%edx), %eax
 	movl	4(%edx), %edi
 	movl	%eax, %edx
@@ -25765,33 +25650,33 @@ handleUnknownSyscall:
 	cmpl	$14, %edi
 	cmove	%ecx, %edx
 	cmpl	$4, %edx
-	je	.L3838
-.L3816:
+	je	.L3826
+.L3804:
 	movl	$1, current_fault
 	movl	%esi, current_fault+4
 	movl	$1, current_lookup_fault
 	movl	$0, current_lookup_fault+4
-.L3813:
+.L3801:
 	andl	$-16, 592(%ebx)
 	movl	%ebx, (%esp)
 	call	scheduleTCB
-.L3818:
+.L3806:
 	call	schedule
 	movl	ksCurThread, %eax
 	movl	592(%eax), %ecx
 	movl	%ecx, %edx
 	andl	$15, %edx
 	cmpl	$2, %edx
-	je	.L3820
+	je	.L3808
 	cmpl	$7, %edx
-	je	.L3826
+	je	.L3814
 	cmpl	$1, %edx
-	je	.L3826
+	je	.L3814
 	.p2align 4,,5
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L3820:
+.L3808:
 	movl	44(%eax), %edx
 	andl	$-16, %ecx
 	orl	$1, %ecx
@@ -25799,7 +25684,7 @@ handleUnknownSyscall:
 	movl	%edx, 56(%eax)
 	movl	%eax, (%esp)
 	call	scheduleTCB
-.L3826:
+.L3814:
 	leal	-12(%ebp), %esp
 	xorl	%eax, %eax
 	popl	%ebx
@@ -25815,12 +25700,12 @@ handleUnknownSyscall:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3838:
+.L3826:
 	.cfi_restore_state
 	testb	$2, -44(%ebp)
-	je	.L3816
+	je	.L3804
 	testb	$4, -44(%ebp)
-	je	.L3816
+	je	.L3804
 	movl	current_fault, %edx
 	movl	current_fault, %esi
 	movl	current_fault+4, %edi
@@ -25828,12 +25713,12 @@ handleUnknownSyscall:
 	cmpl	$1, %edx
 	movl	%esi, 604(%ebx)
 	movl	%edi, 608(%ebx)
-	jne	.L3817
+	jne	.L3805
 	movl	-56(%ebp), %esi
 	movl	-52(%ebp), %edi
 	movl	%esi, 612(%ebx)
 	movl	%edi, 616(%ebx)
-.L3817:
+.L3805:
 	andl	$-16, %eax
 	movl	%eax, 20(%esp)
 	movl	-44(%ebp), %eax
@@ -25844,11 +25729,11 @@ handleUnknownSyscall:
 	movl	%eax, 8(%esp)
 	movl	$1, (%esp)
 	call	sendIPC
-	jmp	.L3818
-.L3837:
+	jmp	.L3806
+.L3825:
 	movl	$1, current_fault
 	movl	%esi, current_fault+4
-	jmp	.L3813
+	jmp	.L3801
 	.cfi_endproc
 .LFE250:
 	.size	handleUnknownSyscall, .-handleUnknownSyscall
@@ -25861,41 +25746,41 @@ c_handle_interrupt:
 	subl	$28, %esp
 	.cfi_def_cfa_offset 32
 	cmpl	$7, %ecx
-	je	.L3849
+	je	.L3837
 	cmpl	$14, %ecx
-	je	.L3850
+	je	.L3838
 	cmpl	$31, %ecx
-	jle	.L3851
+	jle	.L3839
 	cmpl	$63, %ecx
 	.p2align 4,,2
-	jg	.L3844
+	jg	.L3832
 	movl	%ecx, ia32KScurInterrupt
 	call	handleInterruptEntry
-.L3841:
+.L3829:
 	call	restore_user_context
-.L3851:
+.L3839:
 	movl	ksCurThread, %eax
 	movl	52(%eax), %eax
 	movl	%ecx, (%esp)
 	movl	%eax, 4(%esp)
 	call	handleUserLevelFault
-	jmp	.L3841
-.L3849:
+	jmp	.L3829
+.L3837:
 	movl	ksCurThread, %eax
 	call	switchFpuOwner
 	.p2align 4,,3
-	jmp	.L3841
-.L3850:
+	jmp	.L3829
+.L3838:
 	movl	ksCurThread, %eax
 	movl	52(%eax), %eax
 	shrl	$4, %eax
 	andl	$1, %eax
 	movl	%eax, (%esp)
 	call	handleVMFaultEvent
-	jmp	.L3841
-.L3844:
+	jmp	.L3829
+.L3832:
 	cmpl	$255, %ecx
-	je	.L3841
+	je	.L3829
 	movl	ksCurThread, %eax
 	sall	$24, %ecx
 	andl	$16777215, %edx
@@ -25903,7 +25788,7 @@ c_handle_interrupt:
 	subl	$2, 44(%eax)
 	movl	%ecx, (%esp)
 	call	handleUnknownSyscall
-	jmp	.L3841
+	jmp	.L3829
 	.cfi_endproc
 .LFE262:
 	.size	c_handle_interrupt, .-c_handle_interrupt
@@ -25940,10 +25825,10 @@ receiveIPC:
 	movl	%eax, %ecx
 	andl	$3, %ecx
 	cmpl	$1, %ecx
-	je	.L3854
-	jb	.L3855
+	je	.L3842
+	jb	.L3843
 	cmpl	$2, %ecx
-	je	.L3855
+	je	.L3843
 	addl	$76, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -25963,7 +25848,7 @@ receiveIPC:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3855:
+.L3843:
 	.cfi_restore_state
 	movl	%ebx, %eax
 	orl	$3, %eax
@@ -25980,9 +25865,9 @@ receiveIPC:
 	movl	%eax, %edi
 	andl	$-16, %edi
 	andl	$-16, %ecx
-	je	.L3866
+	je	.L3854
 	movl	%ebp, 648(%edi)
-.L3856:
+.L3844:
 	movl	%ebp, %edx
 	andl	$12, %eax
 	andl	$-16, %edx
@@ -26013,7 +25898,7 @@ receiveIPC:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3854:
+.L3842:
 	.cfi_restore_state
 	movl	4(%ebx), %edx
 	movl	%edx, %edi
@@ -26025,15 +25910,15 @@ receiveIPC:
 	movl	%edx, 56(%esp)
 	movl	648(%edi), %edx
 	testl	%ecx, %ecx
-	je	.L3857
+	je	.L3845
 	movl	%edx, 648(%ecx)
 	movl	648(%edi), %edx
 	movl	%edi, 48(%esp)
-.L3858:
+.L3846:
 	testl	%edx, %edx
-	je	.L3867
+	je	.L3855
 	movl	%ecx, 652(%edx)
-.L3859:
+.L3847:
 	movl	48(%esp), %edx
 	andl	$15, %eax
 	movl	%edx, %ecx
@@ -26049,8 +25934,8 @@ receiveIPC:
 	orl	%eax, %ecx
 	testl	%edx, %edx
 	movl	%ecx, (%ebx)
-	je	.L3872
-.L3860:
+	je	.L3860
+.L3848:
 	movl	600(%edi), %eax
 	movl	%ebp, 4(%esp)
 	movl	$1, (%esp)
@@ -26062,7 +25947,7 @@ receiveIPC:
 	shrl	$2, 48(%esp)
 	call	lookupIPCBuffer
 	testb	$7, 604(%edi)
-	jne	.L3861
+	jne	.L3849
 	movl	%edi, 4(%esp)
 	movl	$0, (%esp)
 	movl	%eax, 60(%esp)
@@ -26080,13 +25965,13 @@ receiveIPC:
 	movl	48(%esp), %ecx
 	movl	%ecx, 16(%esp)
 	call	doNormalTransfer
-.L3862:
+.L3850:
 	testb	$2, 600(%edi)
-	je	.L3873
-.L3863:
+	je	.L3861
+.L3851:
 	movl	%esi, %eax
 	testb	%al, 48(%esp)
-	je	.L3865
+	je	.L3853
 	movl	592(%edi), %eax
 	andl	$-16, %eax
 	orl	$5, %eax
@@ -26123,10 +26008,10 @@ receiveIPC:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3873:
+.L3861:
 	.cfi_restore_state
 	testb	$7, 604(%edi)
-	jne	.L3863
+	jne	.L3851
 	movl	592(%edi), %eax
 	andl	$-16, %eax
 	orl	$1, %eax
@@ -26153,7 +26038,7 @@ receiveIPC:
 	jmp	possibleSwitchTo
 	.p2align 4,,7
 	.p2align 3
-.L3865:
+.L3853:
 	.cfi_restore_state
 	andl	$-16, 592(%edi)
 	movl	%edi, 96(%esp)
@@ -26175,34 +26060,34 @@ receiveIPC:
 	jmp	scheduleTCB
 	.p2align 4,,7
 	.p2align 3
-.L3872:
+.L3860:
 	.cfi_restore_state
 	andl	$-4, %ecx
 	movl	%ecx, (%ebx)
-	jmp	.L3860
+	jmp	.L3848
 	.p2align 4,,7
 	.p2align 3
-.L3867:
+.L3855:
 	movl	%ecx, 56(%esp)
-	jmp	.L3859
+	jmp	.L3847
 	.p2align 4,,7
 	.p2align 3
-.L3857:
+.L3845:
 	movl	%edx, 48(%esp)
-	jmp	.L3858
+	jmp	.L3846
 	.p2align 4,,7
 	.p2align 3
-.L3866:
+.L3854:
 	movl	%ebp, %ecx
-	jmp	.L3856
-.L3861:
+	jmp	.L3844
+.L3849:
 	movl	%eax, 12(%esp)
 	movl	56(%esp), %eax
 	movl	%ebp, 8(%esp)
 	movl	%edi, 4(%esp)
 	movl	%eax, (%esp)
 	call	doFaultTransfer
-	jmp	.L3862
+	jmp	.L3850
 	.cfi_endproc
 .LFE497:
 	.size	receiveIPC, .-receiveIPC
@@ -26244,7 +26129,7 @@ handleWait:
 	movl	-32(%ebp), %edx
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L3890
+	jne	.L3878
 	movl	(%edx), %eax
 	movl	4(%edx), %ecx
 	movl	%eax, %edi
@@ -26255,9 +26140,9 @@ handleWait:
 	cmpl	$14, %edi
 	cmove	%esi, %edx
 	cmpl	$4, %edx
-	je	.L3880
+	je	.L3868
 	cmpl	$6, %edx
-	je	.L3881
+	je	.L3869
 	movl	%ebx, current_fault+4
 	movl	ksCurThread, %ebx
 	movl	$1, current_lookup_fault
@@ -26266,11 +26151,11 @@ handleWait:
 	movl	%ebx, (%esp)
 	call	sendFaultIPC
 	testl	%eax, %eax
-	je	.L3874
+	je	.L3862
 	andl	$-16, 592(%ebx)
 	movl	%ebx, (%esp)
 	call	scheduleTCB
-.L3874:
+.L3862:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -26285,10 +26170,10 @@ handleWait:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3881:
+.L3869:
 	.cfi_restore_state
 	testb	$1, %cl
-	je	.L3891
+	je	.L3879
 	movl	%eax, -32(%ebp)
 	movl	-32(%ebp), %eax
 	movl	%ecx, -28(%ebp)
@@ -26312,10 +26197,10 @@ handleWait:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3880:
+.L3868:
 	.cfi_restore_state
 	testb	$1, %cl
-	je	.L3891
+	je	.L3879
 	movl	%eax, -32(%ebp)
 	movl	-32(%ebp), %eax
 	movl	%ecx, -28(%ebp)
@@ -26337,17 +26222,17 @@ handleWait:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret
-.L3891:
+.L3879:
 	.cfi_restore_state
 	movl	$1, current_lookup_fault
 	movl	$0, current_lookup_fault+4
-.L3890:
+.L3878:
 	movl	ksCurThread, %eax
 	movl	%ebx, current_fault+4
 	movl	$-2147483647, current_fault
 	movl	%eax, (%esp)
 	call	handleFault
-	jmp	.L3874
+	jmp	.L3862
 	.cfi_endproc
 .LFE255:
 	.size	handleWait, .-handleWait
@@ -26372,29 +26257,29 @@ copyMRs:
 	movl	24(%esp), %edx
 	testl	%eax, %eax
 	movl	28(%esp), %ebx
-	je	.L3900
+	je	.L3888
 	movl	20(%ecx), %edi
 	cmpl	$1, %eax
 	movl	%edi, 20(%edx)
-	jbe	.L3896
+	jbe	.L3884
 	movl	24(%ecx), %ecx
 	testl	%ebx, %ebx
 	movl	%ecx, 24(%edx)
-	je	.L3898
+	je	.L3886
 	testl	%esi, %esi
-	je	.L3898
+	je	.L3886
 	cmpl	$2, %eax
-	jbe	.L3898
+	jbe	.L3886
 	movl	$2, %edx
 	.p2align 4,,7
 	.p2align 3
-.L3895:
+.L3883:
 	addl	$1, %edx
 	movl	(%esi,%edx,4), %ecx
 	cmpl	%eax, %edx
 	movl	%ecx, (%ebx,%edx,4)
-	jne	.L3895
-.L3900:
+	jne	.L3883
+.L3888:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -26408,7 +26293,7 @@ copyMRs:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3898:
+.L3886:
 	.cfi_restore_state
 	popl	%ebx
 	.cfi_remember_state
@@ -26424,7 +26309,7 @@ copyMRs:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3896:
+.L3884:
 	.cfi_restore_state
 	popl	%ebx
 	.cfi_restore 3
@@ -26462,18 +26347,18 @@ decodeDomainInvocation:
 	.cfi_def_cfa_offset 28
 	cmpl	$25, 28(%esp)
 	movl	36(%esp), %edx
-	jne	.L3930
+	jne	.L3918
 	movl	32(%esp), %ebx
 	testl	%ebx, %ebx
-	je	.L3909
+	je	.L3897
 	movl	ksCurThread, %eax
 	movl	20(%eax), %ecx
 	testl	%ecx, %ecx
-	je	.L3908
+	je	.L3896
 	movl	$1, current_syscall_error+24
 	movl	$3, %eax
 	movl	$0, current_syscall_error
-.L3925:
+.L3913:
 	addl	$8, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -26492,10 +26377,10 @@ decodeDomainInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3908:
+.L3896:
 	.cfi_restore_state
 	testl	%edx, %edx
-	je	.L3909
+	je	.L3897
 	movl	(%edx), %ebx
 	movl	%ebx, %esi
 	movl	%ebx, %edx
@@ -26505,7 +26390,7 @@ decodeDomainInvocation:
 	cmpl	$14, %esi
 	cmove	%ecx, %edx
 	cmpl	$12, %edx
-	jne	.L3931
+	jne	.L3919
 	movl	592(%eax), %edx
 	andl	$-16, %ebx
 	andl	$-16, %edx
@@ -26515,7 +26400,7 @@ decodeDomainInvocation:
 	call	scheduleTCB
 	movl	600(%ebx), %edx
 	testb	$1, %dl
-	je	.L3913
+	je	.L3901
 	movl	620(%ebx), %eax
 	movl	644(%ebx), %ecx
 	sall	$8, %eax
@@ -26525,68 +26410,68 @@ decodeDomainInvocation:
 	movl	ksReadyQueues(,%eax,8), %ebp
 	movl	4(%esi), %edi
 	movl	%edi, 4(%esp)
-	je	.L3914
+	je	.L3902
 	movl	640(%ebx), %edi
 	movl	%edi, 640(%ecx)
 	movl	640(%ebx), %edi
-.L3915:
+.L3903:
 	testl	%edi, %edi
-	je	.L3919
+	je	.L3907
 	movl	%ecx, 644(%edi)
-.L3916:
+.L3904:
 	movl	%ebp, ksReadyQueues(,%eax,8)
 	movl	4(%esp), %eax
 	andl	$-2, %edx
 	movl	%eax, 4(%esi)
 	movl	%edx, 600(%ebx)
-.L3913:
+.L3901:
 	movl	592(%ebx), %eax
 	movl	$0, 620(%ebx)
 	andl	$15, %eax
 	subl	$1, %eax
 	cmpl	$1, %eax
-	jbe	.L3928
+	jbe	.L3916
 	xorl	%eax, %eax
 	cmpl	ksCurThread, %ebx
-	jne	.L3925
-.L3932:
+	jne	.L3913
+.L3920:
 	movl	%eax, 4(%esp)
 	call	rescheduleRequired
 	movl	4(%esp), %eax
-	jmp	.L3925
+	jmp	.L3913
 	.p2align 4,,7
 	.p2align 3
-.L3928:
+.L3916:
 	movl	%ebx, (%esp)
 	call	tcbSchedEnqueue
 	xorl	%eax, %eax
 	cmpl	ksCurThread, %ebx
-	jne	.L3925
-	jmp	.L3932
+	jne	.L3913
+	jmp	.L3920
 	.p2align 4,,7
 	.p2align 3
-.L3914:
+.L3902:
 	movl	640(%ebx), %ebp
 	movl	%ebp, %edi
-	jmp	.L3915
+	jmp	.L3903
 	.p2align 4,,7
 	.p2align 3
-.L3919:
+.L3907:
 	movl	%ecx, 4(%esp)
-	jmp	.L3916
-.L3909:
+	jmp	.L3904
+.L3897:
 	movl	$7, current_syscall_error+24
 	movl	$3, %eax
-	jmp	.L3925
-.L3930:
+	jmp	.L3913
+.L3918:
 	movl	$3, current_syscall_error+24
 	movl	$3, %eax
-	jmp	.L3925
-.L3931:
+	jmp	.L3913
+.L3919:
 	movl	$1, current_syscall_error+24
 	movl	$3, %eax
 	movl	$1, current_syscall_error
-	jmp	.L3925
+	jmp	.L3913
 	.cfi_endproc
 .LFE549:
 	.size	decodeDomainInvocation, .-decodeDomainInvocation
@@ -26615,11 +26500,11 @@ invokeTCB_Suspend:
 	call	ipcCancel
 	andl	$-16, 592(%ebx)
 	cmpl	ksCurThread, %ebx
-	je	.L3944
-.L3934:
+	je	.L3932
+.L3922:
 	movl	600(%ebx), %edx
 	testb	$1, %dl
-	je	.L3935
+	je	.L3923
 	movl	620(%ebx), %eax
 	sall	$8, %eax
 	addl	624(%ebx), %eax
@@ -26629,21 +26514,21 @@ invokeTCB_Suspend:
 	movl	%ecx, 12(%esp)
 	movl	644(%ebx), %ecx
 	testl	%ecx, %ecx
-	je	.L3936
+	je	.L3924
 	movl	640(%ebx), %edi
 	movl	%edi, 640(%ecx)
 	movl	640(%ebx), %edi
-.L3937:
+.L3925:
 	testl	%edi, %edi
-	je	.L3939
+	je	.L3927
 	movl	%ecx, 644(%edi)
-.L3938:
+.L3926:
 	movl	%ebp, ksReadyQueues(,%eax,8)
 	movl	12(%esp), %eax
 	andl	$-2, %edx
 	movl	%eax, 4(%esi)
 	movl	%edx, 600(%ebx)
-.L3935:
+.L3923:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -26663,24 +26548,24 @@ invokeTCB_Suspend:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3944:
+.L3932:
 	.cfi_restore_state
 	movl	ksSchedulerAction, %eax
 	testl	%eax, %eax
-	jne	.L3934
+	jne	.L3922
 	call	rescheduleRequired
-	jmp	.L3934
+	jmp	.L3922
 	.p2align 4,,7
 	.p2align 3
-.L3936:
+.L3924:
 	movl	640(%ebx), %ebp
 	movl	%ebp, %edi
-	jmp	.L3937
+	jmp	.L3925
 	.p2align 4,,7
 	.p2align 3
-.L3939:
+.L3927:
 	movl	%ecx, 12(%esp)
-	jmp	.L3938
+	jmp	.L3926
 	.cfi_endproc
 .LFE550:
 	.size	invokeTCB_Suspend, .-invokeTCB_Suspend
@@ -26705,12 +26590,12 @@ invokeTCB_Resume:
 	movl	592(%ebx), %ecx
 	andl	$15, %ecx
 	cmpl	$6, %ecx
-	ja	.L3952
+	ja	.L3940
 	movl	$1, %eax
 	sall	%cl, %eax
 	testb	$121, %al
-	jne	.L3947
-.L3952:
+	jne	.L3935
+.L3940:
 	addl	$16, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
@@ -26727,7 +26612,7 @@ invokeTCB_Resume:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3947:
+.L3935:
 	.cfi_restore_state
 	movl	%ebx, (%esp)
 	call	ipcCancel
@@ -26742,7 +26627,7 @@ invokeTCB_Resume:
 	cmpl	$14, %edi
 	cmovne	%edx, %eax
 	testl	%eax, %eax
-	jne	.L3949
+	jne	.L3937
 	movl	%ebx, %eax
 	andl	$-16, %eax
 	orl	$8, %eax
@@ -26750,7 +26635,7 @@ invokeTCB_Resume:
 	movl	$1, 4(%esi)
 	movl	$0, 8(%esi)
 	movl	$3, 12(%esi)
-.L3949:
+.L3937:
 	movl	592(%ebx), %eax
 	andl	$-16, %eax
 	orl	$2, %eax
@@ -26805,21 +26690,21 @@ invokeTCB_ThreadControl:
 	movl	%ebx, %ebp
 	orl	$12, %edi
 	andl	$4, %ebp
-	je	.L3956
+	je	.L3944
 	movl	72(%esp), %eax
 	movl	%eax, 632(%esi)
-.L3956:
+.L3944:
 	testb	$1, %bl
-	jne	.L4001
-.L3958:
+	jne	.L3989
+.L3946:
 	testl	%ebp, %ebp
-	jne	.L4002
-.L3963:
+	jne	.L3990
+.L3951:
 	andl	$2, %ebx
-	jne	.L3967
-.L3968:
+	jne	.L3955
+.L3956:
 	xorl	%edx, %edx
-.L3989:
+.L3977:
 	addl	$44, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -26839,7 +26724,7 @@ invokeTCB_ThreadControl:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L3967:
+.L3955:
 	.cfi_restore_state
 	movl	%esi, %ebx
 	andl	$-1024, %ebx
@@ -26848,13 +26733,13 @@ invokeTCB_ThreadControl:
 	call	cteDelete.constprop.160
 	testl	%eax, %eax
 	movl	%eax, %edx
-	jne	.L3989
+	jne	.L3977
 	movl	%eax, 28(%esp)
 	movl	104(%esp), %eax
 	movl	%eax, 636(%esi)
 	movl	116(%esp), %eax
 	testl	%eax, %eax
-	je	.L3968
+	je	.L3956
 	movl	116(%esp), %eax
 	movl	4(%eax), %edx
 	movl	(%eax), %eax
@@ -26866,7 +26751,7 @@ invokeTCB_ThreadControl:
 	movl	%eax, (%esp)
 	call	sameObjectAs
 	testl	%eax, %eax
-	je	.L3968
+	je	.L3956
 	movl	68(%esp), %eax
 	movl	4(%eax), %edx
 	movl	(%eax), %eax
@@ -26876,7 +26761,7 @@ invokeTCB_ThreadControl:
 	movl	%eax, 8(%esp)
 	call	sameObjectAs
 	testl	%eax, %eax
-	je	.L3968
+	je	.L3956
 	movl	116(%esp), %eax
 	movl	112(%esp), %edx
 	movl	%ebx, 12(%esp)
@@ -26886,17 +26771,17 @@ invokeTCB_ThreadControl:
 	movl	%eax, (%esp)
 	call	cteInsert
 	movl	28(%esp), %edx
-	jmp	.L3989
+	jmp	.L3977
 	.p2align 4,,7
 	.p2align 3
-.L4002:
+.L3990:
 	movl	%esi, %ebp
 	andl	$-1024, %ebp
 	movl	%ebp, %eax
 	call	cteDelete.constprop.160
 	testl	%eax, %eax
 	movl	%eax, %edx
-	jne	.L3989
+	jne	.L3977
 	movl	88(%esp), %eax
 	movl	4(%eax), %edx
 	movl	(%eax), %eax
@@ -26908,7 +26793,7 @@ invokeTCB_ThreadControl:
 	movl	%eax, (%esp)
 	call	sameObjectAs
 	testl	%eax, %eax
-	je	.L3965
+	je	.L3953
 	movl	68(%esp), %eax
 	movl	4(%eax), %edx
 	movl	(%eax), %eax
@@ -26918,14 +26803,14 @@ invokeTCB_ThreadControl:
 	movl	%eax, 8(%esp)
 	call	sameObjectAs
 	testl	%eax, %eax
-	jne	.L4003
-.L3965:
+	jne	.L3991
+.L3953:
 	addl	$16, %ebp
 	movl	%ebp, %eax
 	call	cteDelete.constprop.160
 	testl	%eax, %eax
 	movl	%eax, %edx
-	jne	.L3989
+	jne	.L3977
 	movl	100(%esp), %eax
 	movl	4(%eax), %edx
 	movl	(%eax), %eax
@@ -26937,7 +26822,7 @@ invokeTCB_ThreadControl:
 	movl	%eax, (%esp)
 	call	sameObjectAs
 	testl	%eax, %eax
-	je	.L3963
+	je	.L3951
 	movl	68(%esp), %eax
 	movl	4(%eax), %edx
 	movl	(%eax), %eax
@@ -26947,7 +26832,7 @@ invokeTCB_ThreadControl:
 	movl	%eax, 8(%esp)
 	call	sameObjectAs
 	testl	%eax, %eax
-	je	.L3963
+	je	.L3951
 	movl	100(%esp), %eax
 	movl	96(%esp), %edx
 	movl	%ebp, 12(%esp)
@@ -26956,10 +26841,10 @@ invokeTCB_ThreadControl:
 	movl	%edx, 4(%esp)
 	movl	%eax, (%esp)
 	call	cteInsert
-	jmp	.L3963
+	jmp	.L3951
 	.p2align 4,,7
 	.p2align 3
-.L4001:
+.L3989:
 	movl	%esi, (%esp)
 	call	tcbSchedDequeue
 	movl	76(%esp), %eax
@@ -26968,25 +26853,25 @@ invokeTCB_ThreadControl:
 	andl	$15, %eax
 	subl	$1, %eax
 	cmpl	$1, %eax
-	jbe	.L3998
+	jbe	.L3986
 	cmpl	ksCurThread, %esi
-	jne	.L3958
-.L4004:
+	jne	.L3946
+.L3992:
 	call	rescheduleRequired
 	.p2align 4,,2
-	jmp	.L3958
+	jmp	.L3946
 	.p2align 4,,7
 	.p2align 3
-.L3998:
+.L3986:
 	movl	%esi, (%esp)
 	.p2align 4,,5
 	call	tcbSchedEnqueue
 	cmpl	ksCurThread, %esi
-	jne	.L3958
-	jmp	.L4004
+	jne	.L3946
+	jmp	.L3992
 	.p2align 4,,7
 	.p2align 3
-.L4003:
+.L3991:
 	movl	88(%esp), %eax
 	movl	84(%esp), %edx
 	movl	%ebp, 12(%esp)
@@ -26995,7 +26880,7 @@ invokeTCB_ThreadControl:
 	movl	%edx, 4(%esp)
 	movl	%eax, (%esp)
 	call	cteInsert
-	jmp	.L3965
+	jmp	.L3953
 	.cfi_endproc
 .LFE552:
 	.size	invokeTCB_ThreadControl, .-invokeTCB_ThreadControl
@@ -27023,11 +26908,11 @@ decodeTCBConfigure:
 	movl	28(%ebp), %esi
 	movl	%eax, -52(%ebp)
 	movl	32(%ebp), %edi
-	ja	.L4041
-.L4006:
+	ja	.L4029
+.L3994:
 	movl	$7, current_syscall_error+24
 	movl	$3, %eax
-.L4035:
+.L4023:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -27042,15 +26927,15 @@ decodeTCBConfigure:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4041:
+.L4029:
 	.cfi_restore_state
 	testl	%ebx, %ebx
-	je	.L4006
+	je	.L3994
 	testl	%esi, %esi
-	je	.L4006
+	je	.L3994
 	testl	%edi, %edi
 	.p2align 4,,5
-	je	.L4006
+	je	.L3994
 	movl	ksCurThread, %eax
 	movl	20(%eax), %edx
 	movl	%edx, -92(%ebp)
@@ -27075,8 +26960,8 @@ decodeTCBConfigure:
 	movl	%ecx, -60(%ebp)
 	movzbl	24(%eax), %ecx
 	cmpl	624(%eax), %ecx
-	jbe	.L4009
-.L4020:
+	jbe	.L3997
+.L4008:
 	movl	$3, current_syscall_error+24
 	leal	-12(%ebp), %esp
 	movl	$3, %eax
@@ -27093,13 +26978,13 @@ decodeTCBConfigure:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4009:
+.L3997:
 	.cfi_restore_state
 	movl	-56(%ebp), %eax
 	testl	%eax, %eax
-	jne	.L4042
+	jne	.L4030
 	xorl	%edi, %edi
-.L4010:
+.L3998:
 	movl	-52(%ebp), %eax
 	movl	%ecx, -96(%ebp)
 	andl	$-1024, %eax
@@ -27107,17 +26992,17 @@ decodeTCBConfigure:
 	movl	%eax, -100(%ebp)
 	call	slotCapLongRunningDelete
 	testl	%eax, %eax
-	jne	.L4020
+	jne	.L4008
 	movl	-100(%ebp), %eax
 	addl	$16, %eax
 	movl	%eax, (%esp)
 	call	slotCapLongRunningDelete
 	movl	-96(%ebp), %ecx
 	testl	%eax, %eax
-	jne	.L4020
+	jne	.L4008
 	movl	-76(%ebp), %eax
 	testl	%eax, %eax
-	je	.L4013
+	je	.L4001
 	movl	-72(%ebp), %edx
 	leal	-48(%ebp), %eax
 	movl	%eax, (%esp)
@@ -27135,7 +27020,7 @@ decodeTCBConfigure:
 	movl	-48(%ebp), %eax
 	subl	$4, %esp
 	movl	%eax, -72(%ebp)
-.L4013:
+.L4001:
 	movl	-72(%ebp), %eax
 	movl	%ebx, 4(%esp)
 	movl	%ecx, -76(%ebp)
@@ -27150,7 +27035,7 @@ decodeTCBConfigure:
 	movl	%edx, -72(%ebp)
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L4035
+	jne	.L4023
 	movl	-28(%ebp), %eax
 	movl	%edx, %ecx
 	andl	$14, %ecx
@@ -27162,9 +27047,9 @@ decodeTCBConfigure:
 	movl	-76(%ebp), %ecx
 	cmovne	%edx, %eax
 	cmpl	$10, %eax
-	jne	.L4020
+	jne	.L4008
 	cmpl	$0, -88(%ebp)
-	je	.L4017
+	je	.L4005
 	movl	-84(%ebp), %edx
 	leal	-48(%ebp), %eax
 	movl	%eax, (%esp)
@@ -27182,7 +27067,7 @@ decodeTCBConfigure:
 	movl	-44(%ebp), %eax
 	pushl	%edx
 	movl	%eax, -80(%ebp)
-.L4017:
+.L4005:
 	movl	-84(%ebp), %eax
 	movl	%esi, 4(%esp)
 	movl	%ecx, -88(%ebp)
@@ -27197,21 +27082,21 @@ decodeTCBConfigure:
 	pushl	%eax
 	movl	-36(%ebp), %eax
 	testl	%eax, %eax
-	jne	.L4035
+	jne	.L4023
 	movl	-28(%ebp), %eax
 	movl	-88(%ebp), %ecx
 	movl	%eax, -76(%ebp)
 	movl	%edx, %eax
 	andl	$14, %eax
 	cmpl	$14, %eax
-	je	.L4018
+	je	.L4006
 	movl	%edx, %eax
 	andl	$15, %eax
-.L4019:
+.L4007:
 	cmpl	$5, %eax
-	jne	.L4020
+	jne	.L4008
 	testl	$65536, -76(%ebp)
-	je	.L4020
+	je	.L4008
 	movl	ksCurThread, %eax
 	movl	ksCurThread, %edx
 	movl	%ecx, -84(%ebp)
@@ -27249,10 +27134,10 @@ decodeTCBConfigure:
 	movl	20(%ebp), %eax
 	movl	%eax, 4(%esp)
 	call	invokeTCB_ThreadControl
-	jmp	.L4035
+	jmp	.L4023
 	.p2align 4,,7
 	.p2align 3
-.L4042:
+.L4030:
 	movl	%ecx, -96(%ebp)
 	movl	-64(%ebp), %edx
 	leal	-36(%ebp), %eax
@@ -27265,7 +27150,7 @@ decodeTCBConfigure:
 	movl	-36(%ebp), %eax
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L4035
+	jne	.L4023
 	movl	-32(%ebp), %eax
 	movl	-28(%ebp), %edx
 	movl	%eax, -64(%ebp)
@@ -27277,12 +27162,12 @@ decodeTCBConfigure:
 	call	checkValidIPCBuffer
 	movl	-96(%ebp), %ecx
 	testl	%eax, %eax
-	je	.L4010
-	jmp	.L4035
-.L4018:
+	je	.L3998
+	jmp	.L4023
+.L4006:
 	movzbl	-80(%ebp), %eax
 	.p2align 4,,2
-	jmp	.L4019
+	jmp	.L4007
 	.cfi_endproc
 .LFE545:
 	.size	decodeTCBConfigure, .-decodeTCBConfigure
@@ -27303,10 +27188,10 @@ decodeSetPriority:
 	movl	88(%esp), %eax
 	movl	80(%esp), %ebx
 	testl	%eax, %eax
-	jne	.L4044
+	jne	.L4032
 	movl	$7, current_syscall_error+24
 	movl	$3, %eax
-.L4045:
+.L4033:
 	addl	$68, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -27319,12 +27204,12 @@ decodeSetPriority:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4044:
+.L4032:
 	.cfi_restore_state
 	movl	ksCurThread, %eax
 	movzbl	20(%eax), %esi
 	cmpl	624(%eax), %esi
-	jbe	.L4046
+	jbe	.L4034
 	movl	$3, current_syscall_error+24
 	addl	$68, %esp
 	.cfi_remember_state
@@ -27339,7 +27224,7 @@ decodeSetPriority:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4046:
+.L4034:
 	.cfi_restore_state
 	movl	592(%eax), %edx
 	andl	$-16, %ebx
@@ -27364,7 +27249,7 @@ decodeSetPriority:
 	movl	$0, 4(%esp)
 	movl	%ebx, (%esp)
 	call	invokeTCB_ThreadControl
-	jmp	.L4045
+	jmp	.L4033
 	.cfi_endproc
 .LFE546:
 	.size	decodeSetPriority, .-decodeSetPriority
@@ -27390,11 +27275,11 @@ decodeSetIPCBuffer:
 	movl	8(%ebp), %edx
 	movl	24(%ebp), %ebx
 	testl	%eax, %eax
-	jne	.L4061
-.L4049:
+	jne	.L4049
+.L4037:
 	movl	$7, current_syscall_error+24
 	movl	$3, %eax
-.L4051:
+.L4039:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -27409,19 +27294,19 @@ decodeSetIPCBuffer:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4061:
+.L4049:
 	.cfi_restore_state
 	testl	%ebx, %ebx
-	je	.L4049
+	je	.L4037
 	movl	ksCurThread, %ecx
 	movl	(%ebx), %esi
 	movl	4(%ebx), %edi
 	movl	20(%ecx), %eax
 	testl	%eax, %eax
 	movl	%eax, -44(%ebp)
-	jne	.L4062
+	jne	.L4050
 	xorl	%ebx, %ebx
-.L4052:
+.L4040:
 	movl	592(%ecx), %eax
 	movl	%edx, -48(%ebp)
 	andl	$-16, %eax
@@ -27463,7 +27348,7 @@ decodeSetIPCBuffer:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4062:
+.L4050:
 	.cfi_restore_state
 	leal	-36(%ebp), %eax
 	movl	%eax, (%esp)
@@ -27475,7 +27360,7 @@ decodeSetIPCBuffer:
 	movl	-36(%ebp), %eax
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L4051
+	jne	.L4039
 	movl	-32(%ebp), %esi
 	movl	-28(%ebp), %edi
 	movl	-44(%ebp), %eax
@@ -27484,10 +27369,10 @@ decodeSetIPCBuffer:
 	movl	%eax, (%esp)
 	call	checkValidIPCBuffer
 	testl	%eax, %eax
-	jne	.L4051
+	jne	.L4039
 	movl	ksCurThread, %ecx
 	movl	-48(%ebp), %edx
-	jmp	.L4052
+	jmp	.L4040
 	.cfi_endproc
 .LFE547:
 	.size	decodeSetIPCBuffer, .-decodeSetIPCBuffer
@@ -27514,11 +27399,11 @@ decodeSetSpace:
 	movl	8(%ebp), %edi
 	movl	28(%ebp), %esi
 	movl	%eax, -52(%ebp)
-	ja	.L4117
-.L4064:
+	ja	.L4105
+.L4052:
 	movl	$7, current_syscall_error+24
 	movl	$3, %eax
-.L4105:
+.L4093:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -27533,12 +27418,12 @@ decodeSetSpace:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4117:
+.L4105:
 	.cfi_restore_state
 	testl	%eax, %eax
-	je	.L4064
+	je	.L4052
 	testl	%esi, %esi
-	je	.L4064
+	je	.L4052
 	movl	ksCurThread, %eax
 	movl	%edi, %edx
 	andl	$-1024, %edx
@@ -27570,11 +27455,11 @@ decodeSetSpace:
 	cmpl	$14, %ebx
 	cmove	%ecx, %eax
 	testl	%eax, %eax
-	je	.L4069
+	je	.L4057
 	movl	8(%edx), %eax
 	movl	12(%edx), %ecx
 	andl	$-8, %eax
-	je	.L4070
+	je	.L4058
 	movl	4(%edx), %ebx
 	movl	%ecx, -96(%ebp)
 	movl	(%edx), %ecx
@@ -27589,14 +27474,14 @@ decodeSetSpace:
 	movl	-92(%ebp), %edx
 	movl	-96(%ebp), %ecx
 	testl	%eax, %eax
-	je	.L4070
-.L4069:
+	je	.L4058
+.L4057:
 	addl	$16, %edx
 	movl	%edx, (%esp)
 	call	slotCapLongRunningDelete
 	testl	%eax, %eax
-	je	.L4118
-.L4082:
+	je	.L4106
+.L4070:
 	movl	$3, current_syscall_error+24
 	leal	-12(%ebp), %esp
 	movl	$3, %eax
@@ -27613,10 +27498,10 @@ decodeSetSpace:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4070:
+.L4058:
 	.cfi_restore_state
 	andl	$-8, %ecx
-	je	.L4071
+	je	.L4059
 	movl	4(%ecx), %ebx
 	movl	(%ecx), %ecx
 	movl	%edx, -92(%ebp)
@@ -27629,8 +27514,8 @@ decodeSetSpace:
 	call	sameObjectAs
 	movl	-92(%ebp), %edx
 	testl	%eax, %eax
-	jne	.L4069
-.L4071:
+	jne	.L4057
+.L4059:
 	movl	-56(%ebp), %ecx
 	movl	%ecx, %eax
 	movzbl	%cl, %ecx
@@ -27638,20 +27523,20 @@ decodeSetSpace:
 	cmpl	$14, -60(%ebp)
 	cmove	%ecx, %eax
 	cmpl	$12, %eax
-	je	.L4082
+	je	.L4070
 	cmpl	$46, %eax
-	je	.L4082
+	je	.L4070
 	cmpl	$10, %eax
-	jne	.L4069
+	jne	.L4057
 	.p2align 4,,5
-	jmp	.L4082
+	jmp	.L4070
 	.p2align 4,,7
 	.p2align 3
-.L4118:
+.L4106:
 	movl	-72(%ebp), %edx
 	testl	%edx, %edx
 	.p2align 4,,3
-	je	.L4075
+	je	.L4063
 	movl	-68(%ebp), %ebx
 	leal	-48(%ebp), %eax
 	movl	%eax, (%esp)
@@ -27667,7 +27552,7 @@ decodeSetSpace:
 	movl	-48(%ebp), %eax
 	subl	$4, %esp
 	movl	%eax, -68(%ebp)
-.L4075:
+.L4063:
 	movl	-68(%ebp), %eax
 	movl	%eax, 8(%esp)
 	movl	-64(%ebp), %eax
@@ -27681,7 +27566,7 @@ decodeSetSpace:
 	movl	-32(%ebp), %ecx
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L4105
+	jne	.L4093
 	movl	-28(%ebp), %eax
 	movzbl	%cl, %edx
 	movl	%eax, -64(%ebp)
@@ -27693,10 +27578,10 @@ decodeSetSpace:
 	cmpl	$14, %ebx
 	cmove	%edx, %eax
 	cmpl	$10, %eax
-	jne	.L4082
+	jne	.L4070
 	movl	-84(%ebp), %eax
 	testl	%eax, %eax
-	je	.L4079
+	je	.L4067
 	movl	-80(%ebp), %ebx
 	leal	-48(%ebp), %eax
 	movl	%eax, (%esp)
@@ -27714,7 +27599,7 @@ decodeSetSpace:
 	movl	-44(%ebp), %eax
 	subl	$4, %esp
 	movl	%eax, -76(%ebp)
-.L4079:
+.L4067:
 	movl	-80(%ebp), %eax
 	movl	%esi, 4(%esp)
 	movl	%ecx, -68(%ebp)
@@ -27730,7 +27615,7 @@ decodeSetSpace:
 	movl	-36(%ebp), %eax
 	subl	$4, %esp
 	testl	%eax, %eax
-	jne	.L4105
+	jne	.L4093
 	movl	-28(%ebp), %eax
 	movl	-68(%ebp), %ecx
 	movl	%eax, -56(%ebp)
@@ -27743,9 +27628,9 @@ decodeSetSpace:
 	cmpl	$14, %ebx
 	cmove	%eax, %edx
 	cmpl	$5, %edx
-	jne	.L4082
+	jne	.L4070
 	testl	$65536, -56(%ebp)
-	je	.L4082
+	je	.L4070
 	movl	ksCurThread, %eax
 	movl	%ecx, -68(%ebp)
 	movl	592(%eax), %edx
@@ -27779,7 +27664,7 @@ decodeSetSpace:
 	andl	$-16, %eax
 	movl	%eax, (%esp)
 	call	invokeTCB_ThreadControl
-	jmp	.L4105
+	jmp	.L4093
 	.cfi_endproc
 .LFE548:
 	.size	decodeSetSpace, .-decodeSetSpace
@@ -27801,14 +27686,14 @@ invokeTCB_CopyRegisters:
 	movl	32(%esp), %ebx
 	movl	36(%esp), %esi
 	testl	%eax, %eax
-	jne	.L4137
+	jne	.L4125
 	movl	44(%esp), %ecx
 	testl	%ecx, %ecx
-	jne	.L4138
-.L4121:
+	jne	.L4126
+.L4109:
 	movl	48(%esp), %edx
 	testl	%edx, %edx
-	je	.L4122
+	je	.L4110
 	movl	44(%esi), %eax
 	movl	%eax, 44(%ebx)
 	movl	68(%esi), %edx
@@ -27830,17 +27715,17 @@ invokeTCB_CopyRegisters:
 	movl	24(%esi), %edx
 	movl	%eax, 56(%ebx)
 	movl	%edx, 24(%ebx)
-.L4122:
+.L4110:
 	movl	52(%esp), %eax
 	testl	%eax, %eax
-	je	.L4123
+	je	.L4111
 	movl	48(%esi), %eax
 	movl	%eax, 48(%ebx)
 	movl	36(%esi), %eax
 	movl	%eax, 36(%ebx)
 	movl	40(%esi), %eax
 	movl	%eax, 40(%ebx)
-.L4123:
+.L4111:
 	addl	$20, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -27854,17 +27739,17 @@ invokeTCB_CopyRegisters:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4137:
+.L4125:
 	.cfi_restore_state
 	movl	%esi, (%esp)
 	call	suspend
 	movl	44(%esp), %ecx
 	testl	%ecx, %ecx
-	je	.L4121
-.L4138:
+	je	.L4109
+.L4126:
 	movl	%ebx, (%esp)
 	call	restart
-	jmp	.L4121
+	jmp	.L4109
 	.cfi_endproc
 .LFE553:
 	.size	invokeTCB_CopyRegisters, .-invokeTCB_CopyRegisters
@@ -27892,8 +27777,8 @@ decodeCopyRegisters:
 	movl	48(%esp), %ebx
 	movl	60(%esp), %eax
 	testl	%edx, %edx
-	jne	.L4150
-.L4140:
+	jne	.L4138
+.L4128:
 	movl	$7, current_syscall_error+24
 	addl	$28, %esp
 	.cfi_remember_state
@@ -27914,10 +27799,10 @@ decodeCopyRegisters:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4150:
+.L4138:
 	.cfi_restore_state
 	testl	%eax, %eax
-	je	.L4140
+	je	.L4128
 	movl	(%eax), %eax
 	movl	ksCurThread, %ecx
 	movl	%eax, %ebp
@@ -27929,7 +27814,7 @@ decodeCopyRegisters:
 	movzbl	%al, %esi
 	cmove	%esi, %edx
 	cmpl	$12, %edx
-	je	.L4151
+	je	.L4139
 	movl	$2, current_syscall_error+24
 	movl	$3, %eax
 	movl	$1, current_syscall_error+4
@@ -27951,7 +27836,7 @@ decodeCopyRegisters:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4151:
+.L4139:
 	.cfi_restore_state
 	movl	592(%ecx), %edx
 	andl	$-16, %ebx
@@ -28017,85 +27902,85 @@ invokeTCB_ReadRegisters:
 	movl	32(%esp), %edi
 	movl	40(%esp), %esi
 	testl	%edx, %edx
-	jne	.L4188
-.L4153:
+	jne	.L4176
+.L4141:
 	movl	48(%esp), %eax
 	testl	%eax, %eax
-	je	.L4154
+	je	.L4142
 	movl	%ebx, 4(%esp)
 	movl	$1, (%esp)
 	call	lookupIPCBuffer
 	testl	%esi, %esi
 	movl	$0, 4(%ebx)
-	je	.L4160
+	je	.L4148
 	movl	44(%edi), %edx
 	cmpl	$1, %esi
 	movl	%edx, 20(%ebx)
-	jbe	.L4161
+	jbe	.L4149
 	movl	68(%edi), %edx
 	testl	%eax, %eax
 	movl	%edx, 24(%ebx)
-	je	.L4162
+	je	.L4150
 	cmpl	$2, %esi
-	jbe	.L4162
+	jbe	.L4150
 	movl	64(%edi), %edx
 	cmpl	$3, %esi
 	movl	%edx, 12(%eax)
-	jbe	.L4163
+	jbe	.L4151
 	movl	(%edi), %edx
 	cmpl	$4, %esi
 	movl	%edx, 16(%eax)
-	jbe	.L4164
+	jbe	.L4152
 	movl	4(%edi), %edx
 	cmpl	$5, %esi
 	movl	%edx, 20(%eax)
-	jbe	.L4165
+	jbe	.L4153
 	movl	8(%edi), %edx
 	cmpl	$6, %esi
 	movl	%edx, 24(%eax)
-	jbe	.L4166
+	jbe	.L4154
 	movl	12(%edi), %edx
 	cmpl	$7, %esi
 	movl	%edx, 28(%eax)
-	jbe	.L4167
+	jbe	.L4155
 	movl	16(%edi), %edx
 	cmpl	$8, %esi
 	movl	%edx, 32(%eax)
-	jbe	.L4168
+	jbe	.L4156
 	movl	20(%edi), %edx
 	cmpl	$9, %esi
 	movl	%edx, 36(%eax)
-	jbe	.L4169
+	jbe	.L4157
 	movl	24(%edi), %edx
 	movl	$10, %ecx
 	movl	%edx, 40(%eax)
-	jmp	.L4158
+	jmp	.L4146
 	.p2align 4,,7
 	.p2align 3
-.L4162:
+.L4150:
 	movl	$2, %ecx
-.L4156:
+.L4144:
 	testl	%eax, %eax
-	je	.L4170
-.L4158:
+	je	.L4158
+.L4146:
 	xorl	%edx, %edx
 	cmpl	$10, %esi
-	jbe	.L4159
+	jbe	.L4147
 	movl	48(%edi), %edx
 	cmpl	$11, %esi
 	movl	%edx, 44(%eax)
-	je	.L4172
+	je	.L4160
 	movl	36(%edi), %edx
 	cmpl	$12, %esi
 	movl	%edx, 48(%eax)
-	je	.L4173
+	je	.L4161
 	movl	40(%edi), %edx
 	movl	%edx, 52(%eax)
 	movl	$3, %edx
-.L4159:
+.L4147:
 	addl	%ecx, %edx
 	movl	%edx, 16(%ebx)
-.L4154:
+.L4142:
 	movl	592(%ebx), %eax
 	andl	$-16, %eax
 	orl	$1, %eax
@@ -28118,73 +28003,73 @@ invokeTCB_ReadRegisters:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4188:
+.L4176:
 	.cfi_restore_state
 	movl	%edi, (%esp)
 	call	suspend
-	jmp	.L4153
+	jmp	.L4141
 	.p2align 4,,7
 	.p2align 3
-.L4170:
+.L4158:
 	xorl	%edx, %edx
-	jmp	.L4159
+	jmp	.L4147
+	.p2align 4,,7
+	.p2align 3
+.L4148:
+	xorl	%ecx, %ecx
+	.p2align 4,,7
+	jmp	.L4144
+	.p2align 4,,7
+	.p2align 3
+.L4149:
+	movl	$1, %ecx
+	.p2align 4,,2
+	jmp	.L4144
+	.p2align 4,,7
+	.p2align 3
+.L4157:
+	movl	$9, %ecx
+	jmp	.L4146
+	.p2align 4,,7
+	.p2align 3
+.L4156:
+	movl	$8, %ecx
+	jmp	.L4146
+	.p2align 4,,7
+	.p2align 3
+.L4151:
+	movl	$3, %ecx
+	jmp	.L4146
+	.p2align 4,,7
+	.p2align 3
+.L4155:
+	movl	$7, %ecx
+	jmp	.L4146
+	.p2align 4,,7
+	.p2align 3
+.L4154:
+	movl	$6, %ecx
+	jmp	.L4146
+	.p2align 4,,7
+	.p2align 3
+.L4153:
+	movl	$5, %ecx
+	jmp	.L4146
+	.p2align 4,,7
+	.p2align 3
+.L4152:
+	movl	$4, %ecx
+	jmp	.L4146
 	.p2align 4,,7
 	.p2align 3
 .L4160:
-	xorl	%ecx, %ecx
-	.p2align 4,,7
-	jmp	.L4156
+	movl	$1, %edx
+	jmp	.L4147
 	.p2align 4,,7
 	.p2align 3
 .L4161:
-	movl	$1, %ecx
-	.p2align 4,,2
-	jmp	.L4156
-	.p2align 4,,7
-	.p2align 3
-.L4169:
-	movl	$9, %ecx
-	jmp	.L4158
-	.p2align 4,,7
-	.p2align 3
-.L4168:
-	movl	$8, %ecx
-	jmp	.L4158
-	.p2align 4,,7
-	.p2align 3
-.L4163:
-	movl	$3, %ecx
-	jmp	.L4158
-	.p2align 4,,7
-	.p2align 3
-.L4167:
-	movl	$7, %ecx
-	jmp	.L4158
-	.p2align 4,,7
-	.p2align 3
-.L4166:
-	movl	$6, %ecx
-	jmp	.L4158
-	.p2align 4,,7
-	.p2align 3
-.L4165:
-	movl	$5, %ecx
-	jmp	.L4158
-	.p2align 4,,7
-	.p2align 3
-.L4164:
-	movl	$4, %ecx
-	jmp	.L4158
-	.p2align 4,,7
-	.p2align 3
-.L4172:
-	movl	$1, %edx
-	jmp	.L4159
-	.p2align 4,,7
-	.p2align 3
-.L4173:
 	movl	$2, %edx
-	jmp	.L4159
+	jmp	.L4147
 	.cfi_endproc
 .LFE554:
 	.size	invokeTCB_ReadRegisters, .-invokeTCB_ReadRegisters
@@ -28211,17 +28096,17 @@ decodeReadRegisters:
 	cmpl	$1, 56(%esp)
 	movl	48(%esp), %edx
 	movl	60(%esp), %esi
-	jbe	.L4195
+	jbe	.L4183
 	movl	ksCurThread, %eax
 	movl	24(%eax), %ebx
 	movl	20(%eax), %edi
 	leal	-1(%ebx), %ecx
 	cmpl	$12, %ecx
-	jbe	.L4192
+	jbe	.L4180
 	movl	$4, current_syscall_error+24
 	movl	$1, current_syscall_error+8
 	movl	$13, current_syscall_error+12
-.L4191:
+.L4179:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -28241,7 +28126,7 @@ decodeReadRegisters:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4195:
+.L4183:
 	.cfi_restore_state
 	movl	$7, current_syscall_error+24
 	addl	$28, %esp
@@ -28263,12 +28148,12 @@ decodeReadRegisters:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4192:
+.L4180:
 	.cfi_restore_state
 	andl	$-16, %edx
 	cmpl	%eax, %edx
 	movl	%edx, %ebp
-	je	.L4196
+	je	.L4184
 	movl	592(%eax), %ecx
 	andl	$1, %edi
 	andl	$-16, %ecx
@@ -28299,10 +28184,10 @@ decodeReadRegisters:
 	jmp	invokeTCB_ReadRegisters
 	.p2align 4,,7
 	.p2align 3
-.L4196:
+.L4184:
 	.cfi_restore_state
 	movl	$3, current_syscall_error+24
-	jmp	.L4191
+	jmp	.L4179
 	.cfi_endproc
 .LFE543:
 	.size	decodeReadRegisters, .-decodeReadRegisters
@@ -28333,48 +28218,48 @@ invokeTCB_WriteRegisters:
 	cmpl	$13, %eax
 	cmovbe	%eax, %ebx
 	testl	%ebx, %ebx
-	je	.L4198
+	je	.L4186
 	xorl	%eax, %eax
-	jmp	.L4202
+	jmp	.L4190
 	.p2align 4,,7
 	.p2align 3
-.L4199:
+.L4187:
 	leal	-9(%ecx), %edi
 	cmpl	$1, %edi
-	ja	.L4200
+	ja	.L4188
 	movl	%edx, %edi
 	andl	$-9, %edi
 	cmpl	$51, %edi
 	movl	$0, %edi
 	cmovne	%edi, %edx
-.L4200:
+.L4188:
 	addl	$1, %eax
 	cmpl	%eax, %ebx
 	movl	%edx, (%esi,%ecx,4)
-	jbe	.L4201
-.L4225:
+	jbe	.L4189
+.L4213:
 	cmpl	$9, %eax
-	ja	.L4201
-.L4202:
+	ja	.L4189
+.L4190:
 	movl	frameRegisters(,%eax,4), %ecx
 	movl	12(%ebp,%eax,4), %edx
 	cmpl	$16, %ecx
-	jne	.L4199
+	jne	.L4187
 	andl	$4055, %edx
 	addl	$1, %eax
 	orl	$514, %edx
 	cmpl	%eax, %ebx
 	movl	%edx, (%esi,%ecx,4)
-	ja	.L4225
+	ja	.L4213
 	.p2align 4,,7
 	.p2align 3
-.L4201:
+.L4189:
 	cmpl	$10, %ebx
-	jbe	.L4198
+	jbe	.L4186
 	movl	52(%ebp), %eax
 	cmpl	$11, %ebx
 	movl	%eax, 48(%esi)
-	jbe	.L4198
+	jbe	.L4186
 	movl	56(%ebp), %eax
 	xorl	%edx, %edx
 	movl	%eax, %ecx
@@ -28383,22 +28268,22 @@ invokeTCB_WriteRegisters:
 	cmovne	%edx, %eax
 	cmpl	$12, %ebx
 	movl	%eax, 36(%esi)
-	jbe	.L4198
+	jbe	.L4186
 	movl	60(%ebp), %eax
 	movl	%eax, %ecx
 	andl	$-9, %ecx
 	cmpl	$51, %ecx
 	cmovne	%edx, %eax
 	movl	%eax, 40(%esi)
-.L4198:
+.L4186:
 	movl	44(%esi), %eax
 	movl	%eax, 56(%esi)
 	movl	52(%esp), %eax
 	testl	%eax, %eax
-	je	.L4214
+	je	.L4202
 	movl	%esi, (%esp)
 	call	restart
-.L4214:
+.L4202:
 	addl	$28, %esp
 	.cfi_def_cfa_offset 20
 	xorl	%eax, %eax
@@ -28438,17 +28323,17 @@ decodeWriteRegisters:
 	movl	56(%esp), %eax
 	movl	48(%esp), %ecx
 	cmpl	$1, %eax
-	jbe	.L4229
+	jbe	.L4217
 	movl	ksCurThread, %edx
 	subl	$2, %eax
 	movl	24(%edx), %ebx
 	movl	20(%edx), %esi
 	cmpl	%ebx, %eax
-	jae	.L4232
-.L4229:
+	jae	.L4220
+.L4217:
 	movl	$7, current_syscall_error+24
 	movl	$3, %eax
-.L4228:
+.L4216:
 	addl	$32, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
@@ -28464,12 +28349,12 @@ decodeWriteRegisters:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4232:
+.L4220:
 	.cfi_restore_state
 	movl	%ecx, %edi
 	andl	$-16, %edi
 	cmpl	%edx, %edi
-	je	.L4233
+	je	.L4221
 	movl	592(%edx), %eax
 	andl	$1, %esi
 	andl	$-16, %eax
@@ -28499,11 +28384,11 @@ decodeWriteRegisters:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4233:
+.L4221:
 	.cfi_restore_state
 	movl	$3, current_syscall_error+24
 	movl	$3, %eax
-	jmp	.L4228
+	jmp	.L4216
 	.cfi_endproc
 .LFE544:
 	.size	decodeWriteRegisters, .-decodeWriteRegisters
@@ -28535,27 +28420,27 @@ decodeTCBInvocation:
 	movl	112(%esp), %edi
 	movl	128(%esp), %ebp
 	movl	132(%esp), %esi
-	ja	.L4235
-	jmp	*.L4237(,%eax,4)
+	ja	.L4223
+	jmp	*.L4225(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L4237:
-	.long	.L4235
-	.long	.L4235
-	.long	.L4236
-	.long	.L4238
-	.long	.L4239
-	.long	.L4240
-	.long	.L4241
-	.long	.L4242
-	.long	.L4243
-	.long	.L4244
-	.long	.L4245
+.L4225:
+	.long	.L4223
+	.long	.L4223
+	.long	.L4224
+	.long	.L4226
+	.long	.L4227
+	.long	.L4228
+	.long	.L4229
+	.long	.L4230
+	.long	.L4231
+	.long	.L4232
+	.long	.L4233
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L4245:
+.L4233:
 	movl	ksCurThread, %edx
 	andl	$-16, %ebx
 	movl	592(%edx), %eax
@@ -28567,7 +28452,7 @@ decodeTCBInvocation:
 	movl	%ebx, (%esp)
 	call	restart
 	xorl	%eax, %eax
-.L4250:
+.L4238:
 	addl	$76, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -28586,35 +28471,35 @@ decodeTCBInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4236:
+.L4224:
 	.cfi_restore_state
 	cmpl	$1, %edx
-	jbe	.L4268
+	jbe	.L4256
 	movl	ksCurThread, %eax
 	movl	24(%eax), %esi
 	movl	20(%eax), %edi
 	leal	-1(%esi), %edx
 	cmpl	$12, %edx
-	jbe	.L4248
+	jbe	.L4236
 	movl	$4, current_syscall_error+24
 	movl	$3, %eax
 	movl	$1, current_syscall_error+8
 	movl	$13, current_syscall_error+12
-	jmp	.L4250
+	jmp	.L4238
 	.p2align 4,,7
 	.p2align 3
-.L4238:
+.L4226:
 	cmpl	$1, %edx
-	jbe	.L4268
+	jbe	.L4256
 	movl	ksCurThread, %eax
 	subl	$2, %edx
 	movl	24(%eax), %edi
 	movl	20(%eax), %ebp
 	cmpl	%edx, %edi
-	ja	.L4268
+	ja	.L4256
 	andl	$-16, %ebx
 	cmpl	%ebx, %eax
-	je	.L4235
+	je	.L4223
 	movl	592(%eax), %edx
 	andl	$1, %ebp
 	andl	$-16, %edx
@@ -28645,11 +28530,11 @@ decodeTCBInvocation:
 	jmp	invokeTCB_WriteRegisters
 	.p2align 4,,7
 	.p2align 3
-.L4241:
+.L4229:
 	.cfi_restore_state
 	testl	%edx, %edx
-	jne	.L4261
-.L4268:
+	jne	.L4249
+.L4256:
 	movl	$7, current_syscall_error+24
 	addl	$76, %esp
 	.cfi_remember_state
@@ -28670,7 +28555,7 @@ decodeTCBInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4242:
+.L4230:
 	.cfi_restore_state
 	movl	116(%esp), %eax
 	movl	%esi, 28(%esp)
@@ -28702,7 +28587,7 @@ decodeTCBInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4243:
+.L4231:
 	.cfi_restore_state
 	movl	116(%esp), %eax
 	movl	%esi, 28(%esp)
@@ -28734,7 +28619,7 @@ decodeTCBInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4244:
+.L4232:
 	.cfi_restore_state
 	movl	ksCurThread, %edx
 	andl	$-16, %ebx
@@ -28765,13 +28650,13 @@ decodeTCBInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4239:
+.L4227:
 	.cfi_restore_state
 	testl	%edx, %edx
 	movl	116(%esp), %eax
-	je	.L4268
+	je	.L4256
 	testl	%eax, %eax
-	je	.L4268
+	je	.L4256
 	movl	(%eax), %eax
 	movl	ksCurThread, %ecx
 	movl	%eax, %ebp
@@ -28783,14 +28668,14 @@ decodeTCBInvocation:
 	movzbl	%al, %esi
 	cmove	%esi, %edx
 	cmpl	$12, %edx
-	je	.L4269
+	je	.L4257
 	movl	$2, current_syscall_error+24
 	movl	$3, %eax
 	movl	$1, current_syscall_error+4
-	jmp	.L4250
+	jmp	.L4238
 	.p2align 4,,7
 	.p2align 3
-.L4240:
+.L4228:
 	movl	116(%esp), %eax
 	movl	%esi, 28(%esp)
 	movl	%edi, 12(%esp)
@@ -28821,7 +28706,7 @@ decodeTCBInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4235:
+.L4223:
 	.cfi_restore_state
 	movl	$3, current_syscall_error+24
 	addl	$76, %esp
@@ -28843,11 +28728,11 @@ decodeTCBInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4248:
+.L4236:
 	.cfi_restore_state
 	andl	$-16, %ebx
 	cmpl	%ebx, %eax
-	je	.L4235
+	je	.L4223
 	movl	592(%eax), %edx
 	andl	$1, %edi
 	andl	$-16, %edx
@@ -28878,12 +28763,12 @@ decodeTCBInvocation:
 	jmp	invokeTCB_ReadRegisters
 	.p2align 4,,7
 	.p2align 3
-.L4261:
+.L4249:
 	.cfi_restore_state
 	movl	ksCurThread, %eax
 	movzbl	20(%eax), %esi
 	cmpl	624(%eax), %esi
-	ja	.L4235
+	ja	.L4223
 	movl	592(%eax), %edx
 	andl	$-16, %ebx
 	andl	$-16, %edx
@@ -28907,8 +28792,8 @@ decodeTCBInvocation:
 	movl	$0, 4(%esp)
 	movl	%ebx, (%esp)
 	call	invokeTCB_ThreadControl
-	jmp	.L4250
-.L4269:
+	jmp	.L4238
+.L4257:
 	movl	592(%ecx), %edx
 	andl	$-16, %ebx
 	movl	%eax, 60(%esp)
@@ -28972,16 +28857,16 @@ invokeUntyped_Retype:
 	movl	36(%ebp), %eax
 	cmpl	$4, 20(%ebp)
 	movl	%eax, -36(%ebp)
-	ja	.L4327
+	ja	.L4315
 	cmpl	$3, 20(%ebp)
-	ja	.L4278
+	ja	.L4266
 	cmpl	$2, 20(%ebp)
 	movl	$4, %ecx
-	jae	.L4276
+	jae	.L4264
 	cmpl	$1, 20(%ebp)
 	movb	$10, %cl
-	jne	.L4277
-.L4276:
+	jne	.L4265
+.L4264:
 	movl	-36(%ebp), %edi
 	movl	16(%ebp), %eax
 	subl	12(%ebp), %eax
@@ -29004,7 +28889,7 @@ invokeUntyped_Retype:
 	call	getObjectSize
 	testl	%edi, %edi
 	movl	%eax, -40(%ebp)
-	je	.L4309
+	je	.L4297
 	movl	8(%ebp), %eax
 	sall	$4, %esi
 	movl	$1, -52(%ebp)
@@ -29019,43 +28904,43 @@ invokeUntyped_Retype:
 	movl	%eax, -56(%ebp)
 	sall	$23, %eax
 	movl	%eax, -60(%ebp)
-.L4300:
+.L4288:
 	movzbl	-40(%ebp), %ecx
 	movl	%esi, %edx
 	sall	%cl, %edx
 	addl	16(%ebp), %edx
 	cmpl	$4, 20(%ebp)
 	movl	%edx, %eax
-	ja	.L4328
+	ja	.L4316
 	cmpl	$2, 20(%ebp)
-	je	.L4285
-	jbe	.L4329
+	je	.L4273
+	jbe	.L4317
 	cmpl	$3, 20(%ebp)
 	.p2align 4,,3
-	je	.L4288
+	je	.L4276
 	cmpl	$4, 20(%ebp)
 	.p2align 4,,3
-	jne	.L4284
+	jne	.L4272
 	movl	-52(%ebp), %edi
 	testl	%edi, %edi
 	movl	%edi, %ecx
-	je	.L4295
+	je	.L4283
 	.p2align 4,,7
 	.p2align 3
-.L4316:
+.L4304:
 	movl	$0, (%eax)
 	addl	$4, %eax
 	subl	$4, %ecx
-	jne	.L4316
-.L4295:
+	jne	.L4304
+.L4283:
 	andl	$-32, %edx
 	movl	-60(%ebp), %ecx
 	shrl	%edx
 	orl	$10, %edx
-	jmp	.L4283
+	jmp	.L4271
 	.p2align 4,,7
 	.p2align 3
-.L4328:
+.L4316:
 	movl	24(%ebp), %eax
 	movl	%edx, 8(%esp)
 	movl	%eax, 12(%esp)
@@ -29067,7 +28952,7 @@ invokeUntyped_Retype:
 	movl	-32(%ebp), %edx
 	movl	-28(%ebp), %ecx
 	subl	$4, %esp
-.L4283:
+.L4271:
 	movl	8(%ebp), %eax
 	movl	-44(%ebp), %edi
 	movl	12(%eax), %eax
@@ -29081,12 +28966,12 @@ invokeUntyped_Retype:
 	movl	%ebx, %edx
 	andl	$-8, %edx
 	testl	%eax, %eax
-	je	.L4298
+	je	.L4286
 	movl	8(%eax), %ecx
 	andl	$7, %ecx
 	orl	%edx, %ecx
 	movl	%ecx, 8(%eax)
-.L4298:
+.L4286:
 	movl	8(%ebp), %eax
 	addl	$1, %esi
 	addl	$16, %ebx
@@ -29096,8 +28981,8 @@ invokeUntyped_Retype:
 	orl	%edx, %eax
 	cmpl	-36(%ebp), %esi
 	movl	%eax, 12(%edi)
-	jne	.L4300
-.L4309:
+	jne	.L4288
+.L4297:
 	leal	-12(%ebp), %esp
 	xorl	%eax, %eax
 	popl	%ebx
@@ -29113,32 +28998,32 @@ invokeUntyped_Retype:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4329:
+.L4317:
 	.cfi_restore_state
 	cmpl	$1, 20(%ebp)
-	jne	.L4284
+	jne	.L4272
 	testb	$1, %dl
 	movl	%edx, %edi
 	movl	$1024, -48(%ebp)
-	jne	.L4330
-.L4290:
+	jne	.L4318
+.L4278:
 	testl	$2, %edi
-	jne	.L4331
-.L4291:
+	jne	.L4319
+.L4279:
 	movl	-48(%ebp), %ecx
 	xorl	%eax, %eax
 	shrl	$2, %ecx
 	rep stosl
 	testb	$2, -48(%ebp)
-	je	.L4292
+	je	.L4280
 	xorl	%eax, %eax
 	addl	$2, %edi
 	movw	%ax, -2(%edi)
-.L4292:
+.L4280:
 	testb	$1, -48(%ebp)
-	je	.L4293
+	je	.L4281
 	movb	$0, (%edi)
-.L4293:
+.L4281:
 	leal	256(%edx), %edi
 	movl	%edi, (%esp)
 	call	Arch_initContext
@@ -29149,10 +29034,10 @@ invokeUntyped_Retype:
 	andl	$-16, %edi
 	movl	%edi, %edx
 	orl	$12, %edx
-	jmp	.L4283
+	jmp	.L4271
 	.p2align 4,,7
 	.p2align 3
-.L4288:
+.L4276:
 	movl	$0, (%edx)
 	movl	$3, %ecx
 	movl	$0, 4(%edx)
@@ -29160,17 +29045,17 @@ invokeUntyped_Retype:
 	movl	$0, 12(%edx)
 	andl	$-16, %edx
 	orl	$6, %edx
-	jmp	.L4283
+	jmp	.L4271
 	.p2align 4,,7
 	.p2align 3
-.L4284:
+.L4272:
 	andl	$-16, %edx
 	movl	-56(%ebp), %ecx
 	orl	$2, %edx
-	jmp	.L4283
+	jmp	.L4271
 	.p2align 4,,7
 	.p2align 3
-.L4285:
+.L4273:
 	movl	$0, (%edx)
 	movl	$7, %ecx
 	movl	$0, 4(%edx)
@@ -29178,54 +29063,54 @@ invokeUntyped_Retype:
 	movl	$0, 12(%edx)
 	andl	$-16, %edx
 	orl	$4, %edx
-	jmp	.L4283
+	jmp	.L4271
 	.p2align 4,,7
 	.p2align 3
-.L4278:
+.L4266:
 	movl	24(%ebp), %eax
 	cmpl	$4, 20(%ebp)
 	leal	4(%eax), %ecx
-	je	.L4276
-.L4277:
+	je	.L4264
+.L4265:
 	movl	24(%ebp), %ecx
-	jmp	.L4276
+	jmp	.L4264
 	.p2align 4,,7
 	.p2align 3
-.L4327:
+.L4315:
 	cmpl	$6, 20(%ebp)
-	je	.L4301
+	je	.L4289
 	.p2align 4,,4
-	ja	.L4274
+	ja	.L4262
 	cmpl	$5, 20(%ebp)
 	.p2align 4,,3
-	jne	.L4272
-.L4275:
+	jne	.L4260
+.L4263:
 	movl	$12, %ecx
 	.p2align 4,,2
-	jmp	.L4276
+	jmp	.L4264
 	.p2align 4,,7
 	.p2align 3
-.L4301:
+.L4289:
 	movl	$22, %ecx
-	jmp	.L4276
-.L4330:
+	jmp	.L4264
+.L4318:
 	movb	$0, (%edx)
 	leal	1(%edx), %edi
 	movl	$1023, -48(%ebp)
-	jmp	.L4290
+	jmp	.L4278
 	.p2align 4,,7
 	.p2align 3
-.L4274:
+.L4262:
 	cmpl	$8, 20(%ebp)
-	jbe	.L4275
-.L4272:
+	jbe	.L4263
+.L4260:
 	call	halt
-.L4331:
+.L4319:
 	xorl	%ecx, %ecx
 	addl	$2, %edi
 	movw	%cx, -2(%edi)
 	subl	$2, -48(%ebp)
-	jmp	.L4291
+	jmp	.L4279
 	.cfi_endproc
 .LFE558:
 	.size	invokeUntyped_Retype, .-invokeUntyped_Retype
@@ -29251,10 +29136,10 @@ decodeUntypedInvocation:
 	cmpl	$1, 8(%ebp)
 	movl	24(%ebp), %esi
 	movl	28(%ebp), %eax
-	je	.L4333
+	je	.L4321
 	movl	$3, current_syscall_error+24
 	movl	$3, %eax
-.L4370:
+.L4358:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -29269,11 +29154,11 @@ decodeUntypedInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4333:
+.L4321:
 	.cfi_restore_state
 	cmpl	$5, 12(%ebp)
-	ja	.L4372
-.L4335:
+	ja	.L4360
+.L4323:
 	movl	$7, current_syscall_error+24
 	leal	-12(%ebp), %esp
 	movl	$3, %eax
@@ -29290,10 +29175,10 @@ decodeUntypedInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4372:
+.L4360:
 	.cfi_restore_state
 	testl	%eax, %eax
-	je	.L4335
+	je	.L4323
 	movl	ksCurThread, %edx
 	movl	24(%edx), %ecx
 	movl	20(%edx), %ebx
@@ -29308,52 +29193,52 @@ decodeUntypedInvocation:
 	movl	44(%ebp), %edx
 	movl	24(%edx), %edx
 	movl	%edx, -56(%ebp)
-	jbe	.L4337
+	jbe	.L4325
 	movl	$1, current_syscall_error+24
 	movl	$3, %eax
 	movl	$0, current_syscall_error
-	jmp	.L4370
-.L4337:
+	jmp	.L4358
+.L4325:
 	cmpl	$30, -52(%ebp)
-	jbe	.L4338
+	jbe	.L4326
 	movl	$4, current_syscall_error+24
 	movl	$3, %eax
 	movl	$0, current_syscall_error+8
 	movl	$30, current_syscall_error+12
-	jmp	.L4370
-.L4338:
+	jmp	.L4358
+.L4326:
 	movl	-52(%ebp), %edx
 	testl	%edx, %edx
-	jne	.L4339
+	jne	.L4327
 	cmpl	$4, %ebx
-	jne	.L4339
-.L4340:
+	jne	.L4327
+.L4328:
 	movl	$1, current_syscall_error+24
 	movl	$3, %eax
 	movl	$1, current_syscall_error
-	jmp	.L4370
-.L4339:
+	jmp	.L4358
+.L4327:
 	cmpl	$3, -52(%ebp)
-	ja	.L4360
+	ja	.L4348
 	testl	%ebx, %ebx
-	je	.L4340
-.L4360:
+	je	.L4328
+.L4348:
 	testl	%ecx, %ecx
 	.p2align 4,,3
-	jne	.L4342
-.L4344:
+	jne	.L4330
+.L4332:
 	movl	(%eax), %edx
 	movl	4(%eax), %eax
 	movl	%eax, -64(%ebp)
 	movl	%edx, %eax
 	andl	$14, %eax
 	cmpl	$14, %eax
-	je	.L4345
+	je	.L4333
 	movl	%edx, %eax
 	andl	$15, %eax
-.L4346:
+.L4334:
 	cmpl	$10, %eax
-	je	.L4347
+	je	.L4335
 	leal	0(,%ecx,4), %eax
 	movzbl	%al, %eax
 	orl	$1, %eax
@@ -29362,8 +29247,8 @@ decodeUntypedInvocation:
 	movl	$6, current_syscall_error+24
 	movl	$0, current_syscall_error+20
 	movl	$0, current_lookup_fault+4
-	jmp	.L4370
-.L4342:
+	jmp	.L4358
+.L4330:
 	movl	4(%eax), %edx
 	movl	%ecx, -76(%ebp)
 	movl	(%eax), %eax
@@ -29385,10 +29270,10 @@ decodeUntypedInvocation:
 	testl	%edx, %edx
 	pushl	%eax
 	movl	-44(%ebp), %eax
-	je	.L4344
+	je	.L4332
 	movl	%edx, %eax
-	jmp	.L4370
-.L4347:
+	jmp	.L4358
+.L4335:
 	movl	-64(%ebp), %ecx
 	movl	$1, %eax
 	andl	$260046848, %ecx
@@ -29396,35 +29281,35 @@ decodeUntypedInvocation:
 	sall	%cl, %eax
 	leal	-1(%eax), %ecx
 	cmpl	-60(%ebp), %ecx
-	jae	.L4348
+	jae	.L4336
 	movl	$4, current_syscall_error+24
 	movl	$3, %eax
 	movl	$0, current_syscall_error+8
 	movl	%ecx, current_syscall_error+12
-	jmp	.L4370
-.L4345:
+	jmp	.L4358
+.L4333:
 	movzbl	%dl, %eax
-	jmp	.L4346
-.L4348:
+	jmp	.L4334
+.L4336:
 	movl	-56(%ebp), %ecx
 	subl	$1, %ecx
 	cmpl	$255, %ecx
-	jbe	.L4349
+	jbe	.L4337
 	movl	$4, current_syscall_error+24
 	movl	$3, %eax
 	movl	$1, current_syscall_error+8
 	movl	$256, current_syscall_error+12
-	jmp	.L4370
-.L4349:
+	jmp	.L4358
+.L4337:
 	subl	-60(%ebp), %eax
 	cmpl	-56(%ebp), %eax
-	jae	.L4350
+	jae	.L4338
 	movl	%eax, current_syscall_error+12
 	movl	$3, %eax
 	movl	$4, current_syscall_error+24
 	movl	$1, current_syscall_error+8
-	jmp	.L4370
-.L4350:
+	jmp	.L4358
+.L4338:
 	andl	$2147483632, %edx
 	movl	-60(%ebp), %ecx
 	leal	(%edx,%edx), %eax
@@ -29434,9 +29319,9 @@ decodeUntypedInvocation:
 	leal	(%eax,%ecx), %edx
 	movl	%eax, -28(%ebp)
 	movl	%edx, -60(%ebp)
-.L4351:
+.L4339:
 	cmpl	-60(%ebp), %ecx
-	jae	.L4373
+	jae	.L4361
 	movl	-64(%ebp), %edx
 	movl	%ecx, %eax
 	sall	$4, %eax
@@ -29444,15 +29329,15 @@ decodeUntypedInvocation:
 	movl	%eax, %edx
 	andl	$14, %edx
 	cmpl	$14, %edx
-	je	.L4352
+	je	.L4340
 	andl	$15, %eax
-.L4353:
+.L4341:
 	testl	%eax, %eax
-	je	.L4354
+	je	.L4342
 	movl	$8, current_syscall_error+24
 	movl	$3, %eax
-	jmp	.L4370
-.L4373:
+	jmp	.L4358
+.L4361:
 	movl	16(%ebp), %eax
 	movl	%eax, (%esp)
 	call	ensureNoChildren
@@ -29476,24 +29361,24 @@ decodeUntypedInvocation:
 	sall	%cl, %eax
 	subl	%edx, %eax
 	cmpl	$31, %edi
-	jbe	.L4374
-.L4357:
+	jbe	.L4362
+.L4345:
 	movl	%eax, current_syscall_error+16
 	movl	$3, %eax
 	movl	$10, current_syscall_error+24
-	jmp	.L4370
-.L4354:
+	jmp	.L4358
+.L4342:
 	addl	$1, %ecx
-	jmp	.L4351
-.L4352:
+	jmp	.L4339
+.L4340:
 	movzbl	%al, %eax
-	jmp	.L4353
-.L4374:
+	jmp	.L4341
+.L4362:
 	movl	%eax, %esi
 	movl	%edi, %ecx
 	shrl	%cl, %esi
 	cmpl	-56(%ebp), %esi
-	jb	.L4357
+	jb	.L4345
 	movl	%edi, %ecx
 	movl	$1, %eax
 	sall	%cl, %eax
@@ -29529,7 +29414,7 @@ decodeUntypedInvocation:
 	movl	16(%ebp), %eax
 	movl	%eax, (%esp)
 	call	invokeUntyped_Retype
-	jmp	.L4370
+	jmp	.L4358
 	.cfi_endproc
 .LFE557:
 	.size	decodeUntypedInvocation, .-decodeUntypedInvocation
@@ -29568,91 +29453,91 @@ decodeInvocation:
 	movl	%ebx, %eax
 	andl	$14, %eax
 	cmpl	$14, %eax
-	je	.L4376
+	je	.L4364
 	movl	%ebx, %eax
 	andl	$15, %eax
 	testb	$1, %bl
-	jne	.L4377
-.L4380:
+	jne	.L4365
+.L4368:
 	cmpl	$62, %eax
-	ja	.L4381
-	jmp	*.L4383(,%eax,4)
+	ja	.L4369
+	jmp	*.L4371(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L4383:
-	.long	.L4396
-	.long	.L4381
+.L4371:
 	.long	.L4384
+	.long	.L4369
+	.long	.L4372
+	.long	.L4369
+	.long	.L4373
+	.long	.L4369
+	.long	.L4374
+	.long	.L4369
+	.long	.L4375
+	.long	.L4369
+	.long	.L4376
+	.long	.L4369
+	.long	.L4377
+	.long	.L4369
+	.long	.L4378
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4379
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4384
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
+	.long	.L4369
 	.long	.L4381
-	.long	.L4385
-	.long	.L4381
-	.long	.L4386
-	.long	.L4381
-	.long	.L4387
-	.long	.L4381
-	.long	.L4388
-	.long	.L4381
-	.long	.L4389
-	.long	.L4381
-	.long	.L4390
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4391
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4396
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4381
-	.long	.L4393
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L4376:
+.L4364:
 	testb	$1, %bl
 	movzbl	%bl, %eax
 	.p2align 4,,2
-	je	.L4380
-.L4377:
+	je	.L4368
+.L4365:
 	movl	52(%esp), %eax
 	movl	%edi, 132(%esp)
 	movl	%ebx, 112(%esp)
@@ -29679,12 +29564,12 @@ decodeInvocation:
 	jmp	Arch_decodeInvocation
 	.p2align 4,,7
 	.p2align 3
-.L4396:
+.L4384:
 	.cfi_restore_state
 	movl	$2, current_syscall_error+24
 	movl	$3, %eax
 	movl	$0, current_syscall_error+4
-.L4394:
+.L4382:
 	addl	$76, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -29703,7 +29588,7 @@ decodeInvocation:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4384:
+.L4372:
 	.cfi_restore_state
 	movl	56(%esp), %eax
 	movl	%edi, 36(%esp)
@@ -29720,12 +29605,12 @@ decodeInvocation:
 	movl	128(%esp), %eax
 	movl	%eax, 28(%esp)
 	call	decodeUntypedInvocation
-	jmp	.L4394
+	jmp	.L4382
 	.p2align 4,,7
 	.p2align 3
-.L4385:
+.L4373:
 	testl	$2, %esi
-	je	.L4396
+	je	.L4384
 	movl	ksCurThread, %edx
 	andl	$-16, %ebx
 	movl	592(%edx), %eax
@@ -29749,18 +29634,18 @@ decodeInvocation:
 	movl	%eax, (%esp)
 	call	sendIPC
 	xorl	%eax, %eax
-	jmp	.L4394
+	jmp	.L4382
 	.p2align 4,,7
 	.p2align 3
-.L4386:
+.L4374:
 	testl	$2, %esi
-	je	.L4396
+	je	.L4384
 	xorl	%edi, %edi
 	testl	%ecx, %ecx
 	movl	ksCurThread, %edx
-	je	.L4398
+	je	.L4386
 	movl	20(%edx), %edi
-.L4398:
+.L4386:
 	movl	592(%edx), %eax
 	shrl	$3, %esi
 	andl	$-16, %ebx
@@ -29774,12 +29659,12 @@ decodeInvocation:
 	movl	%ebx, (%esp)
 	call	sendAsyncIPC
 	xorl	%eax, %eax
-	jmp	.L4394
+	jmp	.L4382
 	.p2align 4,,7
 	.p2align 3
-.L4387:
+.L4375:
 	andl	$1, %esi
-	jne	.L4396
+	jne	.L4384
 	movl	ksCurThread, %edx
 	andl	$-16, %ebx
 	movl	592(%edx), %eax
@@ -29794,10 +29679,10 @@ decodeInvocation:
 	movl	%eax, (%esp)
 	call	doReplyTransfer
 	xorl	%eax, %eax
-	jmp	.L4394
+	jmp	.L4382
 	.p2align 4,,7
 	.p2align 3
-.L4388:
+.L4376:
 	movl	120(%esp), %eax
 	movl	%edi, 28(%esp)
 	movl	%ebx, 8(%esp)
@@ -29810,10 +29695,10 @@ decodeInvocation:
 	movl	128(%esp), %eax
 	movl	%eax, 24(%esp)
 	call	decodeCNodeInvocation
-	jmp	.L4394
+	jmp	.L4382
 	.p2align 4,,7
 	.p2align 3
-.L4389:
+.L4377:
 	movl	56(%esp), %eax
 	movl	%edi, 36(%esp)
 	movl	%ebp, 16(%esp)
@@ -29829,10 +29714,10 @@ decodeInvocation:
 	movl	128(%esp), %eax
 	movl	%eax, 28(%esp)
 	call	decodeTCBInvocation
-	jmp	.L4394
+	jmp	.L4382
 	.p2align 4,,7
 	.p2align 3
-.L4390:
+.L4378:
 	movl	120(%esp), %eax
 	movl	%edi, 24(%esp)
 	movl	%ebp, 8(%esp)
@@ -29844,10 +29729,10 @@ decodeInvocation:
 	movl	128(%esp), %eax
 	movl	%eax, 20(%esp)
 	call	decodeIRQControlInvocation
-	jmp	.L4394
+	jmp	.L4382
 	.p2align 4,,7
 	.p2align 3
-.L4391:
+.L4379:
 	movl	120(%esp), %eax
 	movl	%edx, 96(%esp)
 	movl	%eax, 104(%esp)
@@ -29876,7 +29761,7 @@ decodeInvocation:
 	jmp	decodeIRQHandlerInvocation
 	.p2align 4,,7
 	.p2align 3
-.L4393:
+.L4381:
 	.cfi_restore_state
 	movl	120(%esp), %eax
 	movl	%edi, 116(%esp)
@@ -29905,7 +29790,7 @@ decodeInvocation:
 	jmp	decodeDomainInvocation
 	.p2align 4,,7
 	.p2align 3
-.L4381:
+.L4369:
 	.cfi_restore_state
 	call	halt
 	.cfi_endproc
@@ -29935,10 +29820,10 @@ handleInvocation:
 	movl	%esi, %eax
 	andl	$127, %eax
 	cmpl	$120, %eax
-	jbe	.L4406
+	jbe	.L4394
 	andl	$-128, %esi
 	orl	$120, %esi
-.L4406:
+.L4394:
 	movl	%ebx, %eax
 	movl	4(%ebx), %edi
 	andl	$-1024, %eax
@@ -29956,7 +29841,7 @@ handleInvocation:
 	movl	%eax, -44(%ebp)
 	subl	$4, %esp
 	testl	%edx, %edx
-	jne	.L4434
+	jne	.L4422
 	movl	%eax, %edx
 	movl	4(%eax), %eax
 	movl	(%edx), %ecx
@@ -29972,12 +29857,12 @@ handleInvocation:
 	call	lookupExtraCaps
 	movl	-56(%ebp), %ecx
 	testl	%eax, %eax
-	jne	.L4435
+	jne	.L4423
 	movl	%esi, %eax
 	andl	$127, %eax
 	testl	%ecx, %ecx
-	je	.L4436
-.L4413:
+	je	.L4424
+.L4401:
 	movl	%ecx, 44(%esp)
 	movl	current_extra_caps, %ecx
 	shrl	$12, %esi
@@ -30001,17 +29886,17 @@ handleInvocation:
 	movl	%ecx, 12(%esp)
 	call	decodeInvocation
 	cmpl	$4, %eax
-	je	.L4416
+	je	.L4404
 	cmpl	$3, %eax
-	je	.L4437
+	je	.L4425
 	movl	592(%ebx), %eax
 	movl	%eax, %edx
 	andl	$15, %edx
 	cmpl	$2, %edx
-	je	.L4438
-.L4433:
+	je	.L4426
+.L4421:
 	xorl	%eax, %eax
-.L4409:
+.L4397:
 	leal	-12(%ebp), %esp
 	popl	%ebx
 	.cfi_remember_state
@@ -30024,48 +29909,48 @@ handleInvocation:
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret
-.L4438:
+.L4426:
 	.cfi_restore_state
 	cmpl	$0, -48(%ebp)
-	je	.L4415
+	je	.L4403
 	movl	$0, 4(%ebx)
 	movl	$0, 16(%ebx)
-.L4415:
+.L4403:
 	andl	$-16, %eax
 	orl	$1, %eax
 	movl	%eax, 592(%ebx)
 	movl	%ebx, (%esp)
 	call	scheduleTCB
 	xorl	%eax, %eax
-	jmp	.L4409
-.L4437:
+	jmp	.L4397
+.L4425:
 	cmpl	$0, -48(%ebp)
-	je	.L4433
+	je	.L4421
 	movl	%ebx, (%esp)
 	call	replyFromKernel_error
 	xorl	%eax, %eax
-	jmp	.L4409
-.L4416:
+	jmp	.L4397
+.L4404:
 	movl	$4, %eax
-	jmp	.L4409
-.L4436:
+	jmp	.L4397
+.L4424:
 	cmpl	$2, %eax
 	movl	$2, %edx
 	cmova	%edx, %eax
-	jmp	.L4413
-.L4435:
+	jmp	.L4401
+.L4423:
 	cmpl	$0, -52(%ebp)
-	je	.L4433
-.L4408:
+	je	.L4421
+.L4396:
 	movl	%ebx, (%esp)
 	call	handleFault
-	jmp	.L4433
-.L4434:
+	jmp	.L4421
+.L4422:
 	cmpl	$0, -52(%ebp)
 	movl	$1, current_fault
 	movl	%edi, current_fault+4
-	je	.L4433
-	jmp	.L4408
+	je	.L4421
+	jmp	.L4396
 	.cfi_endproc
 .LFE253:
 	.size	handleInvocation, .-handleInvocation
@@ -30092,23 +29977,23 @@ handleSyscall:
 	movl	48(%esp), %eax
 	addl	$7, %eax
 	cmpl	$6, %eax
-	ja	.L4505
-	jmp	*.L4442(,%eax,4)
+	ja	.L4493
+	jmp	*.L4430(,%eax,4)
 	.section	.rodata
 	.align 4
 	.align 4
-.L4442:
-	.long	.L4441
-	.long	.L4443
-	.long	.L4458
-	.long	.L4445
+.L4430:
+	.long	.L4429
+	.long	.L4431
 	.long	.L4446
-	.long	.L4447
-	.long	.L4448
+	.long	.L4433
+	.long	.L4434
+	.long	.L4435
+	.long	.L4436
 	.text
 	.p2align 4,,7
 	.p2align 3
-.L4447:
+.L4435:
 	movl	ksCurThread, %ecx
 	movl	%ecx, %eax
 	andl	$-1024, %eax
@@ -30123,11 +30008,11 @@ handleSyscall:
 	cmpl	$14, %edi
 	cmove	%esi, %eax
 	testl	%eax, %eax
-	je	.L4458
+	je	.L4446
 	cmpl	$8, %eax
-	jne	.L4505
+	jne	.L4493
 	andl	$1, %ebp
-	jne	.L4505
+	jne	.L4493
 	andl	$-16, %edx
 	movl	%ebx, 8(%esp)
 	movl	%edx, 4(%esp)
@@ -30135,26 +30020,26 @@ handleSyscall:
 	call	doReplyTransfer
 	.p2align 4,,7
 	.p2align 3
-.L4458:
+.L4446:
 	call	handleWait
-.L4450:
+.L4438:
 	call	schedule
 	movl	ksCurThread, %eax
 	movl	592(%eax), %ecx
 	movl	%ecx, %edx
 	andl	$15, %edx
 	cmpl	$2, %edx
-	je	.L4463
+	je	.L4451
 	cmpl	$7, %edx
-	je	.L4464
+	je	.L4452
 	cmpl	$1, %edx
-	je	.L4464
-.L4505:
+	je	.L4452
+.L4493:
 	.p2align 4,,5
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L4463:
+.L4451:
 	movl	44(%eax), %edx
 	andl	$-16, %ecx
 	orl	$1, %ecx
@@ -30162,7 +30047,7 @@ handleSyscall:
 	movl	%edx, 56(%eax)
 	movl	%eax, (%esp)
 	call	scheduleTCB
-.L4464:
+.L4452:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -30182,7 +30067,7 @@ handleSyscall:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4443:
+.L4431:
 	.cfi_restore_state
 	movl	ksCurThread, %ecx
 	movl	%ecx, %eax
@@ -30198,64 +30083,64 @@ handleSyscall:
 	cmpl	$14, %edi
 	cmove	%esi, %eax
 	testl	%eax, %eax
-	je	.L4450
+	je	.L4438
 	cmpl	$8, %eax
-	jne	.L4505
+	jne	.L4493
 	andl	$1, %ebp
-	jne	.L4505
+	jne	.L4493
 	andl	$-16, %edx
 	movl	%ebx, 8(%esp)
 	movl	%edx, 4(%esp)
 	movl	%ecx, (%esp)
 	call	doReplyTransfer
-	jmp	.L4450
+	jmp	.L4438
 	.p2align 4,,7
 	.p2align 3
-.L4445:
+.L4433:
 	xorl	%edx, %edx
 	xorl	%eax, %eax
 	call	handleInvocation
 	testl	%eax, %eax
 	.p2align 4,,2
-	je	.L4450
-.L4512:
+	je	.L4438
+.L4500:
 	movl	ia32KScurInterrupt, %eax
 	cmpl	$-1, %eax
-	je	.L4450
+	je	.L4438
 	subl	$32, %eax
 	cmpl	$-1, %eax
-	je	.L4450
+	je	.L4438
 	movl	%eax, (%esp)
 	call	handleInterrupt
-	jmp	.L4450
+	jmp	.L4438
 	.p2align 4,,7
 	.p2align 3
-.L4446:
+.L4434:
 	xorl	%eax, %eax
 	movl	$1, %edx
 	call	handleInvocation
 	testl	%eax, %eax
-	je	.L4450
-	jmp	.L4512
+	je	.L4438
+	jmp	.L4500
 	.p2align 4,,7
 	.p2align 3
-.L4448:
+.L4436:
 	movl	$1, %edx
 	movl	$1, %eax
 	call	handleInvocation
 	testl	%eax, %eax
-	je	.L4450
-	jmp	.L4512
+	je	.L4438
+	jmp	.L4500
 	.p2align 4,,7
 	.p2align 3
-.L4441:
+.L4429:
 	movl	ksCurThread, %eax
 	movl	%eax, (%esp)
 	call	tcbSchedDequeue
 	movl	ksCurThread, %eax
 	movl	600(%eax), %ecx
 	testb	$1, %cl
-	jne	.L4460
+	jne	.L4448
 	movl	620(%eax), %edx
 	sall	$8, %edx
 	addl	624(%eax), %edx
@@ -30263,23 +30148,23 @@ handleSyscall:
 	leal	ksReadyQueues(,%edx,8), %esi
 	movl	4(%esi), %edi
 	testl	%ebx, %ebx
-	je	.L4465
+	je	.L4453
 	movl	%eax, 640(%edi)
-.L4461:
+.L4449:
 	orl	$1, %ecx
 	movl	%edi, 644(%eax)
 	movl	$0, 640(%eax)
 	movl	%ebx, ksReadyQueues(,%edx,8)
 	movl	%eax, 4(%esi)
 	movl	%ecx, 600(%eax)
-.L4460:
+.L4448:
 	call	rescheduleRequired
-	jmp	.L4450
+	jmp	.L4438
 	.p2align 4,,7
 	.p2align 3
-.L4465:
+.L4453:
 	movl	%eax, %ebx
-	jmp	.L4461
+	jmp	.L4449
 	.cfi_endproc
 .LFE257:
 	.size	handleSyscall, .-handleSyscall
@@ -30297,15 +30182,15 @@ slowpath:
 	addl	$2, 56(%edx)
 	cmpl	$-8, %eax
 	movl	%eax, (%esp)
-	jbe	.L4518
+	jbe	.L4506
 	call	handleSyscall
-.L4516:
+.L4504:
 	call	restore_user_context
-.L4518:
+.L4506:
 	.p2align 4,,5
 	call	handleUnknownSyscall
 	.p2align 4,,5
-	jmp	.L4516
+	jmp	.L4504
 	.cfi_endproc
 .LFE263:
 	.size	slowpath, .-slowpath
@@ -30334,10 +30219,10 @@ fastpath_call:
 	subl	$44, %esp
 	.cfi_def_cfa_offset 64
 	cmpl	$120, %ecx
-	jbe	.L4520
+	jbe	.L4508
 	andl	$-128, %ebp
 	orl	$120, %ebp
-.L4520:
+.L4508:
 	movl	ksCurThread, %ebx
 	movl	%ebp, %esi
 	andl	$511, %edx
@@ -30346,9 +30231,9 @@ fastpath_call:
 	movl	604(%ebx), %ecx
 	andl	$7, %ecx
 	cmpl	$2, %edx
-	ja	.L4522
+	ja	.L4510
 	testl	%ecx, %ecx
-	jne	.L4522
+	jne	.L4510
 	andl	$-1024, %ebx
 	movl	4(%ebx), %ecx
 	movl	(%ebx), %edx
@@ -30360,15 +30245,15 @@ fastpath_call:
 	movl	%ecx, %eax
 	andl	$15, %eax
 	cmpl	$4, %eax
-	jne	.L4522
+	jne	.L4510
 	testl	$2, %esi
-	je	.L4522
+	je	.L4510
 	andl	$-16, %ecx
 	movl	(%ecx), %eax
 	movl	4(%ecx), %ebx
 	andl	$3, %eax
 	cmpl	$2, %eax
-	jne	.L4522
+	jne	.L4510
 	movl	%ebx, %edx
 	andl	$-1024, %edx
 	movl	20(%edx), %eax
@@ -30380,29 +30265,29 @@ fastpath_call:
 	movl	%edi, 12(%esp)
 	sall	$8, 12(%esp)
 	cmpl	$5, %eax
-	je	.L4542
-.L4522:
+	je	.L4530
+.L4510:
 	movl	$-1, (%esp)
 	call	slowpath
-.L4542:
+.L4530:
 	testl	$65536, 20(%esp)
-	je	.L4522
+	je	.L4510
 	movl	ksCurThread, %eax
 	andl	$-16, %ebx
 	movl	624(%eax), %edi
 	cmpl	%edi, 624(%ebx)
-	jb	.L4522
+	jb	.L4510
 	testl	$4, %esi
-	je	.L4522
+	je	.L4510
 	testb	$1, 596(%ebx)
-	jne	.L4522
+	jne	.L4510
 	movl	648(%ebx), %edi
 	addl	$2, 56(%eax)
 	testl	%edi, %edi
 	movl	%edi, 4(%ecx)
-	jne	.L4543
+	jne	.L4531
 	movl	$0, (%ecx)
-.L4527:
+.L4515:
 	shrl	$3, %esi
 	movl	%eax, %edi
 	andl	$-1024, %edi
@@ -30418,12 +30303,12 @@ fastpath_call:
 	movl	%esi, 48(%edx)
 	movl	%edi, 56(%edx)
 	movl	%ecx, 12(%edi)
-	je	.L4544
+	je	.L4532
 	movl	16(%esp), %edx
 	subl	$1, %edx
 	cmpl	$1, %edx
-	jbe	.L4529
-.L4530:
+	jbe	.L4517
+.L4518:
 	movl	12(%esp), %edx
 	movl	%ebx, %ecx
 	movl	$1, 592(%ebx)
@@ -30432,16 +30317,16 @@ fastpath_call:
 	movl	%ebp, %edx
 	andb	$241, %dh
 	call	fastpath_restore
-.L4544:
+.L4532:
 	movl	24(%eax), %edx
 	movl	%edx, 24(%ebx)
-.L4529:
+.L4517:
 	movl	20(%eax), %eax
 	movl	%eax, 20(%ebx)
-	jmp	.L4530
-.L4543:
+	jmp	.L4518
+.L4531:
 	movl	$0, 652(%edi)
-	jmp	.L4527
+	jmp	.L4515
 	.cfi_endproc
 .LFE280:
 	.size	fastpath_call, .-fastpath_call
@@ -30470,12 +30355,12 @@ fastpath_reply_wait:
 	.cfi_def_cfa_offset 64
 	cmpl	$120, %ecx
 	movl	%edx, 8(%esp)
-	jbe	.L4546
+	jbe	.L4534
 	movl	%edx, %esi
 	andl	$-128, %esi
 	movl	%esi, 8(%esp)
 	orl	$120, 8(%esp)
-.L4546:
+.L4534:
 	movl	ksCurThread, %ebx
 	andl	$511, %edx
 	movl	8(%esp), %esi
@@ -30484,9 +30369,9 @@ fastpath_reply_wait:
 	movl	%esi, 12(%esp)
 	andl	$7, %ecx
 	cmpl	$2, %edx
-	ja	.L4548
+	ja	.L4536
 	testl	%ecx, %ecx
-	jne	.L4548
+	jne	.L4536
 	andl	$-1024, %ebx
 	movl	(%ebx), %edx
 	movl	4(%ebx), %ecx
@@ -30500,14 +30385,14 @@ fastpath_reply_wait:
 	movl	%ebx, %eax
 	andl	$15, %eax
 	cmpl	$4, %eax
-	jne	.L4548
+	jne	.L4536
 	andl	$1, %esi
-	je	.L4548
+	je	.L4536
 	andl	$-16, %ebx
 	movl	(%ebx), %eax
 	andl	$3, %eax
 	cmpl	$1, %eax
-	je	.L4548
+	je	.L4536
 	movl	ksCurThread, %eax
 	movl	%eax, %ebp
 	andl	$-1024, %ebp
@@ -30516,11 +30401,11 @@ fastpath_reply_wait:
 	movl	%edx, %ecx
 	andl	$15, %ecx
 	cmpl	$8, %ecx
-	jne	.L4548
+	jne	.L4536
 	movl	%edx, %ecx
 	andl	$-16, %ecx
 	testb	$7, 604(%ecx)
-	jne	.L4548
+	jne	.L4536
 	andl	$-1024, %edx
 	movl	20(%edx), %edi
 	movl	%edi, 20(%esp)
@@ -30530,16 +30415,16 @@ fastpath_reply_wait:
 	andl	$16777200, %edx
 	sall	$8, %edx
 	cmpl	$5, %edi
-	je	.L4568
-.L4548:
+	je	.L4556
+.L4536:
 	movl	$-2, (%esp)
 	call	slowpath
-.L4568:
+.L4556:
 	testl	$65536, 20(%esp)
-	je	.L4548
+	je	.L4536
 	movl	624(%eax), %edi
 	cmpl	%edi, 624(%ecx)
-	jb	.L4548
+	jb	.L4536
 	movl	%ebx, %edi
 	orl	$3, %edi
 	movl	%edi, 592(%eax)
@@ -30552,14 +30437,14 @@ fastpath_reply_wait:
 	movl	%edi, 596(%eax)
 	movl	(%ebx), %edi
 	andl	$-16, %edi
-	jne	.L4552
+	jne	.L4540
 	movl	%eax, %edi
 	orl	$2, %edi
 	movl	$0, 652(%eax)
 	movl	$0, 648(%eax)
 	movl	%eax, 4(%ebx)
 	movl	%edi, (%ebx)
-.L4553:
+.L4541:
 	movl	8(%esi), %ebx
 	andl	$-8, %ebx
 	cmpl	$2, 12(%esp)
@@ -30568,33 +30453,33 @@ fastpath_reply_wait:
 	movl	$0, 4(%esi)
 	movl	$0, 8(%esi)
 	movl	$0, 12(%esi)
-	je	.L4569
+	je	.L4557
 	movl	12(%esp), %ebx
 	subl	$1, %ebx
 	cmpl	$1, %ebx
-	jbe	.L4555
-.L4556:
+	jbe	.L4543
+.L4544:
 	movl	$1, 592(%ecx)
 	call	switchToThread_fp
 	movl	8(%esp), %edx
 	xorl	%ecx, %ecx
 	andb	$241, %dh
 	call	fastpath_restore
-.L4569:
+.L4557:
 	movl	24(%eax), %ebx
 	movl	%ebx, 24(%ecx)
-.L4555:
+.L4543:
 	movl	20(%eax), %eax
 	movl	%eax, 20(%ecx)
-	jmp	.L4556
-.L4552:
+	jmp	.L4544
+.L4540:
 	movl	%eax, 648(%edi)
 	movl	%edi, 652(%eax)
 	movl	%eax, %edi
 	orl	$2, %edi
 	movl	$0, 648(%eax)
 	movl	%edi, (%ebx)
-	jmp	.L4553
+	jmp	.L4541
 	.cfi_endproc
 .LFE281:
 	.size	fastpath_reply_wait, .-fastpath_reply_wait
@@ -30608,16 +30493,16 @@ c_handle_syscall:
 	.cfi_def_cfa_offset 32
 	movl	32(%esp), %eax
 	cmpl	$-1, %eax
-	je	.L4574
+	je	.L4562
 	cmpl	$-2, %eax
-	je	.L4575
+	je	.L4563
 	movl	%eax, (%esp)
 	call	slowpath
-.L4575:
+.L4563:
 	movl	40(%esp), %edx
 	movl	36(%esp), %ecx
 	call	fastpath_reply_wait
-.L4574:
+.L4562:
 	movl	40(%esp), %edx
 	movl	36(%esp), %ecx
 	call	fastpath_call
@@ -30656,11 +30541,11 @@ acpi_table_init:
 	movl	%ebx, (%esp)
 	call	map_temp_boot_page
 	testl	%edi, %edi
-	je	.L4579
+	je	.L4567
 	cmpl	$1, %edi
-	jne	.L4586
+	jne	.L4574
 	addl	4(%ebx), %esi
-.L4585:
+.L4573:
 	movl	%esi, %eax
 	movl	$1025, %edx
 	mull	%edx
@@ -30686,7 +30571,7 @@ acpi_table_init:
 	jmp	map_temp_boot_page
 	.p2align 4,,7
 	.p2align 3
-.L4586:
+.L4574:
 	.cfi_restore_state
 	addl	$16, %esp
 	.cfi_remember_state
@@ -30704,10 +30589,10 @@ acpi_table_init:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4579:
+.L4567:
 	.cfi_restore_state
 	addl	20(%ebx), %esi
-	jmp	.L4585
+	jmp	.L4573
 	.cfi_endproc
 .LFE561:
 	.size	acpi_table_init, .-acpi_table_init
@@ -30732,30 +30617,30 @@ acpi_init:
 	movl	$917504, %ebx
 	subl	$28, %esp
 	.cfi_def_cfa_offset 48
-	jmp	.L4588
+	jmp	.L4576
 	.p2align 4,,7
 	.p2align 3
-.L4591:
+.L4579:
 	addl	$16, %ebx
 	cmpl	$1048576, %ebx
-	je	.L4603
-.L4588:
+	je	.L4591
+.L4576:
 	cmpb	$82, (%ebx)
-	jne	.L4591
+	jne	.L4579
 	cmpb	$83, 1(%ebx)
-	jne	.L4591
+	jne	.L4579
 	cmpb	$68, 2(%ebx)
-	jne	.L4591
+	jne	.L4579
 	cmpb	$32, 3(%ebx)
-	jne	.L4591
+	jne	.L4579
 	cmpb	$80, 4(%ebx)
-	jne	.L4591
+	jne	.L4579
 	cmpb	$84, 5(%ebx)
-	jne	.L4591
+	jne	.L4579
 	cmpb	$82, 6(%ebx)
-	jne	.L4591
+	jne	.L4579
 	cmpb	$32, 7(%ebx)
-	jne	.L4591
+	jne	.L4579
 	movl	(%ebx), %ecx
 	movl	4(%ebx), %eax
 	movl	12(%ebx), %esi
@@ -30799,7 +30684,7 @@ acpi_init:
 	addl	%ecx, %edx
 	addl	%edx, %eax
 	testb	%al, %al
-	jne	.L4591
+	jne	.L4579
 	movl	%ebx, %esi
 	movl	$4194303, %edi
 	andl	$4194303, %esi
@@ -30852,19 +30737,19 @@ acpi_init:
 	call	map_temp_boot_page
 	movl	4(%eax), %edx
 	testl	%edx, %edx
-	je	.L4606
+	je	.L4594
 	movl	%edx, %edi
 	shrl	$2, %edi
 	movl	%edi, 8(%esp)
 	sall	$2, %edi
 	testl	%edi, %edi
-	je	.L4607
+	je	.L4595
 	cmpl	$5, %edx
-	jbe	.L4607
+	jbe	.L4595
 	xorl	%ecx, %ecx
 	xorl	%ebp, %ebp
 	movl	%ebx, 12(%esp)
-.L4602:
+.L4590:
 	movl	(%eax,%ecx,4), %esi
 	movl	%ebp, %ebx
 	xorl	(%eax,%ecx,4), %ebp
@@ -30875,32 +30760,32 @@ acpi_init:
 	addl	%ebx, %esi
 	xorl	%ebp, %esi
 	cmpl	8(%esp), %ecx
-	jae	.L4624
+	jae	.L4612
 	movl	%esi, %ebp
-	jmp	.L4602
+	jmp	.L4590
 	.p2align 4,,7
 	.p2align 3
-.L4607:
+.L4595:
 	movl	%edx, %esi
 	xorl	%ecx, %ecx
-.L4596:
+.L4584:
 	addb	(%eax), %cl
 	cmpl	$1, %esi
-	je	.L4600
+	je	.L4588
 	addb	1(%eax), %cl
 	cmpl	$2, %esi
-	je	.L4600
+	je	.L4588
 	addb	2(%eax), %cl
 	cmpl	$3, %esi
-	je	.L4600
+	je	.L4588
 	addb	3(%eax), %cl
 	cmpl	$4, %esi
-	je	.L4600
+	je	.L4588
 	addb	4(%eax), %cl
-.L4600:
+.L4588:
 	testb	%cl, %cl
-	jne	.L4603
-.L4606:
+	jne	.L4591
+.L4594:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -30920,7 +30805,7 @@ acpi_init:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4603:
+.L4591:
 	.cfi_restore_state
 	addl	$28, %esp
 	.cfi_remember_state
@@ -30939,7 +30824,7 @@ acpi_init:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret
-.L4624:
+.L4612:
 	.cfi_restore_state
 	movl	%esi, %ecx
 	addl	%edi, %eax
@@ -30953,8 +30838,8 @@ acpi_init:
 	movl	%edx, %esi
 	subl	%edi, %esi
 	cmpl	%edi, %edx
-	jne	.L4596
-	jmp	.L4600
+	jne	.L4584
+	jmp	.L4588
 	.cfi_endproc
 .LFE562:
 	.size	acpi_init, .-acpi_init
@@ -31010,12 +30895,12 @@ acpi_madt_scan:
 	shrl	$2, 8(%esp)
 	movl	8(%esp), %eax
 	testl	%eax, %eax
-	je	.L4636
+	je	.L4624
 	xorl	%ebx, %ebx
 	xorl	%edi, %edi
 	.p2align 4,,7
 	.p2align 3
-.L4634:
+.L4622:
 	movl	12(%esp), %eax
 	movl	36(%eax,%ebx,4), %ebp
 	movl	$4194303, %eax
@@ -31042,52 +30927,52 @@ acpi_madt_scan:
 	movl	%ecx, 4(%esp)
 	call	map_temp_boot_page
 	cmpb	$65, (%eax)
-	jne	.L4629
+	jne	.L4617
 	cmpb	$80, 1(%eax)
-	jne	.L4629
+	jne	.L4617
 	cmpb	$73, 2(%eax)
-	jne	.L4629
+	jne	.L4617
 	cmpb	$67, 3(%eax)
-	jne	.L4629
+	jne	.L4617
 	movl	4(%eax), %ebp
 	leal	44(%eax), %edx
 	leal	(%eax,%ebp), %ecx
 	cmpl	%ecx, %edx
-	jb	.L4633
-	jmp	.L4629
+	jb	.L4621
+	jmp	.L4617
 	.p2align 4,,7
 	.p2align 3
-.L4630:
+.L4618:
 	movzbl	1(%edx), %ecx
 	addl	%ecx, %edx
 	leal	(%eax,%ebp), %ecx
 	cmpl	%ecx, %edx
-	jae	.L4629
-.L4633:
+	jae	.L4617
+.L4621:
 	cmpb	$0, (%edx)
-	jne	.L4630
+	jne	.L4618
 	cmpl	$1, 4(%edx)
 	movzbl	3(%edx), %ecx
-	jne	.L4630
+	jne	.L4618
 	cmpl	%edi, 56(%esp)
-	jbe	.L4632
+	jbe	.L4620
 	movl	52(%esp), %esi
 	movl	%ecx, (%esi,%edi,4)
 	movl	4(%eax), %ebp
-.L4632:
+.L4620:
 	movzbl	1(%edx), %ecx
 	addl	$1, %edi
 	addl	%ecx, %edx
 	leal	(%eax,%ebp), %ecx
 	cmpl	%ecx, %edx
-	jb	.L4633
+	jb	.L4621
 	.p2align 4,,7
 	.p2align 3
-.L4629:
+.L4617:
 	addl	$1, %ebx
 	cmpl	8(%esp), %ebx
-	jne	.L4634
-.L4627:
+	jne	.L4622
+.L4615:
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -31105,10 +30990,10 @@ acpi_madt_scan:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret
-.L4636:
+.L4624:
 	.cfi_restore_state
 	xorl	%edi, %edi
-	jmp	.L4627
+	jmp	.L4615
 	.cfi_endproc
 .LFE563:
 	.size	acpi_madt_scan, .-acpi_madt_scan
@@ -31136,24 +31021,24 @@ platAddDevices:
 	.cfi_def_cfa_offset 48
 	.p2align 4,,7
 	.p2align 3
-.L4640:
+.L4628:
 	movl	%edi, %ebp
 	xorl	%ebx, %ebx
 	sall	$16, %ebp
 	orl	$-2147483636, %ebp
-	jmp	.L4647
+	jmp	.L4635
 	.p2align 4,,7
 	.p2align 3
-.L4644:
+.L4632:
 	addl	$1, %ebx
 	cmpl	$32, %ebx
-	je	.L4654
-.L4647:
+	je	.L4642
+.L4635:
 	movl	%ebx, %edx
 	movl	%edi, %eax
 	call	pci_scan_fun.constprop.145
 	testl	%eax, %eax
-	je	.L4644
+	je	.L4632
 	movl	%ebx, %eax
 	sall	$11, %eax
 	orl	%ebp, %eax
@@ -31164,36 +31049,36 @@ platAddDevices:
 	call	in32
 	shrl	$16, %eax
 	testb	%al, %al
-	jns	.L4644
+	jns	.L4632
 	movl	$1, %esi
 	.p2align 4,,7
 	.p2align 3
-.L4645:
+.L4633:
 	movl	%esi, %ecx
 	movl	%ebx, %edx
 	movl	%edi, %eax
 	addl	$1, %esi
 	call	pci_scan_fun
 	cmpl	$8, %esi
-	jne	.L4645
+	jne	.L4633
 	addl	$1, %ebx
 	cmpl	$32, %ebx
-	jne	.L4647
+	jne	.L4635
 	.p2align 4,,7
 	.p2align 3
-.L4654:
+.L4642:
 	addl	$1, %edi
 	cmpl	$256, %edi
-	jne	.L4640
-	movl	glks+188, %eax
+	jne	.L4628
+	movl	glks+828, %eax
 	cmpl	$198, %eax
-	ja	.L4639
-	leal	glks+176(,%eax,8), %edx
+	ja	.L4627
+	leal	glks+816(,%eax,8), %edx
 	addl	$1, %eax
 	movl	$753664, 16(%edx)
 	movl	$757760, 20(%edx)
-	movl	%eax, glks+188
-.L4639:
+	movl	%eax, glks+828
+.L4627:
 	addl	$28, %esp
 	.cfi_def_cfa_offset 20
 	popl	%ebx
@@ -31229,7 +31114,7 @@ maskInterrupt:
 	movl	36(%esp), %ecx
 	movl	32(%esp), %eax
 	cmpl	$15, %ecx
-	jle	.L4662
+	jle	.L4650
 	addl	$20, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -31242,10 +31127,10 @@ maskInterrupt:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4662:
+.L4650:
 	.cfi_restore_state
 	cmpl	$7, %ecx
-	jle	.L4663
+	jle	.L4651
 	subl	$8, %ecx
 	movl	$1, %edx
 	sall	%cl, %edx
@@ -31253,12 +31138,12 @@ maskInterrupt:
 	testl	%eax, %eax
 	movl	%edx, %esi
 	movl	%ebx, (%esp)
-	jne	.L4664
-.L4659:
+	jne	.L4652
+.L4647:
 	call	in8
 	notl	%esi
 	andl	%esi, %eax
-.L4661:
+.L4649:
 	movzbl	%al, %eax
 	movl	%ebx, 32(%esp)
 	movl	%eax, 36(%esp)
@@ -31274,18 +31159,18 @@ maskInterrupt:
 	jmp	out8
 	.p2align 4,,7
 	.p2align 3
-.L4663:
+.L4651:
 	.cfi_restore_state
 	movl	$1, %esi
 	movl	$33, %ebx
 	sall	%cl, %esi
 	testl	%eax, %eax
 	movl	%ebx, (%esp)
-	je	.L4659
-.L4664:
+	je	.L4647
+.L4652:
 	call	in8
 	orl	%esi, %eax
-	jmp	.L4661
+	jmp	.L4649
 	.cfi_endproc
 .LFE565:
 	.size	maskInterrupt, .-maskInterrupt
@@ -31307,12 +31192,12 @@ getActiveIRQ:
 	.cfi_startproc
 	movl	ia32KScurInterrupt, %eax
 	cmpl	$-1, %eax
-	je	.L4668
+	je	.L4656
 	subl	$32, %eax
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4668:
+.L4656:
 	movl	$-1, %eax
 	ret
 	.cfi_endproc
@@ -31326,7 +31211,7 @@ isIRQPending:
 	.cfi_startproc
 	movl	-65008, %eax
 	testl	%eax, %eax
-	jne	.L4674
+	jne	.L4662
 	subl	$28, %esp
 	.cfi_def_cfa_offset 32
 	movl	$10, 4(%esp)
@@ -31342,7 +31227,7 @@ isIRQPending:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4674:
+.L4662:
 	movl	$1, %eax
 	ret
 	.cfi_endproc
@@ -31357,7 +31242,7 @@ ackInterrupt:
 	subl	$28, %esp
 	.cfi_def_cfa_offset 32
 	cmpl	$15, 32(%esp)
-	jle	.L4680
+	jle	.L4668
 	movl	$0, -65360
 	addl	$28, %esp
 	.cfi_remember_state
@@ -31365,14 +31250,14 @@ ackInterrupt:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4680:
+.L4668:
 	.cfi_restore_state
 	cmpl	$39, ia32KScurInterrupt
-	jle	.L4677
+	jle	.L4665
 	movl	$32, 4(%esp)
 	movl	$160, (%esp)
 	call	out8
-.L4677:
+.L4665:
 	movl	$32, 4(%esp)
 	movl	$32, (%esp)
 	call	out8
@@ -31429,26 +31314,26 @@ pci_scan:
 	xorl	%edi, %edi
 	.p2align 4,,7
 	.p2align 3
-.L4684:
+.L4672:
 	movl	%edi, %ebp
 	xorl	%ebx, %ebx
 	sall	$16, %ebp
 	xorl	%esi, %esi
 	movw	%di, 12(%esp)
 	orl	$-2147483636, %ebp
-	jmp	.L4692
+	jmp	.L4680
 	.p2align 4,,7
 	.p2align 3
-.L4685:
+.L4673:
 	addl	$1, %ebx
 	cmpl	$32, %ebx
-	je	.L4706
-.L4692:
+	je	.L4694
+.L4680:
 	movl	%ebx, %edx
 	movl	%edi, %eax
 	call	pci_scan_fun.constprop.145
 	testl	%eax, %eax
-	je	.L4685
+	je	.L4673
 	movl	%ebx, %eax
 	sall	$11, %eax
 	orl	%ebp, %eax
@@ -31459,17 +31344,17 @@ pci_scan:
 	call	in32
 	shrl	$16, %eax
 	testb	%al, %al
-	js	.L4686
-.L4687:
+	js	.L4674
+.L4675:
 	addl	$1, %ebx
 	movl	$1, %esi
 	cmpl	$32, %ebx
-	jne	.L4692
-.L4706:
+	jne	.L4680
+.L4694:
 	testl	%esi, %esi
-	je	.L4690
+	je	.L4678
 	cmpb	$0, 15(%esp)
-	je	.L4690
+	je	.L4678
 	movzwl	12(%esp), %ecx
 	movl	$1, %eax
 	movl	%ecx, %edx
@@ -31478,10 +31363,10 @@ pci_scan:
 	shrw	$5, %dx
 	movzwl	%dx, %edx
 	orl	%eax, (%ecx,%edx,4)
-.L4690:
+.L4678:
 	addl	$1, %edi
 	cmpl	$256, %edi
-	jne	.L4684
+	jne	.L4672
 	addl	$28, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -31500,20 +31385,20 @@ pci_scan:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4686:
+.L4674:
 	.cfi_restore_state
 	movl	$1, %esi
 	.p2align 4,,7
 	.p2align 3
-.L4688:
+.L4676:
 	movl	%esi, %ecx
 	movl	%ebx, %edx
 	movl	%edi, %eax
 	addl	$1, %esi
 	call	pci_scan_fun
 	cmpl	$8, %esi
-	jne	.L4688
-	jmp	.L4687
+	jne	.L4676
+	jmp	.L4675
 	.cfi_endproc
 .LFE578:
 	.size	pci_scan, .-pci_scan
@@ -31589,18 +31474,18 @@ pic_mask_irq:
 	movl	36(%esp), %ecx
 	movl	32(%esp), %eax
 	cmpl	$7, %ecx
-	jg	.L4710
+	jg	.L4698
 	movl	$1, %esi
 	movl	$33, %ebx
 	sall	%cl, %esi
 	testl	%eax, %eax
 	movl	%ebx, (%esp)
-	jne	.L4715
-.L4712:
+	jne	.L4703
+.L4700:
 	call	in8
 	notl	%esi
 	andl	%esi, %eax
-.L4714:
+.L4702:
 	movzbl	%al, %eax
 	movl	%ebx, 32(%esp)
 	movl	%eax, 36(%esp)
@@ -31616,7 +31501,7 @@ pic_mask_irq:
 	jmp	out8
 	.p2align 4,,7
 	.p2align 3
-.L4710:
+.L4698:
 	.cfi_restore_state
 	subl	$8, %ecx
 	movl	$1, %edx
@@ -31625,11 +31510,11 @@ pic_mask_irq:
 	testl	%eax, %eax
 	movl	%edx, %esi
 	movl	%ebx, (%esp)
-	je	.L4712
-.L4715:
+	je	.L4700
+.L4703:
 	call	in8
 	orl	%esi, %eax
-	jmp	.L4714
+	jmp	.L4702
 	.cfi_endproc
 .LFE580:
 	.size	pic_mask_irq, .-pic_mask_irq
@@ -31664,11 +31549,11 @@ pic_ack_active_irq:
 	subl	$28, %esp
 	.cfi_def_cfa_offset 32
 	cmpl	$39, ia32KScurInterrupt
-	jle	.L4719
+	jle	.L4707
 	movl	$32, 4(%esp)
 	movl	$160, (%esp)
 	call	out8
-.L4719:
+.L4707:
 	movl	$32, 4(%esp)
 	movl	$32, (%esp)
 	call	out8
@@ -31729,12 +31614,12 @@ pit_wait_wraparound:
 	sall	$8, %ebx
 	movzbl	%al, %esi
 	orl	%esi, %ebx
-	jmp	.L4725
+	jmp	.L4713
 	.p2align 4,,7
 	.p2align 3
-.L4727:
+.L4715:
 	movl	%edx, %ebx
-.L4725:
+.L4713:
 	movl	$0, 4(%esp)
 	movl	$67, (%esp)
 	call	out8_phys
@@ -31749,7 +31634,7 @@ pit_wait_wraparound:
 	movzbl	%al, %esi
 	orl	%esi, %edx
 	cmpw	%bx, %dx
-	jbe	.L4727
+	jbe	.L4715
 	addl	$20, %esp
 	.cfi_def_cfa_offset 12
 	popl	%ebx
@@ -31812,15 +31697,15 @@ memzero:
 	movl	8(%esp), %eax
 	movl	4(%esp), %edx
 	testl	%eax, %eax
-	je	.L4730
+	je	.L4718
 	.p2align 4,,7
 	.p2align 3
-.L4736:
+.L4724:
 	movl	$0, (%edx)
 	addl	$4, %edx
 	subl	$4, %eax
-	jne	.L4736
-.L4730:
+	jne	.L4724
+.L4718:
 	rep ret
 	.cfi_endproc
 .LFE585:
@@ -31840,22 +31725,22 @@ memset:
 	movl	32(%esp), %ebx
 	movl	40(%esp), %edx
 	testl	%eax, %eax
-	jne	.L4739
+	jne	.L4727
 	movl	%ebx, %ecx
 	orl	%edx, %ecx
 	andl	$3, %ecx
-	jne	.L4739
+	jne	.L4727
 	testl	%edx, %edx
 	movl	%ebx, %ecx
-	je	.L4745
+	je	.L4733
 	.p2align 4,,7
 	.p2align 3
-.L4747:
+.L4735:
 	movl	$0, (%ecx)
 	addl	$4, %ecx
 	subl	$4, %edx
-	jne	.L4747
-.L4745:
+	jne	.L4735
+.L4733:
 	addl	$24, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 8
@@ -31864,10 +31749,10 @@ memset:
 	.cfi_restore 3
 	.cfi_def_cfa_offset 4
 	ret
-.L4739:
+.L4727:
 	.cfi_restore_state
 	testl	%edx, %edx
-	je	.L4745
+	je	.L4733
 	movzbl	%al, %eax
 	movl	%ebx, (%esp)
 	movl	%edx, 8(%esp)
@@ -31905,7 +31790,7 @@ memcpy:
 	movl	20(%esp), %eax
 	movl	24(%esp), %edx
 	testl	%ecx, %ecx
-	je	.L4764
+	je	.L4752
 	leal	4(%eax), %ebx
 	cmpl	%ebx, %edx
 	leal	4(%edx), %esi
@@ -31919,38 +31804,38 @@ memcpy:
 	movl	%edi, %ecx
 	seta	%bl
 	testb	%bl, %cl
-	je	.L4752
+	je	.L4740
 	movl	%eax, %ebx
 	orl	%edx, %ebx
 	andl	$3, %ebx
-	jne	.L4752
+	jne	.L4740
 	movl	28(%esp), %esi
 	xorl	%ebx, %ebx
 	shrl	$2, %esi
 	leal	0(,%esi,4), %edi
-.L4758:
+.L4746:
 	movl	(%edx,%ebx,4), %ebp
 	movl	%ebp, (%eax,%ebx,4)
 	addl	$1, %ebx
 	cmpl	%ebx, %esi
-	ja	.L4758
+	ja	.L4746
 	movl	28(%esp), %esi
 	addl	%edi, %edx
 	leal	(%eax,%edi), %ebx
 	subl	%edi, %esi
 	cmpl	%edi, 28(%esp)
-	je	.L4764
+	je	.L4752
 	movzbl	(%edx), %ecx
 	cmpl	$1, %esi
 	movb	%cl, (%ebx)
-	je	.L4764
+	je	.L4752
 	movzbl	1(%edx), %ecx
 	cmpl	$2, %esi
 	movb	%cl, 1(%ebx)
-	je	.L4764
+	je	.L4752
 	movzbl	2(%edx), %edx
 	movb	%dl, 2(%ebx)
-.L4764:
+.L4752:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -31967,20 +31852,20 @@ memcpy:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4752:
+.L4740:
 	.cfi_restore_state
 	movl	28(%esp), %esi
 	movl	%eax, %ecx
 	addl	%eax, %esi
 	.p2align 4,,7
 	.p2align 3
-.L4760:
+.L4748:
 	movzbl	(%edx), %ebx
 	addl	$1, %ecx
 	addl	$1, %edx
 	movb	%bl, -1(%ecx)
 	cmpl	%esi, %ecx
-	jne	.L4760
+	jne	.L4748
 	popl	%ebx
 	.cfi_restore 3
 	.cfi_def_cfa_offset 16
@@ -32019,33 +31904,33 @@ strncmp:
 	movl	20(%esp), %edi
 	movl	24(%esp), %ebp
 	testl	%esi, %esi
-	je	.L4781
+	je	.L4769
 	movzbl	(%edi), %ecx
 	movzbl	0(%ebp), %edx
 	movzbl	%cl, %eax
 	subl	%edx, %eax
-	jne	.L4774
+	jne	.L4762
 	testb	%cl, %cl
-	je	.L4781
+	je	.L4769
 	xorl	%edx, %edx
-	jmp	.L4775
+	jmp	.L4763
 	.p2align 4,,7
 	.p2align 3
-.L4776:
+.L4764:
 	movzbl	(%edi,%edx), %ebx
 	movzbl	0(%ebp,%edx), %ecx
 	movzbl	%bl, %eax
 	subl	%ecx, %eax
-	jne	.L4774
+	jne	.L4762
 	testb	%bl, %bl
-	je	.L4781
-.L4775:
+	je	.L4769
+.L4763:
 	addl	$1, %edx
 	cmpl	%esi, %edx
-	jne	.L4776
-.L4781:
+	jne	.L4764
+.L4769:
 	xorl	%eax, %eax
-.L4774:
+.L4762:
 	popl	%ebx
 	.cfi_restore 3
 	.cfi_def_cfa_offset 16
@@ -32071,31 +31956,31 @@ char_to_int:
 	movl	4(%esp), %eax
 	leal	-48(%eax), %edx
 	cmpb	$9, %dl
-	jbe	.L4788
+	jbe	.L4776
 	leal	-65(%eax), %edx
 	cmpb	$5, %dl
-	jbe	.L4789
+	jbe	.L4777
 	leal	-97(%eax), %edx
 	cmpb	$5, %dl
-	ja	.L4787
+	ja	.L4775
 	movsbl	%al, %eax
 	subl	$87, %eax
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4789:
+.L4777:
 	movsbl	%al, %eax
 	subl	$55, %eax
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4788:
+.L4776:
 	movsbl	%al, %eax
 	subl	$48, %eax
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4787:
+.L4775:
 	movl	$-1, %eax
 	ret
 	.cfi_endproc
@@ -32117,41 +32002,41 @@ str_to_int:
 	movl	12(%esp), %ecx
 	movsbl	(%ecx), %edx
 	cmpb	$48, %dl
-	je	.L4806
-.L4791:
+	je	.L4794
+.L4779:
 	testb	%dl, %dl
-	je	.L4803
-.L4792:
+	je	.L4791
+.L4780:
 	xorl	%eax, %eax
-	jmp	.L4798
+	jmp	.L4786
 	.p2align 4,,7
 	.p2align 3
-.L4807:
-	subl	$48, %edx
 .L4795:
+	subl	$48, %edx
+.L4783:
 	cmpl	%esi, %edx
 	.p2align 4,,2
-	jae	.L4803
+	jae	.L4791
 	imull	%esi, %eax
 	addl	$1, %ecx
 	addl	%edx, %eax
 	movsbl	(%ecx), %edx
 	testb	%dl, %dl
-	je	.L4804
-.L4798:
+	je	.L4792
+.L4786:
 	leal	-48(%edx), %ebx
 	cmpb	$9, %bl
-	jbe	.L4807
+	jbe	.L4795
 	leal	-65(%edx), %ebx
 	cmpb	$5, %bl
-	ja	.L4796
+	ja	.L4784
 	subl	$55, %edx
-	jmp	.L4795
+	jmp	.L4783
 	.p2align 4,,7
 	.p2align 3
-.L4803:
+.L4791:
 	movl	$-1, %eax
-.L4804:
+.L4792:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
@@ -32162,24 +32047,24 @@ str_to_int:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4796:
+.L4784:
 	.cfi_restore_state
 	leal	-97(%edx), %ebx
 	cmpb	$5, %bl
-	ja	.L4803
+	ja	.L4791
 	subl	$87, %edx
-	jmp	.L4795
+	jmp	.L4783
 	.p2align 4,,7
 	.p2align 3
-.L4806:
+.L4794:
 	movzbl	1(%ecx), %eax
 	andl	$-33, %eax
 	cmpb	$88, %al
-	jne	.L4792
+	jne	.L4780
 	movsbl	2(%ecx), %edx
 	movw	$16, %si
 	addl	$2, %ecx
-	jmp	.L4791
+	jmp	.L4779
 	.cfi_endproc
 .LFE590:
 	.size	str_to_int, .-str_to_int
@@ -32204,25 +32089,25 @@ cmdline_parse:
 	movl	$1, (%ebx)
 	call	parse_opt.constprop.142
 	cmpl	$-1, %eax
-	je	.L4809
+	je	.L4797
 	movl	$cmdline_val, (%esp)
 	call	str_to_int
 	leal	-1(%eax), %edx
-	cmpl	$7, %edx
-	jbe	.L4818
-.L4809:
+	cmpl	$39, %edx
+	jbe	.L4806
+.L4797:
 	movl	$0, 4(%ebx)
 	movl	$cmdline_str_num_sh_frames, %edx
 	movl	%esi, %eax
 	call	parse_opt.constprop.142
 	cmpl	$-1, %eax
-	je	.L4808
+	je	.L4796
 	movl	$cmdline_val, (%esp)
 	call	str_to_int
 	cmpl	$1048575, %eax
-	ja	.L4808
+	ja	.L4796
 	movl	%eax, 4(%ebx)
-.L4808:
+.L4796:
 	addl	$4, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 12
@@ -32235,10 +32120,10 @@ cmdline_parse:
 	ret
 	.p2align 4,,7
 	.p2align 3
-.L4818:
+.L4806:
 	.cfi_restore_state
 	movl	%eax, (%ebx)
-	jmp	.L4809
+	jmp	.L4797
 	.cfi_endproc
 .LFE317:
 	.size	cmdline_parse, .-cmdline_parse
@@ -32265,12 +32150,12 @@ boot_sys:
 	.cfi_def_cfa_offset 64
 	cmpl	$732803074, 64(%esp)
 	movl	$1, glks+24
-	je	.L4907
-.L4820:
+	je	.L4898
+.L4808:
 	call	halt
 	.p2align 4,,7
 	.p2align 3
-.L4907:
+.L4898:
 	movl	68(%esp), %eax
 	movl	$cmdline_str_max_num_nodes, %edx
 	movl	$1, cmdline_opt
@@ -32278,48 +32163,48 @@ boot_sys:
 	movl	%ebx, %eax
 	call	parse_opt.constprop.142
 	cmpl	$-1, %eax
-	je	.L4821
+	je	.L4809
 	movl	$cmdline_val, (%esp)
 	call	str_to_int
 	leal	-1(%eax), %edx
-	cmpl	$7, %edx
-	ja	.L4821
+	cmpl	$39, %edx
+	ja	.L4809
 	movl	%eax, cmdline_opt
-.L4821:
+.L4809:
 	movl	$cmdline_str_num_sh_frames, %edx
 	movl	%ebx, %eax
 	movl	$0, cmdline_opt+4
 	call	parse_opt.constprop.142
 	cmpl	$-1, %eax
-	je	.L4822
+	je	.L4810
 	movl	$cmdline_val, (%esp)
 	call	str_to_int
 	cmpl	$1048575, %eax
-	ja	.L4822
+	ja	.L4810
 	movl	%eax, cmdline_opt+4
-.L4822:
+.L4810:
 	movl	68(%esp), %eax
 	testb	$1, (%eax)
-	je	.L4820
+	je	.L4808
 	movl	4(%eax), %eax
 	sall	$10, %eax
 	cmpl	$525311, %eax
-	jbe	.L4820
+	jbe	.L4808
 	movl	$_boot_cpu_end, %edx
 	movl	$524288, %eax
 	subl	$_boot_cpu_start, %edx
 	testl	%edx, %edx
 	leal	524288(%edx), %ecx
-	je	.L4826
+	je	.L4814
 	.p2align 4,,7
 	.p2align 3
-.L4882:
+.L4871:
 	movzbl	_boot_cpu_start-524288(%eax), %edx
 	addl	$1, %eax
 	movb	%dl, -1(%eax)
 	cmpl	%ecx, %eax
-	jne	.L4882
-.L4826:
+	jne	.L4871
+.L4814:
 	movl	68(%esp), %eax
 	movl	$532676608, %edx
 	movl	$1048576, glks
@@ -32334,59 +32219,59 @@ boot_sys:
 	cmovbe	%eax, %edx
 	movl	72(%esp), %eax
 	movl	%edx, glks+4
-	movl	%eax, glks+1784
+	movl	%eax, glks+2424
 	call	pic_remap_irqs
-	movl	$0, glks+188
+	movl	$0, glks+828
 	call	acpi_init
 	testl	%eax, %eax
-	je	.L4820
-	movl	$8, 8(%esp)
+	je	.L4808
+	movl	$40, 8(%esp)
 	movl	$glks+28, 4(%esp)
 	movl	%eax, (%esp)
 	call	acpi_madt_scan
 	testl	%eax, %eax
 	movl	%eax, glks+24
-	je	.L4820
+	je	.L4808
 	movl	cmdline_opt, %edx
 	movl	%eax, 20(%esp)
 	cmpl	%edx, %eax
-	jbe	.L4829
+	jbe	.L4817
 	movl	%edx, glks+24
 	movl	%edx, 20(%esp)
-.L4829:
+.L4817:
 	movl	68(%esp), %eax
 	testb	$8, (%eax)
-	je	.L4820
+	je	.L4808
 	movl	20(%eax), %ebp
 	testl	%ebp, %ebp
-	je	.L4820
+	je	.L4808
 	movl	24(%eax), %edi
 	movl	4(%edi), %eax
 	movl	%eax, %edx
 	subl	(%edi), %edx
 	testl	%edx, %edx
-	jle	.L4820
+	jle	.L4808
 	movl	%edi, %edx
 	xorl	%ecx, %ecx
 	xorl	%ebx, %ebx
 	movl	%edi, 24(%esp)
-	jmp	.L4830
+	jmp	.L4818
 	.p2align 4,,7
 	.p2align 3
-.L4831:
+.L4819:
 	movl	20(%edx), %eax
 	movl	%edx, %esi
 	addl	$16, %edx
 	movl	%eax, %edi
 	subl	16(%esi), %edi
 	testl	%edi, %edi
-	jle	.L4820
-.L4830:
+	jle	.L4808
+.L4818:
 	cmpl	%eax, %ecx
 	cmovb	%eax, %ecx
 	addl	$1, %ebx
 	cmpl	%ebp, %ebx
-	jne	.L4831
+	jne	.L4819
 	movl	20(%esp), %eax
 	subl	$1, %ecx
 	xorl	%esi, %esi
@@ -32395,16 +32280,16 @@ boot_sys:
 	leal	4096(%ecx), %ebx
 	movl	%ebx, %ecx
 	testl	%eax, %eax
-	jne	.L4883
-	jmp	.L4836
+	jne	.L4873
+	jmp	.L4824
 	.p2align 4,,7
 	.p2align 3
-.L4833:
+.L4821:
 	cmpl	%eax, %esi
-	jae	.L4834
+	jae	.L4822
 	movl	68(%esp), %eax
 	movl	24(%eax), %edi
-.L4883:
+.L4873:
 	movl	%esi, %eax
 	sall	$4, %eax
 	movl	(%edi,%eax), %edx
@@ -32412,25 +32297,25 @@ boot_sys:
 	call	load_boot_module.isra.140
 	testl	%eax, %eax
 	movl	%eax, %ecx
-	je	.L4820
+	je	.L4808
 	movl	68(%esp), %eax
 	addl	$1, %esi
 	movl	20(%eax), %edi
 	movl	glks+24, %eax
 	cmpl	%edi, %esi
-	jb	.L4833
-.L4834:
+	jb	.L4821
+.L4822:
 	cmpl	%eax, %edi
-	jae	.L4836
+	jae	.L4824
 	movl	%edi, %edx
 	movl	68(%esp), %eax
-	jmp	.L4837
+	jmp	.L4825
 	.p2align 4,,7
 	.p2align 3
-.L4908:
+.L4899:
 	movl	68(%esp), %eax
 	movl	20(%eax), %edx
-.L4837:
+.L4825:
 	addl	$268435455, %edx
 	sall	$4, %edx
 	addl	24(%eax), %edx
@@ -32439,20 +32324,21 @@ boot_sys:
 	call	load_boot_module.isra.140
 	testl	%eax, %eax
 	movl	%eax, %ecx
-	je	.L4820
+	je	.L4808
 	addl	$1, %edi
 	cmpl	glks+24, %edi
-	jb	.L4908
-.L4836:
+	jb	.L4899
+.L4824:
 	movl	glks+12, %esi
 	movl	%ebx, 28(%esp)
 	movl	%esi, %edx
 	subl	%ebx, %edx
-	leal	(%ecx,%edx), %eax
-	movl	%eax, 20(%esp)
+	addl	%edx, %ecx
+	movl	%ecx, %eax
 	subl	%esi, %eax
+	movl	%edx, 20(%esp)
 	movl	%eax, 24(%esp)
-	je	.L4846
+	je	.L4834
 	leal	4(%ebx), %edi
 	cmpl	%edi, %esi
 	leal	4(%esi), %ebp
@@ -32466,105 +32352,78 @@ boot_sys:
 	sete	%al
 	movl	%eax, %ebp
 	movl	%edi, %eax
-	movl	%ebp, %ecx
-	testb	%cl, %al
-	je	.L4841
+	movl	%ebp, %edx
+	testb	%dl, %al
+	je	.L4829
 	movl	24(%esp), %ebp
 	cmpl	$8, %ebp
-	jbe	.L4841
-	movl	20(%esp), %ecx
+	jbe	.L4829
 	shrl	$2, %ebp
 	xorl	%eax, %eax
 	leal	0(,%ebp,4), %edi
-	movl	%edx, 28(%esp)
-.L4847:
+.L4835:
 	movl	(%ebx,%eax,4), %edx
 	movl	%edx, (%esi,%eax,4)
 	addl	$1, %eax
 	cmpl	%ebp, %eax
-	jb	.L4847
-	movl	%ecx, 20(%esp)
-	movl	24(%esp), %ecx
+	jb	.L4835
+	movl	24(%esp), %edx
 	addl	%edi, %ebx
 	addl	%edi, %esi
-	movl	28(%esp), %edx
-	movl	%ecx, %eax
+	movl	%edx, %eax
 	subl	%edi, %eax
-	cmpl	%edi, %ecx
-	je	.L4846
-	movzbl	(%ebx), %ecx
+	cmpl	%edi, %edx
+	je	.L4834
+	movzbl	(%ebx), %edx
 	cmpl	$1, %eax
-	movb	%cl, (%esi)
-	je	.L4846
-	movzbl	1(%ebx), %ecx
+	movb	%dl, (%esi)
+	je	.L4834
+	movzbl	1(%ebx), %edx
 	cmpl	$2, %eax
-	movb	%cl, 1(%esi)
-	je	.L4846
+	movb	%dl, 1(%esi)
+	je	.L4834
 	movzbl	2(%ebx), %eax
 	movb	%al, 2(%esi)
-.L4846:
-	movl	glks+24, %eax
-	testl	%eax, %eax
-	je	.L4840
-	addl	%edx, glks+60
-	addl	%edx, glks+64
-	addl	%edx, glks+68
-	cmpl	$1, %eax
-	jbe	.L4840
-	addl	%edx, glks+76
-	addl	%edx, glks+80
-	addl	%edx, glks+84
-	cmpl	$2, %eax
-	jbe	.L4840
-	addl	%edx, glks+92
-	addl	%edx, glks+96
-	addl	%edx, glks+100
-	cmpl	$3, %eax
-	jbe	.L4840
-	addl	%edx, glks+108
-	addl	%edx, glks+112
-	addl	%edx, glks+116
-	cmpl	$4, %eax
-	jbe	.L4840
-	addl	%edx, glks+124
-	addl	%edx, glks+128
-	addl	%edx, glks+132
-	cmpl	$5, %eax
-	jbe	.L4840
-	addl	%edx, glks+140
-	addl	%edx, glks+144
-	addl	%edx, glks+148
-	cmpl	$6, %eax
-	jbe	.L4840
-	addl	%edx, glks+156
-	addl	%edx, glks+160
-	addl	%edx, glks+164
-	cmpl	$7, %eax
-	jbe	.L4840
-	addl	%edx, glks+172
-	addl	%edx, glks+176
-	addl	%edx, glks+180
-.L4840:
+.L4834:
+	movl	glks+24, %esi
+	movl	$glks+188, %eax
+	movl	20(%esp), %edx
+	movl	%esi, %ebx
+	sall	$4, %ebx
+	addl	%eax, %ebx
+	testl	%esi, %esi
+	je	.L4828
+	.p2align 4,,7
+	.p2align 3
+.L4872:
+	addl	%edx, (%eax)
+	addl	%edx, 4(%eax)
+	addl	%edx, 8(%eax)
+	addl	$16, %eax
+	cmpl	%ebx, %eax
+	jne	.L4872
+.L4828:
 	movl	cmdline_opt+4, %eax
-	movl	20(%esp), %ebx
+	movl	%ecx, glks
+	movl	%ecx, glks+16
 	sall	$12, %eax
-	addl	%ebx, %eax
+	addl	%ecx, %eax
 	cmpl	glks+4, %eax
-	movl	%ebx, glks
-	movl	%ebx, glks+16
 	movl	%eax, glks+20
-	ja	.L4820
-	cmpl	%eax, 20(%esp)
-	ja	.L4820
+	ja	.L4808
+	cmpl	%eax, %ecx
+	ja	.L4808
 	movl	%eax, glks
 	call	platAddDevices
 	call	try_boot_node
 	testl	%eax, %eax
-	je	.L4820
+	je	.L4808
 	cmpl	$1, glks+24
-	jbe	.L4819
+	jbe	.L4807
 	movl	$1, %ebx
-.L4852:
+	.p2align 4,,7
+	.p2align 3
+.L4841:
 	movl	glks+28(,%ebx,4), %esi
 	addl	$1, %ebx
 	call	ia32_mfence
@@ -32577,8 +32436,8 @@ boot_sys:
 	movl	$34048, -64768
 	movl	%eax, -64752
 	movl	$1664, -64768
-	jb	.L4852
-.L4819:
+	jb	.L4841
+.L4807:
 	addl	$44, %esp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 20
@@ -32595,19 +32454,21 @@ boot_sys:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret
-.L4841:
+.L4829:
 	.cfi_restore_state
-	movl	20(%esp), %edi
+	movl	20(%esp), %edx
+	movl	%ecx, %edi
 	movl	28(%esp), %eax
 	addl	24(%esp), %ebx
-.L4849:
+.L4837:
 	movzbl	(%eax), %ecx
 	addl	$1, %eax
 	movb	%cl, -1(%eax,%edx)
 	cmpl	%ebx, %eax
-	jne	.L4849
-	movl	%edi, 20(%esp)
-	jmp	.L4846
+	jne	.L4837
+	movl	%edx, 20(%esp)
+	movl	%edi, %ecx
+	jmp	.L4834
 	.cfi_endproc
 .LFE314:
 	.size	boot_sys, .-boot_sys
@@ -32799,15 +32660,15 @@ cmdline_val:
 	.section	.glob,"aw",@progbits
 	.align 4096
 	.type	kernel_pt_list, @object
-	.size	kernel_pt_list, 32768
+	.size	kernel_pt_list, 163840
 kernel_pt_list:
-	.zero	32768
+	.zero	163840
 	.globl	kernel_pd_list
 	.align 4096
 	.type	kernel_pd_list, @object
-	.size	kernel_pd_list, 32768
+	.size	kernel_pd_list, 163840
 kernel_pd_list:
-	.zero	32768
+	.zero	163840
 	.globl	cmdline_opt
 	.section	.boot.glob
 	.align 4
@@ -32826,16 +32687,16 @@ kernel_stack_alloc:
 	.section	.glob
 	.align 4096
 	.type	ndks_list, @object
-	.size	ndks_list, 98304
+	.size	ndks_list, 491520
 ndks_list:
-	.zero	98304
+	.zero	491520
 	.globl	glks
 	.section	.boot.glob
 	.align 32
 	.type	glks, @object
-	.size	glks, 1788
+	.size	glks, 2428
 glks:
-	.zero	1788
+	.zero	2428
 	.local	__control_reg_order
 	.comm	__control_reg_order,4,4
 	.ident	"GCC: (Ubuntu 4.8.2-19ubuntu1) 4.8.2"

@@ -1,4 +1,4 @@
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/api/syscall.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/api/syscall.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -396,7 +396,7 @@ handleSyscall(syscall_t syscall)
 
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/api/benchmark.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/api/benchmark.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -420,7 +420,7 @@ DATA_GLOB uint32_t *ksLog;
 
 #endif /* CONFIG_BENCHMARK */
 
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/api/faults.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/api/faults.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -564,7 +564,7 @@ void handleKernelException(
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/c_traps.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/c_traps.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -736,7 +736,7 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
 
     slowpath(syscall);
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/fastpath/fastpath.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/fastpath/fastpath.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -1253,7 +1253,7 @@ fastpath_reply_wait(word_t cptr, word_t msgInfo)
     msgInfo = wordFromMessageInfo(message_info_set_msgCapsUnwrapped(info, 0));
     fastpath_restore(badge, msgInfo);
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/kernel/apic.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/kernel/apic.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -1539,7 +1539,7 @@ apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr)
         ).words[0]
     );
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/kernel/boot.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/kernel/boot.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -2047,7 +2047,7 @@ init_node_cpu(
 
     return true;
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/kernel/boot_sys.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/kernel/boot_sys.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -2675,7 +2675,7 @@ boot_sys(
     }
 }
 
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/kernel/cmdline.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/kernel/cmdline.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -2857,7 +2857,7 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
     }
     printf("Boot config: num_sh_frames = 0x%x\n", cmdline_opt->num_sh_frames);
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/kernel/elf.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/kernel/elf.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -2933,7 +2933,7 @@ elf32_load(Elf32_Header_t* elfFile, int32_t offset)
         memset((void*)dst, 0, phdr[i].p_memsz - len);
     }
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/kernel/thread.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/kernel/thread.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -2996,7 +2996,7 @@ Arch_activateIdleThread(tcb_t* tcb)
 {
     /* Don't need to do anything */
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/kernel/vspace.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/kernel/vspace.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5022,7 +5022,7 @@ decodeIA32MMUInvocation(
         fail("Invalid arch cap type");
     }
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/machine/fpu.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/machine/fpu.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5121,7 +5121,7 @@ Arch_initFpu(void)
      * switching */
     write_cr0((read_cr0() & ~CR0_EMULATION) | CR0_MONITOR_COPROC | CR0_NUMERIC_ERROR | CR0_TASK_SWITCH);
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/machine/hardware.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/machine/hardware.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5206,7 +5206,7 @@ void flushCacheRange(void* vaddr, uint32_t size_bits)
     }
     ia32_mfence();
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/machine/registerset.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/machine/registerset.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5282,7 +5282,7 @@ word_t sanitiseRegister(register_t reg, word_t v)
     }
     return v;
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/model/statedata.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/model/statedata.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5354,7 +5354,7 @@ uint32_t ia32KSnumIODomainIDBits;
 uint16_t ia32KSconsolePort;
 uint16_t ia32KSdebugPort;
 #endif
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/object/interrupt.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/object/interrupt.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5375,7 +5375,7 @@ exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraC
     current_syscall_error.type = seL4_IllegalOperation;
     return EXCEPTION_SYSCALL_ERROR;
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/object/ioport.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/object/ioport.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5566,7 +5566,7 @@ decodeIA32PortInvocation(
     setThreadState(ksCurThread, ThreadState_Restart);
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/object/iospace.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/object/iospace.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6029,7 +6029,7 @@ exception_t decodeIA32IOSpaceInvocation(word_t label, cap_t cap)
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/object/objecttype.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/object/objecttype.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6564,7 +6564,7 @@ Arch_prepareThreadDelete(tcb_t *thread)
     /* Notify the lazy FPU module about this thread's deletion. */
     Arch_fpuThreadDelete(thread);
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/arch/ia32/object/tcb.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/arch/ia32/object/tcb.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6764,7 +6764,7 @@ exception_t CONST Arch_performTransfer(word_t arch, tcb_t *tcb_src, tcb_t *tcb_d
 {
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/assert.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/assert.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6812,7 +6812,7 @@ void _assert_fail(
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/inlines.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/inlines.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6829,7 +6829,7 @@ void _assert_fail(
 lookup_fault_t current_lookup_fault;
 fault_t current_fault;
 syscall_error_t current_syscall_error;
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/kernel/boot.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/kernel/boot.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7362,7 +7362,7 @@ bi_finalise(void)
         slot_pos_start, slot_pos_end
     };
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/kernel/cspace.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/kernel/cspace.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7569,7 +7569,7 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
     ret.status = EXCEPTION_NONE;
     return ret;
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/kernel/faulthandler.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/kernel/faulthandler.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7689,7 +7689,7 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
 
     setThreadState(tptr, ThreadState_Inactive);
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/kernel/thread.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/kernel/thread.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8162,7 +8162,7 @@ rescheduleRequired(void)
     ksSchedulerAction = SchedulerAction_ChooseNewThread;
 }
 
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/model/preemption.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/model/preemption.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8206,7 +8206,7 @@ preemptionPoint(void)
     return EXCEPTION_NONE;
 }
 
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/model/statedata.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/model/statedata.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8254,7 +8254,7 @@ word_t ksDomainTime;
 /* An index into ksDomSchedule for active domain and length. */
 uint32_t ksDomScheduleIdx;
 
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/object/asyncendpoint.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/object/asyncendpoint.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8419,7 +8419,7 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
     /* Make thread inactive */
     setThreadState(threadPtr, ThreadState_Inactive);
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/object/cnode.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/object/cnode.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9410,7 +9410,7 @@ loadCapTransfer(word_t *buffer)
     const int offset = seL4_MsgMaxLength + seL4_MsgMaxExtraCaps + 2;
     return capTransferFromWords(buffer + offset);
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/object/endpoint.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/object/endpoint.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9753,7 +9753,7 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
         fail("invalid EP state");
     }
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/object/interrupt.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/object/interrupt.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9999,7 +9999,7 @@ setIRQState(irq_state_t irqState, irq_t irq)
     intStateIRQTable[irq] = irqState;
     maskInterrupt(irqState == IRQInactive, irq);
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/object/objecttype.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/object/objecttype.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10703,7 +10703,7 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
     doReplyTransfer(ksCurThread, thread, slot);
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/object/tcb.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/object/tcb.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11695,7 +11695,7 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
 
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/object/untyped.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/object/untyped.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11952,7 +11952,7 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
 
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/plat/pc99/machine/acpi.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/plat/pc99/machine/acpi.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -12431,7 +12431,7 @@ acpi_dmar_scan(
 }
 
 #endif /* IOMMU */
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/plat/pc99/machine/hardware.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/plat/pc99/machine/hardware.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -12535,7 +12535,7 @@ void resetTimer(void)
 {
     /* not necessary */
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/plat/pc99/machine/intel-vtd.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/plat/pc99/machine/intel-vtd.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -12992,7 +12992,7 @@ vtd_init(
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/plat/pc99/machine/io.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/plat/pc99/machine/io.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13054,7 +13054,7 @@ void console_putchar(char c)
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/plat/pc99/machine/pci.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/plat/pc99/machine/pci.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13281,7 +13281,7 @@ pci_scan(uint32_t* bus_used_bitmap)
         }
     }
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/plat/pc99/machine/pic.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/plat/pc99/machine/pic.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13368,7 +13368,7 @@ void pic_ack_active_irq(void)
     /* ack master PIC */
     out8(PIC1_BASE, 0x20);
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/plat/pc99/machine/pit.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/plat/pc99/machine/pit.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13418,7 +13418,7 @@ pit_wait_wraparound(void)
         count |= (in8_phys(PIT_CH0) << 8);
     }
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/util.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/util.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13551,7 +13551,7 @@ str_to_int(const char* str)
 
     return val;
 }
-#line 1 "/home/mscapero/Desktop/seL4/seL4test/kernel/src/config/default_domain.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/seL4test/kernel/src/config/default_domain.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
