@@ -29,6 +29,7 @@ src/cspace/two_level.o: \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4/arch/functions.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4/arch/syscalls.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4/bootinfo.h \
+ /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/allocman/cspace/single_level.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/allocman/util.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4utils/util.h \
@@ -40,7 +41,6 @@ src/cspace/two_level.o: \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/utils/compile_time.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/utils/stringify.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/utils/debug.h \
- /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/utils/formats.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/utils/page.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/utils/stack.h \
@@ -111,6 +111,8 @@ src/cspace/two_level.o: \
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4/bootinfo.h:
 
+/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h:
+
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/allocman/cspace/single_level.h:
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/allocman/util.h:
@@ -132,8 +134,6 @@ src/cspace/two_level.o: \
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/utils/stringify.h:
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/utils/debug.h:
-
-/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h:
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/utils/formats.h:
 

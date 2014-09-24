@@ -10,6 +10,7 @@ __attribute__((used)) __attribute__((section("_test_case"))) testcase_t TEST_CNO
 __attribute__((used)) __attribute__((section("_test_case"))) testcase_t TEST_CNODEOP0008 = { .name = "TEST_CNODEOP0008"};
 __attribute__((used)) __attribute__((section("_test_case"))) testcase_t TEST_CNODEOP0009 = { .name = "TEST_CNODEOP0009"};
 __attribute__((used)) __attribute__((section("_test_case"))) testcase_t TEST_CSPACE0001 = { .name = "TEST_CSPACE0001"};
+__attribute__((used)) __attribute__((section("_test_case"))) testcase_t TEST_CUSTOM0022 = { .name = "TEST_CUSTOM0022"};
 __attribute__((used)) __attribute__((section("_test_case"))) testcase_t TEST_DOMAINS0001 = { .name = "TEST_DOMAINS0001"};
 __attribute__((used)) __attribute__((section("_test_case"))) testcase_t TEST_DOMAINS0002 = { .name = "TEST_DOMAINS0002"};
 __attribute__((used)) __attribute__((section("_test_case"))) testcase_t TEST_DOMAINS0003 = { .name = "TEST_DOMAINS0003"};

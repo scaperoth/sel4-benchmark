@@ -2933,6 +2933,26 @@ elf32_load(Elf32_Header_t* elfFile, int32_t offset)
         memset((void*)dst, 0, phdr[i].p_memsz - len);
     }
 }
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/lock.c"
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+#ifdef DEBUG
+
+#include <arch/kernel/lock.h>
+#include <arch/linker.h>
+
+/* global spinlocks */
+lock_t lock_debug DATA_GLOB;
+
+#endif /* DEBUG */
 #line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/thread.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
@@ -5022,6 +5042,420 @@ decodeIA32MMUInvocation(
         fail("Invalid arch cap type");
     }
 }
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c"
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+#include <config.h>
+
+#ifdef DEBUG
+
+#include <object/structures.h>
+#include <object/tcb.h>
+#include <model/statedata.h>
+#include <machine/capdl.h>
+#include <arch/machine/capdl.h>
+#include <plat/machine/debug_helpers.h>
+#include <plat/machine/pci.h>
+
+#define ARCH 0xe1
+
+#define PD_READ_SIZE         BIT(PD_BITS)
+#define PT_READ_SIZE         BIT(PT_BITS)
+#define ASID_POOL_READ_SIZE  BIT(ASID_POOL_BITS)
+#define IO_PT_READ_SIZE      BIT(VTD_PT_BITS)
+
+static int getDecodedChar(unsigned char *result)
+{
+    unsigned char c;
+    c = getDebugChar();
+    if (c == START) {
+        return 1;
+    }
+    if (c == ESCAPE) {
+        c = getDebugChar();
+        if (c == START) {
+            return 1;
+        }
+        switch (c) {
+        case ESCAPE_ESCAPE:
+            *result = ESCAPE;
+            break;
+        case START_ESCAPE:
+            *result = START;
+            break;
+        case END_ESCAPE:
+            *result = END;
+            break;
+        default:
+            if (c >= 20 && c < 40) {
+                *result = c - 20;
+            }
+        }
+        return 0;
+    } else {
+        *result = c;
+        return 0;
+    }
+}
+
+static void putEncodedChar(unsigned char c)
+{
+    switch (c) {
+    case ESCAPE:
+        putDebugChar(ESCAPE);
+        putDebugChar(ESCAPE_ESCAPE);
+        break;
+    case START:
+        putDebugChar(ESCAPE);
+        putDebugChar(START_ESCAPE);
+        break;
+    case END:
+        putDebugChar(ESCAPE);
+        putDebugChar(END_ESCAPE);
+        break;
+    default:
+        if (c < 20) {
+            putDebugChar(ESCAPE);
+            putDebugChar(c + 20);
+        } else {
+            putDebugChar(c);
+        }
+    }
+}
+
+static int getArg32(unsigned int *res)
+{
+    unsigned char b1 = 0;
+    unsigned char b2 = 0;
+    unsigned char b3 = 0;
+    unsigned char b4 = 0;
+    if (getDecodedChar(&b1)) {
+        return 1;
+    }
+    if (getDecodedChar(&b2)) {
+        return 1;
+    }
+    if (getDecodedChar(&b3)) {
+        return 1;
+    }
+    if (getDecodedChar(&b4)) {
+        return 1;
+    }
+    *res = (b1 << 24 ) | (b2 << 16) | (b3 << 8) | b4;
+    return 0;
+}
+
+static void sendWord(unsigned int word)
+{
+    putEncodedChar(word & 0xff);
+    putEncodedChar((word >> 8) & 0xff);
+    putEncodedChar((word >> 16) & 0xff);
+    putEncodedChar((word >> 24) & 0xff);
+}
+
+static cte_t *getMDBParent(cte_t *slot)
+{
+    cte_t *oldSlot = CTE_PTR(mdb_node_get_mdbPrev(slot->cteMDBNode));
+
+    while (oldSlot != 0 && !isMDBParentOf(oldSlot, slot)) {
+        oldSlot = CTE_PTR(mdb_node_get_mdbPrev(oldSlot->cteMDBNode));
+    }
+
+    return oldSlot;
+}
+
+static void sendPD(unsigned int address)
+{
+    unsigned int i;
+    unsigned int exists;
+    pde_t *start = (pde_t *)address;
+    for (i = 0; i < PD_READ_SIZE; i++) {
+        pde_t pde = start[i];
+        exists = 1;
+        if (pde_get_page_size(pde) == pde_pde_4k && (pde_pde_4k_get_pt_base_address(pde) == 0 ||
+                                                     !pde_pde_4k_get_present(pde) || !pde_pde_4k_get_super_user(pde))) {
+            exists = 0;
+        } else if (pde_get_page_size(pde) == pde_pde_4m && (pde_pde_4m_get_page_base_address(pde) == 0 ||
+                                                            !pde_pde_4m_get_present(pde) || !pde_pde_4m_get_super_user(pde))) {
+            exists = 0;
+        }
+        if (exists != 0 && i < PPTR_BASE >> pageBitsForSize(IA32_4M)) {
+            sendWord(i);
+            sendWord(pde.words[0]);
+        }
+    }
+}
+
+static void sendPT(unsigned int address)
+{
+    unsigned int i;
+    pte_t *start = (pte_t *)address;
+    for (i = 0; i < PT_READ_SIZE; i++) {
+        pte_t pte = start[i];
+        if (pte_get_page_base_address(pte) != 0 && pte_get_present(pte) && pte_get_super_user(pte)) {
+            sendWord(i);
+            sendWord(pte.words[0]);
+        }
+    }
+}
+
+static void sendASIDPool(unsigned int address)
+{
+    unsigned int i;
+    pde_t **start = (pde_t **)address;
+    for (i = 0; i < ASID_POOL_READ_SIZE; i++) {
+        pde_t *pde = start[i];
+        if (pde != 0) {
+            sendWord(i);
+            sendWord((unsigned int)pde);
+        }
+    }
+}
+
+#ifdef CONFIG_IOMMU
+
+static void sendIOPT(unsigned int address, unsigned int level)
+{
+    unsigned int i;
+    vtd_pte_t *start = (vtd_pte_t *)address;
+    for (i = 0; i < IO_PT_READ_SIZE; i++) {
+        vtd_pte_t vtd_pte = start[i];
+        if (vtd_pte_get_addr(vtd_pte) != 0) {
+            sendWord(i);
+            sendWord(vtd_pte.words[0]);
+            sendWord(vtd_pte.words[1]);
+            if (level == ia32KSnumIOPTLevels) {
+                sendWord(1);
+            } else {
+                sendWord(0);
+            }
+        }
+    }
+}
+
+static void sendIOSpace(uint32_t pci_request_id)
+{
+    uint32_t   vtd_root_index;
+    uint32_t   vtd_context_index;
+    vtd_rte_t* vtd_root_slot;
+    vtd_cte_t* vtd_context;
+    vtd_cte_t* vtd_context_slot;
+
+    vtd_root_index = get_pci_bus(pci_request_id);
+    vtd_root_slot = ia32KSvtdRootTable + vtd_root_index;
+
+    vtd_context = (vtd_cte_t*)paddr_to_pptr(vtd_rte_ptr_get_ctp(vtd_root_slot));
+    vtd_context_index = (get_pci_dev(pci_request_id) << 3) | get_pci_fun(pci_request_id);
+    vtd_context_slot = &vtd_context[vtd_context_index];
+
+    if (vtd_cte_ptr_get_present(vtd_context_slot)) {
+        sendWord(vtd_cte_ptr_get_asr(vtd_context_slot));
+    } else {
+        sendWord(0);
+    }
+}
+
+#endif
+
+static void sendRunqueues(void)
+{
+    unsigned int i;
+    sendWord((unsigned int)ksCurThread);
+    for (i = 0; i < NUM_READY_QUEUES; i++) {
+        tcb_t *current = ksReadyQueues[i].head;
+        if (current != 0) {
+            while (current != ksReadyQueues[i].end) {
+                sendWord((unsigned int)current);
+                current = current -> tcbSchedNext;
+            }
+            sendWord((unsigned int)current);
+        }
+    }
+}
+
+static void sendEPQueue(unsigned int epptr)
+{
+    tcb_t *current = (tcb_t *)endpoint_ptr_get_epQueue_head((endpoint_t *)epptr);
+    tcb_t *tail = (tcb_t *)endpoint_ptr_get_epQueue_tail((endpoint_t *)epptr);
+    if (current == 0) {
+        return;
+    }
+    while (current != tail) {
+        sendWord((unsigned int)current);
+        current = current->tcbEPNext;
+    }
+    sendWord((unsigned int)current);
+}
+
+static void sendCNode(unsigned int address, unsigned int sizebits)
+{
+    unsigned int i;
+    cte_t *start = (cte_t *)address;
+    for (i = 0; i < (1 << sizebits); i++) {
+        cap_t cap = start[i].cap;
+        if (cap_get_capType(cap) != cap_null_cap) {
+            cte_t *parent = getMDBParent(&start[i]);
+            sendWord(i);
+            sendWord(cap.words[0]);
+            sendWord(cap.words[1]);
+            sendWord((unsigned int)parent);
+        }
+    }
+}
+
+static void sendIRQNode(void)
+{
+    sendCNode((unsigned int)intStateIRQNode, 8);
+}
+
+static void sendVersion(void)
+{
+    sendWord(ARCH);
+    sendWord(CAPDL_VERSION);
+}
+
+void capDL(void)
+{
+    int result;
+    int done = 0;
+    while (done == 0) {
+        unsigned char c;
+        do {
+            c = getDebugChar();
+        } while (c != START);
+        do {
+            result = getDecodedChar(&c);
+            if (result) {
+                continue;
+            }
+            switch (c) {
+            case PD_COMMAND: {
+                /*pgdir */
+                unsigned int arg;
+                result = getArg32(&arg);
+                if (result) {
+                    continue;
+                }
+                sendPD(arg);
+                putDebugChar(END);
+            }
+            break;
+            case PT_COMMAND: {
+                /*pg table */
+                unsigned int arg;
+                result = getArg32(&arg);
+                if (result) {
+                    continue;
+                }
+                sendPT(arg);
+                putDebugChar(END);
+            }
+            break;
+            case ASID_POOL_COMMAND: {
+                /*asid pool */
+                unsigned int arg;
+                result = getArg32(&arg);
+                if (result) {
+                    continue;
+                }
+                sendASIDPool(arg);
+                putDebugChar(END);
+            }
+            break;
+#ifdef CONFIG_IOMMU
+            case IO_PT_COMMAND: {
+                /*io pt table */
+                unsigned int address, level;
+                result = getArg32(&address);
+                if (result) {
+                    continue;
+                }
+                result = getArg32(&level);
+                if (result) {
+                    continue;
+                }
+                sendIOPT(address, level);
+                putDebugChar(END);
+            }
+            break;
+            case IO_SPACE_COMMAND: {
+                /*io space */
+                unsigned int arg;
+                result = getArg32(&arg);
+                if (result) {
+                    continue;
+                }
+                sendIOSpace(arg);
+                putDebugChar(END);
+            }
+            break;
+#endif
+            case RQ_COMMAND: {
+                /*runqueues */
+                sendRunqueues();
+                putDebugChar(END);
+                result = 0;
+            }
+            break;
+            case EP_COMMAND: {
+                /*endpoint waiters */
+                unsigned int arg;
+                result = getArg32(&arg);
+                if (result) {
+                    continue;
+                }
+                sendEPQueue(arg);
+                putDebugChar(END);
+            }
+            break;
+            case CN_COMMAND: {
+                /*cnode */
+                unsigned int address, sizebits;
+                result = getArg32(&address);
+                if (result) {
+                    continue;
+                }
+                result = getArg32(&sizebits);
+                if (result) {
+                    continue;
+                }
+
+                sendCNode(address, sizebits);
+                putDebugChar(END);
+            }
+            break;
+            case IRQ_COMMAND: {
+                sendIRQNode();
+                putDebugChar(END);
+                result = 0;
+            }
+            break;
+            case VERSION_COMMAND: {
+                sendVersion();
+                putDebugChar(END);
+            }
+            break;
+            case DONE: {
+                done = 1;
+                putDebugChar(END);
+            }
+            default:
+                result = 0;
+                break;
+            }
+        } while (result);
+    }
+}
+
+#endif
 #line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
@@ -8162,6 +8596,249 @@ rescheduleRequired(void)
     ksSchedulerAction = SchedulerAction_ChooseNewThread;
 }
 
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/machine/io.c"
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+#include <stdarg.h>
+#include <machine/io.h>
+
+#ifdef DEBUG
+
+static unsigned int
+print_string(const char *s)
+{
+    unsigned int n;
+
+    for (n = 0; *s; s++, n++) {
+        kernel_putchar(*s);
+    }
+
+    return n;
+}
+
+static unsigned long
+xdiv(unsigned long x, unsigned int denom)
+{
+    switch (denom) {
+    case 16:
+        return x / 16;
+    case 10:
+        return x / 10;
+    default:
+        return 0;
+    }
+}
+
+static unsigned long
+xmod(unsigned long x, unsigned int denom)
+{
+    switch (denom) {
+    case 16:
+        return x % 16;
+    case 10:
+        return x % 10;
+    default:
+        return 0;
+    }
+}
+
+unsigned int
+print_unsigned_long(unsigned long x, unsigned int ui_base)
+{
+    char out[11];
+    unsigned int i, j;
+    unsigned int d;
+
+    /*
+     * Only base 10 and 16 supported for now. We want to avoid invoking the
+     * compiler's support libraries through doing arbitrary divisions.
+     */
+    if (ui_base != 10 && ui_base != 16) {
+        return 0;
+    }
+
+    if (x == 0) {
+        kernel_putchar('0');
+        return 1;
+    }
+
+    for (i = 0; x; x = xdiv(x, ui_base), i++) {
+        d = xmod(x, ui_base);
+
+        if (d >= 10) {
+            out[i] = 'a' + d - 10;
+        } else {
+            out[i] = '0' + d;
+        }
+    }
+
+    for (j = i; j > 0; j--) {
+        kernel_putchar(out[j - 1]);
+    }
+
+    return i;
+}
+
+
+static unsigned int
+print_unsigned_long_long(unsigned long long x, unsigned int ui_base)
+{
+    unsigned long upper, lower;
+    unsigned int n = 0;
+    unsigned int mask = 0xF0000000u;
+
+    /* only implemented for hex, decimal is harder without 64 bit division */
+    if (ui_base != 16) {
+        return 0;
+    }
+
+    /* we can't do 64 bit division so break it up into two hex numbers */
+    upper = (unsigned long) (x >> 32llu);
+    lower = (unsigned long) x;
+
+    /* print first 32 bits if they exist */
+    if (upper > 0) {
+        n += print_unsigned_long(upper, ui_base);
+
+        /* print leading 0s */
+        while (!(mask & lower)) {
+            kernel_putchar('0');
+            n++;
+            mask = mask >> 4;
+        }
+    }
+
+    /* print last 32 bits */
+    n += print_unsigned_long(lower, ui_base);
+
+    return n;
+}
+
+
+static int
+vprintf(const char *format, va_list ap)
+{
+    unsigned int n;
+    unsigned int formatting;
+
+    if (!format) {
+        return 0;
+    }
+
+    n = 0;
+    formatting = 0;
+    while (*format) {
+        if (formatting) {
+            switch (*format) {
+            case '%':
+                kernel_putchar('%');
+                n++;
+                format++;
+                break;
+
+            case 'd': {
+                int x = va_arg(ap, int);
+
+                if (x < 0) {
+                    kernel_putchar('-');
+                    n++;
+                    x = -x;
+                }
+
+                n += print_unsigned_long((unsigned long)x, 10);
+                format++;
+                break;
+            }
+
+            case 'u':
+                n += print_unsigned_long(va_arg(ap, unsigned long), 10);
+                format++;
+                break;
+
+            case 'x':
+                n += print_unsigned_long(va_arg(ap, unsigned long), 16);
+                format++;
+                break;
+
+            case 'p': {
+                unsigned long p = va_arg(ap, unsigned long);
+                if (p == 0) {
+                    n += print_string("(nil)");
+                } else {
+                    n += print_string("0x");
+                    n += print_unsigned_long(p, 16);
+                }
+                format++;
+                break;
+            }
+
+            case 's':
+                n += print_string(va_arg(ap, char *));
+                format++;
+                break;
+
+            case 'l':
+                if (*(format + 1) == 'l' && *(format + 2) == 'x') {
+                    uint64_t arg = va_arg(ap, unsigned long long);
+                    n += print_unsigned_long_long(arg, 16);
+                }
+                format += 3;
+                break;
+            default:
+                format++;
+                break;
+            }
+
+            formatting = 0;
+        } else {
+            switch (*format) {
+            case '%':
+                formatting = 1;
+                format++;
+                break;
+
+            default:
+                kernel_putchar(*format);
+                n++;
+                format++;
+                break;
+            }
+        }
+    }
+
+    return n;
+}
+
+unsigned int
+printf(const char *format, ...)
+{
+    va_list args;
+    unsigned int i;
+
+    va_start(args, format);
+    i = vprintf(format, args);
+    va_end(args);
+    return i;
+}
+
+unsigned int puts(const char *s)
+{
+    for (; *s; s++) {
+        kernel_putchar(*s);
+    }
+    kernel_putchar('\n');
+    return 0;
+}
+
+#endif
 #line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/preemption.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
@@ -12431,6 +13108,38 @@ acpi_dmar_scan(
 }
 
 #endif /* IOMMU */
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/debug_helpers.c"
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+#ifdef DEBUG
+
+#include <arch/model/statedata.h>
+#include <plat/machine/debug_helpers.h>
+#include <plat/machine/io.h>
+
+#define DEBUG_PORT ia32KSdebugPort
+
+unsigned char getDebugChar(void)
+{
+    while ((in8(DEBUG_PORT + 5) & 1) == 0);
+    return in8(DEBUG_PORT);
+}
+
+void putDebugChar(unsigned char a)
+{
+    while ((in8(DEBUG_PORT + 5) & 0x20) == 0);
+    out8(DEBUG_PORT, a);
+}
+
+#endif
 #line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems

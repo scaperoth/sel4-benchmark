@@ -28,10 +28,10 @@ src/tests/inc_untyped.o: \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/apps/sel4test-tests/src/tests/../helpers.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/vka.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/cspacepath_t.h \
+ /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vspace/vspace.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/object.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/kobject_t.h \
- /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4utils/thread.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4utils/process.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4utils/vspace.h \
@@ -117,13 +117,13 @@ src/tests/inc_untyped.o: \
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/cspacepath_t.h:
 
+/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h:
+
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vspace/vspace.h:
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/object.h:
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/kobject_t.h:
-
-/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h:
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4utils/thread.h:
 

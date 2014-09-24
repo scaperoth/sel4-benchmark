@@ -142,7 +142,7 @@ typedef signed long long int64_t;
 /*
  * Automatically generated C config: don't edit
  * Project Configuration
- * Fri Sep 19 13:15:17 2014
+ * Mon Sep 22 15:37:37 2014
  */
 # 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 2
 
@@ -290,6 +290,29 @@ int __attribute__((__pure__)) str_to_int(const char* str);
  * @TAG(GD_GPL)
  */
 # 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 2
+
+
+
+void _fail(
+    const char* str,
+    const char* file,
+    unsigned int line,
+    const char* function
+) __attribute__((__noreturn__));
+
+
+
+void _assert_fail(
+    const char* assertion,
+    const char* file,
+    unsigned int line,
+    const char* function
+) __attribute__((__noreturn__));
+
+
+
+
+/* Create an assert that will trigger a compile error if it fails. */
 # 5 "./api/types_gen.h" 2
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
 /*
@@ -336,19 +359,19 @@ message_info_new(uint32_t msgLabel, uint32_t msgCapsUnwrapped, uint32_t msgExtra
     message_info.words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((msgLabel & ~0xfffff) == 0)) _assert_fail("(msgLabel & ~0xfffff) == 0", "./api/types_gen.h", 20, __FUNCTION__);
 
     message_info.words[0] |= (msgLabel & 0xfffff) << 12;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((msgCapsUnwrapped & ~0x7) == 0)) _assert_fail("(msgCapsUnwrapped & ~0x7) == 0", "./api/types_gen.h", 24, __FUNCTION__);
 
     message_info.words[0] |= (msgCapsUnwrapped & 0x7) << 9;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((msgExtraCaps & ~0x3) == 0)) _assert_fail("(msgExtraCaps & ~0x3) == 0", "./api/types_gen.h", 28, __FUNCTION__);
 
     message_info.words[0] |= (msgExtraCaps & 0x3) << 7;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((msgLength & ~0x7f) == 0)) _assert_fail("(msgLength & ~0x7f) == 0", "./api/types_gen.h", 32, __FUNCTION__);
 
     message_info.words[0] |= (msgLength & 0x7f) << 0;
 
@@ -368,7 +391,7 @@ message_info_get_msgCapsUnwrapped(message_info_t message_info) {
 static inline message_info_t __attribute__((__const__))
 message_info_set_msgCapsUnwrapped(message_info_t message_info, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xe00 >> 9) & v) == 0)) _assert_fail("((~0xe00 >> 9) & v) == 0", "./api/types_gen.h", 52, __FUNCTION__);
     message_info.words[0] &= ~0xe00;
     message_info.words[0] |= (v << 9) & 0xe00;
     return message_info;
@@ -382,7 +405,7 @@ message_info_get_msgExtraCaps(message_info_t message_info) {
 static inline message_info_t __attribute__((__const__))
 message_info_set_msgExtraCaps(message_info_t message_info, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x180 >> 7) & v) == 0)) _assert_fail("((~0x180 >> 7) & v) == 0", "./api/types_gen.h", 66, __FUNCTION__);
     message_info.words[0] &= ~0x180;
     message_info.words[0] |= (v << 7) & 0x180;
     return message_info;
@@ -396,7 +419,7 @@ message_info_get_msgLength(message_info_t message_info) {
 static inline message_info_t __attribute__((__const__))
 message_info_set_msgLength(message_info_t message_info, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x7f >> 0) & v) == 0)) _assert_fail("((~0x7f >> 0) & v) == 0", "./api/types_gen.h", 80, __FUNCTION__);
     message_info.words[0] &= ~0x7f;
     message_info.words[0] |= (v << 0) & 0x7f;
     return message_info;
@@ -414,15 +437,15 @@ cap_rights_new(uint32_t capAllowGrant, uint32_t capAllowRead, uint32_t capAllowW
     cap_rights.words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capAllowGrant & ~0x1) == 0)) _assert_fail("(capAllowGrant & ~0x1) == 0", "./api/types_gen.h", 98, __FUNCTION__);
 
     cap_rights.words[0] |= (capAllowGrant & 0x1) << 2;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capAllowRead & ~0x1) == 0)) _assert_fail("(capAllowRead & ~0x1) == 0", "./api/types_gen.h", 102, __FUNCTION__);
 
     cap_rights.words[0] |= (capAllowRead & 0x1) << 1;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capAllowWrite & ~0x1) == 0)) _assert_fail("(capAllowWrite & ~0x1) == 0", "./api/types_gen.h", 106, __FUNCTION__);
 
     cap_rights.words[0] |= (capAllowWrite & 0x1) << 0;
 
@@ -674,6 +697,11 @@ wordFromMessageInfo(message_info_t mi)
 {
     return mi.words[0];
 }
+# 108 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h"
+/*
+ * Print to serial a message helping userspace programmers to determine why the
+ * kernel is not performing their requested operation.
+ */
 # 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 2
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
 /*
@@ -869,47 +897,47 @@ pte_new(uint32_t page_base_address, uint32_t avl, uint32_t global, uint32_t pat,
     pte.words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((page_base_address & ~0xfffff000) == 0)) _assert_fail("(page_base_address & ~0xfffff000) == 0", "./arch/object/structures_gen.h", 35, __FUNCTION__);
 
     pte.words[0] |= (page_base_address & 0xfffff000) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((avl & ~0x7) == 0)) _assert_fail("(avl & ~0x7) == 0", "./arch/object/structures_gen.h", 39, __FUNCTION__);
 
     pte.words[0] |= (avl & 0x7) << 9;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((global & ~0x1) == 0)) _assert_fail("(global & ~0x1) == 0", "./arch/object/structures_gen.h", 43, __FUNCTION__);
 
     pte.words[0] |= (global & 0x1) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((pat & ~0x1) == 0)) _assert_fail("(pat & ~0x1) == 0", "./arch/object/structures_gen.h", 47, __FUNCTION__);
 
     pte.words[0] |= (pat & 0x1) << 7;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((dirty & ~0x1) == 0)) _assert_fail("(dirty & ~0x1) == 0", "./arch/object/structures_gen.h", 51, __FUNCTION__);
 
     pte.words[0] |= (dirty & 0x1) << 6;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((accessed & ~0x1) == 0)) _assert_fail("(accessed & ~0x1) == 0", "./arch/object/structures_gen.h", 55, __FUNCTION__);
 
     pte.words[0] |= (accessed & 0x1) << 5;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cache_disabled & ~0x1) == 0)) _assert_fail("(cache_disabled & ~0x1) == 0", "./arch/object/structures_gen.h", 59, __FUNCTION__);
 
     pte.words[0] |= (cache_disabled & 0x1) << 4;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((write_through & ~0x1) == 0)) _assert_fail("(write_through & ~0x1) == 0", "./arch/object/structures_gen.h", 63, __FUNCTION__);
 
     pte.words[0] |= (write_through & 0x1) << 3;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((super_user & ~0x1) == 0)) _assert_fail("(super_user & ~0x1) == 0", "./arch/object/structures_gen.h", 67, __FUNCTION__);
 
     pte.words[0] |= (super_user & 0x1) << 2;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((read_write & ~0x1) == 0)) _assert_fail("(read_write & ~0x1) == 0", "./arch/object/structures_gen.h", 71, __FUNCTION__);
 
     pte.words[0] |= (read_write & 0x1) << 1;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((present & ~0x1) == 0)) _assert_fail("(present & ~0x1) == 0", "./arch/object/structures_gen.h", 75, __FUNCTION__);
 
     pte.words[0] |= (present & 0x1) << 0;
 
@@ -921,54 +949,64 @@ pte_ptr_new(pte_t *pte_ptr, uint32_t page_base_address, uint32_t avl, uint32_t g
     pte_ptr->words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((page_base_address & ~0xfffff000) == 0)) _assert_fail("(page_base_address & ~0xfffff000) == 0", "./arch/object/structures_gen.h", 87, __FUNCTION__);
 
     pte_ptr->words[0] |= (page_base_address & 0xfffff000) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((avl & ~0x7) == 0)) _assert_fail("(avl & ~0x7) == 0", "./arch/object/structures_gen.h", 91, __FUNCTION__);
 
     pte_ptr->words[0] |= (avl & 0x7) << 9;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((global & ~0x1) == 0)) _assert_fail("(global & ~0x1) == 0", "./arch/object/structures_gen.h", 95, __FUNCTION__);
 
     pte_ptr->words[0] |= (global & 0x1) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((pat & ~0x1) == 0)) _assert_fail("(pat & ~0x1) == 0", "./arch/object/structures_gen.h", 99, __FUNCTION__);
 
     pte_ptr->words[0] |= (pat & 0x1) << 7;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((dirty & ~0x1) == 0)) _assert_fail("(dirty & ~0x1) == 0", "./arch/object/structures_gen.h", 103, __FUNCTION__);
 
     pte_ptr->words[0] |= (dirty & 0x1) << 6;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((accessed & ~0x1) == 0)) _assert_fail("(accessed & ~0x1) == 0", "./arch/object/structures_gen.h", 107, __FUNCTION__);
 
     pte_ptr->words[0] |= (accessed & 0x1) << 5;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cache_disabled & ~0x1) == 0)) _assert_fail("(cache_disabled & ~0x1) == 0", "./arch/object/structures_gen.h", 111, __FUNCTION__);
 
     pte_ptr->words[0] |= (cache_disabled & 0x1) << 4;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((write_through & ~0x1) == 0)) _assert_fail("(write_through & ~0x1) == 0", "./arch/object/structures_gen.h", 115, __FUNCTION__);
 
     pte_ptr->words[0] |= (write_through & 0x1) << 3;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((super_user & ~0x1) == 0)) _assert_fail("(super_user & ~0x1) == 0", "./arch/object/structures_gen.h", 119, __FUNCTION__);
 
     pte_ptr->words[0] |= (super_user & 0x1) << 2;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((read_write & ~0x1) == 0)) _assert_fail("(read_write & ~0x1) == 0", "./arch/object/structures_gen.h", 123, __FUNCTION__);
 
     pte_ptr->words[0] |= (read_write & 0x1) << 1;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((present & ~0x1) == 0)) _assert_fail("(present & ~0x1) == 0", "./arch/object/structures_gen.h", 127, __FUNCTION__);
 
     pte_ptr->words[0] |= (present & 0x1) << 0;
+}
+
+static inline uint32_t __attribute__((__const__))
+pte_get_page_base_address(pte_t pte) {
+    return (pte.words[0] & 0xfffff000) << 0;
 }
 
 static inline uint32_t __attribute__((__pure__))
 pte_ptr_get_page_base_address(pte_t *pte_ptr) {
     return (pte_ptr->words[0] & 0xfffff000) << 0;
+}
+
+static inline uint32_t __attribute__((__const__))
+pte_get_super_user(pte_t pte) {
+    return (pte.words[0] & 0x4) >> 2;
 }
 
 static inline uint32_t __attribute__((__const__))
@@ -994,7 +1032,7 @@ async_endpoint_ptr_get_aepData(async_endpoint_t *async_endpoint_ptr) {
 static inline void
 async_endpoint_ptr_set_aepData(async_endpoint_t *async_endpoint_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xffffffff >> 0) & v) == 0)) _assert_fail("((~0xffffffff >> 0) & v) == 0", "./arch/object/structures_gen.h", 170, __FUNCTION__);
     async_endpoint_ptr->words[3] &= ~0xffffffff;
     async_endpoint_ptr->words[3] |= (v << 0) & 0xffffffff;
 }
@@ -1007,7 +1045,7 @@ async_endpoint_ptr_get_aepMsgIdentifier(async_endpoint_t *async_endpoint_ptr) {
 static inline void
 async_endpoint_ptr_set_aepMsgIdentifier(async_endpoint_t *async_endpoint_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xffffffff >> 0) & v) == 0)) _assert_fail("((~0xffffffff >> 0) & v) == 0", "./arch/object/structures_gen.h", 183, __FUNCTION__);
     async_endpoint_ptr->words[2] &= ~0xffffffff;
     async_endpoint_ptr->words[2] |= (v << 0) & 0xffffffff;
 }
@@ -1020,7 +1058,7 @@ async_endpoint_ptr_get_aepQueue_head(async_endpoint_t *async_endpoint_ptr) {
 static inline void
 async_endpoint_ptr_set_aepQueue_head(async_endpoint_t *async_endpoint_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffffff0 << 0) & v) == 0)) _assert_fail("((~0xfffffff0 << 0) & v) == 0", "./arch/object/structures_gen.h", 196, __FUNCTION__);
     async_endpoint_ptr->words[1] &= ~0xfffffff0;
     async_endpoint_ptr->words[1] |= (v >> 0) & 0xfffffff0;
 }
@@ -1033,7 +1071,7 @@ async_endpoint_ptr_get_aepQueue_tail(async_endpoint_t *async_endpoint_ptr) {
 static inline void
 async_endpoint_ptr_set_aepQueue_tail(async_endpoint_t *async_endpoint_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffffff0 << 0) & v) == 0)) _assert_fail("((~0xfffffff0 << 0) & v) == 0", "./arch/object/structures_gen.h", 209, __FUNCTION__);
     async_endpoint_ptr->words[0] &= ~0xfffffff0;
     async_endpoint_ptr->words[0] |= (v >> 0) & 0xfffffff0;
 }
@@ -1046,7 +1084,7 @@ async_endpoint_ptr_get_state(async_endpoint_t *async_endpoint_ptr) {
 static inline void
 async_endpoint_ptr_set_state(async_endpoint_t *async_endpoint_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x3 >> 0) & v) == 0)) _assert_fail("((~0x3 >> 0) & v) == 0", "./arch/object/structures_gen.h", 222, __FUNCTION__);
     async_endpoint_ptr->words[0] &= ~0x3;
     async_endpoint_ptr->words[0] |= (v << 0) & 0x3;
 }
@@ -1063,7 +1101,7 @@ apic_icr2_new(uint32_t dest) {
     apic_icr2.words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((dest & ~0xff) == 0)) _assert_fail("(dest & ~0xff) == 0", "./arch/object/structures_gen.h", 239, __FUNCTION__);
 
     apic_icr2.words[0] |= (dest & 0xff) << 24;
 
@@ -1120,39 +1158,39 @@ tss_ptr_new(tss_t *tss_ptr, uint32_t io_map_base, uint32_t trap, uint32_t sel_ld
     tss_ptr->words[25] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((io_map_base & ~0xffff) == 0)) _assert_fail("(io_map_base & ~0xffff) == 0", "./arch/object/structures_gen.h", 296, __FUNCTION__);
 
     tss_ptr->words[25] |= (io_map_base & 0xffff) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((trap & ~0x1) == 0)) _assert_fail("(trap & ~0x1) == 0", "./arch/object/structures_gen.h", 300, __FUNCTION__);
 
     tss_ptr->words[25] |= (trap & 0x1) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((sel_ldt & ~0xffff) == 0)) _assert_fail("(sel_ldt & ~0xffff) == 0", "./arch/object/structures_gen.h", 304, __FUNCTION__);
 
     tss_ptr->words[24] |= (sel_ldt & 0xffff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((gs & ~0xffff) == 0)) _assert_fail("(gs & ~0xffff) == 0", "./arch/object/structures_gen.h", 308, __FUNCTION__);
 
     tss_ptr->words[23] |= (gs & 0xffff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((fs & ~0xffff) == 0)) _assert_fail("(fs & ~0xffff) == 0", "./arch/object/structures_gen.h", 312, __FUNCTION__);
 
     tss_ptr->words[22] |= (fs & 0xffff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((ds & ~0xffff) == 0)) _assert_fail("(ds & ~0xffff) == 0", "./arch/object/structures_gen.h", 316, __FUNCTION__);
 
     tss_ptr->words[21] |= (ds & 0xffff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((ss & ~0xffff) == 0)) _assert_fail("(ss & ~0xffff) == 0", "./arch/object/structures_gen.h", 320, __FUNCTION__);
 
     tss_ptr->words[20] |= (ss & 0xffff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cs & ~0xffff) == 0)) _assert_fail("(cs & ~0xffff) == 0", "./arch/object/structures_gen.h", 324, __FUNCTION__);
 
     tss_ptr->words[19] |= (cs & 0xffff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((es & ~0xffff) == 0)) _assert_fail("(es & ~0xffff) == 0", "./arch/object/structures_gen.h", 328, __FUNCTION__);
 
     tss_ptr->words[18] |= (es & 0xffff) << 0;
     tss_ptr->words[17] |= edi << 0;
@@ -1167,22 +1205,22 @@ tss_ptr_new(tss_t *tss_ptr, uint32_t io_map_base, uint32_t trap, uint32_t sel_ld
     tss_ptr->words[8] |= eip << 0;
     tss_ptr->words[7] |= cr3 << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((ss2 & ~0xffff) == 0)) _assert_fail("(ss2 & ~0xffff) == 0", "./arch/object/structures_gen.h", 343, __FUNCTION__);
 
     tss_ptr->words[6] |= (ss2 & 0xffff) << 0;
     tss_ptr->words[5] |= esp2 << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((ss1 & ~0xffff) == 0)) _assert_fail("(ss1 & ~0xffff) == 0", "./arch/object/structures_gen.h", 348, __FUNCTION__);
 
     tss_ptr->words[4] |= (ss1 & 0xffff) << 0;
     tss_ptr->words[3] |= esp1 << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((ss0 & ~0xffff) == 0)) _assert_fail("(ss0 & ~0xffff) == 0", "./arch/object/structures_gen.h", 353, __FUNCTION__);
 
     tss_ptr->words[2] |= (ss0 & 0xffff) << 0;
     tss_ptr->words[1] |= esp0 << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((prev_task & ~0xffff) == 0)) _assert_fail("(prev_task & ~0xffff) == 0", "./arch/object/structures_gen.h", 358, __FUNCTION__);
 
     tss_ptr->words[0] |= (prev_task & 0xffff) << 0;
 }
@@ -1190,7 +1228,7 @@ tss_ptr_new(tss_t *tss_ptr, uint32_t io_map_base, uint32_t trap, uint32_t sel_ld
 static inline void
 tss_ptr_set_esp0(tss_t *tss_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xffffffff >> 0) & v) == 0)) _assert_fail("((~0xffffffff >> 0) & v) == 0", "./arch/object/structures_gen.h", 366, __FUNCTION__);
     tss_ptr->words[1] &= ~0xffffffff;
     tss_ptr->words[1] |= (v << 0) & 0xffffffff;
 }
@@ -1207,35 +1245,35 @@ apic_lvt_new(uint32_t timer_mode, uint32_t masked, uint32_t trigger_mode, uint32
     apic_lvt.words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((timer_mode & ~0x3) == 0)) _assert_fail("(timer_mode & ~0x3) == 0", "./arch/object/structures_gen.h", 383, __FUNCTION__);
 
     apic_lvt.words[0] |= (timer_mode & 0x3) << 17;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((masked & ~0x1) == 0)) _assert_fail("(masked & ~0x1) == 0", "./arch/object/structures_gen.h", 387, __FUNCTION__);
 
     apic_lvt.words[0] |= (masked & 0x1) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((trigger_mode & ~0x1) == 0)) _assert_fail("(trigger_mode & ~0x1) == 0", "./arch/object/structures_gen.h", 391, __FUNCTION__);
 
     apic_lvt.words[0] |= (trigger_mode & 0x1) << 15;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((remote_irr & ~0x1) == 0)) _assert_fail("(remote_irr & ~0x1) == 0", "./arch/object/structures_gen.h", 395, __FUNCTION__);
 
     apic_lvt.words[0] |= (remote_irr & 0x1) << 14;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((pin_polarity & ~0x1) == 0)) _assert_fail("(pin_polarity & ~0x1) == 0", "./arch/object/structures_gen.h", 399, __FUNCTION__);
 
     apic_lvt.words[0] |= (pin_polarity & 0x1) << 13;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((delivery_status & ~0x1) == 0)) _assert_fail("(delivery_status & ~0x1) == 0", "./arch/object/structures_gen.h", 403, __FUNCTION__);
 
     apic_lvt.words[0] |= (delivery_status & 0x1) << 12;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((delivery_mode & ~0x7) == 0)) _assert_fail("(delivery_mode & ~0x7) == 0", "./arch/object/structures_gen.h", 407, __FUNCTION__);
 
     apic_lvt.words[0] |= (delivery_mode & 0x7) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((vector & ~0xff) == 0)) _assert_fail("(vector & ~0xff) == 0", "./arch/object/structures_gen.h", 411, __FUNCTION__);
 
     apic_lvt.words[0] |= (vector & 0xff) << 0;
 
@@ -1255,7 +1293,7 @@ endpoint_ptr_get_epQueue_head(endpoint_t *endpoint_ptr) {
 static inline void
 endpoint_ptr_set_epQueue_head(endpoint_t *endpoint_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffffff0 << 0) & v) == 0)) _assert_fail("((~0xfffffff0 << 0) & v) == 0", "./arch/object/structures_gen.h", 431, __FUNCTION__);
     endpoint_ptr->words[1] &= ~0xfffffff0;
     endpoint_ptr->words[1] |= (v >> 0) & 0xfffffff0;
 }
@@ -1268,7 +1306,7 @@ endpoint_ptr_get_epQueue_tail(endpoint_t *endpoint_ptr) {
 static inline void
 endpoint_ptr_set_epQueue_tail(endpoint_t *endpoint_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffffff0 << 0) & v) == 0)) _assert_fail("((~0xfffffff0 << 0) & v) == 0", "./arch/object/structures_gen.h", 444, __FUNCTION__);
     endpoint_ptr->words[0] &= ~0xfffffff0;
     endpoint_ptr->words[0] |= (v >> 0) & 0xfffffff0;
 }
@@ -1281,7 +1319,7 @@ endpoint_ptr_get_state(endpoint_t *endpoint_ptr) {
 static inline void
 endpoint_ptr_set_state(endpoint_t *endpoint_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x3 >> 0) & v) == 0)) _assert_fail("((~0x3 >> 0) & v) == 0", "./arch/object/structures_gen.h", 457, __FUNCTION__);
     endpoint_ptr->words[0] &= ~0x3;
     endpoint_ptr->words[0] |= (v << 0) & 0x3;
 }
@@ -1318,15 +1356,15 @@ apic_svr_new(uint32_t focus_processor_chk, uint32_t enabled, uint32_t spurious_v
     apic_svr.words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((focus_processor_chk & ~0x1) == 0)) _assert_fail("(focus_processor_chk & ~0x1) == 0", "./arch/object/structures_gen.h", 494, __FUNCTION__);
 
     apic_svr.words[0] |= (focus_processor_chk & 0x1) << 9;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((enabled & ~0x1) == 0)) _assert_fail("(enabled & ~0x1) == 0", "./arch/object/structures_gen.h", 498, __FUNCTION__);
 
     apic_svr.words[0] |= (enabled & 0x1) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((spurious_vector & ~0xff) == 0)) _assert_fail("(spurious_vector & ~0xff) == 0", "./arch/object/structures_gen.h", 502, __FUNCTION__);
 
     apic_svr.words[0] |= (spurious_vector & 0xff) << 0;
 
@@ -1361,7 +1399,7 @@ thread_state_ptr_get_blockingIPCBadge(thread_state_t *thread_state_ptr) {
 static inline void
 thread_state_ptr_set_blockingIPCBadge(thread_state_t *thread_state_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffffff8 >> 3) & v) == 0)) _assert_fail("((~0xfffffff8 >> 3) & v) == 0", "./arch/object/structures_gen.h", 537, __FUNCTION__);
     thread_state_ptr->words[2] &= ~0xfffffff8;
     thread_state_ptr->words[2] |= (v << 3) & 0xfffffff8;
 }
@@ -1374,7 +1412,7 @@ thread_state_ptr_get_blockingIPCCanGrant(thread_state_t *thread_state_ptr) {
 static inline void
 thread_state_ptr_set_blockingIPCCanGrant(thread_state_t *thread_state_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x4 >> 2) & v) == 0)) _assert_fail("((~0x4 >> 2) & v) == 0", "./arch/object/structures_gen.h", 550, __FUNCTION__);
     thread_state_ptr->words[2] &= ~0x4;
     thread_state_ptr->words[2] |= (v << 2) & 0x4;
 }
@@ -1387,7 +1425,7 @@ thread_state_ptr_get_blockingIPCIsCall(thread_state_t *thread_state_ptr) {
 static inline void
 thread_state_ptr_set_blockingIPCIsCall(thread_state_t *thread_state_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x2 >> 1) & v) == 0)) _assert_fail("((~0x2 >> 1) & v) == 0", "./arch/object/structures_gen.h", 563, __FUNCTION__);
     thread_state_ptr->words[2] &= ~0x2;
     thread_state_ptr->words[2] |= (v << 1) & 0x2;
 }
@@ -1400,7 +1438,7 @@ thread_state_get_tcbQueued(thread_state_t thread_state) {
 static inline void
 thread_state_ptr_set_tcbQueued(thread_state_t *thread_state_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x1 >> 0) & v) == 0)) _assert_fail("((~0x1 >> 0) & v) == 0", "./arch/object/structures_gen.h", 576, __FUNCTION__);
     thread_state_ptr->words[2] &= ~0x1;
     thread_state_ptr->words[2] |= (v << 0) & 0x1;
 }
@@ -1418,7 +1456,7 @@ thread_state_ptr_get_blockingIPCDiminishCaps(thread_state_t *thread_state_ptr) {
 static inline void
 thread_state_ptr_set_blockingIPCDiminishCaps(thread_state_t *thread_state_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x1 >> 0) & v) == 0)) _assert_fail("((~0x1 >> 0) & v) == 0", "./arch/object/structures_gen.h", 594, __FUNCTION__);
     thread_state_ptr->words[1] &= ~0x1;
     thread_state_ptr->words[1] |= (v << 0) & 0x1;
 }
@@ -1431,7 +1469,7 @@ thread_state_ptr_get_blockingIPCEndpoint(thread_state_t *thread_state_ptr) {
 static inline void
 thread_state_ptr_set_blockingIPCEndpoint(thread_state_t *thread_state_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffffff0 << 0) & v) == 0)) _assert_fail("((~0xfffffff0 << 0) & v) == 0", "./arch/object/structures_gen.h", 607, __FUNCTION__);
     thread_state_ptr->words[0] &= ~0xfffffff0;
     thread_state_ptr->words[0] |= (v >> 0) & 0xfffffff0;
 }
@@ -1449,7 +1487,7 @@ thread_state_ptr_get_tsType(thread_state_t *thread_state_ptr) {
 static inline void
 thread_state_ptr_set_tsType(thread_state_t *thread_state_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xf >> 0) & v) == 0)) _assert_fail("((~0xf >> 0) & v) == 0", "./arch/object/structures_gen.h", 625, __FUNCTION__);
     thread_state_ptr->words[0] &= ~0xf;
     thread_state_ptr->words[0] |= (v << 0) & 0xf;
 }
@@ -1462,7 +1500,7 @@ typedef struct ia32_pat_msr ia32_pat_msr_t;
 static inline void
 ia32_pat_msr_ptr_set_pa4(ia32_pat_msr_t *ia32_pat_msr_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x7 >> 0) & v) == 0)) _assert_fail("((~0x7 >> 0) & v) == 0", "./arch/object/structures_gen.h", 638, __FUNCTION__);
     ia32_pat_msr_ptr->words[1] &= ~0x7;
     ia32_pat_msr_ptr->words[1] |= (v << 0) & 0x7;
 }
@@ -1470,7 +1508,7 @@ ia32_pat_msr_ptr_set_pa4(ia32_pat_msr_t *ia32_pat_msr_ptr, uint32_t v) {
 static inline void
 ia32_pat_msr_ptr_set_pa3(ia32_pat_msr_t *ia32_pat_msr_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x7000000 >> 24) & v) == 0)) _assert_fail("((~0x7000000 >> 24) & v) == 0", "./arch/object/structures_gen.h", 646, __FUNCTION__);
     ia32_pat_msr_ptr->words[0] &= ~0x7000000;
     ia32_pat_msr_ptr->words[0] |= (v << 24) & 0x7000000;
 }
@@ -1478,7 +1516,7 @@ ia32_pat_msr_ptr_set_pa3(ia32_pat_msr_t *ia32_pat_msr_ptr, uint32_t v) {
 static inline void
 ia32_pat_msr_ptr_set_pa2(ia32_pat_msr_t *ia32_pat_msr_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x70000 >> 16) & v) == 0)) _assert_fail("((~0x70000 >> 16) & v) == 0", "./arch/object/structures_gen.h", 654, __FUNCTION__);
     ia32_pat_msr_ptr->words[0] &= ~0x70000;
     ia32_pat_msr_ptr->words[0] |= (v << 16) & 0x70000;
 }
@@ -1486,7 +1524,7 @@ ia32_pat_msr_ptr_set_pa2(ia32_pat_msr_t *ia32_pat_msr_ptr, uint32_t v) {
 static inline void
 ia32_pat_msr_ptr_set_pa1(ia32_pat_msr_t *ia32_pat_msr_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x700 >> 8) & v) == 0)) _assert_fail("((~0x700 >> 8) & v) == 0", "./arch/object/structures_gen.h", 662, __FUNCTION__);
     ia32_pat_msr_ptr->words[0] &= ~0x700;
     ia32_pat_msr_ptr->words[0] |= (v << 8) & 0x700;
 }
@@ -1494,7 +1532,7 @@ ia32_pat_msr_ptr_set_pa1(ia32_pat_msr_t *ia32_pat_msr_ptr, uint32_t v) {
 static inline void
 ia32_pat_msr_ptr_set_pa0(ia32_pat_msr_t *ia32_pat_msr_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x7 >> 0) & v) == 0)) _assert_fail("((~0x7 >> 0) & v) == 0", "./arch/object/structures_gen.h", 670, __FUNCTION__);
     ia32_pat_msr_ptr->words[0] &= ~0x7;
     ia32_pat_msr_ptr->words[0] |= (v << 0) & 0x7;
 }
@@ -1526,31 +1564,31 @@ apic_icr1_new(uint32_t dest_shorthand, uint32_t trigger_mode, uint32_t level, ui
     apic_icr1.words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((dest_shorthand & ~0x3) == 0)) _assert_fail("(dest_shorthand & ~0x3) == 0", "./arch/object/structures_gen.h", 702, __FUNCTION__);
 
     apic_icr1.words[0] |= (dest_shorthand & 0x3) << 18;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((trigger_mode & ~0x1) == 0)) _assert_fail("(trigger_mode & ~0x1) == 0", "./arch/object/structures_gen.h", 706, __FUNCTION__);
 
     apic_icr1.words[0] |= (trigger_mode & 0x1) << 15;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((level & ~0x1) == 0)) _assert_fail("(level & ~0x1) == 0", "./arch/object/structures_gen.h", 710, __FUNCTION__);
 
     apic_icr1.words[0] |= (level & 0x1) << 14;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((delivery_status & ~0x1) == 0)) _assert_fail("(delivery_status & ~0x1) == 0", "./arch/object/structures_gen.h", 714, __FUNCTION__);
 
     apic_icr1.words[0] |= (delivery_status & 0x1) << 12;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((dest_mode & ~0x1) == 0)) _assert_fail("(dest_mode & ~0x1) == 0", "./arch/object/structures_gen.h", 718, __FUNCTION__);
 
     apic_icr1.words[0] |= (dest_mode & 0x1) << 11;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((delivery_mode & ~0x7) == 0)) _assert_fail("(delivery_mode & ~0x7) == 0", "./arch/object/structures_gen.h", 722, __FUNCTION__);
 
     apic_icr1.words[0] |= (delivery_mode & 0x7) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((vector & ~0xff) == 0)) _assert_fail("(vector & ~0xff) == 0", "./arch/object/structures_gen.h", 726, __FUNCTION__);
 
     apic_icr1.words[0] |= (vector & 0xff) << 0;
 
@@ -1570,19 +1608,19 @@ mdb_node_new(uint32_t mdbNext, uint32_t mdbRevocable, uint32_t mdbFirstBadged, u
     mdb_node.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((mdbNext & ~0xfffffff8) == 0)) _assert_fail("(mdbNext & ~0xfffffff8) == 0", "./arch/object/structures_gen.h", 746, __FUNCTION__);
 
     mdb_node.words[1] |= (mdbNext & 0xfffffff8) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((mdbRevocable & ~0x1) == 0)) _assert_fail("(mdbRevocable & ~0x1) == 0", "./arch/object/structures_gen.h", 750, __FUNCTION__);
 
     mdb_node.words[1] |= (mdbRevocable & 0x1) << 1;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((mdbFirstBadged & ~0x1) == 0)) _assert_fail("(mdbFirstBadged & ~0x1) == 0", "./arch/object/structures_gen.h", 754, __FUNCTION__);
 
     mdb_node.words[1] |= (mdbFirstBadged & 0x1) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((mdbPrev & ~0xfffffff8) == 0)) _assert_fail("(mdbPrev & ~0xfffffff8) == 0", "./arch/object/structures_gen.h", 758, __FUNCTION__);
 
     mdb_node.words[0] |= (mdbPrev & 0xfffffff8) >> 0;
 
@@ -1597,7 +1635,7 @@ mdb_node_get_mdbNext(mdb_node_t mdb_node) {
 static inline void
 mdb_node_ptr_set_mdbNext(mdb_node_t *mdb_node_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffffff8 << 0) & v) == 0)) _assert_fail("((~0xfffffff8 << 0) & v) == 0", "./arch/object/structures_gen.h", 773, __FUNCTION__);
     mdb_node_ptr->words[1] &= ~0xfffffff8;
     mdb_node_ptr->words[1] |= (v >> 0) & 0xfffffff8;
 }
@@ -1610,7 +1648,7 @@ mdb_node_get_mdbRevocable(mdb_node_t mdb_node) {
 static inline mdb_node_t __attribute__((__const__))
 mdb_node_set_mdbRevocable(mdb_node_t mdb_node, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x2 >> 1) & v) == 0)) _assert_fail("((~0x2 >> 1) & v) == 0", "./arch/object/structures_gen.h", 786, __FUNCTION__);
     mdb_node.words[1] &= ~0x2;
     mdb_node.words[1] |= (v << 1) & 0x2;
     return mdb_node;
@@ -1619,7 +1657,7 @@ mdb_node_set_mdbRevocable(mdb_node_t mdb_node, uint32_t v) {
 static inline void
 mdb_node_ptr_set_mdbRevocable(mdb_node_t *mdb_node_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x2 >> 1) & v) == 0)) _assert_fail("((~0x2 >> 1) & v) == 0", "./arch/object/structures_gen.h", 795, __FUNCTION__);
     mdb_node_ptr->words[1] &= ~0x2;
     mdb_node_ptr->words[1] |= (v << 1) & 0x2;
 }
@@ -1632,7 +1670,7 @@ mdb_node_get_mdbFirstBadged(mdb_node_t mdb_node) {
 static inline mdb_node_t __attribute__((__const__))
 mdb_node_set_mdbFirstBadged(mdb_node_t mdb_node, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x1 >> 0) & v) == 0)) _assert_fail("((~0x1 >> 0) & v) == 0", "./arch/object/structures_gen.h", 808, __FUNCTION__);
     mdb_node.words[1] &= ~0x1;
     mdb_node.words[1] |= (v << 0) & 0x1;
     return mdb_node;
@@ -1641,7 +1679,7 @@ mdb_node_set_mdbFirstBadged(mdb_node_t mdb_node, uint32_t v) {
 static inline void
 mdb_node_ptr_set_mdbFirstBadged(mdb_node_t *mdb_node_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x1 >> 0) & v) == 0)) _assert_fail("((~0x1 >> 0) & v) == 0", "./arch/object/structures_gen.h", 817, __FUNCTION__);
     mdb_node_ptr->words[1] &= ~0x1;
     mdb_node_ptr->words[1] |= (v << 0) & 0x1;
 }
@@ -1654,7 +1692,7 @@ mdb_node_get_mdbPrev(mdb_node_t mdb_node) {
 static inline mdb_node_t __attribute__((__const__))
 mdb_node_set_mdbPrev(mdb_node_t mdb_node, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffffff8 << 0) & v) == 0)) _assert_fail("((~0xfffffff8 << 0) & v) == 0", "./arch/object/structures_gen.h", 830, __FUNCTION__);
     mdb_node.words[0] &= ~0xfffffff8;
     mdb_node.words[0] |= (v >> 0) & 0xfffffff8;
     return mdb_node;
@@ -1663,7 +1701,7 @@ mdb_node_set_mdbPrev(mdb_node_t mdb_node, uint32_t v) {
 static inline void
 mdb_node_ptr_set_mdbPrev(mdb_node_t *mdb_node_ptr, uint32_t v) {
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffffff8 << 0) & v) == 0)) _assert_fail("((~0xfffffff8 << 0) & v) == 0", "./arch/object/structures_gen.h", 839, __FUNCTION__);
     mdb_node_ptr->words[0] &= ~0xfffffff8;
     mdb_node_ptr->words[0] |= (v >> 0) & 0xfffffff8;
 }
@@ -1716,7 +1754,7 @@ cap_null_cap_new(void) {
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_null_cap & ~0xf) == 0)) _assert_fail("(cap_null_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 892, __FUNCTION__);
 
     cap.words[0] |= (cap_null_cap & 0xf) << 0;
 
@@ -1731,19 +1769,19 @@ cap_untyped_cap_new(uint32_t capFreeIndex, uint32_t capBlockSize, uint32_t capPt
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capFreeIndex & ~0x7ffffff) == 0)) _assert_fail("(capFreeIndex & ~0x7ffffff) == 0", "./arch/object/structures_gen.h", 907, __FUNCTION__);
 
     cap.words[1] |= (capFreeIndex & 0x7ffffff) << 5;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capBlockSize & ~0x1f) == 0)) _assert_fail("(capBlockSize & ~0x1f) == 0", "./arch/object/structures_gen.h", 911, __FUNCTION__);
 
     cap.words[1] |= (capBlockSize & 0x1f) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capPtr & ~0xfffffff0) == 0)) _assert_fail("(capPtr & ~0xfffffff0) == 0", "./arch/object/structures_gen.h", 915, __FUNCTION__);
 
     cap.words[0] |= (capPtr & 0xfffffff0) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_untyped_cap & ~0xf) == 0)) _assert_fail("(cap_untyped_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 919, __FUNCTION__);
 
     cap.words[0] |= (cap_untyped_cap & 0xf) << 0;
 
@@ -1752,7 +1790,13 @@ cap_untyped_cap_new(uint32_t capFreeIndex, uint32_t capBlockSize, uint32_t capPt
 
 static inline uint32_t __attribute__((__const__))
 cap_untyped_cap_get_capFreeIndex(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_untyped_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_untyped_cap",
+ "./arch/object/structures_gen.h"
+# 928 "./arch/object/structures_gen.h"
+    ,
+ 929
+# 928 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                            ;
 
     return (cap.words[1] & 0xffffffe0) >> 5;
@@ -1761,11 +1805,17 @@ cap_untyped_cap_get_capFreeIndex(cap_t cap) {
 static inline void
 cap_untyped_cap_ptr_set_capFreeIndex(cap_t *cap_ptr,
                                       uint32_t v) {
-   
+    if(!(((cap_ptr->words[0] >> 0) & 0xf) == cap_untyped_cap)) _assert_fail("((cap_ptr->words[0] >> 0) & 0xf) == cap_untyped_cap",
+ "./arch/object/structures_gen.h"
+# 937 "./arch/object/structures_gen.h"
+    ,
+ 938
+# 937 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                            ;
 
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xffffffe0 >> 5) & v) == 0)) _assert_fail("((~0xffffffe0 >> 5) & v) == 0", "./arch/object/structures_gen.h", 941, __FUNCTION__);
 
     cap_ptr->words[1] &= ~0xffffffe0;
     cap_ptr->words[1] |= (v << 5) & 0xffffffe0;
@@ -1773,7 +1823,13 @@ cap_untyped_cap_ptr_set_capFreeIndex(cap_t *cap_ptr,
 
 static inline uint32_t __attribute__((__const__))
 cap_untyped_cap_get_capBlockSize(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_untyped_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_untyped_cap",
+ "./arch/object/structures_gen.h"
+# 949 "./arch/object/structures_gen.h"
+    ,
+ 950
+# 949 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                            ;
 
     return (cap.words[1] & 0x1f) >> 0;
@@ -1781,7 +1837,13 @@ cap_untyped_cap_get_capBlockSize(cap_t cap) {
 
 static inline uint32_t __attribute__((__pure__))
 cap_untyped_cap_ptr_get_capBlockSize(cap_t *cap_ptr) {
-   
+    if(!(((cap_ptr->words[0] >> 0) & 0xf) == cap_untyped_cap)) _assert_fail("((cap_ptr->words[0] >> 0) & 0xf) == cap_untyped_cap",
+ "./arch/object/structures_gen.h"
+# 957 "./arch/object/structures_gen.h"
+    ,
+ 958
+# 957 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                            ;
 
     return (cap_ptr->words[1] & 0x1f) >> 0;
@@ -1789,7 +1851,13 @@ cap_untyped_cap_ptr_get_capBlockSize(cap_t *cap_ptr) {
 
 static inline uint32_t __attribute__((__const__))
 cap_untyped_cap_get_capPtr(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_untyped_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_untyped_cap",
+ "./arch/object/structures_gen.h"
+# 965 "./arch/object/structures_gen.h"
+    ,
+ 966
+# 965 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                            ;
 
     return (cap.words[0] & 0xfffffff0) << 0;
@@ -1803,27 +1871,27 @@ cap_endpoint_cap_new(uint32_t capEPBadge, uint32_t capCanGrant, uint32_t capCanS
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capEPBadge & ~0x1fffffff) == 0)) _assert_fail("(capEPBadge & ~0x1fffffff) == 0", "./arch/object/structures_gen.h", 979, __FUNCTION__);
 
     cap.words[1] |= (capEPBadge & 0x1fffffff) << 3;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capCanGrant & ~0x1) == 0)) _assert_fail("(capCanGrant & ~0x1) == 0", "./arch/object/structures_gen.h", 983, __FUNCTION__);
 
     cap.words[1] |= (capCanGrant & 0x1) << 2;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capCanSend & ~0x1) == 0)) _assert_fail("(capCanSend & ~0x1) == 0", "./arch/object/structures_gen.h", 987, __FUNCTION__);
 
     cap.words[1] |= (capCanSend & 0x1) << 1;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capCanReceive & ~0x1) == 0)) _assert_fail("(capCanReceive & ~0x1) == 0", "./arch/object/structures_gen.h", 991, __FUNCTION__);
 
     cap.words[1] |= (capCanReceive & 0x1) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capEPPtr & ~0xfffffff0) == 0)) _assert_fail("(capEPPtr & ~0xfffffff0) == 0", "./arch/object/structures_gen.h", 995, __FUNCTION__);
 
     cap.words[0] |= (capEPPtr & 0xfffffff0) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_endpoint_cap & ~0xf) == 0)) _assert_fail("(cap_endpoint_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 999, __FUNCTION__);
 
     cap.words[0] |= (cap_endpoint_cap & 0xf) << 0;
 
@@ -1832,7 +1900,13 @@ cap_endpoint_cap_new(uint32_t capEPBadge, uint32_t capCanGrant, uint32_t capCanS
 
 static inline uint32_t __attribute__((__const__))
 cap_endpoint_cap_get_capEPBadge(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1008 "./arch/object/structures_gen.h"
+    ,
+ 1009
+# 1008 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                             ;
 
     return (cap.words[1] & 0xfffffff8) >> 3;
@@ -1840,10 +1914,16 @@ cap_endpoint_cap_get_capEPBadge(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_endpoint_cap_set_capEPBadge(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1016 "./arch/object/structures_gen.h"
+    ,
+ 1017
+# 1016 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                             ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffffff8 >> 3) & v) == 0)) _assert_fail("((~0xfffffff8 >> 3) & v) == 0", "./arch/object/structures_gen.h", 1019, __FUNCTION__);
 
     cap.words[1] &= ~0xfffffff8;
     cap.words[1] |= (v << 3) & 0xfffffff8;
@@ -1852,7 +1932,13 @@ cap_endpoint_cap_set_capEPBadge(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_endpoint_cap_get_capCanGrant(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1028 "./arch/object/structures_gen.h"
+    ,
+ 1029
+# 1028 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                             ;
 
     return (cap.words[1] & 0x4) >> 2;
@@ -1860,10 +1946,16 @@ cap_endpoint_cap_get_capCanGrant(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_endpoint_cap_set_capCanGrant(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1036 "./arch/object/structures_gen.h"
+    ,
+ 1037
+# 1036 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                             ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x4 >> 2) & v) == 0)) _assert_fail("((~0x4 >> 2) & v) == 0", "./arch/object/structures_gen.h", 1039, __FUNCTION__);
 
     cap.words[1] &= ~0x4;
     cap.words[1] |= (v << 2) & 0x4;
@@ -1872,7 +1964,13 @@ cap_endpoint_cap_set_capCanGrant(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_endpoint_cap_get_capCanSend(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1048 "./arch/object/structures_gen.h"
+    ,
+ 1049
+# 1048 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                             ;
 
     return (cap.words[1] & 0x2) >> 1;
@@ -1880,10 +1978,16 @@ cap_endpoint_cap_get_capCanSend(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_endpoint_cap_set_capCanSend(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1056 "./arch/object/structures_gen.h"
+    ,
+ 1057
+# 1056 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                             ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x2 >> 1) & v) == 0)) _assert_fail("((~0x2 >> 1) & v) == 0", "./arch/object/structures_gen.h", 1059, __FUNCTION__);
 
     cap.words[1] &= ~0x2;
     cap.words[1] |= (v << 1) & 0x2;
@@ -1892,7 +1996,13 @@ cap_endpoint_cap_set_capCanSend(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_endpoint_cap_get_capCanReceive(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1068 "./arch/object/structures_gen.h"
+    ,
+ 1069
+# 1068 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                             ;
 
     return (cap.words[1] & 0x1) >> 0;
@@ -1900,10 +2010,16 @@ cap_endpoint_cap_get_capCanReceive(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_endpoint_cap_set_capCanReceive(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1076 "./arch/object/structures_gen.h"
+    ,
+ 1077
+# 1076 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                             ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x1 >> 0) & v) == 0)) _assert_fail("((~0x1 >> 0) & v) == 0", "./arch/object/structures_gen.h", 1079, __FUNCTION__);
 
     cap.words[1] &= ~0x1;
     cap.words[1] |= (v << 0) & 0x1;
@@ -1912,7 +2028,13 @@ cap_endpoint_cap_set_capCanReceive(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_endpoint_cap_get_capEPPtr(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1088 "./arch/object/structures_gen.h"
+    ,
+ 1089
+# 1088 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                             ;
 
     return (cap.words[0] & 0xfffffff0) << 0;
@@ -1926,23 +2048,23 @@ cap_async_endpoint_cap_new(uint32_t capAEPBadge, uint32_t capAEPCanSend, uint32_
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capAEPBadge & ~0x1fffffff) == 0)) _assert_fail("(capAEPBadge & ~0x1fffffff) == 0", "./arch/object/structures_gen.h", 1102, __FUNCTION__);
 
     cap.words[1] |= (capAEPBadge & 0x1fffffff) << 3;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capAEPCanSend & ~0x1) == 0)) _assert_fail("(capAEPCanSend & ~0x1) == 0", "./arch/object/structures_gen.h", 1106, __FUNCTION__);
 
     cap.words[1] |= (capAEPCanSend & 0x1) << 1;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capAEPCanReceive & ~0x1) == 0)) _assert_fail("(capAEPCanReceive & ~0x1) == 0", "./arch/object/structures_gen.h", 1110, __FUNCTION__);
 
     cap.words[1] |= (capAEPCanReceive & 0x1) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capAEPPtr & ~0xfffffff0) == 0)) _assert_fail("(capAEPPtr & ~0xfffffff0) == 0", "./arch/object/structures_gen.h", 1114, __FUNCTION__);
 
     cap.words[0] |= (capAEPPtr & 0xfffffff0) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_async_endpoint_cap & ~0xf) == 0)) _assert_fail("(cap_async_endpoint_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 1118, __FUNCTION__);
 
     cap.words[0] |= (cap_async_endpoint_cap & 0xf) << 0;
 
@@ -1951,7 +2073,13 @@ cap_async_endpoint_cap_new(uint32_t capAEPBadge, uint32_t capAEPCanSend, uint32_
 
 static inline uint32_t __attribute__((__const__))
 cap_async_endpoint_cap_get_capAEPBadge(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1127 "./arch/object/structures_gen.h"
+    ,
+ 1128
+# 1127 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
 
     return (cap.words[1] & 0xfffffff8) >> 3;
@@ -1959,10 +2087,16 @@ cap_async_endpoint_cap_get_capAEPBadge(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_async_endpoint_cap_set_capAEPBadge(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1135 "./arch/object/structures_gen.h"
+    ,
+ 1136
+# 1135 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffffff8 >> 3) & v) == 0)) _assert_fail("((~0xfffffff8 >> 3) & v) == 0", "./arch/object/structures_gen.h", 1138, __FUNCTION__);
 
     cap.words[1] &= ~0xfffffff8;
     cap.words[1] |= (v << 3) & 0xfffffff8;
@@ -1971,7 +2105,13 @@ cap_async_endpoint_cap_set_capAEPBadge(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_async_endpoint_cap_get_capAEPCanSend(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1147 "./arch/object/structures_gen.h"
+    ,
+ 1148
+# 1147 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
 
     return (cap.words[1] & 0x2) >> 1;
@@ -1979,10 +2119,16 @@ cap_async_endpoint_cap_get_capAEPCanSend(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_async_endpoint_cap_set_capAEPCanSend(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1155 "./arch/object/structures_gen.h"
+    ,
+ 1156
+# 1155 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x2 >> 1) & v) == 0)) _assert_fail("((~0x2 >> 1) & v) == 0", "./arch/object/structures_gen.h", 1158, __FUNCTION__);
 
     cap.words[1] &= ~0x2;
     cap.words[1] |= (v << 1) & 0x2;
@@ -1991,7 +2137,13 @@ cap_async_endpoint_cap_set_capAEPCanSend(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_async_endpoint_cap_get_capAEPCanReceive(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1167 "./arch/object/structures_gen.h"
+    ,
+ 1168
+# 1167 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
 
     return (cap.words[1] & 0x1) >> 0;
@@ -1999,10 +2151,16 @@ cap_async_endpoint_cap_get_capAEPCanReceive(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_async_endpoint_cap_set_capAEPCanReceive(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1175 "./arch/object/structures_gen.h"
+    ,
+ 1176
+# 1175 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x1 >> 0) & v) == 0)) _assert_fail("((~0x1 >> 0) & v) == 0", "./arch/object/structures_gen.h", 1178, __FUNCTION__);
 
     cap.words[1] &= ~0x1;
     cap.words[1] |= (v << 0) & 0x1;
@@ -2011,7 +2169,13 @@ cap_async_endpoint_cap_set_capAEPCanReceive(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_async_endpoint_cap_get_capAEPPtr(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_async_endpoint_cap",
+ "./arch/object/structures_gen.h"
+# 1187 "./arch/object/structures_gen.h"
+    ,
+ 1188
+# 1187 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
 
     return (cap.words[0] & 0xfffffff0) << 0;
@@ -2025,15 +2189,15 @@ cap_reply_cap_new(uint32_t capReplyMaster, uint32_t capTCBPtr) {
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capReplyMaster & ~0x1) == 0)) _assert_fail("(capReplyMaster & ~0x1) == 0", "./arch/object/structures_gen.h", 1201, __FUNCTION__);
 
     cap.words[1] |= (capReplyMaster & 0x1) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capTCBPtr & ~0xfffffff0) == 0)) _assert_fail("(capTCBPtr & ~0xfffffff0) == 0", "./arch/object/structures_gen.h", 1205, __FUNCTION__);
 
     cap.words[0] |= (capTCBPtr & 0xfffffff0) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_reply_cap & ~0xf) == 0)) _assert_fail("(cap_reply_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 1209, __FUNCTION__);
 
     cap.words[0] |= (cap_reply_cap & 0xf) << 0;
 
@@ -2046,22 +2210,28 @@ cap_reply_cap_ptr_new(cap_t *cap_ptr, uint32_t capReplyMaster, uint32_t capTCBPt
     cap_ptr->words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capReplyMaster & ~0x1) == 0)) _assert_fail("(capReplyMaster & ~0x1) == 0", "./arch/object/structures_gen.h", 1222, __FUNCTION__);
 
     cap_ptr->words[1] |= (capReplyMaster & 0x1) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capTCBPtr & ~0xfffffff0) == 0)) _assert_fail("(capTCBPtr & ~0xfffffff0) == 0", "./arch/object/structures_gen.h", 1226, __FUNCTION__);
 
     cap_ptr->words[0] |= (capTCBPtr & 0xfffffff0) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_reply_cap & ~0xf) == 0)) _assert_fail("(cap_reply_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 1230, __FUNCTION__);
 
     cap_ptr->words[0] |= (cap_reply_cap & 0xf) << 0;
 }
 
 static inline uint32_t __attribute__((__const__))
 cap_reply_cap_get_capReplyMaster(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_reply_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_reply_cap",
+ "./arch/object/structures_gen.h"
+# 1237 "./arch/object/structures_gen.h"
+    ,
+ 1238
+# 1237 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[1] & 0x1) >> 0;
@@ -2069,7 +2239,13 @@ cap_reply_cap_get_capReplyMaster(cap_t cap) {
 
 static inline uint32_t __attribute__((__const__))
 cap_reply_cap_get_capTCBPtr(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_reply_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_reply_cap",
+ "./arch/object/structures_gen.h"
+# 1245 "./arch/object/structures_gen.h"
+    ,
+ 1246
+# 1245 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[0] & 0xfffffff0) << 0;
@@ -2083,23 +2259,23 @@ cap_cnode_cap_new(uint32_t capCNodeRadix, uint32_t capCNodeGuardSize, uint32_t c
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capCNodeRadix & ~0x1f) == 0)) _assert_fail("(capCNodeRadix & ~0x1f) == 0", "./arch/object/structures_gen.h", 1259, __FUNCTION__);
 
     cap.words[1] |= (capCNodeRadix & 0x1f) << 23;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capCNodeGuardSize & ~0x1f) == 0)) _assert_fail("(capCNodeGuardSize & ~0x1f) == 0", "./arch/object/structures_gen.h", 1263, __FUNCTION__);
 
     cap.words[1] |= (capCNodeGuardSize & 0x1f) << 18;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capCNodeGuard & ~0x3ffff) == 0)) _assert_fail("(capCNodeGuard & ~0x3ffff) == 0", "./arch/object/structures_gen.h", 1267, __FUNCTION__);
 
     cap.words[1] |= (capCNodeGuard & 0x3ffff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capCNodePtr & ~0xffffffe0) == 0)) _assert_fail("(capCNodePtr & ~0xffffffe0) == 0", "./arch/object/structures_gen.h", 1271, __FUNCTION__);
 
     cap.words[0] |= (capCNodePtr & 0xffffffe0) >> 1;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_cnode_cap & ~0xf) == 0)) _assert_fail("(cap_cnode_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 1275, __FUNCTION__);
 
     cap.words[0] |= (cap_cnode_cap & 0xf) << 0;
 
@@ -2108,7 +2284,13 @@ cap_cnode_cap_new(uint32_t capCNodeRadix, uint32_t capCNodeGuardSize, uint32_t c
 
 static inline uint32_t __attribute__((__const__))
 cap_cnode_cap_get_capCNodeRadix(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_cnode_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_cnode_cap",
+ "./arch/object/structures_gen.h"
+# 1284 "./arch/object/structures_gen.h"
+    ,
+ 1285
+# 1284 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[1] & 0xf800000) >> 23;
@@ -2116,7 +2298,13 @@ cap_cnode_cap_get_capCNodeRadix(cap_t cap) {
 
 static inline uint32_t __attribute__((__const__))
 cap_cnode_cap_get_capCNodeGuardSize(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_cnode_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_cnode_cap",
+ "./arch/object/structures_gen.h"
+# 1292 "./arch/object/structures_gen.h"
+    ,
+ 1293
+# 1292 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[1] & 0x7c0000) >> 18;
@@ -2124,10 +2312,16 @@ cap_cnode_cap_get_capCNodeGuardSize(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_cnode_cap_set_capCNodeGuardSize(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_cnode_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_cnode_cap",
+ "./arch/object/structures_gen.h"
+# 1300 "./arch/object/structures_gen.h"
+    ,
+ 1301
+# 1300 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x7c0000 >> 18) & v) == 0)) _assert_fail("((~0x7c0000 >> 18) & v) == 0", "./arch/object/structures_gen.h", 1303, __FUNCTION__);
 
     cap.words[1] &= ~0x7c0000;
     cap.words[1] |= (v << 18) & 0x7c0000;
@@ -2136,7 +2330,13 @@ cap_cnode_cap_set_capCNodeGuardSize(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_cnode_cap_get_capCNodeGuard(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_cnode_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_cnode_cap",
+ "./arch/object/structures_gen.h"
+# 1312 "./arch/object/structures_gen.h"
+    ,
+ 1313
+# 1312 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[1] & 0x3ffff) >> 0;
@@ -2144,10 +2344,16 @@ cap_cnode_cap_get_capCNodeGuard(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_cnode_cap_set_capCNodeGuard(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_cnode_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_cnode_cap",
+ "./arch/object/structures_gen.h"
+# 1320 "./arch/object/structures_gen.h"
+    ,
+ 1321
+# 1320 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x3ffff >> 0) & v) == 0)) _assert_fail("((~0x3ffff >> 0) & v) == 0", "./arch/object/structures_gen.h", 1323, __FUNCTION__);
 
     cap.words[1] &= ~0x3ffff;
     cap.words[1] |= (v << 0) & 0x3ffff;
@@ -2156,7 +2362,13 @@ cap_cnode_cap_set_capCNodeGuard(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_cnode_cap_get_capCNodePtr(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_cnode_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_cnode_cap",
+ "./arch/object/structures_gen.h"
+# 1332 "./arch/object/structures_gen.h"
+    ,
+ 1333
+# 1332 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[0] & 0x7ffffff0) << 1;
@@ -2170,11 +2382,11 @@ cap_thread_cap_new(uint32_t capTCBPtr) {
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capTCBPtr & ~0xfffffff0) == 0)) _assert_fail("(capTCBPtr & ~0xfffffff0) == 0", "./arch/object/structures_gen.h", 1346, __FUNCTION__);
 
     cap.words[0] |= (capTCBPtr & 0xfffffff0) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_thread_cap & ~0xf) == 0)) _assert_fail("(cap_thread_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 1350, __FUNCTION__);
 
     cap.words[0] |= (cap_thread_cap & 0xf) << 0;
 
@@ -2183,7 +2395,13 @@ cap_thread_cap_new(uint32_t capTCBPtr) {
 
 static inline uint32_t __attribute__((__const__))
 cap_thread_cap_get_capTCBPtr(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_thread_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_thread_cap",
+ "./arch/object/structures_gen.h"
+# 1359 "./arch/object/structures_gen.h"
+    ,
+ 1360
+# 1359 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                           ;
 
     return (cap.words[0] & 0xfffffff0) << 0;
@@ -2197,31 +2415,31 @@ cap_frame_cap_new(uint32_t capFSize, uint32_t capFMappedASIDLow, uint32_t capFMa
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capFSize & ~0x1) == 0)) _assert_fail("(capFSize & ~0x1) == 0", "./arch/object/structures_gen.h", 1373, __FUNCTION__);
 
     cap.words[1] |= (capFSize & 0x1) << 31;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capFMappedASIDLow & ~0x3ff) == 0)) _assert_fail("(capFMappedASIDLow & ~0x3ff) == 0", "./arch/object/structures_gen.h", 1377, __FUNCTION__);
 
     cap.words[1] |= (capFMappedASIDLow & 0x3ff) << 20;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capFMappedAddress & ~0xfffff000) == 0)) _assert_fail("(capFMappedAddress & ~0xfffff000) == 0", "./arch/object/structures_gen.h", 1381, __FUNCTION__);
 
     cap.words[1] |= (capFMappedAddress & 0xfffff000) >> 12;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capFMappedASIDHigh & ~0x3f) == 0)) _assert_fail("(capFMappedASIDHigh & ~0x3f) == 0", "./arch/object/structures_gen.h", 1385, __FUNCTION__);
 
     cap.words[0] |= (capFMappedASIDHigh & 0x3f) << 26;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capFVMRights & ~0x3) == 0)) _assert_fail("(capFVMRights & ~0x3) == 0", "./arch/object/structures_gen.h", 1389, __FUNCTION__);
 
     cap.words[0] |= (capFVMRights & 0x3) << 24;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capFBasePtr & ~0xfffff000) == 0)) _assert_fail("(capFBasePtr & ~0xfffff000) == 0", "./arch/object/structures_gen.h", 1393, __FUNCTION__);
 
     cap.words[0] |= (capFBasePtr & 0xfffff000) >> 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_frame_cap & ~0xf) == 0)) _assert_fail("(cap_frame_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 1397, __FUNCTION__);
 
     cap.words[0] |= (cap_frame_cap & 0xf) << 0;
 
@@ -2230,7 +2448,13 @@ cap_frame_cap_new(uint32_t capFSize, uint32_t capFMappedASIDLow, uint32_t capFMa
 
 static inline uint32_t __attribute__((__const__))
 cap_frame_cap_get_capFSize(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_frame_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_frame_cap",
+ "./arch/object/structures_gen.h"
+# 1406 "./arch/object/structures_gen.h"
+    ,
+ 1407
+# 1406 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[1] & 0x80000000) >> 31;
@@ -2238,7 +2462,13 @@ cap_frame_cap_get_capFSize(cap_t cap) {
 
 static inline uint32_t __attribute__((__const__))
 cap_frame_cap_get_capFMappedASIDLow(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_frame_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_frame_cap",
+ "./arch/object/structures_gen.h"
+# 1414 "./arch/object/structures_gen.h"
+    ,
+ 1415
+# 1414 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[1] & 0x3ff00000) >> 20;
@@ -2246,10 +2476,16 @@ cap_frame_cap_get_capFMappedASIDLow(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_frame_cap_set_capFMappedASIDLow(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_frame_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_frame_cap",
+ "./arch/object/structures_gen.h"
+# 1422 "./arch/object/structures_gen.h"
+    ,
+ 1423
+# 1422 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x3ff00000 >> 20) & v) == 0)) _assert_fail("((~0x3ff00000 >> 20) & v) == 0", "./arch/object/structures_gen.h", 1425, __FUNCTION__);
 
     cap.words[1] &= ~0x3ff00000;
     cap.words[1] |= (v << 20) & 0x3ff00000;
@@ -2258,7 +2494,13 @@ cap_frame_cap_set_capFMappedASIDLow(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_frame_cap_get_capFMappedAddress(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_frame_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_frame_cap",
+ "./arch/object/structures_gen.h"
+# 1434 "./arch/object/structures_gen.h"
+    ,
+ 1435
+# 1434 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[1] & 0xfffff) << 12;
@@ -2266,10 +2508,16 @@ cap_frame_cap_get_capFMappedAddress(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_frame_cap_set_capFMappedAddress(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_frame_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_frame_cap",
+ "./arch/object/structures_gen.h"
+# 1442 "./arch/object/structures_gen.h"
+    ,
+ 1443
+# 1442 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffff << 12) & v) == 0)) _assert_fail("((~0xfffff << 12) & v) == 0", "./arch/object/structures_gen.h", 1445, __FUNCTION__);
 
     cap.words[1] &= ~0xfffff;
     cap.words[1] |= (v >> 12) & 0xfffff;
@@ -2279,11 +2527,17 @@ cap_frame_cap_set_capFMappedAddress(cap_t cap, uint32_t v) {
 static inline void
 cap_frame_cap_ptr_set_capFMappedAddress(cap_t *cap_ptr,
                                       uint32_t v) {
-   
+    if(!(((cap_ptr->words[0] >> 0) & 0xf) == cap_frame_cap)) _assert_fail("((cap_ptr->words[0] >> 0) & 0xf) == cap_frame_cap",
+ "./arch/object/structures_gen.h"
+# 1455 "./arch/object/structures_gen.h"
+    ,
+ 1456
+# 1455 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfffff << 12) & v) == 0)) _assert_fail("((~0xfffff << 12) & v) == 0", "./arch/object/structures_gen.h", 1459, __FUNCTION__);
 
     cap_ptr->words[1] &= ~0xfffff;
     cap_ptr->words[1] |= (v >> 12) & 0xfffff;
@@ -2291,7 +2545,13 @@ cap_frame_cap_ptr_set_capFMappedAddress(cap_t *cap_ptr,
 
 static inline uint32_t __attribute__((__const__))
 cap_frame_cap_get_capFMappedASIDHigh(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_frame_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_frame_cap",
+ "./arch/object/structures_gen.h"
+# 1467 "./arch/object/structures_gen.h"
+    ,
+ 1468
+# 1467 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[0] & 0xfc000000) >> 26;
@@ -2299,10 +2559,16 @@ cap_frame_cap_get_capFMappedASIDHigh(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_frame_cap_set_capFMappedASIDHigh(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_frame_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_frame_cap",
+ "./arch/object/structures_gen.h"
+# 1475 "./arch/object/structures_gen.h"
+    ,
+ 1476
+# 1475 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xfc000000 >> 26) & v) == 0)) _assert_fail("((~0xfc000000 >> 26) & v) == 0", "./arch/object/structures_gen.h", 1478, __FUNCTION__);
 
     cap.words[0] &= ~0xfc000000;
     cap.words[0] |= (v << 26) & 0xfc000000;
@@ -2311,7 +2577,13 @@ cap_frame_cap_set_capFMappedASIDHigh(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_frame_cap_get_capFVMRights(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_frame_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_frame_cap",
+ "./arch/object/structures_gen.h"
+# 1487 "./arch/object/structures_gen.h"
+    ,
+ 1488
+# 1487 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[0] & 0x3000000) >> 24;
@@ -2319,10 +2591,16 @@ cap_frame_cap_get_capFVMRights(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_frame_cap_set_capFVMRights(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_frame_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_frame_cap",
+ "./arch/object/structures_gen.h"
+# 1495 "./arch/object/structures_gen.h"
+    ,
+ 1496
+# 1495 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x3000000 >> 24) & v) == 0)) _assert_fail("((~0x3000000 >> 24) & v) == 0", "./arch/object/structures_gen.h", 1498, __FUNCTION__);
 
     cap.words[0] &= ~0x3000000;
     cap.words[0] |= (v << 24) & 0x3000000;
@@ -2331,7 +2609,13 @@ cap_frame_cap_set_capFVMRights(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_frame_cap_get_capFBasePtr(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_frame_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_frame_cap",
+ "./arch/object/structures_gen.h"
+# 1507 "./arch/object/structures_gen.h"
+    ,
+ 1508
+# 1507 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                          ;
 
     return (cap.words[0] & 0xfffff0) << 8;
@@ -2345,23 +2629,23 @@ cap_page_table_cap_new(uint32_t capPTIsMapped, uint32_t capPTMappedASID, uint32_
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capPTIsMapped & ~0x1) == 0)) _assert_fail("(capPTIsMapped & ~0x1) == 0", "./arch/object/structures_gen.h", 1521, __FUNCTION__);
 
     cap.words[1] |= (capPTIsMapped & 0x1) << 26;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capPTMappedASID & ~0xffff) == 0)) _assert_fail("(capPTMappedASID & ~0xffff) == 0", "./arch/object/structures_gen.h", 1525, __FUNCTION__);
 
     cap.words[1] |= (capPTMappedASID & 0xffff) << 10;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capPTMappedAddress & ~0xffc00000) == 0)) _assert_fail("(capPTMappedAddress & ~0xffc00000) == 0", "./arch/object/structures_gen.h", 1529, __FUNCTION__);
 
     cap.words[1] |= (capPTMappedAddress & 0xffc00000) >> 22;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capPTBasePtr & ~0xfffff000) == 0)) _assert_fail("(capPTBasePtr & ~0xfffff000) == 0", "./arch/object/structures_gen.h", 1533, __FUNCTION__);
 
     cap.words[0] |= (capPTBasePtr & 0xfffff000) >> 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_page_table_cap & ~0xf) == 0)) _assert_fail("(cap_page_table_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 1537, __FUNCTION__);
 
     cap.words[0] |= (cap_page_table_cap & 0xf) << 0;
 
@@ -2370,7 +2654,13 @@ cap_page_table_cap_new(uint32_t capPTIsMapped, uint32_t capPTMappedASID, uint32_
 
 static inline uint32_t __attribute__((__const__))
 cap_page_table_cap_get_capPTIsMapped(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_page_table_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_page_table_cap",
+ "./arch/object/structures_gen.h"
+# 1546 "./arch/object/structures_gen.h"
+    ,
+ 1547
+# 1546 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                               ;
 
     return (cap.words[1] & 0x4000000) >> 26;
@@ -2378,10 +2668,16 @@ cap_page_table_cap_get_capPTIsMapped(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_page_table_cap_set_capPTIsMapped(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_page_table_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_page_table_cap",
+ "./arch/object/structures_gen.h"
+# 1554 "./arch/object/structures_gen.h"
+    ,
+ 1555
+# 1554 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                               ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x4000000 >> 26) & v) == 0)) _assert_fail("((~0x4000000 >> 26) & v) == 0", "./arch/object/structures_gen.h", 1557, __FUNCTION__);
 
     cap.words[1] &= ~0x4000000;
     cap.words[1] |= (v << 26) & 0x4000000;
@@ -2391,11 +2687,17 @@ cap_page_table_cap_set_capPTIsMapped(cap_t cap, uint32_t v) {
 static inline void
 cap_page_table_cap_ptr_set_capPTIsMapped(cap_t *cap_ptr,
                                       uint32_t v) {
-   
+    if(!(((cap_ptr->words[0] >> 0) & 0xf) == cap_page_table_cap)) _assert_fail("((cap_ptr->words[0] >> 0) & 0xf) == cap_page_table_cap",
+ "./arch/object/structures_gen.h"
+# 1567 "./arch/object/structures_gen.h"
+    ,
+ 1568
+# 1567 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                               ;
 
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x4000000 >> 26) & v) == 0)) _assert_fail("((~0x4000000 >> 26) & v) == 0", "./arch/object/structures_gen.h", 1571, __FUNCTION__);
 
     cap_ptr->words[1] &= ~0x4000000;
     cap_ptr->words[1] |= (v << 26) & 0x4000000;
@@ -2403,7 +2705,13 @@ cap_page_table_cap_ptr_set_capPTIsMapped(cap_t *cap_ptr,
 
 static inline uint32_t __attribute__((__const__))
 cap_page_table_cap_get_capPTMappedASID(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_page_table_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_page_table_cap",
+ "./arch/object/structures_gen.h"
+# 1579 "./arch/object/structures_gen.h"
+    ,
+ 1580
+# 1579 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                               ;
 
     return (cap.words[1] & 0x3fffc00) >> 10;
@@ -2411,10 +2719,16 @@ cap_page_table_cap_get_capPTMappedASID(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_page_table_cap_set_capPTMappedASID(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_page_table_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_page_table_cap",
+ "./arch/object/structures_gen.h"
+# 1587 "./arch/object/structures_gen.h"
+    ,
+ 1588
+# 1587 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                               ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x3fffc00 >> 10) & v) == 0)) _assert_fail("((~0x3fffc00 >> 10) & v) == 0", "./arch/object/structures_gen.h", 1590, __FUNCTION__);
 
     cap.words[1] &= ~0x3fffc00;
     cap.words[1] |= (v << 10) & 0x3fffc00;
@@ -2423,7 +2737,13 @@ cap_page_table_cap_set_capPTMappedASID(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_page_table_cap_get_capPTMappedAddress(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_page_table_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_page_table_cap",
+ "./arch/object/structures_gen.h"
+# 1599 "./arch/object/structures_gen.h"
+    ,
+ 1600
+# 1599 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                               ;
 
     return (cap.words[1] & 0x3ff) << 22;
@@ -2431,10 +2751,16 @@ cap_page_table_cap_get_capPTMappedAddress(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_page_table_cap_set_capPTMappedAddress(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_page_table_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_page_table_cap",
+ "./arch/object/structures_gen.h"
+# 1607 "./arch/object/structures_gen.h"
+    ,
+ 1608
+# 1607 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                               ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x3ff << 22) & v) == 0)) _assert_fail("((~0x3ff << 22) & v) == 0", "./arch/object/structures_gen.h", 1610, __FUNCTION__);
 
     cap.words[1] &= ~0x3ff;
     cap.words[1] |= (v >> 22) & 0x3ff;
@@ -2443,7 +2769,13 @@ cap_page_table_cap_set_capPTMappedAddress(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_page_table_cap_get_capPTBasePtr(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_page_table_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_page_table_cap",
+ "./arch/object/structures_gen.h"
+# 1619 "./arch/object/structures_gen.h"
+    ,
+ 1620
+# 1619 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                               ;
 
     return (cap.words[0] & 0xfffff0) << 8;
@@ -2457,19 +2789,19 @@ cap_page_directory_cap_new(uint32_t capPDIsMapped, uint32_t capPDMappedASID, uin
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capPDIsMapped & ~0x1) == 0)) _assert_fail("(capPDIsMapped & ~0x1) == 0", "./arch/object/structures_gen.h", 1633, __FUNCTION__);
 
     cap.words[1] |= (capPDIsMapped & 0x1) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capPDMappedASID & ~0xffff) == 0)) _assert_fail("(capPDMappedASID & ~0xffff) == 0", "./arch/object/structures_gen.h", 1637, __FUNCTION__);
 
     cap.words[1] |= (capPDMappedASID & 0xffff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capPDBasePtr & ~0xfffff000) == 0)) _assert_fail("(capPDBasePtr & ~0xfffff000) == 0", "./arch/object/structures_gen.h", 1641, __FUNCTION__);
 
     cap.words[0] |= (capPDBasePtr & 0xfffff000) >> 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_page_directory_cap & ~0xf) == 0)) _assert_fail("(cap_page_directory_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 1645, __FUNCTION__);
 
     cap.words[0] |= (cap_page_directory_cap & 0xf) << 0;
 
@@ -2478,7 +2810,13 @@ cap_page_directory_cap_new(uint32_t capPDIsMapped, uint32_t capPDMappedASID, uin
 
 static inline uint32_t __attribute__((__const__))
 cap_page_directory_cap_get_capPDIsMapped(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_page_directory_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_page_directory_cap",
+ "./arch/object/structures_gen.h"
+# 1654 "./arch/object/structures_gen.h"
+    ,
+ 1655
+# 1654 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
 
     return (cap.words[1] & 0x10000) >> 16;
@@ -2486,10 +2824,16 @@ cap_page_directory_cap_get_capPDIsMapped(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_page_directory_cap_set_capPDIsMapped(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_page_directory_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_page_directory_cap",
+ "./arch/object/structures_gen.h"
+# 1662 "./arch/object/structures_gen.h"
+    ,
+ 1663
+# 1662 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x10000 >> 16) & v) == 0)) _assert_fail("((~0x10000 >> 16) & v) == 0", "./arch/object/structures_gen.h", 1665, __FUNCTION__);
 
     cap.words[1] &= ~0x10000;
     cap.words[1] |= (v << 16) & 0x10000;
@@ -2499,11 +2843,17 @@ cap_page_directory_cap_set_capPDIsMapped(cap_t cap, uint32_t v) {
 static inline void
 cap_page_directory_cap_ptr_set_capPDIsMapped(cap_t *cap_ptr,
                                       uint32_t v) {
-   
+    if(!(((cap_ptr->words[0] >> 0) & 0xf) == cap_page_directory_cap)) _assert_fail("((cap_ptr->words[0] >> 0) & 0xf) == cap_page_directory_cap",
+ "./arch/object/structures_gen.h"
+# 1675 "./arch/object/structures_gen.h"
+    ,
+ 1676
+# 1675 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
 
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0x10000 >> 16) & v) == 0)) _assert_fail("((~0x10000 >> 16) & v) == 0", "./arch/object/structures_gen.h", 1679, __FUNCTION__);
 
     cap_ptr->words[1] &= ~0x10000;
     cap_ptr->words[1] |= (v << 16) & 0x10000;
@@ -2511,7 +2861,13 @@ cap_page_directory_cap_ptr_set_capPDIsMapped(cap_t *cap_ptr,
 
 static inline uint32_t __attribute__((__const__))
 cap_page_directory_cap_get_capPDMappedASID(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_page_directory_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_page_directory_cap",
+ "./arch/object/structures_gen.h"
+# 1687 "./arch/object/structures_gen.h"
+    ,
+ 1688
+# 1687 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
 
     return (cap.words[1] & 0xffff) >> 0;
@@ -2520,11 +2876,17 @@ cap_page_directory_cap_get_capPDMappedASID(cap_t cap) {
 static inline void
 cap_page_directory_cap_ptr_set_capPDMappedASID(cap_t *cap_ptr,
                                       uint32_t v) {
-   
+    if(!(((cap_ptr->words[0] >> 0) & 0xf) == cap_page_directory_cap)) _assert_fail("((cap_ptr->words[0] >> 0) & 0xf) == cap_page_directory_cap",
+ "./arch/object/structures_gen.h"
+# 1696 "./arch/object/structures_gen.h"
+    ,
+ 1697
+# 1696 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
 
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xffff >> 0) & v) == 0)) _assert_fail("((~0xffff >> 0) & v) == 0", "./arch/object/structures_gen.h", 1700, __FUNCTION__);
 
     cap_ptr->words[1] &= ~0xffff;
     cap_ptr->words[1] |= (v << 0) & 0xffff;
@@ -2532,7 +2894,13 @@ cap_page_directory_cap_ptr_set_capPDMappedASID(cap_t *cap_ptr,
 
 static inline uint32_t __attribute__((__const__))
 cap_page_directory_cap_get_capPDBasePtr(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_page_directory_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_page_directory_cap",
+ "./arch/object/structures_gen.h"
+# 1708 "./arch/object/structures_gen.h"
+    ,
+ 1709
+# 1708 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                   ;
 
     return (cap.words[0] & 0xfffff0) << 8;
@@ -2546,7 +2914,7 @@ cap_asid_control_cap_new(void) {
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_asid_control_cap & ~0xf) == 0)) _assert_fail("(cap_asid_control_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 1722, __FUNCTION__);
 
     cap.words[0] |= (cap_asid_control_cap & 0xf) << 0;
 
@@ -2561,15 +2929,15 @@ cap_asid_pool_cap_new(uint32_t capASIDBase, uint32_t capASIDPool) {
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capASIDBase & ~0xffff) == 0)) _assert_fail("(capASIDBase & ~0xffff) == 0", "./arch/object/structures_gen.h", 1737, __FUNCTION__);
 
     cap.words[1] |= (capASIDBase & 0xffff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capASIDPool & ~0xfffff000) == 0)) _assert_fail("(capASIDPool & ~0xfffff000) == 0", "./arch/object/structures_gen.h", 1741, __FUNCTION__);
 
     cap.words[0] |= (capASIDPool & 0xfffff000) >> 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_asid_pool_cap & ~0xf) == 0)) _assert_fail("(cap_asid_pool_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 1745, __FUNCTION__);
 
     cap.words[0] |= (cap_asid_pool_cap & 0xf) << 0;
 
@@ -2578,7 +2946,13 @@ cap_asid_pool_cap_new(uint32_t capASIDBase, uint32_t capASIDPool) {
 
 static inline uint32_t __attribute__((__const__))
 cap_asid_pool_cap_get_capASIDBase(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_asid_pool_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_asid_pool_cap",
+ "./arch/object/structures_gen.h"
+# 1754 "./arch/object/structures_gen.h"
+    ,
+ 1755
+# 1754 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                              ;
 
     return (cap.words[1] & 0xffff) >> 0;
@@ -2586,7 +2960,13 @@ cap_asid_pool_cap_get_capASIDBase(cap_t cap) {
 
 static inline uint32_t __attribute__((__const__))
 cap_asid_pool_cap_get_capASIDPool(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_asid_pool_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_asid_pool_cap",
+ "./arch/object/structures_gen.h"
+# 1762 "./arch/object/structures_gen.h"
+    ,
+ 1763
+# 1762 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                              ;
 
     return (cap.words[0] & 0xfffff0) << 8;
@@ -2600,15 +2980,15 @@ cap_io_port_cap_new(uint32_t capIOPortFirstPort, uint32_t capIOPortLastPort) {
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capIOPortFirstPort & ~0xffff) == 0)) _assert_fail("(capIOPortFirstPort & ~0xffff) == 0", "./arch/object/structures_gen.h", 1776, __FUNCTION__);
 
     cap.words[1] |= (capIOPortFirstPort & 0xffff) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capIOPortLastPort & ~0xffff) == 0)) _assert_fail("(capIOPortLastPort & ~0xffff) == 0", "./arch/object/structures_gen.h", 1780, __FUNCTION__);
 
     cap.words[1] |= (capIOPortLastPort & 0xffff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_io_port_cap & ~0xf) == 0)) _assert_fail("(cap_io_port_cap & ~0xf) == 0", "./arch/object/structures_gen.h", 1784, __FUNCTION__);
 
     cap.words[0] |= (cap_io_port_cap & 0xf) << 0;
 
@@ -2617,7 +2997,13 @@ cap_io_port_cap_new(uint32_t capIOPortFirstPort, uint32_t capIOPortLastPort) {
 
 static inline uint32_t __attribute__((__const__))
 cap_io_port_cap_get_capIOPortFirstPort(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_io_port_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_io_port_cap",
+ "./arch/object/structures_gen.h"
+# 1793 "./arch/object/structures_gen.h"
+    ,
+ 1794
+# 1793 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                            ;
 
     return (cap.words[1] & 0xffff0000) >> 16;
@@ -2625,7 +3011,13 @@ cap_io_port_cap_get_capIOPortFirstPort(cap_t cap) {
 
 static inline uint32_t __attribute__((__const__))
 cap_io_port_cap_get_capIOPortLastPort(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xf) == cap_io_port_cap)) _assert_fail("((cap.words[0] >> 0) & 0xf) == cap_io_port_cap",
+ "./arch/object/structures_gen.h"
+# 1801 "./arch/object/structures_gen.h"
+    ,
+ 1802
+# 1801 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                            ;
 
     return (cap.words[1] & 0xffff) >> 0;
@@ -2639,7 +3031,7 @@ cap_irq_control_cap_new(void) {
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_irq_control_cap & ~0xff) == 0)) _assert_fail("(cap_irq_control_cap & ~0xff) == 0", "./arch/object/structures_gen.h", 1815, __FUNCTION__);
 
     cap.words[0] |= (cap_irq_control_cap & 0xff) << 0;
 
@@ -2654,11 +3046,11 @@ cap_irq_handler_cap_new(uint32_t capIRQ) {
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capIRQ & ~0xff) == 0)) _assert_fail("(capIRQ & ~0xff) == 0", "./arch/object/structures_gen.h", 1830, __FUNCTION__);
 
     cap.words[1] |= (capIRQ & 0xff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_irq_handler_cap & ~0xff) == 0)) _assert_fail("(cap_irq_handler_cap & ~0xff) == 0", "./arch/object/structures_gen.h", 1834, __FUNCTION__);
 
     cap.words[0] |= (cap_irq_handler_cap & 0xff) << 0;
 
@@ -2667,7 +3059,13 @@ cap_irq_handler_cap_new(uint32_t capIRQ) {
 
 static inline uint32_t __attribute__((__const__))
 cap_irq_handler_cap_get_capIRQ(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xff) == cap_irq_handler_cap)) _assert_fail("((cap.words[0] >> 0) & 0xff) == cap_irq_handler_cap",
+ "./arch/object/structures_gen.h"
+# 1843 "./arch/object/structures_gen.h"
+    ,
+ 1844
+# 1843 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                ;
 
     return (cap.words[1] & 0xff) >> 0;
@@ -2682,11 +3080,11 @@ cap_zombie_cap_new(uint32_t capZombieID, uint32_t capZombieType) {
 
        cap.words[1] |= capZombieID << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((capZombieType & ~0x3f) == 0)) _assert_fail("(capZombieType & ~0x3f) == 0", "./arch/object/structures_gen.h", 1858, __FUNCTION__);
 
     cap.words[0] |= (capZombieType & 0x3f) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_zombie_cap & ~0xff) == 0)) _assert_fail("(cap_zombie_cap & ~0xff) == 0", "./arch/object/structures_gen.h", 1862, __FUNCTION__);
 
     cap.words[0] |= (cap_zombie_cap & 0xff) << 0;
 
@@ -2695,7 +3093,13 @@ cap_zombie_cap_new(uint32_t capZombieID, uint32_t capZombieType) {
 
 static inline uint32_t __attribute__((__const__))
 cap_zombie_cap_get_capZombieID(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xff) == cap_zombie_cap)) _assert_fail("((cap.words[0] >> 0) & 0xff) == cap_zombie_cap",
+ "./arch/object/structures_gen.h"
+# 1871 "./arch/object/structures_gen.h"
+    ,
+ 1872
+# 1871 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                           ;
 
     return (cap.words[1] & 0xffffffff) >> 0;
@@ -2703,10 +3107,16 @@ cap_zombie_cap_get_capZombieID(cap_t cap) {
 
 static inline cap_t __attribute__((__const__))
 cap_zombie_cap_set_capZombieID(cap_t cap, uint32_t v) {
-   
+    if(!(((cap.words[0] >> 0) & 0xff) == cap_zombie_cap)) _assert_fail("((cap.words[0] >> 0) & 0xff) == cap_zombie_cap",
+ "./arch/object/structures_gen.h"
+# 1879 "./arch/object/structures_gen.h"
+    ,
+ 1880
+# 1879 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                           ;
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xffffffff >> 0) & v) == 0)) _assert_fail("((~0xffffffff >> 0) & v) == 0", "./arch/object/structures_gen.h", 1882, __FUNCTION__);
 
     cap.words[1] &= ~0xffffffff;
     cap.words[1] |= (v << 0) & 0xffffffff;
@@ -2715,7 +3125,13 @@ cap_zombie_cap_set_capZombieID(cap_t cap, uint32_t v) {
 
 static inline uint32_t __attribute__((__const__))
 cap_zombie_cap_get_capZombieType(cap_t cap) {
-   
+    if(!(((cap.words[0] >> 0) & 0xff) == cap_zombie_cap)) _assert_fail("((cap.words[0] >> 0) & 0xff) == cap_zombie_cap",
+ "./arch/object/structures_gen.h"
+# 1891 "./arch/object/structures_gen.h"
+    ,
+ 1892
+# 1891 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                           ;
 
     return (cap.words[0] & 0x3f00) >> 8;
@@ -2729,7 +3145,7 @@ cap_domain_cap_new(void) {
     cap.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cap_domain_cap & ~0xff) == 0)) _assert_fail("(cap_domain_cap & ~0xff) == 0", "./arch/object/structures_gen.h", 1905, __FUNCTION__);
 
     cap.words[0] |= (cap_domain_cap & 0xff) << 0;
 
@@ -2766,7 +3182,7 @@ fault_null_fault_ptr_new(fault_t *fault_ptr) {
     fault_ptr->words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((fault_null_fault & ~0x7) == 0)) _assert_fail("(fault_null_fault & ~0x7) == 0", "./arch/object/structures_gen.h", 1942, __FUNCTION__);
 
     fault_ptr->words[0] |= (fault_null_fault & 0x7) << 0;
 }
@@ -2780,11 +3196,11 @@ fault_cap_fault_new(uint32_t address, uint32_t inReceivePhase) {
 
        fault.words[1] |= address << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((inReceivePhase & ~0x1) == 0)) _assert_fail("(inReceivePhase & ~0x1) == 0", "./arch/object/structures_gen.h", 1956, __FUNCTION__);
 
     fault.words[0] |= (inReceivePhase & 0x1) << 31;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((fault_cap_fault & ~0x7) == 0)) _assert_fail("(fault_cap_fault & ~0x7) == 0", "./arch/object/structures_gen.h", 1960, __FUNCTION__);
 
     fault.words[0] |= (fault_cap_fault & 0x7) << 0;
 
@@ -2793,7 +3209,13 @@ fault_cap_fault_new(uint32_t address, uint32_t inReceivePhase) {
 
 static inline uint32_t __attribute__((__const__))
 fault_cap_fault_get_address(fault_t fault) {
-   
+    if(!(((fault.words[0] >> 0) & 0x7) == fault_cap_fault)) _assert_fail("((fault.words[0] >> 0) & 0x7) == fault_cap_fault",
+ "./arch/object/structures_gen.h"
+# 1969 "./arch/object/structures_gen.h"
+    ,
+ 1970
+# 1969 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                            ;
 
     return (fault.words[1] & 0xffffffff) >> 0;
@@ -2801,7 +3223,13 @@ fault_cap_fault_get_address(fault_t fault) {
 
 static inline uint32_t __attribute__((__const__))
 fault_cap_fault_get_inReceivePhase(fault_t fault) {
-   
+    if(!(((fault.words[0] >> 0) & 0x7) == fault_cap_fault)) _assert_fail("((fault.words[0] >> 0) & 0x7) == fault_cap_fault",
+ "./arch/object/structures_gen.h"
+# 1977 "./arch/object/structures_gen.h"
+    ,
+ 1978
+# 1977 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                            ;
 
     return (fault.words[0] & 0x80000000) >> 31;
@@ -2816,15 +3244,15 @@ fault_vm_fault_new(uint32_t address, uint32_t FSR, uint32_t instructionFault) {
 
        fault.words[1] |= address << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((FSR & ~0x1f) == 0)) _assert_fail("(FSR & ~0x1f) == 0", "./arch/object/structures_gen.h", 1992, __FUNCTION__);
 
     fault.words[0] |= (FSR & 0x1f) << 27;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((instructionFault & ~0x1) == 0)) _assert_fail("(instructionFault & ~0x1) == 0", "./arch/object/structures_gen.h", 1996, __FUNCTION__);
 
     fault.words[0] |= (instructionFault & 0x1) << 19;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((fault_vm_fault & ~0x7) == 0)) _assert_fail("(fault_vm_fault & ~0x7) == 0", "./arch/object/structures_gen.h", 2000, __FUNCTION__);
 
     fault.words[0] |= (fault_vm_fault & 0x7) << 0;
 
@@ -2833,7 +3261,13 @@ fault_vm_fault_new(uint32_t address, uint32_t FSR, uint32_t instructionFault) {
 
 static inline uint32_t __attribute__((__const__))
 fault_vm_fault_get_address(fault_t fault) {
-   
+    if(!(((fault.words[0] >> 0) & 0x7) == fault_vm_fault)) _assert_fail("((fault.words[0] >> 0) & 0x7) == fault_vm_fault",
+ "./arch/object/structures_gen.h"
+# 2009 "./arch/object/structures_gen.h"
+    ,
+ 2010
+# 2009 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                           ;
 
     return (fault.words[1] & 0xffffffff) >> 0;
@@ -2841,7 +3275,13 @@ fault_vm_fault_get_address(fault_t fault) {
 
 static inline uint32_t __attribute__((__const__))
 fault_vm_fault_get_FSR(fault_t fault) {
-   
+    if(!(((fault.words[0] >> 0) & 0x7) == fault_vm_fault)) _assert_fail("((fault.words[0] >> 0) & 0x7) == fault_vm_fault",
+ "./arch/object/structures_gen.h"
+# 2017 "./arch/object/structures_gen.h"
+    ,
+ 2018
+# 2017 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                           ;
 
     return (fault.words[0] & 0xf8000000) >> 27;
@@ -2849,7 +3289,13 @@ fault_vm_fault_get_FSR(fault_t fault) {
 
 static inline uint32_t __attribute__((__const__))
 fault_vm_fault_get_instructionFault(fault_t fault) {
-   
+    if(!(((fault.words[0] >> 0) & 0x7) == fault_vm_fault)) _assert_fail("((fault.words[0] >> 0) & 0x7) == fault_vm_fault",
+ "./arch/object/structures_gen.h"
+# 2025 "./arch/object/structures_gen.h"
+    ,
+ 2026
+# 2025 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                           ;
 
     return (fault.words[0] & 0x80000) >> 19;
@@ -2864,7 +3310,7 @@ fault_unknown_syscall_new(uint32_t syscallNumber) {
 
        fault.words[1] |= syscallNumber << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((fault_unknown_syscall & ~0x7) == 0)) _assert_fail("(fault_unknown_syscall & ~0x7) == 0", "./arch/object/structures_gen.h", 2040, __FUNCTION__);
 
     fault.words[0] |= (fault_unknown_syscall & 0x7) << 0;
 
@@ -2873,7 +3319,13 @@ fault_unknown_syscall_new(uint32_t syscallNumber) {
 
 static inline uint32_t __attribute__((__const__))
 fault_unknown_syscall_get_syscallNumber(fault_t fault) {
-   
+    if(!(((fault.words[0] >> 0) & 0x7) == fault_unknown_syscall)) _assert_fail("((fault.words[0] >> 0) & 0x7) == fault_unknown_syscall",
+ "./arch/object/structures_gen.h"
+# 2049 "./arch/object/structures_gen.h"
+    ,
+ 2050
+# 2049 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                  ;
 
     return (fault.words[1] & 0xffffffff) >> 0;
@@ -2888,11 +3340,11 @@ fault_user_exception_new(uint32_t number, uint32_t code) {
 
        fault.words[1] |= number << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((code & ~0x1fffffff) == 0)) _assert_fail("(code & ~0x1fffffff) == 0", "./arch/object/structures_gen.h", 2064, __FUNCTION__);
 
     fault.words[0] |= (code & 0x1fffffff) << 3;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((fault_user_exception & ~0x7) == 0)) _assert_fail("(fault_user_exception & ~0x7) == 0", "./arch/object/structures_gen.h", 2068, __FUNCTION__);
 
     fault.words[0] |= (fault_user_exception & 0x7) << 0;
 
@@ -2901,7 +3353,13 @@ fault_user_exception_new(uint32_t number, uint32_t code) {
 
 static inline uint32_t __attribute__((__const__))
 fault_user_exception_get_number(fault_t fault) {
-   
+    if(!(((fault.words[0] >> 0) & 0x7) == fault_user_exception)) _assert_fail("((fault.words[0] >> 0) & 0x7) == fault_user_exception",
+ "./arch/object/structures_gen.h"
+# 2077 "./arch/object/structures_gen.h"
+    ,
+ 2078
+# 2077 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                 ;
 
     return (fault.words[1] & 0xffffffff) >> 0;
@@ -2909,7 +3367,13 @@ fault_user_exception_get_number(fault_t fault) {
 
 static inline uint32_t __attribute__((__const__))
 fault_user_exception_get_code(fault_t fault) {
-   
+    if(!(((fault.words[0] >> 0) & 0x7) == fault_user_exception)) _assert_fail("((fault.words[0] >> 0) & 0x7) == fault_user_exception",
+ "./arch/object/structures_gen.h"
+# 2085 "./arch/object/structures_gen.h"
+    ,
+ 2086
+# 2085 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                 ;
 
     return (fault.words[0] & 0xfffffff8) >> 3;
@@ -2936,7 +3400,7 @@ gdt_entry_gdt_null_new(void) {
     gdt_entry.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((gdt_entry_gdt_null & ~0x7) == 0)) _assert_fail("(gdt_entry_gdt_null & ~0x7) == 0", "./arch/object/structures_gen.h", 2112, __FUNCTION__);
 
     gdt_entry.words[1] |= (gdt_entry_gdt_null & 0x7) << 10;
 
@@ -2951,51 +3415,51 @@ gdt_entry_gdt_tss_new(uint32_t base_high, uint32_t granularity, uint32_t avl, ui
     gdt_entry.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((base_high & ~0xff) == 0)) _assert_fail("(base_high & ~0xff) == 0", "./arch/object/structures_gen.h", 2127, __FUNCTION__);
 
     gdt_entry.words[1] |= (base_high & 0xff) << 24;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((granularity & ~0x1) == 0)) _assert_fail("(granularity & ~0x1) == 0", "./arch/object/structures_gen.h", 2131, __FUNCTION__);
 
     gdt_entry.words[1] |= (granularity & 0x1) << 23;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((avl & ~0x1) == 0)) _assert_fail("(avl & ~0x1) == 0", "./arch/object/structures_gen.h", 2135, __FUNCTION__);
 
     gdt_entry.words[1] |= (avl & 0x1) << 20;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((limit_high & ~0xf) == 0)) _assert_fail("(limit_high & ~0xf) == 0", "./arch/object/structures_gen.h", 2139, __FUNCTION__);
 
     gdt_entry.words[1] |= (limit_high & 0xf) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((present & ~0x1) == 0)) _assert_fail("(present & ~0x1) == 0", "./arch/object/structures_gen.h", 2143, __FUNCTION__);
 
     gdt_entry.words[1] |= (present & 0x1) << 15;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((dpl & ~0x3) == 0)) _assert_fail("(dpl & ~0x3) == 0", "./arch/object/structures_gen.h", 2147, __FUNCTION__);
 
     gdt_entry.words[1] |= (dpl & 0x3) << 13;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((gdt_entry_gdt_tss & ~0x7) == 0)) _assert_fail("(gdt_entry_gdt_tss & ~0x7) == 0", "./arch/object/structures_gen.h", 2151, __FUNCTION__);
 
     gdt_entry.words[1] |= (gdt_entry_gdt_tss & 0x7) << 10;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((busy & ~0x1) == 0)) _assert_fail("(busy & ~0x1) == 0", "./arch/object/structures_gen.h", 2155, __FUNCTION__);
 
     gdt_entry.words[1] |= (busy & 0x1) << 9;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((always_1 & ~0x1) == 0)) _assert_fail("(always_1 & ~0x1) == 0", "./arch/object/structures_gen.h", 2159, __FUNCTION__);
 
     gdt_entry.words[1] |= (always_1 & 0x1) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((base_mid & ~0xff) == 0)) _assert_fail("(base_mid & ~0xff) == 0", "./arch/object/structures_gen.h", 2163, __FUNCTION__);
 
     gdt_entry.words[1] |= (base_mid & 0xff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((base_low & ~0xffff) == 0)) _assert_fail("(base_low & ~0xffff) == 0", "./arch/object/structures_gen.h", 2167, __FUNCTION__);
 
     gdt_entry.words[0] |= (base_low & 0xffff) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((limit_low & ~0xffff) == 0)) _assert_fail("(limit_low & ~0xffff) == 0", "./arch/object/structures_gen.h", 2171, __FUNCTION__);
 
     gdt_entry.words[0] |= (limit_low & 0xffff) << 0;
 
@@ -3010,55 +3474,55 @@ gdt_entry_gdt_data_new(uint32_t base_high, uint32_t granularity, uint32_t operat
     gdt_entry.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((base_high & ~0xff) == 0)) _assert_fail("(base_high & ~0xff) == 0", "./arch/object/structures_gen.h", 2186, __FUNCTION__);
 
     gdt_entry.words[1] |= (base_high & 0xff) << 24;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((granularity & ~0x1) == 0)) _assert_fail("(granularity & ~0x1) == 0", "./arch/object/structures_gen.h", 2190, __FUNCTION__);
 
     gdt_entry.words[1] |= (granularity & 0x1) << 23;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((operation_size & ~0x1) == 0)) _assert_fail("(operation_size & ~0x1) == 0", "./arch/object/structures_gen.h", 2194, __FUNCTION__);
 
     gdt_entry.words[1] |= (operation_size & 0x1) << 22;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((avl & ~0x1) == 0)) _assert_fail("(avl & ~0x1) == 0", "./arch/object/structures_gen.h", 2198, __FUNCTION__);
 
     gdt_entry.words[1] |= (avl & 0x1) << 20;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((seg_limit_high & ~0xf) == 0)) _assert_fail("(seg_limit_high & ~0xf) == 0", "./arch/object/structures_gen.h", 2202, __FUNCTION__);
 
     gdt_entry.words[1] |= (seg_limit_high & 0xf) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((present & ~0x1) == 0)) _assert_fail("(present & ~0x1) == 0", "./arch/object/structures_gen.h", 2206, __FUNCTION__);
 
     gdt_entry.words[1] |= (present & 0x1) << 15;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((dpl & ~0x3) == 0)) _assert_fail("(dpl & ~0x3) == 0", "./arch/object/structures_gen.h", 2210, __FUNCTION__);
 
     gdt_entry.words[1] |= (dpl & 0x3) << 13;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((gdt_entry_gdt_data & ~0x7) == 0)) _assert_fail("(gdt_entry_gdt_data & ~0x7) == 0", "./arch/object/structures_gen.h", 2214, __FUNCTION__);
 
     gdt_entry.words[1] |= (gdt_entry_gdt_data & 0x7) << 10;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((writable & ~0x1) == 0)) _assert_fail("(writable & ~0x1) == 0", "./arch/object/structures_gen.h", 2218, __FUNCTION__);
 
     gdt_entry.words[1] |= (writable & 0x1) << 9;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((accessed & ~0x1) == 0)) _assert_fail("(accessed & ~0x1) == 0", "./arch/object/structures_gen.h", 2222, __FUNCTION__);
 
     gdt_entry.words[1] |= (accessed & 0x1) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((base_mid & ~0xff) == 0)) _assert_fail("(base_mid & ~0xff) == 0", "./arch/object/structures_gen.h", 2226, __FUNCTION__);
 
     gdt_entry.words[1] |= (base_mid & 0xff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((base_low & ~0xffff) == 0)) _assert_fail("(base_low & ~0xffff) == 0", "./arch/object/structures_gen.h", 2230, __FUNCTION__);
 
     gdt_entry.words[0] |= (base_low & 0xffff) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((seg_limit_low & ~0xffff) == 0)) _assert_fail("(seg_limit_low & ~0xffff) == 0", "./arch/object/structures_gen.h", 2234, __FUNCTION__);
 
     gdt_entry.words[0] |= (seg_limit_low & 0xffff) << 0;
 
@@ -3068,11 +3532,17 @@ gdt_entry_gdt_data_new(uint32_t base_high, uint32_t granularity, uint32_t operat
 static inline void
 gdt_entry_gdt_data_ptr_set_base_high(gdt_entry_t *gdt_entry_ptr,
                                       uint32_t v) {
-   
+    if(!(((gdt_entry_ptr->words[1] >> 10) & 0x7) == gdt_entry_gdt_data)) _assert_fail("((gdt_entry_ptr->words[1] >> 10) & 0x7) == gdt_entry_gdt_data",
+ "./arch/object/structures_gen.h"
+# 2244 "./arch/object/structures_gen.h"
+    ,
+ 2245
+# 2244 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                               ;
 
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xff000000 >> 24) & v) == 0)) _assert_fail("((~0xff000000 >> 24) & v) == 0", "./arch/object/structures_gen.h", 2248, __FUNCTION__);
 
     gdt_entry_ptr->words[1] &= ~0xff000000;
     gdt_entry_ptr->words[1] |= (v << 24) & 0xff000000;
@@ -3081,11 +3551,17 @@ gdt_entry_gdt_data_ptr_set_base_high(gdt_entry_t *gdt_entry_ptr,
 static inline void
 gdt_entry_gdt_data_ptr_set_base_mid(gdt_entry_t *gdt_entry_ptr,
                                       uint32_t v) {
-   
+    if(!(((gdt_entry_ptr->words[1] >> 10) & 0x7) == gdt_entry_gdt_data)) _assert_fail("((gdt_entry_ptr->words[1] >> 10) & 0x7) == gdt_entry_gdt_data",
+ "./arch/object/structures_gen.h"
+# 2257 "./arch/object/structures_gen.h"
+    ,
+ 2258
+# 2257 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                               ;
 
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xff >> 0) & v) == 0)) _assert_fail("((~0xff >> 0) & v) == 0", "./arch/object/structures_gen.h", 2261, __FUNCTION__);
 
     gdt_entry_ptr->words[1] &= ~0xff;
     gdt_entry_ptr->words[1] |= (v << 0) & 0xff;
@@ -3094,11 +3570,17 @@ gdt_entry_gdt_data_ptr_set_base_mid(gdt_entry_t *gdt_entry_ptr,
 static inline void
 gdt_entry_gdt_data_ptr_set_base_low(gdt_entry_t *gdt_entry_ptr,
                                       uint32_t v) {
-   
+    if(!(((gdt_entry_ptr->words[1] >> 10) & 0x7) == gdt_entry_gdt_data)) _assert_fail("((gdt_entry_ptr->words[1] >> 10) & 0x7) == gdt_entry_gdt_data",
+ "./arch/object/structures_gen.h"
+# 2270 "./arch/object/structures_gen.h"
+    ,
+ 2271
+# 2270 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                               ;
 
     /* fail if user has passed bits that we will override */
-    ;
+    if(!(((~0xffff0000 >> 16) & v) == 0)) _assert_fail("((~0xffff0000 >> 16) & v) == 0", "./arch/object/structures_gen.h", 2274, __FUNCTION__);
 
     gdt_entry_ptr->words[0] &= ~0xffff0000;
     gdt_entry_ptr->words[0] |= (v << 16) & 0xffff0000;
@@ -3112,55 +3594,55 @@ gdt_entry_gdt_code_new(uint32_t base_high, uint32_t granularity, uint32_t operat
     gdt_entry.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((base_high & ~0xff) == 0)) _assert_fail("(base_high & ~0xff) == 0", "./arch/object/structures_gen.h", 2288, __FUNCTION__);
 
     gdt_entry.words[1] |= (base_high & 0xff) << 24;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((granularity & ~0x1) == 0)) _assert_fail("(granularity & ~0x1) == 0", "./arch/object/structures_gen.h", 2292, __FUNCTION__);
 
     gdt_entry.words[1] |= (granularity & 0x1) << 23;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((operation_size & ~0x1) == 0)) _assert_fail("(operation_size & ~0x1) == 0", "./arch/object/structures_gen.h", 2296, __FUNCTION__);
 
     gdt_entry.words[1] |= (operation_size & 0x1) << 22;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((avl & ~0x1) == 0)) _assert_fail("(avl & ~0x1) == 0", "./arch/object/structures_gen.h", 2300, __FUNCTION__);
 
     gdt_entry.words[1] |= (avl & 0x1) << 20;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((seg_limit_high & ~0xf) == 0)) _assert_fail("(seg_limit_high & ~0xf) == 0", "./arch/object/structures_gen.h", 2304, __FUNCTION__);
 
     gdt_entry.words[1] |= (seg_limit_high & 0xf) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((present & ~0x1) == 0)) _assert_fail("(present & ~0x1) == 0", "./arch/object/structures_gen.h", 2308, __FUNCTION__);
 
     gdt_entry.words[1] |= (present & 0x1) << 15;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((dpl & ~0x3) == 0)) _assert_fail("(dpl & ~0x3) == 0", "./arch/object/structures_gen.h", 2312, __FUNCTION__);
 
     gdt_entry.words[1] |= (dpl & 0x3) << 13;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((gdt_entry_gdt_code & ~0x7) == 0)) _assert_fail("(gdt_entry_gdt_code & ~0x7) == 0", "./arch/object/structures_gen.h", 2316, __FUNCTION__);
 
     gdt_entry.words[1] |= (gdt_entry_gdt_code & 0x7) << 10;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((readable & ~0x1) == 0)) _assert_fail("(readable & ~0x1) == 0", "./arch/object/structures_gen.h", 2320, __FUNCTION__);
 
     gdt_entry.words[1] |= (readable & 0x1) << 9;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((accessed & ~0x1) == 0)) _assert_fail("(accessed & ~0x1) == 0", "./arch/object/structures_gen.h", 2324, __FUNCTION__);
 
     gdt_entry.words[1] |= (accessed & 0x1) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((base_mid & ~0xff) == 0)) _assert_fail("(base_mid & ~0xff) == 0", "./arch/object/structures_gen.h", 2328, __FUNCTION__);
 
     gdt_entry.words[1] |= (base_mid & 0xff) << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((base_low & ~0xffff) == 0)) _assert_fail("(base_low & ~0xffff) == 0", "./arch/object/structures_gen.h", 2332, __FUNCTION__);
 
     gdt_entry.words[0] |= (base_low & 0xffff) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((seg_limit_low & ~0xffff) == 0)) _assert_fail("(seg_limit_low & ~0xffff) == 0", "./arch/object/structures_gen.h", 2336, __FUNCTION__);
 
     gdt_entry.words[0] |= (seg_limit_low & 0xffff) << 0;
 
@@ -3193,7 +3675,7 @@ lookup_fault_invalid_root_new(void) {
     lookup_fault.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((lookup_fault_invalid_root & ~0x3) == 0)) _assert_fail("(lookup_fault_invalid_root & ~0x3) == 0", "./arch/object/structures_gen.h", 2369, __FUNCTION__);
 
     lookup_fault.words[0] |= (lookup_fault_invalid_root & 0x3) << 0;
 
@@ -3208,11 +3690,11 @@ lookup_fault_missing_capability_new(uint32_t bitsLeft) {
     lookup_fault.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((bitsLeft & ~0x3f) == 0)) _assert_fail("(bitsLeft & ~0x3f) == 0", "./arch/object/structures_gen.h", 2384, __FUNCTION__);
 
     lookup_fault.words[0] |= (bitsLeft & 0x3f) << 2;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((lookup_fault_missing_capability & ~0x3) == 0)) _assert_fail("(lookup_fault_missing_capability & ~0x3) == 0", "./arch/object/structures_gen.h", 2388, __FUNCTION__);
 
     lookup_fault.words[0] |= (lookup_fault_missing_capability & 0x3) << 0;
 
@@ -3221,7 +3703,13 @@ lookup_fault_missing_capability_new(uint32_t bitsLeft) {
 
 static inline uint32_t __attribute__((__const__))
 lookup_fault_missing_capability_get_bitsLeft(lookup_fault_t lookup_fault) {
-   
+    if(!(((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_missing_capability)) _assert_fail("((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_missing_capability",
+ "./arch/object/structures_gen.h"
+# 2397 "./arch/object/structures_gen.h"
+    ,
+ 2398
+# 2397 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                            ;
 
     return (lookup_fault.words[0] & 0xfc) >> 2;
@@ -3235,15 +3723,15 @@ lookup_fault_depth_mismatch_new(uint32_t bitsFound, uint32_t bitsLeft) {
     lookup_fault.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((bitsFound & ~0x3f) == 0)) _assert_fail("(bitsFound & ~0x3f) == 0", "./arch/object/structures_gen.h", 2411, __FUNCTION__);
 
     lookup_fault.words[0] |= (bitsFound & 0x3f) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((bitsLeft & ~0x3f) == 0)) _assert_fail("(bitsLeft & ~0x3f) == 0", "./arch/object/structures_gen.h", 2415, __FUNCTION__);
 
     lookup_fault.words[0] |= (bitsLeft & 0x3f) << 2;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((lookup_fault_depth_mismatch & ~0x3) == 0)) _assert_fail("(lookup_fault_depth_mismatch & ~0x3) == 0", "./arch/object/structures_gen.h", 2419, __FUNCTION__);
 
     lookup_fault.words[0] |= (lookup_fault_depth_mismatch & 0x3) << 0;
 
@@ -3252,7 +3740,13 @@ lookup_fault_depth_mismatch_new(uint32_t bitsFound, uint32_t bitsLeft) {
 
 static inline uint32_t __attribute__((__const__))
 lookup_fault_depth_mismatch_get_bitsFound(lookup_fault_t lookup_fault) {
-   
+    if(!(((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_depth_mismatch)) _assert_fail("((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_depth_mismatch",
+ "./arch/object/structures_gen.h"
+# 2428 "./arch/object/structures_gen.h"
+    ,
+ 2429
+# 2428 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                        ;
 
     return (lookup_fault.words[0] & 0x3f00) >> 8;
@@ -3260,7 +3754,13 @@ lookup_fault_depth_mismatch_get_bitsFound(lookup_fault_t lookup_fault) {
 
 static inline uint32_t __attribute__((__const__))
 lookup_fault_depth_mismatch_get_bitsLeft(lookup_fault_t lookup_fault) {
-   
+    if(!(((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_depth_mismatch)) _assert_fail("((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_depth_mismatch",
+ "./arch/object/structures_gen.h"
+# 2436 "./arch/object/structures_gen.h"
+    ,
+ 2437
+# 2436 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                        ;
 
     return (lookup_fault.words[0] & 0xfc) >> 2;
@@ -3275,15 +3775,15 @@ lookup_fault_guard_mismatch_new(uint32_t guardFound, uint32_t bitsLeft, uint32_t
 
        lookup_fault.words[1] |= guardFound << 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((bitsLeft & ~0x3f) == 0)) _assert_fail("(bitsLeft & ~0x3f) == 0", "./arch/object/structures_gen.h", 2451, __FUNCTION__);
 
     lookup_fault.words[0] |= (bitsLeft & 0x3f) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((bitsFound & ~0x3f) == 0)) _assert_fail("(bitsFound & ~0x3f) == 0", "./arch/object/structures_gen.h", 2455, __FUNCTION__);
 
     lookup_fault.words[0] |= (bitsFound & 0x3f) << 2;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((lookup_fault_guard_mismatch & ~0x3) == 0)) _assert_fail("(lookup_fault_guard_mismatch & ~0x3) == 0", "./arch/object/structures_gen.h", 2459, __FUNCTION__);
 
     lookup_fault.words[0] |= (lookup_fault_guard_mismatch & 0x3) << 0;
 
@@ -3292,7 +3792,13 @@ lookup_fault_guard_mismatch_new(uint32_t guardFound, uint32_t bitsLeft, uint32_t
 
 static inline uint32_t __attribute__((__const__))
 lookup_fault_guard_mismatch_get_guardFound(lookup_fault_t lookup_fault) {
-   
+    if(!(((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_guard_mismatch)) _assert_fail("((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_guard_mismatch",
+ "./arch/object/structures_gen.h"
+# 2468 "./arch/object/structures_gen.h"
+    ,
+ 2469
+# 2468 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                        ;
 
     return (lookup_fault.words[1] & 0xffffffff) >> 0;
@@ -3300,7 +3806,13 @@ lookup_fault_guard_mismatch_get_guardFound(lookup_fault_t lookup_fault) {
 
 static inline uint32_t __attribute__((__const__))
 lookup_fault_guard_mismatch_get_bitsLeft(lookup_fault_t lookup_fault) {
-   
+    if(!(((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_guard_mismatch)) _assert_fail("((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_guard_mismatch",
+ "./arch/object/structures_gen.h"
+# 2476 "./arch/object/structures_gen.h"
+    ,
+ 2477
+# 2476 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                        ;
 
     return (lookup_fault.words[0] & 0x3f00) >> 8;
@@ -3308,7 +3820,13 @@ lookup_fault_guard_mismatch_get_bitsLeft(lookup_fault_t lookup_fault) {
 
 static inline uint32_t __attribute__((__const__))
 lookup_fault_guard_mismatch_get_bitsFound(lookup_fault_t lookup_fault) {
-   
+    if(!(((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_guard_mismatch)) _assert_fail("((lookup_fault.words[0] >> 0) & 0x3) == lookup_fault_guard_mismatch",
+ "./arch/object/structures_gen.h"
+# 2484 "./arch/object/structures_gen.h"
+    ,
+ 2485
+# 2484 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                                        ;
 
     return (lookup_fault.words[0] & 0xfc) >> 2;
@@ -3334,31 +3852,31 @@ idt_entry_interrupt_gate_new(uint32_t offset_high, uint32_t present, uint32_t dp
     idt_entry.words[1] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((offset_high & ~0xffff) == 0)) _assert_fail("(offset_high & ~0xffff) == 0", "./arch/object/structures_gen.h", 2510, __FUNCTION__);
 
     idt_entry.words[1] |= (offset_high & 0xffff) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((present & ~0x1) == 0)) _assert_fail("(present & ~0x1) == 0", "./arch/object/structures_gen.h", 2514, __FUNCTION__);
 
     idt_entry.words[1] |= (present & 0x1) << 15;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((dpl & ~0x3) == 0)) _assert_fail("(dpl & ~0x3) == 0", "./arch/object/structures_gen.h", 2518, __FUNCTION__);
 
     idt_entry.words[1] |= (dpl & 0x3) << 13;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((gate_size & ~0x1) == 0)) _assert_fail("(gate_size & ~0x1) == 0", "./arch/object/structures_gen.h", 2522, __FUNCTION__);
 
     idt_entry.words[1] |= (gate_size & 0x1) << 11;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((idt_entry_interrupt_gate & ~0x7) == 0)) _assert_fail("(idt_entry_interrupt_gate & ~0x7) == 0", "./arch/object/structures_gen.h", 2526, __FUNCTION__);
 
     idt_entry.words[1] |= (idt_entry_interrupt_gate & 0x7) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((seg_selector & ~0xffff) == 0)) _assert_fail("(seg_selector & ~0xffff) == 0", "./arch/object/structures_gen.h", 2530, __FUNCTION__);
 
     idt_entry.words[0] |= (seg_selector & 0xffff) << 16;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((offset_low & ~0xffff) == 0)) _assert_fail("(offset_low & ~0xffff) == 0", "./arch/object/structures_gen.h", 2534, __FUNCTION__);
 
     idt_entry.words[0] |= (offset_low & 0xffff) << 0;
 
@@ -3376,6 +3894,11 @@ enum pde_tag {
 };
 typedef enum pde_tag pde_tag_t;
 
+static inline uint32_t __attribute__((__const__))
+pde_get_page_size(pde_t pde) {
+    return (pde.words[0] >> 7) & 0x1;
+}
+
 static inline uint32_t __attribute__((__pure__))
 pde_ptr_get_page_size(pde_t *pde_ptr) {
     return (pde_ptr->words[0] >> 7) & 0x1;
@@ -3388,39 +3911,39 @@ pde_pde_4k_new(uint32_t pt_base_address, uint32_t avl, uint32_t accessed, uint32
     pde.words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((pt_base_address & ~0xfffff000) == 0)) _assert_fail("(pt_base_address & ~0xfffff000) == 0", "./arch/object/structures_gen.h", 2569, __FUNCTION__);
 
     pde.words[0] |= (pt_base_address & 0xfffff000) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((avl & ~0x7) == 0)) _assert_fail("(avl & ~0x7) == 0", "./arch/object/structures_gen.h", 2573, __FUNCTION__);
 
     pde.words[0] |= (avl & 0x7) << 9;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((pde_pde_4k & ~0x1) == 0)) _assert_fail("(pde_pde_4k & ~0x1) == 0", "./arch/object/structures_gen.h", 2577, __FUNCTION__);
 
     pde.words[0] |= (pde_pde_4k & 0x1) << 7;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((accessed & ~0x1) == 0)) _assert_fail("(accessed & ~0x1) == 0", "./arch/object/structures_gen.h", 2581, __FUNCTION__);
 
     pde.words[0] |= (accessed & 0x1) << 5;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cache_disabled & ~0x1) == 0)) _assert_fail("(cache_disabled & ~0x1) == 0", "./arch/object/structures_gen.h", 2585, __FUNCTION__);
 
     pde.words[0] |= (cache_disabled & 0x1) << 4;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((write_through & ~0x1) == 0)) _assert_fail("(write_through & ~0x1) == 0", "./arch/object/structures_gen.h", 2589, __FUNCTION__);
 
     pde.words[0] |= (write_through & 0x1) << 3;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((super_user & ~0x1) == 0)) _assert_fail("(super_user & ~0x1) == 0", "./arch/object/structures_gen.h", 2593, __FUNCTION__);
 
     pde.words[0] |= (super_user & 0x1) << 2;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((read_write & ~0x1) == 0)) _assert_fail("(read_write & ~0x1) == 0", "./arch/object/structures_gen.h", 2597, __FUNCTION__);
 
     pde.words[0] |= (read_write & 0x1) << 1;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((present & ~0x1) == 0)) _assert_fail("(present & ~0x1) == 0", "./arch/object/structures_gen.h", 2601, __FUNCTION__);
 
     pde.words[0] |= (present & 0x1) << 0;
 
@@ -3432,54 +3955,108 @@ pde_pde_4k_ptr_new(pde_t *pde_ptr, uint32_t pt_base_address, uint32_t avl, uint3
     pde_ptr->words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((pt_base_address & ~0xfffff000) == 0)) _assert_fail("(pt_base_address & ~0xfffff000) == 0", "./arch/object/structures_gen.h", 2613, __FUNCTION__);
 
     pde_ptr->words[0] |= (pt_base_address & 0xfffff000) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((avl & ~0x7) == 0)) _assert_fail("(avl & ~0x7) == 0", "./arch/object/structures_gen.h", 2617, __FUNCTION__);
 
     pde_ptr->words[0] |= (avl & 0x7) << 9;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((pde_pde_4k & ~0x1) == 0)) _assert_fail("(pde_pde_4k & ~0x1) == 0", "./arch/object/structures_gen.h", 2621, __FUNCTION__);
 
     pde_ptr->words[0] |= (pde_pde_4k & 0x1) << 7;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((accessed & ~0x1) == 0)) _assert_fail("(accessed & ~0x1) == 0", "./arch/object/structures_gen.h", 2625, __FUNCTION__);
 
     pde_ptr->words[0] |= (accessed & 0x1) << 5;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cache_disabled & ~0x1) == 0)) _assert_fail("(cache_disabled & ~0x1) == 0", "./arch/object/structures_gen.h", 2629, __FUNCTION__);
 
     pde_ptr->words[0] |= (cache_disabled & 0x1) << 4;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((write_through & ~0x1) == 0)) _assert_fail("(write_through & ~0x1) == 0", "./arch/object/structures_gen.h", 2633, __FUNCTION__);
 
     pde_ptr->words[0] |= (write_through & 0x1) << 3;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((super_user & ~0x1) == 0)) _assert_fail("(super_user & ~0x1) == 0", "./arch/object/structures_gen.h", 2637, __FUNCTION__);
 
     pde_ptr->words[0] |= (super_user & 0x1) << 2;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((read_write & ~0x1) == 0)) _assert_fail("(read_write & ~0x1) == 0", "./arch/object/structures_gen.h", 2641, __FUNCTION__);
 
     pde_ptr->words[0] |= (read_write & 0x1) << 1;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((present & ~0x1) == 0)) _assert_fail("(present & ~0x1) == 0", "./arch/object/structures_gen.h", 2645, __FUNCTION__);
 
     pde_ptr->words[0] |= (present & 0x1) << 0;
 }
 
+static inline uint32_t __attribute__((__const__))
+pde_pde_4k_get_pt_base_address(pde_t pde) {
+    if(!(((pde.words[0] >> 7) & 0x1) == pde_pde_4k)) _assert_fail("((pde.words[0] >> 7) & 0x1) == pde_pde_4k",
+ "./arch/object/structures_gen.h"
+# 2652 "./arch/object/structures_gen.h"
+    ,
+ 2653
+# 2652 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
+                      ;
+
+    return (pde.words[0] & 0xfffff000) << 0;
+}
+
 static inline uint32_t __attribute__((__pure__))
 pde_pde_4k_ptr_get_pt_base_address(pde_t *pde_ptr) {
-   
+    if(!(((pde_ptr->words[0] >> 7) & 0x1) == pde_pde_4k)) _assert_fail("((pde_ptr->words[0] >> 7) & 0x1) == pde_pde_4k",
+ "./arch/object/structures_gen.h"
+# 2660 "./arch/object/structures_gen.h"
+    ,
+ 2661
+# 2660 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                       ;
 
     return (pde_ptr->words[0] & 0xfffff000) << 0;
 }
 
+static inline uint32_t __attribute__((__const__))
+pde_pde_4k_get_super_user(pde_t pde) {
+    if(!(((pde.words[0] >> 7) & 0x1) == pde_pde_4k)) _assert_fail("((pde.words[0] >> 7) & 0x1) == pde_pde_4k",
+ "./arch/object/structures_gen.h"
+# 2668 "./arch/object/structures_gen.h"
+    ,
+ 2669
+# 2668 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
+                      ;
+
+    return (pde.words[0] & 0x4) >> 2;
+}
+
+static inline uint32_t __attribute__((__const__))
+pde_pde_4k_get_present(pde_t pde) {
+    if(!(((pde.words[0] >> 7) & 0x1) == pde_pde_4k)) _assert_fail("((pde.words[0] >> 7) & 0x1) == pde_pde_4k",
+ "./arch/object/structures_gen.h"
+# 2676 "./arch/object/structures_gen.h"
+    ,
+ 2677
+# 2676 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
+                      ;
+
+    return (pde.words[0] & 0x1) >> 0;
+}
+
 static inline uint32_t __attribute__((__pure__))
 pde_pde_4k_ptr_get_present(pde_t *pde_ptr) {
-   
+    if(!(((pde_ptr->words[0] >> 7) & 0x1) == pde_pde_4k)) _assert_fail("((pde_ptr->words[0] >> 7) & 0x1) == pde_pde_4k",
+ "./arch/object/structures_gen.h"
+# 2684 "./arch/object/structures_gen.h"
+    ,
+ 2685
+# 2684 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                       ;
 
     return (pde_ptr->words[0] & 0x1) >> 0;
@@ -3492,51 +4069,51 @@ pde_pde_4m_new(uint32_t page_base_address, uint32_t pat, uint32_t avl, uint32_t 
     pde.words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((page_base_address & ~0xffc00000) == 0)) _assert_fail("(page_base_address & ~0xffc00000) == 0", "./arch/object/structures_gen.h", 2697, __FUNCTION__);
 
     pde.words[0] |= (page_base_address & 0xffc00000) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((pat & ~0x1) == 0)) _assert_fail("(pat & ~0x1) == 0", "./arch/object/structures_gen.h", 2701, __FUNCTION__);
 
     pde.words[0] |= (pat & 0x1) << 12;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((avl & ~0x7) == 0)) _assert_fail("(avl & ~0x7) == 0", "./arch/object/structures_gen.h", 2705, __FUNCTION__);
 
     pde.words[0] |= (avl & 0x7) << 9;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((global & ~0x1) == 0)) _assert_fail("(global & ~0x1) == 0", "./arch/object/structures_gen.h", 2709, __FUNCTION__);
 
     pde.words[0] |= (global & 0x1) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((pde_pde_4m & ~0x1) == 0)) _assert_fail("(pde_pde_4m & ~0x1) == 0", "./arch/object/structures_gen.h", 2713, __FUNCTION__);
 
     pde.words[0] |= (pde_pde_4m & 0x1) << 7;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((dirty & ~0x1) == 0)) _assert_fail("(dirty & ~0x1) == 0", "./arch/object/structures_gen.h", 2717, __FUNCTION__);
 
     pde.words[0] |= (dirty & 0x1) << 6;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((accessed & ~0x1) == 0)) _assert_fail("(accessed & ~0x1) == 0", "./arch/object/structures_gen.h", 2721, __FUNCTION__);
 
     pde.words[0] |= (accessed & 0x1) << 5;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cache_disabled & ~0x1) == 0)) _assert_fail("(cache_disabled & ~0x1) == 0", "./arch/object/structures_gen.h", 2725, __FUNCTION__);
 
     pde.words[0] |= (cache_disabled & 0x1) << 4;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((write_through & ~0x1) == 0)) _assert_fail("(write_through & ~0x1) == 0", "./arch/object/structures_gen.h", 2729, __FUNCTION__);
 
     pde.words[0] |= (write_through & 0x1) << 3;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((super_user & ~0x1) == 0)) _assert_fail("(super_user & ~0x1) == 0", "./arch/object/structures_gen.h", 2733, __FUNCTION__);
 
     pde.words[0] |= (super_user & 0x1) << 2;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((read_write & ~0x1) == 0)) _assert_fail("(read_write & ~0x1) == 0", "./arch/object/structures_gen.h", 2737, __FUNCTION__);
 
     pde.words[0] |= (read_write & 0x1) << 1;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((present & ~0x1) == 0)) _assert_fail("(present & ~0x1) == 0", "./arch/object/structures_gen.h", 2741, __FUNCTION__);
 
     pde.words[0] |= (present & 0x1) << 0;
 
@@ -3548,66 +4125,120 @@ pde_pde_4m_ptr_new(pde_t *pde_ptr, uint32_t page_base_address, uint32_t pat, uin
     pde_ptr->words[0] = 0;
 
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((page_base_address & ~0xffc00000) == 0)) _assert_fail("(page_base_address & ~0xffc00000) == 0", "./arch/object/structures_gen.h", 2753, __FUNCTION__);
 
     pde_ptr->words[0] |= (page_base_address & 0xffc00000) >> 0;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((pat & ~0x1) == 0)) _assert_fail("(pat & ~0x1) == 0", "./arch/object/structures_gen.h", 2757, __FUNCTION__);
 
     pde_ptr->words[0] |= (pat & 0x1) << 12;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((avl & ~0x7) == 0)) _assert_fail("(avl & ~0x7) == 0", "./arch/object/structures_gen.h", 2761, __FUNCTION__);
 
     pde_ptr->words[0] |= (avl & 0x7) << 9;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((global & ~0x1) == 0)) _assert_fail("(global & ~0x1) == 0", "./arch/object/structures_gen.h", 2765, __FUNCTION__);
 
     pde_ptr->words[0] |= (global & 0x1) << 8;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((pde_pde_4m & ~0x1) == 0)) _assert_fail("(pde_pde_4m & ~0x1) == 0", "./arch/object/structures_gen.h", 2769, __FUNCTION__);
 
     pde_ptr->words[0] |= (pde_pde_4m & 0x1) << 7;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((dirty & ~0x1) == 0)) _assert_fail("(dirty & ~0x1) == 0", "./arch/object/structures_gen.h", 2773, __FUNCTION__);
 
     pde_ptr->words[0] |= (dirty & 0x1) << 6;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((accessed & ~0x1) == 0)) _assert_fail("(accessed & ~0x1) == 0", "./arch/object/structures_gen.h", 2777, __FUNCTION__);
 
     pde_ptr->words[0] |= (accessed & 0x1) << 5;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((cache_disabled & ~0x1) == 0)) _assert_fail("(cache_disabled & ~0x1) == 0", "./arch/object/structures_gen.h", 2781, __FUNCTION__);
 
     pde_ptr->words[0] |= (cache_disabled & 0x1) << 4;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((write_through & ~0x1) == 0)) _assert_fail("(write_through & ~0x1) == 0", "./arch/object/structures_gen.h", 2785, __FUNCTION__);
 
     pde_ptr->words[0] |= (write_through & 0x1) << 3;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((super_user & ~0x1) == 0)) _assert_fail("(super_user & ~0x1) == 0", "./arch/object/structures_gen.h", 2789, __FUNCTION__);
 
     pde_ptr->words[0] |= (super_user & 0x1) << 2;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((read_write & ~0x1) == 0)) _assert_fail("(read_write & ~0x1) == 0", "./arch/object/structures_gen.h", 2793, __FUNCTION__);
 
     pde_ptr->words[0] |= (read_write & 0x1) << 1;
 /* fail if user has passed bits that we will override */
-    ;
+    if(!((present & ~0x1) == 0)) _assert_fail("(present & ~0x1) == 0", "./arch/object/structures_gen.h", 2797, __FUNCTION__);
 
     pde_ptr->words[0] |= (present & 0x1) << 0;
 }
 
+static inline uint32_t __attribute__((__const__))
+pde_pde_4m_get_page_base_address(pde_t pde) {
+    if(!(((pde.words[0] >> 7) & 0x1) == pde_pde_4m)) _assert_fail("((pde.words[0] >> 7) & 0x1) == pde_pde_4m",
+ "./arch/object/structures_gen.h"
+# 2804 "./arch/object/structures_gen.h"
+    ,
+ 2805
+# 2804 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
+                      ;
+
+    return (pde.words[0] & 0xffc00000) << 0;
+}
+
 static inline uint32_t __attribute__((__pure__))
 pde_pde_4m_ptr_get_page_base_address(pde_t *pde_ptr) {
-   
+    if(!(((pde_ptr->words[0] >> 7) & 0x1) == pde_pde_4m)) _assert_fail("((pde_ptr->words[0] >> 7) & 0x1) == pde_pde_4m",
+ "./arch/object/structures_gen.h"
+# 2812 "./arch/object/structures_gen.h"
+    ,
+ 2813
+# 2812 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                       ;
 
     return (pde_ptr->words[0] & 0xffc00000) << 0;
 }
 
+static inline uint32_t __attribute__((__const__))
+pde_pde_4m_get_super_user(pde_t pde) {
+    if(!(((pde.words[0] >> 7) & 0x1) == pde_pde_4m)) _assert_fail("((pde.words[0] >> 7) & 0x1) == pde_pde_4m",
+ "./arch/object/structures_gen.h"
+# 2820 "./arch/object/structures_gen.h"
+    ,
+ 2821
+# 2820 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
+                      ;
+
+    return (pde.words[0] & 0x4) >> 2;
+}
+
+static inline uint32_t __attribute__((__const__))
+pde_pde_4m_get_present(pde_t pde) {
+    if(!(((pde.words[0] >> 7) & 0x1) == pde_pde_4m)) _assert_fail("((pde.words[0] >> 7) & 0x1) == pde_pde_4m",
+ "./arch/object/structures_gen.h"
+# 2828 "./arch/object/structures_gen.h"
+    ,
+ 2829
+# 2828 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
+                      ;
+
+    return (pde.words[0] & 0x1) >> 0;
+}
+
 static inline uint32_t __attribute__((__pure__))
 pde_pde_4m_ptr_get_present(pde_t *pde_ptr) {
-   
+    if(!(((pde_ptr->words[0] >> 7) & 0x1) == pde_pde_4m)) _assert_fail("((pde_ptr->words[0] >> 7) & 0x1) == pde_pde_4m",
+ "./arch/object/structures_gen.h"
+# 2836 "./arch/object/structures_gen.h"
+    ,
+ 2837
+# 2836 "./arch/object/structures_gen.h"
+    , __FUNCTION__)
                       ;
 
     return (pde_ptr->words[0] & 0x1) >> 0;
@@ -3711,7 +4342,7 @@ pageBitsForSize(vm_page_size_t pagesize)
         return IA32_4M_bits;
 
     default:
-        halt();
+        _fail("Invalid page size", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/hardware.h", 49, __func__);
     }
 }
 
@@ -3731,7 +4362,7 @@ pageBitsForSize_phys(vm_page_size_t pagesize)
         return IA32_4M_bits;
 
     default:
-        halt();
+        _fail("Invalid page size", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/hardware.h", 69, __func__);
     }
 }
 
@@ -3886,7 +4517,7 @@ void Arch_initContext(user_context_t* context);
 word_t sanitiseRegister(register_t reg, word_t v);
 
 /* Ensure FPU state is aligned within user context. */
-
+typedef int __assert_failed_fpu_state_alignment_valid[(__builtin_offsetof(user_context_t, fpuState) % 16 == 0) ? 1 : -1];
 # 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 2
 
 
@@ -4052,7 +4683,7 @@ struct tcb {
 typedef struct tcb tcb_t;
 
 /* Ensure TCB size is sane. */
-
+typedef int __assert_failed_tcb_size_sane[((1 << (4 + 4)) + sizeof(tcb_t) <= (1 << 10)) ? 1 : -1];
 
 
 /* IA32-specific object types */
@@ -4064,7 +4695,7 @@ typedef struct gdt_idt_ptr {
     uint16_t baseh;
 } gdt_idt_ptr_t;
 
-
+typedef int __assert_failed_gdt_idt_ptr_packed[(sizeof(gdt_idt_ptr_t) == sizeof(uint16_t) * 3) ? 1 : -1];
 
 
 
@@ -4201,7 +4832,7 @@ cap_get_capSizeBits(cap_t cap)
         return (asidLowBits + 2);
 
     default:
-        halt();
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h", 417, __func__);
     }
 }
 
@@ -4271,7 +4902,7 @@ cap_get_capPtr(cap_t cap)
         return ((asid_pool_t*)cap_asid_pool_cap_get_capASIDPool(cap));
 
     default:
-        halt();
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h", 487, __func__);
     }
 }
 
@@ -4443,7 +5074,17 @@ uint32_t in32(uint16_t port);
 /* these versions are linked to physical addresses */
 void out8_phys(uint16_t port, uint8_t value);
 uint8_t in8_phys(uint16_t port);
+
+
+
+void serial_init(uint16_t port);
+void console_putchar(char c);
 # 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 2
+
+
+unsigned int puts(const char *s) __attribute__((externally_visible));
+unsigned int printf(const char *format, ...) __attribute__((externally_visible));
+unsigned int print_unsigned_long(unsigned long x, unsigned int ui_base) __attribute__((externally_visible));
 # 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/benchmark.h" 2
 # 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
@@ -4813,7 +5454,13 @@ pci_bar_get_pci_space(pci_bar_t pci_bar) {
 
 static inline uint32_t __attribute__((__const__))
 pci_bar_pci_bar_mem_get_base_address(pci_bar_t pci_bar) {
-   
+    if(!(((pci_bar.words[0] >> 0) & 0x1) == pci_bar_pci_bar_mem)) _assert_fail("((pci_bar.words[0] >> 0) & 0x1) == pci_bar_pci_bar_mem",
+ "./plat/machine/hardware_gen.h"
+# 26 "./plat/machine/hardware_gen.h"
+    ,
+ 27
+# 26 "./plat/machine/hardware_gen.h"
+    , __FUNCTION__)
                                ;
 
     return (pci_bar.words[0] & 0xfffffff0) << 0;
@@ -4821,7 +5468,13 @@ pci_bar_pci_bar_mem_get_base_address(pci_bar_t pci_bar) {
 
 static inline uint32_t __attribute__((__const__))
 pci_bar_pci_bar_mem_get_above_4GB(pci_bar_t pci_bar) {
-   
+    if(!(((pci_bar.words[0] >> 0) & 0x1) == pci_bar_pci_bar_mem)) _assert_fail("((pci_bar.words[0] >> 0) & 0x1) == pci_bar_pci_bar_mem",
+ "./plat/machine/hardware_gen.h"
+# 34 "./plat/machine/hardware_gen.h"
+    ,
+ 35
+# 34 "./plat/machine/hardware_gen.h"
+    , __FUNCTION__)
                                ;
 
     return (pci_bar.words[0] & 0x4) >> 2;
@@ -4886,6 +5539,9 @@ extern uint32_t ia32KScacheLineSizeBits;
 extern idt_entry_t ia32KSidt[];
 extern user_fpu_state_t ia32KSnullFpuState __attribute__((__aligned__(16)));
 extern paddr_t ia32KSCurrentPD;
+# 46 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h"
+extern uint16_t ia32KSconsolePort;
+extern uint16_t ia32KSdebugPort;
 # 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 2
 # 28 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h"
 word_t __attribute__((__pure__)) getRestartPC(tcb_t *thread);
@@ -5868,6 +6524,11 @@ enum syscall {
     SysWait = -5,
     SysReply = -6,
     SysYield = -7,
+
+    SysDebugPutChar = -8,
+    SysDebugHalt = -9,
+    SysDebugCapIdentify = -10,
+    SysDebugSnapshot = -11,
 # 51 "./arch/api/syscall.h"
 };
 typedef uint32_t syscall_t;
@@ -5886,7 +6547,7 @@ getSyscallArg(unsigned int i, word_t* ipc_buffer)
         return getRegister(ksCurThread, msgRegisters[i]);
     }
 
-    ;
+    if(!(ipc_buffer != ((void *)0))) _assert_fail("ipc_buffer != NULL", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h", 33, __FUNCTION__);
     return ipc_buffer[i + 1];
 }
 
@@ -6767,7 +7428,22 @@ void rescheduleRequired(void);
 # 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
 
 
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/capdl.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
 
+
+
+
+void capDL(void);
+# 26 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
 
 
 /* The haskell function 'handleEvent' is split into 'handleXXX' variants
@@ -6782,7 +7458,7 @@ handleInterruptEntry(void)
     if (irq != irqInvalid) {
         handleInterrupt(irq);
     } else {
-        ((void)(0));
+        printf("Spurious interrupt\n");
         handleSpuriousIRQ();
     }
 
@@ -6795,6 +7471,27 @@ handleInterruptEntry(void)
 exception_t
 handleUnknownSyscall(word_t w)
 {
+
+    if (w == SysDebugPutChar) {
+        console_putchar(getRegister(ksCurThread, capRegister));
+        return EXCEPTION_NONE;
+    }
+    if (w == SysDebugHalt) {
+        printf("Debug halt syscall from user thread 0x%x\n", (unsigned int)ksCurThread);
+        halt();
+    }
+    if (w == SysDebugSnapshot) {
+        printf("Debug snapshot syscall from user thread 0x%x\n", (unsigned int)ksCurThread);
+        capDL();
+        return EXCEPTION_NONE;
+    }
+    if (w == SysDebugCapIdentify) {
+        word_t cptr = getRegister(ksCurThread, capRegister);
+        lookupCapAndSlot_ret_t lu_ret = lookupCapAndSlot(ksCurThread, cptr);
+        uint32_t cap_type = cap_get_capType(lu_ret.cap);
+        setRegister(ksCurThread, capRegister, cap_type);
+        return EXCEPTION_NONE;
+    }
 # 132 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c"
     current_fault = fault_unknown_syscall_new(w);
     handleFault(ksCurThread);
@@ -6854,7 +7551,7 @@ handleInvocation(bool_t isCall, bool_t isBlocking)
     lu_ret = lookupCapAndSlot(thread, cptr);
 
     if (__builtin_expect(!!(lu_ret.status != EXCEPTION_NONE), 0)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 190, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Invocation of invalid cap #%d.", (int)cptr); printf(">>" "\033[0m" "\n"); } while (0);
         current_fault = fault_cap_fault_new(cptr, false);
 
         if (isBlocking) {
@@ -6869,7 +7566,7 @@ handleInvocation(bool_t isCall, bool_t isBlocking)
     status = lookupExtraCaps(thread, buffer, info);
 
     if (__builtin_expect(!!(status != EXCEPTION_NONE), 0)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 205, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Lookup of extra caps failed."); printf(">>" "\033[0m" "\n"); } while (0);
         if (isBlocking) {
             handleFault(thread);
         }
@@ -6926,20 +7623,20 @@ handleReply(void)
         caller = ((tcb_t *)(cap_reply_cap_get_capTCBPtr(callerCap)));
         /* Haskell error:
          * "handleReply: caller must not be the current thread" */
-        ;
+        if(!(caller != ksCurThread)) _assert_fail("caller != ksCurThread", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c", 262, __FUNCTION__);
         doReplyTransfer(ksCurThread, caller, callerSlot);
         return;
     }
 
     case cap_null_cap:
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 268, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Attempted reply operation when no reply cap present."); printf(">>" "\033[0m" "\n"); } while (0);
         return;
 
     default:
         break;
     }
 
-    halt();
+    _fail("handleReply: invalid caller cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c", 275, __func__);
 }
 
 static void
@@ -7054,7 +7751,7 @@ handleSyscall(syscall_t syscall)
         break;
 
     default:
-        halt();
+        _fail("Invalid syscall", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c", 390, __func__);
     }
 
     schedule();
@@ -7235,8 +7932,54 @@ bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender)
     return (label == 0);
 
     default:
-        halt();
+        _fail("Invalid fault", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/faults.c", 93, __func__);
     }
+}
+
+
+
+void handleKernelException(
+    uint32_t vector,
+    uint32_t errcode,
+    uint32_t eip,
+    uint32_t esp,
+    uint32_t eflags,
+    uint32_t cr0,
+    uint32_t cr2,
+    uint32_t cr3,
+    uint32_t cr4
+);
+
+__attribute__((externally_visible))
+void handleKernelException(
+    uint32_t vector,
+    uint32_t errcode,
+    uint32_t eip,
+    uint32_t esp,
+    uint32_t eflags,
+    uint32_t cr0,
+    uint32_t cr2,
+    uint32_t cr3,
+    uint32_t cr4
+)
+{
+    unsigned int i;
+
+    printf("\n========== KERNEL EXCEPTION ==========\n");
+    printf("Vector:  0x%x\n", vector);
+    printf("ErrCode: 0x%x\n", errcode);
+    printf("EIP:     0x%x\n", eip);
+    printf("ESP:     0x%x\n", esp);
+    printf("EFLAGS:  0x%x\n", eflags);
+    printf("CR0:     0x%x\n", cr0);
+    printf("CR2:     0x%x (page-fault address)\n", cr2);
+    printf("CR3:     0x%x (page-directory physical address)\n", cr3);
+    printf("CR4:     0x%x\n", cr4);
+    printf("\nStack Dump:\n");
+    for (i = 0; i < 20; i++) {
+        printf("*0x%x == 0x%x\n", esp + i * 4, *(uint32_t*)(esp + i * 4));
+    }
+    printf("\nHalting...\n");
 }
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/c_traps.c"
 /*
@@ -7281,6 +8024,50 @@ bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender)
  *
  * @TAG(GD_GPL)
  */
+
+
+
+
+
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/lock.h" 2
+
+typedef uint32_t lock_t;
+
+/* global spinlocks */
+
+extern lock_t lock_debug;
+
+/* acquire/release lock */
+
+static inline void lock_acquire(lock_t* lock)
+{
+    __asm__ volatile (
+        "1:                 \n"
+        "movl  $1,    %%eax \n"
+        "xchgl (%0),  %%eax \n"
+        "testl %%eax, %%eax \n"
+        "jnz   1b           \n"
+        :
+        : "r"(lock)
+        : "%eax", "cc", "memory"
+    );
+}
+
+static inline void lock_release(lock_t* lock)
+{
+    *lock = 0;
+}
 # 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/c_traps.c" 2
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 /*
@@ -7976,7 +8763,7 @@ fastpath_copy_mrs(unsigned int length, tcb_t *src, tcb_t *dest)
    in the bottom of the msgInfo word, is <= 2 and that msgExtraCaps
    which appears above it is zero. We are assuming that n_msgRegisters == 2
    for this check to be useful.*/
-
+typedef int __assert_failed_n_msgRegisters_eq_2[(n_msgRegisters == 2) ? 1 : -1];
 static inline int
 fastpath_mi_check(word_t msgInfo)
 {
@@ -8497,7 +9284,7 @@ apic_get_base_paddr(void)
 
     apic_base_msr.words[0] = ia32_rdmsr_low(0x01B);
     if (!apic_base_msr_get_enabled(apic_base_msr)) {
-        ((void)(0));
+        printf("APIC: Enabled bit not set\n");
     }
 
     return apic_base_msr_get_base_addr(apic_base_msr);
@@ -8513,15 +9300,15 @@ apic_init(uint32_t apic_khz, bool_t mask_legacy_irqs)
 
     /* check for correct version: 0x1X */
     if (apic_version_get_version(apic_version) >> 4 != 1) {
-        ((void)(0));
+        printf("APIC: apic_version must be 0x1X\n");
         return false;
     }
 
     /* check for correct number of LVT entries */
     num_lvt_entries = apic_version_get_max_lvt_entry(apic_version) + 1;
     if (num_lvt_entries < 3) {
-        ((void)(0));
-        ((void)(0));
+        printf("APIC: number of LVT entries: %d\n", num_lvt_entries);
+        printf("APIC: number of LVT entries must be >= 3\n");
         return false;
     }
 
@@ -8602,7 +9389,7 @@ bool_t apic_is_interrupt_pending(void)
     unsigned int i;
 
     /* read 256-bit register: each 32-bit word is 16 byte aligned */
-    ;
+    if(!(int_irq_min % 32 == 0)) _assert_fail("int_irq_min % 32 == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c", 202, __FUNCTION__);
     for (i = int_irq_min; i <= int_irq_max; i += 32) {
         if (apic_read_reg(APIC_IRR_BASE + i / 2) != 0) {
             return true;
@@ -8662,9 +9449,9 @@ __attribute__((__section__(".boot.text"))) void
 apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr)
 {
     /* check if 4K aligned */
-    ;
+    if(!((!((startup_addr) & ((1ul<<(12))-1ul))))) _assert_fail("IS_ALIGNED(startup_addr, PAGE_BITS)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c", 262, __FUNCTION__);
     /* check if startup_addr < 640K */
-    ;
+    if(!(startup_addr < 0xa0000)) _assert_fail("startup_addr < 0xa0000", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c", 264, __FUNCTION__);
     startup_addr >>= 12;
 
     apic_write_reg(
@@ -8804,7 +9591,7 @@ typedef struct bi {
 } bi_t;
 
 /* adjust constants in config.h if this assert fails */
-
+typedef int __assert_failed_bi_size[(sizeof(bi_t) <= (1ul<<(12))) ? 1 : -1];
 # 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/boot.h" 2
 
 
@@ -9558,8 +10345,8 @@ init_node_state(
     bi_finalise();
 
 
-
-
+    ia32KSconsolePort = console_port_of_node(node_id);
+    ia32KSdebugPort = debug_port_of_node(node_id);
 
 
     return true;
@@ -9688,8 +10475,8 @@ init_node_cpu(
 
 typedef struct cmdline_opt {
 
-
-
+    uint16_t console_port[40];
+    uint16_t debug_port[40];
 
 
 
@@ -9866,14 +10653,14 @@ typedef struct acpi_header {
     char creater_id[4];
     uint32_t creater_revision;
 } acpi_header_t;
-
+typedef int __assert_failed_acpi_header_packed[(sizeof(acpi_header_t) == 36) ? 1 : -1];
 
 /* Root System Descriptor Table */
 typedef struct acpi_rsdt {
     acpi_header_t header;
     acpi_header_t* entry[1];
 } acpi_rsdt_t;
-
+typedef int __assert_failed_acpi_rsdt_packed[(sizeof(acpi_rsdt_t) == sizeof(acpi_header_t) + sizeof(acpi_header_t*)) ? 1 : -1];
 
 
 acpi_rsdt_t* acpi_init(void);
@@ -9965,13 +10752,26 @@ extern char _boot_stack_top[1];
 /* locations in kernel image */
 extern char ki_boot_end[1];
 extern char ki_end[1];
-# 55 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c"
+
+
+/* start/end of .ndks section */
+extern char _ndks_start[1];
+extern char _ndks_end[1];
+
+/* start/end of kernel stack */
+extern char _kernel_stack_bottom[1];
+extern char _kernel_stack_top[1];
+
+/* kernel entry point */
+extern char _start[1];
+
+
 /* constants */
 
 
 
-
-
+typedef int __assert_failed_align_ndks_size[((!((0x3000) & ((1ul<<(12))-1ul)))) ? 1 : -1];
+typedef int __assert_failed_max_ndks_size[(0x3000 <= 0xffff0000 - 0xffc01000) ? 1 : -1];
 
 /* type definitions (directly corresponding to abstract specification) */
 
@@ -9980,8 +10780,8 @@ typedef struct glks {
     p_region_t ki_p_reg; /* region where the kernel image is in */
     p_region_t sh_p_reg; /* region shared between nodes */
     uint32_t num_nodes; /* number of nodes */
-    cpu_id_t cpu_list [8]; /* CPUs assigned to nodes */
-    ui_info_t ui_info_list [8]; /* info about userland images */
+    cpu_id_t cpu_list [40]; /* CPUs assigned to nodes */
+    ui_info_t ui_info_list [40]; /* info about userland images */
     dev_p_regs_t dev_p_regs; /* device memory regions */
     uint32_t apic_khz; /* frequency of APIC/bus */
 
@@ -10001,7 +10801,7 @@ __attribute__((__section__(".boot.glob")))
 glks_t glks;
 
 __attribute__((__section__(".glob"))) __attribute__((__aligned__((1ul<<(12)))))
-ndks_t ndks_list[8];
+ndks_t ndks_list[40];
 
 /* The kernel stack is actually allocated per-node as part of ndks_list, above.
  * The following definition, in conjunction with the linker script, tells the
@@ -10017,12 +10817,39 @@ cmdline_opt_t cmdline_opt;
 
 /* the array type is uint32_t instead of pde_t due to a c-parser limitation */
 __attribute__((__section__(".glob"))) __attribute__((__aligned__((1ul<<((10 + 2))))))
-uint32_t kernel_pd_list[8][(1ul<<(10))];
+uint32_t kernel_pd_list[40][(1ul<<(10))];
 
 /* the array type is uint32_t instead of pte_t due to a c-parser limitation */
 __attribute__((__section__(".glob"))) __attribute__((__aligned__((1ul<<((10 + 2))))))
-uint32_t kernel_pt_list[8][(1ul<<(10))];
-# 139 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c"
+uint32_t kernel_pt_list[40][(1ul<<(10))];
+
+
+
+/* Determine whether we are in bootstrapping phase or runtime phase.
+ * Is currently only needed to determine console port in debug mode.
+ */
+bool_t
+in_boot_phase()
+{
+    paddr_t esp = pptr_to_paddr(get_current_esp());
+
+    return (esp <= 0x80000 ||
+            (esp <= (paddr_t)_boot_stack_top && esp > (paddr_t)_boot_stack_bottom));
+}
+
+__attribute__((__section__(".boot.text"))) uint16_t
+console_port_of_node(node_id_t node_id)
+{
+    return cmdline_opt.console_port[node_id];
+}
+
+__attribute__((__section__(".boot.text"))) uint16_t
+debug_port_of_node(node_id_t node_id)
+{
+    return cmdline_opt.debug_port[node_id];
+}
+
+
 /* functions not modeled in abstract specification */
 
 __attribute__((__section__(".boot.text"))) static paddr_t
@@ -10032,36 +10859,36 @@ load_boot_module(node_id_t node, multiboot_module_t* boot_module, paddr_t load_p
     v_region_t v_reg;
 
     if (!elf32_checkFile(elf_file)) {
-        ((void)(0));
+        printf("Boot module does not contain a valid ELF32 image\n");
         return 0;
     }
 
     v_reg = elf32_getMemoryBounds(elf_file);
 
     if (v_reg.end == 0) {
-        ((void)(0));
+        printf("ELF32 image in boot module does not contain any segments\n");
         return 0;
     }
     v_reg.end = (((((v_reg.end) - 1ul) >> (12)) + 1ul) << (12));
 
-    ((void)(0))
-
-
-
-
-           ;
+    printf("size=0x%x v_entry=0x%x v_start=0x%x v_end=0x%x ",
+           v_reg.end - v_reg.start,
+           elf_file->e_entry,
+           v_reg.start,
+           v_reg.end
+          );
 
     if (!(!((v_reg.start) & ((1ul<<(12))-1ul)))) {
-        ((void)(0));
+        printf("Userland image virtual start address must be 4KB-aligned\n");
         return 0;
     }
     if (v_reg.end + 2 * (1ul<<(12)) > 0xe0000000) {
         /* for IPC buffer frame and bootinfo frame, need 2*4K of additional userland virtual memory */
-        ((void)(0));
+        printf("Userland image virtual end address too high\n");
         return 0;
     }
     if ((elf_file->e_entry < v_reg.start) || (elf_file->e_entry >= v_reg.end)) {
-        ((void)(0));
+        printf("Userland image entry point does not lie within userland image\n");
         return 0;
     }
 
@@ -10072,13 +10899,13 @@ load_boot_module(node_id_t node, multiboot_module_t* boot_module, paddr_t load_p
     glks.ui_info_list[node].p_reg.end = load_paddr;
     glks.ui_info_list[node].v_entry = elf_file->e_entry;
 
-    ((void)(0))
-
-
-           ;
+    printf("p_start=0x%x p_end=0x%x\n",
+           glks.ui_info_list[node].p_reg.start,
+           glks.ui_info_list[node].p_reg.end
+          );
 
     if (load_paddr > glks.avail_p_reg.end) {
-        ((void)(0));
+        printf("End of loaded userland image lies outside of usable physical memory\n");
         return 0;
     }
 
@@ -10098,9 +10925,9 @@ insert_dev_p_reg(p_region_t reg)
     if (glks.dev_p_regs.count < 199) {
         glks.dev_p_regs.list[glks.dev_p_regs.count] = reg;
         glks.dev_p_regs.count++;
-        ((void)(0));
+        printf("\n");
     } else {
-        ((void)(0));
+        printf(" -> IGNORED! (too many)\n");
     }
 }
 
@@ -10132,7 +10959,7 @@ node_of_cpu(cpu_id_t cpu_id)
         }
     }
     /* Is it even possible for this to happen? */
-    halt();
+    _fail("Couldn't find node of CPU", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 248, __func__);
 }
 
 
@@ -10257,7 +11084,7 @@ boot_node(void)
     bool_t result;
     result = try_boot_node();
     if (!result) {
-        halt();
+        _fail("Failed to start node :(\n", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 380, __func__);
     }
 }
 
@@ -10290,23 +11117,23 @@ try_boot_sys(
     glks.num_nodes = 1; /* needed to enable console output */
 
     if (multiboot_magic != 0x2BADB002) {
-        ((void)(0));
+        printf("Boot loader not multiboot compliant\n");
         return false;
     }
     cmdline_parse(mbi->cmdline, &cmdline_opt);
 
     /* assert correct NDKS location and size */
-    ;
-    ;
+    if(!((uint32_t)_ndks_start == 0xffc01000)) _assert_fail("(uint32_t)_ndks_start == PPTR_NDKS", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 419, __FUNCTION__);
+    if(!(_ndks_end - _ndks_start <= 0x3000)) _assert_fail("_ndks_end - _ndks_start <= NDKS_SIZE", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 420, __FUNCTION__);
 
     if ((mbi->flags & (1ul<<(0))) == 0) {
-        ((void)(0));
+        printf("Boot loader did not provide information about physical memory size\n");
         return false;
     }
 
-    ;
+    if(!(_boot_cpu_end - _boot_cpu_start < 0x400)) _assert_fail("_boot_cpu_end - _boot_cpu_start < 0x400", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 427, __FUNCTION__);
     if ((mbi->mem_lower << 10) < 0x80000 + 0x400) {
-        ((void)(0));
+        printf("Need at least 513K of available lower physical memory\n");
         return false;
     }
 
@@ -10322,25 +11149,25 @@ try_boot_sys(
         glks.avail_p_reg.end = (0xffc00000 - (0xe0000000 - 0x00000000));
     }
 
-    ((void)(0))
-
-
-
-           ;
+    printf("Physical memory usable by seL4: start=0x%x end=0x%x size=0x%x\n",
+           glks.avail_p_reg.start,
+           glks.avail_p_reg.end,
+           glks.avail_p_reg.end - glks.avail_p_reg.start
+          );
 
     glks.ki_p_reg.start = 0x00100000;
     glks.ki_p_reg.end = pptr_to_paddr(ki_end);
 
-    ((void)(0))
-
-
-
-
-           ;
-    ((void)(0));
+    printf("Kernel loaded to: start=0x%x end=0x%x size=0x%x entry=0x%x\n",
+           glks.ki_p_reg.start,
+           glks.ki_p_reg.end,
+           glks.ki_p_reg.end - glks.ki_p_reg.start,
+           (paddr_t)_start
+          );
+    printf("Kernel stack size: 0x%x\n", _kernel_stack_top - _kernel_stack_bottom);
 
     glks.apic_khz = apic_khz;
-    ((void)(0));
+    printf("APIC: Bus frequency is %d MHz\n", glks.apic_khz / 1000);
 
     /* remapping legacy IRQs to their correct vectors */
     pic_remap_irqs(0x20);
@@ -10355,36 +11182,36 @@ try_boot_sys(
     }
 # 494 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c"
     /* query available CPUs from ACPI */
-    glks.num_nodes = acpi_madt_scan(acpi_rsdt, glks.cpu_list, 8);
+    glks.num_nodes = acpi_madt_scan(acpi_rsdt, glks.cpu_list, 40);
     if (glks.num_nodes == 0) {
-        ((void)(0));
+        printf("No CPUs detected\n");
         return false;
     }
 
     if (glks.num_nodes > cmdline_opt.max_num_nodes) {
         glks.num_nodes = cmdline_opt.max_num_nodes;
     }
-    ((void)(0));
+    printf("Will boot up %d seL4 node(s)\n", glks.num_nodes);
 
     if (!(mbi->flags & (1ul<<(3)))) {
-        ((void)(0));
+        printf("Boot loader did not provide information about boot modules\n");
         return false;
     }
 
-    ((void)(0));
+    printf("Detected %d boot module(s):\n", mbi->mod_count);
     mods_end_paddr = 0;
 
     for (i = 0; i < mbi->mod_count; i++) {
-        ((void)(0))
-
-
-
-
-
-
-         ;
+        printf(
+            "  module #%d: start=0x%x end=0x%x size=0x%x name='%s'\n",
+            i,
+            mbi->mod_list[i].start,
+            mbi->mod_list[i].end,
+            mbi->mod_list[i].end - mbi->mod_list[i].start,
+            mbi->mod_list[i].name
+        );
         if ((int32_t)(mbi->mod_list[i].end - mbi->mod_list[i].start) <= 0) {
-            ((void)(0));
+            printf("Invalid boot module size! Possible cause: boot module file not found by QEMU\n");
             return false;
         }
         if (mods_end_paddr < mbi->mod_list[i].end) {
@@ -10392,18 +11219,18 @@ try_boot_sys(
         }
     }
     mods_end_paddr = (((((mods_end_paddr) - 1ul) >> (12)) + 1ul) << (12));
-    ;
+    if(!(mods_end_paddr > glks.ki_p_reg.end)) _assert_fail("mods_end_paddr > glks.ki_p_reg.end", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 532, __FUNCTION__);
 
     if (mbi->mod_count < 1) {
-        ((void)(0));
+        printf("Expect at least one boot module (containing a userland image)\n");
         return false;
     }
 
-    ((void)(0));
+    printf("ELF-loading userland images from boot modules:\n");
     load_paddr = mods_end_paddr;
 
     for (i = 0; i < mbi->mod_count && i < glks.num_nodes; i++) {
-        ((void)(0));
+        printf("  module #%d for node #%d: ", i, i);
         load_paddr = load_boot_module(i, mbi->mod_list + i, load_paddr);
         if (!load_paddr) {
             return false;
@@ -10411,7 +11238,7 @@ try_boot_sys(
     }
 
     for (i = mbi->mod_count; i < glks.num_nodes; i++) {
-        ((void)(0));
+        printf("  module #%d for node #%d: ", mbi->mod_count - 1, i);
         load_paddr = load_boot_module(i, mbi->mod_list + mbi->mod_count - 1, load_paddr);
         if (!load_paddr) {
             return false;
@@ -10422,12 +11249,12 @@ try_boot_sys(
     ui_p_regs.start = glks.ki_p_reg.end;
     ui_p_regs.end = ui_p_regs.start + load_paddr - mods_end_paddr;
 
-    ((void)(0))
-
-
-
-
-     ;
+    printf(
+        "Moving loaded userland images to final location: from=0x%x to=0x%x size=0x%x\n",
+        mods_end_paddr,
+        ui_p_regs.start,
+        ui_p_regs.end - ui_p_regs.start
+    );
     memcpy((void*)ui_p_regs.start, (void*)mods_end_paddr, ui_p_regs.end - ui_p_regs.start);
 
     for (i = 0; i < glks.num_nodes; i++) {
@@ -10440,35 +11267,35 @@ try_boot_sys(
     /* ==== following code corresponds to abstract specification after "select" ==== */
 
     /* exclude kernel image from available memory */
-    ;
+    if(!(glks.avail_p_reg.start == glks.ki_p_reg.start)) _assert_fail("glks.avail_p_reg.start == glks.ki_p_reg.start", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 580, __FUNCTION__);
     glks.avail_p_reg.start = glks.ki_p_reg.end;
 
     /* exclude userland images from available memory */
-    ;
+    if(!(glks.avail_p_reg.start == ui_p_regs.start)) _assert_fail("glks.avail_p_reg.start == ui_p_regs.start", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 584, __FUNCTION__);
     glks.avail_p_reg.start = ui_p_regs.end;
 
     /* choose shared region */
     glks.sh_p_reg.start = glks.avail_p_reg.start;
     glks.sh_p_reg.end = glks.sh_p_reg.start + (cmdline_opt.num_sh_frames << 12);
     if (glks.sh_p_reg.end > glks.avail_p_reg.end || glks.sh_p_reg.end < glks.sh_p_reg.start) {
-        ((void)(0));
+        printf("Not enough usable physical memory to allocate shared region\n");
         return false;
     }
 
     /* exclude shared region from available memory */
-    ;
+    if(!(glks.avail_p_reg.start == glks.sh_p_reg.start)) _assert_fail("glks.avail_p_reg.start == glks.sh_p_reg.start", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 596, __FUNCTION__);
     glks.avail_p_reg.start = glks.sh_p_reg.end;
 
     discover_devices();
 
-    ((void)(0));
+    printf("Starting node #0\n");
     if (!try_boot_node()) {
         return false;
     }
 
     /* start up other CPUs and initialise their nodes */
     for (i = 1; i < glks.num_nodes; i++) {
-        ((void)(0));
+        printf("Starting node #%d\n", i);
         start_cpu(glks.cpu_list[i], 0x80000);
     }
     return true;
@@ -10484,7 +11311,7 @@ boot_sys(
     result = try_boot_sys(multiboot_magic, mbi, apic_khz);
 
     if (!result) {
-        halt();
+        _fail("boot_sys failed for some reason :(\n", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 624, __func__);
     }
 }
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c"
@@ -10610,20 +11437,91 @@ static int parse_opt(const char *cmdline, const char *opt, char *value, int bufs
 
     return len;
 }
-# 112 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c"
+# 87 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c"
+static void parse_uint16_array(char* str, uint16_t* array, int array_size)
+{
+    char* last;
+    int i = 0;
+    int v;
+
+    while (str && i < array_size) {
+        for (last = str; *str && *str != ','; str++);
+        if (*str == 0) {
+            str = 0;
+        } else {
+            *str = 0;
+            str++;
+        }
+        v = str_to_int(last);
+        if (v == -1) {
+            array[i] = 0;
+        } else {
+            array[i] = v;
+        }
+        i++;
+    }
+}
+
+
 void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
 {
     int i;
-# 162 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c"
+
+
+    /* initialise to default */
+    for (i = 0; i < 40; i++) {
+        cmdline_opt->console_port[i] = 0;
+        cmdline_opt->debug_port[i] = 0;
+    }
+    cmdline_opt->console_port[0] = 0x3f8;
+    cmdline_opt->debug_port[0] = 0x3f8;
+
+    if (parse_opt(cmdline, "console_port", cmdline_val, 1000) != -1) {
+        parse_uint16_array(cmdline_val, cmdline_opt->console_port, 40);
+    }
+
+    /* initialise console ports to enable debug output */
+    for (i = 0; i < 40; i++) {
+        if (cmdline_opt->console_port[i]) {
+            serial_init(cmdline_opt->console_port[i]);
+        }
+    }
+
+    /* only start printing here after having parsed/set/initialised the console_port */
+    printf("\nBoot config: parsing cmdline '%s'\n", cmdline);
+
+    for (i = 0; i < 40; i++)
+        if (cmdline_opt->console_port[i]) {
+            printf("Boot config: console_port of node #%d = 0x%x\n", i, cmdline_opt->console_port[i]);
+        }
+
+    if (parse_opt(cmdline, "debug_port", cmdline_val, 1000) != -1) {
+        parse_uint16_array(cmdline_val, cmdline_opt->debug_port, 40);
+    }
+
+    /* initialise debug ports */
+    for (i = 0; i < 40; i++) {
+        if (cmdline_opt->debug_port[i]) {
+            serial_init(cmdline_opt->debug_port[i]);
+            printf("Boot config: debug_port of node #%d = 0x%x\n", i, cmdline_opt->debug_port[i]);
+        }
+    }
+
+
+
+
+
+
+
     /* parse max_num_nodes option */
     cmdline_opt->max_num_nodes = 1; /* default */
     if (parse_opt(cmdline, cmdline_str_max_num_nodes, cmdline_val, 1000) != -1) {
         i = str_to_int(cmdline_val);
-        if (i > 0 && i <= 8) {
+        if (i > 0 && i <= 40) {
             cmdline_opt->max_num_nodes = i;
         }
     }
-    ((void)(0));
+    printf("Boot config: max_num_nodes = %d\n", cmdline_opt->max_num_nodes);
 
     /* parse num_sh_frames option */
     cmdline_opt->num_sh_frames = 0; /* default */
@@ -10633,7 +11531,7 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
             cmdline_opt->num_sh_frames = i;
         }
     }
-    ((void)(0));
+    printf("Boot config: num_sh_frames = 0x%x\n", cmdline_opt->num_sh_frames);
 }
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/elf.c"
 /*
@@ -10731,6 +11629,44 @@ elf32_load(Elf32_Header_t* elfFile, int32_t offset)
         memset((void*)dst, 0, phdr[i].p_memsz - len);
     }
 }
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/lock.c"
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/lock.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/lock.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/lock.c" 2
+
+/* global spinlocks */
+lock_t lock_debug __attribute__((__section__(".glob")));
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/thread.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
@@ -11659,7 +12595,7 @@ map_kernel_window(
     }
 
     /* crosscheck whether we have mapped correctly so far */
-    ;
+    if(!(phys == (0xffc00000 - (0xe0000000 - 0x00000000)))) _assert_fail("phys == PADDR_TOP", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 623, __FUNCTION__);
 # 635 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c"
     /* map page table of last 4M of virtual address space to page directory */
     pde = pde_pde_4k_new(
@@ -11755,7 +12691,7 @@ map_kernel_window(
               1 /* present              */
           );
 
-    ;
+    if(!(idx == (0xffff0000 & ((1ul<<(pageBitsForSize(IA32_4M)))-1ul)) >> pageBitsForSize(IA32_4K))) _assert_fail("idx == (PPTR_APIC & MASK(pageBitsForSize(IA32_4M))) >> pageBitsForSize(IA32_4K)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 729, __FUNCTION__);
     pt[idx] = pte;
     idx++;
 # 761 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c"
@@ -11779,7 +12715,7 @@ map_kernel_window(
     }
 
     /* Check we haven't added too many kernel-device mappings.*/
-    ;
+    if(!(idx == (1ul<<(10)))) _assert_fail("idx == BIT(PT_BITS)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 781, __FUNCTION__);
 
     invalidatePageStructureCache();
     return true;
@@ -11871,7 +12807,7 @@ map_it_pt_cap(cap_t pd_cap, cap_t pt_cap)
     pte_t* pt = ((pte_t *)cap_page_table_cap_get_capPTBasePtr(pt_cap));
     vptr_t vptr = cap_page_table_cap_get_capPTMappedAddress(pt_cap);
 
-    ;
+    if(!(cap_page_table_cap_get_capPTIsMapped(pt_cap))) _assert_fail("cap_page_table_cap_get_capPTIsMapped(pt_cap)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 873, __FUNCTION__);
     pde_pde_4k_ptr_new(
         pd + (vptr >> pageBitsForSize(IA32_4M)),
         pptr_to_paddr(pt), /* pt_base_address */
@@ -11894,7 +12830,7 @@ map_it_frame_cap(cap_t pd_cap, cap_t frame_cap)
     void* frame = (void*)cap_frame_cap_get_capFBasePtr(frame_cap);
     vptr_t vptr = cap_frame_cap_get_capFMappedAddress(frame_cap);
 
-    ;
+    if(!(cap_frame_cap_get_capFMappedASID(frame_cap) != 0)) _assert_fail("cap_frame_cap_get_capFMappedASID(frame_cap) != 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 896, __FUNCTION__);
     pd += (vptr >> pageBitsForSize(IA32_4M));
     pt = paddr_to_pptr(pde_pde_4k_ptr_get_pt_base_address(pd));
     pte_ptr_new(
@@ -11929,7 +12865,7 @@ init_pat_msr(void)
     /* First verify PAT is supported by the machine.
        See section 11.12.1 of Volume 3 of the Intel manual */
     if ( (ia32_cpuid_edx(0x1, 0x0) & (1ul<<(16))) == 0) {
-        ((void)(0));
+        printf("PAT support not found\n");
         return false;
     }
     pat_msr.words[0] = ia32_rdmsr_low(0x277);
@@ -11959,7 +12895,7 @@ static uint32_t __attribute__((__const__)) WritableFromVMRights(vm_rights_t vm_r
         return 1;
 
     default:
-        halt();
+        _fail("Invalid VM rights", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 961, __func__);
     }
 }
 
@@ -11974,7 +12910,7 @@ static uint32_t __attribute__((__const__)) SuperUserFromVMRights(vm_rights_t vm_
         return 1;
 
     default:
-        halt();
+        _fail("Invalid VM rights", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 976, __func__);
     }
 }
 
@@ -12093,7 +13029,7 @@ exception_t handleVMFault(tcb_t* thread, vm_fault_type_t vm_faultType)
         return EXCEPTION_FAULT;
 
     default:
-        halt();
+        _fail("Invalid VM fault type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1095, __func__);
     }
 }
 
@@ -12110,13 +13046,13 @@ bool_t __attribute__((__const__)) isValidVTableRoot(cap_t cap)
 exception_t checkValidIPCBuffer(vptr_t vptr, cap_t cap)
 {
     if (cap_get_capType(cap) != cap_frame_cap) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1112, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IPC Buffer is an invalid cap."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
 
     if (!(!((vptr) & ((1ul<<(9))-1ul)))) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1118, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IPC Buffer vaddr 0x%x is not aligned.", (int)vptr); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_AlignmentError;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -12144,7 +13080,7 @@ static void flushTable(pde_t* pd, word_t vptr, pte_t* pt)
     unsigned int i;
     cap_t threadRoot;
 
-    ;
+    if(!((!((vptr) & ((1ul<<(10 + 12))-1ul))))) _assert_fail("IS_ALIGNED(vptr, PT_BITS + PAGE_BITS)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1146, __FUNCTION__);
 
     /* check if page table belongs to current address space */
     threadRoot = (((cte_t *)((unsigned int)ksCurThread&~((1ul<<(10))-1ul)))+tcbVTable)->cap;
@@ -12221,7 +13157,7 @@ void setVMRoot(tcb_t* tcb)
 void deleteASIDPool(asid_t asid_base, asid_pool_t* pool)
 {
     /* Haskell error: "ASID pool's base must be aligned" */
-    ;
+    if(!((!((asid_base) & ((1ul<<(asidLowBits))-1ul))))) _assert_fail("IS_ALIGNED(asid_base, asidLowBits)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1223, __FUNCTION__);
 
     if (ia32KSASIDTable[asid_base >> asidLowBits] == pool) {
         ia32KSASIDTable[asid_base >> asidLowBits] = ((void *)0);
@@ -12340,7 +13276,7 @@ void unmapPage(vm_page_size_t page_size, asid_t asid, vptr_t vptr, void *pptr)
         break;
 
     default:
-        halt();
+        _fail("Invalid page type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1342, __func__);
     }
     invalidatePageStructureCache();
 }
@@ -12366,7 +13302,7 @@ static exception_t performASIDControlInvocation(void* frame, cte_t* slot, cte_t*
         slot
     );
     /* Haskell error: "ASID pool's base must be aligned" */
-    ;
+    if(!((asid_base & ((1ul<<(asidLowBits))-1ul)) == 0)) _assert_fail("(asid_base & MASK(asidLowBits)) == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1368, __FUNCTION__);
     ia32KSASIDTable[asid_base >> asidLowBits] = (asid_pool_t*)frame;
 
     return EXCEPTION_NONE;
@@ -12426,7 +13362,7 @@ decodeIA32PageTableInvocation(
     if (label == IA32PageTableUnmap) {
         if (! isFinalCapability(cte)) {
             current_syscall_error.type = seL4_RevokeFirst;
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1428, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Cannot unmap if more than one cap exists."); printf(">>" "\033[0m" "\n"); } while (0);
             return EXCEPTION_SYSCALL_ERROR;
         }
         setThreadState(ksCurThread, ThreadState_Restart);
@@ -12446,19 +13382,19 @@ decodeIA32PageTableInvocation(
     }
 
     if (label != IA32PageTableMap ) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1448, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Illegal operation."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
 
     if (length < 2 || extraCaps.excaprefs[0] == ((void *)0)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1454, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
 
     if (cap_page_table_cap_get_capPTIsMapped(cap)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1460, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Page table is already mapped to a page directory."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type =
             seL4_InvalidCapability;
         current_syscall_error.invalidCapNumber = 0;
@@ -12482,7 +13418,7 @@ decodeIA32PageTableInvocation(
     asid = cap_page_directory_cap_get_capPDMappedASID(pdCap);
 
     if (vaddr >= 0xe0000000) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1484, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Mapping address too high."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_InvalidArgument;
         current_syscall_error.invalidArgumentNumber = 0;
 
@@ -12581,7 +13517,7 @@ decodeIA32FrameInvocation(
         capVMRights = cap_frame_cap_get_capFVMRights(cap);
 
         if (cap_frame_cap_get_capFMappedASID(cap) != asidInvalid) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1583, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32Frame: Frame already mapped."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_InvalidCapability;
             current_syscall_error.invalidCapNumber = 0;
 
@@ -12591,9 +13527,9 @@ decodeIA32FrameInvocation(
         if (cap_get_capType(pdCap) != cap_page_directory_cap ||
                 !cap_page_directory_cap_get_capPDIsMapped(pdCap)) {
             if (cap_get_capType(pdCap) != cap_page_directory_cap) {
-                ;
+                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1593, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32Frame: Attempting to map frame into invalid page directory cap."); printf(">>" "\033[0m" "\n"); } while (0);
             } else {
-                ;
+                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1595, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32Frame: Attempting to map frame into unmapped page directory cap."); printf(">>" "\033[0m" "\n"); } while (0);
             }
             current_syscall_error.type = seL4_InvalidCapability;
             current_syscall_error.invalidCapNumber = 1;
@@ -12687,7 +13623,7 @@ decodeIA32FrameInvocation(
         }
 
         default:
-            halt();
+            _fail("Invalid page type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1689, __func__);
         }
         invalidatePageStructureCache();
         break;
@@ -12728,7 +13664,7 @@ decodeIA32FrameInvocation(
         asid = cap_page_directory_cap_get_capPDMappedASID(pdCap);
 
         if (cap_frame_cap_get_capFMappedASID(cap) == asidInvalid) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1738, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageRemap: Frame must already have been mapped."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_InvalidCapability;
             current_syscall_error.invalidCapNumber = 0;
 
@@ -12809,7 +13745,7 @@ decodeIA32FrameInvocation(
         }
 
         default:
-            halt();
+            _fail("Invalid page type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1819, __func__);
         }
         invalidatePageStructureCache();
         break;
@@ -12843,7 +13779,7 @@ decodeIA32FrameInvocation(
 
     case IA32PageGetAddress: {
         /* Return it in the first message register. */
-        ;
+        if(!(n_msgRegisters >= 1)) _assert_fail("n_msgRegisters >= 1", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1853, __FUNCTION__);
 
         setThreadState(ksCurThread, ThreadState_Restart);
         return performPageGetAddress((void*)cap_frame_cap_get_capFBasePtr(cap));
@@ -13013,7 +13949,426 @@ decodeIA32MMUInvocation(
     }
 
     default:
-        halt();
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 2023, __func__);
+    }
+}
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c"
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
+
+
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/capdl.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/capdl.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/debug_helpers.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+
+
+
+void putDebugChar(unsigned char a);
+unsigned char getDebugChar(void);
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pci.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
+# 30 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c"
+static int getDecodedChar(unsigned char *result)
+{
+    unsigned char c;
+    c = getDebugChar();
+    if (c == 0xff) {
+        return 1;
+    }
+    if (c == 0xaa) {
+        c = getDebugChar();
+        if (c == 0xff) {
+            return 1;
+        }
+        switch (c) {
+        case 0xa1:
+            *result = 0xaa;
+            break;
+        case 0xa0:
+            *result = 0xff;
+            break;
+        case 0xa2:
+            *result = 0xbb;
+            break;
+        default:
+            if (c >= 20 && c < 40) {
+                *result = c - 20;
+            }
+        }
+        return 0;
+    } else {
+        *result = c;
+        return 0;
+    }
+}
+
+static void putEncodedChar(unsigned char c)
+{
+    switch (c) {
+    case 0xaa:
+        putDebugChar(0xaa);
+        putDebugChar(0xa1);
+        break;
+    case 0xff:
+        putDebugChar(0xaa);
+        putDebugChar(0xa0);
+        break;
+    case 0xbb:
+        putDebugChar(0xaa);
+        putDebugChar(0xa2);
+        break;
+    default:
+        if (c < 20) {
+            putDebugChar(0xaa);
+            putDebugChar(c + 20);
+        } else {
+            putDebugChar(c);
+        }
+    }
+}
+
+static int getArg32(unsigned int *res)
+{
+    unsigned char b1 = 0;
+    unsigned char b2 = 0;
+    unsigned char b3 = 0;
+    unsigned char b4 = 0;
+    if (getDecodedChar(&b1)) {
+        return 1;
+    }
+    if (getDecodedChar(&b2)) {
+        return 1;
+    }
+    if (getDecodedChar(&b3)) {
+        return 1;
+    }
+    if (getDecodedChar(&b4)) {
+        return 1;
+    }
+    *res = (b1 << 24 ) | (b2 << 16) | (b3 << 8) | b4;
+    return 0;
+}
+
+static void sendWord(unsigned int word)
+{
+    putEncodedChar(word & 0xff);
+    putEncodedChar((word >> 8) & 0xff);
+    putEncodedChar((word >> 16) & 0xff);
+    putEncodedChar((word >> 24) & 0xff);
+}
+
+static cte_t *getMDBParent(cte_t *slot)
+{
+    cte_t *oldSlot = ((cte_t *)(mdb_node_get_mdbPrev(slot->cteMDBNode)));
+
+    while (oldSlot != 0 && !isMDBParentOf(oldSlot, slot)) {
+        oldSlot = ((cte_t *)(mdb_node_get_mdbPrev(oldSlot->cteMDBNode)));
+    }
+
+    return oldSlot;
+}
+
+static void sendPD(unsigned int address)
+{
+    unsigned int i;
+    unsigned int exists;
+    pde_t *start = (pde_t *)address;
+    for (i = 0; i < (1ul<<(10)); i++) {
+        pde_t pde = start[i];
+        exists = 1;
+        if (pde_get_page_size(pde) == pde_pde_4k && (pde_pde_4k_get_pt_base_address(pde) == 0 ||
+                                                     !pde_pde_4k_get_present(pde) || !pde_pde_4k_get_super_user(pde))) {
+            exists = 0;
+        } else if (pde_get_page_size(pde) == pde_pde_4m && (pde_pde_4m_get_page_base_address(pde) == 0 ||
+                                                            !pde_pde_4m_get_present(pde) || !pde_pde_4m_get_super_user(pde))) {
+            exists = 0;
+        }
+        if (exists != 0 && i < 0xe0000000 >> pageBitsForSize(IA32_4M)) {
+            sendWord(i);
+            sendWord(pde.words[0]);
+        }
+    }
+}
+
+static void sendPT(unsigned int address)
+{
+    unsigned int i;
+    pte_t *start = (pte_t *)address;
+    for (i = 0; i < (1ul<<(10)); i++) {
+        pte_t pte = start[i];
+        if (pte_get_page_base_address(pte) != 0 && pte_get_present(pte) && pte_get_super_user(pte)) {
+            sendWord(i);
+            sendWord(pte.words[0]);
+        }
+    }
+}
+
+static void sendASIDPool(unsigned int address)
+{
+    unsigned int i;
+    pde_t **start = (pde_t **)address;
+    for (i = 0; i < (1ul<<(asidLowBits)); i++) {
+        pde_t *pde = start[i];
+        if (pde != 0) {
+            sendWord(i);
+            sendWord((unsigned int)pde);
+        }
+    }
+}
+# 223 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c"
+static void sendRunqueues(void)
+{
+    unsigned int i;
+    sendWord((unsigned int)ksCurThread);
+    for (i = 0; i < (1 * 256); i++) {
+        tcb_t *current = ksReadyQueues[i].head;
+        if (current != 0) {
+            while (current != ksReadyQueues[i].end) {
+                sendWord((unsigned int)current);
+                current = current -> tcbSchedNext;
+            }
+            sendWord((unsigned int)current);
+        }
+    }
+}
+
+static void sendEPQueue(unsigned int epptr)
+{
+    tcb_t *current = (tcb_t *)endpoint_ptr_get_epQueue_head((endpoint_t *)epptr);
+    tcb_t *tail = (tcb_t *)endpoint_ptr_get_epQueue_tail((endpoint_t *)epptr);
+    if (current == 0) {
+        return;
+    }
+    while (current != tail) {
+        sendWord((unsigned int)current);
+        current = current->tcbEPNext;
+    }
+    sendWord((unsigned int)current);
+}
+
+static void sendCNode(unsigned int address, unsigned int sizebits)
+{
+    unsigned int i;
+    cte_t *start = (cte_t *)address;
+    for (i = 0; i < (1 << sizebits); i++) {
+        cap_t cap = start[i].cap;
+        if (cap_get_capType(cap) != cap_null_cap) {
+            cte_t *parent = getMDBParent(&start[i]);
+            sendWord(i);
+            sendWord(cap.words[0]);
+            sendWord(cap.words[1]);
+            sendWord((unsigned int)parent);
+        }
+    }
+}
+
+static void sendIRQNode(void)
+{
+    sendCNode((unsigned int)intStateIRQNode, 8);
+}
+
+static void sendVersion(void)
+{
+    sendWord(0xe1);
+    sendWord(0);
+}
+
+void capDL(void)
+{
+    int result;
+    int done = 0;
+    while (done == 0) {
+        unsigned char c;
+        do {
+            c = getDebugChar();
+        } while (c != 0xff);
+        do {
+            result = getDecodedChar(&c);
+            if (result) {
+                continue;
+            }
+            switch (c) {
+            case 0xf0: {
+                /*pgdir */
+                unsigned int arg;
+                result = getArg32(&arg);
+                if (result) {
+                    continue;
+                }
+                sendPD(arg);
+                putDebugChar(0xbb);
+            }
+            break;
+            case 0xf5: {
+                /*pg table */
+                unsigned int arg;
+                result = getArg32(&arg);
+                if (result) {
+                    continue;
+                }
+                sendPT(arg);
+                putDebugChar(0xbb);
+            }
+            break;
+            case 0xf6: {
+                /*asid pool */
+                unsigned int arg;
+                result = getArg32(&arg);
+                if (result) {
+                    continue;
+                }
+                sendASIDPool(arg);
+                putDebugChar(0xbb);
+            }
+            break;
+# 356 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c"
+            case 0xf1: {
+                /*runqueues */
+                sendRunqueues();
+                putDebugChar(0xbb);
+                result = 0;
+            }
+            break;
+            case 0xf2: {
+                /*endpoint waiters */
+                unsigned int arg;
+                result = getArg32(&arg);
+                if (result) {
+                    continue;
+                }
+                sendEPQueue(arg);
+                putDebugChar(0xbb);
+            }
+            break;
+            case 0xf3: {
+                /*cnode */
+                unsigned int address, sizebits;
+                result = getArg32(&address);
+                if (result) {
+                    continue;
+                }
+                result = getArg32(&sizebits);
+                if (result) {
+                    continue;
+                }
+
+                sendCNode(address, sizebits);
+                putDebugChar(0xbb);
+            }
+            break;
+            case 0xf4: {
+                sendIRQNode();
+                putDebugChar(0xbb);
+                result = 0;
+            }
+            break;
+            case 0xf9: {
+                sendVersion();
+                putDebugChar(0xbb);
+            }
+            break;
+            case 0xfa: {
+                done = 1;
+                putDebugChar(0xbb);
+            }
+            default:
+                result = 0;
+                break;
+            }
+        } while (result);
     }
 }
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c"
@@ -13148,7 +14503,7 @@ handleUnimplementedDevice(void)
      * This should only be able to occur on CPUs without an FPU at all, which
      * we presumably are happy to assume will not be running seL4.
      */
-    ;
+    if(!(ksCurThread != ia32KSfpuOwner)) _assert_fail("ksCurThread != ia32KSfpuOwner", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c", 62, __FUNCTION__);
 
     /* Otherwise, lazily switch over the FPU. */
     switchFpuOwner(ksCurThread);
@@ -13313,7 +14668,7 @@ getCacheLineSizeBits(void)
 
     line_size = getCacheLineSize();
     if (line_size == 0) {
-        ((void)(0));
+        printf("Cacheline size must be >0\n");
         return 0;
     }
 
@@ -13325,7 +14680,7 @@ getCacheLineSizeBits(void)
     }
 
     if (line_size != 1) {
-        ((void)(0));
+        printf("Cacheline size must be a power of two\n");
         return 0;
     }
 
@@ -13338,8 +14693,8 @@ void flushCacheRange(void* vaddr, uint32_t size_bits)
 {
     uint32_t v;
 
-    ;
-    ;
+    if(!(size_bits < (8 * sizeof(word_t)))) _assert_fail("size_bits < WORD_BITS", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c", 73, __FUNCTION__);
+    if(!((!(((uint32_t)vaddr) & ((1ul<<(size_bits))-1ul))))) _assert_fail("IS_ALIGNED((uint32_t)vaddr, size_bits)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c", 74, __FUNCTION__);
 
     ia32_mfence();
 
@@ -13573,6 +14928,9 @@ user_fpu_state_t ia32KSnullFpuState __attribute__((__aligned__(16)));
 
 /* Current active page directory. This is really just a shadow of CR3 */
 paddr_t ia32KSCurrentPD __attribute__((externally_visible));
+# 69 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/model/statedata.c"
+uint16_t ia32KSconsolePort;
+uint16_t ia32KSdebugPort;
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/interrupt.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
@@ -13716,11 +15074,15 @@ ensurePortOperationAllowed(cap_t cap, uint32_t start_port, uint32_t size)
     uint32_t first_allowed = cap_io_port_cap_get_capIOPortFirstPort(cap);
     uint32_t last_allowed = cap_io_port_cap_get_capIOPortLastPort(cap);
     uint32_t end_port = start_port + size - 1;
-    ;
-    ;
+    if(!(first_allowed <= last_allowed)) _assert_fail("first_allowed <= last_allowed", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c", 24, __FUNCTION__);
+    if(!(start_port <= end_port)) _assert_fail("start_port <= end_port", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c", 25, __FUNCTION__);
 
     if ((start_port < first_allowed) || (end_port > last_allowed)) {
-       
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+
+ 30
+# 28 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c"
+        , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IOPort: Ports %d--%d fall outside permitted range %d--%d.", (int)start_port, (int)end_port, (int)first_allowed, (int)last_allowed); printf(">>" "\033[0m" "\n"); } while (0)
 
                                                         ;
         current_syscall_error.type = seL4_IllegalOperation;
@@ -13748,7 +15110,7 @@ decodeIA32PortInvocation(
 
     /* Ensure user specified at very least a port. */
     if (length < 1) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 56, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IOPort: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -13836,7 +15198,7 @@ decodeIA32PortInvocation(
 
         /* Ensure the incoming message is long enough for the write. */
         if (length < 2) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 144, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IOPort Out32: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_TruncatedMessage;
             return EXCEPTION_SYSCALL_ERROR;
         }
@@ -13855,7 +15217,7 @@ decodeIA32PortInvocation(
     }
 
     default:
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 163, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IOPort: Unknown operation."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -14053,7 +15415,7 @@ deriveCap_ret_t Arch_deriveCap(cte_t* slot, cap_t cap)
             ret.cap = cap;
             ret.status = EXCEPTION_NONE;
         } else {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 38, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Deriving an unmapped PT cap"); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_IllegalOperation;
             ret.cap = cap_null_cap_new();
             ret.status = EXCEPTION_SYSCALL_ERROR;
@@ -14065,7 +15427,7 @@ deriveCap_ret_t Arch_deriveCap(cte_t* slot, cap_t cap)
             ret.cap = cap;
             ret.status = EXCEPTION_NONE;
         } else {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 50, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Deriving a PD cap without an assigned ASID"); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_IllegalOperation;
             ret.cap = cap_null_cap_new();
             ret.status = EXCEPTION_SYSCALL_ERROR;
@@ -14093,7 +15455,7 @@ deriveCap_ret_t Arch_deriveCap(cte_t* slot, cap_t cap)
     default:
         /* This assert has no equivalent in haskell,
          * as the options are restricted by type */
-        halt();
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 94, __func__);
     }
 }
 
@@ -14107,7 +15469,7 @@ cap_t __attribute__((__const__)) Arch_updateCapData(bool_t preserve, word_t data
         uint16_t lastPort = io_port_capdata_get_lastPort(w);
         uint16_t capFirstPort = cap_io_port_cap_get_capIOPortFirstPort(cap);
         uint16_t capLastPort = cap_io_port_cap_get_capIOPortLastPort(cap);
-        ;
+        if(!(capFirstPort <= capLastPort)) _assert_fail("capFirstPort <= capLastPort", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 123, __FUNCTION__);
 
         /* Ensure input data is ordered correctly. */
         if (firstPort > lastPort) {
@@ -14193,7 +15555,7 @@ cap_t Arch_finaliseCap(cap_t cap, bool_t final)
         break;
 # 215 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c"
     default:
-        halt();
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 216, __func__);
     }
 
     return cap_null_cap_new();
@@ -14269,7 +15631,7 @@ cap_t Arch_recycleCap(bool_t is_final, cap_t cap)
         return cap;
 # 301 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c"
     default:
-        halt();
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 302, __func__);
     }
 }
 
@@ -14369,7 +15731,7 @@ Arch_getObjectSize(word_t t)
 
 
     default:
-        halt();
+        _fail("Invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 416, __func__);
         return 0;
     }
 }
@@ -14430,7 +15792,7 @@ Arch_createObject(object_t t, void *regionBase, word_t userSize)
          * got an API type" and the case where an invalid object type is
          * passed (which is impossible in haskell).
          */
-        halt();
+        _fail("Arch_createObject got an API type or invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 489, __func__);
     }
 }
 
@@ -14560,7 +15922,7 @@ setMRs_lookup_failure(tcb_t *receiver, word_t* receiveIPCBuffer, lookup_fault_t 
 {
     word_t lufType = lookup_fault_get_lufType(luf);
 
-    ;
+    if(!(n_msgRegisters == 2)) _assert_fail("n_msgRegisters == 2", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 24, __FUNCTION__);
 
     if (offset < n_msgRegisters) {
         setRegister(receiver, msgRegisters[offset], lufType + 1);
@@ -14600,13 +15962,13 @@ setMRs_lookup_failure(tcb_t *receiver, word_t* receiveIPCBuffer, lookup_fault_t 
         return offset + 4;
 
     default:
-        halt();
+        _fail("Invalid lookup failure", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 64, __func__);
     }
 }
 
 unsigned int setMRs_fault(tcb_t *sender, tcb_t* receiver, word_t *receiveIPCBuffer)
 {
-    ;
+    if(!(n_msgRegisters == 2)) _assert_fail("n_msgRegisters == 2", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 70, __FUNCTION__);
 
     switch (fault_get_faultType(sender->tcbFault)) {
     case fault_cap_fault:
@@ -14676,13 +16038,13 @@ unsigned int setMRs_fault(tcb_t *sender, tcb_t* receiver, word_t *receiveIPCBuff
     }
 
     default:
-        halt();
+        _fail("Invalid fault", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 140, __func__);
     }
 }
 
 unsigned int setMRs_syscall_error(tcb_t *thread, word_t *receiveIPCBuffer)
 {
-    ;
+    if(!(n_msgRegisters >= 2)) _assert_fail("n_msgRegisters >= 2", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 146, __FUNCTION__);
 
     switch (current_syscall_error.type) {
     case seL4_InvalidArgument:
@@ -14723,7 +16085,7 @@ unsigned int setMRs_syscall_error(tcb_t *thread, word_t *receiveIPCBuffer)
                     current_syscall_error.memoryLeft);
         return 0;
     default:
-        halt();
+        _fail("Invalid syscall error", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 187, __func__);
     }
 }
 
@@ -14769,6 +16131,39 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
  * @TAG(GD_GPL)
  */
 # 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/assert.c" 2
+
+
+
+void _fail(
+    const char* s,
+    const char* file,
+    unsigned int line,
+    const char* function)
+{
+    printf(
+        "seL4 called fail at %s:%u in function %s, saying \"%s\"\n",
+        file,
+        line,
+        function,
+        s
+    );
+    halt();
+}
+
+void _assert_fail(
+    const char* assertion,
+    const char* file,
+    unsigned int line,
+    const char* function)
+{
+    printf("seL4 failed assertion '%s' at %s:%u in function %s\n",
+           assertion,
+           file,
+           line,
+           function
+          );
+    halt();
+}
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/inlines.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
@@ -14948,7 +16343,7 @@ insert_region(region_t reg)
 {
     unsigned int i;
 
-    ;
+    if(!(reg.start <= reg.end)) _assert_fail("reg.start <= reg.end", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 32, __FUNCTION__);
     if (is_reg_empty(reg)) {
         return true;
     }
@@ -15020,7 +16415,7 @@ alloc_region(uint32_t size_bits)
         }
     }
     if (is_reg_empty(reg)) {
-        ((void)(0));
+        printf("Kernel init failing: not enough memory\n");
         return 0;
     }
     /* Remove the region in question */
@@ -15028,8 +16423,8 @@ alloc_region(uint32_t size_bits)
     /* Add the remaining regions in largest to smallest order */
     insert_region(rem_large);
     if (!insert_region(rem_small)) {
-        ((void)(0))
-                                                               ;
+        printf("alloc_region(): wasted 0x%x bytes due to alignment, try to increase MAX_NUM_FREEMEM_REG\n",
+               (unsigned int)(rem_small.end - rem_small.start));
     }
     return reg.start;
 }
@@ -15047,7 +16442,7 @@ write_slot(slot_ptr_t slot_ptr, cap_t cap)
 /* Our root CNode needs to be able to fit all the initial caps and not
  * cover all of memory.
  */
-
+typedef int __assert_failed_root_cnode_size_valid[(16 < 32 - 4 && (1U << 16) >= 12 /* slot where dynamically allocated caps start */) ? 1 : -1];
 
 
 
@@ -15063,7 +16458,7 @@ create_root_cnode(void)
     /* create an empty root CNode */
     pptr = alloc_region(16 + 4);
     if (!pptr) {
-        ((void)(0));
+        printf("Kernel init failing: could not create root cnode\n");
         return cap_null_cap_new();
     }
     memzero(((cte_t *)(pptr)), 1U << (16 + 4));
@@ -15081,7 +16476,7 @@ create_root_cnode(void)
     return cap;
 }
 
-
+typedef int __assert_failed_irq_cnode_size[((1ul<<(12 - 4)) > maxIRQ) ? 1 : -1];
 
 __attribute__((__section__(".boot.text"))) bool_t
 create_irq_cnode(void)
@@ -15090,7 +16485,7 @@ create_irq_cnode(void)
     /* create an empty IRQ CNode */
     pptr = alloc_region(12);
     if (!pptr) {
-        ((void)(0));
+        printf("Kernel init failing: could not create irq cnode\n");
         return false;
     }
     memzero((void*)pptr, 1 << 12);
@@ -15099,9 +16494,9 @@ create_irq_cnode(void)
 }
 
 /* Check domain scheduler assumptions. */
+typedef int __assert_failed_num_domains_valid[(1 >= 1 && 1 <= 256) ? 1 : -1];
 
-
-
+typedef int __assert_failed_num_priorities_valid[(256 >= 1 && 256 <= 256) ? 1 : -1];
 
 
 __attribute__((__section__(".boot.text"))) void
@@ -15111,10 +16506,10 @@ create_domain_cap(cap_t root_cnode_cap)
     unsigned int i;
 
     /* Check domain scheduler assumptions. */
-    ;
+    if(!(ksDomScheduleLength > 0)) _assert_fail("ksDomScheduleLength > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 195, __FUNCTION__);
     for (i = 0; i < ksDomScheduleLength; i++) {
-        ;
-        ;
+        if(!(ksDomSchedule[i].domain < 1)) _assert_fail("ksDomSchedule[i].domain < CONFIG_NUM_DOMAINS", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 197, __FUNCTION__);
+        if(!(ksDomSchedule[i].length > 0)) _assert_fail("ksDomSchedule[i].length > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 198, __FUNCTION__);
     }
 
     cap = cap_domain_cap_new();
@@ -15131,7 +16526,7 @@ create_ipcbuf_frame(cap_t root_cnode_cap, cap_t pd_cap, vptr_t vptr)
     /* allocate the IPC buffer frame */
     pptr = alloc_region(12);
     if (!pptr) {
-        ((void)(0));
+        printf("Kernel init failing: could not create ipc buffer frame\n");
         return cap_null_cap_new();
     }
     clearMemory((void*)pptr, 12);
@@ -15170,7 +16565,7 @@ allocate_bi_frame(
     /* create the bootinfo frame object */
     pptr = alloc_region(12);
     if (!pptr) {
-        ((void)(0));
+        printf("Kernel init failed: could not allocate bootinfo frame\n");
         return 0;
     }
     clearMemory((void*)pptr, 12);
@@ -15193,7 +16588,7 @@ __attribute__((__section__(".boot.text"))) bool_t
 provide_cap(cap_t root_cnode_cap, cap_t cap)
 {
     if (ndks_boot.slot_pos_cur >= ndks_boot.slot_pos_max) {
-        ((void)(0));
+        printf("Kernel init failed: ran out of cap slots\n");
         return false;
     }
     write_slot((((slot_ptr_t)((pptr_t)cap_get_capPtr(root_cnode_cap))) + (ndks_boot.slot_pos_cur)), cap);
@@ -15245,7 +16640,7 @@ create_it_asid_pool(cap_t root_cnode_cap)
     /* create ASID pool */
     ap_pptr = alloc_region((asidLowBits + 2));
     if (!ap_pptr) {
-        ((void)(0));
+        printf("Kernel init failed: failed to create initial thread asid pool\n");
         return cap_null_cap_new();
     }
     memzero(((asid_pool_t*)ap_pptr), 1 << (asidLowBits + 2));
@@ -15267,7 +16662,7 @@ create_idle_thread(void)
     pptr_t pptr;
     pptr = alloc_region(10);
     if (!pptr) {
-        ((void)(0));
+        printf("Kernel init failed: Unable to allocate tcb for idle thread\n");
         return false;
     }
     memzero((void *)pptr, 1 << 10);
@@ -15293,7 +16688,7 @@ create_initial_thread(
     /* allocate TCB */
     pptr = alloc_region(10);
     if (!pptr) {
-        ((void)(0));
+        printf("Kernel init failed: Unable to allocate tcb for initial thread\n");
         return false;
     }
     memzero((void*)pptr, 1 << 10);
@@ -15329,7 +16724,7 @@ create_initial_thread(
     ksCurThread = ksIdleThread;
     ksCurDomain = ksDomSchedule[ksDomScheduleIdx].domain;
     ksDomainTime = ksDomSchedule[ksDomScheduleIdx].length;
-    ;
+    if(!(ksCurDomain < 1 && ksDomainTime > 0)) _assert_fail("ksCurDomain < CONFIG_NUM_DOMAINS && ksDomainTime > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 413, __FUNCTION__);
 
     /* initialise current thread pointer */
     switchToThread(tcb); /* initialises ksCurThread */
@@ -15356,7 +16751,7 @@ provide_untyped_cap(
         ndks_boot.bi_frame->ut_obj_size_bits_list[i] = size_bits;
         ret = provide_cap(root_cnode_cap, cap_untyped_cap_new(0, size_bits, pptr));
     } else {
-        ((void)(0));
+        printf("Kernel init: Too many untyped regions for boot info\n");
         ret = true;
     }
     return ret;
@@ -15400,7 +16795,7 @@ create_untypeds_for_region(
             size_bits = align_bits;
         }
 
-        ;
+        if(!(size_bits >= (8 * sizeof(word_t)) / 8)) _assert_fail("size_bits >= WORD_BITS / 8", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 484, __FUNCTION__);
         if (!provide_untyped_cap(root_cnode_cap, reg.start, size_bits, first_untyped_slot)) {
             return false;
         }
@@ -15680,7 +17075,7 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
         levelBits = radixBits + guardBits;
 
         /* Haskell error: "All CNodes must resolve bits" */
-        ;
+        if(!(levelBits != 0)) _assert_fail("levelBits != 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/cspace.c", 161, __FUNCTION__);
 
         capGuard = cap_cnode_cap_get_capCNodeGuard(nodeCap);
 
@@ -15854,12 +17249,56 @@ sendFaultIPC(tcb_t *tptr)
         return EXCEPTION_FAULT;
     }
 }
-# 104 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/faulthandler.c"
+
+
+static void
+print_fault(fault_t f)
+{
+    switch (fault_get_faultType(f)) {
+    case fault_null_fault:
+        printf("null fault");
+        break;
+    case fault_cap_fault:
+        printf("cap fault in %s phase at address 0x%x",
+               fault_cap_fault_get_inReceivePhase(f) ? "receive" : "send",
+               (unsigned int)fault_cap_fault_get_address(f));
+        break;
+    case fault_vm_fault:
+        printf("vm fault on %s at address 0x%x with status 0x%x",
+               fault_vm_fault_get_instructionFault(f) ? "code" : "data",
+               (unsigned int)fault_vm_fault_get_address(f),
+               (unsigned int)fault_vm_fault_get_FSR(f));
+        break;
+    case fault_unknown_syscall:
+        printf("unknown syscall 0x%x",
+               (unsigned int)fault_unknown_syscall_get_syscallNumber(f));
+        break;
+    case fault_user_exception:
+        printf("user exception 0x%x code 0x%x",
+               (unsigned int)fault_user_exception_get_number(f),
+               (unsigned int)fault_user_exception_get_code(f));
+        break;
+    default:
+        printf("unknown fault");
+        break;
+    }
+}
+
+
 /* The second fault, ex2, is stored in the global current_fault */
 void
 handleDoubleFault(tcb_t *tptr, fault_t ex1)
 {
-# 118 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/faulthandler.c"
+
+    fault_t ex2 = current_fault;
+    printf("Caught ");
+    print_fault(ex2);
+    printf("\nwhile trying to handle:\n");
+    print_fault(ex1);
+    printf("\nin thread 0x%x ", (unsigned int)tptr);
+    printf("at address 0x%x\n", (unsigned int)getRestartPC(tptr));
+
+
     setThreadState(tptr, ThreadState_Inactive);
 }
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c"
@@ -16079,7 +17518,7 @@ activateThread(void)
         break;
 
     default:
-        halt();
+        _fail("Current thread is blocked", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c", 87, __func__);
     }
 }
 
@@ -16123,7 +17562,13 @@ doIPCTransfer(tcb_t *sender, endpoint_t *endpoint, word_t badge,
 void
 doReplyTransfer(tcb_t *sender, tcb_t *receiver, cte_t *slot)
 {
-   
+    if(!(thread_state_get_tsType(receiver->tcbState) == ThreadState_BlockedOnReply)) _assert_fail("thread_state_get_tsType(receiver->tcbState) == ThreadState_BlockedOnReply",
+ "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c"
+# 131 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c"
+    ,
+ 132
+# 131 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c"
+    , __FUNCTION__)
                                       ;
 
     if (__builtin_expect(!!(fault_get_faultType(receiver->tcbFault) == fault_null_fault), 1)) {
@@ -16326,7 +17771,7 @@ chooseThread(void)
         unsigned int domprio = ksCurDomain * 256 + p;
         thread = ksReadyQueues[domprio].head;
         if (thread != ((void *)0)) {
-            ;
+            if(!(isRunnable(thread))) _assert_fail("isRunnable(thread)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c", 334, __FUNCTION__);
             switchToThread(thread);
             return;
         }
@@ -16463,6 +17908,275 @@ rescheduleRequired(void)
         tcbSchedEnqueue(ksSchedulerAction);
     }
     ksSchedulerAction = ((tcb_t*)~0);
+}
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/machine/io.c"
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/stdarg.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+
+
+
+
+
+
+typedef __builtin_va_list va_list;
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/machine/io.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/machine/io.c" 2
+
+
+
+static unsigned int
+print_string(const char *s)
+{
+    unsigned int n;
+
+    for (n = 0; *s; s++, n++) {
+        console_putchar(*s);
+    }
+
+    return n;
+}
+
+static unsigned long
+xdiv(unsigned long x, unsigned int denom)
+{
+    switch (denom) {
+    case 16:
+        return x / 16;
+    case 10:
+        return x / 10;
+    default:
+        return 0;
+    }
+}
+
+static unsigned long
+xmod(unsigned long x, unsigned int denom)
+{
+    switch (denom) {
+    case 16:
+        return x % 16;
+    case 10:
+        return x % 10;
+    default:
+        return 0;
+    }
+}
+
+unsigned int
+print_unsigned_long(unsigned long x, unsigned int ui_base)
+{
+    char out[11];
+    unsigned int i, j;
+    unsigned int d;
+
+    /*
+     * Only base 10 and 16 supported for now. We want to avoid invoking the
+     * compiler's support libraries through doing arbitrary divisions.
+     */
+    if (ui_base != 10 && ui_base != 16) {
+        return 0;
+    }
+
+    if (x == 0) {
+        console_putchar('0');
+        return 1;
+    }
+
+    for (i = 0; x; x = xdiv(x, ui_base), i++) {
+        d = xmod(x, ui_base);
+
+        if (d >= 10) {
+            out[i] = 'a' + d - 10;
+        } else {
+            out[i] = '0' + d;
+        }
+    }
+
+    for (j = i; j > 0; j--) {
+        console_putchar(out[j - 1]);
+    }
+
+    return i;
+}
+
+
+static unsigned int
+print_unsigned_long_long(unsigned long long x, unsigned int ui_base)
+{
+    unsigned long upper, lower;
+    unsigned int n = 0;
+    unsigned int mask = 0xF0000000u;
+
+    /* only implemented for hex, decimal is harder without 64 bit division */
+    if (ui_base != 16) {
+        return 0;
+    }
+
+    /* we can't do 64 bit division so break it up into two hex numbers */
+    upper = (unsigned long) (x >> 32llu);
+    lower = (unsigned long) x;
+
+    /* print first 32 bits if they exist */
+    if (upper > 0) {
+        n += print_unsigned_long(upper, ui_base);
+
+        /* print leading 0s */
+        while (!(mask & lower)) {
+            console_putchar('0');
+            n++;
+            mask = mask >> 4;
+        }
+    }
+
+    /* print last 32 bits */
+    n += print_unsigned_long(lower, ui_base);
+
+    return n;
+}
+
+
+static int
+vprintf(const char *format, va_list ap)
+{
+    unsigned int n;
+    unsigned int formatting;
+
+    if (!format) {
+        return 0;
+    }
+
+    n = 0;
+    formatting = 0;
+    while (*format) {
+        if (formatting) {
+            switch (*format) {
+            case '%':
+                console_putchar('%');
+                n++;
+                format++;
+                break;
+
+            case 'd': {
+                int x = __builtin_va_arg(ap,int);
+
+                if (x < 0) {
+                    console_putchar('-');
+                    n++;
+                    x = -x;
+                }
+
+                n += print_unsigned_long((unsigned long)x, 10);
+                format++;
+                break;
+            }
+
+            case 'u':
+                n += print_unsigned_long(__builtin_va_arg(ap,unsigned long), 10);
+                format++;
+                break;
+
+            case 'x':
+                n += print_unsigned_long(__builtin_va_arg(ap,unsigned long), 16);
+                format++;
+                break;
+
+            case 'p': {
+                unsigned long p = __builtin_va_arg(ap,unsigned long);
+                if (p == 0) {
+                    n += print_string("(nil)");
+                } else {
+                    n += print_string("0x");
+                    n += print_unsigned_long(p, 16);
+                }
+                format++;
+                break;
+            }
+
+            case 's':
+                n += print_string(__builtin_va_arg(ap,char *));
+                format++;
+                break;
+
+            case 'l':
+                if (*(format + 1) == 'l' && *(format + 2) == 'x') {
+                    uint64_t arg = __builtin_va_arg(ap,unsigned long long);
+                    n += print_unsigned_long_long(arg, 16);
+                }
+                format += 3;
+                break;
+            default:
+                format++;
+                break;
+            }
+
+            formatting = 0;
+        } else {
+            switch (*format) {
+            case '%':
+                formatting = 1;
+                format++;
+                break;
+
+            default:
+                console_putchar(*format);
+                n++;
+                format++;
+                break;
+            }
+        }
+    }
+
+    return n;
+}
+
+unsigned int
+printf(const char *format, ...)
+{
+    va_list args;
+    unsigned int i;
+
+    __builtin_va_start(args,format);
+    i = vprintf(format, args);
+    __builtin_va_end(args);
+    return i;
+}
+
+unsigned int puts(const char *s)
+{
+    for (; *s; s++) {
+        console_putchar(*s);
+    }
+    console_putchar('\n');
+    return 0;
 }
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/preemption.c"
 /*
@@ -16798,7 +18512,7 @@ sendAsyncIPC(async_endpoint_t *aepptr, word_t badge, word_t val)
         dest = aep_queue.head;
 
         /* Haskell error "WaitingAEP AEP must have non-empty queue" */
-        ;
+        if(!(dest)) _assert_fail("dest", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c", 57, __FUNCTION__);
 
         /* Dequeue TCB */
         aep_queue = tcbEPDequeue(dest, aep_queue);
@@ -16891,7 +18605,7 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
     tcb_queue_t aep_queue;
 
     /* Haskell error "asyncIPCCancel: async endpoint must be waiting" */
-    ;
+    if(!(async_endpoint_ptr_get_state(aepptr) == AEPState_Waiting)) _assert_fail("async_endpoint_ptr_get_state(aepptr) == AEPState_Waiting", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c", 150, __FUNCTION__);
 
     /* Dequeue TCB */
     aep_queue = aep_ptr_get_queue(aepptr);
@@ -17124,16 +18838,16 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
     exception_t status;
 
     /* Haskell error: "decodeCNodeInvocation: invalid cap" */
-    ;
+    if(!(cap_get_capType(cap) == cap_cnode_cap)) _assert_fail("cap_get_capType(cap) == cap_cnode_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 50, __FUNCTION__);
 
     if (label < CNodeRevoke || label > CNodeSaveCaller) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 53, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNodeCap: Illegal Operation attempted."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
 
     if (length < 2) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 59, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode operation: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -17142,7 +18856,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
 
     lu_ret = lookupTargetSlot(cap, index, w_bits);
     if (lu_ret.status != EXCEPTION_NONE) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 68, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode operation: Target slot invalid."); printf(">>" "\033[0m" "\n"); } while (0);
         return lu_ret.status;
     }
     destSlot = lu_ret.slot;
@@ -17157,7 +18871,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
         cap_t srcCap;
 
         if (length < 4 || extraCaps.excaprefs[0] == ((void *)0)) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 83, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode Copy/Mint/Move/Mutate: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_TruncatedMessage;
             return EXCEPTION_SYSCALL_ERROR;
         }
@@ -17168,19 +18882,19 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
 
         status = ensureEmptySlot(destSlot);
         if (status != EXCEPTION_NONE) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 94, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode Copy/Mint/Move/Mutate: Destination not empty."); printf(">>" "\033[0m" "\n"); } while (0);
             return status;
         }
 
         lu_ret = lookupSourceSlot(srcRoot, srcIndex, srcDepth);
         if (lu_ret.status != EXCEPTION_NONE) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 100, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode Copy/Mint/Move/Mutate: Invalid source slot."); printf(">>" "\033[0m" "\n"); } while (0);
             return lu_ret.status;
         }
         srcSlot = lu_ret.slot;
 
         if (cap_get_capType(srcSlot->cap) == cap_null_cap) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 106, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode Copy/Mint/Move/Mutate: Source slot invalid or empty."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_FailedLookup;
             current_syscall_error.failedLookupWasSource = 1;
             current_lookup_fault =
@@ -17192,7 +18906,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
         case CNodeCopy:
 
             if (length < 5) {
-                ;
+                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 118, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Truncated message for CNode Copy operation."); printf(">>" "\033[0m" "\n"); } while (0);
                 current_syscall_error.type = seL4_TruncatedMessage;
                 return EXCEPTION_SYSCALL_ERROR;
             }
@@ -17201,7 +18915,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
             srcCap = maskCapRights(cap_rights, srcSlot->cap);
             dc_ret = deriveCap(srcSlot, srcCap);
             if (dc_ret.status != EXCEPTION_NONE) {
-                ;
+                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 127, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Error deriving cap for CNode Copy operation."); printf(">>" "\033[0m" "\n"); } while (0);
                 return dc_ret.status;
             }
             newCap = dc_ret.cap;
@@ -17211,7 +18925,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
 
         case CNodeMint:
             if (length < 6) {
-                ;
+                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 137, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode Mint: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
                 current_syscall_error.type = seL4_TruncatedMessage;
                 return EXCEPTION_SYSCALL_ERROR;
             }
@@ -17222,7 +18936,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
             dc_ret = deriveCap(srcSlot,
                                updateCapData(false, capData, srcCap));
             if (dc_ret.status != EXCEPTION_NONE) {
-                ;
+                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 148, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Error deriving cap for CNode Mint operation."); printf(">>" "\033[0m" "\n"); } while (0);
                 return dc_ret.status;
             }
             newCap = dc_ret.cap;
@@ -17238,7 +18952,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
 
         case CNodeMutate:
             if (length < 5) {
-                ;
+                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 164, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode Mutate: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
                 current_syscall_error.type = seL4_TruncatedMessage;
                 return EXCEPTION_SYSCALL_ERROR;
             }
@@ -17250,12 +18964,12 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
             break;
 
         default:
-            ;
+            if(!(0)) _assert_fail("0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 176, __FUNCTION__);
             return EXCEPTION_NONE;
         }
 
         if (cap_get_capType(newCap) == cap_null_cap) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 181, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode Copy/Mint/Move/Mutate: Mutated cap would be invalid."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_IllegalOperation;
             return EXCEPTION_SYSCALL_ERROR;
         }
@@ -17281,7 +18995,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
     if (label == CNodeSaveCaller) {
         status = ensureEmptySlot(destSlot);
         if (status != EXCEPTION_NONE) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 207, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode SaveCaller: Destination slot not empty."); printf(">>" "\033[0m" "\n"); } while (0);
             return status;
         }
 
@@ -17291,7 +19005,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
 
     if (label == CNodeRecycle) {
         if (!hasRecycleRights(destSlot->cap)) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 217, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode Recycle: Target cap invalid."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_IllegalOperation;
             return EXCEPTION_SYSCALL_ERROR;
         }
@@ -17333,7 +19047,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
         pivotSlot = lu_ret.slot;
 
         if (pivotSlot == srcSlot || pivotSlot == destSlot) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 259, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode Rotate: Pivot slot the same as source or dest slot."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_IllegalOperation;
             return EXCEPTION_SYSCALL_ERROR;
         }
@@ -17363,13 +19077,13 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
         newPivotCap = updateCapData(true, pivotNewData, pivotSlot->cap);
 
         if (cap_get_capType(newSrcCap) == cap_null_cap) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 289, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode Rotate: Source cap invalid."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_IllegalOperation;
             return EXCEPTION_SYSCALL_ERROR;
         }
 
         if (cap_get_capType(newPivotCap) == cap_null_cap) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 295, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode Rotate: Pivot cap invalid."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_IllegalOperation;
             return EXCEPTION_SYSCALL_ERROR;
         }
@@ -17441,7 +19155,7 @@ invokeCNodeSaveCaller(cte_t *destSlot)
 
     switch (cap_get_capType(cap)) {
     case cap_null_cap:
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 367, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNode SaveCaller: Reply cap not present."); printf(">>" "\033[0m" "\n"); } while (0);
         break;
 
     case cap_reply_cap:
@@ -17451,7 +19165,7 @@ invokeCNodeSaveCaller(cte_t *destSlot)
         break;
 
     default:
-        halt();
+        _fail("caller capability must be null or reply", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 377, __func__);
         break;
     }
 
@@ -17518,9 +19232,15 @@ cteInsert(cap_t newCap, cte_t *srcSlot, cte_t *destSlot)
     newMDB = mdb_node_set_mdbFirstBadged(newMDB, newCapIsRevocable);
 
     /* Haskell error: "cteInsert to non-empty destination" */
-    ;
+    if(!(cap_get_capType(destSlot->cap) == cap_null_cap)) _assert_fail("cap_get_capType(destSlot->cap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 444, __FUNCTION__);
     /* Haskell error: "cteInsert: mdb entry must be empty" */
-   
+    if(!((cte_t*)mdb_node_get_mdbNext(destSlot->cteMDBNode) == ((void *)0) && (cte_t*)mdb_node_get_mdbPrev(destSlot->cteMDBNode) == ((void *)0))) _assert_fail("(cte_t*)mdb_node_get_mdbNext(destSlot->cteMDBNode) == NULL && (cte_t*)mdb_node_get_mdbPrev(destSlot->cteMDBNode) == NULL",
+ "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+# 446 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+    ,
+ 447
+# 446 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+    , __FUNCTION__)
                                                                       ;
 
     /* Prevent parent untyped cap from being used again if creating a child
@@ -17544,9 +19264,15 @@ cteMove(cap_t newCap, cte_t *srcSlot, cte_t *destSlot)
     uint32_t prev_ptr, next_ptr;
 
     /* Haskell error: "cteMove to non-empty destination" */
-    ;
+    if(!(cap_get_capType(destSlot->cap) == cap_null_cap)) _assert_fail("cap_get_capType(destSlot->cap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 470, __FUNCTION__);
     /* Haskell error: "cteMove: mdb entry must be empty" */
-   
+    if(!((cte_t*)mdb_node_get_mdbNext(destSlot->cteMDBNode) == ((void *)0) && (cte_t*)mdb_node_get_mdbPrev(destSlot->cteMDBNode) == ((void *)0))) _assert_fail("(cte_t*)mdb_node_get_mdbNext(destSlot->cteMDBNode) == NULL && (cte_t*)mdb_node_get_mdbPrev(destSlot->cteMDBNode) == NULL",
+ "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+# 472 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+    ,
+ 473
+# 472 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+    , __FUNCTION__)
                                                                       ;
 
     mdb = srcSlot->cteMDBNode;
@@ -17706,7 +19432,7 @@ capRemovable(cap_t cap, cte_t* slot)
         return (n == 0 || (n == 1 && slot == z_slot));
     }
     default:
-        halt();
+        _fail("finaliseCap should only return Zombie or NullCap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 632, __func__);
     }
 }
 
@@ -17774,13 +19500,13 @@ reduceZombie(cte_t* slot, bool_t immediate)
     word_t n, type;
     exception_t status;
 
-    ;
+    if(!(cap_get_capType(slot->cap) == cap_zombie_cap)) _assert_fail("cap_get_capType(slot->cap) == cap_zombie_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 700, __FUNCTION__);
     ptr = (cte_t*)cap_zombie_cap_get_capZombiePtr(slot->cap);
     n = cap_zombie_cap_get_capZombieNumber(slot->cap);
     type = cap_zombie_cap_get_capZombieType(slot->cap);
 
     /* Haskell error: "reduceZombie: expected unremovable zombie" */
-    ;
+    if(!(n > 0)) _assert_fail("n > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 706, __FUNCTION__);
 
     if (immediate) {
         cte_t* endSlot = &ptr[n - 1];
@@ -17801,28 +19527,28 @@ reduceZombie(cte_t* slot, bool_t immediate)
             if (ptr == ptr2 &&
                     cap_zombie_cap_get_capZombieNumber(slot->cap) == n &&
                     cap_zombie_cap_get_capZombieType(slot->cap) == type) {
-                ;
+                if(!(cap_get_capType(endSlot->cap) == cap_null_cap)) _assert_fail("cap_get_capType(endSlot->cap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 727, __FUNCTION__);
                 slot->cap =
                     cap_zombie_cap_set_capZombieNumber(slot->cap, n - 1);
             } else {
                 /* Haskell error:
                  * "Expected new Zombie to be self-referential."
                  */
-                ;
+                if(!(ptr2 == slot && ptr != slot)) _assert_fail("ptr2 == slot && ptr != slot", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 734, __FUNCTION__);
             }
             break;
         }
 
         default:
-            halt();
+            _fail("Expected recursion to result in Zombie.", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 740, __func__);
         }
     } else {
         /* Haskell error: "Cyclic zombie passed to unexposed reduceZombie" */
-        ;
+        if(!(ptr != slot)) _assert_fail("ptr != slot", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 744, __FUNCTION__);
 
         if (cap_get_capType(ptr->cap) == cap_zombie_cap) {
             /* Haskell error: "Moving self-referential Zombie aside." */
-            ;
+            if(!(ptr != ((cte_t *)(cap_zombie_cap_get_capZombiePtr(ptr->cap))))) _assert_fail("ptr != CTE_PTR(cap_zombie_cap_get_capZombiePtr(ptr->cap))", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 748, __FUNCTION__);
         }
 
         capSwapForDelete(ptr, slot);
@@ -17840,7 +19566,13 @@ cteDeleteOne(cte_t* slot)
         final = isFinalCapability(slot);
         fc_ret = finaliseCap(slot->cap, final, true);
         /* Haskell error: "cteDeleteOne: cap should be removable" */
-       
+        if(!(capRemovable(fc_ret.remainder, slot) && fc_ret.irq == irqInvalid)) _assert_fail("capRemovable(fc_ret.remainder, slot) && fc_ret.irq == irqInvalid",
+ "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+# 766 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+        ,
+ 767
+# 766 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+        , __FUNCTION__)
                                         ;
         emptySlot(slot, irqInvalid);
     }
@@ -18236,7 +19968,7 @@ sendIPC(bool_t blocking, bool_t do_call, word_t badge,
         dest = queue.head;
 
         /* Haskell error "Receive endpoint queue must not be empty" */
-        ;
+        if(!(dest)) _assert_fail("dest", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c", 81, __FUNCTION__);
 
         /* Dequeue the first TCB */
         queue = tcbEPDequeue(dest, queue);
@@ -18275,7 +20007,7 @@ receiveIPC(tcb_t *thread, cap_t cap)
     bool_t diminish;
 
     /* Haskell error "receiveIPC: invalid cap" */
-    ;
+    if(!(cap_get_capType(cap) == cap_endpoint_cap)) _assert_fail("cap_get_capType(cap) == cap_endpoint_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c", 120, __FUNCTION__);
 
     epptr = ((endpoint_t *)cap_endpoint_cap_get_capEPPtr(cap));
     diminish = !cap_endpoint_cap_get_capCanSend(cap);
@@ -18315,7 +20047,7 @@ receiveIPC(tcb_t *thread, cap_t cap)
         sender = queue.head;
 
         /* Haskell error "Send endpoint queue must not be empty" */
-        ;
+        if(!(sender)) _assert_fail("sender", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c", 160, __FUNCTION__);
 
         /* Dequeue the first TCB */
         queue = tcbEPDequeue(sender, queue);
@@ -18389,7 +20121,7 @@ ipcCancel(tcb_t *tptr)
         epptr = ((endpoint_t *)thread_state_ptr_get_blockingIPCEndpoint(state));
 
         /* Haskell error "blockedIPCCancel: endpoint must not be idle" */
-        ;
+        if(!(endpoint_ptr_get_state(epptr) != EPState_Idle)) _assert_fail("endpoint_ptr_get_state(epptr) != EPState_Idle", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c", 234, __FUNCTION__);
 
         /* Dequeue TCB */
         queue = ep_ptr_get_queue(epptr);
@@ -18495,7 +20227,7 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
     }
 
     default:
-        halt();
+        _fail("invalid EP state", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c", 340, __func__);
     }
 }
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c"
@@ -18703,7 +20435,7 @@ decodeIRQControlInvocation(word_t label, unsigned int length,
     } else if (label == IRQInterruptControl) {
         return Arch_decodeInterruptControl(length, extraCaps);
     } else {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 77, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IRQControl: Illegal operation."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -18742,9 +20474,9 @@ decodeIRQHandlerInvocation(word_t label, irq_t irq,
         if (cap_get_capType(aepCap) != cap_async_endpoint_cap ||
                 !cap_async_endpoint_cap_get_capAEPCanSend(aepCap)) {
             if (cap_get_capType(aepCap) != cap_async_endpoint_cap) {
-                ;
+                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 116, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IRQSetHandler: provided cap is not an async endpoint capablity."); printf(">>" "\033[0m" "\n"); } while (0);
             } else {
-                ;
+                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 118, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IRQSetHandler: caller does not have send rights on the endpoint."); printf(">>" "\033[0m" "\n"); } while (0);
             }
             current_syscall_error.type = seL4_InvalidCapability;
             current_syscall_error.invalidCapNumber = 0;
@@ -18762,7 +20494,7 @@ decodeIRQHandlerInvocation(word_t label, irq_t irq,
         return EXCEPTION_NONE;
 
     default:
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 136, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IRQHandler: Illegal operation."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -18854,7 +20586,7 @@ handleInterrupt(irq_t irq)
 
     default:
         /* No corresponding haskell error */
-        halt();
+        _fail("Invalid IRQ state", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c", 228, __func__);
     }
 
     ackInterrupt(irq);
@@ -19132,7 +20864,7 @@ word_t getObjectSize(word_t t, word_t userObjSize)
         case seL4_UntypedObject:
             return userObjSize;
         default:
-            halt();
+            _fail("Invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 50, __func__);
             return 0;
         }
     }
@@ -19219,7 +20951,7 @@ finaliseCap(cap_t cap, bool_t final, bool_t exposed)
     }
 
     if (exposed) {
-        halt();
+        _fail("finaliseCap: failed to finalise immediately.", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 137, __func__);
     }
 
     switch (cap_get_capType(cap)) {
@@ -19290,7 +21022,7 @@ recycleCap(bool_t is_final, cap_t cap)
 
     switch (cap_get_capType(cap)) {
     case cap_null_cap:
-        halt();
+        _fail("recycleCap: can't reconstruct Null", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 208, __func__);
         break;
     case cap_domain_cap:
         return cap;
@@ -19311,11 +21043,17 @@ recycleCap(bool_t is_final, cap_t cap)
             ts = thread_state_get_tsType(tcb->tcbState);
             /* Haskell error:
              * "Zombie cap should point at inactive thread" */
-           
+            if(!(ts == ThreadState_Inactive || ts != ThreadState_IdleThreadState)) _assert_fail("ts == ThreadState_Inactive || ts != ThreadState_IdleThreadState",
+ "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+# 229 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+            ,
+ 230
+# 229 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+            , __FUNCTION__)
                                                      ;
             /* Haskell error:
              * "Zombie cap should not point at queued thread" */
-            ;
+            if(!(!thread_state_get_tcbQueued(tcb->tcbState))) _assert_fail("!thread_state_get_tcbQueued(tcb->tcbState)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 233, __FUNCTION__);
 
             /* makeObject doesn't exist in C, objects are initialised by
              * zeroing. The effect of recycle in Haskell is to reinitialise
@@ -19570,7 +21308,7 @@ maskCapRights(cap_rights_t cap_rights, cap_t cap)
     }
 
     default:
-        halt(); /* Sentinel for invalid enums */
+        _fail("Invalid cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 488, __func__); /* Sentinel for invalid enums */
     }
 }
 
@@ -19632,7 +21370,7 @@ createObject(object_t t, void *regionBase, word_t userSize)
         return cap_untyped_cap_new(0, userSize, ((unsigned int)regionBase));
 
     default:
-        halt();
+        _fail("Invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 550, __func__);
     }
 }
 
@@ -19672,20 +21410,23 @@ decodeInvocation(word_t label, unsigned int length,
 
     switch (cap_get_capType(cap)) {
     case cap_null_cap:
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 590, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Attempted to invoke a null cap #%u.", capIndex); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_InvalidCapability;
         current_syscall_error.invalidCapNumber = 0;
         return EXCEPTION_SYSCALL_ERROR;
 
     case cap_zombie_cap:
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 596, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Attempted to invoke a zombie cap #%u.", capIndex); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_InvalidCapability;
         current_syscall_error.invalidCapNumber = 0;
         return EXCEPTION_SYSCALL_ERROR;
 
     case cap_endpoint_cap:
         if (__builtin_expect(!!(!cap_endpoint_cap_get_capCanSend(cap)), 0)) {
-           
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+ 604
+# 603 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+            , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Attempted to invoke a read-only endpoint cap #%u.", capIndex); printf(">>" "\033[0m" "\n"); } while (0)
                                ;
             current_syscall_error.type = seL4_InvalidCapability;
             current_syscall_error.invalidCapNumber = 0;
@@ -19702,7 +21443,10 @@ decodeInvocation(word_t label, unsigned int length,
         word_t msg;
 
         if (__builtin_expect(!!(!cap_async_endpoint_cap_get_capAEPCanSend(cap)), 0)) {
-           
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+ 621
+# 620 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+            , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Attempted to invoke a read-only async-endpoint cap #%u.", capIndex); printf(">>" "\033[0m" "\n"); } while (0)
                                ;
             current_syscall_error.type = seL4_InvalidCapability;
             current_syscall_error.invalidCapNumber = 0;
@@ -19723,7 +21467,10 @@ decodeInvocation(word_t label, unsigned int length,
 
     case cap_reply_cap:
         if (__builtin_expect(!!(cap_reply_cap_get_capReplyMaster(cap)), 0)) {
-           
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+ 642
+# 641 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+            , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Attempted to invoke an invalid reply cap #%u.", capIndex); printf(">>" "\033[0m" "\n"); } while (0)
                                ;
             current_syscall_error.type = seL4_InvalidCapability;
             current_syscall_error.invalidCapNumber = 0;
@@ -19757,7 +21504,7 @@ decodeInvocation(word_t label, unsigned int length,
                                           cap_irq_handler_cap_get_capIRQ(cap), extraCaps);
 
     default:
-        halt();
+        _fail("Invalid cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 675, __func__);
     }
 }
 
@@ -20108,13 +21855,13 @@ setupCallerCap(tcb_t *sender, tcb_t *receiver)
     replySlot = (((cte_t *)((unsigned int)sender&~((1ul<<(10))-1ul)))+tcbReply);
     masterCap = replySlot->cap;
     /* Haskell error: "Sender must have a valid master reply cap" */
-    ;
-    ;
-    ;
+    if(!(cap_get_capType(masterCap) == cap_reply_cap)) _assert_fail("cap_get_capType(masterCap) == cap_reply_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c", 184, __FUNCTION__);
+    if(!(cap_reply_cap_get_capReplyMaster(masterCap))) _assert_fail("cap_reply_cap_get_capReplyMaster(masterCap)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c", 185, __FUNCTION__);
+    if(!(((tcb_t *)(cap_reply_cap_get_capTCBPtr(masterCap))) == sender)) _assert_fail("TCB_PTR(cap_reply_cap_get_capTCBPtr(masterCap)) == sender", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c", 186, __FUNCTION__);
     callerSlot = (((cte_t *)((unsigned int)receiver&~((1ul<<(10))-1ul)))+tcbCaller);
     callerCap = callerSlot->cap;
     /* Haskell error: "Caller cap must not already exist" */
-    ;
+    if(!(cap_get_capType(callerCap) == cap_null_cap)) _assert_fail("cap_get_capType(callerCap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c", 190, __FUNCTION__);
     cteInsert(cap_reply_cap_new(false, ((unsigned int)sender)),
               replySlot, callerSlot);
 }
@@ -20232,7 +21979,7 @@ decodeTCBInvocation(word_t label, unsigned int length, cap_t cap,
 
     default:
         /* Haskell: "throw IllegalOperation" */
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 308, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB: Illegal operation."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20255,7 +22002,7 @@ decodeCopyRegisters(cap_t cap, unsigned int length,
     word_t flags;
 
     if (length < 1 || extraCaps.excaprefs[0] == ((void *)0)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 331, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB CopyRegisters: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20269,7 +22016,7 @@ decodeCopyRegisters(cap_t cap, unsigned int length,
     if (cap_get_capType(source_cap) == cap_thread_cap) {
         srcTCB = ((tcb_t *)(cap_thread_cap_get_capTCBPtr(source_cap)));
     } else {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 345, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB CopyRegisters: Invalid source TCB."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_InvalidCapability;
         current_syscall_error.invalidCapNumber = 1;
         return EXCEPTION_SYSCALL_ERROR;
@@ -20298,7 +22045,7 @@ decodeReadRegisters(cap_t cap, unsigned int length, bool_t call,
     tcb_t* thread;
 
     if (length < 2) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 374, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB ReadRegisters: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20307,7 +22054,10 @@ decodeReadRegisters(cap_t cap, unsigned int length, bool_t call,
     n = getSyscallArg(1, buffer);
 
     if (n < 1 || n > n_frameRegisters + n_gpRegisters) {
-       
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+ 384
+# 383 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+        , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB ReadRegisters: Attempted to read an invalid number of registers (%d).", (int)n); printf(">>" "\033[0m" "\n"); } while (0)
                          ;
         current_syscall_error.type = seL4_RangeError;
         current_syscall_error.rangeErrorMin = 1;
@@ -20320,7 +22070,7 @@ decodeReadRegisters(cap_t cap, unsigned int length, bool_t call,
 
     thread = ((tcb_t *)(cap_thread_cap_get_capTCBPtr(cap)));
     if (thread == ksCurThread) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 396, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB ReadRegisters: Attempted to read our own registers."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20344,7 +22094,7 @@ decodeWriteRegisters(cap_t cap, unsigned int length, word_t *buffer)
     tcb_t* thread;
 
     if (length < 2) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 420, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB WriteRegisters: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20353,7 +22103,10 @@ decodeWriteRegisters(cap_t cap, unsigned int length, word_t *buffer)
     w = getSyscallArg(1, buffer);
 
     if (length - 2 < w) {
-       
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+ 430
+# 429 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+        , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB WriteRegisters: Message too short for requested write size (%d/%d).", (int)(length - 2), (int)w); printf(">>" "\033[0m" "\n"); } while (0)
                                             ;
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
@@ -20363,7 +22116,7 @@ decodeWriteRegisters(cap_t cap, unsigned int length, word_t *buffer)
 
     thread = ((tcb_t *)(cap_thread_cap_get_capTCBPtr(cap)));
     if (thread == ksCurThread) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 439, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB WriteRegisters: Attempted to write our own registers."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20391,7 +22144,7 @@ decodeTCBConfigure(cap_t cap, unsigned int length, cte_t* slot,
     if (length < 5 || rootCaps.excaprefs[0] == ((void *)0)
             || rootCaps.excaprefs[1] == ((void *)0)
             || rootCaps.excaprefs[2] == ((void *)0)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 467, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB Configure: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20412,7 +22165,10 @@ decodeTCBConfigure(cap_t cap, unsigned int length, cte_t* slot,
     prio = prio & ((1ul<<(8))-1ul);
 
     if (prio > ksCurThread->tcbPriority) {
-       
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+ 489
+# 488 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+        , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB Configure: Requested priority %d too high (max %d).", (int)prio, (int)(ksCurThread->tcbPriority)); printf(">>" "\033[0m" "\n"); } while (0)
                                                              ;
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
@@ -20438,7 +22194,7 @@ decodeTCBConfigure(cap_t cap, unsigned int length, cte_t* slot,
                 (((cte_t *)((unsigned int)cap_thread_cap_get_capTCBPtr(cap)&~((1ul<<(10))-1ul)))+tcbCTable)) ||
             slotCapLongRunningDelete(
                 (((cte_t *)((unsigned int)cap_thread_cap_get_capTCBPtr(cap)&~((1ul<<(10))-1ul)))+tcbVTable))) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 514, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB Configure: CSpace or VSpace currently being deleted."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20454,7 +22210,7 @@ decodeTCBConfigure(cap_t cap, unsigned int length, cte_t* slot,
     cRootCap = dc_ret.cap;
 
     if (cap_get_capType(cRootCap) != cap_cnode_cap) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 530, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB Configure: CSpace cap is invalid."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20470,7 +22226,7 @@ decodeTCBConfigure(cap_t cap, unsigned int length, cte_t* slot,
     vRootCap = dc_ret.cap;
 
     if (!isValidVTableRoot(vRootCap)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 546, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB Configure: VSpace cap is invalid."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20491,7 +22247,7 @@ decodeSetPriority(cap_t cap, unsigned int length, word_t *buffer)
     prio_t newPrio;
 
     if (length < 1) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 567, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB SetPriority: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20502,7 +22258,10 @@ decodeSetPriority(cap_t cap, unsigned int length, word_t *buffer)
     newPrio = newPrio & ((1ul<<(8))-1ul);
 
     if (newPrio > ksCurThread->tcbPriority) {
-       
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+ 579
+# 578 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+        , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB SetPriority: Requested priority %d too high (max %d).", (int)newPrio, (int)ksCurThread->tcbPriority); printf(">>" "\033[0m" "\n"); } while (0)
                                                               ;
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
@@ -20527,7 +22286,7 @@ decodeSetIPCBuffer(cap_t cap, unsigned int length, cte_t* slot,
     cte_t *bufferSlot;
 
     if (length < 1 || extraCaps.excaprefs[0] == ((void *)0)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 603, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB SetIPCBuffer: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20576,7 +22335,7 @@ decodeSetSpace(cap_t cap, unsigned int length, cte_t* slot,
 
     if (length < 3 || extraCaps.excaprefs[0] == ((void *)0)
             || extraCaps.excaprefs[1] == ((void *)0)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 652, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB SetSpace: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20594,7 +22353,7 @@ decodeSetSpace(cap_t cap, unsigned int length, cte_t* slot,
                 (((cte_t *)((unsigned int)cap_thread_cap_get_capTCBPtr(cap)&~((1ul<<(10))-1ul)))+tcbCTable)) ||
             slotCapLongRunningDelete(
                 (((cte_t *)((unsigned int)cap_thread_cap_get_capTCBPtr(cap)&~((1ul<<(10))-1ul)))+tcbVTable))) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 670, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB SetSpace: CSpace or VSpace currently being deleted."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20610,7 +22369,7 @@ decodeSetSpace(cap_t cap, unsigned int length, cte_t* slot,
     cRootCap = dc_ret.cap;
 
     if (cap_get_capType(cRootCap) != cap_cnode_cap) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 686, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB SetSpace: Invalid CNode cap."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20626,7 +22385,7 @@ decodeSetSpace(cap_t cap, unsigned int length, cte_t* slot,
     vRootCap = dc_ret.cap;
 
     if (!isValidVTableRoot(vRootCap)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 702, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB SetSpace: Invalid VSpace cap."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20653,13 +22412,16 @@ decodeDomainInvocation(word_t label, unsigned int length, extra_caps_t extraCaps
     }
 
     if (__builtin_expect(!!(length == 0), 0)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 729, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Domain Configure: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     } else {
         domain = getSyscallArg(0, buffer);
         if (domain >= 1) {
-           
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+ 736
+# 735 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+            , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Domain Configure: invalid domain (%d >= %d).", (int)domain, 1); printf(">>" "\033[0m" "\n"); } while (0)
                                                       ;
             current_syscall_error.type = seL4_InvalidArgument;
             current_syscall_error.invalidArgumentNumber = 0;
@@ -20668,14 +22430,14 @@ decodeDomainInvocation(word_t label, unsigned int length, extra_caps_t extraCaps
     }
 
     if (__builtin_expect(!!(extraCaps.excaprefs[0] == ((void *)0)), 0)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 744, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Domain Configure: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
 
     tcap = extraCaps.excaprefs[0]->cap;
     if (__builtin_expect(!!(cap_get_capType(tcap) != cap_thread_cap), 0)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 751, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Domain Configure: thread cap required."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_InvalidArgument;
         current_syscall_error.invalidArgumentNumber = 1;
         return EXCEPTION_SYSCALL_ERROR;
@@ -21094,14 +22856,14 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
 
     /* Ensure operation is valid. */
     if (label != UntypedRetype) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 50, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped cap: Illegal operation attempted."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
 
     /* Ensure message length valid. */
     if (length < 6 || extraCaps.excaprefs[0] == ((void *)0)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 57, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped invocation: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -21118,7 +22880,7 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
 
     /* Is the requested object type valid? */
     if (newType >= seL4_ObjectTypeCount) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 74, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Invalid object type."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_InvalidArgument;
         current_syscall_error.invalidArgumentNumber = 0;
         return EXCEPTION_SYSCALL_ERROR;
@@ -21126,7 +22888,7 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
 
     /* Is the requested object size valid? */
     if (userObjSize >= (32 - 1)) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 82, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Invalid object size."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_RangeError;
         current_syscall_error.rangeErrorMin = 0;
         current_syscall_error.rangeErrorMax = 32 - 2;
@@ -21135,7 +22897,7 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
 
     /* If the target object is a CNode, is it at least size 1? */
     if (newType == seL4_CapTableObject && userObjSize == 0) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 91, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Requested CapTable size too small."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_InvalidArgument;
         current_syscall_error.invalidArgumentNumber = 1;
         return EXCEPTION_SYSCALL_ERROR;
@@ -21143,7 +22905,7 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
 
     /* If the target object is a Untyped, is it at least size 4? */
     if (newType == seL4_UntypedObject && userObjSize < 4) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 99, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Requested UntypedItem size too small."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_InvalidArgument;
         current_syscall_error.invalidArgumentNumber = 1;
         return EXCEPTION_SYSCALL_ERROR;
@@ -21156,7 +22918,7 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
         cap_t rootCap = extraCaps.excaprefs[0]->cap;
         lu_ret = lookupTargetSlot(rootCap, nodeIndex, nodeDepth);
         if (lu_ret.status != EXCEPTION_NONE) {
-            ;
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 112, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Invalid destination address."); printf(">>" "\033[0m" "\n"); } while (0);
             return lu_ret.status;
         }
         nodeCap = lu_ret.slot->cap;
@@ -21164,7 +22926,7 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
 
     /* Is the destination actually a CNode? */
     if (cap_get_capType(nodeCap) != cap_cnode_cap) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 120, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Destination cap invalid or read-only."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_FailedLookup;
         current_syscall_error.failedLookupWasSource = 0;
         current_lookup_fault = lookup_fault_missing_capability_new(nodeDepth);
@@ -21174,7 +22936,10 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
     /* Is the region where the user wants to put the caps valid? */
     nodeSize = 1 << cap_cnode_cap_get_capCNodeRadix(nodeCap);
     if (nodeOffset > nodeSize - 1) {
-       
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+ 131
+# 130 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c"
+        , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Destination node offset #%d too large.", (int)nodeOffset); printf(">>" "\033[0m" "\n"); } while (0)
                                   ;
         current_syscall_error.type = seL4_RangeError;
         current_syscall_error.rangeErrorMin = 0;
@@ -21182,7 +22947,10 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
         return EXCEPTION_SYSCALL_ERROR;
     }
     if (nodeWindow < 1 || nodeWindow > 256) {
-       
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+ 139
+# 138 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c"
+        , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Number of requested objects (%d) too small or large.", (int)nodeWindow); printf(">>" "\033[0m" "\n"); } while (0)
                                   ;
         current_syscall_error.type = seL4_RangeError;
         current_syscall_error.rangeErrorMin = 1;
@@ -21190,7 +22958,7 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
         return EXCEPTION_SYSCALL_ERROR;
     }
     if (nodeWindow > nodeSize - nodeOffset) {
-        ;
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 146, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Requested destination window overruns size of node."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_RangeError;
         current_syscall_error.rangeErrorMin = 1;
         current_syscall_error.rangeErrorMax = nodeSize - nodeOffset;
@@ -21204,7 +22972,10 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
     for (i = nodeOffset; i < nodeOffset + nodeWindow; i++) {
         status = ensureEmptySlot(slots.cnode + i);
         if (status != EXCEPTION_NONE) {
-           
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+ 161
+# 160 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c"
+            , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Slot #%d in destination window non-empty.", (int)i); printf(">>" "\033[0m" "\n"); } while (0)
                              ;
             return status;
         }
@@ -21241,7 +23012,13 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
     untypedFreeBytes = (1ul<<(cap_untyped_cap_get_capBlockSize(cap))) -
                        ((freeIndex)<<4);
     if (objectSize >= 32 || (untypedFreeBytes >> objectSize) < nodeWindow) {
-       
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
+
+
+
+ 201
+# 197 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c"
+        , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Insufficient memory " "(%u * %u bytes needed, %u bytes available).", (unsigned int)nodeWindow, (objectSize >= 32 ? -1 : (1 << objectSize)), (unsigned int)(untypedFreeBytes)); printf(">>" "\033[0m" "\n"); } while (0)
 
 
 
@@ -21429,7 +23206,7 @@ typedef struct acpi_rsdp {
     uint8_t extended_checksum;
     char reserved[3];
 } acpi_rsdp_t;
-
+typedef int __assert_failed_acpi_rsdp_packed[(sizeof(acpi_rsdp_t) == 36) ? 1 : -1];
 
 /* DMA Remapping Reporting Table */
 typedef struct acpi_dmar {
@@ -21438,7 +23215,7 @@ typedef struct acpi_dmar {
     uint8_t flags;
     uint8_t reserved[10];
 } acpi_dmar_t;
-
+typedef int __assert_failed_acpi_dmar_packed[(sizeof(acpi_dmar_t) == sizeof(acpi_header_t) + 12) ? 1 : -1];
 
 
 /* DMA Remapping Structure Header */
@@ -21446,7 +23223,7 @@ typedef struct acpi_dmar_header {
     uint16_t type;
     uint16_t length;
 } acpi_dmar_header_t;
-
+typedef int __assert_failed_acpi_dmar_header_packed[(sizeof(acpi_dmar_header_t) == 4) ? 1 : -1];
 
 /* DMA Remapping Structure Types */
 enum acpi_table_dmar_struct_type {
@@ -21463,7 +23240,7 @@ typedef struct acpi_dmar_drhd {
     uint16_t segment;
     uint32_t reg_base[2];
 } acpi_dmar_drhd_t;
-
+typedef int __assert_failed_acpi_dmar_drhd_packed[(sizeof(acpi_dmar_drhd_t) == sizeof(acpi_dmar_header_t) + 12) ? 1 : -1];
 
 
 /* Reserved Memory Region Reporting structure Definition */
@@ -21478,7 +23255,7 @@ typedef struct acpi_dmar_devscope {
         uint8_t fun;
     } path_0;
 } acpi_dmar_devscope_t;
-
+typedef int __assert_failed_acpi_dmar_devscope_packed[(sizeof(acpi_dmar_devscope_t) == 8) ? 1 : -1];
 
 /* Reserved Memory Region Reporting structure Definition */
 typedef struct acpi_dmar_rmrr {
@@ -21489,7 +23266,7 @@ typedef struct acpi_dmar_rmrr {
     uint32_t reg_limit[2];
     acpi_dmar_devscope_t devscope_0;
 } acpi_dmar_rmrr_t;
-
+typedef int __assert_failed_acpi_dmar_rmrr_packed[(sizeof(acpi_dmar_rmrr_t) == sizeof(acpi_dmar_header_t) + 20 + sizeof(acpi_dmar_devscope_t)) ? 1 : -1];
 
 
 /* Multiple APIC Description Table (MADT) */
@@ -21498,14 +23275,14 @@ typedef struct acpi_madt {
     uint32_t apic_addr;
     uint32_t flags;
 } acpi_madt_t;
-
+typedef int __assert_failed_acpi_madt_packed[(sizeof(acpi_madt_t) == sizeof(acpi_header_t) + 8) ? 1 : -1];
 
 
 typedef struct acpi_madt_header {
     uint8_t type;
     uint8_t length;
 } acpi_madt_header_t;
-
+typedef int __assert_failed_acpi_madt_header_packed[(sizeof(acpi_madt_header_t) == 2) ? 1 : -1];
 
 enum acpi_table_madt_struct_type {
     MADT_APIC = 0,
@@ -21519,7 +23296,7 @@ typedef struct acpi_madt_apic {
     uint8_t apic_id;
     uint32_t flags;
 } acpi_madt_apic_t;
-
+typedef int __assert_failed_acpi_madt_apic_packed[(sizeof(acpi_madt_apic_t) == sizeof(acpi_madt_header_t) + 6) ? 1 : -1];
 
 
 typedef struct acpi_madt_ioapic {
@@ -21529,7 +23306,7 @@ typedef struct acpi_madt_ioapic {
     uint32_t ioapic_addr;
     uint32_t gsib;
 } acpi_madt_ioapic_t;
-
+typedef int __assert_failed_acpi_madt_ioapic_packed[(sizeof(acpi_madt_ioapic_t) == sizeof(acpi_madt_header_t) + 10) ? 1 : -1];
 
 
 typedef struct acpi_madt_iso {
@@ -21542,7 +23319,7 @@ typedef struct acpi_madt_iso {
 /* We can't assert on the sizeof acpi_madt_iso because it contains trailing
  * padding.
  */
-
+typedef int __assert_failed_acpi_madt_iso_packed[(__builtin_offsetof(acpi_madt_iso_t, flags) == sizeof(acpi_madt_header_t) + 6) ? 1 : -1];
 
 
 /* workaround because string literals are not supported by C parser */
@@ -21606,8 +23383,8 @@ acpi_table_init(void* entry, enum acpi_type table_type)
         break;
     }
     default:
-        ((void)(0));
-        ;
+        printf("Error: Mapping unknown ACPI table type\n");
+        if(!(false)) _assert_fail("false", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c", 216, __FUNCTION__);
         return ((void *)0);
     }
 
@@ -21625,21 +23402,21 @@ acpi_init(void)
     acpi_rsdt_t* acpi_rsdt_mapped;
 
     if (acpi_rsdp == ((void *)0)) {
-        ((void)(0));
+        printf("BIOS: No ACPI support detected\n");
         return ((void *)0);
     }
-    ((void)(0));
+    printf("ACPI: RSDP paddr=0x%x\n", (unsigned int)acpi_rsdp);
     acpi_rsdp = acpi_table_init(acpi_rsdp, ACPI_RSDP);
-    ((void)(0));
+    printf("ACPI: RSDP vaddr=0x%x\n", (unsigned int)acpi_rsdp);
 
     acpi_rsdt = (acpi_rsdt_t*)acpi_rsdp->rsdt_address;
-    ((void)(0));
+    printf("ACPI: RSDT paddr=0x%x\n", (unsigned int)acpi_rsdt);
     acpi_rsdt_mapped = (acpi_rsdt_t*)acpi_table_init(acpi_rsdt, ACPI_RSDT);
-    ((void)(0));
+    printf("ACPI: RSDT vaddr=0x%x\n", (unsigned int)acpi_rsdt_mapped);
 
-    ;
+    if(!(acpi_rsdt_mapped->header.length > 0)) _assert_fail("acpi_rsdt_mapped->header.length > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c", 246, __FUNCTION__);
     if (acpi_calc_checksum((char*)acpi_rsdt_mapped, acpi_rsdt_mapped->header.length) != 0) {
-        ((void)(0));
+        printf("ACPI: RSDT checksum failure\n");
         return ((void *)0);
     }
 
@@ -21665,17 +23442,17 @@ acpi_madt_scan(
 
     num_cpu = 0;
 
-    ;
+    if(!(acpi_rsdt_mapped->header.length >= sizeof(acpi_header_t))) _assert_fail("acpi_rsdt_mapped->header.length >= sizeof(acpi_header_t)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c", 274, __FUNCTION__);
     entries = (acpi_rsdt_mapped->header.length - sizeof(acpi_header_t)) / sizeof(acpi_header_t*);
     for (count = 0; count < entries; count++) {
         acpi_madt = (acpi_madt_t*)acpi_rsdt_mapped->entry[count];
         acpi_madt_mapped = (acpi_madt_t*)acpi_table_init(acpi_madt, ACPI_RSDT);
 
         if (strncmp(acpi_str_apic, acpi_madt_mapped->header.signature, 4) == 0) {
-            ((void)(0));
-            ((void)(0));
-            ((void)(0));
-            ((void)(0));
+            printf("ACPI: MADT paddr=0x%x\n", (unsigned int)acpi_madt);
+            printf("ACPI: MADT vaddr=0x%x\n", (unsigned int)acpi_madt_mapped);
+            printf("ACPI: MADT apic_addr=0x%x\n", acpi_madt_mapped->apic_addr);
+            printf("ACPI: MADT flags=0x%x\n", acpi_madt_mapped->flags);
 
             acpi_madt_header = (acpi_madt_header_t*)(acpi_madt_mapped + 1);
 
@@ -21686,7 +23463,7 @@ acpi_madt_scan(
                     uint8_t cpu_id = ((acpi_madt_apic_t*)acpi_madt_header)->apic_id;
                     uint32_t flags = ((acpi_madt_apic_t*)acpi_madt_header)->flags;
                     if (flags == 1) {
-                        ((void)(0));
+                        printf("ACPI: MADT_APIC apic_id=0x%x\n", cpu_id);
                         if (num_cpu < max_list_len) {
                             cpu_list[num_cpu] = cpu_id;
                         }
@@ -21695,12 +23472,12 @@ acpi_madt_scan(
                     break;
                 }
                 case MADT_IOAPIC:
-                    ((void)(0))
-
-
-
-
-                     ;
+                    printf(
+                        "ACPI: MADT_IOAPIC ioapic_id=%d ioapic_addr=0x%x gsib=%d\n",
+                        ((acpi_madt_ioapic_t*)acpi_madt_header)->ioapic_id,
+                        ((acpi_madt_ioapic_t*)acpi_madt_header)->ioapic_addr,
+                        ((acpi_madt_ioapic_t*)acpi_madt_header)->gsib
+                    );
                     break;
                 default:
                     break;
@@ -21710,9 +23487,69 @@ acpi_madt_scan(
         }
     }
 
-    ((void)(0));
+    printf("ACPI: %d CPU(s) detected\n", num_cpu);
 
     return num_cpu;
+}
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/debug_helpers.c"
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/debug_helpers.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/debug_helpers.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/debug_helpers.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/io.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/debug_helpers.c" 2
+
+
+
+unsigned char getDebugChar(void)
+{
+    while ((in8(ia32KSdebugPort + 5) & 1) == 0);
+    return in8(ia32KSdebugPort);
+}
+
+void putDebugChar(unsigned char a)
+{
+    while ((in8(ia32KSdebugPort + 5) & 0x20) == 0);
+    out8(ia32KSdebugPort, a);
 }
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c"
 /*
@@ -21830,8 +23667,8 @@ void platAddDevices(void)
 /* Enable or disable irq according to the 'mask' flag. */
 void maskInterrupt(bool_t mask, irq_t irq)
 {
-    ;
-    ;
+    if(!(irq >= irq_isa_min)) _assert_fail("irq >= irq_isa_min", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c", 46, __FUNCTION__);
+    if(!(irq <= maxIRQ)) _assert_fail("irq <= maxIRQ", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c", 47, __FUNCTION__);
 
     if (irq <= irq_isa_max) {
         pic_mask_irq(mask, irq);
@@ -21849,7 +23686,7 @@ void handleReservedIRQ(irq_t irq)
 
 
 
-    ((void)(0));
+    printf("Received reserved IRQ: %d\n", (int)irq);
 }
 
 /* Get the IRQ number currently working on. */
@@ -21965,6 +23802,51 @@ void resetTimer(void)
  * @TAG(GD_GPL)
  */
 # 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/io.c" 2
+
+
+
+static uint16_t get_console_port(void)
+{
+    if (in_boot_phase()) {
+        return console_port_of_node(node_of_cpu(cur_cpu_id()));
+    } else {
+        return ia32KSconsolePort;
+    }
+}
+
+void serial_init(uint16_t port)
+{
+    while (!(in8(port + 5) & 0x60)); /* wait until not busy */
+
+    out8(port + 1, 0x00); /* disable generating interrupts */
+    out8(port + 3, 0x80); /* line control register: command: set divisor */
+    out8(port, 0x01); /* set low byte of divisor to 0x01 = 115200 baud */
+    out8(port + 1, 0x00); /* set high byte of divisor to 0x00 */
+    out8(port + 3, 0x03); /* line control register: set 8 bit, no parity, 1 stop bit */
+    out8(port + 4, 0x0b); /* modem control register: set DTR/RTS/OUT2 */
+
+    in8(port); /* clear recevier port */
+    in8(port + 5); /* clear line status port */
+    in8(port + 6); /* clear modem status port */
+}
+
+void console_putchar(char c)
+{
+    uint16_t port = get_console_port();
+
+    lock_acquire(&lock_debug);
+
+    if (port > 0) {
+        while (!(in8(port + 5) & 0x60));
+        out8(port, c);
+        if (c == '\n') {
+            while (!(in8(port + 5) & 0x60));
+            out8(port, '\r');
+        }
+    }
+
+    lock_release(&lock_debug);
+}
 # 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pci.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
@@ -22104,7 +23986,7 @@ pci_scan_bars(uint8_t bus, uint8_t dev, uint8_t fun, uint8_t count)
         bar.words[0] = pci_read_reg32(bus, dev, fun, reg);
         if (bar.words[0] != 0) {
             /* BAR is in use */
-            ((void)(0));
+            printf("PCI:     BAR[%d] ", i);
             if (pci_bar_get_pci_space(bar) == pci_bar_pci_bar_mem) {
                 map_size = ~(pci_bar_pci_bar_mem_get_base_address(bar) - 1);
                 if (map_size < (1ul<<(12))) {
@@ -22122,9 +24004,9 @@ pci_scan_bars(uint8_t bus, uint8_t dev, uint8_t fun, uint8_t count)
                         /* we have base/size, now do the mapping */
                         if (pci_bar_pci_bar_mem_get_above_4GB(bar)) {
                             if (pci_read_reg32(bus, dev, fun, reg + 4) != 0) {
-                                ((void)(0));
+                                printf("ignored: 64 bit BAR address above 4 GB\n");
                             } else {
-                                ((void)(0));
+                                printf("address=0x%x size=0x%x", map_base, map_size);
                                 insert_dev_p_reg(
                                 (p_region_t) {
                                     .start = map_base, .end = map_base + map_size
@@ -22133,7 +24015,7 @@ pci_scan_bars(uint8_t bus, uint8_t dev, uint8_t fun, uint8_t count)
                             }
                             i++;
                         } else {
-                            ((void)(0));
+                            printf("address=0x%x size=0x%x", map_base, map_size);
                             insert_dev_p_reg(
                             (p_region_t) {
                                 .start = map_base, .end = map_base + map_size
@@ -22141,14 +24023,14 @@ pci_scan_bars(uint8_t bus, uint8_t dev, uint8_t fun, uint8_t count)
                             );
                         }
                     } else {
-                        ((void)(0));
+                        printf("ignored: size corrupted (not a power of two): 0x%x\n", map_size);
                     }
                 } else {
-                    ((void)(0));
+                    printf("ignored: address=0x%x not 4K aligned (size=0x%x)\n", map_base, map_size);
                 }
             } else {
                 /* pci_bar_pci_bar_io */
-                ((void)(0));
+                printf("ignored: PCI IO space not supported\n");
             }
             /* write back address set by BIOS */
             pci_write_reg32(bus, dev, fun, reg, bar_save.words[0]);
@@ -22168,29 +24050,29 @@ pci_scan_fun(uint8_t bus, uint8_t dev, uint8_t fun)
 
         did = pci_read_reg16(bus, dev, fun, 0x02);
         type = pci_read_reg8(bus, dev, fun, 0x0E) & 0x7f;
-        ((void)(0))
-
-
-         ;
+        printf(
+            "PCI: Detected device @ bus=0x%x dev=0x%x fun=0x%x: vid=0x%x did=0x%x type=",
+            bus, dev, fun, vid, did
+        );
         (void)did;
         switch (type) {
         case 0x00:
-            ((void)(0));
+            printf("normal\n");
             pci_scan_bars(bus, dev, fun, 6);
             break;
 
         case 0x01:
-            ((void)(0));
+            printf("bridge\n");
             pci_scan_bars(bus, dev, fun, 2);
             break;
 
         case 0x02:
-            ((void)(0));
+            printf("cardbus\n");
             pci_scan_bars(bus, dev, fun, 1);
             break;
 
         default:
-            ((void)(0));
+            printf("unknown (0x%x)\n", type);
             /* don't scan BARs */
             break;
         }
@@ -22311,8 +24193,8 @@ void pic_mask_irq(bool_t mask, irq_t irq)
     uint8_t bit_mask;
     uint16_t pic_port;
 
-    ;
-    ;
+    if(!(irq >= irq_isa_min)) _assert_fail("irq >= irq_isa_min", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pic.c", 41, __FUNCTION__);
+    if(!(irq <= irq_isa_max)) _assert_fail("irq <= irq_isa_max", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pic.c", 42, __FUNCTION__);
 
     if (irq < 8) {
         bit_mask = (1ul<<(irq));
@@ -22493,8 +24375,8 @@ memzero(void *s, unsigned int n)
     uint8_t *p = s;
 
     /* Ensure alignment constraints are met. */
-    ;
-    ;
+    if(!((unsigned int)s % 4 == 0)) _assert_fail("(unsigned int)s % 4 == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/util.c", 26, __FUNCTION__);
+    if(!(n % 4 == 0)) _assert_fail("n % 4 == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/util.c", 27, __FUNCTION__);
 
     /* Write out words. */
     while (n != 0) {

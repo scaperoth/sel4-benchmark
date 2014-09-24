@@ -27,6 +27,7 @@ src/null-vka.o: \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4/bootinfo.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdlib.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/cspacepath_t.h \
+ /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/null-vka.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/vka.h
 
@@ -83,6 +84,8 @@ src/null-vka.o: \
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdlib.h:
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/cspacepath_t.h:
+
+/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h:
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/null-vka.h:
 

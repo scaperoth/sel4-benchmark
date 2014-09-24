@@ -33,8 +33,8 @@ src/mspace/vspace_pool.o: \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4/arch/syscalls.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4/bootinfo.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/cspacepath_t.h \
- /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/kobject_t.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h \
+ /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/kobject_t.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/allocman/allocman.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/allocman/util.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4utils/util.h \
@@ -120,9 +120,9 @@ src/mspace/vspace_pool.o: \
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/cspacepath_t.h:
 
-/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/kobject_t.h:
-
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h:
+
+/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/kobject_t.h:
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/allocman/allocman.h:
 

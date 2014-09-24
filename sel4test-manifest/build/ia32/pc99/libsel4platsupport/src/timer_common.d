@@ -30,8 +30,8 @@ src/timer_common.o: \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4/arch/syscalls.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4/bootinfo.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/cspacepath_t.h \
- /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/kobject_t.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h \
+ /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/kobject_t.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/simple/simple.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/sel4platsupport/timer.h \
  /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/platsupport/timer.h \
@@ -114,9 +114,9 @@ src/timer_common.o: \
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/cspacepath_t.h:
 
-/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/kobject_t.h:
-
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/stdio.h:
+
+/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/vka/kobject_t.h:
 
 /home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/stage/ia32/pc99/include/simple/simple.h:
 
