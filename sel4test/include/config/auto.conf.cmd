@@ -1,5 +1,5 @@
 deps_config := \
-	/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/tools/common/Kconfig \
+	/home/mscapero/Desktop/sel4-benchmark/sel4test/tools/common/Kconfig \
 	tools/elfloader/Kconfig \
 	libs/libplatsupport/Kconfig \
 	libs/libutils/Kconfig \
@@ -19,17 +19,17 @@ deps_config := \
 	libs/libsel4/Kconfig \
 	apps/sel4test-tests/Kconfig \
 	apps/sel4test-driver/Kconfig \
-	/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/Kconfig \
+	/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/Kconfig \
 	kernel/Kconfig \
 	Kconfig
 
 include/config/auto.conf: \
 	$(deps_config)
 
-ifneq "$(KERNEL_ROOT_PATH)" "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel"
+ifneq "$(KERNEL_ROOT_PATH)" "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel"
 include/config/auto.conf: FORCE
 endif
-ifneq "$(COMMON_PATH)" "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/tools/common"
+ifneq "$(COMMON_PATH)" "/home/mscapero/Desktop/sel4-benchmark/sel4test/tools/common"
 include/config/auto.conf: FORCE
 endif
 

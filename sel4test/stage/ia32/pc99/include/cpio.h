@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _CPIO_H
 #define _CPIO_H
 

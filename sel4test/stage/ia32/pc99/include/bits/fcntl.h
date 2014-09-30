@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #define O_CREAT        0100
 #define O_EXCL         0200
 #define O_NOCTTY       0400
@@ -17,6 +15,7 @@
 #define O_DIRECT     040000
 #define O_LARGEFILE 0100000
 #define O_NOATIME  01000000
+#define O_TMPFILE 020200000
 #define O_NDELAY O_NONBLOCK
 
 #define F_DUPFD  0
@@ -36,3 +35,5 @@
 
 #define F_SETOWN_EX 15
 #define F_GETOWN_EX 16
+
+#define F_GETOWNER_UIDS 17

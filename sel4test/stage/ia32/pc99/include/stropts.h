@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _STROPTS_H
 #define _STROPTS_H
 

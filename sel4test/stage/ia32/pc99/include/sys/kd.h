@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _SYS_KD_H
 #define _SYS_KD_H
 

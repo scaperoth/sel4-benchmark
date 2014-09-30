@@ -1,4 +1,0 @@
-# pack-refs with: peeled fully-peeled 
-e3c4fd27fb3d675fefe4aa32274c7f1c48e7d4a2 refs/remotes/seL4/master
-46acce7319271596e6b4edaa260cb0836f956d1e refs/tags/v1.0.0
-^e3c4fd27fb3d675fefe4aa32274c7f1c48e7d4a2

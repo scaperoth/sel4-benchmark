@@ -34,6 +34,7 @@ enum invocation_label {
     IRQAckIRQ,
     IRQSetIRQHandler,
     IRQClearIRQHandler,
+    IRQSetMode,
     DomainSetSet,
     nInvocationLabels
 };

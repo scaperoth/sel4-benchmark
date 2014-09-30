@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 struct msqid_ds
 {
 	struct ipc_perm msg_perm;

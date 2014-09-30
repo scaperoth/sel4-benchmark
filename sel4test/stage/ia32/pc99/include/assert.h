@@ -1,11 +1,15 @@
-/* @LICENSE(MUSLC_MIT) */
+#include <features.h>
 
 #undef assert
 
 #ifdef NDEBUG
-#define	assert(x) ((void)0)
+#define	assert(x) (void)0
 #else
-#define assert(x) ((x) ? ((void)0) : (__assert_fail(#x, __FILE__, __LINE__, __func__)))
+#define assert(x) ((void)((x) || (__assert_fail(#x, __FILE__, __LINE__, __func__),0)))
+#endif
+
+#ifndef __cplusplus
+#define static_assert _Static_assert
 #endif
 
 #ifdef __cplusplus
@@ -16,8 +20,4 @@ void __assert_fail (const char *, const char *, int, const char *);
 
 #ifdef __cplusplus
 }
-#endif
-
-#ifndef UNUSED_NDEBUG
-#define UNUSED_NDEBUG(x)    ((void)(x))
 #endif

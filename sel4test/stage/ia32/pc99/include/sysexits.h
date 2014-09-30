@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_SYSEXITS_H
 #define _SYSEXITS_H
 #define EX_OK 0

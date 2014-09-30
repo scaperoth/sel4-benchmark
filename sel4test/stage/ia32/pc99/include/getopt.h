@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _GETOPT_H
 #define _GETOPT_H
 
@@ -9,7 +7,7 @@ extern "C" {
 
 int getopt(int, char * const [], const char *);
 extern char *optarg;
-extern int optind, opterr, optopt;
+extern int optind, opterr, optopt, optreset;
 
 struct option
 {

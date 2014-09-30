@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_NETDB_H
 #define	_NETDB_H
 
@@ -7,14 +5,13 @@
 extern "C" {
 #endif
 
+#include <features.h>
+#include <netinet/in.h>
+
 #if defined(_GNU_SOURCE) || defined(_BSD_SOURCE)
 #define __NEED_size_t
-#endif
-
-#define __NEED_socklen_t
-#define __NEED_uint32_t
-
 #include <bits/alltypes.h>
+#endif
 
 struct addrinfo
 {
@@ -44,7 +41,7 @@ struct addrinfo
 #define NI_NOFQDN       0x04
 #define NI_NAMEREQD     0x08
 #define NI_DGRAM        0x10
-/*#define NI_NUMERICSCOPE */
+#define NI_NUMERICSCOPE 0x100
 
 #define EAI_BADFLAGS   -1
 #define EAI_NONAME     -2
@@ -57,9 +54,9 @@ struct addrinfo
 #define EAI_SYSTEM     -11
 #define EAI_OVERFLOW   -12
 
-int getaddrinfo (const char *, const char *, const struct addrinfo *, struct addrinfo **);
+int getaddrinfo (const char *__restrict, const char *__restrict, const struct addrinfo *__restrict, struct addrinfo **__restrict);
 void freeaddrinfo (struct addrinfo *);
-int getnameinfo (const struct sockaddr *, socklen_t, char *, socklen_t, char *, socklen_t, int);
+int getnameinfo (const struct sockaddr *__restrict, socklen_t, char *__restrict, socklen_t, char *__restrict, socklen_t, int);
 const char *gai_strerror(int);
 
 
@@ -121,8 +118,8 @@ struct protoent *getprotobyname (const char *);
 struct protoent *getprotobynumber (int);
 
 #if defined(_GNU_SOURCE) || defined(_BSD_SOURCE) || defined(_POSIX_SOURCE) \
- || (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE < 200809L) \
- || (defined(_XOPEN_SOURCE) && _XOPEN_SOURCE < 700)
+ || (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE+0 < 200809L) \
+ || (defined(_XOPEN_SOURCE) && _XOPEN_SOURCE+0 < 700)
 struct hostent *gethostbyname (const char *);
 struct hostent *gethostbyaddr (const void *, socklen_t, int);
 #ifdef __GNUC__
@@ -134,9 +131,11 @@ int *__h_errno_location(void);
 #define TRY_AGAIN      2
 #define NO_RECOVERY    3
 #define NO_DATA        4
+#define NO_ADDRESS     NO_DATA
 #endif
 
 #if defined(_GNU_SOURCE) || defined(_BSD_SOURCE)
+void herror(const char *);
 const char *hstrerror(int);
 int gethostbyname_r(const char *, struct hostent *, char *, size_t, struct hostent **, int *);
 int gethostbyname2_r(const char *, int, struct hostent *, char *, size_t, struct hostent **, int *);

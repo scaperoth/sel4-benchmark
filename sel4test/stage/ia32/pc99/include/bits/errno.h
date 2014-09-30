@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #define EPERM            1
 #define ENOENT           2
 #define ESRCH            3
@@ -133,3 +131,4 @@
 #define EOWNERDEAD      130
 #define ENOTRECOVERABLE 131
 #define ERFKILL         132
+#define EHWPOISON       133

@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _CRYPT_H
 #define _CRYPT_H
 

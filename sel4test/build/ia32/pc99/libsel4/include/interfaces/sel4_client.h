@@ -918,6 +918,25 @@ seL4_IRQHandler_Clear(seL4_IRQHandler service)
 }
 
 static inline int
+seL4_IRQHandler_SetMode(seL4_IRQHandler service, uint32_t level_trigger, uint32_t low_polarity)
+{
+	seL4_MessageInfo_t tag = seL4_MessageInfo_new(IRQSetMode, 0, 0, 2);
+	seL4_MessageInfo_t output_tag;
+	seL4_Word mr0;
+	seL4_Word mr1;
+
+	/* Marshal input parameters. */
+	mr0 = level_trigger;
+	mr1 = low_polarity;
+
+	/* Perform the call, passing in-register arguments directly. */
+	output_tag = seL4_CallWithMRs(service, tag,
+		&mr0, &mr1);
+
+	return seL4_MessageInfo_get_label(output_tag);
+}
+
+static inline int
 seL4_DomainSet_Set(seL4_DomainSet service, uint8_t domain, seL4_TCB thread)
 {
 	seL4_MessageInfo_t tag = seL4_MessageInfo_new(DomainSetSet, 0, 1, 1);

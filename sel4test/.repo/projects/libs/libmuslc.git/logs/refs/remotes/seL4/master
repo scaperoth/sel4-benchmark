@@ -1,1 +1,0 @@
-0000000000000000000000000000000000000000 a576a98790b9280564daf0ca2defe98c67b6f48c SeL4 <mscapero@ubuntu.(none)> 1410977447 -0700	fetch seL4 --tags +refs/heads/*:refs/remotes/seL4/*: storing head

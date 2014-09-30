@@ -1,11 +1,11 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_SYS_UTSNAME_H
 #define	_SYS_UTSNAME_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <features.h>
 
 struct utsname
 {

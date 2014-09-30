@@ -25,7 +25,7 @@ typedef struct sel4utils_elf_region {
     void *elf_vstart;
     void *reservation_vstart;
     uint32_t size;
-    reservation_t *reservation;
+    reservation_t reservation;
     int cacheable;
 } sel4utils_elf_region_t;
 
@@ -95,6 +95,16 @@ sel4utils_elf_reserve(vspace_t *loadee, char *image_name, sel4utils_elf_region_t
  */
 int
 sel4utils_elf_num_regions(char *image_name);
+
+/**
+ * Looks for the __vsyscall section in an elf file and returns the value. This
+ * is used to set the __sysinfo value when launching the elf
+ *
+ * @param image_name name of the image in the cpio archive to inspect
+ *
+ * @return Address of vsyscall function or 0 if not found
+ */
+uintptr_t sel4utils_elf_get_vsyscall(char *image_name);
 
 #endif /* (defined CONFIG_LIB_SEL4_VKA && defined CONFIG_LIB_SEL4_VSPACE) */
 #endif /* SEL4UTILS_ELF_H */

@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _NETPACKET_PACKET_H
 #define _NETPACKET_PACKET_H
 

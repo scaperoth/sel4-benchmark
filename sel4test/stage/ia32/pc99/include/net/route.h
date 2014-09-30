@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _NET_ROUTE_H
 #define _NET_ROUTE_H
 

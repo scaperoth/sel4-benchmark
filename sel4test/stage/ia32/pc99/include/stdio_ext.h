@@ -1,11 +1,11 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _STDIO_EXT_H
 #define _STDIO_EXT_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <stdio.h>
 
 #define FSETLOCKING_QUERY 0
 #define FSETLOCKING_INTERNAL 1

@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _ULIMIT_H
 #define _ULIMIT_H
 

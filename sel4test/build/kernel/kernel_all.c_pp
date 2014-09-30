@@ -43,7 +43,7 @@
 /* We do not support C11 <threads.h>.  */
 # 1 "<command-line>" 2
 # 1 "kernel_all.c"
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -54,21 +54,7 @@
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-
-
-
-
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/stdint.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -82,7 +68,21 @@
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/stdint.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/stdint.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+
+
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/stdint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -105,9 +105,9 @@ typedef signed char int8_t;
 typedef signed short int16_t;
 typedef signed int int32_t;
 typedef signed long long int64_t;
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/stdint.h" 2
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/stdint.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -121,7 +121,7 @@ typedef signed long long int64_t;
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -138,13 +138,13 @@ typedef signed long long int64_t;
 /* Compile-time configuration parameters. Might be set by the build system. */
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/include/generated/autoconf.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/include/generated/autoconf.h" 1
 /*
  * Automatically generated C config: don't edit
  * Project Configuration
- * Thu Sep 25 13:20:24 2014
+ * Tue Sep 30 09:13:34 2014
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 2
 
 
 /* size of the initial thread's root CNode (2^x slots, x >= 4) */
@@ -208,8 +208,8 @@ typedef signed long long int64_t;
 
 
 /* maximum number of PCI devices that can be marked as passthrough (IOMMU RMRR device scopes) */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/stdint.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/stdint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -219,8 +219,8 @@ typedef signed long long int64_t;
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -230,7 +230,7 @@ typedef signed long long int64_t;
  *
  * @TAG(GD_GPL)
  */
-# 43 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h"
+# 43 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h"
 /* Borrowed from linux/include/linux/compiler.h */
 
 
@@ -260,12 +260,12 @@ void *memcpy(void* ptr_dst, const void* ptr_src, unsigned int n);
 int strncmp(const char *s1, const char *s2, int n);
 int __attribute__((__const__)) char_to_int(char c);
 int __attribute__((__pure__)) str_to_int(const char* str);
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 2
 # 1 "./api/types_gen.h" 1
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -279,7 +279,7 @@ int __attribute__((__pure__)) str_to_int(const char* str);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -289,7 +289,7 @@ int __attribute__((__pure__)) str_to_int(const char* str);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 2
 
 
 
@@ -314,7 +314,7 @@ void _assert_fail(
 
 /* Create an assert that will trigger a compile error if it fails. */
 # 5 "./api/types_gen.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -325,7 +325,7 @@ void _assert_fail(
  * @TAG(GD_GPL)
  */
 # 6 "./api/types_gen.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/stdint.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/stdint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -336,7 +336,7 @@ void _assert_fail(
  * @TAG(GD_GPL)
  */
 # 7 "./api/types_gen.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -466,8 +466,8 @@ static inline uint32_t __attribute__((__const__))
 cap_rights_get_capAllowWrite(cap_rights_t cap_rights) {
     return (cap_rights.words[0] & 0x1) >> 0;
 }
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/api/types.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -481,7 +481,7 @@ cap_rights_get_capAllowWrite(cap_rights_t cap_rights) {
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/objecttype.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -505,8 +505,8 @@ typedef enum api_object {
 } seL4_ObjectType;
 
 typedef uint32_t api_object_t;
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/api/types.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/api/types.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -516,8 +516,8 @@ typedef uint32_t api_object_t;
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/api/types.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/api/objecttype.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/api/types.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/api/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -542,7 +542,7 @@ typedef enum _object {
     seL4_ObjectTypeCount
 } seL4_ArchObjectType;
 typedef uint32_t object_t;
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/api/types.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/api/types.h" 2
 
 
 
@@ -553,8 +553,8 @@ enum asidConstants {
 
 
 typedef uint32_t asid_t;
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/types.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -568,7 +568,7 @@ typedef uint32_t asid_t;
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/stdint.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/stdint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -578,7 +578,7 @@ typedef uint32_t asid_t;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/types.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/types.h" 2
 
 typedef uint32_t word_t;
 typedef uint32_t vptr_t;
@@ -588,8 +588,8 @@ typedef uint32_t pptr_t;
 typedef uint32_t dev_id_t;
 typedef uint32_t cpu_id_t;
 typedef uint32_t node_id_t;
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/constants.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/constants.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -617,7 +617,7 @@ enum seL4_MsgLimits {
     seL4_MsgLengthBits = 7,
     seL4_MsgExtraCapBits = 2
 };
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 2
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 2
 
 /* cap_rights_t defined in api/types.bf */
 
@@ -697,13 +697,13 @@ wordFromMessageInfo(message_info_t mi)
 {
     return mi.words[0];
 }
-# 108 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h"
+# 108 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h"
 /*
  * Print to serial a message helping userspace programmers to determine why the
  * kernel is not performing their requested operation.
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -717,7 +717,7 @@ wordFromMessageInfo(message_info_t mi)
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -727,8 +727,8 @@ wordFromMessageInfo(message_info_t mi)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/stdint.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/stdint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -738,7 +738,7 @@ wordFromMessageInfo(message_info_t mi)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 2
 
 enum irq_state {
     IRQInactive = 0,
@@ -753,7 +753,7 @@ typedef struct dschedule {
     uint32_t length;
 } dschedule_t;
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -767,7 +767,7 @@ typedef struct dschedule {
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -777,8 +777,8 @@ typedef struct dschedule {
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -788,8 +788,8 @@ typedef struct dschedule {
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -799,8 +799,8 @@ typedef struct dschedule {
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -810,8 +810,8 @@ typedef struct dschedule {
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/types.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -821,12 +821,12 @@ typedef struct dschedule {
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 2
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 2
 # 1 "./arch/object/structures_gen.h" 1
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -837,7 +837,7 @@ typedef struct dschedule {
  * @TAG(GD_GPL)
  */
 # 5 "./arch/object/structures_gen.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -848,7 +848,7 @@ typedef struct dschedule {
  * @TAG(GD_GPL)
  */
 # 6 "./arch/object/structures_gen.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/stdint.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/stdint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -859,7 +859,7 @@ typedef struct dschedule {
  * @TAG(GD_GPL)
  */
 # 7 "./arch/object/structures_gen.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4243,8 +4243,8 @@ pde_pde_4m_ptr_get_present(pde_t *pde_ptr) {
 
     return (pde_ptr->words[0] & 0x1) >> 0;
 }
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/hardware.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/hardware.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4258,7 +4258,7 @@ pde_pde_4m_ptr_get_present(pde_t *pde_ptr) {
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4268,8 +4268,8 @@ pde_pde_4m_ptr_get_present(pde_t *pde_ptr) {
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/hardware.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/hardware.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4283,7 +4283,7 @@ pde_pde_4m_ptr_get_present(pde_t *pde_ptr) {
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4293,7 +4293,7 @@ pde_pde_4m_ptr_get_present(pde_t *pde_ptr) {
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 2
 
 /* code that is linked to physical addresses */
 
@@ -4308,7 +4308,7 @@ pde_pde_4m_ptr_get_present(pde_t *pde_ptr) {
 
 
 /* global data (shared by all nodes) */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/hardware.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/hardware.h" 2
 
 enum vm_fault_type {
     IA32DataFault = 0,
@@ -4342,7 +4342,7 @@ pageBitsForSize(vm_page_size_t pagesize)
         return IA32_4M_bits;
 
     default:
-        _fail("Invalid page size", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/hardware.h", 49, __func__);
+        _fail("Invalid page size", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/hardware.h", 49, __func__);
     }
 }
 
@@ -4362,7 +4362,7 @@ pageBitsForSize_phys(vm_page_size_t pagesize)
         return IA32_4M_bits;
 
     default:
-        _fail("Invalid page size", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/hardware.h", 69, __func__);
+        _fail("Invalid page size", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/hardware.h", 69, __func__);
     }
 }
 
@@ -4373,8 +4373,8 @@ uint32_t __attribute__((__const__)) getCacheLineSizeBits(void);
 /* Flushes a specific memory range from the CPU cache */
 void flushCacheLine(void* vaddr);
 void flushCacheRange(void* vaddr, uint32_t size_bits);
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/registerset.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4388,7 +4388,7 @@ void flushCacheRange(void* vaddr, uint32_t size_bits);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4398,8 +4398,8 @@ void flushCacheRange(void* vaddr, uint32_t size_bits);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/registerset.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/registerset.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4409,8 +4409,8 @@ void flushCacheRange(void* vaddr, uint32_t size_bits);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/registerset.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/registerset.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4420,7 +4420,7 @@ void flushCacheRange(void* vaddr, uint32_t size_bits);
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/registerset.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/registerset.h" 2
 
 /* Number of bytes required to store FPU state. */
 
@@ -4518,7 +4518,7 @@ word_t sanitiseRegister(register_t reg, word_t v);
 
 /* Ensure FPU state is aligned within user context. */
 typedef int __assert_failed_fpu_state_alignment_valid[(__builtin_offsetof(user_context_t, fpuState) % 16 == 0) ? 1 : -1];
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 2
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 2
 
 
 /* Arch-independent object types */
@@ -4540,7 +4540,7 @@ enum async_endpoint_state {
     AEPState_Active = 2
 };
 typedef uint32_t async_endpoint_state_t;
-# 61 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h"
+# 61 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h"
 /* Generate a tcb_t or cte_t pointer from a tcb block reference */
 
 
@@ -4687,7 +4687,7 @@ typedef int __assert_failed_tcb_size_sane[((1 << (4 + 4)) + sizeof(tcb_t) <= (1 
 
 
 /* IA32-specific object types */
-# 264 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h"
+# 264 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h"
 /* helper structure for filling descriptor registers */
 typedef struct gdt_idt_ptr {
     uint16_t limit;
@@ -4732,7 +4732,7 @@ struct asid_pool {
 };
 
 typedef struct asid_pool asid_pool_t;
-# 318 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h"
+# 318 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h"
 static inline asid_t __attribute__((__const__))
 cap_frame_cap_get_capFMappedASID(cap_t cap)
 {
@@ -4832,7 +4832,7 @@ cap_get_capSizeBits(cap_t cap)
         return (asidLowBits + 2);
 
     default:
-        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h", 417, __func__);
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h", 417, __func__);
     }
 }
 
@@ -4902,7 +4902,7 @@ cap_get_capPtr(cap_t cap)
         return ((asid_pool_t*)cap_asid_pool_cap_get_capASIDPool(cap));
 
     default:
-        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h", 487, __func__);
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h", 487, __func__);
     }
 }
 
@@ -4920,9 +4920,9 @@ isArchCap(cap_t cap)
 {
     return (cap_get_capType(cap) % 2);
 }
-# 31 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 2
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/types.h" 1
+# 31 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4932,7 +4932,7 @@ isArchCap(cap_t cap)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 2
 
 enum _bool {
     false = 0,
@@ -4976,8 +4976,8 @@ struct extra_caps {
     cte_ptr_t excaprefs[((1ul<<(seL4_MsgExtraCapBits))-1)];
 };
 typedef struct extra_caps extra_caps_t;
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/benchmark.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/benchmark.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4991,7 +4991,7 @@ typedef struct extra_caps extra_caps_t;
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/benchmark.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/benchmark.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5001,44 +5001,8 @@ typedef struct extra_caps extra_caps_t;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/benchmark.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-
-
-
-
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/types.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/io.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/benchmark.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5052,7 +5016,7 @@ typedef struct extra_caps extra_caps_t;
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5062,7 +5026,43 @@ typedef struct extra_caps extra_caps_t;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/io.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/types.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/io.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+
+
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/io.h" 2
 
 void out8(uint16_t port, uint8_t value);
 void out16(uint16_t port, uint16_t value);
@@ -5079,15 +5079,15 @@ uint8_t in8_phys(uint16_t port);
 
 void serial_init(uint16_t port);
 void console_putchar(char c);
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 2
 
 
 unsigned int puts(const char *s) __attribute__((externally_visible));
 unsigned int printf(const char *format, ...) __attribute__((externally_visible));
 unsigned int print_unsigned_long(unsigned long x, unsigned int ui_base) __attribute__((externally_visible));
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/benchmark.h" 2
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/benchmark.h" 2
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5101,7 +5101,7 @@ unsigned int print_unsigned_long(unsigned long x, unsigned int ui_base) __attrib
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5115,7 +5115,7 @@ unsigned int print_unsigned_long(unsigned long x, unsigned int ui_base) __attrib
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5129,7 +5129,7 @@ unsigned int print_unsigned_long(unsigned long x, unsigned int ui_base) __attrib
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5139,8 +5139,8 @@ unsigned int print_unsigned_long(unsigned long x, unsigned int ui_base) __attrib
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5150,8 +5150,8 @@ unsigned int print_unsigned_long(unsigned long x, unsigned int ui_base) __attrib
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/hardware.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/hardware.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5161,8 +5161,8 @@ unsigned int print_unsigned_long(unsigned long x, unsigned int ui_base) __attrib
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/pat.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/pat.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5172,8 +5172,8 @@ unsigned int print_unsigned_long(unsigned long x, unsigned int ui_base) __attrib
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5183,7 +5183,7 @@ unsigned int print_unsigned_long(unsigned long x, unsigned int ui_base) __attrib
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/cpu_registers.h"
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h"
 /* We use a dummy variable to synchronize reads and writes to the control registers.
  * this allows us to write inline asm blocks that do not have enforced memory
  * clobbers for ordering. */
@@ -5215,8 +5215,8 @@ static inline void write_cr0(uint32_t val)
 
 uint32_t read_cr4(void);
 void write_cr4(uint32_t value);
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5230,7 +5230,7 @@ void write_cr4(uint32_t value);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5240,8 +5240,8 @@ void write_cr4(uint32_t value);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5251,8 +5251,8 @@ void write_cr4(uint32_t value);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5262,8 +5262,8 @@ void write_cr4(uint32_t value);
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5273,8 +5273,8 @@ void write_cr4(uint32_t value);
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/types.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5284,33 +5284,8 @@ void write_cr4(uint32_t value);
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/devices.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-
-
-
-
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/devices.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/hardware.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/devices.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5324,7 +5299,7 @@ void write_cr4(uint32_t value);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5334,8 +5309,8 @@ void write_cr4(uint32_t value);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/hardware.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/devices.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/hardware.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5345,41 +5320,89 @@ void write_cr4(uint32_t value);
  *
  * @TAG(GD_GPL)
  */
+
+
+
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/hardware.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+
+
 
 
 
 
 /* interrupt vectors (corresponds to IDT entries) */
 
+
+
 typedef enum _interrupt_t {
     int_invalid = -1,
     int_unimpl_dev = 0x07,
     int_page_fault = 0x0e,
     int_irq_min = 0x20, /* First IRQ. */
-    int_irq_isa_min = 0x20,
-    int_irq_isa_max = 0x2f,
-    int_irq_msi_min = 0x30,
-    int_irq_msi_max = 0x3d,
-    int_iommu = 0x3e,
-    int_timer = 0x3f,
-    int_irq_max = 0x3f, /* Last IRQ. */
-    int_trap_min = 0x40,
+
+
+
+
+    int_irq_isa_min = int_irq_min,
+    int_irq_isa_max = int_irq_min + 16 - 1,
+
+    int_irq_msi_min,
+    int_irq_msi_max = int_irq_msi_min + 0xd,
+    int_iommu,
+    int_timer,
+    int_irq_max = int_timer, /* Last IRQ. */
+    int_trap_min,
     int_trap_max = 0xfe,
     int_spurious = 0xff,
     int_max = 0xff
 } interrupt_t;
 
+/* Construction of most of the interrupt numbers was relative by padding
+ * off previous values. Therefore to ensure we didn't overflow just need
+ * to ensure int_trap_min is less than int_trap_max */
+typedef int __assert_failed_interrupt_numbers_not_overflow[(int_trap_min < int_trap_max) ? 1 : -1];;
 
 
 typedef enum _irq_t {
     irqInvalid = -1,
-    irq_isa_min = int_irq_isa_min - 0x20, /* 0x00 */
-    irq_isa_max = int_irq_isa_max - 0x20, /* 0x0f */
-    irq_msi_min = int_irq_msi_min - 0x20, /* 0x10 */
-    irq_msi_max = int_irq_msi_max - 0x20, /* 0x1d */
-    irq_iommu = int_iommu - 0x20, /* 0x1e */
-    irq_timer = int_timer - 0x20, /* 0x1f */
-    maxIRQ = int_timer - 0x20 /* 0x1f */
+
+
+
+
+
+
+    irq_isa_min = int_irq_isa_min - 0x20,
+    irq_controller_min = irq_isa_min,
+    irq_isa_max = int_irq_isa_max - 0x20,
+    irq_controller_max = irq_isa_max,
+
+    irq_msi_min = int_irq_msi_min - 0x20,
+    irq_msi_max = int_irq_msi_max - 0x20,
+    irq_iommu = int_iommu - 0x20,
+    irq_timer = int_timer - 0x20,
+    maxIRQ = int_timer - 0x20
 } irq_t;
 
 
@@ -5387,12 +5410,12 @@ typedef enum _irq_t {
 
 
 /* The text mode framebuffer exists part way into the video ram region */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/hardware.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/hardware.h" 2
 # 1 "./plat/machine/hardware_gen.h" 1
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5403,7 +5426,7 @@ typedef enum _irq_t {
  * @TAG(GD_GPL)
  */
 # 5 "./plat/machine/hardware_gen.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5414,7 +5437,7 @@ typedef enum _irq_t {
  * @TAG(GD_GPL)
  */
 # 6 "./plat/machine/hardware_gen.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/stdint.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/stdint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5425,7 +5448,7 @@ typedef enum _irq_t {
  * @TAG(GD_GPL)
  */
 # 7 "./plat/machine/hardware_gen.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5479,10 +5502,10 @@ pci_bar_pci_bar_mem_get_above_4GB(pci_bar_t pci_bar) {
 
     return (pci_bar.words[0] & 0x4) >> 2;
 }
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/hardware.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/hardware.h" 2
 
 /* WARNING: some of these constants are also defined in linker.lds */
-# 32 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/hardware.h"
+# 32 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/hardware.h"
 static inline void* __attribute__((__const__))
 paddr_to_pptr(paddr_t paddr)
 {
@@ -5516,12 +5539,19 @@ void maskInterrupt(bool_t mask, irq_t irq);
 void ackInterrupt(irq_t irq);
 irq_t getActiveIRQ(void);
 bool_t isIRQPending(void);
+void setInterruptMode(irq_t irq, bool_t levelTrigger, bool_t polarityLow);
 void resetTimer(void);
 void platAddDevices(void);
 
 void handleSpuriousIRQ(void);
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/devices.h" 2
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/devices.h" 2
+
+
+
+/* Whether the IOAPIC exists or not will determine where we start mapping
+ * the IOMMUs. It is fine to define the DRHU_START even if CONFIG_IOMMU is not
+ * set as it will just pollute the preprocessor namespace */
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 2
 
 
 
@@ -5539,11 +5569,11 @@ extern uint32_t ia32KScacheLineSizeBits;
 extern idt_entry_t ia32KSidt[];
 extern user_fpu_state_t ia32KSnullFpuState __attribute__((__aligned__(16)));
 extern paddr_t ia32KSCurrentPD;
-# 46 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h"
+# 46 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h"
 extern uint16_t ia32KSconsolePort;
 extern uint16_t ia32KSdebugPort;
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 2
-# 28 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h"
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 2
+# 28 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h"
 word_t __attribute__((__pure__)) getRestartPC(tcb_t *thread);
 void setNextPC(tcb_t *thread, word_t v);
 
@@ -5884,8 +5914,8 @@ void int_fc(void);
 void int_fd(void);
 void int_fe(void);
 void int_ff(void);
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5895,8 +5925,8 @@ void int_ff(void);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/registerset.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5910,7 +5940,7 @@ void int_ff(void);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5920,8 +5950,8 @@ void int_ff(void);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/registerset.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/registerset.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/registerset.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5931,8 +5961,8 @@ void int_ff(void);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/registerset.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/registerset.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5942,7 +5972,7 @@ void int_ff(void);
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/registerset.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/registerset.h" 2
 
 static inline void
 setRegister(tcb_t *thread, register_t reg, word_t w)
@@ -5955,8 +5985,8 @@ getRegister(tcb_t *thread, register_t reg)
 {
     return thread->tcbContext.registers[reg];
 }
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/hardware.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/hardware.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5970,7 +6000,7 @@ getRegister(tcb_t *thread, register_t reg)
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5980,8 +6010,8 @@ getRegister(tcb_t *thread, register_t reg)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/hardware.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/hardware.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/hardware.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/hardware.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5991,8 +6021,8 @@ getRegister(tcb_t *thread, register_t reg)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/hardware.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/hardware.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/hardware.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/hardware.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6002,10 +6032,10 @@ getRegister(tcb_t *thread, register_t reg)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/hardware.h" 2
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine.h" 2
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/hardware.h" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6019,7 +6049,7 @@ getRegister(tcb_t *thread, register_t reg)
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6029,8 +6059,8 @@ getRegister(tcb_t *thread, register_t reg)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/errors.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/errors.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6057,7 +6087,7 @@ typedef enum {
     seL4_RevokeFirst,
     seL4_NotEnoughMemory,
 } seL4_Error;
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 2
 /* These datatypes differ markedly from haskell, due to the
  * different implementation of the various fault monads */
 
@@ -6088,8 +6118,8 @@ typedef struct syscall_error syscall_error_t;
 extern lookup_fault_t current_lookup_fault;
 extern fault_t current_fault;
 extern syscall_error_t current_syscall_error;
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6103,7 +6133,7 @@ extern syscall_error_t current_syscall_error;
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6113,8 +6143,8 @@ extern syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6124,56 +6154,8 @@ extern syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-
-
-
-
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 2
-
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/tcb.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6187,7 +6169,7 @@ extern syscall_error_t current_syscall_error;
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6197,8 +6179,8 @@ extern syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/tcb.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6208,14 +6190,62 @@ extern syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/tcb.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 2
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/tcb.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+
+
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/tcb.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/tcb.h" 2
 
 unsigned int setMRs_fault(tcb_t *sender, tcb_t* receiver, word_t *receiveIPCBuffer);
 unsigned int setMRs_syscall_error(tcb_t *thread, word_t *receiveIPCBuffer);
 word_t __attribute__((__const__)) Arch_decodeTransfer(word_t flags);
 exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *tcb_src, tcb_t *tcb_dest);
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6229,7 +6259,7 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6239,8 +6269,8 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6250,8 +6280,8 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6261,7 +6291,7 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 2
 
 struct slot_range {
     cte_t *cnode;
@@ -6298,7 +6328,7 @@ bool_t __attribute__((__pure__)) isFinalCapability(cte_t *cte);
 bool_t __attribute__((__pure__)) slotCapLongRunningDelete(cte_t *slot);
 cte_t *getReceiveSlots(tcb_t *thread, word_t *buffer);
 cap_transfer_t __attribute__((__pure__)) loadCapTransfer(word_t *buffer);
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 2
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 2
 
 struct tcb_queue {
     tcb_t *head;
@@ -6367,8 +6397,8 @@ cptr_t __attribute__((__pure__)) getExtraCPtr(word_t *bufferPtr, unsigned int i)
 void setExtraBadge(word_t *bufferPtr, word_t badge, unsigned int i);
 
 exception_t lookupExtraCaps(tcb_t* thread, word_t *bufferPtr, message_info_t info);
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6378,7 +6408,7 @@ exception_t lookupExtraCaps(tcb_t* thread, word_t *bufferPtr, message_info_t inf
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 2
 
 extern tcb_queue_t ksReadyQueues[] __attribute__((externally_visible));
 extern tcb_t *ksCurThread __attribute__((externally_visible));
@@ -6392,8 +6422,8 @@ extern const unsigned int ksDomScheduleLength;
 extern uint32_t ksDomScheduleIdx;
 extern dom_t ksCurDomain;
 extern word_t ksDomainTime;
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/vspace.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6407,7 +6437,7 @@ extern word_t ksDomainTime;
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6421,7 +6451,7 @@ extern word_t ksDomainTime;
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6431,8 +6461,8 @@ extern word_t ksDomainTime;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/vspace.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/vspace.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6442,8 +6472,8 @@ extern word_t ksDomainTime;
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/vspace.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/vspace.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6453,8 +6483,8 @@ extern word_t ksDomainTime;
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/vspace.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/vspace.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6464,7 +6494,7 @@ extern word_t ksDomainTime;
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/vspace.h" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/vspace.h" 2
 
 
 
@@ -6474,10 +6504,7 @@ bool_t map_kernel_window(
     pde_t* pd,
     pte_t* pt,
     p_region_t ndks_p_reg
-
-
-
-
+# 35 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/vspace.h"
 );
 
 void* map_temp_boot_page(void* entry, uint32_t pages);
@@ -6505,8 +6532,8 @@ bool_t __attribute__((__const__)) isValidVTableRoot(cap_t cap);
 exception_t checkValidIPCBuffer(vptr_t vptr, cap_t cap);
 vm_rights_t __attribute__((__const__)) maskVMRights(vm_rights_t vm_rights, cap_rights_t cap_rights_mask);
 exception_t decodeIA32MMUInvocation(word_t label, unsigned int length, cptr_t cptr, cte_t *cte, cap_t cap, extra_caps_t extraCaps, word_t* buffer);
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/vspace.h" 2
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/vspace.h" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 2
 # 1 "./arch/api/syscall.h" 1
 /* @LICENSE(OKL_CORE) */
 
@@ -6532,7 +6559,7 @@ enum syscall {
 # 51 "./arch/api/syscall.h"
 };
 typedef uint32_t syscall_t;
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 2
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 2
 
 exception_t handleSyscall(syscall_t syscall) __attribute__((externally_visible));
 exception_t handleInterruptEntry(void) __attribute__((externally_visible));
@@ -6547,13 +6574,13 @@ getSyscallArg(unsigned int i, word_t* ipc_buffer)
         return getRegister(ksCurThread, msgRegisters[i]);
     }
 
-    if(!(ipc_buffer != ((void *)0))) _assert_fail("ipc_buffer != NULL", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h", 33, __FUNCTION__);
+    if(!(ipc_buffer != ((void *)0))) _assert_fail("ipc_buffer != NULL", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h", 33, __FUNCTION__);
     return ipc_buffer[i + 1];
 }
 
 extern extra_caps_t current_extra_caps;
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6563,33 +6590,8 @@ extern extra_caps_t current_extra_caps;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/faults.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-
-
-
-
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/faults.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/faults.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6603,7 +6605,7 @@ extern extra_caps_t current_extra_caps;
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6613,8 +6615,8 @@ extern extra_caps_t current_extra_caps;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/faults.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6628,7 +6630,7 @@ extern extra_caps_t current_extra_caps;
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6638,8 +6640,8 @@ extern extra_caps_t current_extra_caps;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6649,8 +6651,11 @@ extern extra_caps_t current_extra_caps;
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+
+
+
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6660,8 +6665,8 @@ extern extra_caps_t current_extra_caps;
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6671,8 +6676,8 @@ extern extra_caps_t current_extra_caps;
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/hardware.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6682,7 +6687,29 @@ extern extra_caps_t current_extra_caps;
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/hardware.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 2
 
 struct deriveCap_ret {
     exception_t status;
@@ -6696,7 +6723,7 @@ struct finaliseCap_ret {
 };
 typedef struct finaliseCap_ret finaliseCap_ret_t;
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/objecttype.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6710,7 +6737,7 @@ typedef struct finaliseCap_ret finaliseCap_ret_t;
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6720,8 +6747,8 @@ typedef struct finaliseCap_ret finaliseCap_ret_t;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/objecttype.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/objecttype.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6731,8 +6758,8 @@ typedef struct finaliseCap_ret finaliseCap_ret_t;
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/objecttype.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/objecttype.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6742,8 +6769,8 @@ typedef struct finaliseCap_ret finaliseCap_ret_t;
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/objecttype.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/objecttype.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6753,8 +6780,8 @@ typedef struct finaliseCap_ret finaliseCap_ret_t;
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/objecttype.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/objecttype.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6764,8 +6791,8 @@ typedef struct finaliseCap_ret finaliseCap_ret_t;
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/objecttype.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/objecttype.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6775,7 +6802,7 @@ typedef struct finaliseCap_ret finaliseCap_ret_t;
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/objecttype.h" 2
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/objecttype.h" 2
 
 deriveCap_ret_t Arch_deriveCap(cte_t *slot, cap_t cap);
 cap_t __attribute__((__const__)) Arch_updateCapData(bool_t preserve, word_t data, cap_t cap);
@@ -6789,7 +6816,7 @@ cap_t Arch_createObject(object_t t, void *regionBase, word_t userSize);
 exception_t Arch_decodeInvocation(word_t label, unsigned int length, cptr_t cptr, cte_t *slot, cap_t cap, extra_caps_t extraCaps, word_t* buffer);
 void Arch_prepareThreadDelete(tcb_t *thread);
 word_t Arch_getObjectSize(word_t t);
-# 33 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 2
+# 33 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 2
 
 deriveCap_ret_t deriveCap(cte_t *slot, cap_t cap);
 finaliseCap_ret_t finaliseCap(cap_t cap, bool_t final, bool_t exposed);
@@ -6813,8 +6840,8 @@ exception_t performInvocation_AsyncEndpoint(async_endpoint_t *aep,
                                             word_t badge, word_t message);
 exception_t performInvocation_Reply(tcb_t *thread, cte_t *slot);
 word_t getObjectSize(word_t t, word_t userObjSize);
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/asyncendpoint.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/asyncendpoint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6828,7 +6855,7 @@ word_t getObjectSize(word_t t, word_t userObjSize);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6838,8 +6865,8 @@ word_t getObjectSize(word_t t, word_t userObjSize);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/asyncendpoint.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/asyncendpoint.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6849,14 +6876,14 @@ word_t getObjectSize(word_t t, word_t userObjSize);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/asyncendpoint.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/asyncendpoint.h" 2
 
 void sendAsyncIPC(async_endpoint_t *aepptr, word_t badge, word_t val);
 void receiveAsyncIPC(tcb_t *thread, cap_t cap);
 void aepCancelAll(async_endpoint_t *aepptr);
 void asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr);
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6866,8 +6893,8 @@ void asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr);
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/endpoint.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/endpoint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6881,7 +6908,7 @@ void asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6891,8 +6918,8 @@ void asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/endpoint.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/endpoint.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6902,7 +6929,7 @@ void asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/endpoint.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/endpoint.h" 2
 
 void sendIPC(bool_t blocking, bool_t do_call, word_t badge,
              bool_t canGrant, tcb_t *thread, endpoint_t *epptr);
@@ -6912,8 +6939,8 @@ void epCancelAll(endpoint_t *epptr);
 void epCancelBadgedSends(endpoint_t *epptr, word_t badge);
 void replyFromKernel_error(tcb_t *thread);
 void replyFromKernel_success_empty(tcb_t *thread);
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/interrupt.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/interrupt.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6927,7 +6954,7 @@ void replyFromKernel_success_empty(tcb_t *thread);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6937,8 +6964,8 @@ void replyFromKernel_success_empty(tcb_t *thread);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/interrupt.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/interrupt.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6948,8 +6975,8 @@ void replyFromKernel_success_empty(tcb_t *thread);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/interrupt.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/interrupt.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6959,8 +6986,8 @@ void replyFromKernel_success_empty(tcb_t *thread);
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/interrupt.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/interrupt.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/interrupt.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/interrupt.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6974,7 +7001,7 @@ void replyFromKernel_success_empty(tcb_t *thread);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6984,8 +7011,8 @@ void replyFromKernel_success_empty(tcb_t *thread);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/interrupt.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/interrupt.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6995,8 +7022,8 @@ void replyFromKernel_success_empty(tcb_t *thread);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/interrupt.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/interrupt.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7006,11 +7033,11 @@ void replyFromKernel_success_empty(tcb_t *thread);
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/interrupt.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/interrupt.h" 2
 
 exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraCaps);
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/interrupt.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/interrupt.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7020,24 +7047,25 @@ exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraC
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/interrupt.h" 2
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/interrupt.h" 2
 
 exception_t decodeIRQControlInvocation(word_t label, unsigned int length,
                                        cte_t *srcSlot, extra_caps_t extraCaps,
                                        word_t *buffer);
 exception_t invokeIRQControl(irq_t irq, cte_t *handlerSlot, cte_t *controlSlot);
-exception_t decodeIRQHandlerInvocation(word_t label, irq_t irq,
-                                       extra_caps_t extraCaps);
+exception_t decodeIRQHandlerInvocation(word_t label, unsigned int length, irq_t irq,
+                                       extra_caps_t extraCaps, word_t *buffer);
 void invokeIRQHandler_AckIRQ(irq_t irq);
 void invokeIRQHandler_SetIRQHandler(irq_t irq, cap_t cap, cte_t *slot);
 void invokeIRQHandler_ClearIRQHandler(irq_t irq);
+void invokeIRQHandler_SetMode(irq_t irq, bool_t levelTrigger, bool_t polarityLow);
 void deletingIRQHandler(irq_t irq);
 void deletedIRQHandler(irq_t irq);
 void handleInterrupt(irq_t irq);
 bool_t isIRQActive(irq_t irq);
 void setIRQState(irq_state_t irqState, irq_t irq);
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7047,8 +7075,8 @@ void setIRQState(irq_state_t irqState, irq_t irq);
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7058,8 +7086,8 @@ void setIRQState(irq_state_t irqState, irq_t irq);
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7069,8 +7097,8 @@ void setIRQState(irq_state_t irqState, irq_t irq);
  *
  * @TAG(GD_GPL)
  */
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/untyped.h" 1
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/untyped.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7084,7 +7112,7 @@ void setIRQState(irq_state_t irqState, irq_t irq);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7094,8 +7122,8 @@ void setIRQState(irq_state_t irqState, irq_t irq);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/untyped.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/untyped.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7105,8 +7133,8 @@ void setIRQState(irq_state_t irqState, irq_t irq);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/untyped.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/untyped.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7116,8 +7144,8 @@ void setIRQState(irq_state_t irqState, irq_t irq);
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/untyped.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/untyped.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7127,8 +7155,8 @@ void setIRQState(irq_state_t irqState, irq_t irq);
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/untyped.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/untyped.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7138,7 +7166,7 @@ void setIRQState(irq_state_t irqState, irq_t irq);
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/untyped.h" 2
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/untyped.h" 2
 
 
 
@@ -7154,9 +7182,9 @@ exception_t invokeUntyped_Retype(cte_t *srcSlot, void* base_ign,
                                  void* freeRegionBase, object_t newType,
                                  word_t userSize, slot_range_t destSlots,
                                  bool_t call);
-# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 2
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/faults.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/faults.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7166,11 +7194,11 @@ exception_t invokeUntyped_Retype(cte_t *srcSlot, void* base_ign,
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/faults.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/faults.h" 2
 
 bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender);
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7184,7 +7212,7 @@ bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7194,8 +7222,8 @@ bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7205,8 +7233,8 @@ bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7216,8 +7244,8 @@ bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender);
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7227,7 +7255,7 @@ bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender);
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 2
 
 struct lookupCap_ret {
     exception_t status;
@@ -7276,8 +7304,8 @@ lookupSlot_ret_t lookupPivotSlot(cap_t root, cptr_t capptr,
 resolveAddressBits_ret_t resolveAddressBits(cap_t nodeCap,
                                             cptr_t capptr,
                                             unsigned int n_bits);
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/faulthandler.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/faulthandler.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7291,7 +7319,7 @@ resolveAddressBits_ret_t resolveAddressBits(cap_t nodeCap,
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7301,13 +7329,13 @@ resolveAddressBits_ret_t resolveAddressBits(cap_t nodeCap,
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/faulthandler.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/faulthandler.h" 2
 
 void handleFault(tcb_t *tptr);
 exception_t sendFaultIPC(tcb_t *tptr);
 void handleDoubleFault(tcb_t *tptr, fault_t ex1);
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7321,7 +7349,7 @@ void handleDoubleFault(tcb_t *tptr, fault_t ex1);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7331,8 +7359,8 @@ void handleDoubleFault(tcb_t *tptr, fault_t ex1);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7342,8 +7370,8 @@ void handleDoubleFault(tcb_t *tptr, fault_t ex1);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7353,7 +7381,7 @@ void handleDoubleFault(tcb_t *tptr, fault_t ex1);
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 2
 
 void configureIdleThread(tcb_t *tcb);
 void activateThread(void) __attribute__((externally_visible));
@@ -7381,8 +7409,8 @@ void switchIfRequiredTo(tcb_t *tptr);
 void setThreadState(tcb_t *tptr, _thread_state_t ts) __attribute__((externally_visible));
 void timerTick(void);
 void rescheduleRequired(void);
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/vspace.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7392,8 +7420,8 @@ void rescheduleRequired(void);
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7403,8 +7431,8 @@ void rescheduleRequired(void);
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/interrupt.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/interrupt.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7414,8 +7442,8 @@ void rescheduleRequired(void);
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7425,10 +7453,10 @@ void rescheduleRequired(void);
  *
  * @TAG(GD_GPL)
  */
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/capdl.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/capdl.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7443,7 +7471,7 @@ void rescheduleRequired(void);
 
 
 void capDL(void);
-# 26 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c" 2
+# 26 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c" 2
 
 
 /* The haskell function 'handleEvent' is split into 'handleXXX' variants
@@ -7492,7 +7520,7 @@ handleUnknownSyscall(word_t w)
         setRegister(ksCurThread, capRegister, cap_type);
         return EXCEPTION_NONE;
     }
-# 132 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c"
+# 132 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c"
     current_fault = fault_unknown_syscall_new(w);
     handleFault(ksCurThread);
 
@@ -7623,7 +7651,7 @@ handleReply(void)
         caller = ((tcb_t *)(cap_reply_cap_get_capTCBPtr(callerCap)));
         /* Haskell error:
          * "handleReply: caller must not be the current thread" */
-        if(!(caller != ksCurThread)) _assert_fail("caller != ksCurThread", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c", 262, __FUNCTION__);
+        if(!(caller != ksCurThread)) _assert_fail("caller != ksCurThread", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c", 262, __FUNCTION__);
         doReplyTransfer(ksCurThread, caller, callerSlot);
         return;
     }
@@ -7636,7 +7664,7 @@ handleReply(void)
         break;
     }
 
-    _fail("handleReply: invalid caller cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c", 275, __func__);
+    _fail("handleReply: invalid caller cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c", 275, __func__);
 }
 
 static void
@@ -7751,7 +7779,7 @@ handleSyscall(syscall_t syscall)
         break;
 
     default:
-        _fail("Invalid syscall", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c", 390, __func__);
+        _fail("Invalid syscall", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c", 390, __func__);
     }
 
     schedule();
@@ -7759,7 +7787,7 @@ handleSyscall(syscall_t syscall)
 
     return EXCEPTION_NONE;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/benchmark.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/benchmark.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7769,7 +7797,7 @@ handleSyscall(syscall_t syscall)
  *
  * @TAG(GD_GPL)
  */
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/faults.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/faults.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7780,7 +7808,7 @@ handleSyscall(syscall_t syscall)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7790,8 +7818,8 @@ handleSyscall(syscall_t syscall)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/faults.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/faults.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7801,8 +7829,8 @@ handleSyscall(syscall_t syscall)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/faults.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/faults.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7812,8 +7840,8 @@ handleSyscall(syscall_t syscall)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/faults.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/vspace.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/faults.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7823,8 +7851,8 @@ handleSyscall(syscall_t syscall)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/faults.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/faults.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/faults.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/faults.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7834,8 +7862,8 @@ handleSyscall(syscall_t syscall)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/faults.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/faults.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7845,8 +7873,8 @@ handleSyscall(syscall_t syscall)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/faults.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/faults.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7856,7 +7884,7 @@ handleSyscall(syscall_t syscall)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/faults.c" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/faults.c" 2
 
 bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender)
 {
@@ -7932,7 +7960,7 @@ bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender)
     return (label == 0);
 
     default:
-        _fail("Invalid fault", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/faults.c", 93, __func__);
+        _fail("Invalid fault", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/faults.c", 93, __func__);
     }
 }
 
@@ -7981,7 +8009,7 @@ void handleKernelException(
     }
     printf("\nHalting...\n");
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/c_traps.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/c_traps.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7992,7 +8020,7 @@ void handleKernelException(
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8002,8 +8030,8 @@ void handleKernelException(
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/c_traps.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/c_traps.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8013,8 +8041,8 @@ void handleKernelException(
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/c_traps.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/lock.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/c_traps.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/lock.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8030,7 +8058,7 @@ void handleKernelException(
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8040,7 +8068,7 @@ void handleKernelException(
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/lock.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/lock.h" 2
 
 typedef uint32_t lock_t;
 
@@ -8068,8 +8096,8 @@ static inline void lock_release(lock_t* lock)
 {
     *lock = 0;
 }
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/c_traps.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/c_traps.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8083,7 +8111,7 @@ static inline void lock_release(lock_t* lock)
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8093,8 +8121,8 @@ static inline void lock_release(lock_t* lock)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/fpu.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/fpu.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8104,8 +8132,8 @@ static inline void lock_release(lock_t* lock)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/fpu.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/fpu.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8115,7 +8143,7 @@ static inline void lock_release(lock_t* lock)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/fpu.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/fpu.h" 2
 
 /* Initialise the FPU. */
 void Arch_initFpu(void);
@@ -8154,8 +8182,8 @@ static inline void disableFpu(void)
 {
     write_cr0(read_cr0() | (1ul<<(3)) /* Trap on any FPU usage, for lazy FPU. */);
 }
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/c_traps.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/c_traps.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8169,7 +8197,7 @@ static inline void disableFpu(void)
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8179,8 +8207,8 @@ static inline void disableFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8190,8 +8218,8 @@ static inline void disableFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8201,8 +8229,8 @@ static inline void disableFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8212,7 +8240,7 @@ static inline void disableFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 2
 
 void slowpath(syscall_t syscall)
 __attribute__((__noreturn__));
@@ -8222,9 +8250,9 @@ __attribute__((externally_visible)) __attribute__((fastcall)) __attribute__((__n
 
 void fastpath_reply_wait(word_t cptr, word_t r_msgInfo)
 __attribute__((externally_visible)) __attribute__((fastcall)) __attribute__((__noreturn__));
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/c_traps.c" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/c_traps.c" 2
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8234,7 +8262,7 @@ __attribute__((externally_visible)) __attribute__((fastcall)) __attribute__((__n
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/c_traps.c" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/c_traps.c" 2
 
 void __attribute__((noreturn)) __attribute__((externally_visible)) restore_user_context(void);
 void __attribute__((noreturn)) __attribute__((externally_visible)) restore_user_context(void)
@@ -8389,7 +8417,7 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
 
     slowpath(syscall);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8400,7 +8428,7 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8410,8 +8438,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8421,8 +8449,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8432,8 +8460,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8443,8 +8471,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/profiler.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/profiler.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8465,7 +8493,7 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/registerset.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8475,8 +8503,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/profiler.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/hardware.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/profiler.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/hardware.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8486,9 +8514,9 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/profiler.h" 2
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/registerset.h" 1
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/profiler.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8498,8 +8526,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8509,8 +8537,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8520,8 +8548,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8531,8 +8559,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8542,8 +8570,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8553,8 +8581,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/fastpath/fastpath.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8564,8 +8592,8 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/thread.h" 1
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8579,7 +8607,7 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8589,14 +8617,14 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/thread.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/thread.h" 2
 
 void Arch_switchToThread(tcb_t *tcb);
 void Arch_switchToIdleThread(void);
 void Arch_configureIdleThread(tcb_t *tcb);
 void __attribute__((__const__)) Arch_activateIdleThread(tcb_t *tcb);
-# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8606,7 +8634,7 @@ void __attribute__((__const__)) Arch_activateIdleThread(tcb_t *tcb);
  *
  * @TAG(GD_GPL)
  */
-# 25 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c" 2
+# 25 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c" 2
 
 /* Fastpath cap lookup.  Returns a null_cap on failure. */
 static inline cap_t
@@ -8793,7 +8821,7 @@ fastpath_restore(word_t badge, word_t msgInfo)
     ksCurThread->tcbContext.registers[EFLAGS] &= ~0x200;
     if (__builtin_expect(!!(hasDefaultSelectors(ksCurThread)), 1)) {
         __asm__ volatile("                movl %%ecx, %%esp \n                popl %%edi \n                popl %%ebp \n                addl $8, %%esp \n                popl %%fs \n                popl %%gs \n                addl $20, %%esp \n                popfl \n                orl $0x200, 44(%%ecx) \n                movl 36(%%ecx), %%edx \n                pop %%ecx \n                sti \n                sysexit \n            "
-# 225 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c"
+# 225 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c"
                      :
                      : "c"(&ksCurThread->tcbContext.registers[EDI]),
                      "a" (ksCurThread->tcbContext.registers[EAX]),
@@ -8803,7 +8831,7 @@ fastpath_restore(word_t badge, word_t msgInfo)
                     );
     } else {
         __asm__ volatile("                movl %%ecx, %%esp \n                popl %%edi \n                popl %%ebp \n                popl %%ds \n                popl %%es \n                popl %%fs \n                popl %%gs \n                addl $20, %%esp \n                popfl \n                orl $0x200, 44(%%ecx) \n                movl 36(%%ecx), %%edx \n                pop %%ecx \n                sti \n                sysexit \n            "
-# 249 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c"
+# 249 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c"
                      :
                      : "c"(&ksCurThread->tcbContext.registers[EDI]),
                      "a" (ksCurThread->tcbContext.registers[EAX]),
@@ -9072,7 +9100,7 @@ fastpath_reply_wait(word_t cptr, word_t msgInfo)
     msgInfo = wordFromMessageInfo(message_info_set_msgCapsUnwrapped(info, 0));
     fastpath_restore(badge, msgInfo);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9083,7 +9111,7 @@ fastpath_reply_wait(word_t cptr, word_t msgInfo)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9093,8 +9121,8 @@ fastpath_reply_wait(word_t cptr, word_t msgInfo)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9104,8 +9132,8 @@ fastpath_reply_wait(word_t cptr, word_t msgInfo)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9115,8 +9143,8 @@ fastpath_reply_wait(word_t cptr, word_t msgInfo)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/apic.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/apic.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9130,7 +9158,7 @@ fastpath_reply_wait(word_t cptr, word_t msgInfo)
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9140,8 +9168,8 @@ fastpath_reply_wait(word_t cptr, word_t msgInfo)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/apic.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/apic.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9151,7 +9179,7 @@ fastpath_reply_wait(word_t cptr, word_t msgInfo)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/apic.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/apic.h" 2
 
 uint32_t apic_measure_freq(paddr_t paddr_apic);
 paddr_t apic_get_base_paddr(void);
@@ -9162,8 +9190,8 @@ void apic_ack_active_interrupt(void);
 
 void apic_send_init_ipi(cpu_id_t cpu_id);
 void apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr);
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9173,8 +9201,8 @@ void apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/devices.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/devices.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9184,8 +9212,8 @@ void apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr);
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pit.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pit.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9204,7 +9232,7 @@ void apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr);
 
 void pit_init(void);
 void pit_wait_wraparound(void);
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c" 2
 
 typedef enum _apic_reg_t {
     APIC_ID = 0x020,
@@ -9389,7 +9417,7 @@ bool_t apic_is_interrupt_pending(void)
     unsigned int i;
 
     /* read 256-bit register: each 32-bit word is 16 byte aligned */
-    if(!(int_irq_min % 32 == 0)) _assert_fail("int_irq_min % 32 == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c", 202, __FUNCTION__);
+    if(!(int_irq_min % 32 == 0)) _assert_fail("int_irq_min % 32 == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c", 202, __FUNCTION__);
     for (i = int_irq_min; i <= int_irq_max; i += 32) {
         if (apic_read_reg(APIC_IRR_BASE + i / 2) != 0) {
             return true;
@@ -9449,9 +9477,9 @@ __attribute__((__section__(".boot.text"))) void
 apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr)
 {
     /* check if 4K aligned */
-    if(!((!((startup_addr) & ((1ul<<(12))-1ul))))) _assert_fail("IS_ALIGNED(startup_addr, PAGE_BITS)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c", 262, __FUNCTION__);
+    if(!((!((startup_addr) & ((1ul<<(12))-1ul))))) _assert_fail("IS_ALIGNED(startup_addr, PAGE_BITS)", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c", 262, __FUNCTION__);
     /* check if startup_addr < 640K */
-    if(!(startup_addr < 0xa0000)) _assert_fail("startup_addr < 0xa0000", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c", 264, __FUNCTION__);
+    if(!(startup_addr < 0xa0000)) _assert_fail("startup_addr < 0xa0000", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c", 264, __FUNCTION__);
     startup_addr >>= 12;
 
     apic_write_reg(
@@ -9473,7 +9501,7 @@ apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr)
         ).words[0]
     );
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9484,7 +9512,7 @@ apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9494,22 +9522,8 @@ apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/boot.h" 1
-/*
- * Copyright 2014, General Dynamics C4 Systems
- *
- * This software may be distributed and modified according to the terms of
- * the GNU General Public License version 2. Note that NO WARRANTY is provided.
- * See "LICENSE_GPLv2.txt" for details.
- *
- * @TAG(GD_GPL)
- */
-
-
-
-
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/bootinfo.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/boot.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9523,7 +9537,7 @@ apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr)
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/bootinfo.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9533,8 +9547,11 @@ apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/bootinfo.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+
+
+
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9544,7 +9561,18 @@ apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/bootinfo.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/bootinfo.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/bootinfo.h" 2
 
 
 
@@ -9554,7 +9582,7 @@ apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr)
 
 
 /* fixed cap positions in root CNode */
-# 39 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/bootinfo.h"
+# 39 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/bootinfo.h"
 /* type definitions */
 
 typedef uint32_t slot_pos_t;
@@ -9592,7 +9620,7 @@ typedef struct bi {
 
 /* adjust constants in config.h if this assert fails */
 typedef int __assert_failed_bi_size[(sizeof(bi_t) <= (1ul<<(12))) ? 1 : -1];
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/boot.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/boot.h" 2
 
 
 
@@ -9674,8 +9702,8 @@ create_initial_thread(
     vptr_t ipcbuf_vptr,
     cap_t ipcbuf_cap
 );
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9685,8 +9713,8 @@ create_initial_thread(
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9696,8 +9724,8 @@ create_initial_thread(
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/interrupt.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/interrupt.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9707,8 +9735,8 @@ create_initial_thread(
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9718,8 +9746,8 @@ create_initial_thread(
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/apic.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/apic.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9729,8 +9757,8 @@ create_initial_thread(
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9744,7 +9772,7 @@ create_initial_thread(
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9754,8 +9782,8 @@ create_initial_thread(
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9765,7 +9793,7 @@ create_initial_thread(
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot.h" 2
 
 typedef struct dev_p_regs {
     uint32_t count;
@@ -9792,15 +9820,15 @@ bool_t init_node_state(
     /* parameters below not modeled in abstract specification */
     pde_t* kernel_pd,
     pte_t* kernel_pt
-# 50 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot.h"
+# 50 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot.h"
 );
 
 bool_t init_node_cpu(
     uint32_t apic_khz,
     bool_t mask_legacy_irqs
 );
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9814,7 +9842,7 @@ bool_t init_node_cpu(
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/multiboot.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/multiboot.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9833,7 +9861,7 @@ bool_t init_node_cpu(
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9843,7 +9871,7 @@ bool_t init_node_cpu(
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/multiboot.h" 2
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/multiboot.h" 2
 
 typedef struct multiboot_module {
     paddr_t start;
@@ -9862,7 +9890,7 @@ typedef struct multiboot_info {
     multiboot_module_t* mod_list;
     /* the multiboot spec includes more fields we don't need */
 } multiboot_info_t;
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 2
 
 bool_t in_boot_phase(void);
 cpu_id_t cur_cpu_id(void);
@@ -9877,8 +9905,8 @@ void boot_sys(
 );
 void boot_node(void);
 void insert_dev_p_reg(p_region_t reg);
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9888,8 +9916,8 @@ void insert_dev_p_reg(p_region_t reg);
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9899,8 +9927,8 @@ void insert_dev_p_reg(p_region_t reg);
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/ioport.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/ioport.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9914,7 +9942,7 @@ void insert_dev_p_reg(p_region_t reg);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9924,8 +9952,8 @@ void insert_dev_p_reg(p_region_t reg);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/ioport.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/ioport.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9935,8 +9963,8 @@ void insert_dev_p_reg(p_region_t reg);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/ioport.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/ioport.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9946,13 +9974,13 @@ void insert_dev_p_reg(p_region_t reg);
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/ioport.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/ioport.h" 2
 
 
 
 exception_t decodeIA32PortInvocation(word_t label, unsigned int length, cptr_t cptr, cte_t *slot, cap_t cap, extra_caps_t extraCaps, word_t* buffer);
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9962,24 +9990,29 @@ exception_t decodeIA32PortInvocation(word_t label, unsigned int length, cptr_t c
  *
  * @TAG(GD_GPL)
  */
-# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c" 2
-# 34 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c"
+# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c" 2
+# 34 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c"
 /* functions exactly corresponding to abstract specification */
 
 __attribute__((__section__(".boot.text"))) static void
-init_irqs(cap_t root_cnode_cap, bool_t mask_legacy_irqs)
+init_irqs(cap_t root_cnode_cap, bool_t mask_irqs)
 {
     irq_t i;
 
     for (i = 0; i <= maxIRQ; i++) {
         if (i == irq_timer) {
             setIRQState(IRQTimer, i);
-        } else if (i == irq_iommu || i == 2 /* cascaded legacy PIC */) {
+        } else if (i == irq_iommu) {
             setIRQState(IRQReserved, i);
-        } else if (i >= irq_isa_min && i <= irq_isa_max)
-            if (mask_legacy_irqs)
+
+        } else if (i == 2) {
+            /* cascaded legacy PIC */
+            setIRQState(IRQReserved, i);
+
+        } else if (i >= irq_controller_min && i <= irq_controller_max)
+            if (mask_irqs)
                 /* Don't use setIRQState() here because it implicitly also enables */
-                /* the IRQ on the PIC which only node 0 is allowed to do. */
+                /* the IRQ on the interrupt controller which only node 0 is allowed to do. */
             {
                 intStateIRQTable[i] = IRQReserved;
             } else {
@@ -10171,7 +10204,7 @@ init_node_state(
     /* parameters below not modeled in abstract specification */
     pde_t* kernel_pd,
     pte_t* kernel_pt
-# 249 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c"
+# 254 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c"
 )
 {
     cap_t root_cnode_cap;
@@ -10218,7 +10251,7 @@ init_node_state(
     if (!init_vm_state(kernel_pd, kernel_pt)) {
         return false;
     }
-# 333 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c"
+# 338 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c"
     /* create the root cnode */
     root_cnode_cap = create_root_cnode();
 
@@ -10315,7 +10348,7 @@ init_node_state(
             )) {
         return false;
     }
-# 443 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c"
+# 448 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c"
     /* convert the remaining free memory into UT objects and provide the caps */
     if (!create_untypeds(root_cnode_cap, boot_mem_reuse_reg)) {
         return false;
@@ -10381,7 +10414,7 @@ init_node_cpu(
 
     return true;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10392,7 +10425,7 @@ init_node_cpu(
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10402,8 +10435,8 @@ init_node_cpu(
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10413,8 +10446,8 @@ init_node_cpu(
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10424,8 +10457,8 @@ init_node_cpu(
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10435,8 +10468,8 @@ init_node_cpu(
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/apic.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/apic.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10446,8 +10479,8 @@ init_node_cpu(
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/cmdline.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/cmdline.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10461,7 +10494,7 @@ init_node_cpu(
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10471,12 +10504,12 @@ init_node_cpu(
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/cmdline.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/cmdline.h" 2
 
 typedef struct cmdline_opt {
 
-    uint16_t console_port[40];
-    uint16_t debug_port[40];
+    uint16_t console_port[8];
+    uint16_t debug_port[8];
 
 
 
@@ -10486,8 +10519,8 @@ typedef struct cmdline_opt {
 } cmdline_opt_t;
 
 void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt);
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10497,8 +10530,8 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt);
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10508,8 +10541,8 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt);
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10519,8 +10552,8 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt);
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/elf.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/elf.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10534,7 +10567,7 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10544,7 +10577,7 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/elf.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/elf.h" 2
 
 /* minimal ELF structures needed for loading GRUB boot module */
 
@@ -10581,8 +10614,8 @@ typedef struct Elf32_Phdr {
 bool_t elf32_checkFile(Elf32_Header_t* elfFile);
 v_region_t elf32_getMemoryBounds(Elf32_Header_t* elfFile);
 void elf32_load(Elf32_Header_t* elfFile, int32_t offset);
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10592,8 +10625,8 @@ void elf32_load(Elf32_Header_t* elfFile, int32_t offset);
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/acpi.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/acpi.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10607,7 +10640,7 @@ void elf32_load(Elf32_Header_t* elfFile, int32_t offset);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10617,8 +10650,8 @@ void elf32_load(Elf32_Header_t* elfFile, int32_t offset);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/acpi.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/acpi.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10628,8 +10661,8 @@ void elf32_load(Elf32_Header_t* elfFile, int32_t offset);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/acpi.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/acpi.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10639,7 +10672,7 @@ void elf32_load(Elf32_Header_t* elfFile, int32_t offset);
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/acpi.h" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/acpi.h" 2
 
 /* Generic System Descriptor Table Header */
 typedef struct acpi_header {
@@ -10668,10 +10701,12 @@ acpi_rsdt_t* acpi_init(void);
 uint32_t acpi_madt_scan(
     acpi_rsdt_t* acpi_rsdt,
     cpu_id_t* cpu_list,
-    uint32_t max_list_len
+    uint32_t max_list_len,
+    uint32_t* num_ioapic,
+    paddr_t* ioapic_addrs
 );
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/devices.h" 1
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/devices.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10681,8 +10716,8 @@ uint32_t acpi_madt_scan(
  *
  * @TAG(GD_GPL)
  */
-# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pci.h" 1
+# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pci.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10692,10 +10727,10 @@ uint32_t acpi_madt_scan(
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pci.h"
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pci.h"
 void pci_scan(uint32_t* bus_used_bitmap);
-# 25 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pic.h" 1
+# 25 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pic.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10709,7 +10744,7 @@ void pci_scan(uint32_t* bus_used_bitmap);
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10719,8 +10754,8 @@ void pci_scan(uint32_t* bus_used_bitmap);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pic.h" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pic.h" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10730,13 +10765,30 @@ void pci_scan(uint32_t* bus_used_bitmap);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pic.h" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pic.h" 2
 
+/* Even if not using the PIC as the main interrupt controller we still
+ * need to interact with it to remap and disable it */
 void pic_remap_irqs(interrupt_t vector);
+void pic_disable(void);
+
+
+
 void pic_mask_irq(bool_t mask, irq_t irq);
 bool_t pic_is_irq_pending(void);
 void pic_ack_active_irq(void);
-# 26 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 26 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/ioapic.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 27 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c" 2
 
 /* addresses defined in linker script */
 /* need a fake array to get the pointer from the linker script */
@@ -10780,10 +10832,12 @@ typedef struct glks {
     p_region_t ki_p_reg; /* region where the kernel image is in */
     p_region_t sh_p_reg; /* region shared between nodes */
     uint32_t num_nodes; /* number of nodes */
-    cpu_id_t cpu_list [40]; /* CPUs assigned to nodes */
-    ui_info_t ui_info_list [40]; /* info about userland images */
+    cpu_id_t cpu_list [8]; /* CPUs assigned to nodes */
+    ui_info_t ui_info_list [8]; /* info about userland images */
     dev_p_regs_t dev_p_regs; /* device memory regions */
     uint32_t apic_khz; /* frequency of APIC/bus */
+    uint32_t num_ioapic; /* number of IOAPICs detected */
+    paddr_t ioapic_paddr[1];
 
 
 
@@ -10801,7 +10855,7 @@ __attribute__((__section__(".boot.glob")))
 glks_t glks;
 
 __attribute__((__section__(".glob"))) __attribute__((__aligned__((1ul<<(12)))))
-ndks_t ndks_list[40];
+ndks_t ndks_list[8];
 
 /* The kernel stack is actually allocated per-node as part of ndks_list, above.
  * The following definition, in conjunction with the linker script, tells the
@@ -10817,11 +10871,11 @@ cmdline_opt_t cmdline_opt;
 
 /* the array type is uint32_t instead of pde_t due to a c-parser limitation */
 __attribute__((__section__(".glob"))) __attribute__((__aligned__((1ul<<((10 + 2))))))
-uint32_t kernel_pd_list[40][(1ul<<(10))];
+uint32_t kernel_pd_list[8][(1ul<<(10))];
 
 /* the array type is uint32_t instead of pte_t due to a c-parser limitation */
 __attribute__((__section__(".glob"))) __attribute__((__aligned__((1ul<<((10 + 2))))))
-uint32_t kernel_pt_list[40][(1ul<<(10))];
+uint32_t kernel_pt_list[8][(1ul<<(10))];
 
 
 
@@ -10959,7 +11013,7 @@ node_of_cpu(cpu_id_t cpu_id)
         }
     }
     /* Is it even possible for this to happen? */
-    _fail("Couldn't find node of CPU", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 248, __func__);
+    _fail("Couldn't find node of CPU", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c", 251, __func__);
 }
 
 
@@ -11007,10 +11061,7 @@ lift_ndks(node_id_t node_id)
                 (pde_t*)kernel_pd_list[node_id],
                 (pte_t*)kernel_pt_list[node_id],
                 ndks_p_reg
-
-
-
-
+# 307 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c"
             )) {
         return false;
     }
@@ -11061,7 +11112,7 @@ try_boot_node(void)
                 /* parameters below not modeled in abstract specification */
                 (pde_t*)kernel_pd_list[node_id],
                 (pte_t*)kernel_pt_list[node_id]
-# 358 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c"
+# 365 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c"
             )) {
         return false;
     }
@@ -11069,7 +11120,11 @@ try_boot_node(void)
     /* initialise the CPU */
     if (!init_node_cpu(
                 glks.apic_khz,
+
+
+
                 node_id != 0
+
             )) {
         return false;
     }
@@ -11084,7 +11139,7 @@ boot_node(void)
     bool_t result;
     result = try_boot_node();
     if (!result) {
-        _fail("Failed to start node :(\n", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 380, __func__);
+        _fail("Failed to start node :(\n", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c", 391, __func__);
     }
 }
 
@@ -11123,15 +11178,15 @@ try_boot_sys(
     cmdline_parse(mbi->cmdline, &cmdline_opt);
 
     /* assert correct NDKS location and size */
-    if(!((uint32_t)_ndks_start == 0xffc01000)) _assert_fail("(uint32_t)_ndks_start == PPTR_NDKS", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 419, __FUNCTION__);
-    if(!(_ndks_end - _ndks_start <= 0x3000)) _assert_fail("_ndks_end - _ndks_start <= NDKS_SIZE", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 420, __FUNCTION__);
+    if(!((uint32_t)_ndks_start == 0xffc01000)) _assert_fail("(uint32_t)_ndks_start == PPTR_NDKS", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c", 430, __FUNCTION__);
+    if(!(_ndks_end - _ndks_start <= 0x3000)) _assert_fail("_ndks_end - _ndks_start <= NDKS_SIZE", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c", 431, __FUNCTION__);
 
     if ((mbi->flags & (1ul<<(0))) == 0) {
         printf("Boot loader did not provide information about physical memory size\n");
         return false;
     }
 
-    if(!(_boot_cpu_end - _boot_cpu_start < 0x400)) _assert_fail("_boot_cpu_end - _boot_cpu_start < 0x400", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 427, __FUNCTION__);
+    if(!(_boot_cpu_end - _boot_cpu_start < 0x400)) _assert_fail("_boot_cpu_end - _boot_cpu_start < 0x400", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c", 438, __FUNCTION__);
     if ((mbi->mem_lower << 10) < 0x80000 + 0x400) {
         printf("Need at least 513K of available lower physical memory\n");
         return false;
@@ -11172,6 +11227,11 @@ try_boot_sys(
     /* remapping legacy IRQs to their correct vectors */
     pic_remap_irqs(0x20);
 
+
+
+
+
+
     /* Prepare for accepting device regions from here on */
     glks.dev_p_regs.count = 0;
 
@@ -11180,13 +11240,23 @@ try_boot_sys(
     if (!acpi_rsdt) {
         return false;
     }
-# 494 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c"
+# 510 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c"
     /* query available CPUs from ACPI */
-    glks.num_nodes = acpi_madt_scan(acpi_rsdt, glks.cpu_list, 40);
+    glks.num_nodes = acpi_madt_scan(acpi_rsdt, glks.cpu_list, 8, &glks.num_ioapic, glks.ioapic_paddr);
     if (glks.num_nodes == 0) {
         printf("No CPUs detected\n");
         return false;
     }
+
+
+
+
+
+
+    if (glks.num_ioapic > 0) {
+        printf("Detected %d IOAPICs, but configured to use PIC instead\n", glks.num_ioapic);
+    }
+
 
     if (glks.num_nodes > cmdline_opt.max_num_nodes) {
         glks.num_nodes = cmdline_opt.max_num_nodes;
@@ -11219,7 +11289,7 @@ try_boot_sys(
         }
     }
     mods_end_paddr = (((((mods_end_paddr) - 1ul) >> (12)) + 1ul) << (12));
-    if(!(mods_end_paddr > glks.ki_p_reg.end)) _assert_fail("mods_end_paddr > glks.ki_p_reg.end", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 532, __FUNCTION__);
+    if(!(mods_end_paddr > glks.ki_p_reg.end)) _assert_fail("mods_end_paddr > glks.ki_p_reg.end", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c", 558, __FUNCTION__);
 
     if (mbi->mod_count < 1) {
         printf("Expect at least one boot module (containing a userland image)\n");
@@ -11267,11 +11337,11 @@ try_boot_sys(
     /* ==== following code corresponds to abstract specification after "select" ==== */
 
     /* exclude kernel image from available memory */
-    if(!(glks.avail_p_reg.start == glks.ki_p_reg.start)) _assert_fail("glks.avail_p_reg.start == glks.ki_p_reg.start", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 580, __FUNCTION__);
+    if(!(glks.avail_p_reg.start == glks.ki_p_reg.start)) _assert_fail("glks.avail_p_reg.start == glks.ki_p_reg.start", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c", 606, __FUNCTION__);
     glks.avail_p_reg.start = glks.ki_p_reg.end;
 
     /* exclude userland images from available memory */
-    if(!(glks.avail_p_reg.start == ui_p_regs.start)) _assert_fail("glks.avail_p_reg.start == ui_p_regs.start", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 584, __FUNCTION__);
+    if(!(glks.avail_p_reg.start == ui_p_regs.start)) _assert_fail("glks.avail_p_reg.start == ui_p_regs.start", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c", 610, __FUNCTION__);
     glks.avail_p_reg.start = ui_p_regs.end;
 
     /* choose shared region */
@@ -11283,7 +11353,7 @@ try_boot_sys(
     }
 
     /* exclude shared region from available memory */
-    if(!(glks.avail_p_reg.start == glks.sh_p_reg.start)) _assert_fail("glks.avail_p_reg.start == glks.sh_p_reg.start", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 596, __FUNCTION__);
+    if(!(glks.avail_p_reg.start == glks.sh_p_reg.start)) _assert_fail("glks.avail_p_reg.start == glks.sh_p_reg.start", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c", 622, __FUNCTION__);
     glks.avail_p_reg.start = glks.sh_p_reg.end;
 
     discover_devices();
@@ -11292,6 +11362,11 @@ try_boot_sys(
     if (!try_boot_node()) {
         return false;
     }
+
+
+
+
+
 
     /* start up other CPUs and initialise their nodes */
     for (i = 1; i < glks.num_nodes; i++) {
@@ -11311,10 +11386,10 @@ boot_sys(
     result = try_boot_sys(multiboot_magic, mbi, apic_khz);
 
     if (!result) {
-        _fail("boot_sys failed for some reason :(\n", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c", 624, __func__);
+        _fail("boot_sys failed for some reason :(\n", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c", 655, __func__);
     }
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/cmdline.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11325,7 +11400,7 @@ boot_sys(
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11335,8 +11410,8 @@ boot_sys(
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/cmdline.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11346,8 +11421,8 @@ boot_sys(
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/cmdline.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11357,8 +11432,8 @@ boot_sys(
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/cmdline.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/cmdline.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/cmdline.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11368,8 +11443,8 @@ boot_sys(
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/cmdline.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11379,8 +11454,8 @@ boot_sys(
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/cmdline.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11390,7 +11465,7 @@ boot_sys(
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/cmdline.c" 2
 
 /* 'cmdline_val' is declared globally because of a C-subset restriction.
  * It is only used in cmdline_parse(), which therefore is non-reentrant.
@@ -11437,7 +11512,7 @@ static int parse_opt(const char *cmdline, const char *opt, char *value, int bufs
 
     return len;
 }
-# 87 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c"
+# 87 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/cmdline.c"
 static void parse_uint16_array(char* str, uint16_t* array, int array_size)
 {
     char* last;
@@ -11469,7 +11544,7 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
 
 
     /* initialise to default */
-    for (i = 0; i < 40; i++) {
+    for (i = 0; i < 8; i++) {
         cmdline_opt->console_port[i] = 0;
         cmdline_opt->debug_port[i] = 0;
     }
@@ -11477,11 +11552,11 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
     cmdline_opt->debug_port[0] = 0x3f8;
 
     if (parse_opt(cmdline, "console_port", cmdline_val, 1000) != -1) {
-        parse_uint16_array(cmdline_val, cmdline_opt->console_port, 40);
+        parse_uint16_array(cmdline_val, cmdline_opt->console_port, 8);
     }
 
     /* initialise console ports to enable debug output */
-    for (i = 0; i < 40; i++) {
+    for (i = 0; i < 8; i++) {
         if (cmdline_opt->console_port[i]) {
             serial_init(cmdline_opt->console_port[i]);
         }
@@ -11490,17 +11565,17 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
     /* only start printing here after having parsed/set/initialised the console_port */
     printf("\nBoot config: parsing cmdline '%s'\n", cmdline);
 
-    for (i = 0; i < 40; i++)
+    for (i = 0; i < 8; i++)
         if (cmdline_opt->console_port[i]) {
             printf("Boot config: console_port of node #%d = 0x%x\n", i, cmdline_opt->console_port[i]);
         }
 
     if (parse_opt(cmdline, "debug_port", cmdline_val, 1000) != -1) {
-        parse_uint16_array(cmdline_val, cmdline_opt->debug_port, 40);
+        parse_uint16_array(cmdline_val, cmdline_opt->debug_port, 8);
     }
 
     /* initialise debug ports */
-    for (i = 0; i < 40; i++) {
+    for (i = 0; i < 8; i++) {
         if (cmdline_opt->debug_port[i]) {
             serial_init(cmdline_opt->debug_port[i]);
             printf("Boot config: debug_port of node #%d = 0x%x\n", i, cmdline_opt->debug_port[i]);
@@ -11517,7 +11592,7 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
     cmdline_opt->max_num_nodes = 1; /* default */
     if (parse_opt(cmdline, cmdline_str_max_num_nodes, cmdline_val, 1000) != -1) {
         i = str_to_int(cmdline_val);
-        if (i > 0 && i <= 40) {
+        if (i > 0 && i <= 8) {
             cmdline_opt->max_num_nodes = i;
         }
     }
@@ -11533,7 +11608,7 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
     }
     printf("Boot config: num_sh_frames = 0x%x\n", cmdline_opt->num_sh_frames);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/elf.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/elf.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11544,7 +11619,7 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/elf.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/elf.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11554,8 +11629,8 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/elf.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/elf.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11565,7 +11640,7 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/elf.c" 2
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/elf.c" 2
 
 /* minimal ELF functionality for loading GRUB boot module */
 
@@ -11629,7 +11704,7 @@ elf32_load(Elf32_Header_t* elfFile, int32_t offset)
         memset((void*)dst, 0, phdr[i].p_memsz - len);
     }
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/lock.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/lock.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11642,7 +11717,7 @@ elf32_load(Elf32_Header_t* elfFile, int32_t offset)
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/lock.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/lock.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11652,8 +11727,8 @@ elf32_load(Elf32_Header_t* elfFile, int32_t offset)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/lock.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/lock.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11663,11 +11738,11 @@ elf32_load(Elf32_Header_t* elfFile, int32_t offset)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/lock.c" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/lock.c" 2
 
 /* global spinlocks */
 lock_t lock_debug __attribute__((__section__(".glob")));
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/thread.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/thread.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11678,7 +11753,7 @@ lock_t lock_debug __attribute__((__section__(".glob")));
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11688,8 +11763,8 @@ lock_t lock_debug __attribute__((__section__(".glob")));
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11699,8 +11774,8 @@ lock_t lock_debug __attribute__((__section__(".glob")));
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11710,8 +11785,8 @@ lock_t lock_debug __attribute__((__section__(".glob")));
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11721,8 +11796,8 @@ lock_t lock_debug __attribute__((__section__(".glob")));
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/thread.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11732,8 +11807,8 @@ lock_t lock_debug __attribute__((__section__(".glob")));
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11743,7 +11818,7 @@ lock_t lock_debug __attribute__((__section__(".glob")));
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/thread.c" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/thread.c" 2
 
 void
 Arch_switchToThread(tcb_t* tcb)
@@ -11790,7 +11865,7 @@ Arch_activateIdleThread(tcb_t* tcb)
 {
     /* Don't need to do anything */
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11801,7 +11876,7 @@ Arch_activateIdleThread(tcb_t* tcb)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11811,8 +11886,8 @@ Arch_activateIdleThread(tcb_t* tcb)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11822,8 +11897,8 @@ Arch_activateIdleThread(tcb_t* tcb)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11833,8 +11908,8 @@ Arch_activateIdleThread(tcb_t* tcb)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/boot.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/boot.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11844,8 +11919,8 @@ Arch_activateIdleThread(tcb_t* tcb)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11855,8 +11930,8 @@ Arch_activateIdleThread(tcb_t* tcb)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11866,8 +11941,8 @@ Arch_activateIdleThread(tcb_t* tcb)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11877,8 +11952,8 @@ Arch_activateIdleThread(tcb_t* tcb)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11888,7 +11963,7 @@ Arch_activateIdleThread(tcb_t* tcb)
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
 # 1 "./arch/api/invocation.h" 1
 /* @LICENSE(OKL_CORE) */
 
@@ -11936,6 +12011,7 @@ enum invocation_label {
     IRQAckIRQ,
     IRQSetIRQHandler,
     IRQClearIRQHandler,
+    IRQSetMode,
     DomainSetSet,
     nInvocationLabels
 };
@@ -11961,8 +12037,8 @@ enum arch_invocation_label {
     IA32IOSpaceRemovePassthrough = nInvocationLabels + 16,
     nArchInvocationLabels
 };
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/apic.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/apic.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11972,8 +12048,8 @@ enum arch_invocation_label {
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11983,8 +12059,8 @@ enum arch_invocation_label {
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11994,7 +12070,7 @@ enum arch_invocation_label {
  *
  * @TAG(GD_GPL)
  */
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c" 2
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c" 2
 
 struct findPDForASID_ret {
     exception_t status;
@@ -12550,19 +12626,14 @@ map_kernel_window(
     pde_t* pd,
     pte_t* pt,
     p_region_t ndks_p_reg
-
-
-
-
+# 586 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c"
 )
 {
     paddr_t phys;
     uint32_t idx;
     pde_t pde;
     pte_t pte;
-
-
-
+    unsigned int __attribute__((unused)) i;
 
     /* Mapping of PPTR_BASE (virtual address) to kernel's PADDR_BASE
      * up to end of virtual address space except for the last 4M.
@@ -12595,8 +12666,8 @@ map_kernel_window(
     }
 
     /* crosscheck whether we have mapped correctly so far */
-    if(!(phys == (0xffc00000 - (0xe0000000 - 0x00000000)))) _assert_fail("phys == PADDR_TOP", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 623, __FUNCTION__);
-# 635 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c"
+    if(!(phys == (0xffc00000 - (0xe0000000 - 0x00000000)))) _assert_fail("phys == PADDR_TOP", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 625, __FUNCTION__);
+# 637 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c"
     /* map page table of last 4M of virtual address space to page directory */
     pde = pde_pde_4k_new(
               pptr_to_paddr(pt), /* pt_base_address  */
@@ -12691,10 +12762,10 @@ map_kernel_window(
               1 /* present              */
           );
 
-    if(!(idx == (0xffff0000 & ((1ul<<(pageBitsForSize(IA32_4M)))-1ul)) >> pageBitsForSize(IA32_4K))) _assert_fail("idx == (PPTR_APIC & MASK(pageBitsForSize(IA32_4M))) >> pageBitsForSize(IA32_4K)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 729, __FUNCTION__);
+    if(!(idx == (0xffff0000 & ((1ul<<(pageBitsForSize(IA32_4M)))-1ul)) >> pageBitsForSize(IA32_4K))) _assert_fail("idx == (PPTR_APIC & MASK(pageBitsForSize(IA32_4M))) >> pageBitsForSize(IA32_4K)", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 731, __FUNCTION__);
     pt[idx] = pte;
     idx++;
-# 761 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c"
+# 806 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c"
     /* mark unused kernel-device pages as 'not present' */
     while (idx < (1ul<<(10))) {
         pte = pte_new(
@@ -12715,7 +12786,7 @@ map_kernel_window(
     }
 
     /* Check we haven't added too many kernel-device mappings.*/
-    if(!(idx == (1ul<<(10)))) _assert_fail("idx == BIT(PT_BITS)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 781, __FUNCTION__);
+    if(!(idx == (1ul<<(10)))) _assert_fail("idx == BIT(PT_BITS)", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 826, __FUNCTION__);
 
     invalidatePageStructureCache();
     return true;
@@ -12807,7 +12878,7 @@ map_it_pt_cap(cap_t pd_cap, cap_t pt_cap)
     pte_t* pt = ((pte_t *)cap_page_table_cap_get_capPTBasePtr(pt_cap));
     vptr_t vptr = cap_page_table_cap_get_capPTMappedAddress(pt_cap);
 
-    if(!(cap_page_table_cap_get_capPTIsMapped(pt_cap))) _assert_fail("cap_page_table_cap_get_capPTIsMapped(pt_cap)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 873, __FUNCTION__);
+    if(!(cap_page_table_cap_get_capPTIsMapped(pt_cap))) _assert_fail("cap_page_table_cap_get_capPTIsMapped(pt_cap)", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 918, __FUNCTION__);
     pde_pde_4k_ptr_new(
         pd + (vptr >> pageBitsForSize(IA32_4M)),
         pptr_to_paddr(pt), /* pt_base_address */
@@ -12830,7 +12901,7 @@ map_it_frame_cap(cap_t pd_cap, cap_t frame_cap)
     void* frame = (void*)cap_frame_cap_get_capFBasePtr(frame_cap);
     vptr_t vptr = cap_frame_cap_get_capFMappedAddress(frame_cap);
 
-    if(!(cap_frame_cap_get_capFMappedASID(frame_cap) != 0)) _assert_fail("cap_frame_cap_get_capFMappedASID(frame_cap) != 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 896, __FUNCTION__);
+    if(!(cap_frame_cap_get_capFMappedASID(frame_cap) != 0)) _assert_fail("cap_frame_cap_get_capFMappedASID(frame_cap) != 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 941, __FUNCTION__);
     pd += (vptr >> pageBitsForSize(IA32_4M));
     pt = paddr_to_pptr(pde_pde_4k_ptr_get_pt_base_address(pd));
     pte_ptr_new(
@@ -12895,7 +12966,7 @@ static uint32_t __attribute__((__const__)) WritableFromVMRights(vm_rights_t vm_r
         return 1;
 
     default:
-        _fail("Invalid VM rights", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 961, __func__);
+        _fail("Invalid VM rights", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 1006, __func__);
     }
 }
 
@@ -12910,7 +12981,7 @@ static uint32_t __attribute__((__const__)) SuperUserFromVMRights(vm_rights_t vm_
         return 1;
 
     default:
-        _fail("Invalid VM rights", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 976, __func__);
+        _fail("Invalid VM rights", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 1021, __func__);
     }
 }
 
@@ -13029,7 +13100,7 @@ exception_t handleVMFault(tcb_t* thread, vm_fault_type_t vm_faultType)
         return EXCEPTION_FAULT;
 
     default:
-        _fail("Invalid VM fault type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1095, __func__);
+        _fail("Invalid VM fault type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 1140, __func__);
     }
 }
 
@@ -13046,13 +13117,13 @@ bool_t __attribute__((__const__)) isValidVTableRoot(cap_t cap)
 exception_t checkValidIPCBuffer(vptr_t vptr, cap_t cap)
 {
     if (cap_get_capType(cap) != cap_frame_cap) {
-        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1112, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IPC Buffer is an invalid cap."); printf(">>" "\033[0m" "\n"); } while (0);
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1157, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IPC Buffer is an invalid cap."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
 
     if (!(!((vptr) & ((1ul<<(9))-1ul)))) {
-        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1118, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IPC Buffer vaddr 0x%x is not aligned.", (int)vptr); printf(">>" "\033[0m" "\n"); } while (0);
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1163, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IPC Buffer vaddr 0x%x is not aligned.", (int)vptr); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_AlignmentError;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -13080,7 +13151,7 @@ static void flushTable(pde_t* pd, word_t vptr, pte_t* pt)
     unsigned int i;
     cap_t threadRoot;
 
-    if(!((!((vptr) & ((1ul<<(10 + 12))-1ul))))) _assert_fail("IS_ALIGNED(vptr, PT_BITS + PAGE_BITS)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1146, __FUNCTION__);
+    if(!((!((vptr) & ((1ul<<(10 + 12))-1ul))))) _assert_fail("IS_ALIGNED(vptr, PT_BITS + PAGE_BITS)", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 1191, __FUNCTION__);
 
     /* check if page table belongs to current address space */
     threadRoot = (((cte_t *)((unsigned int)ksCurThread&~((1ul<<(10))-1ul)))+tcbVTable)->cap;
@@ -13157,7 +13228,7 @@ void setVMRoot(tcb_t* tcb)
 void deleteASIDPool(asid_t asid_base, asid_pool_t* pool)
 {
     /* Haskell error: "ASID pool's base must be aligned" */
-    if(!((!((asid_base) & ((1ul<<(asidLowBits))-1ul))))) _assert_fail("IS_ALIGNED(asid_base, asidLowBits)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1223, __FUNCTION__);
+    if(!((!((asid_base) & ((1ul<<(asidLowBits))-1ul))))) _assert_fail("IS_ALIGNED(asid_base, asidLowBits)", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 1268, __FUNCTION__);
 
     if (ia32KSASIDTable[asid_base >> asidLowBits] == pool) {
         ia32KSASIDTable[asid_base >> asidLowBits] = ((void *)0);
@@ -13276,7 +13347,7 @@ void unmapPage(vm_page_size_t page_size, asid_t asid, vptr_t vptr, void *pptr)
         break;
 
     default:
-        _fail("Invalid page type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1342, __func__);
+        _fail("Invalid page type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 1387, __func__);
     }
     invalidatePageStructureCache();
 }
@@ -13302,7 +13373,7 @@ static exception_t performASIDControlInvocation(void* frame, cte_t* slot, cte_t*
         slot
     );
     /* Haskell error: "ASID pool's base must be aligned" */
-    if(!((asid_base & ((1ul<<(asidLowBits))-1ul)) == 0)) _assert_fail("(asid_base & MASK(asidLowBits)) == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1368, __FUNCTION__);
+    if(!((asid_base & ((1ul<<(asidLowBits))-1ul)) == 0)) _assert_fail("(asid_base & MASK(asidLowBits)) == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 1413, __FUNCTION__);
     ia32KSASIDTable[asid_base >> asidLowBits] = (asid_pool_t*)frame;
 
     return EXCEPTION_NONE;
@@ -13362,7 +13433,7 @@ decodeIA32PageTableInvocation(
     if (label == IA32PageTableUnmap) {
         if (! isFinalCapability(cte)) {
             current_syscall_error.type = seL4_RevokeFirst;
-            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1428, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Cannot unmap if more than one cap exists."); printf(">>" "\033[0m" "\n"); } while (0);
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1473, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Cannot unmap if more than one cap exists."); printf(">>" "\033[0m" "\n"); } while (0);
             return EXCEPTION_SYSCALL_ERROR;
         }
         setThreadState(ksCurThread, ThreadState_Restart);
@@ -13382,19 +13453,19 @@ decodeIA32PageTableInvocation(
     }
 
     if (label != IA32PageTableMap ) {
-        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1448, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Illegal operation."); printf(">>" "\033[0m" "\n"); } while (0);
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1493, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Illegal operation."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
 
     if (length < 2 || extraCaps.excaprefs[0] == ((void *)0)) {
-        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1454, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1499, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Truncated message."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
 
     if (cap_page_table_cap_get_capPTIsMapped(cap)) {
-        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1460, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Page table is already mapped to a page directory."); printf(">>" "\033[0m" "\n"); } while (0);
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1505, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Page table is already mapped to a page directory."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type =
             seL4_InvalidCapability;
         current_syscall_error.invalidCapNumber = 0;
@@ -13418,7 +13489,7 @@ decodeIA32PageTableInvocation(
     asid = cap_page_directory_cap_get_capPDMappedASID(pdCap);
 
     if (vaddr >= 0xe0000000) {
-        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1484, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Mapping address too high."); printf(">>" "\033[0m" "\n"); } while (0);
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1529, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageTable: Mapping address too high."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_InvalidArgument;
         current_syscall_error.invalidArgumentNumber = 0;
 
@@ -13517,7 +13588,7 @@ decodeIA32FrameInvocation(
         capVMRights = cap_frame_cap_get_capFVMRights(cap);
 
         if (cap_frame_cap_get_capFMappedASID(cap) != asidInvalid) {
-            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1583, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32Frame: Frame already mapped."); printf(">>" "\033[0m" "\n"); } while (0);
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1628, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32Frame: Frame already mapped."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_InvalidCapability;
             current_syscall_error.invalidCapNumber = 0;
 
@@ -13527,9 +13598,9 @@ decodeIA32FrameInvocation(
         if (cap_get_capType(pdCap) != cap_page_directory_cap ||
                 !cap_page_directory_cap_get_capPDIsMapped(pdCap)) {
             if (cap_get_capType(pdCap) != cap_page_directory_cap) {
-                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1593, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32Frame: Attempting to map frame into invalid page directory cap."); printf(">>" "\033[0m" "\n"); } while (0);
+                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1638, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32Frame: Attempting to map frame into invalid page directory cap."); printf(">>" "\033[0m" "\n"); } while (0);
             } else {
-                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1595, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32Frame: Attempting to map frame into unmapped page directory cap."); printf(">>" "\033[0m" "\n"); } while (0);
+                do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1640, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32Frame: Attempting to map frame into unmapped page directory cap."); printf(">>" "\033[0m" "\n"); } while (0);
             }
             current_syscall_error.type = seL4_InvalidCapability;
             current_syscall_error.invalidCapNumber = 1;
@@ -13623,7 +13694,7 @@ decodeIA32FrameInvocation(
         }
 
         default:
-            _fail("Invalid page type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1689, __func__);
+            _fail("Invalid page type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 1734, __func__);
         }
         invalidatePageStructureCache();
         break;
@@ -13640,7 +13711,7 @@ decodeIA32FrameInvocation(
         asid_t asid;
         cap_t pdCap;
         pde_t* pd;
-# 1715 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c"
+# 1760 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c"
         if (length < 2 || extraCaps.excaprefs[0] == ((void *)0)) {
             current_syscall_error.type = seL4_TruncatedMessage;
 
@@ -13664,7 +13735,7 @@ decodeIA32FrameInvocation(
         asid = cap_page_directory_cap_get_capPDMappedASID(pdCap);
 
         if (cap_frame_cap_get_capFMappedASID(cap) == asidInvalid) {
-            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1738, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageRemap: Frame must already have been mapped."); printf(">>" "\033[0m" "\n"); } while (0);
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 1783, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IA32PageRemap: Frame must already have been mapped."); printf(">>" "\033[0m" "\n"); } while (0);
             current_syscall_error.type = seL4_InvalidCapability;
             current_syscall_error.invalidCapNumber = 0;
 
@@ -13745,7 +13816,7 @@ decodeIA32FrameInvocation(
         }
 
         default:
-            _fail("Invalid page type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1819, __func__);
+            _fail("Invalid page type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 1864, __func__);
         }
         invalidatePageStructureCache();
         break;
@@ -13779,7 +13850,7 @@ decodeIA32FrameInvocation(
 
     case IA32PageGetAddress: {
         /* Return it in the first message register. */
-        if(!(n_msgRegisters >= 1)) _assert_fail("n_msgRegisters >= 1", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 1853, __FUNCTION__);
+        if(!(n_msgRegisters >= 1)) _assert_fail("n_msgRegisters >= 1", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 1898, __FUNCTION__);
 
         setThreadState(ksCurThread, ThreadState_Restart);
         return performPageGetAddress((void*)cap_frame_cap_get_capFBasePtr(cap));
@@ -13949,10 +14020,10 @@ decodeIA32MMUInvocation(
     }
 
     default:
-        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c", 2023, __func__);
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c", 2068, __func__);
     }
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13963,7 +14034,7 @@ decodeIA32MMUInvocation(
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13973,11 +14044,11 @@ decodeIA32MMUInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c" 2
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13987,8 +14058,8 @@ decodeIA32MMUInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13998,8 +14069,8 @@ decodeIA32MMUInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14009,8 +14080,8 @@ decodeIA32MMUInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/capdl.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/capdl.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14020,8 +14091,8 @@ decodeIA32MMUInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/capdl.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/capdl.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14031,8 +14102,8 @@ decodeIA32MMUInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/debug_helpers.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/debug_helpers.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14048,8 +14119,8 @@ decodeIA32MMUInvocation(
 
 void putDebugChar(unsigned char a);
 unsigned char getDebugChar(void);
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pci.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pci.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14059,8 +14130,8 @@ unsigned char getDebugChar(void);
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c" 2
-# 30 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c"
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c" 2
+# 30 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c"
 static int getDecodedChar(unsigned char *result)
 {
     unsigned char c;
@@ -14208,7 +14279,7 @@ static void sendASIDPool(unsigned int address)
         }
     }
 }
-# 223 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c"
+# 223 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c"
 static void sendRunqueues(void)
 {
     unsigned int i;
@@ -14314,7 +14385,7 @@ void capDL(void)
                 putDebugChar(0xbb);
             }
             break;
-# 356 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c"
+# 356 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c"
             case 0xf1: {
                 /*runqueues */
                 sendRunqueues();
@@ -14371,7 +14442,7 @@ void capDL(void)
         } while (result);
     }
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/fpu.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14382,7 +14453,7 @@ void capDL(void)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14392,8 +14463,8 @@ void capDL(void)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/fpu.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14403,8 +14474,8 @@ void capDL(void)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/fpu.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14414,8 +14485,8 @@ void capDL(void)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/fpu.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14425,8 +14496,8 @@ void capDL(void)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/fpu.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/cpu_registers.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14436,8 +14507,8 @@ void capDL(void)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/fpu.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14447,8 +14518,8 @@ void capDL(void)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/fpu.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14458,7 +14529,7 @@ void capDL(void)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/fpu.c" 2
 
 /*
  * Setup the FPU register state for a new thread.
@@ -14503,7 +14574,7 @@ handleUnimplementedDevice(void)
      * This should only be able to occur on CPUs without an FPU at all, which
      * we presumably are happy to assume will not be running seL4.
      */
-    if(!(ksCurThread != ia32KSfpuOwner)) _assert_fail("ksCurThread != ia32KSfpuOwner", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c", 62, __FUNCTION__);
+    if(!(ksCurThread != ia32KSfpuOwner)) _assert_fail("ksCurThread != ia32KSfpuOwner", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/fpu.c", 62, __FUNCTION__);
 
     /* Otherwise, lazily switch over the FPU. */
     switchFpuOwner(ksCurThread);
@@ -14540,7 +14611,7 @@ Arch_initFpu(void)
      * switching */
     write_cr0((read_cr0() & ~(1ul<<(2)) /* Enable OS emulation of FPU. */) | (1ul<<(1)) /* Trap on FPU "WAIT" commands. */ | (1ul<<(5)) /* Internally handle FPU problems. */ | (1ul<<(3)) /* Trap on any FPU usage, for lazy FPU. */);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14551,7 +14622,7 @@ Arch_initFpu(void)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14561,8 +14632,8 @@ Arch_initFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/registerset.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14572,8 +14643,8 @@ Arch_initFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14583,8 +14654,8 @@ Arch_initFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14594,8 +14665,8 @@ Arch_initFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14605,8 +14676,8 @@ Arch_initFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/hardware.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/hardware.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14616,8 +14687,8 @@ Arch_initFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/registerset.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14627,8 +14698,8 @@ Arch_initFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14638,7 +14709,7 @@ Arch_initFpu(void)
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c" 2
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c" 2
 
 /* initialises MSRs required to setup sysenter and sysexit */
 __attribute__((__section__(".boot.text"))) void
@@ -14693,8 +14764,8 @@ void flushCacheRange(void* vaddr, uint32_t size_bits)
 {
     uint32_t v;
 
-    if(!(size_bits < (8 * sizeof(word_t)))) _assert_fail("size_bits < WORD_BITS", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c", 73, __FUNCTION__);
-    if(!((!(((uint32_t)vaddr) & ((1ul<<(size_bits))-1ul))))) _assert_fail("IS_ALIGNED((uint32_t)vaddr, size_bits)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c", 74, __FUNCTION__);
+    if(!(size_bits < (8 * sizeof(word_t)))) _assert_fail("size_bits < WORD_BITS", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c", 73, __FUNCTION__);
+    if(!((!(((uint32_t)vaddr) & ((1ul<<(size_bits))-1ul))))) _assert_fail("IS_ALIGNED((uint32_t)vaddr, size_bits)", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c", 74, __FUNCTION__);
 
     ia32_mfence();
 
@@ -14705,7 +14776,7 @@ void flushCacheRange(void* vaddr, uint32_t size_bits)
     }
     ia32_mfence();
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/registerset.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/registerset.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14716,7 +14787,7 @@ void flushCacheRange(void* vaddr, uint32_t size_bits)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/registerset.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14726,8 +14797,8 @@ void flushCacheRange(void* vaddr, uint32_t size_bits)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/registerset.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/registerset.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14737,8 +14808,8 @@ void flushCacheRange(void* vaddr, uint32_t size_bits)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/registerset.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/registerset.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14748,7 +14819,7 @@ void flushCacheRange(void* vaddr, uint32_t size_bits)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/registerset.c" 2
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/registerset.c" 2
 
 const register_t msgRegisters[] = {
     EDI, EBP
@@ -14811,7 +14882,7 @@ word_t sanitiseRegister(register_t reg, word_t v)
     }
     return v;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/model/statedata.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/model/statedata.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14822,7 +14893,7 @@ word_t sanitiseRegister(register_t reg, word_t v)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14832,8 +14903,8 @@ word_t sanitiseRegister(register_t reg, word_t v)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/model/statedata.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/model/statedata.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14843,8 +14914,8 @@ word_t sanitiseRegister(register_t reg, word_t v)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/model/statedata.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/model/statedata.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14854,8 +14925,8 @@ word_t sanitiseRegister(register_t reg, word_t v)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/model/statedata.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/types.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/model/statedata.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14865,8 +14936,8 @@ word_t sanitiseRegister(register_t reg, word_t v)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/model/statedata.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/model/statedata.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14876,8 +14947,8 @@ word_t sanitiseRegister(register_t reg, word_t v)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/model/statedata.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/structures.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/model/statedata.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14887,7 +14958,7 @@ word_t sanitiseRegister(register_t reg, word_t v)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/model/statedata.c" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/model/statedata.c" 2
 
 /* ==== read/write kernel state not preserved across kernel entries ==== */
 
@@ -14928,10 +14999,10 @@ user_fpu_state_t ia32KSnullFpuState __attribute__((__aligned__(16)));
 
 /* Current active page directory. This is really just a shadow of CR3 */
 paddr_t ia32KSCurrentPD __attribute__((externally_visible));
-# 69 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/model/statedata.c"
+# 69 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/model/statedata.c"
 uint16_t ia32KSconsolePort;
 uint16_t ia32KSdebugPort;
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/interrupt.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/interrupt.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14942,7 +15013,7 @@ uint16_t ia32KSdebugPort;
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/boot.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/boot.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14952,8 +15023,8 @@ uint16_t ia32KSdebugPort;
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14963,8 +15034,8 @@ uint16_t ia32KSdebugPort;
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/interrupt.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/interrupt.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14974,8 +15045,8 @@ uint16_t ia32KSdebugPort;
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14985,14 +15056,14 @@ uint16_t ia32KSdebugPort;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/interrupt.c" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/interrupt.c" 2
 
 exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraCaps)
 {
     current_syscall_error.type = seL4_IllegalOperation;
     return EXCEPTION_SYSCALL_ERROR;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/ioport.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15003,7 +15074,7 @@ exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraC
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15013,8 +15084,8 @@ exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraC
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/ioport.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15024,8 +15095,8 @@ exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraC
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/ioport.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15035,8 +15106,8 @@ exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraC
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/ioport.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15046,8 +15117,8 @@ exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraC
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/ioport.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/ioport.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/ioport.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15057,7 +15128,7 @@ exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraC
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/ioport.c" 2
 # 1 "./arch/api/invocation.h" 1
 /* @LICENSE(OKL_CORE) */
 
@@ -15066,7 +15137,7 @@ exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraC
  * To add an invocation call number, edit libsel4/include/interfaces/sel4.xml.
  *
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/ioport.c" 2
 
 static exception_t
 ensurePortOperationAllowed(cap_t cap, uint32_t start_port, uint32_t size)
@@ -15074,14 +15145,14 @@ ensurePortOperationAllowed(cap_t cap, uint32_t start_port, uint32_t size)
     uint32_t first_allowed = cap_io_port_cap_get_capIOPortFirstPort(cap);
     uint32_t last_allowed = cap_io_port_cap_get_capIOPortLastPort(cap);
     uint32_t end_port = start_port + size - 1;
-    if(!(first_allowed <= last_allowed)) _assert_fail("first_allowed <= last_allowed", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c", 24, __FUNCTION__);
-    if(!(start_port <= end_port)) _assert_fail("start_port <= end_port", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c", 25, __FUNCTION__);
+    if(!(first_allowed <= last_allowed)) _assert_fail("first_allowed <= last_allowed", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/ioport.c", 24, __FUNCTION__);
+    if(!(start_port <= end_port)) _assert_fail("start_port <= end_port", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/ioport.c", 25, __FUNCTION__);
 
     if ((start_port < first_allowed) || (end_port > last_allowed)) {
         do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
 
  30
-# 28 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c"
+# 28 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/ioport.c"
         , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IOPort: Ports %d--%d fall outside permitted range %d--%d.", (int)start_port, (int)end_port, (int)first_allowed, (int)last_allowed); printf(">>" "\033[0m" "\n"); } while (0)
 
                                                         ;
@@ -15245,7 +15316,7 @@ decodeIA32PortInvocation(
     setThreadState(ksCurThread, ThreadState_Restart);
     return EXCEPTION_NONE;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/iospace.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/iospace.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15256,7 +15327,7 @@ decodeIA32PortInvocation(
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15266,8 +15337,8 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/iospace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c"
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/iospace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15278,7 +15349,7 @@ decodeIA32PortInvocation(
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15288,8 +15359,8 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15299,8 +15370,8 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15310,8 +15381,8 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/vspace.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15321,8 +15392,8 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15332,8 +15403,8 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15343,8 +15414,8 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15354,8 +15425,8 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine/fpu.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine/fpu.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15365,8 +15436,8 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/objecttype.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15376,8 +15447,8 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/ioport.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/ioport.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15387,8 +15458,8 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pci.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pci.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15398,7 +15469,7 @@ decodeIA32PortInvocation(
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c" 2
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c" 2
 
 
 
@@ -15451,25 +15522,25 @@ deriveCap_ret_t Arch_deriveCap(cte_t* slot, cap_t cap)
         ret.cap = cap;
         ret.status = EXCEPTION_NONE;
         return ret;
-# 91 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c"
+# 91 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c"
     default:
         /* This assert has no equivalent in haskell,
          * as the options are restricted by type */
-        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 94, __func__);
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c", 94, __func__);
     }
 }
 
 cap_t __attribute__((__const__)) Arch_updateCapData(bool_t preserve, word_t data, cap_t cap)
 {
     switch (cap_get_capType(cap)) {
-# 117 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c"
+# 117 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c"
     case cap_io_port_cap: {
         io_port_capdata_t w = { .words = { data } };
         uint16_t firstPort = io_port_capdata_get_firstPort(w);
         uint16_t lastPort = io_port_capdata_get_lastPort(w);
         uint16_t capFirstPort = cap_io_port_cap_get_capIOPortFirstPort(cap);
         uint16_t capLastPort = cap_io_port_cap_get_capIOPortLastPort(cap);
-        if(!(capFirstPort <= capLastPort)) _assert_fail("capFirstPort <= capLastPort", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 123, __FUNCTION__);
+        if(!(capFirstPort <= capLastPort)) _assert_fail("capFirstPort <= capLastPort", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c", 123, __FUNCTION__);
 
         /* Ensure input data is ordered correctly. */
         if (firstPort > lastPort) {
@@ -15553,9 +15624,9 @@ cap_t Arch_finaliseCap(cap_t cap, bool_t final)
     case cap_asid_control_cap:
     case cap_io_port_cap:
         break;
-# 215 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c"
+# 215 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c"
     default:
-        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 216, __func__);
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c", 216, __func__);
     }
 
     return cap_null_cap_new();
@@ -15629,9 +15700,9 @@ cap_t Arch_recycleCap(bool_t is_final, cap_t cap)
 
     case cap_io_port_cap:
         return cap;
-# 301 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c"
+# 301 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c"
     default:
-        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 302, __func__);
+        _fail("Invalid arch cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c", 302, __func__);
     }
 }
 
@@ -15695,7 +15766,7 @@ bool_t __attribute__((__const__)) Arch_sameRegionAs(cap_t cap_a, cap_t cap_b)
             return true;
         }
         break;
-# 381 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c"
+# 381 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c"
     }
 
     return false;
@@ -15731,7 +15802,7 @@ Arch_getObjectSize(word_t t)
 
 
     default:
-        _fail("Invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 416, __func__);
+        _fail("Invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c", 416, __func__);
         return 0;
     }
 }
@@ -15785,14 +15856,14 @@ Arch_createObject(object_t t, void *regionBase, word_t userSize)
                    asidInvalid, /* capPDMappedASID  */
                    (word_t)regionBase /* capPTBasePtr     */
                );
-# 483 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c"
+# 483 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c"
     default:
         /*
          * This is a conflation of the haskell error: "Arch.createNewCaps
          * got an API type" and the case where an invalid object type is
          * passed (which is impossible in haskell).
          */
-        _fail("Arch_createObject got an API type or invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c", 489, __func__);
+        _fail("Arch_createObject got an API type or invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c", 489, __func__);
     }
 }
 
@@ -15838,7 +15909,7 @@ Arch_prepareThreadDelete(tcb_t *thread)
     /* Notify the lazy FPU module about this thread's deletion. */
     Arch_fpuThreadDelete(thread);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15849,7 +15920,7 @@ Arch_prepareThreadDelete(tcb_t *thread)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15859,8 +15930,8 @@ Arch_prepareThreadDelete(tcb_t *thread)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15870,8 +15941,8 @@ Arch_prepareThreadDelete(tcb_t *thread)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/registerset.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15881,8 +15952,8 @@ Arch_prepareThreadDelete(tcb_t *thread)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15892,8 +15963,8 @@ Arch_prepareThreadDelete(tcb_t *thread)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15903,8 +15974,8 @@ Arch_prepareThreadDelete(tcb_t *thread)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/tcb.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/tcb.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15914,7 +15985,7 @@ Arch_prepareThreadDelete(tcb_t *thread)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c" 2
 
 /* NOTE: offset is either 1 or 3 */
 static inline unsigned int
@@ -15922,7 +15993,7 @@ setMRs_lookup_failure(tcb_t *receiver, word_t* receiveIPCBuffer, lookup_fault_t 
 {
     word_t lufType = lookup_fault_get_lufType(luf);
 
-    if(!(n_msgRegisters == 2)) _assert_fail("n_msgRegisters == 2", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 24, __FUNCTION__);
+    if(!(n_msgRegisters == 2)) _assert_fail("n_msgRegisters == 2", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c", 24, __FUNCTION__);
 
     if (offset < n_msgRegisters) {
         setRegister(receiver, msgRegisters[offset], lufType + 1);
@@ -15962,13 +16033,13 @@ setMRs_lookup_failure(tcb_t *receiver, word_t* receiveIPCBuffer, lookup_fault_t 
         return offset + 4;
 
     default:
-        _fail("Invalid lookup failure", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 64, __func__);
+        _fail("Invalid lookup failure", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c", 64, __func__);
     }
 }
 
 unsigned int setMRs_fault(tcb_t *sender, tcb_t* receiver, word_t *receiveIPCBuffer)
 {
-    if(!(n_msgRegisters == 2)) _assert_fail("n_msgRegisters == 2", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 70, __FUNCTION__);
+    if(!(n_msgRegisters == 2)) _assert_fail("n_msgRegisters == 2", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c", 70, __FUNCTION__);
 
     switch (fault_get_faultType(sender->tcbFault)) {
     case fault_cap_fault:
@@ -16038,13 +16109,13 @@ unsigned int setMRs_fault(tcb_t *sender, tcb_t* receiver, word_t *receiveIPCBuff
     }
 
     default:
-        _fail("Invalid fault", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 140, __func__);
+        _fail("Invalid fault", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c", 140, __func__);
     }
 }
 
 unsigned int setMRs_syscall_error(tcb_t *thread, word_t *receiveIPCBuffer)
 {
-    if(!(n_msgRegisters >= 2)) _assert_fail("n_msgRegisters >= 2", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 146, __FUNCTION__);
+    if(!(n_msgRegisters >= 2)) _assert_fail("n_msgRegisters >= 2", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c", 146, __FUNCTION__);
 
     switch (current_syscall_error.type) {
     case seL4_InvalidArgument:
@@ -16085,7 +16156,7 @@ unsigned int setMRs_syscall_error(tcb_t *thread, word_t *receiveIPCBuffer)
                     current_syscall_error.memoryLeft);
         return 0;
     default:
-        _fail("Invalid syscall error", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c", 187, __func__);
+        _fail("Invalid syscall error", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c", 187, __func__);
     }
 }
 
@@ -16098,7 +16169,7 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
 {
     return EXCEPTION_NONE;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/assert.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/assert.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16109,7 +16180,7 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16119,8 +16190,8 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/assert.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/assert.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16130,7 +16201,7 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/assert.c" 2
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/assert.c" 2
 
 
 
@@ -16164,7 +16235,7 @@ void _assert_fail(
           );
     halt();
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/inlines.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/inlines.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16175,7 +16246,7 @@ void _assert_fail(
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16185,8 +16256,8 @@ void _assert_fail(
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/inlines.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/inlines.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16196,12 +16267,12 @@ void _assert_fail(
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/inlines.c" 2
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/inlines.c" 2
 
 lookup_fault_t current_lookup_fault;
 fault_t current_fault;
 syscall_error_t current_syscall_error;
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16212,7 +16283,7 @@ syscall_error_t current_syscall_error;
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16222,8 +16293,8 @@ syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/boot.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/boot.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16233,8 +16304,8 @@ syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16244,8 +16315,8 @@ syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16255,8 +16326,8 @@ syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/registerset.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16266,8 +16337,8 @@ syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16277,8 +16348,8 @@ syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16288,8 +16359,8 @@ syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16299,8 +16370,8 @@ syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16310,8 +16381,8 @@ syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16321,8 +16392,8 @@ syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/hardware.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/hardware.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16332,7 +16403,7 @@ syscall_error_t current_syscall_error;
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c" 2
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c" 2
 
 /* (node-local) state accessed only during bootstrapping */
 
@@ -16343,7 +16414,7 @@ insert_region(region_t reg)
 {
     unsigned int i;
 
-    if(!(reg.start <= reg.end)) _assert_fail("reg.start <= reg.end", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 32, __FUNCTION__);
+    if(!(reg.start <= reg.end)) _assert_fail("reg.start <= reg.end", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c", 32, __FUNCTION__);
     if (is_reg_empty(reg)) {
         return true;
     }
@@ -16506,10 +16577,10 @@ create_domain_cap(cap_t root_cnode_cap)
     unsigned int i;
 
     /* Check domain scheduler assumptions. */
-    if(!(ksDomScheduleLength > 0)) _assert_fail("ksDomScheduleLength > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 195, __FUNCTION__);
+    if(!(ksDomScheduleLength > 0)) _assert_fail("ksDomScheduleLength > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c", 195, __FUNCTION__);
     for (i = 0; i < ksDomScheduleLength; i++) {
-        if(!(ksDomSchedule[i].domain < 1)) _assert_fail("ksDomSchedule[i].domain < CONFIG_NUM_DOMAINS", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 197, __FUNCTION__);
-        if(!(ksDomSchedule[i].length > 0)) _assert_fail("ksDomSchedule[i].length > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 198, __FUNCTION__);
+        if(!(ksDomSchedule[i].domain < 1)) _assert_fail("ksDomSchedule[i].domain < CONFIG_NUM_DOMAINS", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c", 197, __FUNCTION__);
+        if(!(ksDomSchedule[i].length > 0)) _assert_fail("ksDomSchedule[i].length > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c", 198, __FUNCTION__);
     }
 
     cap = cap_domain_cap_new();
@@ -16724,7 +16795,7 @@ create_initial_thread(
     ksCurThread = ksIdleThread;
     ksCurDomain = ksDomSchedule[ksDomScheduleIdx].domain;
     ksDomainTime = ksDomSchedule[ksDomScheduleIdx].length;
-    if(!(ksCurDomain < 1 && ksDomainTime > 0)) _assert_fail("ksCurDomain < CONFIG_NUM_DOMAINS && ksDomainTime > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 413, __FUNCTION__);
+    if(!(ksCurDomain < 1 && ksDomainTime > 0)) _assert_fail("ksCurDomain < CONFIG_NUM_DOMAINS && ksDomainTime > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c", 413, __FUNCTION__);
 
     /* initialise current thread pointer */
     switchToThread(tcb); /* initialises ksCurThread */
@@ -16795,7 +16866,7 @@ create_untypeds_for_region(
             size_bits = align_bits;
         }
 
-        if(!(size_bits >= (8 * sizeof(word_t)) / 8)) _assert_fail("size_bits >= WORD_BITS / 8", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c", 484, __FUNCTION__);
+        if(!(size_bits >= (8 * sizeof(word_t)) / 8)) _assert_fail("size_bits >= WORD_BITS / 8", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c", 484, __FUNCTION__);
         if (!provide_untyped_cap(root_cnode_cap, reg.start, size_bits, first_untyped_slot)) {
             return false;
         }
@@ -16844,7 +16915,7 @@ bi_finalise(void)
         slot_pos_start, slot_pos_end
     };
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/cspace.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/cspace.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16855,7 +16926,7 @@ bi_finalise(void)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16865,8 +16936,8 @@ bi_finalise(void)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/cspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/cspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16876,8 +16947,8 @@ bi_finalise(void)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/cspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/cspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16887,8 +16958,8 @@ bi_finalise(void)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/cspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/cspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16898,8 +16969,8 @@ bi_finalise(void)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/cspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/cspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16909,8 +16980,8 @@ bi_finalise(void)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/cspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/cspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16920,8 +16991,8 @@ bi_finalise(void)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/cspace.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/cspace.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16931,7 +17002,7 @@ bi_finalise(void)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/cspace.c" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/cspace.c" 2
 
 lookupCap_ret_t
 lookupCap(tcb_t *thread, cptr_t cPtr)
@@ -17075,7 +17146,7 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
         levelBits = radixBits + guardBits;
 
         /* Haskell error: "All CNodes must resolve bits" */
-        if(!(levelBits != 0)) _assert_fail("levelBits != 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/cspace.c", 161, __FUNCTION__);
+        if(!(levelBits != 0)) _assert_fail("levelBits != 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/cspace.c", 161, __FUNCTION__);
 
         capGuard = cap_cnode_cap_get_capCNodeGuard(nodeCap);
 
@@ -17121,7 +17192,7 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
     ret.status = EXCEPTION_NONE;
     return ret;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/faulthandler.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/faulthandler.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17132,7 +17203,7 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17142,8 +17213,8 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/faulthandler.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/faulthandler.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17153,8 +17224,8 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/faulthandler.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/faulthandler.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/faulthandler.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/faulthandler.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17164,8 +17235,8 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/faulthandler.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/faulthandler.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17175,8 +17246,8 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/faulthandler.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/faulthandler.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17186,8 +17257,8 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/faulthandler.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/faulthandler.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17197,7 +17268,7 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/faulthandler.c" 2
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/faulthandler.c" 2
 
 void
 handleFault(tcb_t *tptr)
@@ -17301,7 +17372,7 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
 
     setThreadState(tptr, ThreadState_Inactive);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17312,7 +17383,7 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17322,8 +17393,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17333,8 +17404,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17344,8 +17415,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/faults.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/faults.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17355,8 +17426,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17366,8 +17437,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17377,8 +17448,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17388,8 +17459,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/vspace.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17399,8 +17470,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17410,8 +17481,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/machine.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17421,8 +17492,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/thread.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17432,8 +17503,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/registerset.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17443,8 +17514,8 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17454,7 +17525,7 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
  *
  * @TAG(GD_GPL)
  */
-# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c" 2
+# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c" 2
 
 static message_info_t
 transferCaps(message_info_t info, extra_caps_t caps,
@@ -17518,7 +17589,7 @@ activateThread(void)
         break;
 
     default:
-        _fail("Current thread is blocked", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c", 87, __func__);
+        _fail("Current thread is blocked", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c", 87, __func__);
     }
 }
 
@@ -17563,11 +17634,11 @@ void
 doReplyTransfer(tcb_t *sender, tcb_t *receiver, cte_t *slot)
 {
     if(!(thread_state_get_tsType(receiver->tcbState) == ThreadState_BlockedOnReply)) _assert_fail("thread_state_get_tsType(receiver->tcbState) == ThreadState_BlockedOnReply",
- "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c"
-# 131 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c"
+ "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c"
+# 131 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c"
     ,
  132
-# 131 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c"
+# 131 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c"
     , __FUNCTION__)
                                       ;
 
@@ -17771,7 +17842,7 @@ chooseThread(void)
         unsigned int domprio = ksCurDomain * 256 + p;
         thread = ksReadyQueues[domprio].head;
         if (thread != ((void *)0)) {
-            if(!(isRunnable(thread))) _assert_fail("isRunnable(thread)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c", 334, __FUNCTION__);
+            if(!(isRunnable(thread))) _assert_fail("isRunnable(thread)", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c", 334, __FUNCTION__);
             switchToThread(thread);
             return;
         }
@@ -17909,7 +17980,7 @@ rescheduleRequired(void)
     }
     ksSchedulerAction = ((tcb_t*)~0);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/machine/io.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/machine/io.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17920,7 +17991,7 @@ rescheduleRequired(void)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/stdarg.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/stdarg.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17938,8 +18009,8 @@ rescheduleRequired(void)
 
 
 typedef __builtin_va_list va_list;
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/machine/io.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/machine/io.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -17949,7 +18020,7 @@ typedef __builtin_va_list va_list;
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/machine/io.c" 2
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/machine/io.c" 2
 
 
 
@@ -18178,7 +18249,7 @@ unsigned int puts(const char *s)
     console_putchar('\n');
     return 0;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/preemption.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/preemption.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18189,7 +18260,7 @@ unsigned int puts(const char *s)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18199,8 +18270,8 @@ unsigned int puts(const char *s)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/preemption.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/preemption.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/preemption.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/preemption.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18214,7 +18285,7 @@ unsigned int puts(const char *s)
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18224,11 +18295,11 @@ unsigned int puts(const char *s)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/preemption.h" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/preemption.h" 2
 
 exception_t preemptionPoint(void);
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/preemption.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/preemption.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18238,8 +18309,8 @@ exception_t preemptionPoint(void);
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/preemption.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/hardware.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/preemption.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/hardware.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18249,8 +18320,8 @@ exception_t preemptionPoint(void);
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/preemption.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/preemption.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18260,7 +18331,7 @@ exception_t preemptionPoint(void);
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/preemption.c" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/preemption.c" 2
 
 /*
  * Possibly preempt the current thread to allow an interrupt to be handled.
@@ -18288,7 +18359,7 @@ preemptionPoint(void)
 
     return EXCEPTION_NONE;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/statedata.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/statedata.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18299,7 +18370,7 @@ preemptionPoint(void)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18309,8 +18380,8 @@ preemptionPoint(void)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/statedata.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/statedata.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18320,8 +18391,8 @@ preemptionPoint(void)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/statedata.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/statedata.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18331,8 +18402,8 @@ preemptionPoint(void)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/statedata.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/statedata.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18342,8 +18413,8 @@ preemptionPoint(void)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/statedata.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/statedata.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18353,7 +18424,7 @@ preemptionPoint(void)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/statedata.c" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/statedata.c" 2
 
 /* Pointer to the head of the scheduler queue for each priority */
 tcb_queue_t ksReadyQueues[(1 * 256)];
@@ -18385,7 +18456,7 @@ word_t ksDomainTime;
 
 /* An index into ksDomSchedule for active domain and length. */
 uint32_t ksDomScheduleIdx;
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/asyncendpoint.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18396,7 +18467,7 @@ uint32_t ksDomScheduleIdx;
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18406,9 +18477,9 @@ uint32_t ksDomScheduleIdx;
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c" 2
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/asyncendpoint.c" 2
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18418,8 +18489,8 @@ uint32_t ksDomScheduleIdx;
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/asyncendpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18429,8 +18500,8 @@ uint32_t ksDomScheduleIdx;
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/asyncendpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18440,8 +18511,8 @@ uint32_t ksDomScheduleIdx;
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/asyncendpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18451,8 +18522,8 @@ uint32_t ksDomScheduleIdx;
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/asyncendpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18462,9 +18533,9 @@ uint32_t ksDomScheduleIdx;
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/asyncendpoint.c" 2
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/asyncendpoint.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/asyncendpoint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18474,7 +18545,7 @@ uint32_t ksDomScheduleIdx;
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c" 2
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/asyncendpoint.c" 2
 
 static inline tcb_queue_t __attribute__((__pure__))
 aep_ptr_get_queue(async_endpoint_t *aepptr)
@@ -18512,7 +18583,7 @@ sendAsyncIPC(async_endpoint_t *aepptr, word_t badge, word_t val)
         dest = aep_queue.head;
 
         /* Haskell error "WaitingAEP AEP must have non-empty queue" */
-        if(!(dest)) _assert_fail("dest", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c", 57, __FUNCTION__);
+        if(!(dest)) _assert_fail("dest", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/asyncendpoint.c", 57, __FUNCTION__);
 
         /* Dequeue TCB */
         aep_queue = tcbEPDequeue(dest, aep_queue);
@@ -18605,7 +18676,7 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
     tcb_queue_t aep_queue;
 
     /* Haskell error "asyncIPCCancel: async endpoint must be waiting" */
-    if(!(async_endpoint_ptr_get_state(aepptr) == AEPState_Waiting)) _assert_fail("async_endpoint_ptr_get_state(aepptr) == AEPState_Waiting", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c", 150, __FUNCTION__);
+    if(!(async_endpoint_ptr_get_state(aepptr) == AEPState_Waiting)) _assert_fail("async_endpoint_ptr_get_state(aepptr) == AEPState_Waiting", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/asyncendpoint.c", 150, __FUNCTION__);
 
     /* Dequeue TCB */
     aep_queue = aep_ptr_get_queue(aepptr);
@@ -18620,7 +18691,7 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
     /* Make thread inactive */
     setThreadState(threadPtr, ThreadState_Inactive);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18631,7 +18702,7 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18641,8 +18712,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18652,8 +18723,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18663,7 +18734,7 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
 # 1 "./api/invocation.h" 1
 /* @LICENSE(OKL_CORE) */
 
@@ -18672,8 +18743,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  * To add an invocation call number, edit libsel4/include/interfaces/sel4.xml.
  *
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18683,8 +18754,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/types.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18694,8 +18765,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18705,8 +18776,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18716,8 +18787,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18727,8 +18798,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18738,8 +18809,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/interrupt.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/interrupt.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18749,8 +18820,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/untyped.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/untyped.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18760,8 +18831,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 1
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18771,8 +18842,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18782,8 +18853,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 25 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/preemption.h" 1
+# 25 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/preemption.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18793,8 +18864,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 26 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 26 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18804,8 +18875,8 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 27 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 27 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -18815,7 +18886,7 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
  *
  * @TAG(GD_GPL)
  */
-# 28 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c" 2
+# 28 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c" 2
 
 struct finaliseSlot_ret {
     exception_t status;
@@ -18838,7 +18909,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
     exception_t status;
 
     /* Haskell error: "decodeCNodeInvocation: invalid cap" */
-    if(!(cap_get_capType(cap) == cap_cnode_cap)) _assert_fail("cap_get_capType(cap) == cap_cnode_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 50, __FUNCTION__);
+    if(!(cap_get_capType(cap) == cap_cnode_cap)) _assert_fail("cap_get_capType(cap) == cap_cnode_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 50, __FUNCTION__);
 
     if (label < CNodeRevoke || label > CNodeSaveCaller) {
         do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 53, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("CNodeCap: Illegal Operation attempted."); printf(">>" "\033[0m" "\n"); } while (0);
@@ -18964,7 +19035,7 @@ decodeCNodeInvocation(word_t label, unsigned int length, cap_t cap,
             break;
 
         default:
-            if(!(0)) _assert_fail("0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 176, __FUNCTION__);
+            if(!(0)) _assert_fail("0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 176, __FUNCTION__);
             return EXCEPTION_NONE;
         }
 
@@ -19165,7 +19236,7 @@ invokeCNodeSaveCaller(cte_t *destSlot)
         break;
 
     default:
-        _fail("caller capability must be null or reply", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 377, __func__);
+        _fail("caller capability must be null or reply", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 377, __func__);
         break;
     }
 
@@ -19232,14 +19303,14 @@ cteInsert(cap_t newCap, cte_t *srcSlot, cte_t *destSlot)
     newMDB = mdb_node_set_mdbFirstBadged(newMDB, newCapIsRevocable);
 
     /* Haskell error: "cteInsert to non-empty destination" */
-    if(!(cap_get_capType(destSlot->cap) == cap_null_cap)) _assert_fail("cap_get_capType(destSlot->cap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 444, __FUNCTION__);
+    if(!(cap_get_capType(destSlot->cap) == cap_null_cap)) _assert_fail("cap_get_capType(destSlot->cap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 444, __FUNCTION__);
     /* Haskell error: "cteInsert: mdb entry must be empty" */
     if(!((cte_t*)mdb_node_get_mdbNext(destSlot->cteMDBNode) == ((void *)0) && (cte_t*)mdb_node_get_mdbPrev(destSlot->cteMDBNode) == ((void *)0))) _assert_fail("(cte_t*)mdb_node_get_mdbNext(destSlot->cteMDBNode) == NULL && (cte_t*)mdb_node_get_mdbPrev(destSlot->cteMDBNode) == NULL",
- "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
-# 446 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+ "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c"
+# 446 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c"
     ,
  447
-# 446 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+# 446 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c"
     , __FUNCTION__)
                                                                       ;
 
@@ -19264,14 +19335,14 @@ cteMove(cap_t newCap, cte_t *srcSlot, cte_t *destSlot)
     uint32_t prev_ptr, next_ptr;
 
     /* Haskell error: "cteMove to non-empty destination" */
-    if(!(cap_get_capType(destSlot->cap) == cap_null_cap)) _assert_fail("cap_get_capType(destSlot->cap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 470, __FUNCTION__);
+    if(!(cap_get_capType(destSlot->cap) == cap_null_cap)) _assert_fail("cap_get_capType(destSlot->cap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 470, __FUNCTION__);
     /* Haskell error: "cteMove: mdb entry must be empty" */
     if(!((cte_t*)mdb_node_get_mdbNext(destSlot->cteMDBNode) == ((void *)0) && (cte_t*)mdb_node_get_mdbPrev(destSlot->cteMDBNode) == ((void *)0))) _assert_fail("(cte_t*)mdb_node_get_mdbNext(destSlot->cteMDBNode) == NULL && (cte_t*)mdb_node_get_mdbPrev(destSlot->cteMDBNode) == NULL",
- "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
-# 472 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+ "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c"
+# 472 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c"
     ,
  473
-# 472 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+# 472 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c"
     , __FUNCTION__)
                                                                       ;
 
@@ -19432,7 +19503,7 @@ capRemovable(cap_t cap, cte_t* slot)
         return (n == 0 || (n == 1 && slot == z_slot));
     }
     default:
-        _fail("finaliseCap should only return Zombie or NullCap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 632, __func__);
+        _fail("finaliseCap should only return Zombie or NullCap", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 632, __func__);
     }
 }
 
@@ -19500,13 +19571,13 @@ reduceZombie(cte_t* slot, bool_t immediate)
     word_t n, type;
     exception_t status;
 
-    if(!(cap_get_capType(slot->cap) == cap_zombie_cap)) _assert_fail("cap_get_capType(slot->cap) == cap_zombie_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 700, __FUNCTION__);
+    if(!(cap_get_capType(slot->cap) == cap_zombie_cap)) _assert_fail("cap_get_capType(slot->cap) == cap_zombie_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 700, __FUNCTION__);
     ptr = (cte_t*)cap_zombie_cap_get_capZombiePtr(slot->cap);
     n = cap_zombie_cap_get_capZombieNumber(slot->cap);
     type = cap_zombie_cap_get_capZombieType(slot->cap);
 
     /* Haskell error: "reduceZombie: expected unremovable zombie" */
-    if(!(n > 0)) _assert_fail("n > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 706, __FUNCTION__);
+    if(!(n > 0)) _assert_fail("n > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 706, __FUNCTION__);
 
     if (immediate) {
         cte_t* endSlot = &ptr[n - 1];
@@ -19527,28 +19598,28 @@ reduceZombie(cte_t* slot, bool_t immediate)
             if (ptr == ptr2 &&
                     cap_zombie_cap_get_capZombieNumber(slot->cap) == n &&
                     cap_zombie_cap_get_capZombieType(slot->cap) == type) {
-                if(!(cap_get_capType(endSlot->cap) == cap_null_cap)) _assert_fail("cap_get_capType(endSlot->cap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 727, __FUNCTION__);
+                if(!(cap_get_capType(endSlot->cap) == cap_null_cap)) _assert_fail("cap_get_capType(endSlot->cap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 727, __FUNCTION__);
                 slot->cap =
                     cap_zombie_cap_set_capZombieNumber(slot->cap, n - 1);
             } else {
                 /* Haskell error:
                  * "Expected new Zombie to be self-referential."
                  */
-                if(!(ptr2 == slot && ptr != slot)) _assert_fail("ptr2 == slot && ptr != slot", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 734, __FUNCTION__);
+                if(!(ptr2 == slot && ptr != slot)) _assert_fail("ptr2 == slot && ptr != slot", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 734, __FUNCTION__);
             }
             break;
         }
 
         default:
-            _fail("Expected recursion to result in Zombie.", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 740, __func__);
+            _fail("Expected recursion to result in Zombie.", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 740, __func__);
         }
     } else {
         /* Haskell error: "Cyclic zombie passed to unexposed reduceZombie" */
-        if(!(ptr != slot)) _assert_fail("ptr != slot", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 744, __FUNCTION__);
+        if(!(ptr != slot)) _assert_fail("ptr != slot", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 744, __FUNCTION__);
 
         if (cap_get_capType(ptr->cap) == cap_zombie_cap) {
             /* Haskell error: "Moving self-referential Zombie aside." */
-            if(!(ptr != ((cte_t *)(cap_zombie_cap_get_capZombiePtr(ptr->cap))))) _assert_fail("ptr != CTE_PTR(cap_zombie_cap_get_capZombiePtr(ptr->cap))", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c", 748, __FUNCTION__);
+            if(!(ptr != ((cte_t *)(cap_zombie_cap_get_capZombiePtr(ptr->cap))))) _assert_fail("ptr != CTE_PTR(cap_zombie_cap_get_capZombiePtr(ptr->cap))", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c", 748, __FUNCTION__);
         }
 
         capSwapForDelete(ptr, slot);
@@ -19567,11 +19638,11 @@ cteDeleteOne(cte_t* slot)
         fc_ret = finaliseCap(slot->cap, final, true);
         /* Haskell error: "cteDeleteOne: cap should be removable" */
         if(!(capRemovable(fc_ret.remainder, slot) && fc_ret.irq == irqInvalid)) _assert_fail("capRemovable(fc_ret.remainder, slot) && fc_ret.irq == irqInvalid",
- "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
-# 766 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+ "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c"
+# 766 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c"
         ,
  767
-# 766 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+# 766 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c"
         , __FUNCTION__)
                                         ;
         emptySlot(slot, irqInvalid);
@@ -19797,7 +19868,7 @@ loadCapTransfer(word_t *buffer)
     const int offset = 120 + ((1ul<<(seL4_MsgExtraCapBits))-1) + 2;
     return capTransferFromWords(buffer + offset);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -19808,7 +19879,7 @@ loadCapTransfer(word_t *buffer)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -19818,8 +19889,8 @@ loadCapTransfer(word_t *buffer)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -19829,8 +19900,8 @@ loadCapTransfer(word_t *buffer)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/vspace.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -19840,8 +19911,8 @@ loadCapTransfer(word_t *buffer)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/registerset.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -19851,8 +19922,8 @@ loadCapTransfer(word_t *buffer)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -19862,8 +19933,8 @@ loadCapTransfer(word_t *buffer)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/asyncendpoint.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/asyncendpoint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -19873,8 +19944,8 @@ loadCapTransfer(word_t *buffer)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -19884,8 +19955,8 @@ loadCapTransfer(word_t *buffer)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/endpoint.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/endpoint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -19895,8 +19966,8 @@ loadCapTransfer(word_t *buffer)
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -19906,7 +19977,7 @@ loadCapTransfer(word_t *buffer)
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c" 2
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c" 2
 
 static inline tcb_queue_t __attribute__((__pure__))
 ep_ptr_get_queue(endpoint_t *epptr)
@@ -19968,7 +20039,7 @@ sendIPC(bool_t blocking, bool_t do_call, word_t badge,
         dest = queue.head;
 
         /* Haskell error "Receive endpoint queue must not be empty" */
-        if(!(dest)) _assert_fail("dest", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c", 81, __FUNCTION__);
+        if(!(dest)) _assert_fail("dest", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c", 81, __FUNCTION__);
 
         /* Dequeue the first TCB */
         queue = tcbEPDequeue(dest, queue);
@@ -20007,7 +20078,7 @@ receiveIPC(tcb_t *thread, cap_t cap)
     bool_t diminish;
 
     /* Haskell error "receiveIPC: invalid cap" */
-    if(!(cap_get_capType(cap) == cap_endpoint_cap)) _assert_fail("cap_get_capType(cap) == cap_endpoint_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c", 120, __FUNCTION__);
+    if(!(cap_get_capType(cap) == cap_endpoint_cap)) _assert_fail("cap_get_capType(cap) == cap_endpoint_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c", 120, __FUNCTION__);
 
     epptr = ((endpoint_t *)cap_endpoint_cap_get_capEPPtr(cap));
     diminish = !cap_endpoint_cap_get_capCanSend(cap);
@@ -20047,7 +20118,7 @@ receiveIPC(tcb_t *thread, cap_t cap)
         sender = queue.head;
 
         /* Haskell error "Send endpoint queue must not be empty" */
-        if(!(sender)) _assert_fail("sender", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c", 160, __FUNCTION__);
+        if(!(sender)) _assert_fail("sender", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c", 160, __FUNCTION__);
 
         /* Dequeue the first TCB */
         queue = tcbEPDequeue(sender, queue);
@@ -20121,7 +20192,7 @@ ipcCancel(tcb_t *tptr)
         epptr = ((endpoint_t *)thread_state_ptr_get_blockingIPCEndpoint(state));
 
         /* Haskell error "blockedIPCCancel: endpoint must not be idle" */
-        if(!(endpoint_ptr_get_state(epptr) != EPState_Idle)) _assert_fail("endpoint_ptr_get_state(epptr) != EPState_Idle", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c", 234, __FUNCTION__);
+        if(!(endpoint_ptr_get_state(epptr) != EPState_Idle)) _assert_fail("endpoint_ptr_get_state(epptr) != EPState_Idle", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c", 234, __FUNCTION__);
 
         /* Dequeue TCB */
         queue = ep_ptr_get_queue(epptr);
@@ -20227,10 +20298,10 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
     }
 
     default:
-        _fail("invalid EP state", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c", 340, __func__);
+        _fail("invalid EP state", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c", 340, __func__);
     }
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20241,7 +20312,7 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20251,8 +20322,8 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20262,8 +20333,8 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20273,7 +20344,7 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
 # 1 "./api/invocation.h" 1
 /* @LICENSE(OKL_CORE) */
 
@@ -20282,8 +20353,8 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  * To add an invocation call number, edit libsel4/include/interfaces/sel4.xml.
  *
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20293,8 +20364,8 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20304,8 +20375,8 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20315,8 +20386,8 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/interrupt.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/interrupt.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20326,8 +20397,8 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20337,8 +20408,8 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/asyncendpoint.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/asyncendpoint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20348,8 +20419,8 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20359,8 +20430,8 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20370,8 +20441,8 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20381,7 +20452,7 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
  *
  * @TAG(GD_GPL)
  */
-# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c" 2
+# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c" 2
 
 exception_t
 decodeIRQControlInvocation(word_t label, unsigned int length,
@@ -20451,8 +20522,8 @@ invokeIRQControl(irq_t irq, cte_t *handlerSlot, cte_t *controlSlot)
 }
 
 exception_t
-decodeIRQHandlerInvocation(word_t label, irq_t irq,
-                           extra_caps_t extraCaps)
+decodeIRQHandlerInvocation(word_t label, unsigned int length, irq_t irq,
+                           extra_caps_t extraCaps, word_t *buffer)
 {
     switch (label) {
     case IRQAckIRQ:
@@ -20492,9 +20563,24 @@ decodeIRQHandlerInvocation(word_t label, irq_t irq,
         setThreadState(ksCurThread, ThreadState_Restart);
         invokeIRQHandler_ClearIRQHandler(irq);
         return EXCEPTION_NONE;
+    case IRQSetMode: {
+        bool_t trig, pol;
+
+        if (length < 2) {
+            do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 138, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IRQSetMode: Not enough arguments", length); printf(">>" "\033[0m" "\n"); } while (0);
+            current_syscall_error.type = seL4_TruncatedMessage;
+            return EXCEPTION_SYSCALL_ERROR;
+        }
+        trig = getSyscallArg(0, buffer);
+        pol = getSyscallArg(1, buffer);
+
+        setThreadState(ksCurThread, ThreadState_Restart);
+        invokeIRQHandler_SetMode(irq, !!trig, !!pol);
+        return EXCEPTION_NONE;
+    }
 
     default:
-        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 136, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IRQHandler: Illegal operation."); printf(">>" "\033[0m" "\n"); } while (0);
+        do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__, 151, (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("IRQHandler: Illegal operation."); printf(">>" "\033[0m" "\n"); } while (0);
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
@@ -20504,6 +20590,11 @@ void
 invokeIRQHandler_AckIRQ(irq_t irq)
 {
     maskInterrupt(false, irq);
+}
+
+void invokeIRQHandler_SetMode(irq_t irq, bool_t levelTrigger, bool_t polarityLow)
+{
+    setInterruptMode(irq, levelTrigger, polarityLow);
 }
 
 void
@@ -20586,7 +20677,7 @@ handleInterrupt(irq_t irq)
 
     default:
         /* No corresponding haskell error */
-        _fail("Invalid IRQ state", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c", 228, __func__);
+        _fail("Invalid IRQ state", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c", 248, __func__);
     }
 
     ackInterrupt(irq);
@@ -20604,7 +20695,7 @@ setIRQState(irq_state_t irqState, irq_t irq)
     intStateIRQTable[irq] = irqState;
     maskInterrupt(irqState == IRQInactive, irq);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20615,7 +20706,7 @@ setIRQState(irq_state_t irqState, irq_t irq)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20625,8 +20716,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20636,8 +20727,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20647,8 +20738,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20658,8 +20749,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20669,8 +20760,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/object/objecttype.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20680,8 +20771,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20691,8 +20782,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20702,8 +20793,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20713,8 +20804,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/asyncendpoint.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/asyncendpoint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20724,8 +20815,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/endpoint.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/endpoint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20735,8 +20826,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20746,8 +20837,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/interrupt.h" 1
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/interrupt.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20757,8 +20848,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 1
+# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20768,8 +20859,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 25 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/untyped.h" 1
+# 25 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/untyped.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20779,8 +20870,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 26 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/preemption.h" 1
+# 26 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/preemption.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20790,8 +20881,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 27 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 27 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20801,8 +20892,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 28 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 28 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20812,8 +20903,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 29 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/vspace.h" 1
+# 29 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20823,8 +20914,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 30 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine.h" 1
+# 30 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20834,8 +20925,8 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 31 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 31 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -20845,7 +20936,7 @@ setIRQState(irq_state_t irqState, irq_t irq)
  *
  * @TAG(GD_GPL)
  */
-# 32 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c" 2
+# 32 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c" 2
 
 word_t getObjectSize(word_t t, word_t userObjSize)
 {
@@ -20864,7 +20955,7 @@ word_t getObjectSize(word_t t, word_t userObjSize)
         case seL4_UntypedObject:
             return userObjSize;
         default:
-            _fail("Invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 50, __func__);
+            _fail("Invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c", 50, __func__);
             return 0;
         }
     }
@@ -20951,7 +21042,7 @@ finaliseCap(cap_t cap, bool_t final, bool_t exposed)
     }
 
     if (exposed) {
-        _fail("finaliseCap: failed to finalise immediately.", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 137, __func__);
+        _fail("finaliseCap: failed to finalise immediately.", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c", 137, __func__);
     }
 
     switch (cap_get_capType(cap)) {
@@ -21022,7 +21113,7 @@ recycleCap(bool_t is_final, cap_t cap)
 
     switch (cap_get_capType(cap)) {
     case cap_null_cap:
-        _fail("recycleCap: can't reconstruct Null", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 208, __func__);
+        _fail("recycleCap: can't reconstruct Null", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c", 208, __func__);
         break;
     case cap_domain_cap:
         return cap;
@@ -21044,16 +21135,16 @@ recycleCap(bool_t is_final, cap_t cap)
             /* Haskell error:
              * "Zombie cap should point at inactive thread" */
             if(!(ts == ThreadState_Inactive || ts != ThreadState_IdleThreadState)) _assert_fail("ts == ThreadState_Inactive || ts != ThreadState_IdleThreadState",
- "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
-# 229 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+ "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c"
+# 229 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c"
             ,
  230
-# 229 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+# 229 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c"
             , __FUNCTION__)
                                                      ;
             /* Haskell error:
              * "Zombie cap should not point at queued thread" */
-            if(!(!thread_state_get_tcbQueued(tcb->tcbState))) _assert_fail("!thread_state_get_tcbQueued(tcb->tcbState)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 233, __FUNCTION__);
+            if(!(!thread_state_get_tcbQueued(tcb->tcbState))) _assert_fail("!thread_state_get_tcbQueued(tcb->tcbState)", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c", 233, __FUNCTION__);
 
             /* makeObject doesn't exist in C, objects are initialised by
              * zeroing. The effect of recycle in Haskell is to reinitialise
@@ -21308,7 +21399,7 @@ maskCapRights(cap_rights_t cap_rights, cap_t cap)
     }
 
     default:
-        _fail("Invalid cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 488, __func__); /* Sentinel for invalid enums */
+        _fail("Invalid cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c", 488, __func__); /* Sentinel for invalid enums */
     }
 }
 
@@ -21370,7 +21461,7 @@ createObject(object_t t, void *regionBase, word_t userSize)
         return cap_untyped_cap_new(0, userSize, ((unsigned int)regionBase));
 
     default:
-        _fail("Invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 550, __func__);
+        _fail("Invalid object type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c", 550, __func__);
     }
 }
 
@@ -21425,7 +21516,7 @@ decodeInvocation(word_t label, unsigned int length,
         if (__builtin_expect(!!(!cap_endpoint_cap_get_capCanSend(cap)), 0)) {
             do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
  604
-# 603 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+# 603 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c"
             , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Attempted to invoke a read-only endpoint cap #%u.", capIndex); printf(">>" "\033[0m" "\n"); } while (0)
                                ;
             current_syscall_error.type = seL4_InvalidCapability;
@@ -21445,7 +21536,7 @@ decodeInvocation(word_t label, unsigned int length,
         if (__builtin_expect(!!(!cap_async_endpoint_cap_get_capAEPCanSend(cap)), 0)) {
             do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
  621
-# 620 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+# 620 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c"
             , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Attempted to invoke a read-only async-endpoint cap #%u.", capIndex); printf(">>" "\033[0m" "\n"); } while (0)
                                ;
             current_syscall_error.type = seL4_InvalidCapability;
@@ -21469,7 +21560,7 @@ decodeInvocation(word_t label, unsigned int length,
         if (__builtin_expect(!!(cap_reply_cap_get_capReplyMaster(cap)), 0)) {
             do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
  642
-# 641 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+# 641 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c"
             , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Attempted to invoke an invalid reply cap #%u.", capIndex); printf(">>" "\033[0m" "\n"); } while (0)
                                ;
             current_syscall_error.type = seL4_InvalidCapability;
@@ -21500,11 +21591,11 @@ decodeInvocation(word_t label, unsigned int length,
                                           extraCaps, buffer);
 
     case cap_irq_handler_cap:
-        return decodeIRQHandlerInvocation(label,
-                                          cap_irq_handler_cap_get_capIRQ(cap), extraCaps);
+        return decodeIRQHandlerInvocation(label, length,
+                                          cap_irq_handler_cap_get_capIRQ(cap), extraCaps, buffer);
 
     default:
-        _fail("Invalid cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c", 675, __func__);
+        _fail("Invalid cap type", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c", 675, __func__);
     }
 }
 
@@ -21533,7 +21624,7 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
     doReplyTransfer(ksCurThread, thread, slot);
     return EXCEPTION_NONE;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21544,7 +21635,7 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21554,8 +21645,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21565,7 +21656,7 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
 # 1 "./api/invocation.h" 1
 /* @LICENSE(OKL_CORE) */
 
@@ -21574,8 +21665,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  * To add an invocation call number, edit libsel4/include/interfaces/sel4.xml.
  *
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21585,8 +21676,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21596,8 +21687,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21607,8 +21698,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21618,8 +21709,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21629,8 +21720,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/tcb.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/tcb.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21640,8 +21731,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21651,8 +21742,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21662,8 +21753,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/vspace.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21673,8 +21764,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21684,8 +21775,8 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -21695,7 +21786,7 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
  *
  * @TAG(GD_GPL)
  */
-# 25 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c" 2
+# 25 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c" 2
 
 static inline __attribute__((__pure__))
 unsigned int
@@ -21855,13 +21946,13 @@ setupCallerCap(tcb_t *sender, tcb_t *receiver)
     replySlot = (((cte_t *)((unsigned int)sender&~((1ul<<(10))-1ul)))+tcbReply);
     masterCap = replySlot->cap;
     /* Haskell error: "Sender must have a valid master reply cap" */
-    if(!(cap_get_capType(masterCap) == cap_reply_cap)) _assert_fail("cap_get_capType(masterCap) == cap_reply_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c", 184, __FUNCTION__);
-    if(!(cap_reply_cap_get_capReplyMaster(masterCap))) _assert_fail("cap_reply_cap_get_capReplyMaster(masterCap)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c", 185, __FUNCTION__);
-    if(!(((tcb_t *)(cap_reply_cap_get_capTCBPtr(masterCap))) == sender)) _assert_fail("TCB_PTR(cap_reply_cap_get_capTCBPtr(masterCap)) == sender", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c", 186, __FUNCTION__);
+    if(!(cap_get_capType(masterCap) == cap_reply_cap)) _assert_fail("cap_get_capType(masterCap) == cap_reply_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c", 184, __FUNCTION__);
+    if(!(cap_reply_cap_get_capReplyMaster(masterCap))) _assert_fail("cap_reply_cap_get_capReplyMaster(masterCap)", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c", 185, __FUNCTION__);
+    if(!(((tcb_t *)(cap_reply_cap_get_capTCBPtr(masterCap))) == sender)) _assert_fail("TCB_PTR(cap_reply_cap_get_capTCBPtr(masterCap)) == sender", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c", 186, __FUNCTION__);
     callerSlot = (((cte_t *)((unsigned int)receiver&~((1ul<<(10))-1ul)))+tcbCaller);
     callerCap = callerSlot->cap;
     /* Haskell error: "Caller cap must not already exist" */
-    if(!(cap_get_capType(callerCap) == cap_null_cap)) _assert_fail("cap_get_capType(callerCap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c", 190, __FUNCTION__);
+    if(!(cap_get_capType(callerCap) == cap_null_cap)) _assert_fail("cap_get_capType(callerCap) == cap_null_cap", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c", 190, __FUNCTION__);
     cteInsert(cap_reply_cap_new(false, ((unsigned int)sender)),
               replySlot, callerSlot);
 }
@@ -22056,7 +22147,7 @@ decodeReadRegisters(cap_t cap, unsigned int length, bool_t call,
     if (n < 1 || n > n_frameRegisters + n_gpRegisters) {
         do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
  384
-# 383 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+# 383 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c"
         , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB ReadRegisters: Attempted to read an invalid number of registers (%d).", (int)n); printf(">>" "\033[0m" "\n"); } while (0)
                          ;
         current_syscall_error.type = seL4_RangeError;
@@ -22105,7 +22196,7 @@ decodeWriteRegisters(cap_t cap, unsigned int length, word_t *buffer)
     if (length - 2 < w) {
         do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
  430
-# 429 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+# 429 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c"
         , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB WriteRegisters: Message too short for requested write size (%d/%d).", (int)(length - 2), (int)w); printf(">>" "\033[0m" "\n"); } while (0)
                                             ;
         current_syscall_error.type = seL4_TruncatedMessage;
@@ -22167,7 +22258,7 @@ decodeTCBConfigure(cap_t cap, unsigned int length, cte_t* slot,
     if (prio > ksCurThread->tcbPriority) {
         do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
  489
-# 488 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+# 488 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c"
         , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB Configure: Requested priority %d too high (max %d).", (int)prio, (int)(ksCurThread->tcbPriority)); printf(">>" "\033[0m" "\n"); } while (0)
                                                              ;
         current_syscall_error.type = seL4_IllegalOperation;
@@ -22260,7 +22351,7 @@ decodeSetPriority(cap_t cap, unsigned int length, word_t *buffer)
     if (newPrio > ksCurThread->tcbPriority) {
         do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
  579
-# 578 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+# 578 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c"
         , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("TCB SetPriority: Requested priority %d too high (max %d).", (int)newPrio, (int)ksCurThread->tcbPriority); printf(">>" "\033[0m" "\n"); } while (0)
                                                               ;
         current_syscall_error.type = seL4_IllegalOperation;
@@ -22420,7 +22511,7 @@ decodeDomainInvocation(word_t label, unsigned int length, extra_caps_t extraCaps
         if (domain >= 1) {
             do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
  736
-# 735 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+# 735 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c"
             , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Domain Configure: invalid domain (%d >= %d).", (int)domain, 1); printf(">>" "\033[0m" "\n"); } while (0)
                                                       ;
             current_syscall_error.type = seL4_InvalidArgument;
@@ -22678,7 +22769,7 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
 
     return EXCEPTION_NONE;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22689,7 +22780,7 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22699,8 +22790,8 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/types.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22710,8 +22801,8 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/failures.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22721,8 +22812,8 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/api/syscall.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22732,7 +22823,7 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
 # 1 "./api/invocation.h" 1
 /* @LICENSE(OKL_CORE) */
 
@@ -22741,8 +22832,8 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  * To add an invocation call number, edit libsel4/include/interfaces/sel4.xml.
  *
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22752,8 +22843,8 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22763,8 +22854,8 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/untyped.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/untyped.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22774,8 +22865,8 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/objecttype.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22785,8 +22876,8 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/cnode.h" 1
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22796,8 +22887,8 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/cspace.h" 1
+# 21 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/cspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22807,8 +22898,8 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/kernel/thread.h" 1
+# 22 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22818,8 +22909,8 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 23 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -22829,7 +22920,7 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
  *
  * @TAG(GD_GPL)
  */
-# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c" 2
+# 24 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c" 2
 
 static word_t
 alignUp(word_t baseValue, unsigned int alignment)
@@ -22938,7 +23029,7 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
     if (nodeOffset > nodeSize - 1) {
         do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
  131
-# 130 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c"
+# 130 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c"
         , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Destination node offset #%d too large.", (int)nodeOffset); printf(">>" "\033[0m" "\n"); } while (0)
                                   ;
         current_syscall_error.type = seL4_RangeError;
@@ -22949,7 +23040,7 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
     if (nodeWindow < 1 || nodeWindow > 256) {
         do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
  139
-# 138 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c"
+# 138 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c"
         , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Number of requested objects (%d) too small or large.", (int)nodeWindow); printf(">>" "\033[0m" "\n"); } while (0)
                                   ;
         current_syscall_error.type = seL4_RangeError;
@@ -22974,7 +23065,7 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
         if (status != EXCEPTION_NONE) {
             do { printf("\033[0m" "\033[30;1m" "<<" "\033[0m" "\033[32m" "seL4" "\033[0m" "\033[30;1m" " [%s/%d T%x @%x]: ", __func__,
  161
-# 160 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c"
+# 160 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c"
             , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Slot #%d in destination window non-empty.", (int)i); printf(">>" "\033[0m" "\n"); } while (0)
                              ;
             return status;
@@ -23017,7 +23108,7 @@ decodeUntypedInvocation(word_t label, unsigned int length, cte_t *slot,
 
 
  201
-# 197 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c"
+# 197 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c"
         , (int)ksCurThread, (int)getRestartPC(ksCurThread)); printf("Untyped Retype: Insufficient memory " "(%u * %u bytes needed, %u bytes available).", (unsigned int)nodeWindow, (objectSize >= 32 ? -1 : (1 << objectSize)), (unsigned int)(untypedFreeBytes)); printf(">>" "\033[0m" "\n"); } while (0)
 
 
@@ -23078,7 +23169,7 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
 
     return EXCEPTION_NONE;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23089,7 +23180,7 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23099,8 +23190,8 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23110,8 +23201,8 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23121,8 +23212,8 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23132,8 +23223,8 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23143,8 +23234,8 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23154,8 +23245,8 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/acpi.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/acpi.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23165,8 +23256,8 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/devices.h" 1
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/devices.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23176,8 +23267,8 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
  *
  * @TAG(GD_GPL)
  */
-# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pci.h" 1
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pci.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23187,7 +23278,7 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
  *
  * @TAG(GD_GPL)
  */
-# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c" 2
+# 20 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c" 2
 
 enum acpi_type {
     ACPI_RSDP,
@@ -23384,7 +23475,7 @@ acpi_table_init(void* entry, enum acpi_type table_type)
     }
     default:
         printf("Error: Mapping unknown ACPI table type\n");
-        if(!(false)) _assert_fail("false", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c", 216, __FUNCTION__);
+        if(!(false)) _assert_fail("false", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c", 216, __FUNCTION__);
         return ((void *)0);
     }
 
@@ -23414,7 +23505,7 @@ acpi_init(void)
     acpi_rsdt_mapped = (acpi_rsdt_t*)acpi_table_init(acpi_rsdt, ACPI_RSDT);
     printf("ACPI: RSDT vaddr=0x%x\n", (unsigned int)acpi_rsdt_mapped);
 
-    if(!(acpi_rsdt_mapped->header.length > 0)) _assert_fail("acpi_rsdt_mapped->header.length > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c", 246, __FUNCTION__);
+    if(!(acpi_rsdt_mapped->header.length > 0)) _assert_fail("acpi_rsdt_mapped->header.length > 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c", 246, __FUNCTION__);
     if (acpi_calc_checksum((char*)acpi_rsdt_mapped, acpi_rsdt_mapped->header.length) != 0) {
         printf("ACPI: RSDT checksum failure\n");
         return ((void *)0);
@@ -23427,7 +23518,9 @@ __attribute__((__section__(".boot.text"))) uint32_t
 acpi_madt_scan(
     acpi_rsdt_t* acpi_rsdt,
     cpu_id_t* cpu_list,
-    uint32_t max_list_len
+    uint32_t max_list_len,
+    uint32_t* num_ioapic,
+    paddr_t* ioapic_paddrs
 )
 {
     unsigned int entries;
@@ -23441,8 +23534,9 @@ acpi_madt_scan(
     acpi_rsdt_mapped = (acpi_rsdt_t*)acpi_table_init(acpi_rsdt, ACPI_RSDT);
 
     num_cpu = 0;
+    *num_ioapic = 0;
 
-    if(!(acpi_rsdt_mapped->header.length >= sizeof(acpi_header_t))) _assert_fail("acpi_rsdt_mapped->header.length >= sizeof(acpi_header_t)", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c", 274, __FUNCTION__);
+    if(!(acpi_rsdt_mapped->header.length >= sizeof(acpi_header_t))) _assert_fail("acpi_rsdt_mapped->header.length >= sizeof(acpi_header_t)", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c", 277, __FUNCTION__);
     entries = (acpi_rsdt_mapped->header.length - sizeof(acpi_header_t)) / sizeof(acpi_header_t*);
     for (count = 0; count < entries; count++) {
         acpi_madt = (acpi_madt_t*)acpi_rsdt_mapped->entry[count];
@@ -23478,6 +23572,19 @@ acpi_madt_scan(
                         ((acpi_madt_ioapic_t*)acpi_madt_header)->ioapic_addr,
                         ((acpi_madt_ioapic_t*)acpi_madt_header)->gsib
                     );
+                    if (*num_ioapic == 1) {
+                        printf("ACPI: Not recording this IOAPIC, only support %d\n", 1);
+                    } else {
+                        ioapic_paddrs[*num_ioapic] = ((acpi_madt_ioapic_t*)acpi_madt_header)->ioapic_addr;
+                        (*num_ioapic)++;
+                    }
+                    break;
+                case MADT_ISO:
+                    printf("ACIP: MADT_ISO bus=%d source=%d gsi=%d flags=0x%x\n",
+                           ((acpi_madt_iso_t*)acpi_madt_header)->bus,
+                           ((acpi_madt_iso_t*)acpi_madt_header)->source,
+                           ((acpi_madt_iso_t*)acpi_madt_header)->gsi,
+                           ((acpi_madt_iso_t*)acpi_madt_header)->flags);
                     break;
                 default:
                     break;
@@ -23491,7 +23598,7 @@ acpi_madt_scan(
 
     return num_cpu;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/debug_helpers.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/debug_helpers.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23504,7 +23611,7 @@ acpi_madt_scan(
 
 
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23514,8 +23621,8 @@ acpi_madt_scan(
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/debug_helpers.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/debug_helpers.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/debug_helpers.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/debug_helpers.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23525,8 +23632,8 @@ acpi_madt_scan(
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/debug_helpers.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/io.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/debug_helpers.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23536,7 +23643,7 @@ acpi_madt_scan(
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/debug_helpers.c" 2
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/debug_helpers.c" 2
 
 
 
@@ -23551,7 +23658,7 @@ void putDebugChar(unsigned char a)
     while ((in8(ia32KSdebugPort + 5) & 0x20) == 0);
     out8(ia32KSdebugPort, a);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23562,7 +23669,7 @@ void putDebugChar(unsigned char a)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23572,8 +23679,8 @@ void putDebugChar(unsigned char a)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23583,8 +23690,8 @@ void putDebugChar(unsigned char a)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/apic.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/apic.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23594,8 +23701,8 @@ void putDebugChar(unsigned char a)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23605,8 +23712,8 @@ void putDebugChar(unsigned char a)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23616,8 +23723,8 @@ void putDebugChar(unsigned char a)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pic.h" 1
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pic.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23627,8 +23734,8 @@ void putDebugChar(unsigned char a)
  *
  * @TAG(GD_GPL)
  */
-# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine.h" 1
+# 17 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/ioapic.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23638,7 +23745,18 @@ void putDebugChar(unsigned char a)
  *
  * @TAG(GD_GPL)
  */
-# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c" 2
+# 18 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 19 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c" 2
 
 
 
@@ -23667,14 +23785,24 @@ void platAddDevices(void)
 /* Enable or disable irq according to the 'mask' flag. */
 void maskInterrupt(bool_t mask, irq_t irq)
 {
-    if(!(irq >= irq_isa_min)) _assert_fail("irq >= irq_isa_min", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c", 46, __FUNCTION__);
-    if(!(irq <= maxIRQ)) _assert_fail("irq <= maxIRQ", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c", 47, __FUNCTION__);
+    if(!(irq >= irq_controller_min)) _assert_fail("irq >= irq_controller_min", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c", 47, __FUNCTION__);
+    if(!(irq <= maxIRQ)) _assert_fail("irq <= maxIRQ", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c", 48, __FUNCTION__);
 
-    if (irq <= irq_isa_max) {
+    if (irq <= irq_controller_max) {
+
+
+
         pic_mask_irq(mask, irq);
+
     } else {
         /* we can't mask/unmask specific APIC vectors (e.g. MSIs/IPIs) */
     }
+}
+
+/* Set mode of an irq */
+void setInterruptMode(irq_t irq, bool_t levelTrigger, bool_t polarityLow)
+{
+# 74 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c"
 }
 
 /* Handle a platform-reserved IRQ. */
@@ -23702,14 +23830,25 @@ irq_t getActiveIRQ(void)
 /* Checks for pending IRQ */
 bool_t isIRQPending(void)
 {
-    return apic_is_interrupt_pending() || pic_is_irq_pending();
+    if (apic_is_interrupt_pending()) {
+        return true;
+    }
+
+    if (pic_is_irq_pending()) {
+        return true;
+    }
+
+    return false;
 }
 
 void ackInterrupt(irq_t irq)
 {
+
     if (irq <= irq_isa_max) {
         pic_ack_active_irq();
-    } else {
+    } else
+
+    {
         apic_ack_active_interrupt();
     }
 }
@@ -23725,7 +23864,7 @@ void resetTimer(void)
 {
     /* not necessary */
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/intel-vtd.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/intel-vtd.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23736,7 +23875,7 @@ void resetTimer(void)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/config.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23746,8 +23885,8 @@ void resetTimer(void)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/intel-vtd.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/io.c"
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/intel-vtd.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/io.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23758,7 +23897,7 @@ void resetTimer(void)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23768,8 +23907,8 @@ void resetTimer(void)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/io.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/lock.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/io.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/lock.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23779,8 +23918,8 @@ void resetTimer(void)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/io.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/model/statedata.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/io.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23790,8 +23929,8 @@ void resetTimer(void)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/io.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/io.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/io.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23801,7 +23940,7 @@ void resetTimer(void)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/io.c" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/io.c" 2
 
 
 
@@ -23847,7 +23986,7 @@ void console_putchar(char c)
 
     lock_release(&lock_debug);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pci.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/ioapic.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23858,7 +23997,7 @@ void console_putchar(char c)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/machine/io.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23868,8 +24007,8 @@ void console_putchar(char c)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pci.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/ioapic.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pci.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23879,8 +24018,8 @@ void console_putchar(char c)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pci.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23890,8 +24029,8 @@ void console_putchar(char c)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pci.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pci.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pci.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/kernel/boot_sys.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23901,8 +24040,8 @@ void console_putchar(char c)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pci.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/hardware.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pci.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -23912,8 +24051,30 @@ void console_putchar(char c)
  *
  * @TAG(GD_GPL)
  */
-# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pci.c" 2
-# 29 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pci.c"
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pci.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pci.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pci.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/hardware.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+# 16 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pci.c" 2
+# 29 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pci.c"
 __attribute__((__section__(".boot.text"))) static uint32_t
 pci_read_reg32(uint8_t bus, uint8_t dev, uint8_t fun, uint8_t reg)
 {
@@ -24112,7 +24273,7 @@ pci_scan(uint32_t* bus_used_bitmap)
         }
     }
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pic.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pic.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24123,7 +24284,7 @@ pci_scan(uint32_t* bus_used_bitmap)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24133,8 +24294,8 @@ pci_scan(uint32_t* bus_used_bitmap)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pic.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/io.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pic.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24144,8 +24305,8 @@ pci_scan(uint32_t* bus_used_bitmap)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pic.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/hardware.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pic.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/hardware.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24155,8 +24316,8 @@ pci_scan(uint32_t* bus_used_bitmap)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pic.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pic.h" 1
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pic.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pic.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24166,7 +24327,7 @@ pci_scan(uint32_t* bus_used_bitmap)
  *
  * @TAG(GD_GPL)
  */
-# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pic.c" 2
+# 15 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pic.c" 2
 
 /* PIC (i8259) base registers */
 
@@ -24188,13 +24349,23 @@ pic_remap_irqs(interrupt_t interrupt)
     out8(0xa0 + 1, 0x0);
 }
 
+__attribute__((__section__(".boot.text"))) void pic_disable(void)
+{
+    /* We assume that pic_remap_irqs has already been called and
+     * just mask all the irqs */
+    out8(0x20 + 1, 0xff);
+    out8(0xa0 + 1, 0xff);
+}
+
+
+
 void pic_mask_irq(bool_t mask, irq_t irq)
 {
     uint8_t bit_mask;
     uint16_t pic_port;
 
-    if(!(irq >= irq_isa_min)) _assert_fail("irq >= irq_isa_min", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pic.c", 41, __FUNCTION__);
-    if(!(irq <= irq_isa_max)) _assert_fail("irq <= irq_isa_max", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pic.c", 42, __FUNCTION__);
+    if(!(irq >= irq_isa_min)) _assert_fail("irq >= irq_isa_min", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pic.c", 51, __FUNCTION__);
+    if(!(irq <= irq_isa_max)) _assert_fail("irq <= irq_isa_max", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pic.c", 52, __FUNCTION__);
 
     if (irq < 8) {
         bit_mask = (1ul<<(irq));
@@ -24239,7 +24410,7 @@ void pic_ack_active_irq(void)
     /* ack master PIC */
     out8(0x20, 0x20);
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pit.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pit.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24250,7 +24421,7 @@ void pic_ack_active_irq(void)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/arch/ia32/arch/linker.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/arch/ia32/arch/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24260,8 +24431,8 @@ void pic_ack_active_irq(void)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pit.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/io.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pit.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24271,8 +24442,8 @@ void pic_ack_active_irq(void)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pit.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/plat/pc99/plat/machine/pit.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pit.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/plat/pc99/plat/machine/pit.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24282,7 +24453,7 @@ void pic_ack_active_irq(void)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pit.c" 2
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pit.c" 2
 
 /* PIT (i8253) registers */
 
@@ -24319,7 +24490,7 @@ pit_wait_wraparound(void)
         count |= (in8_phys(0x40) << 8);
     }
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/util.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/util.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24330,7 +24501,7 @@ pit_wait_wraparound(void)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/assert.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24340,8 +24511,8 @@ pit_wait_wraparound(void)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/util.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/stdint.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/util.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/stdint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24351,8 +24522,8 @@ pit_wait_wraparound(void)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/util.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/util.h" 1
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/util.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24362,7 +24533,7 @@ pit_wait_wraparound(void)
  *
  * @TAG(GD_GPL)
  */
-# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/util.c" 2
+# 14 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/util.c" 2
 
 /*
  * Zero 'n' bytes of memory starting from 's'.
@@ -24375,8 +24546,8 @@ memzero(void *s, unsigned int n)
     uint8_t *p = s;
 
     /* Ensure alignment constraints are met. */
-    if(!((unsigned int)s % 4 == 0)) _assert_fail("(unsigned int)s % 4 == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/util.c", 26, __FUNCTION__);
-    if(!(n % 4 == 0)) _assert_fail("n % 4 == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/util.c", 27, __FUNCTION__);
+    if(!((unsigned int)s % 4 == 0)) _assert_fail("(unsigned int)s % 4 == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/util.c", 26, __FUNCTION__);
+    if(!(n % 4 == 0)) _assert_fail("n % 4 == 0", "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/util.c", 27, __FUNCTION__);
 
     /* Write out words. */
     while (n != 0) {
@@ -24482,7 +24653,7 @@ str_to_int(const char* str)
 
     return val;
 }
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/config/default_domain.c"
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/config/default_domain.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24493,7 +24664,7 @@ str_to_int(const char* str)
  * @TAG(GD_GPL)
  */
 
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/object/structures.h" 1
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24503,8 +24674,8 @@ str_to_int(const char* str)
  *
  * @TAG(GD_GPL)
  */
-# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/config/default_domain.c" 2
-# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/include/model/statedata.h" 1
+# 12 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/config/default_domain.c" 2
+# 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/include/model/statedata.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -24514,7 +24685,7 @@ str_to_int(const char* str)
  *
  * @TAG(GD_GPL)
  */
-# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/config/default_domain.c" 2
+# 13 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/config/default_domain.c" 2
 
 /* Default schedule. */
 const dschedule_t ksDomSchedule[] = {

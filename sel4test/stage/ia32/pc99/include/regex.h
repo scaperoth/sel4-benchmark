@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _REGEX_H
 #define _REGEX_H
 
@@ -7,16 +5,18 @@
 extern "C" {
 #endif
 
+#include <features.h>
+
+#define __NEED_regoff_t
 #define __NEED_size_t
 
 #include <bits/alltypes.h>
 
-typedef long regoff_t;
-
-typedef struct {
+typedef struct re_pattern_buffer {
 	size_t re_nsub;
 	void *__opaque, *__padding[4];
 	size_t __nsub2;
+	char __padding2;
 } regex_t;
 
 typedef struct {
@@ -49,11 +49,11 @@ typedef struct {
 
 #define REG_ENOSYS      -1
 
-int regcomp(regex_t *, const char *, int);
-int regexec(const regex_t *, const char *, size_t, regmatch_t [], int);
+int regcomp(regex_t *__restrict, const char *__restrict, int);
+int regexec(const regex_t *__restrict, const char *__restrict, size_t, regmatch_t *__restrict, int);
 void regfree(regex_t *);
 
-size_t regerror(int, const regex_t *, char *, size_t);
+size_t regerror(int, const regex_t *__restrict, char *__restrict, size_t);
 
 #ifdef __cplusplus
 }

@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 struct statfs {
 	unsigned long f_type, f_bsize;
 	fsblkcnt_t f_blocks, f_bfree, f_bavail;

@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #define __VA_ALIGNED_SIZE(x) ((sizeof(x) + sizeof(int) - 1) & ~(sizeof(int) - 1))
 
 #define va_start(ap, last) ((ap) = (void *)(((char *)&(last)) + __VA_ALIGNED_SIZE(last)))

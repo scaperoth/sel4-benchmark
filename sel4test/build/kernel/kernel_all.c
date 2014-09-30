@@ -1,4 +1,4 @@
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/api/syscall.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/api/syscall.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -396,7 +396,7 @@ handleSyscall(syscall_t syscall)
 
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/benchmark.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/benchmark.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -420,7 +420,7 @@ DATA_GLOB uint32_t *ksLog;
 
 #endif /* CONFIG_BENCHMARK */
 
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/api/faults.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/api/faults.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -564,7 +564,7 @@ void handleKernelException(
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/c_traps.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/c_traps.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -736,7 +736,7 @@ void __attribute__((externally_visible)) c_handle_syscall(syscall_t syscall, wor
 
     slowpath(syscall);
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/fastpath/fastpath.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/fastpath/fastpath.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -1253,7 +1253,7 @@ fastpath_reply_wait(word_t cptr, word_t msgInfo)
     msgInfo = wordFromMessageInfo(message_info_set_msgCapsUnwrapped(info, 0));
     fastpath_restore(badge, msgInfo);
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/apic.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/apic.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -1539,7 +1539,7 @@ apic_send_startup_ipi(cpu_id_t cpu_id, paddr_t startup_addr)
         ).words[0]
     );
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -1576,19 +1576,24 @@ extern uint32_t kernel_pd_list[CONFIG_MAX_NUM_NODES][BIT(PD_BITS)];
 /* functions exactly corresponding to abstract specification */
 
 BOOT_CODE static void
-init_irqs(cap_t root_cnode_cap, bool_t mask_legacy_irqs)
+init_irqs(cap_t root_cnode_cap, bool_t mask_irqs)
 {
     irq_t i;
 
     for (i = 0; i <= maxIRQ; i++) {
         if (i == irq_timer) {
             setIRQState(IRQTimer, i);
-        } else if (i == irq_iommu || i == 2 /* cascaded legacy PIC */) {
+        } else if (i == irq_iommu) {
             setIRQState(IRQReserved, i);
-        } else if (i >= irq_isa_min && i <= irq_isa_max)
-            if (mask_legacy_irqs)
+#ifdef CONFIG_IRQ_PIC
+        } else if (i == 2) {
+            /* cascaded legacy PIC */
+            setIRQState(IRQReserved, i);
+#endif
+        } else if (i >= irq_controller_min && i <= irq_controller_max)
+            if (mask_irqs)
                 /* Don't use setIRQState() here because it implicitly also enables */
-                /* the IRQ on the PIC which only node 0 is allowed to do. */
+                /* the IRQ on the interrupt controller which only node 0 is allowed to do. */
             {
                 intStateIRQTable[i] = IRQReserved;
             } else {
@@ -2047,7 +2052,7 @@ init_node_cpu(
 
     return true;
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/boot_sys.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/boot_sys.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -2073,6 +2078,7 @@ init_node_cpu(
 #include <plat/machine/devices.h>
 #include <plat/machine/pci.h>
 #include <plat/machine/pic.h>
+#include <plat/machine/ioapic.h>
 
 /* addresses defined in linker script */
 /* need a fake array to get the pointer from the linker script */
@@ -2120,6 +2126,8 @@ typedef struct glks {
     ui_info_t    ui_info_list   [CONFIG_MAX_NUM_NODES]; /* info about userland images */
     dev_p_regs_t dev_p_regs;  /* device memory regions */
     uint32_t     apic_khz;    /* frequency of APIC/bus */
+    uint32_t     num_ioapic;  /* number of IOAPICs detected */
+    paddr_t      ioapic_paddr[CONFIG_MAX_NUM_IOAPIC];
 #ifdef CONFIG_IOMMU
     uint32_t     num_drhu; /* number of IOMMUs */
     paddr_t      drhu_list[MAX_NUM_DRHU]; /* list of physical addresses of the IOMMUs */
@@ -2343,6 +2351,10 @@ lift_ndks(node_id_t node_id)
                 (pde_t*)kernel_pd_list[node_id],
                 (pte_t*)kernel_pt_list[node_id],
                 ndks_p_reg
+#ifdef CONFIG_IRQ_IOAPIC
+                , glks.num_ioapic,
+                glks.ioapic_paddr
+#endif
 #ifdef CONFIG_IOMMU
                 , node_id == 0 ? glks.num_drhu : 0,
                 glks.drhu_list
@@ -2412,7 +2424,11 @@ try_boot_node(void)
     /* initialise the CPU */
     if (!init_node_cpu(
                 glks.apic_khz,
+#ifdef CONFIG_IRQ_IOAPIC
+                1
+#else
                 node_id != 0
+#endif
             )) {
         return false;
     }
@@ -2514,6 +2530,11 @@ try_boot_sys(
 
     /* remapping legacy IRQs to their correct vectors */
     pic_remap_irqs(IRQ_INT_OFFSET);
+#ifdef CONFIG_IRQ_IOAPIC
+    /* Disable the PIC so that it does not generate any interrupts. We need to
+     * do this *before* we initialize the apic */
+    pic_disable();
+#endif
 
     /* Prepare for accepting device regions from here on */
     glks.dev_p_regs.count = 0;
@@ -2542,11 +2563,21 @@ try_boot_sys(
 #endif
 
     /* query available CPUs from ACPI */
-    glks.num_nodes = acpi_madt_scan(acpi_rsdt, glks.cpu_list, CONFIG_MAX_NUM_NODES);
+    glks.num_nodes = acpi_madt_scan(acpi_rsdt, glks.cpu_list, CONFIG_MAX_NUM_NODES, &glks.num_ioapic, glks.ioapic_paddr);
     if (glks.num_nodes == 0) {
         printf("No CPUs detected\n");
         return false;
     }
+#ifdef CONFIG_IRQ_IOAPIC
+    if (glks.num_ioapic == 0) {
+        printf("No IOAPICs detected\n");
+        return false;
+    }
+#else
+    if (glks.num_ioapic > 0) {
+        printf("Detected %d IOAPICs, but configured to use PIC instead\n", glks.num_ioapic);
+    }
+#endif
 
     if (glks.num_nodes > cmdline_opt.max_num_nodes) {
         glks.num_nodes = cmdline_opt.max_num_nodes;
@@ -2653,6 +2684,11 @@ try_boot_sys(
         return false;
     }
 
+#ifdef CONFIG_IRQ_IOAPIC
+    /* Now that NDKS have been lifted we can access the IOAPIC and program it */
+    ioapic_init(glks.num_nodes, glks.cpu_list, glks.num_ioapic);
+#endif
+
     /* start up other CPUs and initialise their nodes */
     for (i = 1; i < glks.num_nodes; i++) {
         printf("Starting node #%d\n", i);
@@ -2675,7 +2711,7 @@ boot_sys(
     }
 }
 
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/cmdline.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/cmdline.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -2857,7 +2893,7 @@ void cmdline_parse(const char *cmdline, cmdline_opt_t* cmdline_opt)
     }
     printf("Boot config: num_sh_frames = 0x%x\n", cmdline_opt->num_sh_frames);
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/elf.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/elf.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -2933,7 +2969,7 @@ elf32_load(Elf32_Header_t* elfFile, int32_t offset)
         memset((void*)dst, 0, phdr[i].p_memsz - len);
     }
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/lock.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/lock.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -2953,7 +2989,7 @@ elf32_load(Elf32_Header_t* elfFile, int32_t offset)
 lock_t lock_debug DATA_GLOB;
 
 #endif /* DEBUG */
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/thread.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/thread.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -3016,7 +3052,7 @@ Arch_activateIdleThread(tcb_t* tcb)
 {
     /* Don't need to do anything */
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/kernel/vspace.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/kernel/vspace.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -3594,6 +3630,10 @@ map_kernel_window(
     pde_t*     pd,
     pte_t*     pt,
     p_region_t ndks_p_reg
+#ifdef CONFIG_IRQ_IOAPIC
+    , uint32_t num_ioapic,
+    paddr_t*   ioapic_paddrs
+#endif
 #ifdef CONFIG_IOMMU
     , uint32_t   num_drhu,
     paddr_t*   drhu_list
@@ -3604,9 +3644,7 @@ map_kernel_window(
     uint32_t idx;
     pde_t    pde;
     pte_t    pte;
-#ifdef CONFIG_IOMMU
-    unsigned int i;
-#endif
+    unsigned int UNUSED i;
 
     /* Mapping of PPTR_BASE (virtual address) to kernel's PADDR_BASE
      * up to end of virtual address space except for the last 4M.
@@ -3749,6 +3787,49 @@ map_kernel_window(
     pt[idx] = pte;
     idx++;
 
+#ifdef CONFIG_IRQ_IOAPIC
+    for (i = 0; i < num_ioapic; i++) {
+        phys = ioapic_paddrs[i];
+        pte = pte_new(
+                  phys,   /* page_base_address    */
+                  0,      /* avl                  */
+                  1,      /* global               */
+                  0,      /* pat                  */
+                  0,      /* dirty                */
+                  0,      /* accessed             */
+                  1,      /* cache_disabled       */
+                  1,      /* write_through        */
+                  0,      /* super_user           */
+                  1,      /* read_write           */
+                  1       /* present              */
+              );
+        assert(idx == ( (PPTR_IOAPIC_START + i * BIT(pageBitsForSize(IA32_4K))) & MASK(pageBitsForSize(IA32_4M))) >> pageBitsForSize(IA32_4K));
+        pt[idx] = pte;
+        idx++;
+        if (idx == BIT(PT_BITS)) {
+            return false;
+        }
+    }
+    /* put in null mappings for any extra IOAPICs */
+    for (; i < CONFIG_MAX_NUM_IOAPIC; i++) {
+        pte = pte_new(
+                  0,      /* page_base_address    */
+                  0,      /* avl                  */
+                  0,      /* global               */
+                  0,      /* pat                  */
+                  0,      /* dirty                */
+                  0,      /* accessed             */
+                  0,      /* cache_disabled       */
+                  0,      /* write_through        */
+                  0,      /* super_user           */
+                  0,      /* read_write           */
+                  0       /* present              */
+              );
+        assert(idx == ( (PPTR_IOAPIC_START + i * BIT(pageBitsForSize(IA32_4K))) & MASK(pageBitsForSize(IA32_4M))) >> pageBitsForSize(IA32_4K));
+        pt[idx] = pte;
+        idx++;
+    }
+#endif
 
 #ifdef CONFIG_IOMMU
     /* map kernel devices: IOMMUs */
@@ -5042,7 +5123,7 @@ decodeIA32MMUInvocation(
         fail("Invalid arch cap type");
     }
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/capdl.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/capdl.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5456,7 +5537,7 @@ void capDL(void)
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/fpu.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/fpu.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5555,7 +5636,7 @@ Arch_initFpu(void)
      * switching */
     write_cr0((read_cr0() & ~CR0_EMULATION) | CR0_MONITOR_COPROC | CR0_NUMERIC_ERROR | CR0_TASK_SWITCH);
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/hardware.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/hardware.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5640,7 +5721,7 @@ void flushCacheRange(void* vaddr, uint32_t size_bits)
     }
     ia32_mfence();
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/machine/registerset.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/machine/registerset.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5716,7 +5797,7 @@ word_t sanitiseRegister(register_t reg, word_t v)
     }
     return v;
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/model/statedata.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/model/statedata.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5788,7 +5869,7 @@ uint32_t ia32KSnumIODomainIDBits;
 uint16_t ia32KSconsolePort;
 uint16_t ia32KSdebugPort;
 #endif
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/interrupt.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/interrupt.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5809,7 +5890,7 @@ exception_t Arch_decodeInterruptControl(unsigned int length, extra_caps_t extraC
     current_syscall_error.type = seL4_IllegalOperation;
     return EXCEPTION_SYSCALL_ERROR;
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/ioport.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/ioport.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6000,7 +6081,7 @@ decodeIA32PortInvocation(
     setThreadState(ksCurThread, ThreadState_Restart);
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/iospace.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/iospace.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6463,7 +6544,7 @@ exception_t decodeIA32IOSpaceInvocation(word_t label, cap_t cap)
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/objecttype.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/objecttype.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6998,7 +7079,7 @@ Arch_prepareThreadDelete(tcb_t *thread)
     /* Notify the lazy FPU module about this thread's deletion. */
     Arch_fpuThreadDelete(thread);
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/arch/ia32/object/tcb.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/arch/ia32/object/tcb.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7198,7 +7279,7 @@ exception_t CONST Arch_performTransfer(word_t arch, tcb_t *tcb_src, tcb_t *tcb_d
 {
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/assert.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/assert.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7246,7 +7327,7 @@ void _assert_fail(
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/inlines.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/inlines.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7263,7 +7344,7 @@ void _assert_fail(
 lookup_fault_t current_lookup_fault;
 fault_t current_fault;
 syscall_error_t current_syscall_error;
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/boot.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/boot.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7796,7 +7877,7 @@ bi_finalise(void)
         slot_pos_start, slot_pos_end
     };
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/cspace.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/cspace.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8003,7 +8084,7 @@ resolveAddressBits(cap_t nodeCap, cptr_t capptr, unsigned int n_bits)
     ret.status = EXCEPTION_NONE;
     return ret;
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/faulthandler.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/faulthandler.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8123,7 +8204,7 @@ handleDoubleFault(tcb_t *tptr, fault_t ex1)
 
     setThreadState(tptr, ThreadState_Inactive);
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/kernel/thread.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/kernel/thread.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8596,7 +8677,7 @@ rescheduleRequired(void)
     ksSchedulerAction = SchedulerAction_ChooseNewThread;
 }
 
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/machine/io.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/machine/io.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8839,7 +8920,7 @@ unsigned int puts(const char *s)
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/preemption.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/preemption.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8883,7 +8964,7 @@ preemptionPoint(void)
     return EXCEPTION_NONE;
 }
 
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/model/statedata.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/model/statedata.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -8931,7 +9012,7 @@ word_t ksDomainTime;
 /* An index into ksDomSchedule for active domain and length. */
 uint32_t ksDomScheduleIdx;
 
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/asyncendpoint.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/asyncendpoint.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9096,7 +9177,7 @@ asyncIPCCancel(tcb_t *threadPtr, async_endpoint_t *aepptr)
     /* Make thread inactive */
     setThreadState(threadPtr, ThreadState_Inactive);
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/cnode.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/cnode.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10087,7 +10168,7 @@ loadCapTransfer(word_t *buffer)
     const int offset = seL4_MsgMaxLength + seL4_MsgMaxExtraCaps + 2;
     return capTransferFromWords(buffer + offset);
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/endpoint.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/endpoint.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10430,7 +10511,7 @@ epCancelBadgedSends(endpoint_t *epptr, word_t badge)
         fail("invalid EP state");
     }
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/interrupt.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/interrupt.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10523,8 +10604,8 @@ invokeIRQControl(irq_t irq, cte_t *handlerSlot, cte_t *controlSlot)
 }
 
 exception_t
-decodeIRQHandlerInvocation(word_t label, irq_t irq,
-                           extra_caps_t extraCaps)
+decodeIRQHandlerInvocation(word_t label, unsigned int length, irq_t irq,
+                           extra_caps_t extraCaps, word_t *buffer)
 {
     switch (label) {
     case IRQAckIRQ:
@@ -10564,6 +10645,21 @@ decodeIRQHandlerInvocation(word_t label, irq_t irq,
         setThreadState(ksCurThread, ThreadState_Restart);
         invokeIRQHandler_ClearIRQHandler(irq);
         return EXCEPTION_NONE;
+    case IRQSetMode: {
+        bool_t trig, pol;
+
+        if (length < 2) {
+            userError("IRQSetMode: Not enough arguments", length);
+            current_syscall_error.type = seL4_TruncatedMessage;
+            return EXCEPTION_SYSCALL_ERROR;
+        }
+        trig = getSyscallArg(0, buffer);
+        pol = getSyscallArg(1, buffer);
+
+        setThreadState(ksCurThread, ThreadState_Restart);
+        invokeIRQHandler_SetMode(irq, !!trig, !!pol);
+        return EXCEPTION_NONE;
+    }
 
     default:
         userError("IRQHandler: Illegal operation.");
@@ -10576,6 +10672,11 @@ void
 invokeIRQHandler_AckIRQ(irq_t irq)
 {
     maskInterrupt(false, irq);
+}
+
+void invokeIRQHandler_SetMode(irq_t irq, bool_t levelTrigger, bool_t polarityLow)
+{
+    setInterruptMode(irq, levelTrigger, polarityLow);
 }
 
 void
@@ -10676,7 +10777,7 @@ setIRQState(irq_state_t irqState, irq_t irq)
     intStateIRQTable[irq] = irqState;
     maskInterrupt(irqState == IRQInactive, irq);
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/objecttype.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/objecttype.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11347,8 +11448,8 @@ decodeInvocation(word_t label, unsigned int length,
                                           extraCaps, buffer);
 
     case cap_irq_handler_cap:
-        return decodeIRQHandlerInvocation(label,
-                                          cap_irq_handler_cap_get_capIRQ(cap), extraCaps);
+        return decodeIRQHandlerInvocation(label, length,
+                                          cap_irq_handler_cap_get_capIRQ(cap), extraCaps, buffer);
 
     default:
         fail("Invalid cap type");
@@ -11380,7 +11481,7 @@ performInvocation_Reply(tcb_t *thread, cte_t *slot)
     doReplyTransfer(ksCurThread, thread, slot);
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/tcb.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/tcb.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -12372,7 +12473,7 @@ invokeTCB_WriteRegisters(tcb_t *dest, bool_t resumeTarget,
 
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/object/untyped.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/object/untyped.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -12629,7 +12730,7 @@ invokeUntyped_Retype(cte_t *srcSlot, void* regionBase,
 
     return EXCEPTION_NONE;
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/acpi.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/acpi.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -12888,7 +12989,9 @@ BOOT_CODE uint32_t
 acpi_madt_scan(
     acpi_rsdt_t* acpi_rsdt,
     cpu_id_t*    cpu_list,
-    uint32_t     max_list_len
+    uint32_t     max_list_len,
+    uint32_t*    num_ioapic,
+    paddr_t*     ioapic_paddrs
 )
 {
     unsigned int entries;
@@ -12902,6 +13005,7 @@ acpi_madt_scan(
     acpi_rsdt_mapped = (acpi_rsdt_t*)acpi_table_init(acpi_rsdt, ACPI_RSDT);
 
     num_cpu = 0;
+    *num_ioapic = 0;
 
     assert(acpi_rsdt_mapped->header.length >= sizeof(acpi_header_t));
     entries = (acpi_rsdt_mapped->header.length - sizeof(acpi_header_t)) / sizeof(acpi_header_t*);
@@ -12939,6 +13043,19 @@ acpi_madt_scan(
                         ((acpi_madt_ioapic_t*)acpi_madt_header)->ioapic_addr,
                         ((acpi_madt_ioapic_t*)acpi_madt_header)->gsib
                     );
+                    if (*num_ioapic == CONFIG_MAX_NUM_IOAPIC) {
+                        printf("ACPI: Not recording this IOAPIC, only support %d\n", CONFIG_MAX_NUM_IOAPIC);
+                    } else {
+                        ioapic_paddrs[*num_ioapic] = ((acpi_madt_ioapic_t*)acpi_madt_header)->ioapic_addr;
+                        (*num_ioapic)++;
+                    }
+                    break;
+                case MADT_ISO:
+                    printf("ACIP: MADT_ISO bus=%d source=%d gsi=%d flags=0x%x\n",
+                           ((acpi_madt_iso_t*)acpi_madt_header)->bus,
+                           ((acpi_madt_iso_t*)acpi_madt_header)->source,
+                           ((acpi_madt_iso_t*)acpi_madt_header)->gsi,
+                           ((acpi_madt_iso_t*)acpi_madt_header)->flags);
                     break;
                 default:
                     break;
@@ -13108,7 +13225,7 @@ acpi_dmar_scan(
 }
 
 #endif /* IOMMU */
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/debug_helpers.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/debug_helpers.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13140,7 +13257,7 @@ void putDebugChar(unsigned char a)
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/hardware.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/hardware.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13157,6 +13274,7 @@ void putDebugChar(unsigned char a)
 #include <arch/model/statedata.h>
 #include <arch/linker.h>
 #include <plat/machine/pic.h>
+#include <plat/machine/ioapic.h>
 #include <plat/machine.h>
 
 #ifdef CONFIG_IOMMU
@@ -13186,14 +13304,33 @@ void platAddDevices(void)
 /* Enable or disable irq according to the 'mask' flag. */
 void maskInterrupt(bool_t mask, irq_t irq)
 {
-    assert(irq >= irq_isa_min);
+    assert(irq >= irq_controller_min);
     assert(irq <= maxIRQ);
 
-    if (irq <= irq_isa_max) {
+    if (irq <= irq_controller_max) {
+#ifdef CONFIG_IRQ_IOAPIC
+        ioapic_mask_irq(mask, irq);
+#else
         pic_mask_irq(mask, irq);
+#endif
     } else {
         /* we can't mask/unmask specific APIC vectors (e.g. MSIs/IPIs) */
     }
+}
+
+/* Set mode of an irq */
+void setInterruptMode(irq_t irq, bool_t levelTrigger, bool_t polarityLow)
+{
+#ifdef CONFIG_IRQ_IOAPIC
+    assert(irq >= irq_ioapic_min);
+    assert(irq <= maxIRQ);
+
+    if (irq <= irq_ioapic_max) {
+        ioapic_set_mode(irq, levelTrigger, polarityLow);
+    } else {
+        /* No mode setting for specific APIC vectors */
+    }
+#endif
 }
 
 /* Handle a platform-reserved IRQ. */
@@ -13221,14 +13358,25 @@ irq_t getActiveIRQ(void)
 /* Checks for pending IRQ */
 bool_t isIRQPending(void)
 {
-    return apic_is_interrupt_pending() || pic_is_irq_pending();
+    if (apic_is_interrupt_pending()) {
+        return true;
+    }
+#ifdef CONFIG_IRQ_PIC
+    if (pic_is_irq_pending()) {
+        return true;
+    }
+#endif
+    return false;
 }
 
 void ackInterrupt(irq_t irq)
 {
+#ifdef CONFIG_IRQ_PIC
     if (irq <= irq_isa_max) {
         pic_ack_active_irq();
-    } else {
+    } else
+#endif
+    {
         apic_ack_active_interrupt();
     }
 }
@@ -13244,7 +13392,7 @@ void resetTimer(void)
 {
     /* not necessary */
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/intel-vtd.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/intel-vtd.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13701,7 +13849,7 @@ vtd_init(
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/io.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/io.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13763,7 +13911,185 @@ void console_putchar(char c)
 }
 
 #endif
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pci.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/ioapic.c"
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * This software may be distributed and modified according to the terms of
+ * the GNU General Public License version 2. Note that NO WARRANTY is provided.
+ * See "LICENSE_GPLv2.txt" for details.
+ *
+ * @TAG(GD_GPL)
+ */
+
+#include <config.h>
+
+#ifdef CONFIG_IRQ_IOAPIC
+
+#include <arch/linker.h>
+#include <plat/machine/io.h>
+#include <plat/machine/hardware.h>
+#include <plat/machine/ioapic.h>
+
+#define IOAPIC_REGSEL 0x00
+#define IOAPIC_WINDOW 0x10
+
+#define IOAPIC_REG_IOAPICID 0x00
+#define IOAPIC_REG_IOREDTBL 0x10
+
+#define IOREDTBL_LOW(reg) (IOAPIC_REG_IOREDTBL + (reg) * 2)
+#define IOREDTBL_HIGH(reg) (IOREDTBL_LOW(reg) + 1)
+
+#define IOREDTBL_LOW_INTERRUPT_MASK BIT(16)
+#define IOREDTBL_LOW_TRIGGER_MODE_LEVEL BIT(15)
+#define IOREDTBL_LOW_POLARITY_LOW BIT(13)
+#define IOREDTBL_LOW_DEST_MODE_LOGCIAL BIT(11)
+
+#define IOAPICID_ID_BITS 4
+#define IOAPICID_ID_OFFSET 24
+
+#define IOREDTBL_HIGH_RESERVED_BITS 24
+
+/* Cache what we believe is in the low word of the IOREDTBL. This
+ * has all the state of trigger modes etc etc */
+static uint32_t ioredtbl_state[IOAPIC_IRQ_LINES * CONFIG_MAX_NUM_IOAPIC];
+
+/* Number of IOAPICs in the system */
+static uint32_t num_ioapics = 0;
+
+/* In debug mode we track whether an unmasked vector has
+ * had its mode set. This is to catch bad user level code */
+#ifdef DEBUG
+static bool_t done_set_mode[IOAPIC_IRQ_LINES * CONFIG_MAX_NUM_IOAPIC] = { 0 };
+#endif
+
+static void ioapic_write(uint32_t ioapic, uint32_t reg, uint32_t value)
+{
+    *(volatile uint32_t*)((uint32_t)(PPTR_IOAPIC_START + ioapic * BIT(PAGE_BITS)) + reg) = value;
+}
+
+static uint32_t ioapic_read(uint32_t ioapic, uint32_t reg)
+{
+    return *(volatile uint32_t*)((uint32_t)(PPTR_IOAPIC_START + ioapic * BIT(PAGE_BITS)) + reg);
+}
+
+static bool_t in_list(uint32_t size, cpu_id_t *list, cpu_id_t target)
+{
+    uint32_t i;
+    for (i = 0; i < size; i++) {
+        if (list[i] == target) {
+            return true;
+        }
+    }
+    return false;
+}
+
+static void single_ioapic_init(uint32_t ioapic, cpu_id_t ioapic_id, cpu_id_t delivery_cpu)
+{
+    uint32_t id_reg;
+    uint32_t i;
+    /* Write the ID to the ioapic */
+    ioapic_write(ioapic, IOAPIC_REGSEL, IOAPIC_REG_IOAPICID);
+    id_reg = ioapic_read(ioapic, IOAPIC_WINDOW);
+    /* perform mask to preserve the reserved bits */
+    id_reg &= ~(MASK(IOAPICID_ID_BITS) << IOAPICID_ID_OFFSET);
+    id_reg |= ioapic_id << IOAPICID_ID_OFFSET;
+    /* Mask all the IRQs and set default delivery details.
+     * attempt to deliberately set a trigger mode and level
+     * setting that is LEAST likely to be correct. This is
+     * to ensure user code sets it correctly and cannot get
+     * away with it happening to be correct */
+    for (i = 0; i < IOAPIC_IRQ_LINES; i++) {
+        /* Send to desired cpu */
+        ioapic_write(ioapic, IOAPIC_REGSEL, IOREDTBL_HIGH(i));
+        ioapic_write(ioapic, IOAPIC_WINDOW, (ioapic_read(ioapic, IOAPIC_WINDOW) & MASK(IOREDTBL_HIGH_RESERVED_BITS)) | (delivery_cpu << IOREDTBL_HIGH_RESERVED_BITS));
+        /* Mask and set to level trigger high polarity and make the delivery vector */
+        ioredtbl_state[i] = IOREDTBL_LOW_INTERRUPT_MASK |
+                            IOREDTBL_LOW_TRIGGER_MODE_LEVEL |
+                            (i + IRQ_INT_OFFSET);
+        ioapic_write(ioapic, IOAPIC_REGSEL, IOREDTBL_LOW(i));
+        /* The upper 16 bits are reserved, so we make sure to preserve them */
+        ioredtbl_state[i] |= ioapic_read(ioapic, IOAPIC_WINDOW) & ~MASK(16);
+        ioapic_write(ioapic, IOAPIC_WINDOW, ioredtbl_state[i]);
+    }
+}
+
+/* To guarantee we will be able to find enough free apic ids there needs to be less than
+ * 2^4 cpus + ioapics in the system */
+compile_assert(ioapic_id_will_not_overflow, CONFIG_MAX_NUM_NODES + CONFIG_MAX_NUM_IOAPIC < 16);
+
+void ioapic_init(uint32_t num_nodes, cpu_id_t *cpu_list, uint32_t num_ioapic)
+{
+    uint32_t ioapic;
+    cpu_id_t ioapic_id = 0;
+    num_ioapics = num_ioapic;
+    for (ioapic = 0; ioapic < num_ioapic; ioapic++) {
+        /* Determine the next free apic ID */
+        while (in_list(num_nodes, cpu_list, ioapic_id)) {
+            ioapic_id++;
+        }
+        /* ioapic id field is 4 bits. this assert passing should be
+         * guaranteed by the compile assert above this function, hence
+         * this does not need to be a run time check */
+        assert(ioapic_id < BIT(4));
+        /* Init this ioapic */
+        single_ioapic_init(ioapic, ioapic_id, cpu_list[0]);
+        /* Increment the id */
+        ioapic_id++;
+    }
+}
+
+void ioapic_mask_irq(bool_t mask, irq_t irq)
+{
+    uint32_t ioapic = irq / IOAPIC_IRQ_LINES;
+    uint32_t index = irq % IOAPIC_IRQ_LINES;
+    if (ioapic >= num_ioapics) {
+        /* silently ignore requests to non existent parts of the interrupt space */
+        return;
+    }
+    if (mask) {
+        ioredtbl_state[irq] |= IOREDTBL_LOW_INTERRUPT_MASK;
+    } else {
+        ioredtbl_state[irq] &= ~IOREDTBL_LOW_INTERRUPT_MASK;
+#ifdef DEBUG
+        if (!done_set_mode[irq]) {
+            printf("Unmasking IOAPIC source %d on ioapic %d without ever setting its mode!\n", index, ioapic);
+            /* Set the flag so we don't repeatedly warn */
+            done_set_mode[irq] = 1;
+        }
+#endif
+    }
+    ioapic_write(ioapic, IOAPIC_REGSEL, IOREDTBL_LOW(index));
+    ioapic_write(ioapic, IOAPIC_WINDOW, ioredtbl_state[irq]);
+}
+
+void ioapic_set_mode(irq_t irq, bool_t levelTrigger, bool_t polarityLow)
+{
+    uint32_t ioapic = irq / IOAPIC_IRQ_LINES;
+    uint32_t index = irq % IOAPIC_IRQ_LINES;
+    if (ioapic >= num_ioapics) {
+        /* silently ignore requests to non existent parts of the interrupt space */
+        return;
+    }
+    if (levelTrigger) {
+        ioredtbl_state[irq] |= IOREDTBL_LOW_TRIGGER_MODE_LEVEL;
+    } else {
+        ioredtbl_state[irq] &= ~IOREDTBL_LOW_TRIGGER_MODE_LEVEL;
+    }
+    if (polarityLow) {
+        ioredtbl_state[irq] |= IOREDTBL_LOW_POLARITY_LOW;
+    } else {
+        ioredtbl_state[irq] &= ~IOREDTBL_LOW_POLARITY_LOW;
+    }
+#ifdef DEBUG
+    done_set_mode[irq] = 1;
+#endif
+    ioapic_write(ioapic, IOAPIC_REGSEL, IOREDTBL_LOW(index));
+    ioapic_write(ioapic, IOAPIC_WINDOW, ioredtbl_state[irq]);
+}
+
+#endif /* CONFIG_IOAPIC */
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pci.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13990,7 +14316,7 @@ pci_scan(uint32_t* bus_used_bitmap)
         }
     }
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pic.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pic.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14025,6 +14351,16 @@ pic_remap_irqs(interrupt_t interrupt)
     out8(PIC1_BASE + 1, 0x0);
     out8(PIC2_BASE + 1, 0x0);
 }
+
+BOOT_CODE void pic_disable(void)
+{
+    /* We assume that pic_remap_irqs has already been called and
+     * just mask all the irqs */
+    out8(PIC1_BASE + 1, 0xff);
+    out8(PIC2_BASE + 1, 0xff);
+}
+
+#ifdef CONFIG_IRQ_PIC
 
 void pic_mask_irq(bool_t mask, irq_t irq)
 {
@@ -14077,7 +14413,9 @@ void pic_ack_active_irq(void)
     /* ack master PIC */
     out8(PIC1_BASE, 0x20);
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/plat/pc99/machine/pit.c"
+
+#endif
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/plat/pc99/machine/pit.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14127,7 +14465,7 @@ pit_wait_wraparound(void)
         count |= (in8_phys(PIT_CH0) << 8);
     }
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/util.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/util.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14260,7 +14598,7 @@ str_to_int(const char* str)
 
     return val;
 }
-#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test-manifest/kernel/src/config/default_domain.c"
+#line 1 "/home/mscapero/Desktop/sel4-benchmark/sel4test/kernel/src/config/default_domain.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *

@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_UTIME_H
 #define	_UTIME_H
 

@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _ARPA_TELNET_H
 #define	_ARPA_TELNET_H
 

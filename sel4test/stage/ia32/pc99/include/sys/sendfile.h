@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _SYS_SENDFILE_H
 #define _SYS_SENDFILE_H
 
@@ -7,6 +5,7 @@
 extern "C" {
 #endif
 
+#include <features.h>
 #include <unistd.h>
 
 ssize_t sendfile(int, int, off_t *, size_t);

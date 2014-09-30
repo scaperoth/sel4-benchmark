@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _SHADOW_H
 #define _SHADOW_H
 

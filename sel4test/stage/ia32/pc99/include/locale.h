@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_LOCALE_H
 #define	_LOCALE_H
 
@@ -7,9 +5,10 @@
 extern "C" {
 #endif
 
-#undef NULL
+#include <features.h>
+
 #ifdef __cplusplus
-#define NULL 0
+#define NULL 0L
 #else
 #define NULL ((void*)0)
 #endif
@@ -56,7 +55,7 @@ struct lconv *localeconv(void);
 
 
 #if defined(_POSIX_SOURCE) || defined(_POSIX_C_SOURCE) \
- || defined(_XOPEN_SOURCE) || defined(_GNU_SOURCE)
+ || defined(_XOPEN_SOURCE) || defined(_GNU_SOURCE) || defined(_BSD_SOURCE)
 
 #define __NEED_locale_t
 

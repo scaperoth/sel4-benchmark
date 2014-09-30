@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_DIRENT_H
 #define	_DIRENT_H
 
@@ -7,12 +5,17 @@
 extern "C" {
 #endif
 
+#include <features.h>
+
 #define __NEED_ino_t
 #define __NEED_off_t
+#if defined(_BSD_SOURCE) || defined(_GNU_SOURCE)
+#define __NEED_size_t
+#endif
 
 #include <bits/alltypes.h>
 
-typedef struct __DIR_s DIR;
+typedef struct __dirstream DIR;
 
 struct dirent
 {
@@ -29,7 +32,7 @@ int            closedir(DIR *);
 DIR           *fdopendir(int);
 DIR           *opendir(const char *);
 struct dirent *readdir(DIR *);
-int            readdir_r(DIR *, struct dirent *, struct dirent **);
+int            readdir_r(DIR *__restrict, struct dirent *__restrict, struct dirent **__restrict);
 void           rewinddir(DIR *);
 void           seekdir(DIR *, long);
 long           telldir(DIR *);
@@ -50,14 +53,11 @@ int scandir(const char *, struct dirent ***, int (*)(const struct dirent *), int
 #define DT_WHT 14
 #define IFTODT(x) ((x)>>12 & 017)
 #define DTTOIF(x) ((x)<<12)
+int getdents(int, struct dirent *, size_t);
 #endif
 
 #ifdef _GNU_SOURCE
 int versionsort(const struct dirent **, const struct dirent **);
-#endif
-
-#ifdef _BSD_SOURCE
-int getdents(int, struct dirent *, size_t);
 #endif
 
 #if defined(_LARGEFILE64_SOURCE) || defined(_GNU_SOURCE)
@@ -69,9 +69,7 @@ int getdents(int, struct dirent *, size_t);
 #define versionsort64 versionsort
 #define off64_t off_t
 #define ino64_t ino_t
-#ifdef _BSD_SOURCE
 #define getdents64 getdents
-#endif
 #endif
 
 #ifdef __cplusplus

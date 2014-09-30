@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _NETINET_IP6_H
 #define _NETINET_IP6_H
 

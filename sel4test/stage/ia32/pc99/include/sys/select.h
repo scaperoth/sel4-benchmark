@@ -1,10 +1,10 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _SYS_SELECT_H
 #define _SYS_SELECT_H
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <features.h>
 
 #define __NEED_size_t
 #define __NEED_time_t
@@ -29,9 +29,12 @@ typedef struct
 #define FD_CLR(d, s)   ((s)->fds_bits[(d)/(8*sizeof(long))] &= ~(1UL<<((d)%(8*sizeof(long)))))
 #define FD_ISSET(d, s) !!((s)->fds_bits[(d)/(8*sizeof(long))] & (1UL<<((d)%(8*sizeof(long)))))
 
-int select (int, fd_set *, fd_set *, fd_set *, struct timeval *);
-int pselect (int, fd_set *, fd_set *, fd_set *, const struct timespec *, const sigset_t *);
+int select (int, fd_set *__restrict, fd_set *__restrict, fd_set *__restrict, struct timeval *__restrict);
+int pselect (int, fd_set *__restrict, fd_set *__restrict, fd_set *__restrict, const struct timespec *__restrict, const sigset_t *__restrict);
 
+#if defined(_GNU_SOURCE) || defined(_BSD_SOURCE)
+#define NFDBITS (8*(int)sizeof(long))
+#endif
 
 #ifdef __cplusplus
 }

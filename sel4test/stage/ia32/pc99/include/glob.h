@@ -1,11 +1,11 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_GLOB_H
 #define	_GLOB_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <features.h>
 
 #define __NEED_size_t
 
@@ -19,7 +19,7 @@ typedef struct {
 	void *__dummy2[5];
 } glob_t;
 
-int  glob(const char *, int, int (*)(const char *, int), glob_t *);
+int  glob(const char *__restrict, int, int (*)(const char *, int), glob_t *__restrict);
 void globfree(glob_t *);
 
 #define GLOB_ERR      0x01
@@ -39,6 +39,7 @@ void globfree(glob_t *);
 #if defined(_LARGEFILE64_SOURCE) || defined(_GNU_SOURCE)
 #define glob64 glob
 #define globfree64 globfree
+#define glob64_t glob_t
 #endif
 
 #ifdef __cplusplus

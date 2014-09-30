@@ -1,11 +1,13 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _SYS_TIMEX_H
 #define _SYS_TIMEX_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#define __NEED_clockid_t
+
+#include <bits/alltypes.h>
 
 #include <sys/time.h>
 
@@ -34,6 +36,7 @@ struct timex {
 #define ADJ_STATUS		0x0010
 #define ADJ_TIMECONST		0x0020
 #define ADJ_TAI			0x0080
+#define ADJ_SETOFFSET		0x0100
 #define ADJ_MICRO		0x1000
 #define ADJ_NANO		0x2000
 #define ADJ_TICK		0x4000
@@ -48,6 +51,7 @@ struct timex {
 #define MOD_TIMECONST	ADJ_TIMECONST
 #define MOD_CLKB	ADJ_TICK
 #define MOD_CLKA	ADJ_OFFSET_SINGLESHOT
+#define MOD_TAI		ADJ_TAI
 #define MOD_MICRO	ADJ_MICRO
 #define MOD_NANO	ADJ_NANO
 
@@ -72,7 +76,7 @@ struct timex {
 #define STA_CLK		0x8000
 
 #define STA_RONLY (STA_PPSSIGNAL | STA_PPSJITTER | STA_PPSWANDER | \
-    STA_PPSERROR | STA_CLOCKERR)
+    STA_PPSERROR | STA_CLOCKERR | STA_NANO | STA_MODE | STA_CLK)
 
 #define TIME_OK		0
 #define TIME_INS	1
@@ -85,6 +89,7 @@ struct timex {
 #define MAXTC		6
 
 int adjtimex(struct timex *);
+int clock_adjtime(clockid_t, struct timex *);
 
 #ifdef __cplusplus
 }

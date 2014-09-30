@@ -1,14 +1,18 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_SYS_MMAN_H
 #define	_SYS_MMAN_H
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#include <features.h>
+
 #define __NEED_mode_t
 #define __NEED_size_t
 #define __NEED_off_t
+
+#if defined(_GNU_SOURCE)
+#define __NEED_ssize_t
+#endif
 
 #include <bits/alltypes.h>
 
@@ -29,10 +33,12 @@ int munlockall (void);
 
 #ifdef _GNU_SOURCE
 void *mremap (void *, size_t, size_t, int, ...);
+int remap_file_pages (void *, size_t, int, size_t, int);
 #endif
 
 #if defined(_GNU_SOURCE) || defined(_BSD_SOURCE)
 int madvise (void *, size_t, int);
+int mincore (void *, size_t, unsigned char *);
 #endif
 
 int shm_open (const char *, int, mode_t);

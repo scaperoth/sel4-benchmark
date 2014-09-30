@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _SYS_PARAM_H
 #define _SYS_PARAM_H
 

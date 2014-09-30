@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _MNTENT_H
 #define _MNTENT_H
 

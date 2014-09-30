@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _LIBINTL_H
 #define _LIBINTL_H
 

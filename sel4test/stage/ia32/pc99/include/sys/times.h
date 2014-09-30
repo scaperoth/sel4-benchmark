@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_SYS_TIMES_H
 #define	_SYS_TIMES_H
 

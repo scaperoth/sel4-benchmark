@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _SYS_SIGNALFD_H
 #define _SYS_SIGNALFD_H
 
@@ -8,13 +6,14 @@ extern "C" {
 #endif
 
 #include <stdint.h>
+#include <fcntl.h>
 
 #define __NEED_sigset_t
 
 #include <bits/alltypes.h>
 
-#define SFD_CLOEXEC 02000000
-#define SFD_NONBLOCK 04000
+#define SFD_CLOEXEC O_CLOEXEC
+#define SFD_NONBLOCK O_NONBLOCK
 
 int signalfd(int, const sigset_t *, int);
 
@@ -31,11 +30,12 @@ struct signalfd_siginfo {
 	uint32_t  ssi_trapno;
 	int32_t   ssi_status;
 	int32_t   ssi_int;
-	uintptr_t ssi_ptr;
+	uint64_t  ssi_ptr;
 	uint64_t  ssi_utime;
 	uint64_t  ssi_stime;
 	uint64_t  ssi_addr;
-	uint8_t   pad[128-12*4-sizeof(void *)-3*8];
+	uint16_t  ssi_addr_lsb;
+	uint8_t   pad[128-12*4-4*8-2];
 };
 
 #ifdef __cplusplus

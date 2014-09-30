@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _MATH_H
 #define _MATH_H
 
@@ -7,11 +5,10 @@
 extern "C" {
 #endif
 
+#include <features.h>
+
 #define __NEED_float_t
 #define __NEED_double_t
-#define __NEED___uint16_t
-#define __NEED___uint32_t
-#define __NEED___uint64_t
 #include <bits/alltypes.h>
 
 #if 100*__GNUC__+__GNUC_MINOR__ >= 303
@@ -19,7 +16,7 @@ extern "C" {
 #define INFINITY  __builtin_inff()
 #else
 #define NAN       (0.0f/0.0f)
-#define INFINITY  1e40f
+#define INFINITY  1e5000f
 #endif
 
 #define HUGE_VALF INFINITY
@@ -43,11 +40,18 @@ int __fpclassify(double);
 int __fpclassifyf(float);
 int __fpclassifyl(long double);
 
-union __float_repr { float __f; __uint32_t __i; };
-union __double_repr { double __f; __uint64_t __i; };
-
-#define __FLOAT_BITS(f) (((union __float_repr){ (float)(f) }).__i)
-#define __DOUBLE_BITS(f) (((union __double_repr){ (double)(f) }).__i)
+static __inline unsigned __FLOAT_BITS(float __f)
+{
+	union {float __f; unsigned __i;} __u;
+	__u.__f = __f;
+	return __u.__i;
+}
+static __inline unsigned long long __DOUBLE_BITS(double __f)
+{
+	union {double __f; unsigned long long __i;} __u;
+	__u.__f = __f;
+	return __u.__i;
+}
 
 #define fpclassify(x) ( \
 	sizeof(x) == sizeof(float) ? __fpclassifyf(x) : \
@@ -56,22 +60,22 @@ union __double_repr { double __f; __uint64_t __i; };
 
 #define isinf(x) ( \
 	sizeof(x) == sizeof(float) ? (__FLOAT_BITS(x) & 0x7fffffff) == 0x7f800000 : \
-	sizeof(x) == sizeof(double) ? (__DOUBLE_BITS(x) & (__uint64_t)-1>>1) == (__uint64_t)0x7ff<<52 : \
+	sizeof(x) == sizeof(double) ? (__DOUBLE_BITS(x) & -1ULL>>1) == 0x7ffULL<<52 : \
 	__fpclassifyl(x) == FP_INFINITE)
 
 #define isnan(x) ( \
 	sizeof(x) == sizeof(float) ? (__FLOAT_BITS(x) & 0x7fffffff) > 0x7f800000 : \
-	sizeof(x) == sizeof(double) ? (__DOUBLE_BITS(x) & (__uint64_t)-1>>1) > (__uint64_t)0x7ff<<52 : \
+	sizeof(x) == sizeof(double) ? (__DOUBLE_BITS(x) & -1ULL>>1) > 0x7ffULL<<52 : \
 	__fpclassifyl(x) == FP_NAN)
 
 #define isnormal(x) ( \
 	sizeof(x) == sizeof(float) ? ((__FLOAT_BITS(x)+0x00800000) & 0x7fffffff) >= 0x01000000 : \
-	sizeof(x) == sizeof(double) ? ((__DOUBLE_BITS(x)+((__uint64_t)1<<52)) & (__uint64_t)-1>>1) >= (__uint64_t)1<<53 : \
+	sizeof(x) == sizeof(double) ? ((__DOUBLE_BITS(x)+(1ULL<<52)) & -1ULL>>1) >= 1ULL<<53 : \
 	__fpclassifyl(x) == FP_NORMAL)
 
 #define isfinite(x) ( \
 	sizeof(x) == sizeof(float) ? (__FLOAT_BITS(x) & 0x7fffffff) < 0x7f800000 : \
-	sizeof(x) == sizeof(double) ? (__DOUBLE_BITS(x) & (__uint64_t)-1>>1) < (__uint64_t)0x7ff<<52 : \
+	sizeof(x) == sizeof(double) ? (__DOUBLE_BITS(x) & -1ULL>>1) < 0x7ffULL<<52 : \
 	__fpclassifyl(x) > FP_INFINITE)
 
 int __signbit(double);
@@ -85,24 +89,36 @@ int __signbitl(long double);
 
 #define isunordered(x,y) (isnan((x)) ? ((void)(y),1) : isnan((y)))
 
-#if __STDC_VERSION__ >= 199901L
-inline
-#endif
-static int __isrel(long double __x, long double __y, int __rel)
-{
-	if (isunordered(__x, __y)) return 0;
-	if (__rel==-2) return __x < __y;
-	if (__rel==2) return __x > __y;
-	if (__rel==-1) return __x <= __y;
-	if (__rel==1) return __x >= __y;
-	return __x != __y;
-}
+#define __ISREL_DEF(rel, op, type) \
+static __inline int __is##rel(type __x, type __y) \
+{ return !isunordered(__x,__y) && __x op __y; }
 
-#define isless(x,y) __isrel((x), (y), -2)
-#define islessequal(x,y) __isrel((x), (y), -1)
-#define islessgreater(x,y) __isrel((x), (y), 0)
-#define isgreaterequal(x,y) __isrel((x), (y), 1)
-#define isgreater(x,y) __isrel((x), (y), 2)
+__ISREL_DEF(lessf, <, float_t)
+__ISREL_DEF(less, <, double_t)
+__ISREL_DEF(lessl, <, long double)
+__ISREL_DEF(lessequalf, <=, float_t)
+__ISREL_DEF(lessequal, <=, double_t)
+__ISREL_DEF(lessequall, <=, long double)
+__ISREL_DEF(lessgreaterf, !=, float_t)
+__ISREL_DEF(lessgreater, !=, double_t)
+__ISREL_DEF(lessgreaterl, !=, long double)
+__ISREL_DEF(greaterf, >, float_t)
+__ISREL_DEF(greater, >, double_t)
+__ISREL_DEF(greaterl, >, long double)
+__ISREL_DEF(greaterequalf, >=, float_t)
+__ISREL_DEF(greaterequal, >=, double_t)
+__ISREL_DEF(greaterequall, >=, long double)
+
+#define __tg_pred_2(x, y, p) ( \
+	sizeof((x)+(y)) == sizeof(float) ? p##f(x, y) : \
+	sizeof((x)+(y)) == sizeof(double) ? p(x, y) : \
+	p##l(x, y) )
+
+#define isless(x, y)            __tg_pred_2(x, y, __isless)
+#define islessequal(x, y)       __tg_pred_2(x, y, __islessequal)
+#define islessgreater(x, y)     __tg_pred_2(x, y, __islessgreater)
+#define isgreater(x, y)         __tg_pred_2(x, y, __isgreater)
+#define isgreaterequal(x, y)    __tg_pred_2(x, y, __isgreaterequal)
 
 double      acos(double);
 float       acosf(float);
@@ -334,7 +350,8 @@ long double truncl(long double);
 
 
 #if defined(_XOPEN_SOURCE) || defined(_BSD_SOURCE)
-#define MAXFLOAT        3.40282347e+38F
+#undef  MAXFLOAT
+#define MAXFLOAT        3.40282346638528859812e+38F
 #endif
 
 #if defined(_XOPEN_SOURCE) || defined(_GNU_SOURCE) || defined(_BSD_SOURCE)
@@ -364,7 +381,13 @@ double      yn(int, double);
 #endif
 
 #if defined(_GNU_SOURCE) || defined(_BSD_SOURCE)
-#define HUGE            3.40282347e+38F
+#define HUGE            3.40282346638528859812e+38F
+
+double      drem(double, double);
+float       dremf(float, float);
+
+int         finite(double);
+int         finitef(float);
 
 double      scalb(double, double);
 float       scalbf(float, float);
@@ -386,14 +409,6 @@ float       ynf(int, float);
 
 #ifdef _GNU_SOURCE
 long double lgammal_r(long double, int*);
-
-long double j0l(long double);
-long double j1l(long double);
-long double jnl(int, long double);
-
-long double y0l(long double);
-long double y1l(long double);
-long double ynl(int, long double);
 
 void        sincos(double, double*, double*);
 void        sincosf(float, float*, float*);

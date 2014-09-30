@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _SYS_FILE_H
 #define _SYS_FILE_H
 #ifdef __cplusplus

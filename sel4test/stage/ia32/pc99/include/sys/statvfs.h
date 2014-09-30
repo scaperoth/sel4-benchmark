@@ -1,11 +1,11 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_SYS_STATVFS_H
 #define	_SYS_STATVFS_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <features.h>
 
 #define __NEED_fsblkcnt_t
 #define __NEED_fsfilcnt_t
@@ -28,7 +28,7 @@ struct statvfs {
 	int __reserved[6];
 };
 
-int statvfs (const char *, struct statvfs *);
+int statvfs (const char *__restrict, struct statvfs *__restrict);
 int fstatvfs (int, struct statvfs *);
 
 #define ST_RDONLY 1

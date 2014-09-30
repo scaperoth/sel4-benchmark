@@ -1,11 +1,11 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _SYS_SHM_H
 #define _SYS_SHM_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <features.h>
 
 #define __NEED_time_t
 #define __NEED_size_t
@@ -14,7 +14,17 @@ extern "C" {
 #include <bits/alltypes.h>
 
 #include <sys/ipc.h>
+
+#ifdef _GNU_SOURCE
+#define __used_ids used_ids
+#define __swap_attempts swap_attempts
+#define __swap_successes swap_successes
+#endif
+
 #include <bits/shm.h>
+
+#define SHM_R 0400
+#define SHM_W 0200
 
 #define SHM_RDONLY 010000
 #define SHM_RND    020000
@@ -30,19 +40,7 @@ extern "C" {
 #define SHM_HUGETLB 04000
 #define SHM_NORESERVE 010000
 
-struct shminfo {
-	unsigned long shmmax, shmmin, shmmni, shmseg, shmall, __unused[4];
-};
-
-struct shm_info {
-	int used_ids;
-	unsigned long shm_tot, shm_rss, shm_swp;
-#ifdef _GNU_SOURCE
-	unsigned long swap_attempts, swap_successes;
-#else
-	unsigned long __reserved[2];
-#endif
-};
+typedef unsigned long shmatt_t;
 
 void *shmat(int, const void *, int);
 int shmctl(int, int, struct shmid_ds *);

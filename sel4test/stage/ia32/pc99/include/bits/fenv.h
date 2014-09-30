@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #define FE_INVALID    1
 #define __FE_DENORM   2
 #define FE_DIVBYZERO  4
@@ -30,7 +28,6 @@ typedef struct {
 	unsigned int __data_offset;
 	unsigned short __data_selector;
 	unsigned short __unused5;
-	unsigned int __mxcsr;
 } fenv_t;
 
 #define FE_DFL_ENV      ((const fenv_t *) -1)

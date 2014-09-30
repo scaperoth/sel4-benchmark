@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_SYS_EPOLL_H
 #define	_SYS_EPOLL_H
 
@@ -9,13 +7,14 @@ extern "C" {
 
 #include <stdint.h>
 #include <sys/types.h>
+#include <fcntl.h>
 
 #define __NEED_sigset_t
 
 #include <bits/alltypes.h>
 
-#define EPOLL_CLOEXEC 02000000
-#define EPOLL_NONBLOCK 04000
+#define EPOLL_CLOEXEC O_CLOEXEC
+#define EPOLL_NONBLOCK O_NONBLOCK
 
 enum EPOLL_EVENTS { __EPOLL_DUMMY };
 #define EPOLLIN 0x001
@@ -29,6 +28,7 @@ enum EPOLL_EVENTS { __EPOLL_DUMMY };
 #define EPOLLERR 0x008
 #define EPOLLHUP 0x010
 #define EPOLLRDHUP 0x2000
+#define EPOLLWAKEUP (1U<<29)
 #define EPOLLONESHOT (1U<<30)
 #define EPOLLET (1U<<31)
 
@@ -46,7 +46,11 @@ typedef union epoll_data {
 struct epoll_event {
 	uint32_t events;
 	epoll_data_t data;
-} __attribute__ ((__packed__));
+}
+#ifdef __x86_64__
+__attribute__ ((__packed__))
+#endif
+;
 
 
 int epoll_create(int);

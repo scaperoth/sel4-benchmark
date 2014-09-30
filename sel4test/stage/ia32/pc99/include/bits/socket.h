@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 struct msghdr
 {
 	void *msg_name;

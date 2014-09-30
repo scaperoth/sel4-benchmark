@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _STDBOOL_H
 #define _STDBOOL_H
 
@@ -9,8 +7,8 @@
 #define false 0
 #define bool _Bool
 
-#define __bool_true_false_are_defined 1
-
 #endif
+
+#define __bool_true_false_are_defined 1
 
 #endif

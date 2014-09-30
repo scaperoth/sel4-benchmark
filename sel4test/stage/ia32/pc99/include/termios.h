@@ -1,11 +1,11 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_TERMIOS_H
 #define	_TERMIOS_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <features.h>
 
 #define __NEED_pid_t
 

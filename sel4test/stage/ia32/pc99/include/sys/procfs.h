@@ -1,5 +1,3 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _SYS_PROCFS_H
 #define _SYS_PROCFS_H
 #ifdef __cplusplus
@@ -9,17 +7,6 @@ extern "C" {
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/user.h>
-
-typedef unsigned long elf_greg_t;
-#define ELF_NGREG (sizeof (struct user_regs_struct) / sizeof(elf_greg_t))
-typedef elf_greg_t elf_gregset_t[ELF_NGREG];
-
-#if __WORDSIZE == 32
-typedef struct user_fpregs_struct elf_fpregset_t;
-typedef struct user_fpxregs_struct elf_fpxregset_t;
-#else
-typedef struct user_fpregs_struct elf_fpregset_t;
-#endif
 
 struct elf_siginfo {
 	int si_signo;
@@ -44,7 +31,6 @@ struct elf_prstatus {
 	int pr_fpvalid;
 };
 
-
 #define ELF_PRARGSZ 80
 
 struct elf_prpsinfo
@@ -54,7 +40,7 @@ struct elf_prpsinfo
 	char pr_zomb;
 	char pr_nice;
 	unsigned long int pr_flag;
-#if __WORDSIZE == 32
+#if UINTPTR_MAX == 0xffffffff
 	unsigned short int pr_uid;
 	unsigned short int pr_gid;
 #else
@@ -66,18 +52,12 @@ struct elf_prpsinfo
 	char pr_psargs[ELF_PRARGSZ];
 };
 
-
 typedef void *psaddr_t;
 typedef elf_gregset_t prgregset_t;
-
 typedef elf_fpregset_t prfpregset_t;
-typedef elf_fpregset_t fpregset_t;
 typedef pid_t lwpid_t;
 typedef struct elf_prstatus prstatus_t;
 typedef struct elf_prpsinfo prpsinfo_t;
-
-
-
 
 #ifdef __cplusplus
 }

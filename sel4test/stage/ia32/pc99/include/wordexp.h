@@ -1,11 +1,11 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef	_WORDEXP_H
 #define	_WORDEXP_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <features.h>
 
 #define __NEED_size_t
 
@@ -32,7 +32,7 @@ typedef struct
 #define WRDE_CMDSUB  4
 #define WRDE_SYNTAX  5
 
-int wordexp (const char *, wordexp_t *, int);
+int wordexp (const char *__restrict, wordexp_t *__restrict, int);
 void wordfree (wordexp_t *);
 
 #ifdef __cplusplus

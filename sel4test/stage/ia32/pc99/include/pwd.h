@@ -1,11 +1,11 @@
-/* @LICENSE(MUSLC_MIT) */
-
 #ifndef _PWD_H
 #define _PWD_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <features.h>
 
 #define __NEED_size_t
 #define __NEED_uid_t
@@ -39,6 +39,7 @@ int getpwnam_r (const char *, struct passwd *, char *, size_t, struct passwd **)
 
 #ifdef _GNU_SOURCE
 struct passwd *fgetpwent(FILE *);
+int putpwent(const struct passwd *, FILE *);
 #endif
 
 #ifdef __cplusplus
