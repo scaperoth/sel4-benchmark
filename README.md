@@ -1,6 +1,8 @@
 ##seL4 MicroKernel Build Test and Benchmarking
 This repository will be used to test the seL4 microkernel. Source code can be found at the [seL4 website](seL4Home).
 
+The best way to make use of seL4 is to download it from [their website](seL4Home). Once downloaded you can follow the steps laid out here if you'd like to have a similar envioronment. For the configuration, you can simply copy the config files. 
+
 [seL4Home]: http://sel4.systems 
 
 ###Building a bootable USB
